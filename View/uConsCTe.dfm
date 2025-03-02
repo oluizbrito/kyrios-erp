@@ -1,0 +1,2170 @@
+object frmConsCTe: TfrmConsCTe
+  Left = 0
+  Top = 0
+  Align = alClient
+  BorderStyle = bsDialog
+  Caption = 'CTe OS'
+  ClientHeight = 723
+  ClientWidth = 1186
+  Color = 5723991
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  KeyPreview = True
+  Position = poDesktopCenter
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
+  OnShow = FormShow
+  TextHeight = 13
+  object DBGrid1: TDBGrid
+    AlignWithMargins = True
+    Left = 7
+    Top = 96
+    Width = 1172
+    Height = 476
+    Margins.Left = 7
+    Margins.Top = 7
+    Margins.Right = 7
+    Margins.Bottom = 0
+    Align = alClient
+    DataSource = dsCTe
+    GradientEndColor = 15529196
+    GradientStartColor = clBtnFace
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clNavy
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 2
+    TitleFont.Charset = ANSI_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -13
+    TitleFont.Name = 'Segoe UI Semibold'
+    TitleFont.Style = [fsBold]
+    OnDrawColumnCell = DBGrid1DrawColumnCell
+    OnDblClick = DBGrid1DblClick
+    OnTitleClick = DBGrid1TitleClick
+    Columns = <
+      item
+        Alignment = taCenter
+        Expanded = False
+        FieldName = 'NUMERO'
+        Title.Alignment = taCenter
+        Title.Caption = 'N'#250'mero'
+        Visible = True
+      end
+      item
+        Alignment = taCenter
+        Expanded = False
+        FieldName = 'DATA'
+        Title.Alignment = taCenter
+        Title.Caption = 'Data'
+        Width = 80
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'CHAVE'
+        Title.Caption = 'Chave'
+        Width = 502
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'PROTOCOLO'
+        Title.Caption = 'Protocolo'
+        Visible = True
+      end
+      item
+        Alignment = taCenter
+        Expanded = False
+        FieldName = 'TOTAL'
+        Title.Alignment = taCenter
+        Title.Caption = 'Total'
+        Width = 105
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'VIRTUAL_SITUACAO'
+        Title.Caption = 'Situa'#231#227'o'
+        Width = 125
+        Visible = True
+      end>
+  end
+  object Panel1: TPanel
+    AlignWithMargins = True
+    Left = 7
+    Top = 579
+    Width = 1172
+    Height = 41
+    Margins.Left = 7
+    Margins.Top = 7
+    Margins.Right = 7
+    Margins.Bottom = 0
+    Align = alBottom
+    Color = clWhite
+    ParentBackground = False
+    TabOrder = 0
+    ExplicitTop = 591
+    ExplicitWidth = 1176
+    object LblSaldo: TLabel
+      Left = 633
+      Top = 10
+      Width = 4
+      Height = 16
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label11: TLabel
+      Left = 20
+      Top = 11
+      Width = 73
+      Height = 17
+      Caption = 'CHAVE CT-e:'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object DBEdit1: TDBEdit
+      Left = 110
+      Top = 10
+      Width = 516
+      Height = 19
+      Ctl3D = False
+      DataField = 'CHAVE'
+      DataSource = dsCTe
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentCtl3D = False
+      ParentFont = False
+      ReadOnly = True
+      TabOrder = 0
+    end
+    object Panel11: TPanel
+      Left = 795
+      Top = 1
+      Width = 384
+      Height = 39
+      Align = alRight
+      BevelOuter = bvNone
+      TabOrder = 1
+      ExplicitLeft = 791
+    end
+  end
+  object PagUtilidade: TPageControl
+    Left = 179
+    Top = 198
+    Width = 590
+    Height = 293
+    ActivePage = TabInutilizar
+    DoubleBuffered = False
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentDoubleBuffered = False
+    ParentFont = False
+    TabOrder = 1
+    Visible = False
+    object TabInutilizar: TTabSheet
+      Caption = 'Inutilizar CTe'
+      object pnInutiliza: TPanel
+        AlignWithMargins = True
+        Left = 3
+        Top = 3
+        Width = 576
+        Height = 255
+        Align = alClient
+        BevelKind = bkFlat
+        BevelOuter = bvNone
+        Color = clWhite
+        ParentBackground = False
+        TabOrder = 0
+        object Label1: TLabel
+          Left = 94
+          Top = 21
+          Width = 26
+          Height = 17
+          Caption = 'Ano:'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label3: TLabel
+          Left = 71
+          Top = 48
+          Width = 49
+          Height = 17
+          Caption = 'Modelo:'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label4: TLabel
+          Left = 88
+          Top = 76
+          Width = 32
+          Height = 17
+          Caption = 'S'#233'rie:'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label5: TLabel
+          Left = 13
+          Top = 104
+          Width = 107
+          Height = 17
+          Caption = 'Numera'#231#227'o Inicial:'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label6: TLabel
+          Left = 19
+          Top = 132
+          Width = 101
+          Height = 17
+          Caption = 'Numera'#231#227'o Final:'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label7: TLabel
+          Left = 52
+          Top = 160
+          Width = 68
+          Height = 17
+          Caption = 'Justificativa:'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+        end
+        object btnFechar: TSpeedButton
+          Left = 134
+          Top = 205
+          Width = 80
+          Height = 36
+          Caption = 'Fechar'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Layout = blGlyphTop
+          ParentFont = False
+          OnClick = btnFecharClick
+        end
+        object btnInutilizar: TSpeedButton
+          Left = 48
+          Top = 205
+          Width = 80
+          Height = 36
+          Caption = 'Enviar'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Layout = blGlyphTop
+          ParentFont = False
+          OnClick = btnInutilizarClick
+        end
+        object edtAno: TEdit
+          Left = 128
+          Top = 20
+          Width = 86
+          Height = 23
+          Ctl3D = False
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          NumbersOnly = True
+          ParentColor = True
+          ParentCtl3D = False
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 0
+        end
+        object edtModelo: TEdit
+          Left = 128
+          Top = 48
+          Width = 86
+          Height = 23
+          Ctl3D = False
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          NumbersOnly = True
+          ParentColor = True
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 1
+        end
+        object edtSerie: TEdit
+          Left = 128
+          Top = 76
+          Width = 86
+          Height = 23
+          Ctl3D = False
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          NumbersOnly = True
+          ParentColor = True
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 2
+        end
+        object edtInicial: TEdit
+          Left = 128
+          Top = 104
+          Width = 86
+          Height = 23
+          Ctl3D = False
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          NumbersOnly = True
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 3
+        end
+        object edtFinal: TEdit
+          Left = 128
+          Top = 132
+          Width = 86
+          Height = 23
+          Ctl3D = False
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          NumbersOnly = True
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 4
+        end
+        object edtJustificativa: TEdit
+          Left = 128
+          Top = 159
+          Width = 398
+          Height = 23
+          Ctl3D = False
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 5
+        end
+      end
+    end
+    object TabCarta: TTabSheet
+      Caption = 'Carta de Corre'#231#227'o'
+      ImageIndex = 2
+      object Panel6: TPanel
+        AlignWithMargins = True
+        Left = 3
+        Top = 3
+        Width = 576
+        Height = 255
+        Align = alClient
+        BevelKind = bkFlat
+        BevelOuter = bvNone
+        Color = clWhite
+        ParentBackground = False
+        TabOrder = 0
+        object Label14: TLabel
+          Left = 0
+          Top = 0
+          Width = 142
+          Height = 17
+          Align = alTop
+          Caption = '  Descri'#231#227'o da Corre'#231#227'o'
+        end
+        object Grupo: TLabel
+          Left = 40
+          Top = 29
+          Width = 37
+          Height = 17
+          Caption = 'Grupo'
+        end
+        object Label2: TLabel
+          Left = 40
+          Top = 78
+          Width = 42
+          Height = 17
+          Caption = 'Campo'
+        end
+        object Label10: TLabel
+          Left = 40
+          Top = 127
+          Width = 30
+          Height = 17
+          Caption = 'Valor'
+        end
+        object btnCorrecao: TSpeedButton
+          Left = 41
+          Top = 190
+          Width = 80
+          Height = 35
+          Caption = 'Enviar'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Layout = blGlyphTop
+          ParentFont = False
+          OnClick = btnCorrecaoClick
+        end
+        object btnSairCorrecao: TSpeedButton
+          Left = 127
+          Top = 189
+          Width = 80
+          Height = 36
+          Caption = 'Fechar'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Layout = blGlyphTop
+          ParentFont = False
+          OnClick = btnSairCorrecaoClick
+        end
+        object DBEdit2: TDBEdit
+          Left = 40
+          Top = 48
+          Width = 441
+          Height = 25
+          DataField = 'GRUPO'
+          DataSource = dsCorrecao
+          TabOrder = 0
+        end
+        object DBEdit3: TDBEdit
+          Left = 40
+          Top = 97
+          Width = 441
+          Height = 25
+          DataSource = dsCorrecao
+          TabOrder = 1
+        end
+        object DBEdit4: TDBEdit
+          Left = 40
+          Top = 146
+          Width = 441
+          Height = 25
+          DataField = 'VALOR'
+          DataSource = dsCorrecao
+          TabOrder = 2
+        end
+      end
+    end
+  end
+  object Panel4: TPanel
+    AlignWithMargins = True
+    Left = 7
+    Top = 7
+    Width = 1172
+    Height = 82
+    Margins.Left = 7
+    Margins.Top = 7
+    Margins.Right = 7
+    Margins.Bottom = 0
+    Align = alTop
+    BevelOuter = bvNone
+    Color = clWhite
+    ParentBackground = False
+    TabOrder = 3
+    ExplicitWidth = 1180
+    object GroupBox2: TGroupBox
+      AlignWithMargins = True
+      Left = 3
+      Top = 3
+      Width = 1049
+      Height = 76
+      Align = alClient
+      Caption = 'F12 Filtro'
+      Color = clWhite
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentBackground = False
+      ParentColor = False
+      ParentFont = False
+      TabOrder = 0
+      ExplicitWidth = 1170
+      object LblPeriodo: TLabel
+        Left = 13
+        Top = 20
+        Width = 91
+        Height = 17
+        Caption = 'Per'#237'odo de  at'#233
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+      end
+      object lblDescricao: TLabel
+        Left = 282
+        Top = 20
+        Width = 51
+        Height = 17
+        Caption = 'Localizar'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+      end
+      object btnFiltrar: TBitBtn
+        Left = 181
+        Top = 40
+        Width = 97
+        Height = 24
+        Caption = 'Filtrar Per'#237'odo'
+        TabOrder = 3
+        OnClick = btnFiltrarClick
+      end
+      object maskFim: TMaskEdit
+        Left = 98
+        Top = 40
+        Width = 80
+        Height = 23
+        Ctl3D = False
+        EditMask = '!99/99/0000;1;_'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        MaxLength = 10
+        ParentCtl3D = False
+        ParentFont = False
+        TabOrder = 1
+        Text = '  /  /    '
+        OnKeyPress = maskFimKeyPress
+      end
+      object maskInicio: TMaskEdit
+        Left = 13
+        Top = 40
+        Width = 79
+        Height = 23
+        Ctl3D = False
+        EditMask = '!99/99/0000;1;_'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        MaxLength = 10
+        ParentCtl3D = False
+        ParentFont = False
+        TabOrder = 0
+        Text = '  /  /    '
+        OnKeyPress = maskInicioKeyPress
+      end
+      object edtLoc: TEdit
+        Left = 284
+        Top = 40
+        Width = 377
+        Height = 23
+        CharCase = ecUpperCase
+        Color = clWhite
+        Ctl3D = False
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        MaxLength = 35
+        ParentCtl3D = False
+        ParentFont = False
+        TabOrder = 2
+        TextHint = 'Digite aqui sua pesquisa'
+        OnChange = edtLocChange
+        OnKeyDown = edtLocKeyDown
+      end
+    end
+    object Panel12: TPanel
+      AlignWithMargins = True
+      Left = 1058
+      Top = 3
+      Width = 119
+      Height = 76
+      Align = alRight
+      BevelOuter = bvNone
+      TabOrder = 1
+      ExplicitLeft = 1068
+      ExplicitHeight = 69
+      object cxSair: TcxButton
+        AlignWithMargins = True
+        Left = 7
+        Top = 15
+        Width = 105
+        Height = 46
+        Margins.Left = 7
+        Margins.Top = 15
+        Margins.Right = 7
+        Margins.Bottom = 15
+        Align = alClient
+        Caption = 'Fechar'
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.SkinName = 'DevExpressDarkStyle'
+        OptionsImage.Glyph.SourceDPI = 96
+        OptionsImage.Glyph.Data = {
+          89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+          610000001D744558745469746C6500436C6F73653B457869743B426172733B52
+          6962626F6E3B4603B9E8000002AD49444154785E85934B4C546714C77FF73232
+          0C041DC2237644C368F109868D98A0290BDA60E2DE9526921856C3C2A08C2E1A
+          A336A64DB48D81A8892D6E241A7CA20B1530261849DA4D47596818082F015118
+          0698B973DFB7773EB1333BEE97FFCD3927DFF97DE77B1CE9E3AF17293FF3B30C
+          48426B7D9939765A1290337AE1DC4B8F2CD73B0E802306C24CEB9BE7ACFA6206
+          86650FECFCE55283079025DBAE2F3D5CB79A94B58E206692C5CF1606933DAF7F
+          006451BA69986099A8C3C38C3C7846D791D3BCB97413351A151AFCADD38D8589
+          DE7F412A3A426A388AC801D92300A689E36A2A1225129923D8D1C9FC9387FCDD
+          D587244BC4037BDC581B91AB97716C93F2AA6D989A004802A0AF28382EF19F3B
+          FD34F4F7515852C4E2AE20FFFED10140CDC9101B0ABD54B4FFCEAB1F7F62D3F9
+          0AB4643203589E9C469F9926B8BF8AF947DD94B5849072246A5A43E040913F9F
+          BC75394C3DEE2658BB9BD4F07BE2E3B35915A83AFAA719766CCDE7C3403F43C8
+          6C6D6EC65FE8C391C0B660E8FA359203BD546EF7A34E4C60A49C2C8066602514
+          B4D94F98F12596150DDB721043DC84CC4A3A168FA14FA75CA085A17D05885B30
+          D280548AE8FB39947D8D048E3661D936DE5C99BC5C8FB0BF3BD684527B88D1D1
+          18B6AAE22E9A5D8186954C105B50680C87503D3EF2BDEE9E6FFD0940F9F11380
+          8FFA700BBD4FEEB2A94842D73D990A74DDC45C49B2A37A336FDB4E5122AB8C5F
+          6FE7CBBDDB7C763571A39D328FCEBB702BDF6F2FC352750C4DCFBC0343750189
+          243E3381131BE369DD018A4BD71328CE136730D7D3CDD3CEBFD8B2A518AF99C0
+          4C030CFEDF82EBE802602C2CE22DC8676F7500633981E2DE0C1694FAFD6C2C29
+          419D8FA12515B06C4C43461080822B6595CF7D927410475A3DF9ACA6B0859FDD
+          50C2566C7BF0ECD258A3E846200FF066B5AAB4462B3B800628FF0122CC6063F4
+          5F96130000000049454E44AE426082}
+        TabOrder = 0
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -15
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        OnClick = cxSairClick
+      end
+    end
+  end
+  object Panel7: TPanel
+    AlignWithMargins = True
+    Left = 7
+    Top = 627
+    Width = 1172
+    Height = 89
+    Margins.Left = 7
+    Margins.Top = 7
+    Margins.Right = 7
+    Margins.Bottom = 7
+    Align = alBottom
+    BevelOuter = bvNone
+    Color = clWhite
+    ParentBackground = False
+    TabOrder = 4
+    ExplicitTop = 639
+    ExplicitWidth = 1176
+    object cxAlterar: TcxButton
+      AlignWithMargins = True
+      Left = 114
+      Top = 7
+      Width = 100
+      Height = 75
+      Margins.Left = 7
+      Margins.Top = 7
+      Margins.Right = 0
+      Margins.Bottom = 7
+      Align = alLeft
+      Caption = 'F3 | Alterar'
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.SkinName = 'DevExpressDarkStyle'
+      OptionsImage.Glyph.SourceDPI = 96
+      OptionsImage.Glyph.Data = {
+        89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+        F40000001974455874536F6674776172650041646F626520496D616765526561
+        647971C9653C00000013744558745469746C65005461626C653B466F726D6174
+        3BEEACCAE3000006D349444154785EB5970D6C955719C77FE7BD6F8B7C9442BF
+        2883C256A04029D851568D6C4310269239323744B3294171E2A28B6E8EC93231
+        2A660CC42C5B98CE459C891B4E1499043F866C82D88FD1B550A08CB66B9950DA
+        D242BBD25B7AEF7DDFF3D8E69E9C1CD75450E33FF7E4E4DCFB9EF3FF3FCFF37F
+        4EDEABB040D9F9FF0371671101C00794199E1943455D1BEA3AC835109A5930F0
+        CD1CB967F3EB07941759C4FF805B733D940D11949125023A0C0E3FFCC0E26586
+        DC1160A21F24FFEA678B190EE72FF43069E2588643594D0B0FAC2860383CFF52
+        D9ED862FC481EFA61081BAB6284301F5A72FD2A33C10F3A81267ABD07EB98F58
+        C264D7852846A47A8888E519568036E6408112E51C25682D88D8B5F9384B2D20
+        26EF4852A81240CCFE6B0810117308882844B90CA0451B01820BB381506B2479
+        1002B80AB5D9EF0A504A81DB05A2E1ECB92EEACE746061091520D49D386FD726
+        A5F66711D877E0B811E942B8714A3612FEFB0C20087993C611F553DF97CAA4DA
+        BADA7F307B6E9EABCD0575C7CF71E7B279468D3515028C48F1283BDA84D3EE7A
+        4809B416B46023438B8D0C11B4061BB40DDB4A416BB7EECA3E635C4018866C2C
+        9A37656176CECE88520B42CDCF4FBED7F5A015A045181C68B351013AE97625A0
+        B546BBF9752D6A4D6644187A2B4E1491DE6E164DC8796DDAFCFCDCC95F58CB6F
+        3EF7B5B58569E97818884E46A905B431A48880895C878208CE103B230AADAD49
+        116B7E2135451174B633E7C8CB142E2BC99DBC660D7BD73F46E9EC1C44CB679C
+        0C681A1A3B38313070CDE5447DA2FAACD3850E4410147BFE506DAB9292A29871
+        53365E4F17579EDB4AC9923964DCF1715E7FFC494AF246D2DDD347535B5BA5ED
+        02ADE1A6FC2CF498910EB95167C88BE6DF6805381A41416D553377AFB8C5F6FD
+        A0F1FADADA39FED436E67C681AE33FB694BF7FFF69666641CFA53E2A4FB5379D
+        8F5EFDBC07B60626F5E6088D3599160843734798928821D2B67C623221A44614
+        D1D6366A1EFD26B36F9EC2F8C58B29FBC133E48F83AED64EDE3876BEE964D77B
+        4BB6B79EBBF0AF26D462386D6C20C99ED7A2D1C8100F5A292EF9C576AA1F7984
+        A2E2C903912FA6E2C91D4CCB49A5BDB199436F5F6C6E88F62DF959F7A51640BB
+        6D684C284E0F3B424C8422666D9B4D2553EE7BA444A0B7AD8DEA6F3CCCDC0FE6
+        92B97490FC39A64F1E434B6D1D071B3A9AAB7AA3CBF745AF5C00F4E3E373C477
+        BBA0A2B289F64B5137380B016A2A9B186210E003A9116E9B3B816365B5746EDF
+        CCFC7939642E5B4AF9961F33636A3AEF561DE760A7C781AEEE5515F1FEF380AE
+        B96D8EDE75FC02D684C56931BE7D5F31B1B8060538061405BB7F5FC5AABB160C
+        2D81D28369E768E5292E6DDB4CF1CC74B296DF41F940E405F9193497BF45B5A4
+        D17DD77A2A9E5EDF0A848084B1388920C4734B60FBD8B25B1F8276FBDB4C12E2
+        7BD0D1D9C59F8ED43073F54AB2EF5C4EC5969F5030752C4D478E529918C5BDBF
+        FE2D323A1DE70A96A03F4E180656005A8C991C5611CB87C6B227D73A49DE3940
+        FEFC8B7B59BD6A39455F5CC7CE67F7307DD228EA8F5451168E66F5EE3DA4E74E
+        04E561E503613C41A035BEBD4AB4069237177880DB09909335969488872078A6
+        2E411067C70BBB58B97205A545797C6BCBABDCB2712B7BB76EA057C670FFEFF6
+        0E90DF40606E45F77D3088C5D146800612B178ECAF9BB6BEFA515B5AAC06DB9A
+        7FAB3C3320248D79B37289BFFB26A7CADEE274176CFDDE4383E4149614F0DAA1
+        A35C1C9DC73D9B1EA4BCAE93AA5F1D231E0404B1D821206E339008094530E1E2
+        032380542032CC1BAF7DF68945192B3F529CF94CC1DC5CD26FFF34DF79319382
+        E2E954D7D4D0F8E6C1A68693E5F775B49F6B0502E76D3806F40389BF4C48D300
+        BB2E46F18DA2C03CD46F0987C203521E2A4D2F2D9A95F9C3856B6E25925542CB
+        2B3BB9B9BA97170ECF9030111C6E6B6DFECA00790B9070530E6833240C42500A
+        91EBFF0FA000BF302B25FD4B25632B566D589A3F2EBF94AEB23F72FAC0494E37
+        5EA1AC67DACE576A6B1F05FA0CB99861B13F63A4789646D87DB91F5F64C8B5E3
+        BEB3B9A94F2D2CF9C48639F3CFE68FCD9DCDE501F2F6FA369A1ABBE888F941EF
+        9533CF62C8EF7EECA590F761DD4FD78180465C163CAE0593FA59CB372E8C16DD
+        FFF5FC555FA6FDC07EDE39524FCD1BEFD0D2AB688D864FED6F8E35DA9A5F273C
+        A5F0191E36FA79F7FEE85319B9B93B3EB9F2C3FE776B3AC938B68F8975B503C4
+        D09D90EDBFA88F6F330E0F37CDF2E5865FAE25AF2FC2B590396A1C3ED78178FF
+        D5ABADCD2D75DB37BF3C3D4804D941FF82FAA9D1DEB7D3BA2B76FCB925A830E6
+        0D001AFB85063FC4D709543FF8317BA1BB36C3F722CCC81C87723CC0100F3825
+        302DEA3BA785C66CAEDB85FF0CD755023124A11382B8C37EF75FE09F0C8BDFE6
+        08A3DC930000000049454E44AE426082}
+      OptionsImage.Layout = blGlyphTop
+      TabOrder = 1
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      OnClick = cxAlterarClick
+    end
+    object cxCCe: TcxButton
+      AlignWithMargins = True
+      Left = 649
+      Top = 7
+      Width = 100
+      Height = 75
+      Margins.Left = 7
+      Margins.Top = 7
+      Margins.Right = 0
+      Margins.Bottom = 7
+      Align = alLeft
+      Caption = 'F8 | CCe'
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.SkinName = 'DevExpressDarkStyle'
+      OptionsImage.Glyph.SourceDPI = 96
+      OptionsImage.Glyph.Data = {
+        89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+        F400000024744558745469746C6500496E736572743B506167653B4164643B49
+        74656D3B4C6973743B506C7573581275E4000004FC49444154785EB5975B8895
+        5514C77FEB9C39A75167CC224828E882504917CA998AC47018D307B3BC4C593D
+        64650F910F15A1D58BF6185450184903395074C74C0BB32C345082CCB069C2A0
+        92306FA04D8EE39C73BECB5EAB87F3B1371FDFE950640B3EF6669FBDCFFAAFFF
+        BAECB585D6229C7D313F313FA523AF146903A03DB8F67B34FB8C204500439BF6
+        7D21227DADA00B60D6C6B836A2AABB56DED57B1BE0002B0008D64BDF8A25D773
+        B6E5A5A1DD738112E0DA329081234915C332AB0511C3BCA1026260820122E699
+        91700AACB9AF5C2A61A6C1C822034522CD02B1D054104E191E8D198684332298
+        1988E43CE3349C6ECF80576C2D02204CF1960A58D88F66862B882802A84B5936
+        7F26ABA102A400225200D052B1015B771EC08C1C0A2388596181650B66F2C19E
+        2738323A9CB104AB5FEDD9FEFCA3DFF6AFD9D0E330C199F2E2AA7D7906CCF279
+        6AC0DCDECB089267235012E83103E71C874EECE7F1256F92096B0797CF062ACF
+        3EFC7E04F0F4FA81421604C5C128BEFCFAA0B7CC9A03045FB55C5B3AFF0AD419
+        27EBFB18AD8DD0D9713E49EC00CAE3F141C0481257744100101CD277F3E521C2
+        5BD507837259A87608668A00B5891A6962A42E22760D4AD2206E02E8BE70CA3C
+        32498028EF02F571EF29DEB1FB670C0313CF428E1160CEAC8BF9F4BB673879FA
+        47D40283B1AB13A575B01AE79E57E5A9D77A7E3705031AB5F49BF54FEEEFCF01
+        50CF4048E5FED933F08B9245BDF96C47103A2BCAB1D111EE5FFC08D57297FF6D
+        223E463DAE611D15EE59742F53AAD3C18C7A3AC6EBEF0EDE0874E65D609A7781
+        C1BA1DDDB8149C03A740D21C3505D5E6FA73771E218D1C87FFDCCBA153C34CAA
+        7451294FA643AA944B65C61B631C1DFB952899E04C3C46A5D4499A2840479E01
+        251F84082FDC115114C3105FB15C5C234995C8C58856A9471113D6C0506AF169
+        3A2B5DA08A629809916B10275A0C4255F3C1680298F1DE27DF03E49801BCFF31
+        E3D61B2EA29ACCE0ADA13DCDB30AD32EA872F52D9389138758C4579BC7300D67
+        1A136E2F10E52E23CD28084107CB175E8BB5BDDC4150D63C38481CC7A82AA3A3
+        7FF0F2E6E54C9B329DB1133F6156C2A5C696577EE9058ED3941A309E63C00308
+        D1CE3B5BF717B3000BAEC21013CC0387A5FD9790240EE76262976080730A30BA
+        6564E56133185CBF936D8307F395D03903404D10690259D87715642E018AF5DF
+        03CA2E2201DC19924489D2068610C5299AFD77E2120CF5EECE33601AE60A026C
+        F97C245315FC17060FC4DF8C8271DFED5732B53C838F860EF87DF5F17418A80F
+        5CF7862C78E8D26C19F20CA496BB605460D1BC99A10E223E3DBD48B1652A572A
+        AC5DB59189DA1930387A7C8CB973660D00A7003EDBF81BB402106220149B0FB7
+        FF40A15C7B40107A8F668A81F1C0DDBD943ABBE93E672A5D933AD8F0F6C70027
+        80A45D538ABA0000013558BCE09AA00CF1F120468E1542650CE926E1B2CA37BD
+        B4EE099D4F43C554108C4DDB8643A355684C03B46C92317013E2A904B57FD611
+        916ABE14AB092B067A30C92CC3DA36C0969F8751333EDA0340722EF016162B20
+        E15EF2FB0BDD268664AB6AB405202106BC928268508278A30C0996E6EB844821
+        60DB316080653140F7A40A46AED50EDD478011A255ACC83D811E53F53A8A00C2
+        A28BA368E763EB36F579A5B99C0F9042093602BB16148A80E2DF0D491CEF0292
+        5620C4CC1011C9C054B2AF4C6BF9F78F595020CEBEC4CCECEF5C90FACDFFFD85
+        1C4283C070FBC72918E0FEDFA77951FE02D6A654797E061FD10000000049454E
+        44AE426082}
+      OptionsImage.Layout = blGlyphTop
+      TabOrder = 0
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      OnClick = cxCCeClick
+    end
+    object cxNovo: TcxButton
+      AlignWithMargins = True
+      Left = 7
+      Top = 7
+      Width = 100
+      Height = 75
+      Margins.Left = 7
+      Margins.Top = 7
+      Margins.Right = 0
+      Margins.Bottom = 7
+      Align = alLeft
+      Caption = 'F2 | Novo'
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.SkinName = 'DevExpressDarkStyle'
+      OptionsImage.Glyph.SourceDPI = 96
+      OptionsImage.Glyph.Data = {
+        89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+        F40000001B744558745469746C65004164643B506C75733B426172733B526962
+        626F6E3B9506332F000008F449444154785E8D570B7055C5F9FFED9E739FB909
+        E40121E4C13320963A80888DA47F4450B41D915AA0481D6B6BA7B5159D3E9CFE
+        517CD4D13AB66594DA426BB55AB1A530814A5B194B41D1227104E4116C54484C
+        02216F929BFB3CE79E7376BB67F79CE44A8769BF99DFFDF6EEDDB3BFEFFB7DDF
+        6E4EC8435B1B410801A104D4F5181D43780200EEBC87076E9D437069C3E30DC7
+        38631C5C407AAE3CE30C8E333AEF30079BEE5E04DD5D70CFEA05504CAE237963
+        65E541CD1F928B906F5C000FAF9AE77A896EC3E1DCFB490C140019D4D3AF344A
+        0EDD9F24F2237F9C4F0C2A40D63FBFEF8A6861D10AA20596504A2294D02B00C0
+        B6ED53E0C8E672C69BC9A1C1DD9BEEBBB90900AB086B0C003F9FB5392E322F32
+        E80E93A33C620E0E820A45EE427BF0A5B7BF142A2878626C41B8765A55312AC7
+        C510D435948E09CB2517868D39A665E35C5FB2AEB5B368C323DB0E9FC924861F
+        DB78F7F53B013895119D75666DC5E4ABE0F1522EEBE4FFA07C454892D3754FEF
+        9AF2C81FDF3B585359BE63F9C2DADAD54B2FC3ECDAF188C44220111DE7333901
+        1324AC212CE63E3BA31C6BAE9F85158B66D64E9D5CF587F52F1D3AB876FDE6E9
+        00F4AA884EABA33AE123E5E0172BA03E26467499F5F77FF5FAE2C231C53BEAE7
+        5417CF9A3A0E71D34647C28046FC1E21C271F95CDA71C038306C0A2F06D17000
+        5FFCFC7434B7F65FF54F90C6BB7EB2FDF6DF6D58F30600ABA62080F694C5D9A8
+        020C9CAB8D2A3DF275CFFCEDBAB12565AFDD7CEDCCE29AAA12740C1B4898B68C
+        5C042CC15CCF213C94E7A35D3F6C38681DCCA2AAB218B72CBEACB8BC72D2EE3B
+        1EDBB60440C06FDE91001C47915729727AE78F5F9E1E1B5BB24D6410A4A1207A
+        53A6DC5C40914BEF13FAC17881F8417145D09530C10241AC587C59A0AC7CE22B
+        CBD76D9C01409F1C0B505F796A598ECCCC6FB8B1E3AB5FFCBF79934A1D5DC390
+        9193646E90CC7149946F69EDC3A6CDFBF0C307B6E3FE07B7E3D92DFF406B5B9F
+        DCC776B85C6F7BC15D48E760100D8BAE9A565231F58AE7010405E86F7FB0542A
+        41932243511799FD379F7A75D5B892C2BA4A21DD60C6F636637098DAD0F7DB76
+        3462E1F4623CF8952BB161CD955834B30C0DBBDE0330AA0473A45252B1BE540E
+        1515C5282F1B73F59A07B6AE02A0FBA5D0B38635927D20147BF49AB935E88C1B
+        EA5832B58C7001E19977309329034B16D4624A751902411DE98C813F37B6A9CC
+        051863AA648E07316EBB9045FDBC4938DB39B001C02E015B80D39D4FAC90D9AF
+        FAFF9717971517D406A311983906CB7BD8F260BBB0D59C6BB158087A50934405
+        D130745DF308D9C85A4B2926BFE72C061209A37CDC98695FF8EEB3D702D00488
+        0E6534C702CB26579608B94C494601700210AAB2A7E0A0848C5E611C5ED713B9
+        2610A01E1983707014B1AF84FCDE3D640AD54AD1DC3CE606006F08D87E2D28E3
+        FA021A0CA23F6E898C34689C836A045D670770F06033BABB872EBEF82521DC75
+        946260308DC79FDC09DF264C28467DFD67306E4289EA1F9B216D31140AB54083
+        F33D0530A2000399C902010C244C24321A4A8A748483147BF61CC5B23995987A
+        CD2468BA065DA30808CF38918DC641609B0E7E7DFF4D48650C2910A540477702
+        BFDFFB3EEEB873A92C692A6B833B0C05B10038D56AF34B405C70C68A723691B5
+        1363F40EE6100E6948A74D2C9C3B05D595A508057559062200019B01E04CDD23
+        134BC0F22EA4DA2913B065F77124330E12691B8CA9D3643AF291429F97421971
+        9B2769E4E426B6B7D8301CD570D110344DF38E21BC9A3209C605F28E29938008
+        3E0000B2F9DCBDFDDF52394B7E1F3986F0CCB659226BE44A1D682A4B4EC12950
+        5010C6997383A8A92A050154F600D2860D65EAFA2D8804DC215451084E7CDC8D
+        68414836A24FCE094336CB0497938467BAFFF2E058B9D366DAACA3D1286CB913
+        0301455DFD6C6CF9EB096C6A382CEBAF09E89A86171EBAC54F02B1888E5B7FB4
+        1D94C22F910C7CE9757391356DF9F6C3993A5556C680651AAD0064017D0558CE
+        CC1E4DC5537585E12818E1B0E5F60EA2454558B97A3174AAEAEEDA8B2FECC170
+        228B582CACB2E69035FEFA376E829163E05C653D94B290CBD9925C7CCA6C5343
+        49E4B2C963009C4F05904DF4EFEFECE8BB77D6C471702C064EA894326D3AC8E4
+        32D04080D11854B339AEACA38DD73D682065A82E63720D6430FE5A4DA738D7D1
+        874CBCEF801F00F54AE01C7FF5D1B77B7A2E7C32D4979033B2C16CE6351B8725
+        BC7FABB9A6530A47122BD90589FA9D3158729DFFAC24972C83FDC3E8EE1E683F
+        F9DA930746AEE2ABEF78817BF5B0D2F1EEA7DA3F6A03A8CACA71617B70A03CE3
+        8846C368E9BC80B1B1104A0A433879A60791481896ED28E2FCF56E120E97CAB5
+        7FD48E647FC746008617007436F2A606EBE4EE871B026BB77CABABAD67FEF8EA
+        09F23E00A1A0840302C45B39FFEACBF18B8623F8E9D643702D1C09A26EE16C64
+        0C47F60207469A8E73F5DCF9F61EF476F59DFC60CF130D004CBF09A9FBC0BBE7
+        53DCAB8939D871ECDE96532D4389E1041854296C019677CEB5C2186E5C5E8F95
+        B72DC1CAB54B70D32DF5704251E4A4ECFE5F40E9A592897812679A5AE27D67DE
+        B90F404665AF8CCCBBED37D8FCF3DBE15A5D554C07109EB1F4FE65A5D597FF69
+        E6FC5981A29222990A910A788D887C53133CEFAD86E5BD66272F24F0E1D166AB
+        BFEDC4D75ADEFAE5EB00D202F6BC35CFF163DBBF0DCA18C0A1E0AB707AFFC67D
+        FDEDA7BEDA74A869B8E76C6FFE8B8602870097F06F42FF1AF65502077A3A7A71
+        E29DA6446FEBB13B05F95E3FFB773B539C7901EB7EE43E3C79B22D079EF9FBC4
+        392B6FB0CDEC7362A33993674D86AB06710908C77F9AAF1047623089F6E6760C
+        F5F636F59F3EF09DEE537F69F6C82D5F1C9F97BA033916683C97E2F941749DD8
+        F9AFA65DDFBBA1EBE3E3EB8EBF75F4EC91FD87F1C987ED880FC4918AA7C1D55B
+        B01827111747ACADB90D47F61FC5F1370F9F3BFFD1FBF789679709F2534A7645
+        7E48707CEAFF02D7939112A820AEA98E11008E7F5C5ADEF8D92B0076D67CEEAE
+        05F19E4937EAA1583D40C2540FCD90E5B1CDD300376C23792833D8BEF7DCE197
+        0E03C8E61D37C727271E992F3C99FDE5CDB8947DB0EB9EFCFF0D3581401E3439
+        AF8C79B0F2E07880E0E097D81F04FF9B913C4FA5F7A18CE78149EFCFFF17FB37
+        66AFE935F6829A2E0000000049454E44AE426082}
+      OptionsImage.Layout = blGlyphTop
+      TabOrder = 2
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      OnClick = cxNovoClick
+    end
+    object cxCancelar: TcxButton
+      AlignWithMargins = True
+      Left = 435
+      Top = 7
+      Width = 100
+      Height = 75
+      Margins.Left = 7
+      Margins.Top = 7
+      Margins.Right = 0
+      Margins.Bottom = 7
+      Align = alLeft
+      Caption = 'F6 | Cancelar'
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.SkinName = 'DevExpressDarkStyle'
+      OptionsImage.Glyph.SourceDPI = 96
+      OptionsImage.Glyph.Data = {
+        89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+        F400000023744558745469746C650043616E63656C3B53746F703B457869743B
+        426172733B526962626F6E3B4C9696B2000009AA49444154785E8D96097054D7
+        9946CF7DBD6869ADAD1648AC025B8AC35694C106EC84C910E2B552C626768D17
+        927126953126D86106B298941D3B4E4219882B95C2E5D8659C541687C5186C27
+        98D8C090106C30036637C8C6420809099044AB97F7FADD25AF6EF54B75854A25
+        57F5EBEB5BAA7AE7FB37BD165D2B9E020460E5CA63C00840DB0BA3BFFBB8E01F
+        1F3A9E586E0C06A30D020255F633068CD14198E25DD3B6FAA744D186E6871610
+        3A305C79A2C996102A4AE34AABD0F2E40F0D60C3EF395E2483556D306830868F
+        57BD0440545B57DAC229C50B1180C785100710FB962D995253563E2FE2389F17
+        980A4730C56883D2EA089ABC2BFD1D17B3D9CD739E7BE130A063CD13B435D27D
+        D4A035C69AB181560A6BC028EBE8CAAC1BC68759460E7D67E99D8978FCE9584D
+        756BA2ED2ACAC78EC089C5890F6B000C5EEFC5A9DAF3C87774CDAA3AD1BEFCF8
+        D225ED97F3F92767AD797E23A0622326E942D7618D36802D3F4A692C474985D1
+        BAA4C286D8B03601383B163DD432B2AEEE378991CD33EA6E9846D9F006E4E020
+        EAF265D4904FA6F323301AA722018E43D55523A9BB6E326EEFA5D6F23FEDFDF5
+        A1C58B1E3D70AEFBCB0F6E7AED747CD4140918AF63BFB11590B2D802A5213400
+        C49AAEB159BFF7E8E27F4F5627D6A566CFAC4FB4B550E83E47F683330060DB66
+        15B4467A0356FDBEF3D650A4A696E6DBFE8DC4C933D74D7BE7CF7BB6DCFB1F0F
+        DCF1CAEFB6037E59CB74BCF6778D94AA68404A821B08417CE4440BDFFDF0C239
+        C9DA9A379ABE38371E118ADCD143608A6C0CA258CA709AB193AD8350A034FE85
+        3E0AE7CF53317A0CA3EFB9BD5EADFFFDE64D5F9A3FEFAE8DAF5A135A29A38B06
+        C489258F32FE9B0F523676AA2DFBE6FF5CD0DA3A7CF8EED1F36F6D3099016450
+        EED2F10C81188A6A570BAC81623B95C2DE038DD62711A966DA7FB5A57F5F67E7
+        E716BFFDF64940EEB9F73E7DC32BBF255AB89C06290907AEA5BA766DEAC6E90D
+        7AE042001FF8BBD5B4E0A2DA08E1816A9BBD3514A8D1D2DEBDA01231AFC08839
+        B392535ECFBD08CC057400B72938856C9EB2ABA6DBEC777DEDAB775734266755
+        D49653B8D887F16510BE0D7730CDBEF56FF187956B39F8C6FF21F36EF837A4EB
+        72F0CD3FF1FAAA5FB267C31F71D343185FA17D89917ED08E6E2A130E95C31B66
+        BC72CB6D7703514060B74029C2EC134EF489E4B409E43B3B402A8C1000F83997
+        FD01544D9A49E382A50CFE7E3DFB376FE7DADB3E0BC6F0FE9BBB709BAE66C4D3
+        4BC8ECDCCABB9B7670FDED3752561643DB762872A73E64C48CC9F4779C5B0EBC
+        0A48C08810BEE1E65BE7B64D6CDB3A6AF654BCDE1E848563F5E05B7BF0DAA691
+        BAEB7E9A5235F852717CF50AE2E74E5903B9003EFCBFBEC1F0C65A9C489413CF
+        FD0C3ED8CDB573A75938520722291F398A8F769FE0E0F153772C7EFFDD6D801F
+        05009C84706E8E2562648E7C40A4B61E1171084B933E7F91D9CFFE377911A3BE
+        B60A84C159F65D8EAEFC315269863DB888A6A624A9861A6B68F6D247D93C770B
+        F805B432D8E194926C7B3B895435754EE426603B209D22C38918737D141FB7E3
+        1332C70E2107FA318502DAF71976750BA75F584373633560D01A1A1AEB98B8EC
+        31C62E5C4273006FA8AFB66B99288B7078D533345D3D06E54BB45F406632B83D
+        3D76AEE2514D0C311D8800FCAD0228FD29BC1CD22F8067C89CFC9068A28A6843
+        8AB6191338B6F3001FACF81153BFF318195701D010649C0C02C000D5017CFF53
+        DF277DF400533E772D7E4F376A68085570ED7A8220EA7B08655A8B0644388D42
+        6A5D433E87F61438B6F7F84369FCCC106E572757B58EE1E4FB7BD8F7E4F7B9E6
+        5BCB01A7F41D82569AF77EFC14E9FD7B98785D1BD96347304A85AB6A0D0442D4
+        CBA095AA0EB9610584F25500CBDA61C1080402843562F73ADB711AE3BAF4F70F
+        71E14286C692CC35964376286FFB9E3DD381830583213460CDF8D92C526ACB2C
+        6D014AC9B497F71A1C5DFCC7220442601504672FE429B44DA7E6FE8731029431
+        166EF106C061F423DFE6D4CA1FF0F1F1BD8C1B596D096883C15805819BF19052
+        0E855C073080710BEA9497F7D15A61DF904AA203D552D2D3EFE15F731DD50F2C
+        64585392645D0263347595116A2B6318FB7C4D32594DEBFF2EC74C9C41674F06
+        2D354A29B4AFB0AA35D94C81BC941F87850B2BA0B385C2FE4C363A2B562940FA
+        48276C8320EFC3E4FF5946D644B17008E0B1600D7F64E193826DE8CFF800D427
+        6B98F9F813ECBAF3566BDE846F4E6D6CC3D3699F21AF700050941AE875F3EFD4
+        A5A38B6BE2805416AE1D70105426AA70B7BF4ECB82AF9175253515514EAC5E41
+        FF5F76D9FE1E133061E963A4733E5515713E59BB96EA9A4A942C20B4C1983060
+        60C0A5CF7377961A30805A7EEAC8AEB59F9E763A1D33E3AB2B44F125031A8761
+        C3CAE97C6D0300E3EF9CCFB155CF7369CF2E4635558380AEDD3B396E0C931E5A
+        48FBCB1BE8D8B88E31236BF12EF4DACC2DD97118E8CF3230A43A56F77EB21390
+        80717E71CDB47090FDEE7C7E45DFA0414A85B2FD0F5449DCBEF334A712F4BCB1
+        8977EEBD9BF4FBBB696AA820DBDD4DEE5C37231A135CDEBB9BADF3EFA27BCB46
+        468F08E07D7D685F15E748E37B92AE8B8AB36E6E15E002B2F832D2E136F9DFEB
+        38BE61CDF8C95FAFECD7D31BAA852D3F8E00A9C805B0D4B01491541299CB920F
+        C0DA1800B2E77A48A5523407215D975C4F8F5D6761849D01AD0D3DFD3E035973
+        68F5C5331B008F70089552EC9833DDCCD9B15F01DEFFA707160B5DFB878828D4
+        D7C4238888C0FE488FA1B3DD200CE28A6FE5866C770F082C102300835D55A519
+        C848BA07C5E0DE5CFA112017660F209E1B3B91D66601C017DE3B1A05CA97348E
+        BDB9B5BCF295E15585586D854324E2E0005A08AB06AC6A4A8F097F833156A52F
+        83AC15E70622FE312FF7959786CE6F05B2805C59DF62960D7410B5BBEAC9F061
+        B60ACF5E38F3F6A2E4E8FB0B7EC58BAE57A8ADAB8078DCC1118E3541291C1366
+        5C1461E7C79392FE0C9CCF88F4875E66E1CBD9BE6D61F69B278D33273BC3AFE5
+        5A53F02518C22381FC9AFEB36FCDAB4ADD34D3AFF9F9E5BC999A2CF7A98C1B9C
+        88433C0810441C0703282DC1807D9654643DB8948D30503087F714D20BB7B983
+        C78B701F40157C947100103F69BC9AF1F52E1A8363605EFBB9B0B911A00CA85C
+        5C33E29EE648FC5B15113326115354C634424059545BB02705DA0872BE20E339
+        E42567BB7461E5F3D9DE0D40B674EAD78F6B366068EF8BB13C7B16B1AA613C2D
+        355944883530FF93DEF0E600D1A2918AFB2A1BAF1F1589DD5249E4330EA23C26
+        68C340C1E853DAE0668CFA4B00DEB6CEBDB40FC8978015C0BA318D619DF9E852
+        5960A00BF14CFDB87068AC2208BF72F3ED7467A99108102B8948D120802E865F
+        12AA18FC3031CA70E5C11AE05F3BA2449DA28601604A421715ABFFE4FC153983
+        B3D2BAD003AD0000000049454E44AE426082}
+      OptionsImage.Layout = blGlyphTop
+      TabOrder = 3
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      OnClick = cxCancelarClick
+    end
+    object cxImprimir: TcxButton
+      AlignWithMargins = True
+      Left = 863
+      Top = 7
+      Width = 100
+      Height = 75
+      Margins.Left = 7
+      Margins.Top = 7
+      Margins.Right = 0
+      Margins.Bottom = 7
+      Align = alLeft
+      Caption = 'F10 | Imprimir'
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.SkinName = 'DevExpressDarkStyle'
+      OptionsImage.Glyph.SourceDPI = 96
+      OptionsImage.Glyph.Data = {
+        89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+        F40000000C744558745469746C65005072696E743BC83632EA0000060E494441
+        54785EA5575D885655177EF63967DEF9719A19474B25132C8B4253340AEBD31C
+        6FA22ECAFA2C2F0A2A90BAC8E0B32E02454292309A1B2914FAA5FAAE0215ED2A
+        A48B52502B27C902514C4AC2149CE6CF99F7ECFF662DF739FBBC338C32B45F16
+        FBBCFBACB39F673D6B9DF5EE5778EF511D42089E0024FFFFEAE43789487A00A0
+        F4F23EDCF6FC2987033C2F476F7235D61CDEF8F4038F00D0E435112FC3D423F1
+        1E3DCF3EBE14FF667CB2EFC4C301C7C4D51B136005AC7130E3A6ADE77062EC31
+        C24ABCE142A08832CB048C62DC946E4C83009BD0C6C23AC0398702CA5614F425
+        8B08EA4B221E894B417B503000307D02DAC27B22C1092E01194408A002CA9785
+        22E42380D479286510A39F660A9431701EB01CB60F51062270013F824E54C50A
+        571048A64C8110626A05A481731ED64559F9D3081C5411D55A60BF3401A45255
+        05C4F8F0D753403428A00D835BEB0248008D05588245E048D0A6099434054E1A
+        1E7561F65502822D4AD504A04549CDE0C63A5E74938B0E40883EBEFFC5353F27
+        39059811FA800260825972CA0AE0B7777DB960DEFC85BD499A3E74B2EFE8BC2C
+        4D906B4D05185210A078765172462B6A44444504F8592935FEB775D739E53C96
+        2C79E09256F90FA7FA8E6CF974F7F6F3442A23F077DEDFBF78E1ED771CBE7FE9
+        6D9D7366B5E3E8B1EFB072CDA3F8B5EF34AC454841D1E97CB80E33A222824994
+        3A700AB4D6B877E51A7CFFED213CFFE47D73FFBA32F24447477B4FEB8C8EC776
+        BFFB7A1FE7A6AB7BCE5BF72DB9B573F6CC36B4B664503287CCC748BE52010672
+        00A7A290BF943E10E49548D4596E64BC5F2EEB68AE659879532BFEB37C61C7E5
+        CBFD6F02788609382FD6D69A520C8DD4D1DED60C994B68A970FEF471BCF4CA31
+        DE3144DC303C1AAA718ACE082C5BB108B22E916529864773348DCF495A5B0DA0
+        C629D0D677E4B96686843238308081FE2B58D9B3B652A395DD85C06436C14F54
+        FDC063A0BF1F4383039C26671C7265A08D6BA3E0B908294FCA58A469C28D4778
+        87F3674E23A3DB2241ADB9B944C9B20C69C68F4594CA30C6C01A53DE564A722A
+        ACD19C3A6D1D943665836205B46646686AF2ECB46CF19D3871F22CB2A65A0CB4
+        6CBFF1BBE0B28B5D398AC5BE10A1414955C78A65F7502DB129E3A075242094B6
+        30E3A633CB15FFC273EB70E2A79DA88F198E5888099D34961BE2989416EEA25A
+        4B24C260E30BEBB9204B2C6523015A90E39666AC04E6CC9D8B8FF7ECC07B7BBE
+        C0A95FCEA2FFEF01C0314678DD62C40DFDB1580BBD607677D778E47763F3AB2F
+        A2B3AB93D24CF23396368659730AE80B31CBB2849C98694BDB0C6CDBB2096992
+        909AD31C9188751435171EAF694D249840AC01564019A444403928BE09D46514
+        55548B7D8A122C1510D552684C9854960B90300B0584739E19266982BAD2CC10
+        55A0384F7F343E4B386CCEFB58032453AE2D92D420CF0DA4B131E2881CC98809
+        D106867E821F8212A8DCCF35EF0FEF7CAC0147795296F35D57865F93DD1F1CC4
+        D9737FDE30F2C9E9996C772D9A8F4D2FAF2347C2E1343BEFA2028E9B033722D4
+        254B84EEEE0E2C5FBA18BB766CC087C7FBD1DE928640A85780BB9A711E170715
+        45C692F26F86A319181ED1E8FDEF02BCBAE5337475B66234B462C221730EA502
+        CCC6180B651202E782DCF0D42AEC3DF02388A8B216D288B2B01CCF1E57256D14
+        081138EF4514F9C3EBAD2D2D58BFEE418C49CD7EFC96595B1C747D0250973443
+        63B9E64621B56532172E0FD2CC9129EDB8854AE383919FC7685E9C9A598140C6
+        C3B385C0ACC3854B833C33B8F1A8E70ACE99E1E23C90FFF1DB2FAF8DD5EBBD02
+        C92C78C038032973B4B6B5C107023273C50184A264F9A58E6B0CD8609ED51B1A
+        18C6A71F1D44ADB90D2211EC6BAD19B872F1CC3600578940FDD0FEDEFD00BE06
+        500BC7325A6FDDBC7DEFCF14A1A4E8875579D47200A474C8397CC20F469F4010
+        81C8CDB7CCC281CF37AF0230128E62FC387D27CBC2E25522523917A6005AB4E1
+        1CE38D35F318189573A1AD9C4C7DE517C9230E1FD202E0F780618940304B4604
+        7C5C2C0693704AE547B6EEDCB7BAE10F072AC064AE7218291DCB53228C564703
+        F868C068E078BD7FC744AE2958FC399C304FBD560AA601E4D3FD77EC2BF95211
+        609209DC78B818F9E4F10F4824A6D94EC853CD0000000049454E44AE426082}
+      OptionsImage.Layout = blGlyphTop
+      TabOrder = 4
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      OnClick = cxImprimirClick
+    end
+    object cxGerar: TcxButton
+      AlignWithMargins = True
+      Left = 756
+      Top = 7
+      Width = 100
+      Height = 75
+      Margins.Left = 7
+      Margins.Top = 7
+      Margins.Right = 0
+      Margins.Bottom = 7
+      Align = alLeft
+      Caption = 'F9 | Gerar PDF'
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.SkinName = 'DevExpressDarkStyle'
+      OptionsImage.Glyph.SourceDPI = 96
+      OptionsImage.Glyph.Data = {
+        89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+        F40000000E744558745469746C65005064663B53656E64C252BCE00000068349
+        444154785EA5976B8C5D5515C77FFB9C3B8F964E684B0C8D7D69ED8B5A1B8240
+        23D819A6655A0A3A45509A2655A4680C062DDA98D0FA6A46707C446C111F1FDA
+        5AA3E8088D2531F59116D40EED841A12A1825A700614B1B60ADAC73CEE396B2D
+        71659F9C4CEEBD1312D7BD3B6BED7B6EF2FFDDFF5A67DF7B2B660640088118A1
+        36D7C604D70C50CF1344A15BA136C2CEBD470E9184CE6060006A0402E60F57F5
+        CA9F0616F002E0CCBFCF7E61FB96EB7B0A889E9D870C530CF8FC5DAB2983BA00
+        C157089D1F7FFF3B9828AAD59C4C943C13C6B29C91919CD3AF0E73E6ECC867EF
+        EEDD1FBEB4F53D3D807C6EF3B53C7BE2A45DB2E0E2D700A889BA0E58742F5703
+        3548C03400505C13053350026AC1DFFBEB27FECC96DBDB393F927DE6AEED0F87
+        1DDBDFD703E44B16CEC0DCF3D70700629E4C8B0C5078ED15499A008AA5099224
+        0494B16A0640E7550B10D54F8F6EFD41F84EEF468708212860AFCB81E597CE8E
+        83E29D8710F5310245AD244942624A48833B31365205204D13AE7DE72224936D
+        D54FEC097BBEBEA907C86A8733021C59D5F1687FE78A95268AAA327CE77A1E55
+        41CC30514415F56BE3EB69575CC9D5BBBF4B08026A8C8C39009524104858D3F9
+        567291AD6363DFE6C16FDD5117C2014C75E5BC2B2FC354B05CD03CC7B21CF13A
+        43CBD7509162CF33478FA2184908EECDD85846085049034912485363DD9A65A8
+        E45BB3EA4E1EDAB5793B6035002A8A49CE1B7A77FAB0FDF39B5F63F8D80033F7
+        3E84299CBAAF97F3038F33BBEFA71886AA31F4EE2E77010B40A0A925E5C2B656
+        3E72F70F512D6F5130D6AE5CCAA2C50BB702F70052D30251C5445CFCAF9BD633
+        73771FE7066E46155E5CDFCDEC1F3DC2D9C77F839931B46E3526E2D0125B91A4
+        81C9ADCD7C70FDD59C1B1EA55ACD90DCC8722517A1120270122025468D039209
+        86B9F8E91D5FC12DC7F0B680DB6E1873F6FF92A11B5662AAEE44080081E68A3B
+        40DB052D483C1FFC9CC8C55B22A2E53953CF01CD72CCE02F1B6FF23E5BAE6086
+        0B9B39A41A0C46711F5815940011A4B92945CD304B91E6946651245707502240
+        5D075C302F04D168B129CCD977807F7CB107E2DE3CFB7228C4B0E88299677C10
+        93244E5BA0A912D09CC600A286E4392F6CB8110750C57261F0C6EB62BFC50507
+        D75E13C5AD5828E55C6B286AF39484044B944A9AB85B8D01447EF1CC93C7AF73
+        61F5E142A290AAC6156B534CCCAD9ED1D1E162E549E5DB18E6751202C1DD98A0
+        05DD4F3DBD367E1DA7C0E45F0D3C77A663F95B383B9C6140303C1BB120142FA2
+        9E8C52767C61066992A0620D86B036C263479EE77F0046B4D6B3A1A50CA610F0
+        2AF6BFA84A17A004572B0028B235FC3ACE450B71C48C7151984001167C5FA897
+        BF0F0035CCE140B5510B6A23985914AFB5142C8A0454D4F76AA5DF441D0B3EA4
+        5EE71974AD58CC375CCF978510C4CCAC2E80AA940D0C9E4A02870AA808477F3B
+        C4ABFF192DAE6340C9E29BD81A038307BE77F46503AAD5ECF0960F77AC02F2FA
+        0EA8525A3C4E3B66434479F2A997D8F6B155B436A78896802114E5F8DE264960
+        78B44ACF8E43ED40D27006448A4F63A5B0D7A168B5DB3F79722B8F1C7C962BDE
+        F646E6CD9E4E3553CC14703550251020319A2B158EFFF1251EDC778C496D5369
+        04105B50B24786281E07CB93A106D75FB38883FD7FE2B9C153AC6E5FCC68D510
+        B1C23FD2145AD20ADFDF7784974F9EE18EDBBBD8D5772C9A321E20942DB0427C
+        DCEDA6C4300770DB558DB72F9BCB89E74FB263D7637CF4D67648616C54686949
+        C1946DF7F6317FDE1CDEDB7D15E6A7AED60328434CDD7ED3626F10B49C0512D4
+        04F5560554A1AD6D0A33675C44EFFD07F8D0C60EE6CE9CCEE08BA7F9F2FDFB59
+        72C97C16CC9FEBBF23C502F9040001082A40B4B96C4542416428A6462E9E39F5
+        CA79FEF6F77F7143D7522EBF74167BFB0EF3BBDFBFC09B664DE3D60D2B79F3DC
+        8BE97F628849939AB868EA1444A4218001AA265E4C9DD284517BBE1BD0448E88
+        72FA9573FCE1B5E1BA69ED32AA5561DA856D6CBCB99D77755D06C0F4696D3455
+        9AE85AB1909FFCFC69962C9E4596E98400597574E4F09DDBFADA5D380A1A1A4F
+        3D27604DFB02EFE5CF0E1EE703B72CA72AE6A446604A5B2B17B44D2AC6165175
+        EBBB572F65EF8F0710B1BA00C5E88EEED9B1A91B6801D246FF11F7DCC7E4DB3E
+        F9F089CDB7752179404DA3AB56AC1A732D0D6C5877399FBAE700000D1D000418
+        71D1C6D19AA476F8DE07FADBC1F087C505E5DD136F579F630CC74CB51FC8EB03
+        944B9838F2DD5FBD656D7431A1261AC21B5005464B80483A1E64E28880C3FC9F
+        F15FF3AC8116D8875C800000000049454E44AE426082}
+      OptionsImage.Layout = blGlyphTop
+      TabOrder = 5
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      OnClick = cxGerarClick
+    end
+    object cxRecuperar: TcxButton
+      AlignWithMargins = True
+      Left = 542
+      Top = 7
+      Width = 100
+      Height = 75
+      Margins.Left = 7
+      Margins.Top = 7
+      Margins.Right = 0
+      Margins.Bottom = 7
+      Align = alLeft
+      Caption = 'F7 | Recuperar'
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.SkinName = 'DevExpressDarkStyle'
+      OptionsImage.Glyph.SourceDPI = 96
+      OptionsImage.Glyph.Data = {
+        89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+        F40000001974455874536F6674776172650041646F626520496D616765526561
+        647971C9653C00000013744558745469746C65005461626C653B466F726D6174
+        3BEEACCAE30000066F49444154785E8D966D6C55C711869F3DF7C32618E24F1C
+        F3514394804AA07C9A7E016D1D11431243BE48D336FC68ABAA4A55292A52A994
+        A4A8EAA7D246AA2AB56AD3A469FB03B52212690D4E031149B149487013709328
+        09D47680020E14480CD8BEF79E9D697ACF6AB747A6AE57B67C767634F3EECC3B
+        EF3A0BE4EEFAFE73CF62329F5240455155FC378A2A659BA8A2823B57C4F9E27C
+        05A0EC072AA5AEAE9FDEB6068801717E63561688FE937CD3868500496214F7C3
+        A9772FD2D43805209D1038716A88194D5313DFC4DF837DFC0F0757031920669C
+        95058C0BC8E1E3431002014A7FDFBBCC1E11823D24E93B3AC89C518560438145
+        CD57A3068008301303A0E1D6A08955F1C1131FB70FC6903CB1E2BF147CF28956
+        2044346E1FA284E0CE0513B812C00106714E1306A0C0C9C12106FACF02A19446
+        C11878A7FF0C2A8A150742151100E83F32E8FD514550A6469689AE2CC08A9A98
+        2FAD9CC917564C1FE3B073EF216EBD713106E35B64DCDD3A761F667DDB625734
+        77A250918BC80DFE932E3013E240C2EE101CC2A8A935AEBCEA9280AAC1E0C650
+        C4DB3092B44F052B36D50263CCFF06604540C1A8A6B8502E7B6C29158B6926B8
+        5D292E512CC56EAFDEC71011976280C8FFA6964FA35900110114018C036DAD20
+        629931ED2A0AA317112B8E8261CD6E9AC4F0A50B6E173016328685736B002A9C
+        0E64D2C911C002E25B70B0F718EF1C3F47504361CEAC29F4F49E6077779F2F66
+        E4C64F0C440ACF741F0B71D38B9F3DD17D1A08B5711B91B86BF3573EB30650DF
+        82E58B9AF9C8FC59E4B3062B8A887071E8029D7B8FF0C3076E43815C04D6DA72
+        3F9588D7DE1EE486EBAF195301E083B3532C9C371D2B42264A77E0D16D2F7A95
+        CC3A1DF742938960F72BBFA06DE97DE54482A2028592209998AF3FBE9455D76D
+        64C3C7EFA7664A9E92B588E09A17D8F08F81B3CCBBF61A1488AD786415B90CAA
+        EA55D2B7C0290AD6C63CFFDAEF68AE5BC2DC99CB58B66026C62461AD154AB648
+        9C39CDF7B6B5B36EC9161A1BDAC864B3C436C837806AE04C82CB84330922E55B
+        E03020AA5455D4F154CF56AE3FD6CA8CA695140BC3A030323A8A5A61E5D23534
+        36D5F3EC819FD0DBDFC9E75A1FA2A6BA81289BA358F4B2ED9712264C50AC8A07
+        E0A7E099E7DEE0C2FB97F9644B33B3AA5750597D81E1521F9DBD3BF9EDF3A7C3
+        63A3206AB9688FB37A750B674E5E66CB63AB985DDFC2976FF93997872D6F0FFC
+        0B11A5634F6F0A08C09C0FD5A1A26385686DEB7C0A45A1226FB8A5EAAB3CB2E3
+        766EBF79230B3EBC8029150DE4335785C71A219612E7864F51595FC13D777C96
+        975E7E85C776DDC717D77D97F61BE7B37DD761D6DF7465957CA16780C41038E0
+        FB5788A1BEA689B58BBFC1DEAE27B861C175642BDF2AF7DE4A8C84070A4429CA
+        08E7CD008B3F7A2DC3E7337CE7F777F1EB6F1EF2EA09801A306118654C0BFCAB
+        664094520CAB16DD493E33891DFB1E66E6EC5A1AA6D5505B5B0328285C1A3D8F
+        A26432796C31E2A98EFD541466B1E5DE6D65522631C35CA006486C62D32D5075
+        4A98CF1920725A1ED132BF8DC9D9B9F41EFB23AFF7BCC8C973FB5055EEBEA71D
+        3590CF4EE6CDBF9FE0E5AE3E36ADFB16EDADF792AF9844B114FEB50B4310DE1B
+        494F01A542B1F0D7AD3FFEF3A7D5EB49F206AC6C99CEF08861DDAACDB42DBF9F
+        F7DE7F8F1FFD690DF31A3FC181379FA6A3B39B69954BF8C1D776525BDDC88143
+        27397D6608A30645D9F1F4AB681803009A67D422926E41E1D18737AD07F269CD
+        26FB4B98FCED473A8F34D4D7522C0955937388287FD9B387EE175EE7F3376DE5
+        D6D63BC8E527518C958FD5D500065CF23B6F5E46287610A2FD07FB520062C002
+        A3CE08E0AB9352C94C0655C3F0D91A7EF5E01E460A39A24C39B9235A101D15FF
+        4F4A8A87A2B80A809B02C42516D24B8138A824545555F19BCD6F94819828CF93
+        BB5E65C3DA3A875A5D2E03AA0909D36A848382FD6F0E3827252C8C31DE165412
+        2E8D08984A4481588963F148C3909170201821FD89A63830EE4AABA486ABF874
+        4FEEFC1BF80A04BD47617B470FEA52BB13A63756BB0AC0FF036048ABA4CB190E
+        B77F907C63FBF27035C2F9F68E83DCBDBE054D927B9F5C36627FCFD1095720A8
+        64B88B6B33E009EAE33B9F30F340CAC70032F116A45512D5506A4050343568C6
+        9331105013BB8230869C263B4EF9B9824AA6E8D4D87075B9A4C184FF98563F35
+        9C0576837A251440C7AB805C5925030605BA5E7A8B74030241F71F3C1A9CC35F
+        4AC5C23EA0341E0005741C95F458FC9AF899058A4EF8E4DF58671F2874D235CB
+        0000000049454E44AE426082}
+      OptionsImage.Layout = blGlyphTop
+      TabOrder = 6
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      OnClick = cxRecuperarClick
+    end
+    object cxWhats: TcxButton
+      AlignWithMargins = True
+      Left = 970
+      Top = 7
+      Width = 100
+      Height = 75
+      Margins.Left = 7
+      Margins.Top = 7
+      Margins.Right = 0
+      Margins.Bottom = 7
+      Align = alLeft
+      Caption = 'F11 | Whats'
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.SkinName = 'DevExpressDarkStyle'
+      OptionsImage.Glyph.SourceDPI = 96
+      OptionsImage.Glyph.Data = {
+        89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+        F40000001974455874536F6674776172650041646F626520496D616765526561
+        647971C9653C0000001D744558745469746C650050686F6E653B4D6F62696C65
+        3B43656C6C50686F6E653BCD5C0E9B000002EB49444154785EA5964D8B1C5514
+        869F5BDD5DAD628C8A08E242518906C409662271236E5CB977E1CE8522FA0FE2
+        2F7025CCA2133F4240C485E0D68D04C485041C61543486D62888E24020F64C64
+        A6BBEE39AFC5C18D4D0D74DF7AE9B369FA3EE7E1DC3E540D25B19CCDCD33E9E4
+        C6F3A7D3603049A40DA0A62C0BA16FE5F6E6D59D2FB6B7B7BF164B19D29D41AA
+        AAF38F3E7662F3AEE3F720122549A8DE9BDD3CF3CBF4DA047816C8AB0A8C206D
+        1C3B7637EE02F47F70829D6FAEB0981F02508F6FE3D4E9B32C0F53C09D2D03D2
+        53C15C4360001A9944579260E3E9B321022011A2E2A8A80E26B0AA409284DC39
+        FEC84952AA3A2CE21311D0D55D7266D7AF222998EB0880C0DD91E0C4930F5192
+        6BDFFF1A0C44642D0149B81B315A1725710F06920A0450D8BB0BEB25E0885201
+        73A24A05E27CA10012EE19732F9E80B90703950A5834EF21108C320149981B9E
+        CB271067DD9054BE05D9855999402EDD02490861D902602ADD020B46D0A4D505
+        A6D3290F3FFECC7F00B5E594C4B28291730EE6CA02FBFBFB4C7FFE8D7BEF7B80
+        3BACC7169833DB0B5630D7DA82DC34FCF1E72EF9FE190F2E9CF1309148AC1221
+        E659FCBE3B63B765B4ACC22DB0CC3F870D376E2DA812AD4445DDD6B04A512911
+        9120BBA216D999B7E522CE9A6524950B5876B209A0851B60AC1ACBDE47C0630B
+        B279F91A5A3082553E0173B27BF19FB0FF15944DA0BF0072CC0CEBB786C1A0F4
+        0ADC32EEC2FBBC0FF4BB02C3F2829DCB5728893C07A34C8010E0E6779F76809D
+        A69993DB0AC868CCA8AD545547B1CA9F865D59CC0F78E3D59779FDB55700B8F0
+        DE2526EF7F4C3DBEBD9B55FE42D22D909B79347FEE859700B8FCD9476C4D2E31
+        1CD674A6700D9B0423736739290D38FFEE45BEFCFC135282C9858BF19D77FC76
+        5055485AAC2B2097FD902A4E258765896A30646BF221EF6C7D403419D60C4775
+        082C374F15B8EC4740EB08D8C1ADBFDFC2F576AAAA278E164D00E4DC447524CB
+        FDA7C383BD7380AD23D0DCF8EBFA57C08BC018489445C01CD8033A0DFF0511EC
+        718FFFDC32660000000049454E44AE426082}
+      OptionsImage.Layout = blGlyphTop
+      TabOrder = 7
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      OnClick = cxWhatsClick
+    end
+    object cxTransmitir: TcxButton
+      AlignWithMargins = True
+      Left = 221
+      Top = 7
+      Width = 100
+      Height = 75
+      Margins.Left = 7
+      Margins.Top = 7
+      Margins.Right = 0
+      Margins.Bottom = 7
+      Align = alLeft
+      Caption = 'F4 | Transmitir'
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.SkinName = 'DevExpressDarkStyle'
+      OptionsImage.Glyph.SourceDPI = 96
+      OptionsImage.Glyph.Data = {
+        89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+        F40000001974455874536F6674776172650041646F626520496D616765526561
+        647971C9653C00000022744558745469746C65004C696E65733B5369676E616C
+        3B576972656C6573733B526164696F3BA60613B2000006FE49444154785EC596
+        0B50D4E715C557110B98D6EA222019891A93D1D82955E4E9038222EF972E220A
+        1A224441407105314256A41218545879591290C7A85B5682286050711D1A8B91
+        C61735909A0624D18869A2A6A96D67329EDE33431CC64D9421CC94991F5EEFBD
+        E77C87F9FEF05F0580FF2B8F8B27BFCA5A42DEAE31AC55D9DADA2A7E0EF410AF
+        8C27EC9F1EA0A43920ED6C673EAA5AD7F40B56C30D205A4B7A9CBE9A0BF1540F
+        294051A37F90F0E8D3FE16BC7F45838367A2F4C30D40ED879F54A3EBF671D053
+        087C6A00ED713FA570F74AAF1E1D3D6578F754E4232179B80144BB8D1EDDB71B
+        71FAAF3B416F61E24F06C8AFF7D96FB85688AE3BC7507721196527576FA451F5
+        D9B5264281E0F18C00DC75E72E35EC8947C2D9AB5AFCADBF09B5EDF19033F27F
+        34C09EA34B27090F6FDDBF08DD07F138D018914F838A335126C2E173D70B21B5
+        E15901B8D3F6F101EEEAA8658F5E27FF9283EB5FEAC13304A551805C9D575CD3
+        8739B8D6570BA97B8B1BC2CD282E7B3FB2CAD05984E64BBB20B5E65901B863E8
+        2C41CBE51CEE57B357DCB0D28C9E37EEB4E2D0B90DE0594601B20F2DAEFFE8D3
+        3AFCB16D33A4DE6A6D6DAD286D8C58DE743107ED9F1C84D4C76C6D9F5710A7F9
+        DE16DEC1EB4A7C4363EF09F759B33730A7AEE1D2DFF5387A3E953A958D8D0DFD
+        D5CD17F7C0D0994FFFF78C026455BFDAFB59FF79E4D78540EAD95656568AFDF5
+        2B0C5D9FB7A2FA4C3CA47619083066B15FD481ACBC4AE415E99196558698849D
+        909E5666260275CE3A432A2EF7D4821EF4A26749C31A7C7CAB89FE378D02682A
+        DC1FDEBA7709BB2A3D21B5B952A954ECAB5DFEED9D07D750A05F01A9CD06023C
+        E7E91779BFB8A2112421751F1205F664364EA0CE5C7B34029F7FD3017AD08B9E
+        59555EB8F9F505F02CA300E9EF2C7AF8C53797A0297F15529B8F1F3F5E917B68
+        D9B7B7EF5F45DE1115A4FE2180D263E98A07C5152750547E1C516FA463ED860C
+        B0C799409DF95E5D38FABEBE087AD08B9E3B2B96E0E63FDAE96F1C607BE982DE
+        1B5FB621BBC61F52CFB6B0B050ECAE0C6EEBEC694149FD3A48ED223F3103289D
+        16F8D6BDB9AB183BB24AB16C55228254B17072F3D1712650E75C7E2219EDDD35
+        D419E845CF7DBA55E8EC6BA0BFF115A414BABDF7E7EB3A949FDC00A9D5A6A6A6
+        8A9D6501AAC32D1A9CFEA808521F1B08F04B3BBBA90E8EAEBE06FFE571F05BB6
+        1E8E6EBE063BBB6973793D0CC0DDB6AB35283B1E47DD727AD1F3E8B9DD68EEC8
+        A17FBD51802D052E71874F6970E14615A4EE11CCF8F4A697F855EB5B7350D9BC
+        05526BF8100AD6AEEE8159318959782D4E03D6EC71C69DA3ADB9A86949E37E15
+        3DE825F476F635A3A87E35789651804D7B9D94C2C3CFEEB6A1B07E15A4CE9F30
+        6182224DEB3D46D0E94EED82D4E7E41D306AE041D46D4A2BC0C6AD7960CD1E67
+        B263A83D93036A04137AD0EBF0A90C74F41C04CF102C7FF45D9090EBA8D5B766
+        A3A3B70AB9470291BC774102EF34659F9789A0153C7EB806AF80B55DA9997FC0
+        96F42248DDCD1E77B9C35D6AA8A54765531A2EF71D4141DD0AC819853FF92E88
+        CB76500A770D57DEC5898E1D88CF9EF7286DBFF7361A111E4E7E63EF32656960
+        F4F76FEE2E87FAAD52B0668F3B83116D0A3DCE7755A0DAB01EE2FD95A07CEAEB
+        787DD69C20E1517B7725F2F56148CE5BA41F1C40EAD1F33D43C323A253B02DB3
+        0C49DBB550456E067B9C0D0E402DAFE383EE32D093DE43FA401293F93BF53BC7
+        5221FF7EB5E1F78E564F0418EBBE44A58D4DCA823AA310F1F20C44C66E077B9C
+        0D0E40AD78F497D425D02B6DC89F88C8EB1AFB0C41A5508C52585A4E1A1C609C
+        BB57787B52EA1EF0218C4DCA46749C06EC71C63D420DB5F410DE1EE247326368
+        3276EC2F1E07983A6D86D2C33BE25FEA742D1253F3F86B88E8780DD8E38C7B84
+        1A6A8DBE861380D8CF5B4CE3D1F35C972EF10D8E060324A4E462754C1A017B9C
+        7167E2442535231B60FA4C67858DCD6453D785FE6F0585BD81AD195A24A5E621
+        6CCD1602F66496C11D139331231720225A4D142FBCE4A8303333377759187039
+        74E546F00AD43B0AA08A4A4668442242C2E3C11977A8790AC30B6037639EE5B4
+        979DD5B3ECDDFFE3E91D8E75F119D8B42D4F1EC24C791FC4C0C32B0C9C7187BB
+        2314808C1A3DF565E7750BBDC2FFBB2C62A3BCFD1260EFE483B92EDE7C09097E
+        7070F1610F8E0B4330C7C50FD367CDFF2735D48E4400F369335DEFA9562742C4
+        58F99A1A3E21AFC3CD330C0EF38330C73500BF75F27D8CBDB31F9C170543340F
+        A81D8900BFB27E7EA666C62CB7EF96F84722383C0E2BD66C6698C7F0FFA12BE3
+        E12F57B15876E6BAF8FE7BF2945732A91D890016C24BA663CD4394D6D34B27DB
+        CDFED394E973BE78E14587EF5E9CE50A7938C19A3DCEB8C35D6AA8FDB9018889
+        183D274C165E119C054FE9FB0A8184357B9C7187BBD4503B1257F0C33753619C
+        94BF967A92B4AC198AB0668F33EE70979AA1FC1DF81F223F04FFA57A0AE40000
+        000049454E44AE426082}
+      OptionsImage.Layout = blGlyphTop
+      TabOrder = 8
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      OnClick = cxTransmitirClick
+    end
+    object cxInutiliza: TcxButton
+      AlignWithMargins = True
+      Left = 328
+      Top = 7
+      Width = 100
+      Height = 75
+      Margins.Left = 7
+      Margins.Top = 7
+      Margins.Right = 0
+      Margins.Bottom = 7
+      Align = alLeft
+      Caption = 'F5 | Inutilizar'
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.SkinName = 'DevExpressDarkStyle'
+      OptionsImage.Glyph.SourceDPI = 96
+      OptionsImage.Glyph.Data = {
+        89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+        F40000005A744558745469746C650044656C6574653B44656C6574654974656D
+        3B52656D6F76653B52656D6F76654974656D3B44656C6574654C6973743B4C69
+        73743B52656D6F76654C6973743B4974656D3B4C6973743B436C6561723B4572
+        61736558E2170B0000068749444154785EA5967B70555715C67FEB9C9B0B6D20
+        D0508BF26C559A343325440A959487080C65AC589871646AA5145B07A1224CED
+        4890363554AC7F542B039DD641B154998E1650066B7D30D26AA83C138994A453
+        C080D4562C4DC8CD7D9D73F6F24ECE99BBE79E0E21335D734FF69ED9FBDEF5AD
+        6F7DEBCB115545448842B6BF746CBF38321B051510050550451014050857050D
+        EF851BA0BB3BB5F1E10767370106D0A7B7372B6A5060EDF219448146F713D810
+        400A31FBBE45755C2DF2791F2F30F85E40CEF3C9647C2E75674867BD47BFBFF5
+        15695875671310ACB9FF0EFE75FE92FEEAE57F100F0BC086286104818214E182
+        80AA14AB371A1D89A008812ACDC73B5975EF34D2196F43E353FBE4BB0FDFD504
+        F8378EADE489CD7FD2010188A804B498DBAE21DF0A38AE134229AC8113EE7379
+        0F8069936F2430E63BEB36ED9627D72FEE03B161F53C0328B170E2004C945111
+        8C4A58B5C584EDBDE2384EE111C40D59C8654300AEEB307DCAC7993EB57AFDDA
+        C6171B81B22897F4CB802DD58A64FBEE96D879FC3EA4D25916CEA9269BCB87B4
+        3A82E030ABFE667C631A72EB76F0CC934B9B008F489C576C81D1D264CB17D745
+        5B3B12A55714DF33BCF3DF1E72390F1148B8D2C78CEB2AF367556382A021EFFD
+        946D4F7DF57140AF04402C00DBFB6DBF3E6ED120F6100B24D59B65C9E7275231
+        64106B1EDF85513BA2A0CC995EC52D35131A802780A0FF2930C6D6063CF0C54F
+        C52B8E324B78C784F752198F7B16DDDED78E8218097CC50F0C9E1FE00A9C3ED7
+        05E0F6AB01DB7BCBD34F5E3C8AAD5762231926178DA009447FFA58B967E1247C
+        3FC011302DE78B2C035C5503E1AA3CB0E4B688CB384801AC4B6A9193F0BA3186
+        6CDEEFD347C20583C126BF4A0B8A230F3CBBF370712FD1466D119691D884F4A4
+        323CB4AC1E10CA5CC1F8F40FC08AD0D82A05562C9982C64D8958588F02B5E0FD
+        C0A08E21E138183340068C01EC24B0F5978750FBEB203601505ABA58D34AF5A6
+        F9E6F299382238AEA0036C8113044151038AB2E2CB534BAB04CBBC9521AA4A3C
+        3CDFA080E308BE6F28BAA1954BBC05600205148D84B575C7DF5114412C1300A2
+        76541054EC4400F4A433AC2D30A008AA0CBC05AA5AA2EE955FF97409DD561F56
+        791AA7080181BC1714BF16186CF43F86010AA1C1083CF3FC419B1810D44E415C
+        FA62D94DF5A459F3B559B65DC2C07C200814B05D5AB5B43E9EACA4E2C8904826
+        1C1C074C60705CA7AFFFE9AC41511C812FDD55CBF71E2119E5F445440BF14100
+        1A0050F4F3CDDB9B91E29815DD0051A21F1726568FE4964F5C8FFFD73FE3B61E
+        227DDB0CCAA7CDA0B2B20210440DD276848EAF3F78E2BD4CF6D9FA9FBFD004E4
+        00FDA00F98C0CEB2C2EA65F5B6E298F311ED0797395CDCBB878AE012C396DDCD
+        995DAF60063994CDBF1335CAFF5E7D8D11EFBEC58895F75E37FC485B437310C8
+        1D2FEC7C0CF01200F6C5D4BE904404F0F4CFFE56925C6296202E2C9A574DB07F
+        3F13EE5B80F7E6716E9A3B99F6BD07389BCE70CD907292674E72C3CC5ABC8EA3
+        948FBA9E727157004D450052086B441A1110AEABEF9F8E55BE55B95A53283020
+        74CE9947C7CE7D7C72CE2472A7DBA95A703B6DBB5F2D241CC9C8CFD4913B751C
+        35D0F6D21E8E1CEBD808047111C61808CD256F822BD26FED5918BDE073BC95C9
+        7162D76FA999378974FB096A164C414448B71E46D5D0B2EF30CDAD67D635BEDD
+        F91CE05900763C1CCF3745E35089EC47012596D8DA7236AF24CB1C6EBAFB0BBC
+        914ED3B2E737DCFAD91A7A8EBD4E748996FD2779B9F5F40FB6745DDC0664E34E
+        6835650CA0B6DA7089BF8C848B8960A3455089E4209C1123C877F71074A78882
+        E163C631FCDDB443D745A73F1F309106A8B8B6CCFE5BB6335F4CA4B627B8AE10
+        7839DA0BFDCDFEE5F74CA81B4BEFA99320B6BCB155E3999B9FF04832D0CB8FBD
+        D9F663A01730160018C0CBE6D2AF7D7BD3DE995252BD461F45A335FA5056E6B2
+        74F1642EFC6E2FC9837FE4E6DA8FD175EC2802B41E3E839425A9AD1B43EA543B
+        E3C68C626A6AF4C647739ED9D8D9FE2320237604718024700D300870AD36E281
+        C4F6E55BC6D51C9ABBB0768877E11C6A947FB6FD9B3F9C7BEF87A0327FDC0D6B
+        6F9D380A001956C98103672F3FD47972BCAA7625621E93077CA0F72A89E331F8
+        EDDEDE1DA75EEF5839F623093ADEF80F07DFE96A7CDEEF7D0EE0DA0BEF5F56A3
+        8D55551FE5DCD94ECEF7A47E0178B69F1FF289D81BF6ADA1A3376F1A3EFEFD6F
+        2487AE072A0087E86CD5E0EB3614CEBAD60C1DB505A8041C554554950F1BB685
+        0C8EDA988B1E03D8B3F0C90319205055FE0FBFB8F65D1F7B87B8000000004945
+        4E44AE426082}
+      OptionsImage.Layout = blGlyphTop
+      TabOrder = 9
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      OnClick = cxInutilizaClick
+    end
+  end
+  object qryCte: TFDQuery
+    OnCalcFields = qryCteCalcFields
+    AggregatesActive = True
+    Connection = Dados.Conexao
+    SQL.Strings = (
+      'select * from cte_master'
+      '/*where*/')
+    Left = 45
+    Top = 152
+    object qryCteCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryCteFKEMPRESA: TIntegerField
+      FieldName = 'FKEMPRESA'
+      Origin = 'FKEMPRESA'
+      Required = True
+    end
+    object qryCteNUMERO: TIntegerField
+      FieldName = 'NUMERO'
+      Origin = 'NUMERO'
+    end
+    object qryCteCHAVE: TStringField
+      FieldName = 'CHAVE'
+      Origin = 'CHAVE'
+      Size = 50
+    end
+    object qryCteCFOP: TIntegerField
+      FieldName = 'CFOP'
+      Origin = 'CFOP'
+    end
+    object qryCteMODELO: TIntegerField
+      FieldName = 'MODELO'
+      Origin = 'MODELO'
+    end
+    object qryCteSERIE: TIntegerField
+      FieldName = 'SERIE'
+      Origin = 'SERIE'
+    end
+    object qryCteCODMUNENVIO: TIntegerField
+      FieldName = 'CODMUNENVIO'
+      Origin = 'CODMUNENVIO'
+    end
+    object qryCteMUNICIPIOENVIO: TStringField
+      FieldName = 'MUNICIPIOENVIO'
+      Origin = 'MUNICIPIOENVIO'
+      Size = 40
+    end
+    object qryCteUFENVIO: TStringField
+      FieldName = 'UFENVIO'
+      Origin = 'UFENVIO'
+      Size = 2
+    end
+    object qryCteTIPOSERVICO: TIntegerField
+      FieldName = 'TIPOSERVICO'
+      Origin = 'TIPOSERVICO'
+    end
+    object qryCteCODMUNINI: TIntegerField
+      FieldName = 'CODMUNINI'
+      Origin = 'CODMUNINI'
+    end
+    object qryCteMUNICIPIOINI: TStringField
+      FieldName = 'MUNICIPIOINI'
+      Origin = 'MUNICIPIOINI'
+      Size = 40
+    end
+    object qryCteUFINI: TStringField
+      FieldName = 'UFINI'
+      Origin = 'UFINI'
+      Size = 2
+    end
+    object qryCteCODMUNFIM: TIntegerField
+      FieldName = 'CODMUNFIM'
+      Origin = 'CODMUNFIM'
+    end
+    object qryCteMINICIPIOFIM: TStringField
+      FieldName = 'MINICIPIOFIM'
+      Origin = 'MINICIPIOFIM'
+      Size = 40
+    end
+    object qryCteUFFIM: TStringField
+      FieldName = 'UFFIM'
+      Origin = 'UFFIM'
+      Size = 2
+    end
+    object qryCteDESCRICAOSERVICO: TStringField
+      FieldName = 'DESCRICAOSERVICO'
+      Origin = 'DESCRICAOSERVICO'
+      Size = 120
+    end
+    object qryCteRESPSEG: TIntegerField
+      FieldName = 'RESPSEG'
+      Origin = 'RESPSEG'
+    end
+    object qryCteXSEG: TStringField
+      FieldName = 'XSEG'
+      Origin = 'XSEG'
+      Size = 50
+    end
+    object qryCteNAPOLICE: TStringField
+      FieldName = 'NAPOLICE'
+      Origin = 'NAPOLICE'
+    end
+    object qryCteTAF: TStringField
+      FieldName = 'TAF'
+      Origin = 'TAF'
+    end
+    object qryCteTIPO: TStringField
+      FieldName = 'TIPO'
+      Origin = 'TIPO'
+      Size = 10
+    end
+    object qryCteSITUACAO: TStringField
+      FieldName = 'SITUACAO'
+      Origin = 'SITUACAO'
+      Size = 1
+    end
+    object qryCteFKTOMADOR: TIntegerField
+      FieldName = 'FKTOMADOR'
+      Origin = 'FKTOMADOR'
+    end
+    object qryCtePROTOCOLO: TStringField
+      FieldName = 'PROTOCOLO'
+      Origin = 'PROTOCOLO'
+    end
+    object qryCteXML: TMemoField
+      FieldName = 'XML'
+      Origin = 'XML'
+      BlobType = ftMemo
+    end
+    object qryCteDATA: TDateField
+      FieldName = 'DATA'
+      Origin = '"DATA"'
+    end
+    object qryCteHORA: TTimeField
+      FieldName = 'HORA'
+      Origin = 'HORA'
+    end
+    object qryCteVIRTUAL_SITUACAO: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'VIRTUAL_SITUACAO'
+      Calculated = True
+    end
+    object qryCteFKTRANSPORTADOR: TIntegerField
+      FieldName = 'FKTRANSPORTADOR'
+      Origin = 'FKTRANSPORTADOR'
+    end
+    object qryCteNROREGESTADUAL: TStringField
+      DisplayWidth = 25
+      FieldName = 'NROREGESTADUAL'
+      Origin = 'NROREGESTADUAL'
+      Size = 25
+    end
+    object qryCteTOTAL: TFMTBCDField
+      FieldName = 'TOTAL'
+      Origin = 'TOTAL'
+      DisplayFormat = ',0.00'
+      Precision = 18
+      Size = 2
+    end
+    object qryCteRECEBIDO: TFMTBCDField
+      FieldName = 'RECEBIDO'
+      Origin = 'RECEBIDO'
+      DisplayFormat = ',0.00'
+      Precision = 18
+      Size = 2
+    end
+    object qryCteVPIS: TFMTBCDField
+      FieldName = 'VPIS'
+      Origin = 'VPIS'
+      DisplayFormat = ',0.00'
+      Precision = 18
+      Size = 2
+    end
+    object qryCteVCOFINS: TFMTBCDField
+      FieldName = 'VCOFINS'
+      Origin = 'VCOFINS'
+      DisplayFormat = ',0.00'
+      Precision = 18
+      Size = 2
+    end
+    object qryCteVINSS: TFMTBCDField
+      FieldName = 'VINSS'
+      Origin = 'VINSS'
+      DisplayFormat = ',0.00'
+      Precision = 18
+      Size = 2
+    end
+    object qryCteVIR: TFMTBCDField
+      FieldName = 'VIR'
+      Origin = 'VIR'
+      DisplayFormat = ',0.00'
+      Precision = 18
+      Size = 2
+    end
+    object qryCteVCLSS: TFMTBCDField
+      FieldName = 'VCLSS'
+      Origin = 'VCLSS'
+      DisplayFormat = ',0.00'
+      Precision = 18
+      Size = 2
+    end
+    object qryCteVTOTTIRB: TFMTBCDField
+      FieldName = 'VTOTTIRB'
+      Origin = 'VTOTTIRB'
+      DisplayFormat = ',0.00'
+      Precision = 18
+      Size = 2
+    end
+    object qryCteQTD: TFMTBCDField
+      FieldName = 'QTD'
+      Origin = 'QTD'
+      Precision = 18
+      Size = 3
+    end
+    object qryCteFINALIDADE: TIntegerField
+      FieldName = 'FINALIDADE'
+      Origin = 'FINALIDADE'
+    end
+    object qryCteDOCUMENTO: TStringField
+      FieldName = 'DOCUMENTO'
+      Origin = 'DOCUMENTO'
+      Size = 1
+    end
+    object qryCteDATA_ENTREGA: TDateField
+      FieldName = 'DATA_ENTREGA'
+      Origin = 'DATA_ENTREGA'
+    end
+    object qryCteTOMADOR: TStringField
+      FieldName = 'TOMADOR'
+      Origin = 'TOMADOR'
+      Size = 15
+    end
+    object qryCteFK_DESTINATARIO: TIntegerField
+      FieldName = 'FK_DESTINATARIO'
+      Origin = 'FK_DESTINATARIO'
+    end
+    object qryCteFK_VEICULO: TStringField
+      FieldName = 'FK_VEICULO'
+      Origin = 'FK_VEICULO'
+      Size = 7
+    end
+    object qryCteOBS_FISCO: TMemoField
+      FieldName = 'OBS_FISCO'
+      Origin = 'OBS_FISCO'
+      BlobType = ftMemo
+    end
+    object qryCteOBS_CONTRIBUINTE: TMemoField
+      FieldName = 'OBS_CONTRIBUINTE'
+      Origin = 'OBS_CONTRIBUINTE'
+      BlobType = ftMemo
+    end
+    object qryCteVALOR_SERVICO: TFMTBCDField
+      FieldName = 'VALOR_SERVICO'
+      Origin = 'VALOR_SERVICO'
+      DisplayFormat = ',0.00'
+      Precision = 18
+      Size = 2
+    end
+    object qryCteVALOR_CARGA: TFMTBCDField
+      FieldName = 'VALOR_CARGA'
+      Origin = 'VALOR_CARGA'
+      DisplayFormat = ',0.00'
+      Precision = 18
+      Size = 2
+    end
+    object qryCteCST_ICMS: TStringField
+      FieldName = 'CST_ICMS'
+      Origin = 'CST_ICMS'
+      Size = 3
+    end
+    object qryCteALIQUOTA_ICMS: TFMTBCDField
+      FieldName = 'ALIQUOTA_ICMS'
+      Origin = 'ALIQUOTA_ICMS'
+      DisplayFormat = ',0.00'
+      Precision = 18
+      Size = 2
+    end
+    object qryCteBASE_ICMS: TFMTBCDField
+      FieldName = 'BASE_ICMS'
+      Origin = 'BASE_ICMS'
+      DisplayFormat = ',0.00'
+      Precision = 18
+      Size = 2
+    end
+    object qryCteVALOR_ICMS: TFMTBCDField
+      FieldName = 'VALOR_ICMS'
+      Origin = 'VALOR_ICMS'
+      DisplayFormat = ',0.00'
+      Precision = 18
+      Size = 2
+    end
+    object qryCteOUTROS_TRIBUTOS: TFMTBCDField
+      FieldName = 'OUTROS_TRIBUTOS'
+      Origin = 'OUTROS_TRIBUTOS'
+      DisplayFormat = ',0.00'
+      Precision = 18
+      Size = 2
+    end
+    object qryCteMETRAGEM: TStringField
+      FieldName = 'METRAGEM'
+      Origin = 'METRAGEM'
+      Size = 3
+    end
+    object qryCteFK_REMETENTE: TIntegerField
+      FieldName = 'FK_REMETENTE'
+      Origin = 'FK_REMETENTE'
+    end
+    object qryCteCHAVE_REFERENCIADA: TStringField
+      FieldName = 'CHAVE_REFERENCIADA'
+      Origin = 'CHAVE_REFERENCIADA'
+      Size = 44
+    end
+    object qryCteNAVERBACAO: TStringField
+      FieldName = 'NAVERBACAO'
+      Origin = 'NAVERBACAO'
+    end
+    object qryCteCNPJ_SEGURADORA: TStringField
+      FieldName = 'CNPJ_SEGURADORA'
+      Origin = 'CNPJ_SEGURADORA'
+    end
+    object qryCtePESOL: TBCDField
+      FieldName = 'PESOL'
+      Origin = 'PESOL'
+      Precision = 18
+    end
+    object qryCtePESOB: TBCDField
+      FieldName = 'PESOB'
+      Origin = 'PESOB'
+      Precision = 18
+    end
+  end
+  object dsEmpresa: TDataSource
+    DataSet = Dados.qryEmpresa
+    Left = 120
+    Top = 96
+  end
+  object qryTomador: TFDQuery
+    Connection = Dados.Conexao
+    SQL.Strings = (
+      'select * from tomador'
+      'where codigo=:codigo'
+      'ORDER BY RAZAO')
+    Left = 112
+    Top = 152
+    ParamData = <
+      item
+        Name = 'CODIGO'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+    object qryTomadorCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryTomadorRAZAO: TStringField
+      FieldName = 'RAZAO'
+      Origin = 'RAZAO'
+      Size = 50
+    end
+    object qryTomadorFANTASIA: TStringField
+      FieldName = 'FANTASIA'
+      Origin = 'FANTASIA'
+      Size = 50
+    end
+    object qryTomadorFONE: TStringField
+      FieldName = 'FONE'
+      Origin = 'FONE'
+      Size = 14
+    end
+    object qryTomadorENDERECO: TStringField
+      FieldName = 'ENDERECO'
+      Origin = 'ENDERECO'
+      Size = 50
+    end
+    object qryTomadorNUMERO: TStringField
+      FieldName = 'NUMERO'
+      Origin = 'NUMERO'
+      Size = 10
+    end
+    object qryTomadorBAIRRO: TStringField
+      FieldName = 'BAIRRO'
+      Origin = 'BAIRRO'
+      Size = 35
+    end
+    object qryTomadorCODMUN: TIntegerField
+      FieldName = 'CODMUN'
+      Origin = 'CODMUN'
+    end
+    object qryTomadorMUNICIPIO: TStringField
+      FieldName = 'MUNICIPIO'
+      Origin = 'MUNICIPIO'
+      Size = 40
+    end
+    object qryTomadorUF: TStringField
+      FieldName = 'UF'
+      Origin = 'UF'
+      Size = 2
+    end
+    object qryTomadorCEP: TStringField
+      FieldName = 'CEP'
+      Origin = 'CEP'
+      Size = 8
+    end
+    object qryTomadorFKEMPRESA: TIntegerField
+      FieldName = 'FKEMPRESA'
+      Origin = 'FKEMPRESA'
+    end
+    object qryTomadorTIPO: TStringField
+      FieldName = 'TIPO'
+      Origin = 'TIPO'
+      Size = 10
+    end
+    object qryTomadorCNPJ: TStringField
+      FieldName = 'CNPJ'
+      Origin = 'CNPJ'
+    end
+    object qryTomadorIE: TStringField
+      FieldName = 'IE'
+      Origin = 'IE'
+    end
+  end
+  object qryTransp: TFDQuery
+    Connection = Dados.Conexao
+    SQL.Strings = (
+      'select * from TRANSPORTADORA'
+      'where'
+      'codigo=:codigo')
+    Left = 112
+    Top = 208
+    ParamData = <
+      item
+        Name = 'CODIGO'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object qryTranspCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryTranspPESSOA: TStringField
+      FieldName = 'PESSOA'
+      Origin = 'PESSOA'
+      Size = 10
+    end
+    object qryTranspCNPJ: TStringField
+      FieldName = 'CNPJ'
+      Origin = 'CNPJ'
+    end
+    object qryTranspIE: TStringField
+      FieldName = 'IE'
+      Origin = 'IE'
+    end
+    object qryTranspNOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Required = True
+      Size = 50
+    end
+    object qryTranspAPELIDO: TStringField
+      FieldName = 'APELIDO'
+      Origin = 'APELIDO'
+      Size = 40
+    end
+    object qryTranspENDERECO: TStringField
+      FieldName = 'ENDERECO'
+      Origin = 'ENDERECO'
+      Size = 50
+    end
+    object qryTranspNUMERO: TStringField
+      FieldName = 'NUMERO'
+      Origin = 'NUMERO'
+      Size = 10
+    end
+    object qryTranspBAIRRO: TStringField
+      FieldName = 'BAIRRO'
+      Origin = 'BAIRRO'
+      Size = 35
+    end
+    object qryTranspCOD_CIDADE: TIntegerField
+      FieldName = 'COD_CIDADE'
+      Origin = 'COD_CIDADE'
+    end
+    object qryTranspCIDADE: TStringField
+      FieldName = 'CIDADE'
+      Origin = 'CIDADE'
+      Size = 45
+    end
+    object qryTranspUF: TStringField
+      FieldName = 'UF'
+      Origin = 'UF'
+      Size = 2
+    end
+    object qryTranspCEP: TStringField
+      FieldName = 'CEP'
+      Origin = 'CEP'
+      Size = 8
+    end
+    object qryTranspPLACA: TStringField
+      FieldName = 'PLACA'
+      Origin = 'PLACA'
+      Size = 7
+    end
+    object qryTranspUFPLACA: TStringField
+      FieldName = 'UFPLACA'
+      Origin = 'UFPLACA'
+      Size = 2
+    end
+    object qryTranspRNTC: TStringField
+      FieldName = 'RNTC'
+      Origin = 'RNTC'
+      Size = 10
+    end
+    object qryTranspATIVO: TStringField
+      FieldName = 'ATIVO'
+      Origin = 'ATIVO'
+      Size = 1
+    end
+    object qryTranspEMPRESA: TIntegerField
+      FieldName = 'EMPRESA'
+      Origin = 'EMPRESA'
+    end
+    object qryTranspRENAVAM: TStringField
+      FieldName = 'RENAVAM'
+      Origin = 'RENAVAM'
+    end
+  end
+  object dsCTe: TDataSource
+    DataSet = qryCte
+    OnDataChange = dsCTeDataChange
+    Left = 248
+    Top = 168
+  end
+  object qryCorrecao: TFDQuery
+    Connection = Dados.Conexao
+    SQL.Strings = (
+      'select * from cte_CARTA'
+      'where'
+      'FK_ctE=:ID'
+      'Order by sequencia desc')
+    Left = 184
+    Top = 272
+    ParamData = <
+      item
+        Name = 'ID'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object qryCorrecaoCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      DisplayFormat = ',0.00'
+    end
+    object qryCorrecaoFK_CTE: TIntegerField
+      FieldName = 'FK_CTE'
+      Origin = 'FK_CTE'
+      DisplayFormat = ',0.00'
+    end
+    object qryCorrecaoSEQUENCIA: TIntegerField
+      FieldName = 'SEQUENCIA'
+      Origin = 'SEQUENCIA'
+      DisplayFormat = ',0.00'
+    end
+    object qryCorrecaoFK_EMPRESA: TIntegerField
+      FieldName = 'FK_EMPRESA'
+      Origin = 'FK_EMPRESA'
+      DisplayFormat = ',0.00'
+    end
+    object qryCorrecaoFK_USUARIO: TIntegerField
+      FieldName = 'FK_USUARIO'
+      Origin = 'FK_USUARIO'
+      DisplayFormat = ',0.00'
+    end
+    object qryCorrecaoDATA: TDateField
+      FieldName = 'DATA'
+      Origin = '"DATA"'
+      DisplayFormat = '!99/99/0000;1;_'
+    end
+    object qryCorrecaoCORRECAO: TMemoField
+      FieldName = 'CORRECAO'
+      Origin = 'CORRECAO'
+      BlobType = ftMemo
+    end
+    object qryCorrecaoCAMPO: TStringField
+      FieldName = 'CAMPO'
+      Origin = 'CAMPO'
+      Size = 50
+    end
+    object qryCorrecaoGRUPO: TStringField
+      FieldName = 'GRUPO'
+      Origin = 'GRUPO'
+      Size = 50
+    end
+    object qryCorrecaoVALOR: TStringField
+      FieldName = 'VALOR'
+      Origin = 'VALOR'
+      Size = 100
+    end
+  end
+  object dsCorrecao: TDataSource
+    DataSet = qryCorrecao
+    Left = 320
+    Top = 400
+  end
+  object JvEnterAsTab1: TJvEnterAsTab
+    Left = 584
+    Top = 304
+  end
+end

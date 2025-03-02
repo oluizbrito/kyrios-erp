@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<TfrxReport Version="6.4.10" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="167935" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="44503,3954716204" ReportOptions.Description.Text="" ReportOptions.LastChange="44503,4610316782" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end.">
+  <Datasets>
+    <item DataSet="frxDBEmpresa" DataSetName="frxDBEmpresa"/>
+  </Datasets>
+  <TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000"/>
+  <TfrxReportPage Name="Page1" PaperWidth="80" PaperHeight="130" PaperSize="256" LeftMargin="2" RightMargin="2" TopMargin="2" BottomMargin="2" ColumnWidth="0" ColumnPositions.Text="" Frame.Typ="0" MirrorMode="0" HGuides.Text="" VGuides.Text="">
+    <TfrxPageHeader Name="PageHeader1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="453,5436" Left="0" Top="18,89765" Width="287,24428">
+      <TfrxPictureView Name="Picture1" AllowVectorExport="True" Left="0" Top="0" Width="75,59055118" Height="75,59055118" Center="True" DataField="LOGOMARCA" DataSet="frxDBEmpresa" DataSetName="frxDBEmpresa" Frame.Typ="15" HightQuality="False" Transparent="False" TransparentColor="16777215"/>
+      <TfrxMemoView Name="Memo1" AllowVectorExport="True" Left="75,59055118" Top="0" Width="211,65354331" Height="15,11811024" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="[frxDBEmpresa.&#34;RAZAO&#34;]"/>
+      <TfrxMemoView Name="Memo2" AllowVectorExport="True" Left="75,59055118" Top="15,11811024" Width="211,65354331" Height="15,11811024" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="CNPJ: [frxDBEmpresa.&#34;CNPJ&#34;], I.E.:  [frxDBEmpresa.&#34;IE&#34;]"/>
+      <TfrxMemoView Name="Memo3" AllowVectorExport="True" Left="75,59055118" Top="30,23622047" Width="211,65354331" Height="15,11811024" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="Fone: [frxDBEmpresa.&#34;FONE&#34;]">
+        <Formats>
+          <item/>
+          <item/>
+        </Formats>
+      </TfrxMemoView>
+      <TfrxMemoView Name="Memo4" AllowVectorExport="True" Left="75,59055118" Top="45,35433071" Width="211,65354331" Height="15,11811024" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="E-Mail: [frxDBEmpresa.&#34;EMAIL&#34;]"/>
+      <TfrxMemoView Name="Memo5" AllowVectorExport="True" Left="0" Top="79,37013" Width="287,24409449" Height="15,11811024" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="1" Frame.Typ="12" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="DETALHES DO PIX"/>
+      <TfrxPictureView Name="pctQrCode" AllowVectorExport="True" Left="51,0237148" Top="98,48824024" Width="185,19685039" Height="185,19685039" Center="True" Frame.Typ="0" HightQuality="False" Transparent="False" TransparentColor="16777215"/>
+      <TfrxMemoView Name="Memo6" AllowVectorExport="True" Left="49,13385827" Top="283,46461819" Width="188,97637795" Height="15,11811024" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="2" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="QrCode"/>
+      <TfrxMemoView Name="Memo7" AllowVectorExport="True" Left="0" Top="298,58272843" Width="60,47248" Height="15,11811024" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" Text="Empresa:"/>
+      <TfrxMemoView Name="Memo8" AllowVectorExport="True" Left="0" Top="313,70083866" Width="45,35436" Height="15,11811024" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" Text="Razão:"/>
+      <TfrxMemoView Name="Memo9" AllowVectorExport="True" Left="0" Top="328,8189489" Width="41,57483" Height="15,11811024" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" Text="CNPJ:"/>
+      <TfrxMemoView Name="Memo10" AllowVectorExport="True" Left="0" Top="343,93705913" Width="71,81107" Height="15,11811024" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" Text="Código PIX:"/>
+      <TfrxMemoView Name="Memo11" AllowVectorExport="True" Left="60,47244094" Top="298,58272843" Width="226,77165354" Height="15,11811024" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="[EMPRESA]"/>
+      <TfrxMemoView Name="Memo12" AllowVectorExport="True" Left="45,35433071" Top="313,70083866" Width="241,88976378" Height="15,11811024" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="[RAZAO]"/>
+      <TfrxMemoView Name="Memo13" AllowVectorExport="True" Left="41,57480315" Top="328,8189489" Width="245,66929134" Height="15,11811024" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="[CNPJ]"/>
+      <TfrxMemoView Name="Memo14" AllowVectorExport="True" Left="71,81102362" Top="343,93705913" Width="215,43307087" Height="15,11811024" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="[COD_PIX]"/>
+      <TfrxMemoView Name="Memo15" AllowVectorExport="True" Left="0" Top="359,05516937" Width="287,24409449" Height="15,11811024" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="1" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="Chave Copia e Cola PIX"/>
+      <TfrxMemoView Name="Memo16" AllowVectorExport="True" Left="0" Top="374,17327961" Width="287,24409449" Height="60,47244094" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="2" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="[CHAVECC]"/>
+      <TfrxMemoView Name="Memo17" AllowVectorExport="True" Left="0" Top="434,64572055" Width="37,7953" Height="15,11811024" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" Text="Valor: "/>
+      <TfrxMemoView Name="Memo18" AllowVectorExport="True" Left="37,79527559" Top="434,64572055" Width="249,4488189" Height="15,11811024" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="[VALOR]"/>
+    </TfrxPageHeader>
+  </TfrxReportPage>
+</TfrxReport>
