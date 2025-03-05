@@ -1,0 +1,107 @@
+inherited FrmSerial_Windows: TFrmSerial_Windows
+  BorderIcons = [biSystemMenu]
+  BorderStyle = Single
+  ClientHeight = 417
+  ClientWidth = 279
+  Position = ScreenCenter
+  DesignerMasterStyle = 3
+  inherited ListBox1: TListBox
+    Size.Width = 269.000000000000000000
+    Size.Height = 359.000000000000000000
+    Viewport.Width = 265.000000000000000000
+    Viewport.Height = 355.000000000000000000
+    inherited lstChave1: TListBoxItem
+      Size.Width = 265.000000000000000000
+      inherited Layout1: TLayout
+        inherited Edit1: TEdit
+          Size.Height = 25.000000000000000000
+        end
+      end
+      inherited Layout2: TLayout
+        inherited Edit2: TEdit
+          Size.Height = 25.000000000000000000
+        end
+      end
+      inherited Layout3: TLayout
+        Size.Width = 88.000000000000000000
+        inherited Edit3: TEdit
+          Size.Width = 68.000000000000000000
+          Size.Height = 25.000000000000000000
+        end
+      end
+    end
+    inherited lstChave2: TListBoxItem
+      Size.Width = 265.000000000000000000
+      inherited Layout4: TLayout
+        inherited Edit4: TEdit
+          Size.Height = 25.000000000000000000
+        end
+      end
+      inherited Layout5: TLayout
+        inherited Edit5: TEdit
+          Size.Height = 25.000000000000000000
+        end
+      end
+      inherited Layout6: TLayout
+        Size.Width = 88.000000000000000000
+        inherited Edit6: TEdit
+          Size.Width = 68.000000000000000000
+          Size.Height = 25.000000000000000000
+        end
+      end
+    end
+    inherited lstValidade: TListBoxItem
+      Size.Width = 265.000000000000000000
+      inherited DateEdit1: TDateEdit
+        Margins.Right = 10.000000000000000000
+        Position.X = 115.000000000000000000
+        Size.Width = 140.000000000000000000
+        Size.Height = 31.000000000000000000
+        TextSettings.HorzAlign = Center
+      end
+    end
+    inherited lstTerminais: TListBoxItem
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+      StyledSettings = [Family, FontColor, Other]
+      Size.Width = 265.000000000000000000
+      inherited Edit8: TEdit
+        Position.X = 182.000000000000000000
+        Size.Width = 73.000000000000000000
+        Size.Height = 28.000000000000000000
+      end
+    end
+    inherited ListBoxItem3: TListBoxItem
+      Size.Width = 265.000000000000000000
+      inherited Button1: TButton
+        TextSettings.Font.StyleExt = {00060000000000000004000000}
+      end
+    end
+    inherited ListBoxItem4: TListBoxItem
+      Size.Width = 265.000000000000000000
+      inherited Edit7: TEdit
+        Align = Client
+        TextSettings.Font.StyleExt = {00060000000000000004000000}
+        Margins.Bottom = 5.000000000000000000
+        Size.Width = 255.000000000000000000
+        Size.Height = 45.000000000000000000
+      end
+    end
+    inherited ListBoxItem1: TListBoxItem
+      Size.Width = 265.000000000000000000
+      inherited Button2: TButton
+        TextSettings.Font.StyleExt = {00060000000000000004000000}
+      end
+    end
+  end
+  inherited ToolBar1: TToolBar
+    Size.Width = 279.000000000000000000
+    inherited Label1: TLabel
+      Size.Width = 279.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+    end
+    inherited Button3: TButton
+      Position.X = 221.000000000000000000
+    end
+  end
+end

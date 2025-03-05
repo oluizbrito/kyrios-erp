@@ -1,0 +1,103 @@
+inherited FrmSerial_LgXhdpiPh: TFrmSerial_LgXhdpiPh
+  ClientHeight = 695
+  ClientWidth = 450
+  DesignerMasterStyle = 3
+  inherited ListBox1: TListBox
+    Size.Width = 440.000000000000000000
+    Size.Height = 637.000000000000000000
+    Viewport.Width = 440.000000000000000000
+    Viewport.Height = 637.000000000000000000
+    inherited lstChave1: TListBoxItem
+      Size.Width = 440.000000000000000000
+      inherited Layout1: TLayout
+        Size.Width = 113.000000000000000000
+        inherited Edit1: TEdit
+          Size.Width = 93.000000000000000000
+          Size.Height = 25.000000000000000000
+        end
+      end
+      inherited Layout2: TLayout
+        Position.X = 113.000000000000000000
+        Size.Width = 128.000000000000000000
+        inherited Edit2: TEdit
+          Size.Width = 108.000000000000000000
+          Size.Height = 25.000000000000000000
+        end
+      end
+      inherited Layout3: TLayout
+        Size.Width = 199.000000000000000000
+        inherited Edit3: TEdit
+          Size.Width = 179.000000000000000000
+          Size.Height = 25.000000000000000000
+        end
+      end
+    end
+    inherited lstChave2: TListBoxItem
+      Size.Width = 440.000000000000000000
+      inherited Layout4: TLayout
+        Size.Width = 113.000000000000000000
+        inherited Edit4: TEdit
+          Size.Width = 93.000000000000000000
+          Size.Height = 25.000000000000000000
+        end
+      end
+      inherited Layout5: TLayout
+        Position.X = 113.000000000000000000
+        Size.Width = 128.000000000000000000
+        inherited Edit5: TEdit
+          Size.Width = 108.000000000000000000
+          Size.Height = 25.000000000000000000
+        end
+      end
+      inherited Layout6: TLayout
+        Size.Width = 199.000000000000000000
+        inherited Edit6: TEdit
+          Size.Width = 179.000000000000000000
+          Size.Height = 25.000000000000000000
+        end
+      end
+    end
+    inherited lstValidade: TListBoxItem
+      Size.Width = 440.000000000000000000
+      inherited DateEdit1: TDateEdit
+        Position.X = 286.000000000000000000
+        Size.Height = 31.000000000000000000
+      end
+    end
+    inherited lstTerminais: TListBoxItem
+      Size.Width = 440.000000000000000000
+      inherited Edit8: TEdit
+        Position.X = 279.000000000000000000
+        Size.Height = 28.000000000000000000
+      end
+    end
+    inherited ListBoxItem3: TListBoxItem
+      Size.Width = 440.000000000000000000
+      inherited Button1: TButton
+        TextSettings.Font.StyleExt = {00060000000000000004000000}
+      end
+    end
+    inherited ListBoxItem4: TListBoxItem
+      Size.Width = 440.000000000000000000
+      inherited Edit7: TEdit
+        TextSettings.Font.StyleExt = {00060000000000000004000000}
+      end
+    end
+    inherited ListBoxItem1: TListBoxItem
+      Size.Width = 440.000000000000000000
+      inherited Button2: TButton
+        TextSettings.Font.StyleExt = {00060000000000000004000000}
+      end
+    end
+  end
+  inherited ToolBar1: TToolBar
+    Size.Width = 450.000000000000000000
+    inherited Label1: TLabel
+      Size.Width = 450.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+    end
+    inherited Button3: TButton
+      Position.X = 392.000000000000000000
+    end
+  end
+end
