@@ -1,7 +1,7 @@
 object frmEmpresa: TfrmEmpresa
   Left = 0
   Top = 0
-  ActiveControl = DBEdit17
+  ActiveControl = cbPessoa
   BorderStyle = bsDialog
   Caption = 'Dados da Empresa'
   ClientHeight = 739
@@ -42,7 +42,7 @@ object frmEmpresa: TfrmEmpresa
     Margins.Top = 7
     Margins.Right = 7
     Margins.Bottom = 7
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Align = alClient
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
@@ -307,6 +307,7 @@ object frmEmpresa: TfrmEmpresa
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
+        Visible = False
       end
       object Label52: TLabel
         Left = 659
@@ -389,6 +390,7 @@ object frmEmpresa: TfrmEmpresa
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
+        Visible = False
       end
       object Label75: TLabel
         Left = 21
@@ -831,6 +833,7 @@ object frmEmpresa: TfrmEmpresa
         ParentCtl3D = False
         ParentFont = False
         TabOrder = 21
+        Visible = False
       end
       object BitBtn1: TBitBtn
         Left = 375
@@ -966,6 +969,7 @@ object frmEmpresa: TfrmEmpresa
         ParentCtl3D = False
         ParentFont = False
         TabOrder = 22
+        Visible = False
         OnExit = DBEdit67Exit
         OnKeyPress = DBEdit67KeyPress
       end

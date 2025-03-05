@@ -144,7 +144,9 @@
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
         <VerInfo_Build>56</VerInfo_Build>
-        <Icon_MainIcon>$(ProjectName).Artwork\Windows\AppIcon.ico</Icon_MainIcon>
+        <Icon_MainIcon>Retaguarda_Icon.ico</Icon_MainIcon>
+        <UWP_DelphiLogo44>Visual\KYRIOS ico.png</UWP_DelphiLogo44>
+        <UWP_DelphiLogo150>Visual\KYRIOS ico.png</UWP_DelphiLogo150>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
@@ -917,6 +919,13 @@
                 </DeployFile>
                 <DeployFile LocalName="C:\Users\LojadoDesenvolvedor\Downloads\Graph-Magnifier-icon (1).png" Configuration="Debug" Class="UWP_DelphiLogo44"/>
                 <DeployFile LocalName="C:\Users\LojadoDesenvolvedor\Downloads\Graph-Magnifier-icon.png" Configuration="Debug" Class="UWP_DelphiLogo150"/>
+                <DeployFile LocalName="Visual\KYRIOS ico.png" Configuration="Release" Class="UWP_DelphiLogo44">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets\</RemoteDir>
+                        <RemoteName>Logo44x44.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="c:\Gestor\Retaguarda.exe" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="iOSSimulator">

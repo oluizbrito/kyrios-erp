@@ -5875,7 +5875,7 @@ begin
             sLineBreak + 'Indice=' + IntToStr(Boleto.ListaRetornoWeb[i]
             .Header.Indice) + sLineBreak + 'Sistema_Origem=' +
             Boleto.ListaRetornoWeb[i].Header.Sistema_Origem + sLineBreak +
-            'Agencia=' + IntToStr(Boleto.ListaRetornoWeb[i].Header.Agencia) +
+            'Agencia=' + Boleto.ListaRetornoWeb[i].Header.Agencia +
             sLineBreak + 'ID_Origem=' + Boleto.ListaRetornoWeb[i]
             .Header.Id_Origem + sLineBreak + 'Data_Hora=' +
             FormatDateTime('dd/mm/yyyy hh:nn:ss',

@@ -19,13 +19,13 @@
     <Transaction>2023/09/10 17:10:42.000.212,=C:\Users\Wagner\Desktop\Update 5\Restaguarda e PDV\View\UAniversariante.pas</Transaction>
     <Transaction>2023/09/11 15:03:12.000.924,=C:\Users\Wagner\Desktop\Update 5\Restaguarda e PDV\View\uEtiquetasFast.pas</Transaction>
     <Transaction>2025/01/08 22:32:12.000.006,=C:\Users\wagne\OneDrive\Área de Trabalho\Projeto Delphi Fiscal\Update 6\Fontes Atualizados\Projeto\Unit1.pas</Transaction>
-    <Transaction>2025/01/08 22:33:00.000.080,C:\Users\wagne\OneDrive\Área de Trabalho\Projeto Delphi Fiscal\Update 6\Fontes Atualizados\View\uFormMensagem.pas=C:\Users\wagne\OneDrive\Área de Trabalho\Projeto Delphi Fiscal\Update 6\Fontes Atualizados\Projeto\Unit1.pas</Transaction>
+    <Transaction>2025/01/08 22:33:00.000.080,C:\Users\wagne\OneDrive\Área de Trabalho\Projeto Delphi Fiscal\Update 6\Fontes Atualizados\Projeto\Unit1.pas=C:\Users\wagne\OneDrive\Área de Trabalho\Projeto Delphi Fiscal\Update 6\Fontes Atualizados\View\uFormMensagem.pas</Transaction>
     <Transaction>2025/01/08 22:38:23.000.601,C:\Users\wagne\OneDrive\Área de Trabalho\Projeto Delphi Fiscal\Update 6\Fontes Atualizados\View\uFormMensagem.pas=</Transaction>
     <Transaction>2025/01/08 22:38:49.000.699,=C:\Users\wagne\OneDrive\Área de Trabalho\Projeto Delphi Fiscal\Update 6\Fontes Atualizados\Projeto\Unit1.pas</Transaction>
-    <Transaction>2025/01/08 22:39:20.000.937,C:\Users\wagne\OneDrive\Área de Trabalho\Projeto Delphi Fiscal\Update 6\Fontes Atualizados\View\uFormMensagem.pas=C:\Users\wagne\OneDrive\Área de Trabalho\Projeto Delphi Fiscal\Update 6\Fontes Atualizados\Projeto\Unit1.pas</Transaction>
+    <Transaction>2025/01/08 22:39:20.000.937,C:\Users\wagne\OneDrive\Área de Trabalho\Projeto Delphi Fiscal\Update 6\Fontes Atualizados\Projeto\Unit1.pas=C:\Users\wagne\OneDrive\Área de Trabalho\Projeto Delphi Fiscal\Update 6\Fontes Atualizados\View\uFormMensagem.pas</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
-    <File Path="..\..\Fontes Atualizados"/>
+    <File Path="..\..\FONTES"/>
     <File Path="..\Boleto"/>
     <File Path="..\Boleto\class"/>
     <File Path="..\Boleto\class\uclassCBR_REMESSA.pas"/>

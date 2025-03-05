@@ -1117,7 +1117,7 @@ begin
     if (Trim(qryEmpresaCNPJ_REPRESENTANTE.AsString)) = '' then
       begin
         { TODO : Coloca CNPJ Representante padrão caso o cliente não insira. }
-        qryEmpresaCNPJ_REPRESENTANTE.AsString :=  '00000000000000';
+        qryEmpresaCNPJ_REPRESENTANTE.AsString :=  '57270732000119';
       end;
     qryEmpresa.Post;
     if Dados.qryProdImpPadrao.State in [dsInsert, dsEdit] then
