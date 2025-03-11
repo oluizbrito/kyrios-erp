@@ -1,7 +1,7 @@
 object frmEmpresa: TfrmEmpresa
   Left = 0
   Top = 0
-  ActiveControl = cbPessoa
+  ActiveControl = DBEdit17
   BorderStyle = bsDialog
   Caption = 'Dados da Empresa'
   ClientHeight = 739
@@ -42,7 +42,7 @@ object frmEmpresa: TfrmEmpresa
     Margins.Top = 7
     Margins.Right = 7
     Margins.Bottom = 7
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
@@ -307,7 +307,6 @@ object frmEmpresa: TfrmEmpresa
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        Visible = False
       end
       object Label52: TLabel
         Left = 659
@@ -390,7 +389,6 @@ object frmEmpresa: TfrmEmpresa
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        Visible = False
       end
       object Label75: TLabel
         Left = 21
@@ -833,7 +831,6 @@ object frmEmpresa: TfrmEmpresa
         ParentCtl3D = False
         ParentFont = False
         TabOrder = 21
-        Visible = False
       end
       object BitBtn1: TBitBtn
         Left = 375
@@ -969,7 +966,6 @@ object frmEmpresa: TfrmEmpresa
         ParentCtl3D = False
         ParentFont = False
         TabOrder = 22
-        Visible = False
         OnExit = DBEdit67Exit
         OnKeyPress = DBEdit67KeyPress
       end
@@ -1649,12 +1645,12 @@ object frmEmpresa: TfrmEmpresa
             object DBCheckBox20: TDBCheckBox
               Left = 18
               Top = 166
-              Width = 207
+              Width = 239
               Height = 17
               Hint = 
                 'Se voc'#234' tem muitos itens cadastrados, desmarque essa op'#231#227'o para ' +
                 'otimizar a velocidade no PDV.'
-              Caption = 'Pesq. por partes do C'#243'd. Barras'
+              Caption = 'Pesquisa por partes na descri'#231#227'o'
               DataField = 'PESQUISA_POR_PARTE'
               DataSource = dsEmpresa
               ParentShowHint = False

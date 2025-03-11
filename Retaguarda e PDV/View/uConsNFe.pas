@@ -881,7 +881,7 @@ begin
 
   ConfiguraNFe;
 
-  edtEmail.Text := dados.qryEmpresaEMAIL_CONTADOR.AsString;
+  edtEmail.Text := dados.qrySped_contadorEMAIL.AsString;
   edtArquivo.Text := ACBrNFe.Configuracoes.Arquivos.PathNFe + '\' +
     TiraPontos(dados.qryEmpresaCNPJ.AsString) + '\' + FormatDateTime('yyyymm',
     strtodate(maskInicio.Text)) + '.ZIP';

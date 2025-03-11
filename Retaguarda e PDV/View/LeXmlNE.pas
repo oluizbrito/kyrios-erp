@@ -1461,22 +1461,49 @@ begin
 
   FrmCadProduto.qryProdutosNCM.Value := dados.QryXmlDetailNCM.Value;
 
-  if AnsiMatchStr(dados.QryXmlDetailCFOP_E.AsString, ['5401', '5403', '5405', '5406', '6401', '6403', '6405', '6406', '6910']) then
+  if AnsiMatchStr(dados.QryXmlDetailCFOP_E.AsString, ['5401', '5403', '5405', '5406', '5910', '6401', '6403', '6405', '6406', '6910']) then
   begin
-    FrmCadProduto.qryProdutosCFOP.AsString := '5405';
-    FrmCadProduto.qryProdutosCSTICMS.AsString := '060';
-    FrmCadProduto.qryProdutosCSOSN.AsString := '500';
-    FrmCadProduto.qryProdutosCFOP_EXTERNO.AsString := '6405';
-    FrmCadProduto.qryProdutosCST_EXTERNO.AsString := '060';
-    FrmCadProduto.qryProdutosCSOSN_EXTERNO.AsString := '500';
-    FrmCadProduto.qryProdutosCSTE.AsString := '07';
-    FrmCadProduto.qryProdutosCSTS.AsString := '07';
-    FrmCadProduto.qryProdutosCSTIPI.AsString := '53';
+    if AnsiMatchStr(dados.QryXmlDetailCFOP_E.AsString, ['5910', '6910']) then //CFOP produto de bonificacao
+    begin
+      if Trim(dados.QryXmlDetailCEST.AsString)<>'' then
+      begin
+        FrmCadProduto.qryProdutosCFOP.AsString := '5405';
+        FrmCadProduto.qryProdutosCSTICMS.AsString := '060';
+        FrmCadProduto.qryProdutosCSOSN.AsString := '500';
+        FrmCadProduto.qryProdutosCFOP_EXTERNO.AsString := '6405';
+        FrmCadProduto.qryProdutosCST_EXTERNO.AsString := '060';
+        FrmCadProduto.qryProdutosCSOSN_EXTERNO.AsString := '500';
+        FrmCadProduto.qryProdutosCSTE.AsString := '07';
+        FrmCadProduto.qryProdutosCSTS.AsString := '07';
+        FrmCadProduto.qryProdutosCSTIPI.AsString := '53';
+      end else
+      begin
+        FrmCadProduto.qryProdutosCFOP.AsString := '5102';
+        FrmCadProduto.qryProdutosCSTICMS.AsString := '041';
+        FrmCadProduto.qryProdutosCSOSN.AsString := '102';
+        FrmCadProduto.qryProdutosCFOP_EXTERNO.AsString := '6102';
+        FrmCadProduto.qryProdutosCST_EXTERNO.AsString := '041';
+        FrmCadProduto.qryProdutosCSOSN_EXTERNO.AsString := '102';
+        FrmCadProduto.qryProdutosCSTE.AsString := '07';
+        FrmCadProduto.qryProdutosCSTS.AsString := '07';
+        FrmCadProduto.qryProdutosCSTIPI.AsString := '53';
+      end;
+    end else
+    begin
+      FrmCadProduto.qryProdutosCFOP.AsString := '5405';
+      FrmCadProduto.qryProdutosCSTICMS.AsString := '060';
+      FrmCadProduto.qryProdutosCSOSN.AsString := '500';
+      FrmCadProduto.qryProdutosCFOP_EXTERNO.AsString := '6405';
+      FrmCadProduto.qryProdutosCST_EXTERNO.AsString := '060';
+      FrmCadProduto.qryProdutosCSOSN_EXTERNO.AsString := '500';
+      FrmCadProduto.qryProdutosCSTE.AsString := '07';
+      FrmCadProduto.qryProdutosCSTS.AsString := '07';
+      FrmCadProduto.qryProdutosCSTIPI.AsString := '53';
+    end;
   end
   else
-  if AnsiMatchStr(dados.QryXmlDetailCFOP.AsString, ['5102', '6102']) then
+  if AnsiMatchStr(dados.QryXmlDetailCFOP_E.AsString, ['5102', '6102']) then
   begin
-
     FrmCadProduto.qryProdutosCFOP.AsString := '5102';
     FrmCadProduto.qryProdutosCSTICMS.AsString := '041';
     FrmCadProduto.qryProdutosCSOSN.AsString := '102';
@@ -1486,10 +1513,8 @@ begin
     FrmCadProduto.qryProdutosCSTE.AsString := '07';
     FrmCadProduto.qryProdutosCSTS.AsString := '07';
     FrmCadProduto.qryProdutosCSTIPI.AsString := '53';
-
   end else
   begin
-
     FrmCadProduto.qryProdutosCFOP.Value := dados.qryEmpresaCFOP.Value;
     FrmCadProduto.qryProdutosCSTICMS.Value := dados.qryEmpresaCST_ICMS.Value;
     FrmCadProduto.qryProdutosCSOSN.Value := dados.qryEmpresaCSOSN.Value;
@@ -1499,7 +1524,6 @@ begin
     FrmCadProduto.qryProdutosCSTE.Value := dados.qryEmpresaCST_ENTRADA.Value;
     FrmCadProduto.qryProdutosCSTS.Value := dados.qryEmpresaCST_SAIDA.Value;
     FrmCadProduto.qryProdutosCSTIPI.Value := dados.qryEmpresaCST_IPI.Value;
-
   end;
 
   FrmCadProduto.qryProdutosQTD_ATACADO.Value := 0;

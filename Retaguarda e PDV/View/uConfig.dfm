@@ -30,11 +30,10 @@
     Margins.Bottom = 0
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 791
     object Label69: TLabel
       Left = 1
       Top = 1
-      Width = 55
+      Width = 793
       Height = 17
       Align = alTop
       Caption = 'Empresa:'
@@ -44,6 +43,7 @@
       Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold]
       ParentFont = False
+      ExplicitWidth = 55
     end
     object edtEmp: TDBEdit
       Left = 1
@@ -63,7 +63,6 @@
       ParentFont = False
       ReadOnly = True
       TabOrder = 0
-      ExplicitWidth = 789
       ExplicitHeight = 25
     end
   end
@@ -82,8 +81,6 @@
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = 531
-    ExplicitWidth = 791
     object cxSair: TcxButton
       AlignWithMargins = True
       Left = 164
@@ -280,7 +277,7 @@
     Margins.Top = 7
     Margins.Right = 7
     Margins.Bottom = 0
-    ActivePage = TabSheet5
+    ActivePage = TabSheet1
     Align = alClient
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
@@ -290,8 +287,6 @@
     MultiLine = True
     ParentFont = False
     TabOrder = 2
-    ExplicitWidth = 791
-    ExplicitHeight = 464
     object TabSheet2: TTabSheet
       Caption = 'WebService'
       ImageIndex = 2
@@ -1299,7 +1294,7 @@
             Left = 26
             Top = 99
             Width = 477
-            Height = 21
+            Height = 23
             Ctl3D = False
             DataField = 'PATHSALVARNFE'
             DataSource = dsConfig
@@ -1316,7 +1311,7 @@
             Left = 26
             Top = 155
             Width = 477
-            Height = 21
+            Height = 23
             Ctl3D = False
             DataField = 'PATHSCHEMAS_NFE'
             DataSource = dsConfig
@@ -1333,7 +1328,7 @@
             Left = 26
             Top = 45
             Width = 121
-            Height = 21
+            Height = 23
             CharCase = ecUpperCase
             Ctl3D = False
             DataField = 'VERSAONFE'
@@ -1365,7 +1360,7 @@
             Left = 157
             Top = 45
             Width = 216
-            Height = 21
+            Height = 23
             CharCase = ecUpperCase
             Ctl3D = False
             DataField = 'FORMAEMISSAO'
@@ -2033,7 +2028,7 @@
         Top = 0
         Width = 787
         Height = 444
-        ActivePage = TabSheet4
+        ActivePage = TabSheet13
         Align = alClient
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -2340,7 +2335,7 @@
             Left = 13
             Top = 101
             Width = 502
-            Height = 20
+            Height = 23
             Ctl3D = False
             DataField = 'FORMATOALERTA'
             DataSource = dsConfig
@@ -2357,7 +2352,7 @@
             Left = 13
             Top = 150
             Width = 473
-            Height = 20
+            Height = 23
             Ctl3D = False
             DataField = 'PATHSALVAR'
             DataSource = dsConfig
@@ -2374,7 +2369,7 @@
             Left = 13
             Top = 198
             Width = 473
-            Height = 20
+            Height = 23
             Ctl3D = False
             DataField = 'PATHSCHEMAS'
             DataSource = dsConfig
@@ -2463,7 +2458,7 @@
             Left = 13
             Top = 291
             Width = 126
-            Height = 20
+            Height = 23
             Ctl3D = False
             DataField = 'CLIENTE_PADRAO'
             DataSource = dsConfig
@@ -2480,7 +2475,7 @@
             Left = 13
             Top = 245
             Width = 121
-            Height = 20
+            Height = 23
             CharCase = ecUpperCase
             Ctl3D = False
             DataField = 'VERSAODF'
@@ -2512,7 +2507,7 @@
             Left = 13
             Top = 336
             Width = 473
-            Height = 20
+            Height = 23
             Ctl3D = False
             DataField = 'LOGOMARCA'
             DataSource = dsConfig
@@ -2529,7 +2524,7 @@
             Left = 145
             Top = 291
             Width = 120
-            Height = 20
+            Height = 23
             Ctl3D = False
             DataField = 'VENDEDOR_PADRAO'
             DataSource = dsConfig
@@ -2546,7 +2541,7 @@
             Left = 271
             Top = 291
             Width = 140
-            Height = 20
+            Height = 23
             Ctl3D = False
             DataField = 'TRANSPORTADOR_PADRAO'
             DataSource = dsConfig
@@ -2563,7 +2558,7 @@
             Left = 145
             Top = 245
             Width = 118
-            Height = 20
+            Height = 23
             CharCase = ecUpperCase
             Ctl3D = False
             DataField = 'VERSAOQRCODE'

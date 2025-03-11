@@ -13,11 +13,9 @@ object frmCadReceber: TfrmCadReceber
   Font.Name = 'Tahoma'
   Font.Style = []
   KeyPreview = True
-  OldCreateOrder = False
   Position = poDesktopCenter
   OnActivate = FormActivate
   OnKeyDown = FormKeyDown
-  PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     AlignWithMargins = True
@@ -33,9 +31,6 @@ object frmCadReceber: TfrmCadReceber
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 12
-    ExplicitWidth = 770
-    ExplicitHeight = 322
     object Label1: TLabel
       Left = 53
       Top = 19
@@ -157,12 +152,12 @@ object frmCadReceber: TfrmCadReceber
       ParentFont = False
     end
     object Label10: TLabel
-      Left = 28
+      Left = 29
       Top = 282
-      Width = 68
+      Width = 67
       Height = 17
       Alignment = taRightJustify
-      Caption = 'N'#186' Parcelas'
+      Caption = 'Repetir por'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -390,9 +385,6 @@ object frmCadReceber: TfrmCadReceber
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
-    ExplicitLeft = -36
-    ExplicitTop = 343
-    ExplicitWidth = 820
     object cxSair: TcxButton
       AlignWithMargins = True
       Left = 164

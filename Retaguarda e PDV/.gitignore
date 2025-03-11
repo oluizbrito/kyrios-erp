@@ -1,0 +1,45 @@
+# Arquivos gerados pela compilação
+*.dcu
+*.dcp
+*.dsk
+*.dproj.local
+*.identcache
+*.local
+*.stat
+
+# Binários e artefatos de build
+*.exe
+*.dll
+*.bpl
+*.lib
+*.obj
+*.map
+*.tds
+
+# Arquivos de configuração temporários do Delphi
+*.~*
+*.bak
+*.cfg
+*.res
+*.chm
+
+# Logs e arquivos temporários
+*.log
+*.tmp
+
+# Diretórios de saída
+__history/
+Win32/
+Win64/
+Debug/
+Release/
+
+# Configurações específicas do IDE
+*.tvsconfig
+*.groupproj.local
+
+# Arquivos de backup comuns
+*.~bpl
+*.~dsk
+*.~dproj
+*.~groupproj

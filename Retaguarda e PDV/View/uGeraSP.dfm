@@ -25,8 +25,6 @@ object FrmSpedSP: TFrmSpedSP
     Height = 91
     Align = alBottom
     TabOrder = 0
-    ExplicitTop = 204
-    ExplicitWidth = 511
     object btnExecute: TSpeedButton
       Left = 1
       Top = 1
@@ -345,8 +343,6 @@ object FrmSpedSP: TFrmSpedSP
     Height = 216
     Align = alClient
     TabOrder = 2
-    ExplicitWidth = 511
-    ExplicitHeight = 204
     object Label1: TLabel
       Left = 26
       Top = 17
@@ -576,12 +572,12 @@ object FrmSpedSP: TFrmSpedSP
   end
   object dsContador: TDataSource
     DataSet = DadosSped.qryContador
-    Left = 64
-    Top = 96
+    Left = 192
+    Top = 232
   end
   object dsEmpresa: TDataSource
     DataSet = DadosSped.qryEmpresa
-    Left = 64
-    Top = 40
+    Left = 280
+    Top = 232
   end
 end

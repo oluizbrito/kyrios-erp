@@ -4100,6 +4100,9 @@ begin
     [rfReplaceAll]);
 
   qryPesqProd.ParamByName('EMP').Value := qryVendaFKEMPRESA.Value;
+  if Dados.qryEmpresaPESQUISA_POR_PARTE.Value = 'S' then
+    qryPesqProd.ParamByName('DESCRICAO').Value := '%' + FPesquisa + '%'
+  else
   qryPesqProd.ParamByName('DESCRICAO').Value := FPesquisa + '%';
   qryPesqProd.ResourceOptions.DirectExecute := true;
   qryPesqProd.FetchOptions.RowsetSize := 20;

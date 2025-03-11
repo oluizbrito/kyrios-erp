@@ -38,8 +38,6 @@ object frmEtiquetasFast: TfrmEtiquetasFast
     Panels = <>
     SimplePanel = True
     SimpleText = 'Sair [ ESC ]'
-    ExplicitTop = 586
-    ExplicitWidth = 698
   end
   object GroupBox1: TGroupBox
     AlignWithMargins = True
@@ -50,7 +48,6 @@ object frmEtiquetasFast: TfrmEtiquetasFast
     Align = alTop
     Caption = 'Parametros'
     TabOrder = 1
-    ExplicitWidth = 692
     object Label1: TLabel
       Left = 9
       Top = 15
@@ -179,7 +176,6 @@ object frmEtiquetasFast: TfrmEtiquetasFast
     OnEnter = edtBuscaEnter
     OnKeyDown = edtBuscaKeyDown
     OnKeyPress = edtBuscaKeyPress
-    ExplicitWidth = 692
   end
   object gridBusca: TDBGrid
     AlignWithMargins = True
@@ -238,8 +234,6 @@ object frmEtiquetasFast: TfrmEtiquetasFast
     Align = alClient
     Caption = 'Produtos a Serem Impressos'
     TabOrder = 4
-    ExplicitWidth = 692
-    ExplicitHeight = 233
     object gridProdutos: TDBGrid
       AlignWithMargins = True
       Left = 5

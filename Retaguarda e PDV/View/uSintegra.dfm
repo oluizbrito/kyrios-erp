@@ -13,11 +13,9 @@ object frmSintegra: TfrmSintegra
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poDesktopCenter
   OnActivate = FormActivate
   OnShow = FormShow
-  PixelsPerInch = 96
   TextHeight = 13
   object GroupBox1: TGroupBox
     Left = 0
@@ -411,8 +409,8 @@ object frmSintegra: TfrmSintegra
         'M.situacao =2) and nfm.serie<>'#39'920'#39' and'
       'nfm.fkempresa=:empresa'
       'group by 1,2,3,4,5,6,7,8,9,10,11')
-    Left = 55
-    Top = 128
+    Left = 47
+    Top = 240
     ParamData = <
       item
         Name = 'DT1'
@@ -612,7 +610,7 @@ object frmSintegra: TfrmSintegra
       ''
       '')
     Left = 103
-    Top = 128
+    Top = 240
     ParamData = <
       item
         Name = 'DT1'
@@ -794,8 +792,8 @@ object frmSintegra: TfrmSintegra
       ''
       ''
       '')
-    Left = 151
-    Top = 128
+    Left = 167
+    Top = 240
     ParamData = <
       item
         Name = 'DT1'
@@ -1004,8 +1002,8 @@ object frmSintegra: TfrmSintegra
       ''
       ''
       '')
-    Left = 207
-    Top = 128
+    Left = 223
+    Top = 240
     ParamData = <
       item
         Name = 'DT1'
@@ -1192,8 +1190,8 @@ object frmSintegra: TfrmSintegra
         'NFEM.data_emissao BETWEEN :DT1 AND :DT2  AND NFEM.situacao='#39'2'#39' A' +
         'ND NFEM.serie='#39'920'#39' AND NFEM.fkempresa=:empresa'
       'group by 1,2,3,4,5')
-    Left = 343
-    Top = 128
+    Left = 335
+    Top = 240
     ParamData = <
       item
         Name = 'DT1'
@@ -1324,8 +1322,8 @@ object frmSintegra: TfrmSintegra
         'ND NFEM.serie='#39'920'#39' and nfem.fkempresa=:empresa'
       ')'
       'group by 1,2,3,4,5')
-    Left = 263
-    Top = 128
+    Left = 279
+    Top = 240
     ParamData = <
       item
         Name = 'DT1'
@@ -1539,7 +1537,7 @@ object frmSintegra: TfrmSintegra
       ''
       '')
     Left = 447
-    Top = 128
+    Top = 240
     ParamData = <
       item
         Name = 'DT1'
@@ -1639,8 +1637,8 @@ object frmSintegra: TfrmSintegra
       'having sum(qtde-efiscals)>0'
       'order by 2'
       '')
-    Left = 399
-    Top = 128
+    Left = 391
+    Top = 240
     ParamData = <
       item
         Name = 'DATA'
