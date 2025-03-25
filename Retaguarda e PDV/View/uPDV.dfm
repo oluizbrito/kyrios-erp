@@ -8701,6 +8701,7 @@
   end
   object Timer2: TTimer
     Enabled = False
+    Interval = 5000
     OnTimer = Timer2Timer
     Left = 912
     Top = 392
@@ -11828,5 +11829,12 @@
       Caption = 'Ctrl+M - Atualiza Mesas'
       OnClick = btnAtualizaMesaClick
     end
+  end
+  object Timer3: TTimer
+    Enabled = False
+    Interval = 15000
+    OnTimer = Timer3Timer
+    Left = 1013
+    Top = 388
   end
 end

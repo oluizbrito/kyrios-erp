@@ -11,14 +11,14 @@ uses
   DBLookupEh, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, ACBrSpedFiscal;
+  FireDAC.Comp.Client, ACBrSpedFiscal, cxGraphics, cxLookAndFeels,
+  cxLookAndFeelPainters, Vcl.Menus, cxButtons, cxControls, cxContainer, cxEdit,
+  cxProgressBar;
 
 type
   TFrmSpedSf = class(TForm)
     Panel2: TPanel;
     memoError: TMemo;
-    btnExecute: TSpeedButton;
-    btnSair: TSpeedButton;
     dsContador: TDataSource;
     dsEmpresa: TDataSource;
     Panel3: TPanel;
@@ -36,10 +36,11 @@ type
     ckInventario: TCheckBox;
     CbTipo: TComboBox;
     Label4: TLabel;
-    ACBrSpedFiscal: TACBrSPEDFiscal;
-    procedure btnExecuteClick(Sender: TObject);
+    ACBrSPEDFiscal: TACBrSPEDFiscal;
+    cxGerar: TcxButton;
+    cxSair: TcxButton;
+    cxProgressBar: TcxProgressBar;
     procedure FormCreate(Sender: TObject);
-    procedure btnSairClick(Sender: TObject);
     procedure dtFimExit(Sender: TObject);
     procedure dtIniExit(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -47,10 +48,12 @@ type
     procedure cbContadorExit(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure cxGerarClick(Sender: TObject);
+    procedure cxSairClick(Sender: TObject);
   private
     procedure AbreTabelas;
     procedure Importa;
-
+    function AnoToVersao: TACBrVersaoLeiauteSPEDFiscal;
     { Private declarations }
   public
     procedure GeraBloco0;
@@ -58,7 +61,6 @@ type
     procedure GeraBlocoE;
     procedure GeraBlocoH;
     procedure GeraBlocoB1;
-
     procedure GeraSped;
     procedure NomeCaminho;
     { Public declarations }
@@ -71,7 +73,7 @@ implementation //Acesse lojadodesenvolvedor.com.br e saiba mais sobre esse códig
 
 {$R *.dfm}
 
-uses Udados, udadosSped, uEmail;
+uses Udados, udadosSped, uEmail, ACBrEFDBloco_K_Class, ACBrEFDBloco_K, ACBrEFDBloco_0, ACBrEFDBloco_0_Class;
 
 procedure TFrmSpedSf.NomeCaminho;
 var
@@ -82,6 +84,49 @@ begin
     + inttostr(ano) + '.txt';
   ACBrSpedFiscal.Path := ExtractFilePath(Application.ExeName) + '\Sped';
   ACBrSpedFiscal.Arquivo := edArq.Text;
+end;
+
+function TFrmSpedSf.AnoToVersao: TACBrVersaoLeiauteSPEDFiscal;
+var
+  xVer: string;
+begin
+  if (dtIni.Date >= StrToDate('01/01/2009')) and (dtFim.Date <= StrToDate('31/12/2009')) then
+    xVer := '002'
+  else if (dtIni.Date >= StrToDate('01/01/2010')) and (dtFim.Date <= StrToDate('31/12/2010')) then
+    xVer := '003'
+  else if (dtIni.Date >= StrToDate('01/01/2011')) and (dtFim.Date <= StrToDate('31/12/2011')) then
+    xVer := '004'
+  else if (dtIni.Date >= StrToDate('01/01/2012')) and (dtFim.Date <= StrToDate('30/06/2012')) then
+    xVer := '005'
+  else if (dtIni.Date >= StrToDate('01/07/2012')) and (dtFim.Date <= StrToDate('31/12/2012')) then
+    xVer := '006'
+  else if (dtIni.Date >= StrToDate('01/01/2013')) and (dtFim.Date <= StrToDate('31/12/2013')) then
+    xVer := '007'
+  else if (dtIni.Date >= StrToDate('01/01/2014')) and (dtFim.Date <= StrToDate('31/12/2014')) then
+    xVer := '008'
+  else if (dtIni.Date >= StrToDate('01/01/2015')) and (dtFim.Date <= StrToDate('31/12/2015')) then
+    xVer := '009'
+  else if (dtIni.Date >= StrToDate('01/01/2016')) and (dtFim.Date <= StrToDate('31/12/2016')) then
+    xVer := '010'
+  else if (dtIni.Date >= StrToDate('01/01/2017')) and (dtFim.Date <= StrToDate('31/12/2017')) then
+    xVer := '011'
+  else if (dtIni.Date >= StrToDate('01/01/2018')) and (dtFim.Date <= StrToDate('31/12/2018')) then
+    xVer := '012'
+  else if (dtIni.Date >= StrToDate('01/01/2019')) and (dtFim.Date <= StrToDate('31/12/2019')) then
+    xVer := '013'
+  else if (dtIni.Date >= StrToDate('01/01/2020')) and (dtFim.Date <= StrToDate('31/12/2020')) then
+    xVer := '014'
+  else if (dtIni.Date >= StrToDate('01/01/2021')) and (dtFim.Date <= StrToDate('31/12/2021')) then
+    xVer := '015'
+  else if (dtIni.Date >= StrToDate('01/01/2022')) and (dtFim.Date <= StrToDate('31/12/2022')) then
+    xVer := '016'
+  else if (dtIni.Date >= StrToDate('01/01/2023')) and (dtFim.Date <= StrToDate('31/12/2023')) then
+    xVer := '017'
+  else if (dtIni.Date >= StrToDate('01/01/2024')) and (dtFim.Date <= StrToDate('31/12/2024')) then
+    xVer := '018'
+  else
+    xVer := '019';
+  Result := StrToCodVer(xVer);
 end;
 
 procedure TFrmSpedSf.Importa;
@@ -235,54 +280,38 @@ begin
     Importa;
   end;
 
+
   GeraBloco0;
+
   GeraBlocoC;
+
   GeraBlocoE;
+
   GeraBlocoH;
+
   GeraBlocoB1;
+
+  cxprogressbar.Properties.Text := 'Salvando arquivo SPED...';
+  Application.ProcessMessages;
+
   ACBrSpedFiscal.SaveFileTXT;
 end;
 
 procedure TFrmSpedSf.GeraBloco0;
 begin
+  cxprogressbar.Properties.Text := 'Gerando Bloco 0...';
+  Application.ProcessMessages;
+
   with ACBrSpedFiscal.Bloco_0 do
   begin
     with Registro0000New do
     begin
-      if (dtIni.Date <= strtodate('31/12/2008')) then
-        COD_VER := vlVersao100;
-      if (dtIni.Date <= strtodate('31/12/2009')) then
-        COD_VER := vlVersao101;
-      if (dtIni.Date <= strtodate('31/12/2010')) then
-        COD_VER := vlVersao102;
-      if (dtIni.Date <= strtodate('31/12/2011')) then
-        COD_VER := vlVersao103;
-      if (dtIni.Date <= strtodate('30/06/2012')) then
-        COD_VER := vlVersao104;
-      if (dtIni.Date <= strtodate('31/12/2012')) then
-        COD_VER := vlVersao105;
-      if (dtIni.Date <= strtodate('31/12/2013')) then
-        COD_VER := vlVersao106;
-      if (dtIni.Date <= strtodate('31/12/2014')) then
-        COD_VER := vlVersao107;
-      if (dtIni.Date <= strtodate('31/12/2015')) then
-        COD_VER := vlVersao108;
-      if (dtIni.Date <= strtodate('31/12/2016')) then
-        COD_VER := vlVersao109;
-      if (dtIni.Date <= strtodate('31/12/2017')) then
-        COD_VER := vlVersao110;
-      if (dtIni.Date <= strtodate('31/12/2018')) then
-        COD_VER := vlVersao111;
-      if (dtIni.Date <= strtodate('31/12/2019')) then
-        COD_VER := vlVersao112;
-      if (dtIni.Date <= strtodate('31/12/2020')) then
-        COD_VER := vlVersao113;
+      COD_VER := AnoToVersao;
 
       if CbTipo.Text = 'ORIGINAL' then
         COD_FIN := raOriginal
       else
         COD_FIN := raSubstituto;
-
       NOME := Dados.qryEmpresaRAZAO.Value;
       CNPJ := tirapontos(Dados.qryEmpresacnpj.Value);
       UF := Dados.qryEmpresauf.Value;
@@ -444,6 +473,8 @@ begin
       end; // fim produtos
     end;
   end;
+  cxprogressbar.Position := 15;
+  Application.ProcessMessages;
 end;
 
 procedure TFrmSpedSf.GeraBlocoC;
@@ -451,6 +482,8 @@ var
   codigo: Integer;
 begin
   // Notas de compra e vendas
+  cxprogressbar.Properties.Text := 'Gerando Bloco C (Notas Fiscais)...';
+  Application.ProcessMessages;
 
   with ACBrSpedFiscal.Bloco_C do
   begin
@@ -572,6 +605,9 @@ begin
                   NUM_ITEM := inttostr(codigo);
                   COD_ITEM := Dados.qrySped_C170fk_produto.AsString;
                   DESCR_COMPL := Dados.qrySped_C170DESCRICAO.AsString;
+                  if Dados.qrySped_C170qtd.AsFloat <= 0  then
+                  QTD :=  1
+                  else
                   QTD := Dados.qrySped_C170qtd.AsFloat;
                   Dados.qrySped_Unidade.Locate('CODIGO',
                     Dados.qrySped_C170fk_unidade.Value, []);
@@ -582,6 +618,7 @@ begin
 
                   CST_ICMS := Dados.qrySped_C170cst_icms.Value;
                   CFOP := Dados.qrySped_C170cfop.AsString;
+                  COD_NAT := '99991';
                   VL_BC_ICMS := Dados.qrySped_C170vl_bc_icms.AsFloat;
                   ALIQ_ICMS := Dados.qrySped_C170aliq_icm.AsFloat;
                   VL_ICMS := Dados.qrySped_C170vl_icms.AsFloat;
@@ -598,7 +635,7 @@ begin
                     CST_IPI := Dados.qrySped_C170CST_IPI.AsString
                   else
                     CST_IPI := '49';
-
+                  COD_ENQ := '';
                   VL_BC_IPI := Dados.qrySped_C170vl_bc_ipi.AsFloat;
                   ALIQ_IPI := Dados.qrySped_C170aliq_ipi.AsFloat;
                   VL_IPI := Dados.qrySped_C170vl_ipi.AsFloat;
@@ -626,10 +663,11 @@ begin
 
                   if Dados.qrySped_C170aliq_cofins_perc.AsFloat <= 0 then
                   begin
-                    ALIQ_COFINS_PERC := 0.00;
-                    VL_BC_COFINS := 0.00;
-                    VL_COFINS := 0.00;
+                    ALIQ_COFINS_PERC := 0;
+                    VL_BC_COFINS := 0;
+                    VL_COFINS := 0;
                   end;
+                  COD_CTA := Dados.qrySped_C170cod_cta.Value;
                 end; // fim bloco c170
                 Dados.qrySped_C170.Next;
                 codigo := codigo + 1;
@@ -657,7 +695,7 @@ begin
                 VL_ICMS := Dados.qrySped_C190vl_icms.AsFloat;
                 VL_BC_ICMS_ST := Dados.qrySped_C190vl_bc_icms_st.AsFloat;
                 VL_ICMS_ST := Dados.qrySped_C190vl_icms_st.AsFloat;
-                VL_RED_BC := Dados.qrySped_C190vl_opr.AsFloat;
+                VL_RED_BC := Dados.qrySped_C190VL_RED_BC.AsFloat;
                 VL_IPI := Dados.qrySped_C190vl_ipi.AsFloat;
               end;
               // Fim do bloco c190
@@ -669,11 +707,15 @@ begin
       end; // fim do while c100
     end;
   end;
+  cxprogressbar.Position := 30;
+  Application.ProcessMessages;
 end;
 
 procedure TFrmSpedSf.GeraBlocoE;
 begin
   // Alimenta gerar todos os registros do Bloco E.
+  cxprogressbar.Properties.Text := 'Gerando Bloco E (Apuração ICMS/IPI)...';
+  Application.ProcessMessages;
 
   with ACBrSpedFiscal.Bloco_E do
   begin
@@ -743,10 +785,14 @@ begin
       end;
     end;
   end;
+  cxprogressbar.Position := 45;
+  Application.ProcessMessages;
 end;
 
 procedure TFrmSpedSf.GeraBlocoH;
 begin
+  cxprogressbar.Properties.Text := 'Gerando Bloco H (Inventário)...';
+  Application.ProcessMessages;
 
   Dados.qrySped_H005.Close;
   Dados.qrySped_H005.Open;
@@ -815,10 +861,15 @@ begin
       end;
     end;
   end;
+  cxprogressbar.Position := 60;
+  Application.ProcessMessages;
 end;
 
 procedure TFrmSpedSf.GeraBlocoB1;
 begin
+  cxprogressbar.Properties.Text := 'Gerando Bloco 1 (Informações Complementares)...';
+  Application.ProcessMessages;
+
   with ACBrSpedFiscal.Bloco_1 do
   begin
     with Registro1001New do
@@ -891,13 +942,24 @@ begin
       end;
     end;
   end;
-
+   cxprogressbar.Position := 75;
+  Application.ProcessMessages;
 end;
 
-procedure TFrmSpedSf.btnExecuteClick(Sender: TObject);
+procedure TFrmSpedSf.cbContadorExit(Sender: TObject);
+begin
+  NomeCaminho;
+end;
+
+procedure TFrmSpedSf.cbEmpresaExit(Sender: TObject);
+begin
+  NomeCaminho;
+end;
+
+procedure TFrmSpedSf.cxGerarClick(Sender: TObject);
 begin
   try
-    btnExecute.Enabled := false;
+    cxGerar.Enabled := false;
     memoError.Lines.Clear;
 
     GeraSped;
@@ -911,25 +973,16 @@ begin
       end;
     end
     else
-      ShowMessage('Sped Fiscal Gerado com sucesso');
+      cxprogressbar.Properties.Text := 'Processo finalizado.';
+      cxprogressbar.Position := 100;
   finally
-    btnExecute.Enabled := true;
+    cxGerar.Enabled := true;
   end;
 end;
 
-procedure TFrmSpedSf.btnSairClick(Sender: TObject);
+procedure TFrmSpedSf.cxSairClick(Sender: TObject);
 begin
-  Close;
-end;
-
-procedure TFrmSpedSf.cbContadorExit(Sender: TObject);
-begin
-  NomeCaminho;
-end;
-
-procedure TFrmSpedSf.cbEmpresaExit(Sender: TObject);
-begin
-  NomeCaminho;
+   Close;
 end;
 
 procedure TFrmSpedSf.dtFimExit(Sender: TObject);
@@ -972,9 +1025,9 @@ procedure TFrmSpedSf.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   if Key = VK_F10 then
-    btnExecute.Click;
+    cxGerar.Click;
   if Key = VK_ESCAPE then
-    btnSair.Click;
+    cxSair.Click;
   if Key = VK_RETURN then
     Perform(Wm_NextDlgCtl, 0, 0);
 end;

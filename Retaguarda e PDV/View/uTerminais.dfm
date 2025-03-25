@@ -50,7 +50,7 @@ object frmTerminais: TfrmTerminais
     Top = 0
     Width = 522
     Height = 630
-    ActivePage = TabSheet12
+    ActivePage = TabSheet11
     Align = alClient
     TabOrder = 1
     object TabSheet11: TTabSheet
@@ -2039,7 +2039,7 @@ object frmTerminais: TfrmTerminais
     ConfigBarras.Margem = 0
     InfoRodapeCupom.Imposto.ModoCompacto = False
     Left = 96
-    Top = 104
+    Top = 80
   end
   object OpenDialog1: TOpenDialog
     Left = 80
@@ -2462,6 +2462,6 @@ object frmTerminais: TfrmTerminais
   end
   object JvEnterAsTab1: TJvEnterAsTab
     Left = 96
-    Top = 176
+    Top = 160
   end
 end

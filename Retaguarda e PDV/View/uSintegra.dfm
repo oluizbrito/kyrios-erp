@@ -1,10 +1,12 @@
 object frmSintegra: TfrmSintegra
   Left = 729
   Top = 230
-  BorderStyle = bsSingle
-  Caption = 'Sintegra'
-  ClientHeight = 453
-  ClientWidth = 570
+  BorderStyle = bsDialog
+  Caption = 
+    'Sintegra (Sistema Integrado de Informa'#231#245'es sobre Opera'#231#245'es Inter' +
+    'estaduais com Mercadorias e Servi'#231'os)'
+  ClientHeight = 606
+  ClientWidth = 598
   Color = clBtnFace
   Constraints.MinHeight = 400
   Constraints.MinWidth = 545
@@ -20,87 +22,94 @@ object frmSintegra: TfrmSintegra
   object GroupBox1: TGroupBox
     Left = 0
     Top = 0
-    Width = 570
-    Height = 120
+    Width = 598
+    Height = 185
     Align = alTop
     Caption = ' Cabe'#231'alho do Arquivo '
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 854
     object Label3: TLabel
-      Left = 377
-      Top = 68
-      Width = 54
-      Height = 13
+      Left = 325
+      Top = 128
+      Width = 57
+      Height = 17
       Caption = 'Conv'#234'nio'
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
-      Font.Height = -12
-      Font.Name = 'MS Sans Serif'
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold]
       ParentFont = False
     end
     object Label4: TLabel
-      Left = 3
-      Top = 68
-      Width = 207
-      Height = 13
+      Left = 14
+      Top = 79
+      Width = 221
+      Height = 17
       Caption = 'Natureza das Opera'#231#245'es Informadas'
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
-      Font.Height = -12
-      Font.Name = 'MS Sans Serif'
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold]
       ParentFont = False
     end
     object Label5: TLabel
-      Left = 247
-      Top = 68
-      Width = 59
-      Height = 13
+      Left = 15
+      Top = 128
+      Width = 61
+      Height = 17
       Caption = 'Finalidade'
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
-      Font.Height = -12
-      Font.Name = 'MS Sans Serif'
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold]
       ParentFont = False
     end
     object Label1: TLabel
-      Left = 3
+      Left = 15
       Top = 24
-      Width = 32
-      Height = 13
+      Width = 30
+      Height = 17
       Caption = 'CNPJ'
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
-      Font.Height = -12
-      Font.Name = 'MS Sans Serif'
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold]
       ParentFont = False
     end
     object Label2: TLabel
-      Left = 427
+      Left = 439
       Top = 25
-      Width = 13
-      Height = 13
+      Width = 11
+      Height = 17
       Caption = 'IE'
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
-      Font.Height = -12
-      Font.Name = 'MS Sans Serif'
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold]
       ParentFont = False
     end
     object ComboBox1: TComboBox
-      Left = 377
-      Top = 84
-      Width = 176
-      Height = 21
+      Left = 325
+      Top = 148
+      Width = 240
+      Height = 25
       Style = csDropDownList
       Enabled = False
-      Font.Charset = DEFAULT_CHARSET
+      Font.Charset = ANSI_CHARSET
       Font.Color = clNavy
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ItemIndex = 2
       ParentFont = False
@@ -112,16 +121,16 @@ object frmSintegra: TfrmSintegra
         '3 - Conv'#234'nio 57/95 Alt. 76/03')
     end
     object ComboBox2: TComboBox
-      Left = 3
-      Top = 84
-      Width = 238
-      Height = 21
+      Left = 14
+      Top = 99
+      Width = 551
+      Height = 25
       Style = csDropDownList
       Enabled = False
-      Font.Charset = DEFAULT_CHARSET
+      Font.Charset = ANSI_CHARSET
       Font.Color = clNavy
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ItemIndex = 2
       ParentFont = False
@@ -137,15 +146,15 @@ object frmSintegra: TfrmSintegra
         '3 - Totalidade das opera'#231#245'es do informante')
     end
     object ComboBox3: TComboBox
-      Left = 247
-      Top = 84
-      Width = 124
-      Height = 21
+      Left = 15
+      Top = 148
+      Width = 298
+      Height = 25
       Style = csDropDownList
-      Font.Charset = DEFAULT_CHARSET
+      Font.Charset = ANSI_CHARSET
       Font.Color = clNavy
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ItemIndex = 0
       ParentFont = False
@@ -157,15 +166,15 @@ object frmSintegra: TfrmSintegra
         '5 - Desfazimento de Arquivo')
     end
     object Edit2: TEdit
-      Left = 2
-      Top = 40
+      Left = 14
+      Top = 44
       Width = 419
-      Height = 21
+      Height = 25
       CharCase = ecUpperCase
-      Font.Charset = DEFAULT_CHARSET
+      Font.Charset = ANSI_CHARSET
       Font.Color = clNavy
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       MaxLength = 28
       ParentColor = True
@@ -175,15 +184,15 @@ object frmSintegra: TfrmSintegra
       Text = '11111111111111'
     end
     object Edit3: TEdit
-      Left = 426
-      Top = 40
+      Left = 438
+      Top = 44
       Width = 127
-      Height = 21
+      Height = 25
       CharCase = ecUpperCase
-      Font.Charset = DEFAULT_CHARSET
+      Font.Charset = ANSI_CHARSET
       Font.Color = clNavy
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       MaxLength = 28
       ParentColor = True
@@ -195,26 +204,34 @@ object frmSintegra: TfrmSintegra
   end
   object Panel1: TPanel
     Left = 0
-    Top = 400
-    Width = 570
+    Top = 553
+    Width = 598
     Height = 53
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 400
+    ExplicitWidth = 570
     object Button1: TButton
-      Left = 25
-      Top = 6
-      Width = 75
+      Left = 15
+      Top = 14
+      Width = 90
       Height = 25
       Caption = 'Gerar'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
       TabOrder = 0
       OnClick = Button1Click
     end
   end
   object Memo1: TMemo
     Left = 0
-    Top = 200
-    Width = 570
-    Height = 200
+    Top = 289
+    Width = 598
+    Height = 264
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -224,82 +241,110 @@ object frmSintegra: TfrmSintegra
     ParentFont = False
     ReadOnly = True
     TabOrder = 2
+    ExplicitTop = 200
+    ExplicitWidth = 570
+    ExplicitHeight = 200
   end
   object GroupBox2: TGroupBox
     Left = 0
-    Top = 120
-    Width = 570
-    Height = 80
+    Top = 185
+    Width = 598
+    Height = 104
     Align = alTop
     TabOrder = 3
+    ExplicitWidth = 595
     object GroupBox3: TGroupBox
-      Left = 2
-      Top = 15
+      AlignWithMargins = True
+      Left = 15
+      Top = 6
       Width = 271
-      Height = 63
-      Align = alLeft
+      Height = 83
       Caption = ' Per'#237'odo '
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 0
       object Label7: TLabel
-        Left = 9
-        Top = 19
-        Width = 35
-        Height = 13
+        Left = 22
+        Top = 23
+        Width = 32
+        Height = 17
         Caption = 'Inicial'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
-        Font.Height = -12
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsBold]
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Style = []
         ParentFont = False
       end
       object Label8: TLabel
-        Left = 127
-        Top = 19
-        Width = 28
-        Height = 13
+        Left = 140
+        Top = 23
+        Width = 26
+        Height = 17
         Caption = 'Final'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
-        Font.Height = -12
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsBold]
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Style = []
         ParentFont = False
       end
       object MaskEdit1: TMaskEdit
-        Left = 10
-        Top = 35
+        Left = 23
+        Top = 42
         Width = 88
-        Height = 21
+        Height = 25
         EditMask = '!99/99/0000;1;_'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Style = []
         MaxLength = 10
+        ParentFont = False
         TabOrder = 0
         Text = '01/06/2019'
       end
       object MaskEdit2: TMaskEdit
-        Left = 127
-        Top = 35
+        Left = 140
+        Top = 42
         Width = 88
-        Height = 21
+        Height = 25
         EditMask = '!99/99/0000;1;_'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Style = []
         MaxLength = 10
+        ParentFont = False
         TabOrder = 1
         Text = '30/06/2019'
       end
     end
     object GroupBox4: TGroupBox
-      Left = 273
-      Top = 15
+      AlignWithMargins = True
+      Left = 305
+      Top = 6
       Width = 271
-      Height = 63
-      Align = alLeft
+      Height = 83
       Caption = 'Invent'#225'rio'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 1
       object MaskEdit3: TMaskEdit
-        Left = 168
+        Left = 144
         Top = 35
         Width = 88
-        Height = 21
+        Height = 25
         EditMask = '!99/99/0000;1;_'
         MaxLength = 10
         TabOrder = 0
@@ -332,7 +377,7 @@ object frmSintegra: TfrmSintegra
       'CI.cfop,'
       'CI.aliq_icms,'
       'CO.status,'
-      'SUM(CI.vl_operacao) AS TOTAL,'
+      'sum(CI.vl_item)+SUM(CI.vl_st) TOTAL,'
       'SUM(CI.base_icms) AS BASE,'
       'SUM(CI.base_st) AS BASE_ST,'
       'SUM(CI.vl_icms) AS VALOR,'
@@ -346,7 +391,6 @@ object frmSintegra: TfrmSintegra
         'CO.dtentrada BETWEEN :DT1 AND :DT2 AND CO.STATUS='#39'F'#39' and  co.mod' +
         'elo='#39'55'#39' and co.serie<>'#39'920'#39' and co.EMPRESA=:empresa'
       'group by 1,2,3,4,5,6,7,8,9,10,11'
-      ''
       'union all'
       ''
       ''
@@ -409,8 +453,8 @@ object frmSintegra: TfrmSintegra
         'M.situacao =2) and nfm.serie<>'#39'920'#39' and'
       'nfm.fkempresa=:empresa'
       'group by 1,2,3,4,5,6,7,8,9,10,11')
-    Left = 47
-    Top = 240
+    Left = 55
+    Top = 384
     ParamData = <
       item
         Name = 'DT1'
@@ -609,8 +653,8 @@ object frmSintegra: TfrmSintegra
       ''
       ''
       '')
-    Left = 103
-    Top = 240
+    Left = 135
+    Top = 384
     ParamData = <
       item
         Name = 'DT1'
@@ -716,7 +760,6 @@ object frmSintegra: TfrmSintegra
       'CO.serie,'
       'CO.nr_nota,'
       'CI.cfop,'
-      'CI.aliq_st,'
       'CO.status,'
       'SUM(CI.vl_operacao) AS TOTAL,'
       'SUM(CI.base_st) AS BASE,'
@@ -728,8 +771,8 @@ object frmSintegra: TfrmSintegra
       'where'
       
         'CO.dtentrada BETWEEN :DT1 AND :DT2  AND CO.STATUS='#39'F'#39' and  co.mo' +
-        'delo='#39'55'#39' and (co.total_st>0)'
-      'group by 1,2,3,4,5,6,7,8,9,10,11'
+        'delo='#39'55'#39' and (co.total_st>0)  and ci.base_st > 0'
+      'group by 1,2,3,4,5,6,7,8,9,10'
       ''
       'union all'
       ''
@@ -744,7 +787,6 @@ object frmSintegra: TfrmSintegra
       'NFM.serie,'
       'NFM.numero,'
       'NFD.cfop,'
-      'NFD.aliq_icms_st,'
       'NFM.situacao,'
       'SUM(NFD.vl_operacao) AS TOTAL,'
       'SUM(NFD.base_icms_st) AS BASE,'
@@ -758,7 +800,7 @@ object frmSintegra: TfrmSintegra
       
         'NFM.data_emissao BETWEEN :DT1 AND :DT2 AND CFOP.tipo='#39'E'#39' AND (NF' +
         'M.situacao =2) and (nfm.valor_icms_st>0)'
-      'group by 1,2,3,4,5,6,7,8,9,10,11'
+      'group by 1,2,3,4,5,6,7,8,9,10'
       ''
       'union all'
       ''
@@ -772,7 +814,6 @@ object frmSintegra: TfrmSintegra
       'NFM.serie,'
       'NFM.numero,'
       'NFD.cfop,'
-      'NFD.aliq_icms_st,'
       'NFM.situacao,'
       'SUM(NFD.vl_operacao) AS TOTAL,'
       'SUM(NFD.base_icms_st) AS BASE,'
@@ -786,14 +827,13 @@ object frmSintegra: TfrmSintegra
       
         'NFM.data_emissao BETWEEN :DT1 AND :DT2 AND CFOP.tipo='#39'S'#39' AND (NF' +
         'M.situacao =2) and (nfm.valor_icms_st>0)'
-      'group by 1,2,3,4,5,6,7,8,9,10,11'
-      ''
+      'group by 1,2,3,4,5,6,7,8,9,10'
       ''
       ''
       ''
       '')
-    Left = 167
-    Top = 240
+    Left = 207
+    Top = 392
     ParamData = <
       item
         Name = 'DT1'
@@ -850,13 +890,6 @@ object frmSintegra: TfrmSintegra
       Origin = 'CFOP'
       Size = 4
     end
-    object QRY53ALIQ_ST: TFMTBCDField
-      FieldName = 'ALIQ_ST'
-      Origin = 'ALIQ_ST'
-      DisplayFormat = ',0.00'
-      Precision = 18
-      Size = 2
-    end
     object QRY53STATUS: TStringField
       FieldName = 'STATUS'
       Origin = 'STATUS'
@@ -910,6 +943,7 @@ object frmSintegra: TfrmSintegra
       'ci.desconto,'
       'ci.base_icms,'
       'ci.base_st,'
+      'ci.vl_st,'
       'ci.vl_ipi,'
       'ci.aliq_icms'
       'From compra_itens CI'
@@ -946,6 +980,7 @@ object frmSintegra: TfrmSintegra
       'NFD.desconto,'
       'NFD.base_icms,'
       'NFD.base_icms_st,'
+      '0 vl_st,'
       'NFD.valor_ipi,'
       'NFD.aliq_icms'
       ''
@@ -985,6 +1020,7 @@ object frmSintegra: TfrmSintegra
       'NFD.desconto,'
       'NFD.base_icms,'
       'NFD.base_icms_st,'
+      '0 vl_st,'
       'NFD.valor_ipi,'
       'NFD.aliq_icms'
       ''
@@ -999,11 +1035,10 @@ object frmSintegra: TfrmSintegra
         'FeM.situacao =2) and NFeM.serie<>'#39'920'#39' and'
       'nfem.fkempresa=:empresa'
       ''
-      ''
-      ''
+      'ORDER BY 5,8,12'
       '')
-    Left = 223
-    Top = 240
+    Left = 287
+    Top = 392
     ParamData = <
       item
         Name = 'DT1'
@@ -1145,6 +1180,13 @@ object frmSintegra: TfrmSintegra
       Origin = 'CSOSN'
       Size = 4
     end
+    object QRY54VL_ST: TFMTBCDField
+      FieldName = 'VL_ST'
+      Origin = 'VL_ST'
+      Required = True
+      Precision = 18
+      Size = 6
+    end
   end
   object qry61: TFDQuery
     Connection = Dados.Conexao
@@ -1190,8 +1232,8 @@ object frmSintegra: TfrmSintegra
         'NFEM.data_emissao BETWEEN :DT1 AND :DT2  AND NFEM.situacao='#39'2'#39' A' +
         'ND NFEM.serie='#39'920'#39' AND NFEM.fkempresa=:empresa'
       'group by 1,2,3,4,5')
-    Left = 335
-    Top = 240
+    Left = 463
+    Top = 392
     ParamData = <
       item
         Name = 'DT1'
@@ -1322,8 +1364,8 @@ object frmSintegra: TfrmSintegra
         'ND NFEM.serie='#39'920'#39' and nfem.fkempresa=:empresa'
       ')'
       'group by 1,2,3,4,5')
-    Left = 279
-    Top = 240
+    Left = 391
+    Top = 408
     ParamData = <
       item
         Name = 'DT1'
@@ -1536,8 +1578,8 @@ object frmSintegra: TfrmSintegra
       'order by codigo'
       ''
       '')
-    Left = 447
-    Top = 240
+    Left = 615
+    Top = 392
     ParamData = <
       item
         Name = 'DT1'
@@ -1637,8 +1679,8 @@ object frmSintegra: TfrmSintegra
       'having sum(qtde-efiscals)>0'
       'order by 2'
       '')
-    Left = 391
-    Top = 240
+    Left = 519
+    Top = 392
     ParamData = <
       item
         Name = 'DATA'

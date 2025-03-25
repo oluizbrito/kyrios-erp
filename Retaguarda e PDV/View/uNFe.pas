@@ -3737,7 +3737,7 @@ begin
   Dados.qryExecute.Close;
   Dados.qryExecute.SQL.Text :=
     'SELECT COALESCE(MAX(NUMERO),0) qtd FROM NFE_MASTER WHERE SERIE=:SERIE AND FKEMPRESA=:EMPRESA';
-  Dados.qryExecute.Params[0].Value := Dados.qryConfigSERIE_NFE.Value;
+  Dados.qryExecute.Params[0].Value := dados.qryEmpresaNFE_SERIE.AsString;
   Dados.qryExecute.Params[1].Value := qryVendaFKEMPRESA.Value;
   Dados.qryExecute.Open;
 

@@ -299,7 +299,7 @@ end;
 procedure TfrmAcerta.edtReferenciaChange(Sender: TObject);
 begin
   qryReferencia.Close;
-  qryReferencia.Params[1].Value := edtReferencia.Text;
+  qryReferencia.Params[0].Value := edtReferencia.Text;
   qryReferencia.Open;
   if (qryAcerta.State in dsEditModes) then
     qryAcertaFKPRODUTO.Value := qryReferenciaCODIGO.Value;

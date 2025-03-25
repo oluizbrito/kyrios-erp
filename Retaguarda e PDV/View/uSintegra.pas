@@ -78,7 +78,6 @@ type
     QRY53SERIE: TStringField;
     QRY53NR_NOTA: TStringField;
     QRY53CFOP: TStringField;
-    QRY53ALIQ_ST: TFMTBCDField;
     QRY53STATUS: TStringField;
     QRY53TOTAL: TFMTBCDField;
     QRY53BASE: TFMTBCDField;
@@ -137,6 +136,7 @@ type
     qry50BASE_ST: TFMTBCDField;
     qry50VALOR_ST: TFMTBCDField;
     QRY54CSOSN: TStringField;
+    QRY54VL_ST: TFMTBCDField;
     procedure Button1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -319,12 +319,30 @@ begin
     inscricao := 'ISENTO';
     if trim(qry50IE.Value) <> '' then
       inscricao := qry50IE.Value;
+    if (copy(qry50CFOP.Value,2,3) = '102')  then
+      begin
+        if qry50ALIQ_ICMS.AsFloat > 0 then
 
-    Memo1.Lines.Add(GerarReg50(qry50CNPJ.Value, inscricao,
-      qry50DTENTRADA.AsString, qry50UF.Value, qry50MODELO.Value,
-      qry50SERIE.Value, qry50NR_NOTA.Value, qry50CFOP.Value, emissor,
-      qry50TOTAL.AsFloat, qry50BASE.AsFloat, qry50VALOR.AsFloat, 0,
-      qry50VALOR_ST.AsFloat, qry50ALIQ_ICMS.AsFloat, situacao));
+           Memo1.Lines.Add(GerarReg50(qry50CNPJ.Value, inscricao,
+                 qry50DTENTRADA.AsString, qry50UF.Value, qry50MODELO.Value,
+                 qry50SERIE.Value, qry50NR_NOTA.Value, qry50CFOP.Value, emissor,
+                 qry50TOTAL.AsFloat, qry50BASE.AsFloat, qry50VALOR.AsFloat, 0,
+                 qry50VALOR_ST.AsFloat, qry50ALIQ_ICMS.AsFloat, situacao))
+         else
+           Memo1.Lines.Add(GerarReg50(qry50CNPJ.Value, inscricao,
+                 qry50DTENTRADA.AsString, qry50UF.Value, qry50MODELO.Value,
+                 qry50SERIE.Value, qry50NR_NOTA.Value, qry50CFOP.Value, emissor,
+                 qry50TOTAL.AsFloat, qry50BASE.AsFloat, qry50VALOR.AsFloat, qry50TOTAL.AsFloat,
+                 qry50VALOR_ST.AsFloat, qry50ALIQ_ICMS.AsFloat, situacao));
+      end
+      else
+      begin
+        Memo1.Lines.Add(GerarReg50(qry50CNPJ.Value, inscricao,
+          qry50DTENTRADA.AsString, qry50UF.Value, qry50MODELO.Value,
+          qry50SERIE.Value, qry50NR_NOTA.Value, qry50CFOP.Value, emissor,
+          qry50TOTAL.AsFloat, 0, 0, 0,
+          qry50TOTAL.AsFloat, 0, situacao));
+      end;
     qry50.Next;
   end;
 
@@ -435,11 +453,29 @@ begin
   QRY54.First;
   while not QRY54.Eof do
   begin
-    Memo1.Lines.Add(GerarReg54(QRY54CNPJ.Value, QRY54MODELO.Value,
-      QRY54SERIE.AsString, QRY54NR_NOTA.Value, QRY54CFOP.Value,
-      QRY54CST_ICM.Value,  QRY54CSOSN.Value, QRY54ITEM.AsString, QRY54FK_PRODUTO.AsString,
-      QRY54QTD.AsFloat, QRY54VL_ITEM.AsFloat, 0, QRY54BASE_ICMS.AsFloat,
-      QRY54BASE_ST.AsFloat, QRY54VL_IPI.AsFloat, QRY54ALIQ_ICMS.AsFloat));
+    if (copy(qry54CFOP.Value,2,3) = '102')  then
+    begin
+       Memo1.Lines.Add(GerarReg54(QRY54CNPJ.Value, QRY54MODELO.Value,
+         QRY54SERIE.AsString, QRY54NR_NOTA.Value, QRY54CFOP.Value,
+         QRY54CST_ICM.Value,  QRY54CSOSN.Value, QRY54ITEM.AsString, QRY54FK_PRODUTO.AsString,
+         QRY54QTD.AsFloat, QRY54VL_ITEM.AsFloat, QRY54DESCONTO.AsFloat, QRY54BASE_ICMS.AsFloat,
+         QRY54BASE_ST.AsFloat, QRY54VL_IPI.AsFloat, QRY54ALIQ_ICMS.AsFloat));
+    end
+    else
+    begin
+       if copy(QRY54CFOP.AsString,1,1) <> '2'  then
+         Memo1.Lines.Add(GerarReg54(QRY54CNPJ.Value, QRY54MODELO.Value,
+           QRY54SERIE.AsString, QRY54NR_NOTA.Value, QRY54CFOP.Value,
+           QRY54CST_ICM.Value,  QRY54CSOSN.Value, QRY54ITEM.AsString, QRY54FK_PRODUTO.AsString,
+           QRY54QTD.AsFloat, QRY54VL_ITEM.AsFloat+QRY54VL_ST.AsFloat, QRY54DESCONTO.AsFloat, 0,
+           QRY54BASE_ST.AsFloat, QRY54VL_IPI.AsFloat,0))
+       else
+         Memo1.Lines.Add(GerarReg54(QRY54CNPJ.Value, QRY54MODELO.Value,
+           QRY54SERIE.AsString, QRY54NR_NOTA.Value, QRY54CFOP.Value,
+           QRY54CST_ICM.Value,  QRY54CSOSN.Value, QRY54ITEM.AsString, QRY54FK_PRODUTO.AsString,
+           QRY54QTD.AsFloat, QRY54VL_ITEM.AsFloat, QRY54DESCONTO.AsFloat, 0,
+           QRY54BASE_ST.AsFloat, QRY54VL_IPI.AsFloat,0));
+    end;
     QRY54.Next;
   end;
 

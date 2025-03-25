@@ -41,7 +41,6 @@ type
     dsPlano: TDataSource;
     Label17: TLabel;
     DBLookupCombobox1: TDBLookupComboboxEh;
-    qrySaldoTOTAL: TFMTBCDField;
     qryConta_MovimentoENTRADA: TFMTBCDField;
     qryConta_MovimentoSAIDA: TFMTBCDField;
     frxReport: TfrxReport;
@@ -51,6 +50,7 @@ type
     Label3: TLabel;
     cbTipo: TComboBox;
     ACBrEnterTab1: TACBrEnterTab;
+    qrySaldoTOTAL: TBCDField;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);

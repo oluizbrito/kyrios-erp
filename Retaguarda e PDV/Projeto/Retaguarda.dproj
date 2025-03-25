@@ -137,13 +137,13 @@
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <DCC_ExeOutput>C:\Sistema</DCC_ExeOutput>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Keys>CompanyName=Loja do Desenvoldedor;FileDescription=$(MSBuildProjectName);FileVersion=6.0.0.57;InternalName=;LegalCopyright=Loja do Desenvolvedor;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=6.0;Comments=Versão Final</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=Loja do Desenvoldedor;FileDescription=$(MSBuildProjectName);FileVersion=6.0.0.58;InternalName=;LegalCopyright=Loja do Desenvolvedor;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=6.0;Comments=Versão Final</VerInfo_Keys>
         <AppDPIAwarenessMode>PerMonitor</AppDPIAwarenessMode>
         <VerInfo_MajorVer>6</VerInfo_MajorVer>
         <UsePackages>false</UsePackages>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
-        <VerInfo_Build>57</VerInfo_Build>
+        <VerInfo_Build>58</VerInfo_Build>
         <Icon_MainIcon>Retaguarda_Icon.ico</Icon_MainIcon>
         <UWP_DelphiLogo44>Visual\KYRIOS ico.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>Visual\KYRIOS ico.png</UWP_DelphiLogo150>

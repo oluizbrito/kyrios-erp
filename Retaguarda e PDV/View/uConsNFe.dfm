@@ -3137,7 +3137,7 @@ object frmConsNFe: TfrmConsNFe
           Width = 576.000000000000000000
           Height = 19.200000000000000000
           AutoWidth = True
-          DataSet = FrmPDV.frxDBEmpresa
+          DataSet = frmPrincipal.frxDBEmpresa
           DataSetName = 'frxDBEmpresa'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -3165,7 +3165,7 @@ object frmConsNFe: TfrmConsNFe
           Width = 576.000000000000000000
           Height = 19.200000000000000000
           AutoWidth = True
-          DataSet = FrmPDV.frxDBEmpresa
+          DataSet = frmPrincipal.frxDBEmpresa
           DataSetName = 'frxDBEmpresa'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -3193,7 +3193,7 @@ object frmConsNFe: TfrmConsNFe
           Width = 403.200000000000000000
           Height = 19.200000000000000000
           DataField = 'RAZAO'
-          DataSet = FrmPDV.frxDBEmpresa
+          DataSet = frmPrincipal.frxDBEmpresa
           DataSetName = 'frxDBEmpresa'
           Font.Charset = ANSI_CHARSET
           Font.Color = clBlack
@@ -3212,7 +3212,7 @@ object frmConsNFe: TfrmConsNFe
           Width = 86.400000000000000000
           Height = 76.800000000000000000
           DataField = 'LOGOMARCA'
-          DataSet = FrmPDV.frxDBEmpresa
+          DataSet = frmPrincipal.frxDBEmpresa
           DataSetName = 'frxDBEmpresa'
           Frame.Typ = []
           HightQuality = False
@@ -3226,7 +3226,7 @@ object frmConsNFe: TfrmConsNFe
           Width = 576.000000000000000000
           Height = 19.200000000000000000
           AutoWidth = True
-          DataSet = FrmPDV.frxDBEmpresa
+          DataSet = frmPrincipal.frxDBEmpresa
           DataSetName = 'frxDBEmpresa'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack

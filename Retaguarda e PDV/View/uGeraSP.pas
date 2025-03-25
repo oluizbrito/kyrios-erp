@@ -17,7 +17,6 @@ type
   TFrmSpedSP = class(TForm)
     Panel2: TPanel;
     memoError: TMemo;
-    ACBrSPEDContribuicoes: TACBrSPEDPisCofins;
     btnExecute: TSpeedButton;
     btnSair: TSpeedButton;
     dsContador: TDataSource;
@@ -38,6 +37,7 @@ type
     Label6: TLabel;
     Label7: TLabel;
     edArq: TEdit;
+    ACBrSPEDContribuicoes: TACBrSPEDPisCofins;
     procedure btnExecuteClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnSairClick(Sender: TObject);

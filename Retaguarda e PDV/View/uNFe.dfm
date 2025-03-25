@@ -268,7 +268,7 @@ object frmCadNFe: TfrmCadNFe
       Left = 371
       Top = 24
       Width = 428
-      Height = 19
+      Height = 21
       Ctl3D = False
       ParentCtl3D = False
       DynProps = <>
@@ -293,7 +293,7 @@ object frmCadNFe: TfrmCadNFe
       Left = 830
       Top = 24
       Width = 20
-      Height = 19
+      Height = 21
       TabStop = False
       CharCase = ecUpperCase
       Color = 16053492
@@ -314,7 +314,7 @@ object frmCadNFe: TfrmCadNFe
       Left = 853
       Top = 24
       Width = 121
-      Height = 19
+      Height = 21
       TabStop = False
       CharCase = ecUpperCase
       Color = 16053492
@@ -335,7 +335,7 @@ object frmCadNFe: TfrmCadNFe
       Left = 11
       Top = 99
       Width = 222
-      Height = 19
+      Height = 21
       CharCase = ecUpperCase
       Ctl3D = False
       DataField = 'FINALIDADE'
@@ -369,7 +369,7 @@ object frmCadNFe: TfrmCadNFe
       Left = 678
       Top = 62
       Width = 100
-      Height = 19
+      Height = 21
       CharCase = ecUpperCase
       Color = clWhite
       Ctl3D = False
@@ -388,7 +388,7 @@ object frmCadNFe: TfrmCadNFe
       Left = 789
       Top = 62
       Width = 100
-      Height = 19
+      Height = 21
       CharCase = ecUpperCase
       Color = clWhite
       Ctl3D = False
@@ -407,7 +407,7 @@ object frmCadNFe: TfrmCadNFe
       Left = 239
       Top = 99
       Width = 162
-      Height = 19
+      Height = 21
       Hint = '//'
       CharCase = ecUpperCase
       Ctl3D = False
@@ -438,7 +438,7 @@ object frmCadNFe: TfrmCadNFe
       Left = 572
       Top = 62
       Width = 100
-      Height = 19
+      Height = 21
       CharCase = ecUpperCase
       Color = clWhite
       Ctl3D = False
@@ -472,7 +472,7 @@ object frmCadNFe: TfrmCadNFe
       Left = 87
       Top = 24
       Width = 280
-      Height = 19
+      Height = 21
       TabStop = False
       CharCase = ecUpperCase
       Color = clWhite
@@ -493,7 +493,7 @@ object frmCadNFe: TfrmCadNFe
       Left = 407
       Top = 99
       Width = 269
-      Height = 19
+      Height = 21
       CharCase = ecUpperCase
       Ctl3D = False
       DataField = 'INDPAG'
@@ -527,7 +527,7 @@ object frmCadNFe: TfrmCadNFe
       Left = 682
       Top = 99
       Width = 287
-      Height = 19
+      Height = 21
       CharCase = ecUpperCase
       Ctl3D = False
       DataField = 'TPPAG'
@@ -589,7 +589,7 @@ object frmCadNFe: TfrmCadNFe
       Left = 74
       Top = 62
       Width = 491
-      Height = 19
+      Height = 21
       Ctl3D = False
       ParentCtl3D = False
       DynProps = <>
@@ -617,7 +617,7 @@ object frmCadNFe: TfrmCadNFe
       Left = 11
       Top = 62
       Width = 57
-      Height = 19
+      Height = 21
       CharCase = ecUpperCase
       Color = clWhite
       Ctl3D = False
@@ -874,7 +874,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 12
         Top = 21
         Width = 115
-        Height = 19
+        Height = 21
         TabStop = False
         Color = 16053492
         Ctl3D = False
@@ -894,7 +894,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 374
         Top = 21
         Width = 115
-        Height = 19
+        Height = 21
         TabStop = False
         Color = 16053492
         Ctl3D = False
@@ -914,7 +914,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 494
         Top = 21
         Width = 115
-        Height = 19
+        Height = 21
         TabStop = False
         Color = 16053492
         Ctl3D = False
@@ -934,7 +934,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 375
         Top = 59
         Width = 115
-        Height = 19
+        Height = 21
         TabStop = False
         Color = 16053492
         Ctl3D = False
@@ -954,7 +954,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 496
         Top = 59
         Width = 115
-        Height = 19
+        Height = 21
         TabStop = False
         Color = 16053492
         Ctl3D = False
@@ -974,7 +974,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 616
         Top = 21
         Width = 115
-        Height = 19
+        Height = 21
         TabStop = False
         Color = 16053492
         Ctl3D = False
@@ -994,7 +994,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 737
         Top = 21
         Width = 115
-        Height = 19
+        Height = 21
         TabStop = False
         Color = 16053492
         Ctl3D = False
@@ -1014,7 +1014,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 858
         Top = 21
         Width = 115
-        Height = 19
+        Height = 21
         Ctl3D = False
         DataField = 'FRETE'
         DataSource = dsVenda
@@ -1031,7 +1031,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 12
         Top = 59
         Width = 91
-        Height = 19
+        Height = 21
         Ctl3D = False
         DataField = 'SEGURO'
         DataSource = dsVenda
@@ -1048,7 +1048,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 253
         Top = 21
         Width = 115
-        Height = 19
+        Height = 21
         TabStop = False
         Color = 16053492
         Ctl3D = False
@@ -1068,7 +1068,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 106
         Top = 59
         Width = 91
-        Height = 19
+        Height = 21
         Ctl3D = False
         DataField = 'OUTROS'
         DataSource = dsVenda
@@ -1085,7 +1085,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 199
         Top = 59
         Width = 91
-        Height = 19
+        Height = 21
         Ctl3D = False
         DataField = 'DESCONTO'
         DataSource = dsVenda
@@ -1102,7 +1102,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 858
         Top = 59
         Width = 115
-        Height = 19
+        Height = 21
         TabStop = False
         Color = 16053492
         Ctl3D = False
@@ -1121,7 +1121,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 132
         Top = 21
         Width = 115
-        Height = 19
+        Height = 21
         TabStop = False
         Color = 16053492
         Ctl3D = False
@@ -1141,7 +1141,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 616
         Top = 59
         Width = 115
-        Height = 19
+        Height = 21
         TabStop = False
         Color = 16053492
         Ctl3D = False
@@ -1161,7 +1161,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 737
         Top = 59
         Width = 115
-        Height = 19
+        Height = 21
         TabStop = False
         Color = 16053492
         Ctl3D = False
@@ -1181,7 +1181,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 292
         Top = 59
         Width = 79
-        Height = 19
+        Height = 21
         Color = clWhite
         Ctl3D = False
         DataField = 'TOTAL_DESONERACAO'
@@ -1914,7 +1914,7 @@ object frmCadNFe: TfrmCadNFe
           Left = 7
           Top = 38
           Width = 100
-          Height = 19
+          Height = 21
           CharCase = ecUpperCase
           Color = clWhite
           Ctl3D = False
@@ -1935,7 +1935,7 @@ object frmCadNFe: TfrmCadNFe
           Left = 7
           Top = 77
           Width = 228
-          Height = 19
+          Height = 21
           CharCase = ecUpperCase
           Color = clWhite
           Ctl3D = False
@@ -1955,7 +1955,7 @@ object frmCadNFe: TfrmCadNFe
           Left = 113
           Top = 38
           Width = 88
-          Height = 19
+          Height = 21
           CharCase = ecUpperCase
           Ctl3D = False
           DataField = 'UF_CON_COMB'
@@ -2853,7 +2853,7 @@ object frmCadNFe: TfrmCadNFe
     Left = 16
     Top = 25
     Width = 72
-    Height = 19
+    Height = 27
     TabStop = False
     CharCase = ecUpperCase
     Color = clWhite

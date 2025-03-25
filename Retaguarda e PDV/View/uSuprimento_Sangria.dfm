@@ -12,13 +12,11 @@ object FrmSuprimento_Sangria: TFrmSuprimento_Sangria
   Font.Name = 'Tahoma'
   Font.Style = []
   KeyPreview = True
-  OldCreateOrder = False
   Position = poDesktopCenter
   OnActivate = FormActivate
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnShow = FormShow
-  PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
@@ -485,14 +483,14 @@ object FrmSuprimento_Sangria: TFrmSuprimento_Sangria
       'UNION ALL'
       ''
       
-        'select sum(vf.valor) AS ENTRADA, SUM(0) AS SAIDA  from contas_mo' +
+        'select sum(vf.total) AS ENTRADA, SUM(0) AS SAIDA  from contas_mo' +
         'vimento cm'
       'left join  vendas_fpg vf on cm.fkvenda=vf.vendas_master'
       'left join  forma_pagamento fpg on fpg.codigo=vf.id_forma'
       'where'
       'cm.id_usuario=:id and'
       'cm.lote=:lote  and'
-      'vf.valor>0  and'
+      'vf.total>0  and'
       'fpg.tipo='#39'D'#39' and'
       'cm.fkvenda>0'
       ')')
@@ -511,14 +509,13 @@ object FrmSuprimento_Sangria: TFrmSuprimento_Sangria
         ParamType = ptInput
         Value = Null
       end>
-    object qrySaldoTOTAL: TFMTBCDField
+    object qrySaldoTOTAL: TBCDField
       AutoGenerateValue = arDefault
       FieldName = 'TOTAL'
       Origin = 'TOTAL'
       ProviderFlags = []
       ReadOnly = True
       Precision = 18
-      Size = 2
     end
   end
   object qryConta_Movimento: TFDQuery
@@ -599,8 +596,8 @@ object FrmSuprimento_Sangria: TFrmSuprimento_Sangria
     SQL.Strings = (
       'Select * from plano'
       'ORDER BY DESCRICAO')
-    Left = 326
-    Top = 85
+    Left = 342
+    Top = 53
     object qryPlanoCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -626,7 +623,7 @@ object FrmSuprimento_Sangria: TFrmSuprimento_Sangria
     Top = 125
   end
   object frxReport: TfrxReport
-    Version = '6.8.6'
+    Version = '2022.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -672,6 +669,10 @@ object FrmSuprimento_Sangria: TFrmSuprimento_Sangria
       MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
         Frame.Typ = []
         Height = 381.732530000000000000
         Top = 18.897650000000000000
@@ -972,6 +973,7 @@ object FrmSuprimento_Sangria: TFrmSuprimento_Sangria
     ShowProgress = True
     OverwritePrompt = False
     DataOnly = False
+    EmbedFontsIfProtected = False
     InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
     OpenAfterExport = False
     PrintOptimized = False
@@ -982,6 +984,7 @@ object FrmSuprimento_Sangria: TFrmSuprimento_Sangria
     Transparency = False
     Author = 'FastReport'
     Subject = 'FastReport PDF export'
+    Creator = 'FastReport'
     ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
     HideToolbar = False
     HideMenubar = False
@@ -1011,6 +1014,7 @@ object FrmSuprimento_Sangria: TFrmSuprimento_Sangria
       'SAIDA=SAIDA')
     DataSet = qryConta_Movimento
     BCDToCurrency = False
+    DataSetOptions = []
     Left = 144
     Top = 136
   end
@@ -1149,6 +1153,7 @@ object FrmSuprimento_Sangria: TFrmSuprimento_Sangria
       'CFOP_ENTRADA_PADRO_E=CFOP_ENTRADA_PADRO_E')
     DataSet = Dados.qryEmpresa
     BCDToCurrency = False
+    DataSetOptions = []
     Left = 56
     Top = 136
   end

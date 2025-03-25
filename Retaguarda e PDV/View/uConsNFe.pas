@@ -855,7 +855,7 @@ begin
     frmCadNFe.qryVendaCONSUMIDOR_FINAL.Value := 'N';
     frmCadNFe.qryVendaMODELO.Value := '55';
     frmCadNFe.qryVendaCFOP.Value := 5102;
-    frmCadNFe.qryVendaSERIE.Value := dados.qryConfigSERIE_NFE.AsString;
+    frmCadNFe.qryVendaSERIE.Value := dados.qryEmpresaNFE_SERIE.AsString;
 
     frmCadNFe.cxGravar.Enabled := true;
     frmCadNFe.cxTransmitir.Enabled := true;

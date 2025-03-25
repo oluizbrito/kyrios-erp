@@ -2,7 +2,7 @@ unit uPDV;
 interface //Suporte e Vendas direto no Whatsapp (48)998463846
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics, math, ACBrDevice, shellapi,
+  System.Classes, Vcl.Graphics, math, ACBrDevice, shellapi, System.Threading,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Grids,
   Vcl.DBGrids, Vcl.Buttons, Vcl.ComCtrls, FireDAC.UI.Intf, FireDAC.VCLUI.Wait,
   FireDAC.Comp.UI, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.IBBase,
@@ -423,6 +423,7 @@ type
     SpeedButton8: TSpeedButton;
     AtalhospMduloMesas1: TMenuItem;
     Memo1: TMemo;
+    Timer3: TTimer;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure EdtProdutoPChange(Sender: TObject);
@@ -519,6 +520,7 @@ type
     procedure FormResize(Sender: TObject);
     procedure Image2DblClick(Sender: TObject);
     procedure SpeedButton8Click(Sender: TObject);
+    procedure Timer3Timer(Sender: TObject);
   private
     vSql, vSQLVenda, vSqlBusca: string;
     ehCaixaRapido: string;
@@ -589,7 +591,7 @@ type
     procedure ImprimeRestauranteCozinha;
     procedure AlinhaBotoes;
     procedure CarregaImagem;
-
+    function ChecaValidade: Boolean;
     { Private declarations }
   public
     CodigoGrade: Integer;
@@ -601,6 +603,7 @@ type
     procedure VendaExiste;
     procedure CalcTotalMesa;
     procedure ExibirMensagemProdutoNaoEncontrado;
+    procedure LicencaOnline;
     { Public declarations }
   end;
 var
@@ -613,7 +616,8 @@ uses uFormMensagem, Udados, uAbreCaixa, uSuprimento_Sangria,
   uBuscaPreco, uConsReceber, uPesquisaPrincipio, uSplash, uAcesso,
   uMenuImportarPDV, uConsVendedor, uGrade, uRemoveProduto, uCadPessoa, uResumo,
   uChave, uTransfComanda, uConsEntregador, uTef, uDmNFe, uDmPDV, uDesconhecido,
-  uCadPessoaRapido, udmImpressao, uReimprimir, uDMEstoque, unit_esmaecer_fundo;
+  uCadPessoaRapido, udmImpressao, uReimprimir, uDMEstoque, unit_esmaecer_fundo, uDadosWeb;
+
 
 procedure TfrmPDV.ExibirMensagemProdutoNaoEncontrado;
 begin
@@ -655,23 +659,143 @@ procedure TFrmPDV.Timer1Timer(Sender: TObject);
 begin
   dxStatusBar1.Panels[3].Text := 'Data/Hora :' + DateTimeToStr(now);
 end;
-procedure TFrmPDV.Timer2Timer(Sender: TObject);                                 //Habilite caso queira que o PDV tambem bloqueie com a validade da licença.
+
+function TFrmPDV.ChecaValidade: Boolean;
+var
+  DataValidade: TDate;
 begin
+  Result := false;
+  if (Trim(Dados.qryEmpresaDATA_CADASTRO.AsString) = '') or
+    (Dados.qryEmpresaDATA_CADASTRO.IsNull) then
+  begin
+    Result := true;
+    Dados.ChamaContato('Atenção!' + sLineBreak + 'Chave de registro inválida!');
+    Dados.qryEmpresa.Edit;
+    Dados.qryEmpresaNSERIE.Value := '...';
+    Dados.qryEmpresa.Post;
+    Dados.Conexao.CommitRetaining;
+    Dados.ApagaNumeroSerie;
+    exit;
+  end;
+end;
+
+procedure TFrmPDV.Timer2Timer(Sender: TObject);  // Habilite caso queira que o PDV tambem bloqueie com a validade da licença.
+var
+  DataIni, DataFim, Databloqueio, DataValidade: TDate;
+begin
+
+if not Dados.vRetaguarda then
+  try
     Timer2.Enabled := false;
-        if not Dados.vRetaguarda then
-          begin
-            if Dados.BloqueiaValidade then
-            begin
+    if Dados.FVerificaValidade then
+    begin
+      if Dados.qryEmpresaCHECA.AsString = Dados.crypt('C', 'DEMONSTRACAO') then
+      begin
+        if ChecaValidade then
           try
             frmChave := TfrmChave.Create(Application);
             frmChave.ShowModal;
           finally
             frmChave.Release;
+            Dados.AtualizaTerminal;
+            Dados.vFechaPrograma := true;
+            Application.Terminate;
+          end;
+      end
+      else if Dados.qryEmpresaCHECA.AsString = Dados.crypt('C',
+        'TERMINAL_INVALIDO') then
+      begin
+        ShowMessage('Atenção!' + sLineBreak +
+          'Terminal invalido ou não encontrado!');
+        try
+          frmChave := TfrmChave.Create(Application);
+          frmChave.ShowModal;
+        finally
+          frmChave.Release;
+          Dados.AtualizaTerminal;
+          Dados.vFechaPrograma := true;
+          Application.Terminate;
+        end;
+        exit;
+      end
+      else if Dados.qryEmpresaCHECA.AsString <> Dados.crypt('C', 'DEMONSTRACAO')
+      then
+      begin
+        if (Trim(Dados.qryEmpresaDATA_VALIDADE.Value) = '') or
+          (Dados.qryEmpresaDATA_VALIDADE.IsNull) then
+        begin
+          ShowMessage('Atenção!' + sLineBreak + 'Chave de registro inválida!');
+          try
+            frmChave := TfrmChave.Create(Application);
+            frmChave.ShowModal;
+          finally
+            frmChave.Release;
+            Dados.AtualizaTerminal;
+            Dados.vFechaPrograma := true;
+            Application.Terminate;
+          end;
+          exit;
+        end;
+        if Dados.crypt('D', Dados.qryEmpresaCSENHA.AsString) = 'S' then
+        begin
+          ShowMessage('Atenção!' + sLineBreak +
+            'Licença Bloqueada, entre em contato com o suporte');
+          try
+            frmChave := TfrmChave.Create(Application);
+            frmChave.ShowModal;
+          finally
+            frmChave.Release;
+            Dados.AtualizaTerminal;
+            Dados.vFechaPrograma := true;
             Application.Terminate;
           end;
         end;
+        try
+          Databloqueio :=
+            StrToDateDef(Dados.crypt('D',
+            Dados.qryEmpresaDATA_VALIDADE.Value), Date);
+        except
+          Dados.qryEmpresa.Edit;
+          Dados.qryEmpresaNSERIE.Value := '...';
+          Dados.qryEmpresaDATA_VALIDADE.Value :=
+            Dados.crypt('C', datetostr(Date));
+          Dados.qryEmpresa.Post;
+        end;
+        if (Date > Databloqueio) then
+        begin
+          ShowMessage
+            ('Atenção, sistema bloqueado, entre em contato com o Suporte!');
+          try
+            frmChave := TfrmChave.Create(Application);
+            frmChave.ShowModal;
+          finally
+            frmChave.Release;
+            Dados.AtualizaTerminal;
+            Dados.vFechaPrograma := true;
+            Application.Terminate;
+          end;
+        end;
+      end;
+    end;
+    Dados.FVerificaValidade := false;
+  finally
+
+  end;
+end;
+
+procedure TFrmPDV.Timer3Timer(Sender: TObject);
+var
+  Task: ITask;
+begin
+  Timer3.Enabled := false;
+  if not Dados.vRetaguarda then
+    if not Dados.IsGlobalOffline then
+    begin
+      Task := TTask.Create(LicencaOnline);
+      Task.Start;
     end;
 end;
+
 procedure TFrmPDV.Timer_MesasTimer(Sender: TObject);
 begin
 
@@ -5215,6 +5339,7 @@ begin
     DescricaoSetFocus('');
     ConfiguraBalanca;
     Timer2.Enabled := true;
+    Timer3.Enabled := true;
   end;
 
   CarregaImagem;
@@ -5327,6 +5452,130 @@ begin
       .AsString);
   end;
 
+end;
+
+procedure TfrmPDV.LicencaOnline;
+var
+  ProgressForm: TForm;
+  ProgressBar: TProgressBar;
+  InfoLabel: TLabel;
+begin
+  if (Trim(Dados.qryParametroSERVIDOR_APP.AsString) = '') or
+     (Trim(Dados.qryParametroUSUARIO_LI.AsString) = '') or
+     (Trim(Dados.qryParametroSENHA_LI.AsString) = '') or
+     (Trim(Dados.qryParametroDATABASE_LI.AsString) = '') then
+  begin
+    Exit;
+  end;
+
+  TThread.Synchronize(nil,
+    procedure
+    begin
+      ProgressForm := TForm.Create(nil);
+      try
+        ProgressForm.BorderStyle := bsDialog;
+        ProgressForm.Position := poScreenCenter;
+        ProgressForm.Width := 450;
+        ProgressForm.Height := 150;
+        ProgressForm.Caption := 'Aguarde...';
+        ProgressForm.KeyPreview := True;
+
+        InfoLabel := TLabel.Create(ProgressForm);
+        InfoLabel.Parent := ProgressForm;
+        InfoLabel.Align := alTop;
+        InfoLabel.Alignment := taCenter;
+        InfoLabel.WordWrap := True;
+        InfoLabel.Font.Size := 12;
+        InfoLabel.Font.Style := [fsBold];
+        InfoLabel.Caption := 'Verificando a licença de uso do Sistema';
+
+        ProgressBar := TProgressBar.Create(ProgressForm);
+        ProgressBar.Parent := ProgressForm;
+        ProgressBar.Align := alBottom;
+        ProgressBar.Min := 0;
+        ProgressBar.Max := 100;
+        ProgressBar.Position := 0;
+
+        ProgressForm.Show;
+      except
+        on E: Exception do
+          FreeAndNil(ProgressForm);
+      end;
+    end);
+
+  TThread.CreateAnonymousThread(
+    procedure
+    begin
+      try
+        TThread.Queue(nil,
+          procedure
+          begin
+            Screen.Cursor := crHourGlass;
+            ProgressBar.Position := 10;
+          end);
+
+        DadosWeb.ConexaoChave.Close;
+        DadosWeb.ConexaoChave.Open;
+
+        if DadosWeb.ConexaoChave.Connected then
+        begin
+          TThread.Queue(nil,
+            procedure
+            begin
+              ProgressBar.Position := 30;
+            end);
+
+          DadosWeb.CadastraEmpresa;
+
+          TThread.Queue(nil,
+            procedure
+            begin
+              ProgressBar.Position := 70;
+            end);
+
+          DadosWeb.RetornaSerial;
+
+          TThread.Queue(nil,
+            procedure
+            begin
+              ProgressBar.Position := 100;
+            end);
+        end;
+      except
+        on e: EDatabaseError do
+          TThread.Queue(nil,
+            procedure
+            begin
+              ShowMessage('Não foi possível conectar ao servidor de licenças.' +
+                sLineBreak +
+                'Verifique sua conexão com a internet e tente novamente.');
+            end);
+
+        on e: EAccessViolation do
+          TThread.Queue(nil,
+            procedure
+            begin
+              ShowMessage('Erro interno ao acessar os dados.' + sLineBreak +
+                'Reinicie o sistema e tente novamente.');
+            end);
+
+        on e: Exception do
+          TThread.Queue(nil,
+            procedure
+            begin
+              ShowMessage('Ocorreu um erro inesperado: ' + e.Message +
+                sLineBreak +
+                'Tente novamente ou entre em contato com o suporte.');
+            end);
+      end;
+
+      TThread.Queue(nil,
+        procedure
+        begin
+          Screen.Cursor := crDefault;
+          FreeAndNil(ProgressForm);
+        end);
+    end).Start;
 end;
 
 end.

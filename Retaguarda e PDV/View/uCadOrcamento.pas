@@ -380,12 +380,22 @@ begin
     qryItensO.EnableControls;
   end;
 end;
+
 procedure TfrmCadOrcamento.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   if application.messagebox('Deseja Sair da Tela?', 'Confirmação', mb_yesno) <> mrYes
   then
     Action := caNone;
+
+  if qryItensO.RecordCount = 0 then
+  begin
+    if qryOrcamento.State in [dsInsert, dsEdit] then
+      qryOrcamento.Cancel
+    else
+      qryOrcamento.Delete;
+  end;
 end;
+
 procedure TfrmCadOrcamento.FormCreate(Sender: TObject);
 begin
   if not(Dados.qryEmpresaPESQUISA_POR_PARTE.Value = 'S') then

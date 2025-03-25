@@ -2,7 +2,7 @@ object FrmSpedSP: TFrmSpedSP
   Left = 0
   Top = 0
   BorderStyle = bsDialog
-  Caption = 'Sped Contribui'#231#245'es'
+  Caption = 'SPED Contribui'#231#245'es'
   ClientHeight = 307
   ClientWidth = 515
   Color = clBtnFace
@@ -561,15 +561,6 @@ object FrmSpedSP: TFrmSpedSP
       TabOrder = 7
     end
   end
-  object ACBrSPEDContribuicoes: TACBrSPEDPisCofins
-    Path = 'C:\Program Files (x86)\Embarcadero\RAD Studio\12.0\bin\'
-    Delimitador = '|'
-    ReplaceDelimitador = False
-    TrimString = True
-    CurMascara = '#0.00'
-    Left = 384
-    Top = 8
-  end
   object dsContador: TDataSource
     DataSet = DadosSped.qryContador
     Left = 192
@@ -579,5 +570,14 @@ object FrmSpedSP: TFrmSpedSP
     DataSet = DadosSped.qryEmpresa
     Left = 280
     Top = 232
+  end
+  object ACBrSPEDContribuicoes: TACBrSPEDPisCofins
+    Path = 'C:\Program Files (x86)\Embarcadero\Studio\23.0\bin\'
+    Delimitador = '|'
+    ReplaceDelimitador = False
+    TrimString = True
+    CurMascara = '#0.00'
+    Left = 280
+    Top = 168
   end
 end

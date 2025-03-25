@@ -36,9 +36,6 @@ object frmAcerta: TfrmAcerta
     Align = alClient
     Style = tsButtons
     TabOrder = 0
-    ExplicitTop = 31
-    ExplicitWidth = 819
-    ExplicitHeight = 588
     object Lista: TTabSheet
       Caption = 'Lista'
       TabVisible = False
@@ -565,8 +562,6 @@ object frmAcerta: TfrmAcerta
         Color = clWhite
         ParentBackground = False
         TabOrder = 0
-        ExplicitWidth = 805
-        ExplicitHeight = 515
         object Label1: TLabel
           Left = 20
           Top = 15
@@ -966,8 +961,6 @@ object frmAcerta: TfrmAcerta
         Color = clWhite
         ParentBackground = False
         TabOrder = 1
-        ExplicitTop = 518
-        ExplicitWidth = 805
         object CxGravar: TcxButton
           AlignWithMargins = True
           Left = 6
@@ -1072,8 +1065,6 @@ object frmAcerta: TfrmAcerta
           Font.Style = []
           ParentFont = False
           OnClick = CxGravarClick
-          ExplicitLeft = 163
-          ExplicitTop = 5
         end
         object CxCancelar: TcxButton
           AlignWithMargins = True
@@ -1160,7 +1151,7 @@ object frmAcerta: TfrmAcerta
     Top = 344
   end
   object frxReport: TfrxReport
-    Version = '2022.1.3'
+    Version = '2022.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
