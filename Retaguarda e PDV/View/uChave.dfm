@@ -35,6 +35,8 @@ object frmChave: TfrmChave
     Font.Style = []
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 656
+    ExplicitHeight = 373
     object TabSheet1: TTabSheet
       Caption = 'Ativa'#231#227'o Offline'
       Font.Charset = ANSI_CHARSET
@@ -4450,6 +4452,8 @@ object frmChave: TfrmChave
         Text = 'MAC: '
         Width = 300
       end>
+    ExplicitTop = 373
+    ExplicitWidth = 656
   end
   object Timer1: TTimer
     Interval = 300000
