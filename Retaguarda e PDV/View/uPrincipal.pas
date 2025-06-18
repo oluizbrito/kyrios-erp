@@ -452,6 +452,7 @@ type
     MnListaAniver: TMenuItem;
     MnEtiquetaFast: TMenuItem;
     SpeedButton12: TSpeedButton;
+    MmRotasViagens: TMenuItem;
     procedure MnContatosClick(Sender: TObject);
     procedure MnGrupoClick(Sender: TObject);
     procedure Departamentos1Click(Sender: TObject);
@@ -623,6 +624,7 @@ type
     procedure MnAjustaEstGrupoClick(Sender: TObject);
     procedure MnListaAniverClick(Sender: TObject);
     procedure MnEtiquetaFastClick(Sender: TObject);
+    procedure MmRotasViagensClick(Sender: TObject);
   private
     function ChamaLogin: Boolean;
     function VerificarExisteConexaoComInternet: Boolean;
@@ -675,7 +677,7 @@ uses WinInet, uProdutos, uPessoa, uGrupo, uUnidade, uContas, UpLANO, uCaixa,
   uParPreco, uParCFOP_CSOSN, uParMonofasico, uImportarXMLNFe, uFabricarProduto,
   uAtualizadorAutomatico, uTribNCM, unit_funcoes,
   uCadCompra, Upadrao, unit_msg_confirma, uAcertaGrupo, UAniversariante,
-  uEtiquetasFast;
+  uEtiquetasFast, uConsRotaViagem;
 procedure TfrmPrincipal.prc_esconde_submenus;
 begin
 end;
@@ -1831,10 +1833,11 @@ var
   ProgressBar: TProgressBar;
   InfoLabel: TLabel;
 begin
-  if (Trim(Dados.qryParametroSERVIDOR_APP.AsString) = '50.6.138.85') or
-     (Trim(Dados.qryParametroUSUARIO_LI.AsString) = 'atonap25_admin') or
-     (Trim(Dados.qryParametroSENHA_LI.AsString) = '852456Ky*') or
-     (Trim(Dados.qryParametroDATABASE_LI.AsString) = 'atonap25_licencas') then
+
+  if (Trim(Dados.qryParametroSERVIDOR_APP.AsString) = '') or
+     (Trim(Dados.qryParametroUSUARIO_LI.AsString) = '') or
+     (Trim(Dados.qryParametroSENHA_LI.AsString) = '') or
+     (Trim(Dados.qryParametroDATABASE_LI.AsString) = '') then
   begin
     Exit;
   end;
@@ -1966,6 +1969,7 @@ begin
     tmrWhatsServer.Enabled  :=  true;
   end;
 end;
+
 function TfrmPrincipal.ChecaValidade: Boolean;
 var
   DataValidade: TDate;
@@ -2289,10 +2293,13 @@ begin
     Dados.vFechaPrograma := true;
     Application.Terminate;
   end;
+
   if ChamaLogin then
     exit;
+
   if Dados.vFechaPrograma then
     exit;
+
   TituloEmpresa;
   FileAge(ParamStr(0), vData);
   lbl_usuario.Caption := Dados.vUsuario;
@@ -3246,6 +3253,22 @@ begin
     frmPermissoes.Release;
   end;
 end;
+procedure TfrmPrincipal.MmRotasViagensClick(Sender: TObject);
+begin
+  Dados.aMenu := 'MmRotasViagens';
+
+  if frmConsRotaViagem = NIL then
+  begin
+    Application.Createform(TfrmConsRotaViagem,frmConsRotaViagem);
+  end;
+
+  frmConsRotaViagem.Parent      := pnl_formularios;
+  frmConsRotaViagem.Align       := alClient;
+  frmConsRotaViagem.BorderStyle := bsNone;
+  frmConsRotaViagem.Show;
+  dxStatusBar1.Panels[0].Text := 'Você está na tela de ' + frmConsRotaViagem.Caption;
+end;
+
 procedure TfrmPrincipal.MnAcertaClick(Sender: TObject);
 begin
   Dados.aTag := 1;

@@ -99,6 +99,9 @@
         <VerInfo_Build>46</VerInfo_Build>
         <DCC_ExeOutput>C:\Sistema\</DCC_ExeOutput>
         <VerInfo_Release>3</VerInfo_Release>
+        <Icon_MainIcon>PDV_Icon.ico</Icon_MainIcon>
+        <UWP_DelphiLogo44>Visual\KYRIOS ico.png</UWP_DelphiLogo44>
+        <UWP_DelphiLogo150>Visual\KYRIOS ico.png</UWP_DelphiLogo150>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
@@ -404,6 +407,13 @@
                 </DeployFile>
                 <DeployFile LocalName="C:\Users\LojadoDesenvolvedor\Downloads\Apps-preferences-desktop-launch-feedback-icon (1).png" Configuration="Debug" Class="UWP_DelphiLogo44"/>
                 <DeployFile LocalName="C:\Users\LojadoDesenvolvedor\Downloads\Apps-preferences-desktop-launch-feedback-icon.png" Configuration="Debug" Class="UWP_DelphiLogo150"/>
+                <DeployFile LocalName="Visual\KYRIOS ico.png" Configuration="Release" Class="UWP_DelphiLogo44">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets\</RemoteDir>
+                        <RemoteName>Logo44x44.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="\PDV.exe" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="iOSSimulator">

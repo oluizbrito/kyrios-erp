@@ -1,34 +1,38 @@
 object Dados: TDados
   OnCreate = DataModuleCreate
-  Height = 850
-  Width = 1106
+  Height = 1063
+  Width = 1383
+  PixelsPerInch = 120
   object Conexao: TFDConnection
     Params.Strings = (
-      'DriverID=FB'
       'User_Name=sysdba'
-      'Password=masterkey')
+      'Password=masterkey'
+      'Database=C:\Sistema\Dados\DADOS.FDB'
+      'CharacterSet=WIN1252'
+      'DriverID=FB')
     FetchOptions.AssignedValues = [evMode, evAutoClose]
     FormatOptions.AssignedValues = [fvFmtDisplayDate, fvFmtDisplayNumeric]
     ResourceOptions.AssignedValues = [rvAutoReconnect]
     ResourceOptions.AutoReconnect = True
     UpdateOptions.AssignedValues = [uvAutoCommitUpdates]
     UpdateOptions.AutoCommitUpdates = True
+    Connected = True
     LoginPrompt = False
     Transaction = Transacao
     UpdateTransaction = Transacao
     AfterConnect = ConexaoAfterConnect
-    Left = 24
-    Top = 8
+    Left = 30
+    Top = 10
   end
   object Transacao: TFDTransaction
     Connection = Conexao
-    Left = 24
-    Top = 136
+    Left = 30
+    Top = 170
   end
   object WaitCursor: TFDGUIxWaitCursor
     Provider = 'Forms'
-    Left = 24
-    Top = 192
+    Left = 30
+    Top = 240
   end
   object qryPessoas: TFDQuery
     BeforePost = qryPessoasBeforePost
@@ -40,8 +44,8 @@ object Dados: TDados
       'where '
       'empresa=:id'
       '/*where*/')
-    Left = 160
-    Top = 16
+    Left = 200
+    Top = 20
     ParamData = <
       item
         Name = 'ID'
@@ -370,8 +374,8 @@ object Dados: TDados
     SQL.Strings = (
       'select * from grupo '
       '/*where*/')
-    Left = 240
-    Top = 72
+    Left = 300
+    Top = 90
     object qryGrupoEMPRESA: TIntegerField
       FieldName = 'EMPRESA'
       Origin = 'EMPRESA'
@@ -401,8 +405,8 @@ object Dados: TDados
     Connection = Conexao
     SQL.Strings = (
       'select * from unidade /*where*/')
-    Left = 320
-    Top = 72
+    Left = 400
+    Top = 90
     object qryUnidadeCODIGO: TStringField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -423,13 +427,13 @@ object Dados: TDados
   end
   object qryNumerador: TFDQuery
     Connection = Conexao
-    Left = 160
-    Top = 136
+    Left = 200
+    Top = 170
   end
   object qryExecute: TFDQuery
     Connection = Conexao
-    Left = 240
-    Top = 136
+    Left = 300
+    Top = 170
   end
   object qryFornecedor: TFDQuery
     Connection = Conexao
@@ -438,8 +442,8 @@ object Dados: TDados
       'where'
       'forn='#39'S'#39
       'order by razao')
-    Left = 240
-    Top = 16
+    Left = 300
+    Top = 20
     object qryFornecedorCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -472,8 +476,8 @@ object Dados: TDados
       'SELECT * FROM CONTAS'
       'where'
       'DESCRICAO LIKE :DESCRI')
-    Left = 856
-    Top = 684
+    Left = 1070
+    Top = 855
     ParamData = <
       item
         Name = 'DESCRI'
@@ -551,8 +555,8 @@ object Dados: TDados
       'where'
       'DESCRICAO LIKE :DESCRI and'
       'fkempresa=:id')
-    Left = 704
-    Top = 136
+    Left = 880
+    Top = 170
     ParamData = <
       item
         Name = 'DESCRI'
@@ -610,8 +614,8 @@ object Dados: TDados
       'lc.empresa=:id and'
       'lc.emissao between :data1 and :data2'
       '/*where*/')
-    Left = 464
-    Top = 138
+    Left = 580
+    Top = 173
     ParamData = <
       item
         Name = 'ID'
@@ -855,8 +859,8 @@ object Dados: TDados
       'cr.fkempresa=:id'
       '/*where*/'
       '/*ordem*/')
-    Left = 920
-    Top = 620
+    Left = 1150
+    Top = 775
     ParamData = <
       item
         Name = 'ID'
@@ -1062,8 +1066,8 @@ object Dados: TDados
         'recebimento crr'
       'where'
       'crr.fkreceber=:id')
-    Left = 848
-    Top = 620
+    Left = 1060
+    Top = 775
     ParamData = <
       item
         Name = 'ID'
@@ -1124,8 +1128,8 @@ object Dados: TDados
       'cp.fkempresa=:id'
       '/*where*/'
       '/*ordem*/')
-    Left = 784
-    Top = 684
+    Left = 980
+    Top = 855
     ParamData = <
       item
         Name = 'DOC'
@@ -1299,8 +1303,8 @@ object Dados: TDados
         'pagamento cpp'
       'where'
       'cpp.fkpagar=:id')
-    Left = 785
-    Top = 136
+    Left = 981
+    Top = 170
     ParamData = <
       item
         Name = 'ID'
@@ -1357,8 +1361,8 @@ object Dados: TDados
       'where'
       'pro.empresa=:id'
       'order by pro.descricao')
-    Left = 392
-    Top = 72
+    Left = 490
+    Top = 90
     ParamData = <
       item
         Name = 'ID'
@@ -1955,8 +1959,8 @@ object Dados: TDados
       'left join cidade cid on cid.codigo=emp.id_cidade'
       '/*where*/'
       '/*ordem*/')
-    Left = 456
-    Top = 72
+    Left = 570
+    Top = 90
     object qryEmpresaCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -2868,16 +2872,16 @@ object Dados: TDados
   end
   object qryConsulta: TFDQuery
     Connection = Conexao
-    Left = 712
-    Top = 684
+    Left = 890
+    Top = 855
   end
   object qryUsuarios: TFDQuery
     Connection = Conexao
     SQL.Strings = (
       'select * from usuarios'
       'order by login')
-    Left = 388
-    Top = 15
+    Left = 485
+    Top = 19
     object qryUsuariosCODIGO: TSmallintField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -2949,8 +2953,8 @@ object Dados: TDados
       'where'
       'empresa=:id'
       '/*where*/')
-    Left = 456
-    Top = 15
+    Left = 570
+    Top = 19
     ParamData = <
       item
         Name = 'ID'
@@ -3010,8 +3014,8 @@ object Dados: TDados
       'where'
       'oi.fk_orcamento=:CODIGO'
       'order by oi.item')
-    Left = 536
-    Top = 136
+    Left = 670
+    Top = 170
     ParamData = <
       item
         Name = 'CODIGO'
@@ -3121,8 +3125,8 @@ object Dados: TDados
       'SELECT * FROM FORMA_PAGAMENTO'
       'where'
       'DESCRICAO LIKE :DESCRI')
-    Left = 712
-    Top = 620
+    Left = 890
+    Top = 775
     ParamData = <
       item
         Name = 'DESCRI'
@@ -3264,8 +3268,8 @@ object Dados: TDados
       'select * from VENDAS_TERMINAIS'
       'where nome=:nome'
       'order by NOME')
-    Left = 640
-    Top = 684
+    Left = 800
+    Top = 855
     ParamData = <
       item
         Name = 'NOME'
@@ -3768,8 +3772,8 @@ object Dados: TDados
       'SELECT * FROM VENDAS_PARAMETROS'
       'WHERE'
       'EMPRESA=:ID')
-    Left = 640
-    Top = 620
+    Left = 800
+    Top = 775
     ParamData = <
       item
         Name = 'ID'
@@ -4464,8 +4468,8 @@ object Dados: TDados
       'select * from caixa'
       'where'
       'codigo<-1')
-    Left = 776
-    Top = 16
+    Left = 970
+    Top = 20
     object qryTransfCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -4615,8 +4619,8 @@ object Dados: TDados
     SQL.Strings = (
       'select * from Cidade'
       'order by descricao')
-    Left = 616
-    Top = 72
+    Left = 770
+    Top = 90
     object qryCidadeCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -4644,8 +4648,8 @@ object Dados: TDados
       'select * from CFOP'
       '/*where*/'
       'order by descricao')
-    Left = 568
-    Top = 684
+    Left = 710
+    Top = 855
     object qryCFOPCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -4686,8 +4690,8 @@ object Dados: TDados
       'select * from chave ch'
       'where'
       'ch.maquina=:maq')
-    Left = 568
-    Top = 620
+    Left = 710
+    Top = 775
     ParamData = <
       item
         Name = 'MAQ'
@@ -4725,8 +4729,8 @@ object Dados: TDados
       'vm.data_emissao=current_date and'
       'vm.empresa=:id'
       'group by 1,2,3')
-    Left = 856
-    Top = 136
+    Left = 1070
+    Top = 170
     ParamData = <
       item
         Name = 'CAIXA'
@@ -4784,8 +4788,8 @@ object Dados: TDados
       'where'
       'empresa=:id'
       '/*where*/')
-    Left = 496
-    Top = 684
+    Left = 620
+    Top = 855
     ParamData = <
       item
         Name = 'ID'
@@ -4903,8 +4907,8 @@ object Dados: TDados
     SQL.Strings = (
       'select *   from vendedores'
       'order by nome')
-    Left = 496
-    Top = 620
+    Left = 620
+    Top = 775
     object IntegerField1: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -4947,8 +4951,8 @@ object Dados: TDados
     SQL.Strings = (
       'select * from telas'
       '/*where*/')
-    Left = 424
-    Top = 684
+    Left = 530
+    Top = 855
     object qryTelasCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -4990,8 +4994,8 @@ object Dados: TDados
       'where'
       'pe.fkusuario=:fk'
       'order by te.nome')
-    Left = 152
-    Top = 688
+    Left = 190
+    Top = 860
     ParamData = <
       item
         Name = 'FK'
@@ -5060,8 +5064,8 @@ object Dados: TDados
       'where'
       'fk_venda=:id'
       '')
-    Left = 424
-    Top = 620
+    Left = 530
+    Top = 775
     ParamData = <
       item
         Name = 'ID'
@@ -5146,8 +5150,8 @@ object Dados: TDados
       'SELECT * FROM NFCE_MASTER'
       'WHERE'
       'FK_VENDA=:ID')
-    Left = 336
-    Top = 684
+    Left = 420
+    Top = 855
     ParamData = <
       item
         Name = 'ID'
@@ -5405,8 +5409,8 @@ object Dados: TDados
       'LEFT JOIN PRODUTO PRO ON PRO.CODIGO=ND.ID_PRODUTO'
       'WHERE'
       'ND.FKVENDA=:NFE')
-    Left = 248
-    Top = 684
+    Left = 310
+    Top = 855
     ParamData = <
       item
         Name = 'NFE'
@@ -5686,8 +5690,8 @@ object Dados: TDados
       'where'
       'fkempresa=:empresa'
       '/*where*/')
-    Left = 312
-    Top = 140
+    Left = 390
+    Top = 175
     ParamData = <
       item
         Name = 'EMPRESA'
@@ -5764,8 +5768,8 @@ object Dados: TDados
       'WHERE'
       'cp.fkpagar=:CODIGO'
       'order by 1')
-    Left = 928
-    Top = 16
+    Left = 1160
+    Top = 20
     ParamData = <
       item
         Name = 'CODIGO'
@@ -5860,8 +5864,8 @@ object Dados: TDados
   end
   object dsCP: TDataSource
     DataSet = qryCP
-    Left = 24
-    Top = 484
+    Left = 30
+    Top = 605
   end
   object qryCRRecebimento: TFDQuery
     MasterSource = dsCR
@@ -5872,8 +5876,8 @@ object Dados: TDados
       'WHERE'
       'cR.fkRECEBER=:CODIGO'
       'order by 1')
-    Left = 336
-    Top = 620
+    Left = 420
+    Top = 775
     ParamData = <
       item
         Name = 'CODIGO'
@@ -5974,8 +5978,8 @@ object Dados: TDados
   end
   object dsCR: TDataSource
     DataSet = qryCR
-    Left = 24
-    Top = 404
+    Left = 30
+    Top = 505
   end
   object qryFichaCliente: TFDQuery
     AfterPost = qryFichaClienteAfterPost
@@ -5986,8 +5990,8 @@ object Dados: TDados
       'select pc.*, pes.razao from PESSOA_CONTA pc'
       'left join pessoa pes on pes.codigo=pc.fkpessoa'
       '/*where*/')
-    Left = 616
-    Top = 16
+    Left = 770
+    Top = 20
     object qryFichaClienteCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -6097,8 +6101,8 @@ object Dados: TDados
       'LEFT JOIN vendedores ve on ve.codigo= PV.fk_vendedor'
       'LEFT JOIN contas co on co.codigo= PV.fk_caixa'
       '/*where*/')
-    Left = 248
-    Top = 620
+    Left = 310
+    Top = 775
     object qryPVCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -6306,8 +6310,8 @@ object Dados: TDados
       'WHERE'
       'FKVENDA=:CODIGO'
       'ORDER BY ITEM')
-    Left = 952
-    Top = 548
+    Left = 1190
+    Top = 685
     ParamData = <
       item
         Name = 'CODIGO'
@@ -6460,8 +6464,8 @@ object Dados: TDados
     SQL.Strings = (
       'SELECT CODIGO, FANTASIA FROM EMPRESA'
       'ORDER BY FANTASIA')
-    Left = 880
-    Top = 548
+    Left = 1100
+    Top = 685
     object qryPesqEmpCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -6480,8 +6484,8 @@ object Dados: TDados
     SQL.Strings = (
       'select * from csosn'
       'order by 1')
-    Left = 808
-    Top = 548
+    Left = 1010
+    Top = 685
     object qryCSOSNCODIGO: TStringField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -6505,8 +6509,8 @@ object Dados: TDados
       '     left join grupo gr on gr.codigo=pro.grupo'
       '     left join pessoa pes on pes.codigo=pro.ultforn'
       'order by pro.descricao')
-    Left = 728
-    Top = 548
+    Left = 910
+    Top = 685
     object qryPesqProdCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -6869,8 +6873,8 @@ object Dados: TDados
     Connection = Conexao
     SQL.Strings = (
       'select * from config')
-    Left = 944
-    Top = 484
+    Left = 1180
+    Top = 605
     object qryParametroVERSAO: TIntegerField
       FieldName = 'VERSAO'
       Origin = 'VERSAO'
@@ -7050,8 +7054,8 @@ object Dados: TDados
     SQL.Strings = (
       'select codigo, codbarra, descricao, pr_venda from produto'
       'order by descricao')
-    Left = 776
-    Top = 72
+    Left = 970
+    Top = 90
     object qryPesqProdutoCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -7081,8 +7085,8 @@ object Dados: TDados
       'select * from acerta_estoque ae'
       'where'
       'codigo=-1;')
-    Left = 880
-    Top = 484
+    Left = 1100
+    Top = 605
     object qryAcertaCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -7123,8 +7127,8 @@ object Dados: TDados
       'select * from vendas_terminais VT'
       'WHERE'
       'VT.nome=:VT')
-    Left = 808
-    Top = 484
+    Left = 1010
+    Top = 605
     ParamData = <
       item
         Name = 'VT'
@@ -7222,16 +7226,16 @@ object Dados: TDados
   object IdIPWatch1: TIdIPWatch
     Active = False
     HistoryFilename = 'iphist.dat'
-    Left = 24
-    Top = 340
+    Left = 30
+    Top = 425
   end
   object qryTabPreco: TFDQuery
     Connection = Conexao
     SQL.Strings = (
       'select * from Tabela_preco'
       '/*where*/')
-    Left = 728
-    Top = 484
+    Left = 910
+    Top = 605
     object qryTabPrecoCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -7269,8 +7273,8 @@ object Dados: TDados
       'left join pessoa pe on pe.codigo=pm.fkcliente'
       'where pm.TIPO=:TP'
       '/*where*/')
-    Left = 640
-    Top = 548
+    Left = 800
+    Top = 685
     ParamData = <
       item
         Name = 'TP'
@@ -7496,8 +7500,8 @@ object Dados: TDados
       'where'
       'fkpedido=:codigo'
       'order by 1')
-    Left = 928
-    Top = 142
+    Left = 1160
+    Top = 178
     ParamData = <
       item
         Name = 'CODIGO'
@@ -7579,8 +7583,8 @@ object Dados: TDados
       'select * from pessoa_cobranca'
       'where'
       'fkcliente=:cliente')
-    Left = 632
-    Top = 484
+    Left = 790
+    Top = 605
     ParamData = <
       item
         Name = 'CLIENTE'
@@ -7637,8 +7641,8 @@ object Dados: TDados
       'select * from pessoa_entrega'
       'where'
       'fkcliente=:cliente')
-    Left = 617
-    Top = 136
+    Left = 771
+    Top = 170
     ParamData = <
       item
         Name = 'CLIENTE'
@@ -7694,8 +7698,8 @@ object Dados: TDados
       'select * from TABELA_ICMS'
       'where'
       'origem=:origem')
-    Left = 560
-    Top = 548
+    Left = 700
+    Top = 685
     ParamData = <
       item
         Name = 'ORIGEM'
@@ -7905,8 +7909,8 @@ object Dados: TDados
     SQL.Strings = (
       'select * from veiculos_cavalo'
       '/*where*/')
-    Left = 544
-    Top = 484
+    Left = 680
+    Top = 605
     object qryVeiculos_cavaloPLACA: TStringField
       FieldName = 'PLACA'
       Origin = 'PLACA'
@@ -7983,6 +7987,157 @@ object Dados: TDados
       Precision = 18
       Size = 3
     end
+    object qryVeiculos_cavaloSITUACAO: TStringField
+      FieldName = 'SITUACAO'
+      Origin = 'SITUACAO'
+    end
+    object qryVeiculos_cavaloDATA_CADASTRO: TDateField
+      FieldName = 'DATA_CADASTRO'
+      Origin = 'DATA_CADASTRO'
+      EditMask = '!99/99/0000;1;_'
+    end
+    object qryVeiculos_cavaloDATA_MODIFICACAO: TDateField
+      FieldName = 'DATA_MODIFICACAO'
+      Origin = 'DATA_MODIFICACAO'
+      EditMask = '!99/99/0000;1;_'
+    end
+    object qryVeiculos_cavaloUSUARIO_MODIFICACAO_ID: TIntegerField
+      FieldName = 'USUARIO_MODIFICACAO_ID'
+      Origin = 'USUARIO_MODIFICACAO_ID'
+    end
+    object qryVeiculos_cavaloDATA_AQUISICAO: TDateField
+      FieldName = 'DATA_AQUISICAO'
+      Origin = 'DATA_AQUISICAO'
+      EditMask = '!99/99/0000;1;_'
+    end
+    object qryVeiculos_cavaloVALOR_AQUISICAO: TFMTBCDField
+      FieldName = 'VALOR_AQUISICAO'
+      Origin = 'VALOR_AQUISICAO'
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object qryVeiculos_cavaloVALOR_ALUGUEL_MENSAL: TFMTBCDField
+      FieldName = 'VALOR_ALUGUEL_MENSAL'
+      Origin = 'VALOR_ALUGUEL_MENSAL'
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object qryVeiculos_cavaloVENCIMENTO_ALUGUEL: TDateField
+      FieldName = 'VENCIMENTO_ALUGUEL'
+      Origin = 'VENCIMENTO_ALUGUEL'
+      EditMask = '!99/99/0000;1;_'
+    end
+    object qryVeiculos_cavaloMARCA: TStringField
+      FieldName = 'MARCA'
+      Origin = 'MARCA'
+      Size = 50
+    end
+    object qryVeiculos_cavaloMODELO: TStringField
+      FieldName = 'MODELO'
+      Origin = 'MODELO'
+      Size = 100
+    end
+    object qryVeiculos_cavaloCOR: TStringField
+      FieldName = 'COR'
+      Origin = 'COR'
+      Size = 30
+    end
+    object qryVeiculos_cavaloANO_FABRICACAO: TSmallintField
+      FieldName = 'ANO_FABRICACAO'
+      Origin = 'ANO_FABRICACAO'
+    end
+    object qryVeiculos_cavaloANO_MODELO: TSmallintField
+      FieldName = 'ANO_MODELO'
+      Origin = 'ANO_MODELO'
+    end
+    object qryVeiculos_cavaloALTURA_METROS: TCurrencyField
+      FieldName = 'ALTURA_METROS'
+      Origin = 'ALTURA_METROS'
+    end
+    object qryVeiculos_cavaloCOMPRIMENTO_METROS: TCurrencyField
+      FieldName = 'COMPRIMENTO_METROS'
+      Origin = 'COMPRIMENTO_METROS'
+    end
+    object qryVeiculos_cavaloLARGURA_METROS: TCurrencyField
+      FieldName = 'LARGURA_METROS'
+      Origin = 'LARGURA_METROS'
+    end
+    object qryVeiculos_cavaloCAPACIDADE_CARGA_KG: TFMTBCDField
+      FieldName = 'CAPACIDADE_CARGA_KG'
+      Origin = 'CAPACIDADE_CARGA_KG'
+      Precision = 18
+      Size = 2
+    end
+    object qryVeiculos_cavaloCAPACIDADE_CARGA_M3: TFMTBCDField
+      FieldName = 'CAPACIDADE_CARGA_M3'
+      Origin = 'CAPACIDADE_CARGA_M3'
+      Precision = 18
+      Size = 2
+    end
+    object qryVeiculos_cavaloODOMETRO_ATUAL: TIntegerField
+      FieldName = 'ODOMETRO_ATUAL'
+      Origin = 'ODOMETRO_ATUAL'
+    end
+    object qryVeiculos_cavaloVALOR_IPVA: TFMTBCDField
+      FieldName = 'VALOR_IPVA'
+      Origin = 'VALOR_IPVA'
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object qryVeiculos_cavaloVALOR_LICENCIAMENTO: TFMTBCDField
+      FieldName = 'VALOR_LICENCIAMENTO'
+      Origin = 'VALOR_LICENCIAMENTO'
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object qryVeiculos_cavaloVALOR_SEGURO_OBRIGATORIO: TFMTBCDField
+      FieldName = 'VALOR_SEGURO_OBRIGATORIO'
+      Origin = 'VALOR_SEGURO_OBRIGATORIO'
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object qryVeiculos_cavaloSEGURADORA_NOME: TStringField
+      FieldName = 'SEGURADORA_NOME'
+      Origin = 'SEGURADORA_NOME'
+      Size = 100
+    end
+    object qryVeiculos_cavaloSEGURADORA_APOLICE: TStringField
+      FieldName = 'SEGURADORA_APOLICE'
+      Origin = 'SEGURADORA_APOLICE'
+      Size = 50
+    end
+    object qryVeiculos_cavaloSEGURADORA_VALOR: TFMTBCDField
+      FieldName = 'SEGURADORA_VALOR'
+      Origin = 'SEGURADORA_VALOR'
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object qryVeiculos_cavaloSEGURADORA_DATA_INICIO: TDateField
+      FieldName = 'SEGURADORA_DATA_INICIO'
+      Origin = 'SEGURADORA_DATA_INICIO'
+      EditMask = '!99/99/0000;1;_'
+    end
+    object qryVeiculos_cavaloSEGURADORA_DATA_VENCIMENTO: TDateField
+      FieldName = 'SEGURADORA_DATA_VENCIMENTO'
+      Origin = 'SEGURADORA_DATA_VENCIMENTO'
+      EditMask = '!99/99/0000;1;_'
+    end
+    object qryVeiculos_cavaloSEGURADORA_TIPO_COBERTURA: TStringField
+      FieldName = 'SEGURADORA_TIPO_COBERTURA'
+      Origin = 'SEGURADORA_TIPO_COBERTURA'
+      Size = 50
+    end
+    object qryVeiculos_cavaloOBSERVACOES: TMemoField
+      FieldName = 'OBSERVACOES'
+      Origin = 'OBSERVACOES'
+      BlobType = ftMemo
+    end
   end
   object qryVeiculos_Reboque: TFDQuery
     OnNewRecord = qryVeiculos_ReboqueNewRecord
@@ -7992,8 +8147,8 @@ object Dados: TDados
       'where'
       'placa_cavalo like :placa'
       '')
-    Left = 456
-    Top = 548
+    Left = 570
+    Top = 685
     ParamData = <
       item
         Name = 'PLACA'
@@ -8073,8 +8228,8 @@ object Dados: TDados
   end
   object qryRegistro: TFDQuery
     Connection = Conexao
-    Left = 456
-    Top = 484
+    Left = 570
+    Top = 605
   end
   object qrySped: TFDQuery
     Connection = Conexao
@@ -8086,8 +8241,8 @@ object Dados: TDados
       'fk_empresa=:id and'
       'data_ini =:dtini and'
       'data_fim=:dtfim')
-    Left = 376
-    Top = 484
+    Left = 470
+    Top = 605
     ParamData = <
       item
         Name = 'ID'
@@ -8160,8 +8315,8 @@ object Dados: TDados
       'select  * from sped_config'
       'where '
       'fk_empresa=:id')
-    Left = 344
-    Top = 548
+    Left = 430
+    Top = 685
     ParamData = <
       item
         Name = 'ID'
@@ -8267,8 +8422,8 @@ object Dados: TDados
     SQL.Strings = (
       'select * from contador'
       '/*where*/')
-    Left = 248
-    Top = 548
+    Left = 310
+    Top = 685
     object qrySped_contadorCODIGO: TSmallintField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -8364,8 +8519,8 @@ object Dados: TDados
       'FK_SPED=:D'
       ''
       'order by fk_produto;')
-    Left = 936
-    Top = 420
+    Left = 1170
+    Top = 525
     ParamData = <
       item
         Name = 'D'
@@ -8433,8 +8588,8 @@ object Dados: TDados
       'select * from sped_participantes'
       'where'
       'fk_sped=:sped')
-    Left = 832
-    Top = 420
+    Left = 1040
+    Top = 525
     ParamData = <
       item
         Name = 'SPED'
@@ -8522,8 +8677,8 @@ object Dados: TDados
       'where'
       'FK_SPED=:ID'
       'order by unidade')
-    Left = 720
-    Top = 420
+    Left = 900
+    Top = 525
     ParamData = <
       item
         Name = 'ID'
@@ -8566,8 +8721,8 @@ object Dados: TDados
     FetchOptions.Mode = fmAll
     SQL.Strings = (
       'select * from sped_h005')
-    Left = 624
-    Top = 420
+    Left = 780
+    Top = 525
     object qrySped_H005CODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -8609,8 +8764,8 @@ object Dados: TDados
       'where'
       'fk_h005=:id'
       'order  by codigo')
-    Left = 536
-    Top = 420
+    Left = 670
+    Top = 525
     ParamData = <
       item
         Name = 'ID'
@@ -8701,8 +8856,8 @@ object Dados: TDados
       'WHERE'
       'FK_SPED=:ID'
       'order by ind_oper,num_doc')
-    Left = 448
-    Top = 420
+    Left = 560
+    Top = 525
     ParamData = <
       item
         Name = 'ID'
@@ -8924,8 +9079,8 @@ object Dados: TDados
       'where'
       'fk_c100=:id'
       'order by fk_produto;')
-    Left = 360
-    Top = 420
+    Left = 450
+    Top = 525
     ParamData = <
       item
         Name = 'ID'
@@ -9161,8 +9316,8 @@ object Dados: TDados
       'where'
       'fk_c100=:reg'
       'order by cst_icms,cfop,aliq_icms')
-    Left = 928
-    Top = 348
+    Left = 1160
+    Top = 435
     ParamData = <
       item
         Name = 'REG'
@@ -9268,8 +9423,8 @@ object Dados: TDados
     Connection = Conexao
     SQL.Strings = (
       'select * from veiculo_tipo')
-    Left = 848
-    Top = 348
+    Left = 1060
+    Top = 435
     object qryVeiculo_tipoCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -9287,8 +9442,8 @@ object Dados: TDados
     SQL.Strings = (
       'select * from veiculo_carroceria'
       'order by 2')
-    Left = 280
-    Top = 484
+    Left = 350
+    Top = 605
     object qryVeiculo_CarroceriaCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -9306,8 +9461,8 @@ object Dados: TDados
     SQL.Strings = (
       'select NUMERO from nfce_master where'
       'situacao='#39'O'#39' and data_emissao<current_date')
-    Left = 760
-    Top = 348
+    Left = 950
+    Top = 435
   end
   object qryAjustaPreco: TFDQuery
     Connection = Conexao
@@ -9315,8 +9470,8 @@ object Dados: TDados
       'select * from produto'
       'where'
       'codigo=:cod')
-    Left = 680
-    Top = 348
+    Left = 850
+    Top = 435
     ParamData = <
       item
         Name = 'COD'
@@ -9725,8 +9880,8 @@ object Dados: TDados
   end
   object FBDriver: TFDPhysFBDriverLink
     VendorLib = 'C:\Program Files (x86)\Firebird\Firebird_3_0\fbclient.dll'
-    Left = 24
-    Top = 72
+    Left = 30
+    Top = 90
   end
   object qryClientes: TFDQuery
     Connection = Conexao
@@ -9738,8 +9893,8 @@ object Dados: TDados
       'razao like :razao and'
       'cli='#39'S'#39' '
       'order by razao')
-    Left = 320
-    Top = 14
+    Left = 400
+    Top = 18
     ParamData = <
       item
         Name = 'RAZAO'
@@ -9815,8 +9970,8 @@ object Dados: TDados
     SQL.Strings = (
       'select codigo, login from usuarios'
       'order by codigo')
-    Left = 592
-    Top = 348
+    Left = 740
+    Top = 435
     object qryPesqUsuarioCODIGO: TSmallintField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -9835,8 +9990,8 @@ object Dados: TDados
     SQL.Strings = (
       'select * from principio_ativo'
       '/*where*/')
-    Left = 856
-    Top = 72
+    Left = 1070
+    Top = 90
     object qryPrincipioCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -9855,8 +10010,8 @@ object Dados: TDados
       'select * from Marca'
       '/*where*/'
       '')
-    Left = 534
-    Top = 71
+    Left = 668
+    Top = 89
     object qryMarcaCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -9878,8 +10033,8 @@ object Dados: TDados
     Connection = Conexao
     SQL.Strings = (
       'select * from responsavel_tecnico')
-    Left = 504
-    Top = 348
+    Left = 630
+    Top = 435
     object qryRespTecnicoCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -9922,8 +10077,8 @@ object Dados: TDados
       'select * from Tipo_Tecido'
       '/*where*/'
       '')
-    Left = 416
-    Top = 348
+    Left = 520
+    Top = 435
     object qryTipoTecidoCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -9943,8 +10098,8 @@ object Dados: TDados
     Connection = Conexao
     SQL.Strings = (
       'select * from etiquetas')
-    Left = 336
-    Top = 348
+    Left = 420
+    Top = 435
     object qryEtiquetaCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -10047,8 +10202,8 @@ object Dados: TDados
       'select * from etiqueta_campos'
       'where'
       'fk_etiquetas=:id')
-    Left = 912
-    Top = 284
+    Left = 1140
+    Top = 355
     ParamData = <
       item
         Name = 'ID'
@@ -10104,8 +10259,8 @@ object Dados: TDados
     SQL.Strings = (
       'select * from motivo_desoneracao'
       'order by 1')
-    Left = 824
-    Top = 284
+    Left = 1030
+    Top = 355
     object qryDesoneracaoCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -10126,8 +10281,8 @@ object Dados: TDados
     Connection = Conexao
     SQL.Strings = (
       'select * from etiqueta_impressao')
-    Left = 896
-    Top = 212
+    Left = 1120
+    Top = 265
     object qryEtq_impressaoCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -10157,8 +10312,8 @@ object Dados: TDados
     SQL.Strings = (
       'select * from ENTREGADOR'
       '/*where*/')
-    Left = 536
-    Top = 15
+    Left = 670
+    Top = 19
     object qryEntregadorCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -10173,16 +10328,16 @@ object Dados: TDados
   end
   object qryUpdate: TFDQuery
     Connection = Conexao
-    Left = 744
-    Top = 284
+    Left = 930
+    Top = 355
   end
   object qryPaises: TFDQuery
     Connection = Conexao
     SQL.Strings = (
       'select * from paises'
       'order by nome')
-    Left = 672
-    Top = 284
+    Left = 840
+    Top = 355
     object qryPaisesCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -10207,8 +10362,8 @@ object Dados: TDados
       'select * from tradutor'
       'where'
       'tela=:tela and codigo_idioma=:codigo')
-    Left = 592
-    Top = 284
+    Left = 740
+    Top = 355
     ParamData = <
       item
         Name = 'TELA'
@@ -10260,8 +10415,8 @@ object Dados: TDados
     SQL.Strings = (
       'select * from nfse_lcp'
       'order by descricao')
-    Left = 512
-    Top = 284
+    Left = 640
+    Top = 355
     object qryLCPCODIGO: TStringField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -10287,8 +10442,8 @@ object Dados: TDados
     SQL.Strings = (
       'select * from Idiomas'
       'order by Descricao')
-    Left = 424
-    Top = 284
+    Left = 530
+    Top = 355
     object qryIdiomasCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -10303,8 +10458,8 @@ object Dados: TDados
   end
   object qryNumeroBoleto: TFDQuery
     Connection = Conexao
-    Left = 928
-    Top = 80
+    Left = 1160
+    Top = 100
   end
   object qryMotorista: TFDQuery
     BeforeInsert = qryMotoristaBeforeInsert
@@ -10320,8 +10475,8 @@ object Dados: TDados
       'where '
       'fk_transportadora=:codigo'
       'order by nome')
-    Left = 336
-    Top = 284
+    Left = 420
+    Top = 355
     ParamData = <
       item
         Name = 'CODIGO'
@@ -10347,10 +10502,12 @@ object Dados: TDados
     object qryMotoristaCNH: TStringField
       FieldName = 'CNH'
       Origin = 'CNH'
+      EditMask = '#########\-##;1;_'
     end
     object qryMotoristaVALIDADE: TDateField
       FieldName = 'VALIDADE'
       Origin = 'VALIDADE'
+      EditMask = '!99/99/0000;1;_'
     end
     object qryMotoristaCPF: TStringField
       FieldName = 'CPF'
@@ -10358,11 +10515,62 @@ object Dados: TDados
       EditMask = '###.###.###-##;0;'
       Size = 11
     end
+    object qryMotoristaDATA_NASCIMENTO: TDateField
+      DisplayLabel = 'DATA NASCIMENTO'
+      FieldName = 'DATA_NASCIMENTO'
+      Origin = 'DATA_NASCIMENTO'
+      EditMask = '!99/99/0000;1;_'
+    end
+    object qryMotoristaTELEFONE: TStringField
+      FieldName = 'TELEFONE'
+      Origin = 'TELEFONE'
+      EditMask = '!\(99\)\9 0000-0000;1;_'
+    end
+    object qryMotoristaWHATSAPP: TStringField
+      FieldName = 'WHATSAPP'
+      Origin = 'WHATSAPP'
+      EditMask = '!\(99\)\9 0000-0000;1;_'
+    end
+    object qryMotoristaEMAIL: TStringField
+      FieldName = 'EMAIL'
+      Origin = 'EMAIL'
+      Size = 100
+    end
+    object qryMotoristaCNH_CATEGORIA: TStringField
+      DisplayLabel = 'CNH CATEGORIA'
+      FieldName = 'CNH_CATEGORIA'
+      Origin = 'CNH_CATEGORIA'
+      Size = 5
+    end
+    object qryMotoristaCNH_DATA_EMISSAO: TDateField
+      DisplayLabel = 'CNH DATA EMISS'#195'O'
+      FieldName = 'CNH_DATA_EMISSAO'
+      Origin = 'CNH_DATA_EMISSAO'
+      EditMask = '!99/99/0000;1;_'
+    end
+    object qryMotoristaEXAMES_OBSERVACOES: TMemoField
+      DisplayLabel = 'EXAMES OBSERVA'#199#213'ES'
+      FieldName = 'EXAMES_OBSERVACOES'
+      Origin = 'EXAMES_OBSERVACOES'
+      BlobType = ftMemo
+    end
+    object qryMotoristaEXAMES_DATA_VENCIMENTO: TDateField
+      DisplayLabel = 'EXAMES DATA VENCIMENTO'
+      FieldName = 'EXAMES_DATA_VENCIMENTO'
+      Origin = 'EXAMES_DATA_VENCIMENTO'
+      EditMask = '!99/99/0000;1;_'
+    end
+    object qryMotoristaOBSERVACOES: TMemoField
+      DisplayLabel = 'OBSERVA'#199#213'ES GERAIS'
+      FieldName = 'OBSERVACOES'
+      Origin = 'OBSERVACOES'
+      BlobType = ftMemo
+    end
   end
   object qryAtualiza: TFDQuery
     Connection = Conexao
-    Left = 808
-    Top = 212
+    Left = 1010
+    Top = 265
   end
   object qryMensagemZap: TFDQuery
     Connection = Conexao
@@ -10370,8 +10578,8 @@ object Dados: TDados
       'select * from mensagem_zap'
       'where'
       'codigo=-1')
-    Left = 720
-    Top = 212
+    Left = 900
+    Top = 265
     object qryMensagemZapCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -10437,8 +10645,8 @@ object Dados: TDados
     SQL.Strings = (
       'select * from sabores'
       '/*where*/')
-    Left = 704
-    Top = 72
+    Left = 880
+    Top = 90
     object qrySaboresCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -10466,8 +10674,8 @@ object Dados: TDados
       'where'
       'te.grupo=:grupo and'
       'pe.fkusuario=:usuario')
-    Left = 616
-    Top = 212
+    Left = 770
+    Top = 265
     ParamData = <
       item
         Name = 'GRUPO'
@@ -10508,8 +10716,8 @@ object Dados: TDados
       'SELECT * FROM PRODUTO_IMPOSTOS_PADRAO'
       'WHERE EMPRESA=:EMPRESA'
       'ORDER BY CODIGO')
-    Left = 512
-    Top = 212
+    Left = 640
+    Top = 265
     ParamData = <
       item
         Name = 'EMPRESA'
@@ -10591,8 +10799,8 @@ object Dados: TDados
     Connection = Conexao
     SQL.Strings = (
       'select count(*) as contar from tb_estado')
-    Left = 424
-    Top = 212
+    Left = 530
+    Top = 265
     object qryContarCONTAR: TIntegerField
       AutoGenerateValue = arDefault
       FieldName = 'CONTAR'
@@ -10609,8 +10817,8 @@ object Dados: TDados
       'razao like :razao and'
       'cli='#39'S'#39
       'order by codigo desc')
-    Left = 264
-    Top = 420
+    Left = 330
+    Top = 525
     ParamData = <
       item
         Name = 'RAZAO'
@@ -10644,8 +10852,8 @@ object Dados: TDados
       'where'
       'co.empresa=:id'
       '')
-    Left = 392
-    Top = 136
+    Left = 490
+    Top = 170
     ParamData = <
       item
         Name = 'ID'
@@ -10692,8 +10900,8 @@ object Dados: TDados
       'where'
       'co.empresa=:id'
       '')
-    Left = 336
-    Top = 212
+    Left = 420
+    Top = 265
     ParamData = <
       item
         Name = 'ID'
@@ -10741,8 +10949,8 @@ object Dados: TDados
       'LEFT JOIN vendedores ve on ve.codigo= PV.fk_vendedor'
       'LEFT JOIN contas co on co.codigo= PV.fk_caixa'
       '/*where*/')
-    Left = 248
-    Top = 348
+    Left = 310
+    Top = 435
     object IntegerField3: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -10954,8 +11162,8 @@ object Dados: TDados
       'LEFT JOIN vendedores ve on ve.codigo= PV.fk_vendedor'
       'LEFT JOIN contas co on co.codigo= PV.fk_caixa'
       '/*where*/')
-    Left = 248
-    Top = 284
+    Left = 310
+    Top = 355
     object IntegerField13: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -11163,8 +11371,8 @@ object Dados: TDados
       'empresa=:id and'
       'ativo = '#39'S'#39
       '/*where*/')
-    Left = 248
-    Top = 212
+    Left = 310
+    Top = 265
     ParamData = <
       item
         Name = 'ID'
@@ -11191,8 +11399,8 @@ object Dados: TDados
       'empresa=:id and'
       'qtd_atual <0'
       '/*where*/')
-    Left = 144
-    Top = 548
+    Left = 180
+    Top = 685
     ParamData = <
       item
         Name = 'ID'
@@ -11221,8 +11429,8 @@ object Dados: TDados
       'group by data_emissao'
       ''
       '')
-    Left = 152
-    Top = 620
+    Left = 190
+    Top = 775
     object qryVendaDashLineAtualVALOR: TFMTBCDField
       AutoGenerateValue = arDefault
       FieldName = 'VALOR'
@@ -11253,8 +11461,8 @@ object Dados: TDados
       'group by data_emissao'
       ''
       '')
-    Left = 152
-    Top = 484
+    Left = 190
+    Top = 605
     object qryVendaDashLineAnteriorVALOR2: TFMTBCDField
       AutoGenerateValue = arDefault
       FieldName = 'VALOR2'
@@ -11289,8 +11497,8 @@ object Dados: TDados
       'where'
       'fkempresa=:id and situacao <> '#39'T'#39
       'group by SITUACAO')
-    Left = 152
-    Top = 412
+    Left = 190
+    Top = 515
     ParamData = <
       item
         Name = 'ID'
@@ -11335,8 +11543,8 @@ object Dados: TDados
       'where'
       'fkempresa=:id and situacao <> '#39'T'#39
       'group by SITUACAO')
-    Left = 152
-    Top = 348
+    Left = 190
+    Top = 435
     ParamData = <
       item
         Name = 'ID'
@@ -11377,8 +11585,8 @@ object Dados: TDados
       'cx.emissao = current_date'
       'group by 1'
       'order by 1')
-    Left = 152
-    Top = 284
+    Left = 190
+    Top = 355
     object qrySaldoCaixaDashMOVIMENTO: TStringField
       FieldName = 'MOVIMENTO'
       Origin = 'MOVIMENTO'
@@ -11403,8 +11611,8 @@ object Dados: TDados
       'cx.emissao = current_date'
       'group by 1'
       'order by 1')
-    Left = 152
-    Top = 212
+    Left = 190
+    Top = 265
     object qrySaldoCaixaDash2MOVIMENTO: TStringField
       FieldName = 'MOVIMENTO'
       Origin = 'MOVIMENTO'
@@ -11423,8 +11631,8 @@ object Dados: TDados
     SQL.Strings = (
       'select * from mesas'
       'order by 1')
-    Left = 856
-    Top = 16
+    Left = 1070
+    Top = 20
     object qryMesasCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -11484,8 +11692,8 @@ object Dados: TDados
       'orc.fkempresa=:codigo'
       '/*where*/'
       '/*ordem*/')
-    Left = 696
-    Top = 16
+    Left = 870
+    Top = 20
     ParamData = <
       item
         Name = 'CODIGO'
@@ -11666,8 +11874,8 @@ object Dados: TDados
       'empresa=:id and'
       'fk_usuario=:usu'
       '')
-    Left = 136
-    Top = 768
+    Left = 170
+    Top = 960
     ParamData = <
       item
         Name = 'ID'
@@ -11895,8 +12103,8 @@ object Dados: TDados
       'ID_FORNECEDOR=:cod and'
       'ID_PRODUTO_FORN=:prod and'
       'fkempresa=:id')
-    Left = 288
-    Top = 768
+    Left = 360
+    Top = 960
     ParamData = <
       item
         Name = 'COD'
@@ -11981,8 +12189,8 @@ object Dados: TDados
       'where'
       'co.empresa=:id'
       '')
-    Left = 376
-    Top = 760
+    Left = 470
+    Top = 950
     ParamData = <
       item
         Name = 'ID'
@@ -12272,8 +12480,8 @@ object Dados: TDados
       'fkempresa=:emp'
       ''
       'order by codigo')
-    Left = 216
-    Top = 768
+    Left = 270
+    Top = 960
     ParamData = <
       item
         Name = 'ID'
@@ -12643,8 +12851,8 @@ object Dados: TDados
     SQL.Strings = (
       'select * from boleto_gerenciador bg'
       'where codigo=:codigo')
-    Left = 1018
-    Top = 16
+    Left = 1273
+    Top = 20
     ParamData = <
       item
         Name = 'CODIGO'
@@ -12812,8 +13020,8 @@ object Dados: TDados
     SQL.Strings = (
       'select * from boleto_parametros bp'
       'where (bp.fk_empresa=:emp)')
-    Left = 1024
-    Top = 88
+    Left = 1280
+    Top = 110
     ParamData = <
       item
         Name = 'EMP'
@@ -13035,8 +13243,8 @@ object Dados: TDados
       'where'
       'pro.empresa=:id'
       '/*where*/')
-    Left = 168
-    Top = 80
+    Left = 210
+    Top = 100
     ParamData = <
       item
         Name = 'ID'
@@ -13108,8 +13316,8 @@ object Dados: TDados
       'select * from produto'
       'where'
       'codigo=:id')
-    Left = 942
-    Top = 694
+    Left = 1178
+    Top = 868
     ParamData = <
       item
         Name = 'ID'
@@ -13439,6 +13647,402 @@ object Dados: TDados
       Origin = 'QTD_ATACADO'
       Precision = 18
       Size = 3
+    end
+  end
+  object qryManutencao: TFDQuery
+    AggregatesActive = True
+    Connection = Conexao
+    FormatOptions.AssignedValues = [fvFmtDisplayDate, fvFmtDisplayNumeric]
+    FormatOptions.FmtDisplayDate = '##/##/#####;1;'
+    FormatOptions.FmtDisplayNumeric = ',0.00'
+    SQL.Strings = (
+      'SELECT '
+      '    m.*, '
+      '    mts.NOME AS TIPO_SERVICO '
+      'FROM veiculo_manutencao m'
+      
+        'LEFT JOIN VEICULO_MANUTENCAO_TIPO_SERVICO mts ON mts.CODIGO = m.' +
+        'TIPO_SERVICO_CODIGO'
+      'WHERE'
+      'veiculo_placa LIKE :placa'
+      '')
+    Left = 580
+    Top = 950
+    ParamData = <
+      item
+        Name = 'PLACA'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 7
+        Value = ''
+      end>
+    object qryManutencaoCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      DisplayFormat = ',0.00'
+    end
+    object qryManutencaoVEICULO_PLACA: TStringField
+      FieldName = 'VEICULO_PLACA'
+      Origin = 'VEICULO_PLACA'
+      Size = 7
+    end
+    object qryManutencaoMOTORISTA_CODIGO: TIntegerField
+      FieldName = 'MOTORISTA_CODIGO'
+      Origin = 'MOTORISTA_CODIGO'
+      DisplayFormat = ',0.00'
+    end
+    object qryManutencaoFORNECEDOR_CODIGO: TIntegerField
+      FieldName = 'FORNECEDOR_CODIGO'
+      Origin = 'FORNECEDOR_CODIGO'
+      DisplayFormat = ',0.00'
+    end
+    object qryManutencaoDATA_ENTRADA: TDateField
+      FieldName = 'DATA_ENTRADA'
+      Origin = 'DATA_ENTRADA'
+      EditMask = '!99/99/0000;1;_'
+    end
+    object qryManutencaoHORA_ENTRADA: TTimeField
+      FieldName = 'HORA_ENTRADA'
+      Origin = 'HORA_ENTRADA'
+      EditMask = '!90:00;1;_'
+    end
+    object qryManutencaoDATA_SAIDA: TDateField
+      FieldName = 'DATA_SAIDA'
+      Origin = 'DATA_SAIDA'
+      EditMask = '!99/99/0000;1;_'
+    end
+    object qryManutencaoHORA_SAIDA: TTimeField
+      FieldName = 'HORA_SAIDA'
+      Origin = 'HORA_SAIDA'
+      EditMask = '!90:00;1;_'
+    end
+    object qryManutencaoKM_PROXIMA_REVISAO: TIntegerField
+      FieldName = 'KM_PROXIMA_REVISAO'
+      Origin = 'KM_PROXIMA_REVISAO'
+      DisplayFormat = ',0.00'
+    end
+    object qryManutencaoOBSERVACOES: TMemoField
+      FieldName = 'OBSERVACOES'
+      Origin = 'OBSERVACOES'
+      BlobType = ftMemo
+    end
+    object qryManutencaoTIPO_SERVICO_CODIGO: TIntegerField
+      FieldName = 'TIPO_SERVICO_CODIGO'
+      Origin = 'TIPO_SERVICO_CODIGO'
+      DisplayFormat = ',0.00'
+    end
+    object qryManutencaoTIPO_SERVICO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'TIPO_SERVICO'
+      Origin = 'NOME'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 100
+    end
+  end
+  object qryManutencaoItem: TFDQuery
+    Connection = Conexao
+    Transaction = Transacao
+    UpdateTransaction = Transacao
+    FormatOptions.AssignedValues = [fvFmtDisplayDate, fvFmtDisplayNumeric]
+    FormatOptions.FmtDisplayDate = '##/##/#####;1;'
+    FormatOptions.FmtDisplayNumeric = ',0.00'
+    SQL.Strings = (
+      'select * from veiculo_manutencao_item'
+      'where'
+      'manutencao_codigo like :manutencao_codigo')
+    Left = 720
+    Top = 950
+    ParamData = <
+      item
+        Name = 'MANUTENCAO_CODIGO'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 30
+      end>
+    object qryManutencaoItemCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      DisplayFormat = ',0.00'
+    end
+    object qryManutencaoItemMANUTENCAO_CODIGO: TIntegerField
+      FieldName = 'MANUTENCAO_CODIGO'
+      Origin = 'MANUTENCAO_CODIGO'
+      Required = True
+      DisplayFormat = ',0.00'
+    end
+    object qryManutencaoItemTIPO: TStringField
+      FieldName = 'TIPO'
+      Origin = 'TIPO'
+    end
+    object qryManutencaoItemDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Origin = 'DESCRICAO'
+      Size = 255
+    end
+    object qryManutencaoItemQUANTIDADE: TFMTBCDField
+      FieldName = 'QUANTIDADE'
+      Origin = 'QUANTIDADE'
+      DisplayFormat = ',0.00'
+      Precision = 18
+      Size = 2
+    end
+    object qryManutencaoItemVALOR_UNITARIO: TBCDField
+      FieldName = 'VALOR_UNITARIO'
+      Origin = 'VALOR_UNITARIO'
+      DisplayFormat = ',0.00'
+      Precision = 18
+    end
+    object qryManutencaoItemDESCONTO: TBCDField
+      FieldName = 'DESCONTO'
+      Origin = 'DESCONTO'
+      DisplayFormat = ',0.00'
+      Precision = 18
+    end
+    object qryManutencaoItemVALOR_TOTAL: TFMTBCDField
+      FieldName = 'VALOR_TOTAL'
+      Origin = 'VALOR_TOTAL'
+      DisplayFormat = ',0.00'
+      Precision = 18
+      Size = 6
+    end
+  end
+  object qryManutencaoTipo: TFDQuery
+    AggregatesActive = True
+    Connection = Conexao
+    FormatOptions.AssignedValues = [fvFmtDisplayDate, fvFmtDisplayNumeric]
+    FormatOptions.FmtDisplayDate = '##/##/#####;1;'
+    FormatOptions.FmtDisplayNumeric = ',0.00'
+    SQL.Strings = (
+      'select * from VEICULO_MANUTENCAO_TIPO_SERVICO')
+    Left = 870
+    Top = 950
+    object qryManutencaoTipoCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      DisplayFormat = ',0.00'
+    end
+    object qryManutencaoTipoNOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Required = True
+      Size = 100
+    end
+    object qryManutencaoTipoDESCRICAO: TMemoField
+      FieldName = 'DESCRICAO'
+      Origin = 'DESCRICAO'
+      BlobType = ftMemo
+    end
+  end
+  object qryRota: TFDQuery
+    Connection = Conexao
+    SQL.Strings = (
+      'SELECT * FROM VEICULOS_ROTA'
+      '/*where*/')
+    Left = 984
+    Top = 949
+    object qryRotaCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object qryRotaVEICULO_PLACA: TStringField
+      FieldName = 'VEICULO_PLACA'
+      Origin = 'VEICULO_PLACA'
+      Required = True
+      Size = 10
+    end
+    object qryRotaORIGEM: TStringField
+      FieldName = 'ORIGEM'
+      Origin = 'ORIGEM'
+      Size = 100
+    end
+    object qryRotaDESTINO_FINAL: TStringField
+      FieldName = 'DESTINO_FINAL'
+      Origin = 'DESTINO_FINAL'
+      Size = 100
+    end
+    object qryRotaDATA_SAIDA: TDateField
+      FieldName = 'DATA_SAIDA'
+      Origin = 'DATA_SAIDA'
+      EditMask = '!99/99/0000;1;_'
+    end
+    object qryRotaHORA_SAIDA: TTimeField
+      FieldName = 'HORA_SAIDA'
+      Origin = 'HORA_SAIDA'
+      EditMask = '!90:00;1;_'
+    end
+    object qryRotaDATA_CHEGADA: TDateField
+      FieldName = 'DATA_CHEGADA'
+      Origin = 'DATA_CHEGADA'
+      EditMask = '!99/99/0000;1;_'
+    end
+    object qryRotaHORA_CHEGADA: TTimeField
+      FieldName = 'HORA_CHEGADA'
+      Origin = 'HORA_CHEGADA'
+      EditMask = '!90:00;1;_'
+    end
+    object qryRotaKM_INICIAL: TFMTBCDField
+      FieldName = 'KM_INICIAL'
+      Origin = 'KM_INICIAL'
+      Precision = 18
+      Size = 2
+    end
+    object qryRotaKM_FINAL: TFMTBCDField
+      FieldName = 'KM_FINAL'
+      Origin = 'KM_FINAL'
+      Precision = 18
+      Size = 2
+    end
+    object qryRotaOBSERVACAO: TStringField
+      FieldName = 'OBSERVACAO'
+      Origin = 'OBSERVACAO'
+      Size = 255
+    end
+    object qryRotaSTATUS: TStringField
+      FieldName = 'STATUS'
+      Origin = 'STATUS'
+    end
+  end
+  object qryRotaParadas: TFDQuery
+    Connection = Conexao
+    SQL.Strings = (
+      'SELECT * FROM VEICULOS_ROTA_PARADA'
+      'WHERE'
+      'ROTA_CODIGO = :ROTA_CODIGO')
+    Left = 1072
+    Top = 949
+    ParamData = <
+      item
+        Name = 'ROTA_CODIGO'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+    object qryRotaParadasCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object qryRotaParadasROTA_CODIGO: TIntegerField
+      FieldName = 'ROTA_CODIGO'
+      Origin = 'ROTA_CODIGO'
+      Required = True
+    end
+    object qryRotaParadasORDEM: TIntegerField
+      FieldName = 'ORDEM'
+      Origin = 'ORDEM'
+      Required = True
+    end
+    object qryRotaParadasCLIENTE_CODIGO: TIntegerField
+      FieldName = 'CLIENTE_CODIGO'
+      Origin = 'CLIENTE_CODIGO'
+      Required = True
+    end
+    object qryRotaParadasENDERECO_CLIENTE: TStringField
+      FieldName = 'ENDERECO_CLIENTE'
+      Origin = 'ENDERECO_CLIENTE'
+      Size = 255
+    end
+    object qryRotaParadasKM_DESTINO: TFMTBCDField
+      FieldName = 'KM_DESTINO'
+      Origin = 'KM_DESTINO'
+      Required = True
+      Precision = 18
+      Size = 2
+    end
+    object qryRotaParadasOBSERVACAO: TStringField
+      FieldName = 'OBSERVACAO'
+      Origin = 'OBSERVACAO'
+      Size = 255
+    end
+  end
+  object qryRotaDespesas: TFDQuery
+    Connection = Conexao
+    SQL.Strings = (
+      'SELECT * FROM VEICULO_ROTA_DESPESA'
+      'WHERE'
+      'ROTA_CODIGO = :ROTA_CODIGO')
+    Left = 1192
+    Top = 949
+    ParamData = <
+      item
+        Name = 'ROTA_CODIGO'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+    object qryRotaDespesasCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object qryRotaDespesasROTA_CODIGO: TIntegerField
+      FieldName = 'ROTA_CODIGO'
+      Origin = 'ROTA_CODIGO'
+      Required = True
+    end
+    object qryRotaDespesasTIPO_DESPESA_CODIGO: TIntegerField
+      FieldName = 'TIPO_DESPESA_CODIGO'
+      Origin = 'TIPO_DESPESA_CODIGO'
+      Required = True
+    end
+    object qryRotaDespesasFORNECEDOR_CODIGO: TIntegerField
+      FieldName = 'FORNECEDOR_CODIGO'
+      Origin = 'FORNECEDOR_CODIGO'
+    end
+    object qryRotaDespesasDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Origin = 'DESCRICAO'
+      Size = 255
+    end
+    object qryRotaDespesasVALOR: TFMTBCDField
+      FieldName = 'VALOR'
+      Origin = 'VALOR'
+      Required = True
+      Precision = 18
+      Size = 2
+    end
+    object qryRotaDespesasDATA_VENCIMENTO: TDateField
+      FieldName = 'DATA_VENCIMENTO'
+      Origin = 'DATA_VENCIMENTO'
+      Required = True
+      EditMask = '!99/99/0000;1;_'
+    end
+    object qryRotaDespesasOBSERVACAO: TStringField
+      FieldName = 'OBSERVACAO'
+      Origin = 'OBSERVACAO'
+      Size = 255
+    end
+    object qryRotaDespesasCOMPROVANTE_DOC: TBlobField
+      FieldName = 'COMPROVANTE_DOC'
+      Origin = 'COMPROVANTE_DOC'
+    end
+    object qryRotaDespesasIMPORTADO_FIN: TStringField
+      FieldName = 'IMPORTADO_FIN'
+      Origin = 'IMPORTADO_FIN'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object qryRotaTipoDespesa: TFDQuery
+    Connection = Conexao
+    SQL.Strings = (
+      'SELECT * FROM VEICULO_ROTA_TIPO_DESPESA')
+    Left = 1296
+    Top = 909
+    object qryRotaTipoDespesaCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryRotaTipoDespesaDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Origin = 'DESCRICAO'
+      Required = True
+      Size = 100
     end
   end
 end

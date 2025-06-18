@@ -13,11 +13,9 @@ object frmCadPagar: TfrmCadPagar
   Font.Name = 'Tahoma'
   Font.Style = []
   KeyPreview = True
-  OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poScreenCenter
   OnActivate = FormActivate
   OnKeyDown = FormKeyDown
-  PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     AlignWithMargins = True
@@ -33,9 +31,7 @@ object frmCadPagar: TfrmCadPagar
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 0
-    ExplicitTop = 0
-    ExplicitWidth = 784
+    ExplicitWidth = 778
     ExplicitHeight = 268
     object Label1: TLabel
       Left = 49
@@ -306,7 +302,7 @@ object frmCadPagar: TfrmCadPagar
     end
     object DBEdit5: TDBEdit
       Left = 107
-      Top = 44
+      Top = 42
       Width = 121
       Height = 23
       CharCase = ecUpperCase
@@ -356,9 +352,8 @@ object frmCadPagar: TfrmCadPagar
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
-    ExplicitLeft = -36
-    ExplicitTop = 287
-    ExplicitWidth = 820
+    ExplicitTop = 282
+    ExplicitWidth = 778
     object cxSair: TcxButton
       AlignWithMargins = True
       Left = 164

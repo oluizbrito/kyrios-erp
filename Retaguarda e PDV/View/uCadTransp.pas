@@ -1,6 +1,6 @@
 unit uCadTransp;
 
-interface //Suporte e Vendas direto no Whatsapp (48)998463846
+interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,

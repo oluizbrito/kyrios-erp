@@ -1,5 +1,5 @@
 unit uConsPagar;
-interface //Suporte e Vendas direto no Whatsapp (48)998463846
+interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, math,
@@ -520,6 +520,7 @@ begin
     btnFiltrar.Enabled := true;
   end;
 end;
+
 procedure TfrmConsPagar.btnImpClick(Sender: TObject);
 begin
   try
@@ -536,6 +537,7 @@ begin
       edtLoc.SetFocus;
   end;
 end;
+
 procedure TfrmConsPagar.btnNovoClick(Sender: TObject);
 begin
   if not cxNovo.Visible then

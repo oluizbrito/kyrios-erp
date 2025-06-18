@@ -98,7 +98,7 @@ object frmChave: TfrmChave
           Left = 297
           Top = 51
           Width = 264
-          Height = 27
+          Height = 23
           CharCase = ecUpperCase
           Ctl3D = False
           Font.Charset = ANSI_CHARSET
@@ -115,7 +115,7 @@ object frmChave: TfrmChave
           Left = 297
           Top = 103
           Width = 264
-          Height = 27
+          Height = 23
           CharCase = ecUpperCase
           Ctl3D = False
           Font.Charset = ANSI_CHARSET
@@ -580,7 +580,7 @@ object frmChave: TfrmChave
         end
         object cxProgressBar1: TcxProgressBar
           Left = 1
-          Top = 327
+          Top = 329
           Align = alBottom
           ParentFont = False
           Properties.BeginColor = 54056
@@ -606,7 +606,6 @@ object frmChave: TfrmChave
           StyleHot.LookAndFeel.NativeStyle = False
           StyleHot.LookAndFeel.SkinName = 'Office2019Colorful'
           TabOrder = 6
-          ExplicitTop = 329
           Width = 648
         end
       end

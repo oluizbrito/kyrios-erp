@@ -509,6 +509,8 @@
     Font.Name = 'Segoe UI Semibold'
     Font.Style = [fsBold]
     ParentBiDiMode = False
+    ExplicitTop = 682
+    ExplicitWidth = 1107
   end
   object Panel1: TPanel
     Left = 0
@@ -517,6 +519,7 @@
     Height = 89
     Align = alTop
     TabOrder = 2
+    ExplicitWidth = 1107
     object SpeedButton1: TSpeedButton
       AlignWithMargins = True
       Left = 826
@@ -803,6 +806,8 @@
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 3
+    ExplicitWidth = 1107
+    ExplicitHeight = 593
     object Image1: TImage
       AlignWithMargins = True
       Left = 200
@@ -8307,6 +8312,33 @@
         OnClick = MnFabricarProdutoClick
       end
     end
+    object MnTransportadora: TMenuItem
+      Caption = 'Transportadora'
+      object MnMotorista: TMenuItem
+        Caption = 'Motorista / Transportador'
+        OnClick = MnMotoristaClick
+      end
+      object MnVeiculos: TMenuItem
+        Caption = 'Ve'#237'culos'
+        OnClick = MnVeiculosClick
+      end
+      object MnTomador: TMenuItem
+        Caption = 'Tomador de Servi'#231'o'
+        OnClick = MnTomadorClick
+      end
+      object MnDestinatario: TMenuItem
+        Caption = 'Destinat'#225'rio'
+        OnClick = MnDestinatarioClick
+      end
+      object MnRemetente: TMenuItem
+        Caption = 'Remetente'
+        OnClick = MnRemetenteClick
+      end
+      object MmRotasViagens: TMenuItem
+        Caption = 'Rotas / Viagens'
+        OnClick = MmRotasViagensClick
+      end
+    end
     object MnCompras: TMenuItem
       Caption = 'Compras'
       object MnCompra: TMenuItem
@@ -8487,29 +8519,6 @@
       object MnInventarioporCSOSN: TMenuItem
         Caption = 'Invent'#225'rio por CSOSN / CST'
         OnClick = MnInventarioporCSOSNClick
-      end
-      object MnTransportadora: TMenuItem
-        Caption = 'Transportadora'
-        object MnMotorista: TMenuItem
-          Caption = 'Motorista / Transportador'
-          OnClick = MnMotoristaClick
-        end
-        object MnVeiculos: TMenuItem
-          Caption = 'Ve'#237'culos'
-          OnClick = MnVeiculosClick
-        end
-        object MnTomador: TMenuItem
-          Caption = 'Tomador de Servi'#231'o'
-          OnClick = MnTomadorClick
-        end
-        object MnDestinatario: TMenuItem
-          Caption = 'Destinat'#225'rio'
-          OnClick = MnDestinatarioClick
-        end
-        object MnRemetente: TMenuItem
-          Caption = 'Remetente'
-          OnClick = MnRemetenteClick
-        end
       end
     end
     object MnOS: TMenuItem

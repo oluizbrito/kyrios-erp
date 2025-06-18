@@ -175,7 +175,6 @@ end;
 
 procedure TfrmCadPagar.cxGravarClick(Sender: TObject);
 begin
-
   DBEdit2.SetFocus;
 
   if qryCP.State in [dsInsert, dsEdit] then

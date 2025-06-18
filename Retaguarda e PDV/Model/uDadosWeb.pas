@@ -275,24 +275,32 @@ begin
 
     if ServidorAPP <> '' then
       ConexaoAPP.Params.Values['Server'] := ServidorAPP;
+
     if DatabaseAPP <> '' then
       ConexaoAPP.Params.Values['Database'] := dados.crypt('D', DatabaseAPP);
+
     if UsuarioAPP <> '' then
       ConexaoAPP.Params.Values['User_Name'] := dados.crypt('D', UsuarioAPP);
+
     if SenhaAPP <> '' then
       ConexaoAPP.Params.Values['Password'] := dados.crypt('D', SenhaAPP);
+
     if ServidorLI <> '' then
       ConexaoChave.Params.Values['Server'] := ServidorLI;
+
     if DatabaseLI <> '' then
-      ConexaoChave.Params.Values['Database'] := dados.crypt('D', DatabaseLI);
+      ConexaoChave.Params.Values['Database'] := 'atonap25_licencas';//dados.crypt('D', DatabaseLI);
+
     if UsuarioLI <> '' then
       ConexaoChave.Params.Values['User_Name'] := dados.crypt('D', UsuarioLI)
     else
       ConexaoChave.Params.Values['User_Name'] := dados.crypt('D', UsuarioAPP);
+
     if SenhaLI <> '' then
       ConexaoChave.Params.Values['Password'] := dados.crypt('D', SenhaLI)
     else
       ConexaoChave.Params.Values['Password'] := dados.crypt('D', SenhaAPP);
+
   except
     on E: Exception do
       ShowMessage('Erro ao carregar os dados de conexão: ' + E.Message);

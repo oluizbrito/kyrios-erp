@@ -246,10 +246,10 @@ end;
 
 procedure TfrmChave.cxButton1Click(Sender: TObject);
 begin
-if (Trim(Dados.qryParametroSERVIDOR_APP.AsString) = '50.6.138.85') or
-    (Trim(Dados.qryParametroUSUARIO_LI.AsString) = 'atonap25_admin') or
-    (Trim(Dados.qryParametroSENHA_LI.AsString) = '852456Ky*') or
-    (Trim(Dados.qryParametroDATABASE_LI.AsString) = 'atonap25_licencas') then
+if (Trim(Dados.qryParametroSERVIDOR_APP.AsString) = '') or
+    (Trim(Dados.qryParametroUSUARIO_LI.AsString) = '') or
+    (Trim(Dados.qryParametroSENHA_LI.AsString) = '') or
+    (Trim(Dados.qryParametroDATABASE_LI.AsString) = '') then
   begin
     Showmessage('As informações do servidor de licenças não estão preenchidas.'  + #13#10 + 'Por favor utilize o modo de ativação Offline, ou entre em contato com o suporte.');
     PageControl1.TabIndex := 0;
