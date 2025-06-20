@@ -518,6 +518,9 @@ begin
   Dados.qryCidade.close;
   Dados.qryCidade.Open;
 
+  Dados.qryVeiculos_Cavalo.close;
+  Dados.qryVeiculos_Cavalo.Open;
+
   Dados.qryVeiculo_Carroceria.close;
   Dados.qryVeiculo_Carroceria.Open;
 
@@ -616,6 +619,9 @@ begin
 
     Dados.qryManutencao.Post;
     Dados.Conexao.CommitRetaining;
+
+    Dados.qryManutencao.Close;
+    Dados.qryManutencao.Open;
   end;
 
   PageControlManutencao.ActivePage := ListaManutencao;

@@ -16,7 +16,6 @@ object Dados: TDados
     ResourceOptions.AutoReconnect = True
     UpdateOptions.AssignedValues = [uvAutoCommitUpdates]
     UpdateOptions.AutoCommitUpdates = True
-    Connected = True
     LoginPrompt = False
     Transaction = Transacao
     UpdateTransaction = Transacao
