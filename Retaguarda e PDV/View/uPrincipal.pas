@@ -452,7 +452,7 @@ type
     MnListaAniver: TMenuItem;
     MnEtiquetaFast: TMenuItem;
     SpeedButton12: TSpeedButton;
-    ProdutosLucratividades1: TMenuItem;
+    MmRotasViagens: TMenuItem;
     procedure MnContatosClick(Sender: TObject);
     procedure MnGrupoClick(Sender: TObject);
     procedure Departamentos1Click(Sender: TObject);
@@ -624,7 +624,7 @@ type
     procedure MnAjustaEstGrupoClick(Sender: TObject);
     procedure MnListaAniverClick(Sender: TObject);
     procedure MnEtiquetaFastClick(Sender: TObject);
-    procedure ProdutosLucratividades1Click(Sender: TObject);
+    procedure MmRotasViagensClick(Sender: TObject);
   private
     function ChamaLogin: Boolean;
     function VerificarExisteConexaoComInternet: Boolean;
@@ -634,7 +634,7 @@ type
     procedure TituloEmpresa;
     procedure ChecaAtualizacao;
     procedure VerificaBackup;
-
+    procedure LicencaOnline;
     procedure ChamaPDV;
     function ChecaValidade: Boolean;
     procedure prc_esconde_submenus;
@@ -646,7 +646,6 @@ type
     procedure HabilitaMenus;
     procedure DesabilitaMenus;
     procedure Visibilidade_DxMenus;
-    procedure LicencaOnline;
     { Public declarations }
   end;
 var
@@ -678,22 +677,10 @@ uses WinInet, uProdutos, uPessoa, uGrupo, uUnidade, uContas, UpLANO, uCaixa,
   uParPreco, uParCFOP_CSOSN, uParMonofasico, uImportarXMLNFe, uFabricarProduto,
   uAtualizadorAutomatico, uTribNCM, unit_funcoes,
   uCadCompra, Upadrao, unit_msg_confirma, uAcertaGrupo, UAniversariante,
-  uEtiquetasFast;
+  uEtiquetasFast, uConsRotaViagem;
 procedure TfrmPrincipal.prc_esconde_submenus;
 begin
 end;
-procedure TfrmPrincipal.ProdutosLucratividades1Click(Sender: TObject);
-begin
- try
-    frmParProduto := TfrmParProduto.Create(Application);
-    frmParProduto.Caption := 'Produtos - Lucratividade';
-    frmParProduto.Tag := 5;
-    frmParProduto.ShowModal;
-  finally
-    frmParProduto.Release;
-  end;
-end;
-
 function RemoveAcento(Str: string): string;
 const
   ComAcento = '‡‚ÍÙ˚„ı·ÈÌÛ˙Á¸¿¬ ‘€√’¡…Õ”⁄«‹';
@@ -763,7 +750,7 @@ begin
     Dados.qryParametro.FieldByName('TELA_ABERTURA').AsString :=
       OpenPicture.FileName;
     Dados.qryParametro.Post;
-    Dados.Conexao.Commit;
+    Dados.Conexao.CommitRetaining;
 
     CarregaImagem;
 
@@ -830,7 +817,7 @@ begin
           Dados.qryUpdate.ParamByName('FLAG').Value := 'S';
           Dados.qryUpdate.ParamByName('PAI').Value := i;
           Dados.qryUpdate.ExecSQL;
-          Dados.Conexao.Commit;
+          Dados.Conexao.CommitRetaining;
         end;
       end
       else
@@ -845,7 +832,7 @@ begin
         Dados.qryUpdate.ParamByName('NIVEL').Value := 0;
         Dados.qryUpdate.ParamByName('PAI').Value := i;
         Dados.qryUpdate.ExecSQL;
-        Dados.Conexao.Commit;
+        Dados.Conexao.CommitRetaining;
       end;
     end;
     for i := 0 to MmPrincipal.items.Count - 1 do
@@ -868,7 +855,7 @@ begin
             Dados.qryUpdate.ParamByName('FLAG').Value := 'S';
             Dados.qryUpdate.ParamByName('PAI').Value := i;
             Dados.qryUpdate.ExecSQL;
-            Dados.Conexao.Commit;
+            Dados.Conexao.CommitRetaining;
           end;
         end
         else
@@ -883,7 +870,7 @@ begin
           Dados.qryUpdate.ParamByName('NIVEL').Value := 1;
           Dados.qryUpdate.ParamByName('PAI').Value := i;
           Dados.qryUpdate.ExecSQL;
-          Dados.Conexao.Commit;
+          Dados.Conexao.CommitRetaining;
         end;
       end;
     end;
@@ -910,7 +897,7 @@ begin
               Dados.qryUpdate.ParamByName('FLAG').Value := 'S';
               Dados.qryUpdate.ParamByName('PAI').Value := i;
               Dados.qryUpdate.ExecSQL;
-              Dados.Conexao.Commit;
+              Dados.Conexao.CommitRetaining;
             end;
           end
           else
@@ -926,7 +913,7 @@ begin
             Dados.qryUpdate.ParamByName('NIVEL').Value := 2;
             Dados.qryUpdate.ParamByName('PAI').Value := i;
             Dados.qryUpdate.ExecSQL;
-            Dados.Conexao.Commit;
+            Dados.Conexao.CommitRetaining;
           end;
         end;
       end;
@@ -959,7 +946,7 @@ begin
                 Dados.qryUpdate.ParamByName('FLAG').Value := 'S';
                 Dados.qryUpdate.ParamByName('PAI').Value := i;
                 Dados.qryUpdate.ExecSQL;
-                Dados.Conexao.Commit;
+                Dados.Conexao.CommitRetaining;
               end
             end
             else
@@ -975,7 +962,7 @@ begin
               Dados.qryUpdate.ParamByName('NIVEL').Value := 3;
               Dados.qryUpdate.ParamByName('PAI').Value := i;
               Dados.qryUpdate.ExecSQL;
-              Dados.Conexao.Commit;
+              Dados.Conexao.CommitRetaining;
             end;
           end;
         end;
@@ -1466,10 +1453,6 @@ begin
         'Segundo normativa: … necess·rio transmiti-los em no m·ximo 24 horas apÛs emiss„o.');
     end;
   end;
-
-   if Assigned(frmConsReceber) then
-    frmConsReceber.Close;
-
   try
     Dados.vRetaguarda := true;
     frmPdv := TfrmPdv.Create(Application);
@@ -1850,6 +1833,7 @@ var
   ProgressBar: TProgressBar;
   InfoLabel: TLabel;
 begin
+
   if (Trim(Dados.qryParametroSERVIDOR_APP.AsString) = '') or
      (Trim(Dados.qryParametroUSUARIO_LI.AsString) = '') or
      (Trim(Dados.qryParametroSENHA_LI.AsString) = '') or
@@ -1985,6 +1969,7 @@ begin
     tmrWhatsServer.Enabled  :=  true;
   end;
 end;
+
 function TfrmPrincipal.ChecaValidade: Boolean;
 var
   DataValidade: TDate;
@@ -1998,7 +1983,7 @@ begin
     Dados.qryEmpresa.Edit;
     Dados.qryEmpresaNSERIE.Value := '...';
     Dados.qryEmpresa.Post;
-    Dados.Conexao.Commit;
+    Dados.Conexao.CommitRetaining;
     Dados.ApagaNumeroSerie;
     exit;
   end;
@@ -2308,10 +2293,13 @@ begin
     Dados.vFechaPrograma := true;
     Application.Terminate;
   end;
+
   if ChamaLogin then
     exit;
+
   if Dados.vFechaPrograma then
     exit;
+
   TituloEmpresa;
   FileAge(ParamStr(0), vData);
   lbl_usuario.Caption := Dados.vUsuario;
@@ -3265,6 +3253,22 @@ begin
     frmPermissoes.Release;
   end;
 end;
+procedure TfrmPrincipal.MmRotasViagensClick(Sender: TObject);
+begin
+  Dados.aMenu := 'MmRotasViagens';
+
+  if frmConsRotaViagem = NIL then
+  begin
+    Application.Createform(TfrmConsRotaViagem,frmConsRotaViagem);
+  end;
+
+  frmConsRotaViagem.Parent      := pnl_formularios;
+  frmConsRotaViagem.Align       := alClient;
+  frmConsRotaViagem.BorderStyle := bsNone;
+  frmConsRotaViagem.Show;
+  dxStatusBar1.Panels[0].Text := 'VocÍ est· na tela de ' + frmConsRotaViagem.Caption;
+end;
+
 procedure TfrmPrincipal.MnAcertaClick(Sender: TObject);
 begin
   Dados.aTag := 1;
@@ -3404,15 +3408,15 @@ begin
       end;
     end;
   end;
-  Dados.Conexao.Commit;
+  Dados.Conexao.CommitRetaining;
   Dados.qryExecute.Close;
   Dados.qryExecute.SQL.Text := 'delete from telas where flag<>''*''';;
   Dados.qryExecute.ExecSQL;
-  Dados.Conexao.Commit;
+  Dados.Conexao.CommitRetaining;
   Dados.qryExecute.Close;
   Dados.qryExecute.SQL.Text := 'update telas set flag=''S''';;
   Dados.qryExecute.ExecSQL;
-  Dados.Conexao.Commit;
+  Dados.Conexao.CommitRetaining;
   Application.ProcessMessages;
   ShowMessage('Menu Ajusta com sucesso!');
 end;
