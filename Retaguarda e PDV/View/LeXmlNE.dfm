@@ -3,8 +3,8 @@ object FrmXml: TFrmXml
   Top = 27
   BorderStyle = bsDialog
   Caption = 'Importar XML'
-  ClientHeight = 721
-  ClientWidth = 1018
+  ClientHeight = 713
+  ClientWidth = 1016
   Color = 5723991
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -22,7 +22,7 @@ object FrmXml: TFrmXml
     AlignWithMargins = True
     Left = 5
     Top = 5
-    Width = 1008
+    Width = 1006
     Height = 82
     Margins.Left = 5
     Margins.Top = 5
@@ -39,7 +39,7 @@ object FrmXml: TFrmXml
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 1004
+    ExplicitWidth = 1008
     object Label1: TLabel
       Left = 310
       Top = 41
@@ -155,7 +155,7 @@ object FrmXml: TFrmXml
       Left = 310
       Top = 55
       Width = 33
-      Height = 22
+      Height = 21
       TabStop = False
       Color = 15724527
       Ctl3D = False
@@ -175,7 +175,7 @@ object FrmXml: TFrmXml
       Left = 827
       Top = 18
       Width = 85
-      Height = 22
+      Height = 21
       Ctl3D = False
       DataField = 'DATA_ENTRADA'
       DataSource = dsMaster
@@ -193,7 +193,7 @@ object FrmXml: TFrmXml
       Left = 917
       Top = 18
       Width = 85
-      Height = 22
+      Height = 21
       TabStop = False
       Ctl3D = False
       DataField = 'DATA_EMISSAO_NF'
@@ -213,7 +213,7 @@ object FrmXml: TFrmXml
       Left = 926
       Top = 55
       Width = 76
-      Height = 22
+      Height = 21
       TabStop = False
       Ctl3D = False
       DataField = 'NOTA_FISCAL'
@@ -233,7 +233,7 @@ object FrmXml: TFrmXml
       Left = 208
       Top = 18
       Width = 613
-      Height = 22
+      Height = 21
       TabStop = False
       Ctl3D = False
       DataField = 'CHAVE'
@@ -253,7 +253,7 @@ object FrmXml: TFrmXml
       Left = 349
       Top = 55
       Width = 396
-      Height = 22
+      Height = 21
       TabStop = False
       Ctl3D = False
       DataField = 'VIRTUAL_FORNECEDOR'
@@ -273,7 +273,7 @@ object FrmXml: TFrmXml
       Left = 751
       Top = 55
       Width = 140
-      Height = 22
+      Height = 21
       TabStop = False
       Ctl3D = False
       DataField = 'VIRTUAL_CNPJ'
@@ -293,7 +293,7 @@ object FrmXml: TFrmXml
       Left = 897
       Top = 55
       Width = 23
-      Height = 22
+      Height = 21
       TabStop = False
       Ctl3D = False
       DataField = 'VITUAL_UF'
@@ -312,7 +312,7 @@ object FrmXml: TFrmXml
       Left = 208
       Top = 55
       Width = 66
-      Height = 22
+      Height = 21
       Ctl3D = False
       ParentCtl3D = False
       DynProps = <>
@@ -422,8 +422,8 @@ object FrmXml: TFrmXml
   object PageControl1: TPageControl
     AlignWithMargins = True
     Left = 5
-    Top = 582
-    Width = 1008
+    Top = 574
+    Width = 1006
     Height = 134
     Margins.Left = 5
     Margins.Top = 0
@@ -438,8 +438,8 @@ object FrmXml: TFrmXml
     Font.Style = []
     ParentFont = False
     TabOrder = 2
-    ExplicitTop = 570
-    ExplicitWidth = 1004
+    ExplicitTop = 582
+    ExplicitWidth = 1008
     object TabSheet1: TTabSheet
       Caption = 'Detalhes Itens - Fornecedor'
       object DBGrid1: TDBGrid
@@ -773,7 +773,7 @@ object FrmXml: TFrmXml
         Left = 16
         Top = 24
         Width = 100
-        Height = 26
+        Height = 21
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -793,7 +793,7 @@ object FrmXml: TFrmXml
         Left = 16
         Top = 64
         Width = 100
-        Height = 26
+        Height = 21
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -813,7 +813,7 @@ object FrmXml: TFrmXml
         Left = 128
         Top = 64
         Width = 100
-        Height = 26
+        Height = 21
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -833,7 +833,7 @@ object FrmXml: TFrmXml
         Left = 126
         Top = 24
         Width = 100
-        Height = 26
+        Height = 21
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -853,7 +853,7 @@ object FrmXml: TFrmXml
         Left = 236
         Top = 24
         Width = 100
-        Height = 26
+        Height = 21
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -873,7 +873,7 @@ object FrmXml: TFrmXml
         Left = 237
         Top = 64
         Width = 100
-        Height = 26
+        Height = 21
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -893,7 +893,7 @@ object FrmXml: TFrmXml
         Left = 347
         Top = 24
         Width = 100
-        Height = 26
+        Height = 21
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -913,7 +913,7 @@ object FrmXml: TFrmXml
         Left = 347
         Top = 64
         Width = 100
-        Height = 26
+        Height = 21
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -933,7 +933,7 @@ object FrmXml: TFrmXml
         Left = 458
         Top = 64
         Width = 100
-        Height = 26
+        Height = 21
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -953,7 +953,7 @@ object FrmXml: TFrmXml
         Left = 457
         Top = 24
         Width = 100
-        Height = 26
+        Height = 21
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -973,7 +973,7 @@ object FrmXml: TFrmXml
         Left = 568
         Top = 24
         Width = 100
-        Height = 26
+        Height = 21
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -993,7 +993,7 @@ object FrmXml: TFrmXml
         Left = 676
         Top = 24
         Width = 100
-        Height = 26
+        Height = 21
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -1013,7 +1013,7 @@ object FrmXml: TFrmXml
         Left = 676
         Top = 64
         Width = 100
-        Height = 26
+        Height = 21
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -1033,7 +1033,7 @@ object FrmXml: TFrmXml
         Left = 782
         Top = 64
         Width = 100
-        Height = 26
+        Height = 21
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -1053,7 +1053,7 @@ object FrmXml: TFrmXml
         Left = 783
         Top = 24
         Width = 100
-        Height = 26
+        Height = 21
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -1073,7 +1073,7 @@ object FrmXml: TFrmXml
         Left = 568
         Top = 64
         Width = 100
-        Height = 26
+        Height = 21
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -1110,8 +1110,8 @@ object FrmXml: TFrmXml
     AlignWithMargins = True
     Left = 5
     Top = 92
-    Width = 1008
-    Height = 485
+    Width = 1006
+    Height = 477
     Margins.Left = 5
     Margins.Top = 0
     Margins.Right = 5
@@ -1121,12 +1121,12 @@ object FrmXml: TFrmXml
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 1004
-    ExplicitHeight = 473
+    ExplicitWidth = 1008
+    ExplicitHeight = 485
     object Label2: TLabel
       Left = 2
       Top = 2
-      Width = 608
+      Width = 1002
       Height = 16
       Align = alTop
       Alignment = taCenter
@@ -1141,21 +1141,22 @@ object FrmXml: TFrmXml
       Font.Style = [fsBold]
       ParentColor = False
       ParentFont = False
+      ExplicitWidth = 608
     end
     object Panel3: TPanel
-      Left = 936
+      Left = 915
       Top = 18
-      Width = 70
-      Height = 422
+      Width = 89
+      Height = 414
       Align = alRight
       TabOrder = 0
-      ExplicitLeft = 932
-      ExplicitHeight = 410
+      ExplicitLeft = 917
+      ExplicitHeight = 422
       object btnLoc: TBitBtn
         AlignWithMargins = True
         Left = 4
-        Top = 67
-        Width = 62
+        Top = 123
+        Width = 81
         Height = 57
         Align = alTop
         Caption = 'Pesquisar'
@@ -1243,12 +1244,14 @@ object FrmXml: TFrmXml
         ParentFont = False
         TabOrder = 0
         OnClick = btnLocClick
+        ExplicitTop = 67
+        ExplicitWidth = 62
       end
       object btnCadastrar: TBitBtn
         AlignWithMargins = True
         Left = 4
         Top = 4
-        Width = 62
+        Width = 81
         Height = 57
         Align = alTop
         Caption = 'Cadastrar'
@@ -1336,12 +1339,13 @@ object FrmXml: TFrmXml
         ParentFont = False
         TabOrder = 1
         OnClick = btnCadastrarClick
+        ExplicitWidth = 62
       end
       object btnDesvincularTodos: TBitBtn
         AlignWithMargins = True
         Left = 4
-        Top = 193
-        Width = 62
+        Top = 249
+        Width = 81
         Height = 57
         Align = alTop
         Caption = 'Desv.Todos'
@@ -1429,12 +1433,14 @@ object FrmXml: TFrmXml
         ParentFont = False
         TabOrder = 2
         OnClick = btnDesvincularTodosClick
+        ExplicitTop = 193
+        ExplicitWidth = 62
       end
       object btnGrupo: TBitBtn
         AlignWithMargins = True
         Left = 4
-        Top = 256
-        Width = 62
+        Top = 312
+        Width = 81
         Height = 57
         Align = alTop
         Caption = 'Grupo'
@@ -1522,12 +1528,14 @@ object FrmXml: TFrmXml
         ParentFont = False
         TabOrder = 3
         OnClick = btnGrupoClick
+        ExplicitTop = 256
+        ExplicitWidth = 62
       end
       object btnDesvincular: TBitBtn
         AlignWithMargins = True
         Left = 4
-        Top = 130
-        Width = 62
+        Top = 186
+        Width = 81
         Height = 57
         Align = alTop
         Caption = 'Desvincular'
@@ -1615,13 +1623,167 @@ object FrmXml: TFrmXml
         ParentFont = False
         TabOrder = 4
         OnClick = btnDesvincularClick
+        ExplicitTop = 130
+        ExplicitWidth = 62
+      end
+      object btnCadastrarTodos: TBitBtn
+        AlignWithMargins = True
+        Left = 4
+        Top = 67
+        Width = 81
+        Height = 50
+        Align = alTop
+        Caption = 'Cadastrar Todos'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        Glyph.Data = {
+          36100000424D3610000000000000360000002800000020000000200000000100
+          2000000000000010000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000030000000900000007000000020000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          00000000000000000000000000070000002006132374030A145A0000001B0000
+          0005000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000010000000C010305360E2B4FBF2361A0FF195191FF091C36A90000
+          012C000000080000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          00030000001605101B6317487DEA2C7CB9FF53AADEFF2E92D5FF2064A5FF0F2E
+          5CDB010203410000000E00000002000000000000000000000000000000000000
+          00000000000000000000000000000000000000000000000000010000000A0000
+          001C0000001B0000000A00000001000000000000000000000001000000070000
+          00200E2B49A12567A5FD3A97D0FF3EA3DBFF62B3E1FF2F95D6FF2E92D4FF2679
+          BBFF133C76F60308106500000017000000040000000000000000000000000000
+          000000000000000000000000000000000000000000040000001802080E570E2C
+          58D40D2A56D402050A500000001600000004000000020000000D040C14431A4D
+          7DD63485BEFF48AADDFF46A9DEFF43A7DDFF71BCE5FF3197D6FF2F94D5FF2D92
+          D4FF2A88CBFF174988FE06132895000000230000000700000000000000000000
+          00000000000000000000000000020000000B0000002A0A203CA6194E8BFB3987
+          C2FF2576B8FF143D7AF80714299700000028000000130D283E782870A9F648A4
+          D5FF51B4E3FF4EB2E1FF4BAFE0FF48ACDFFF81C5E8FF3299D8FF3097D5FF2F94
+          D4FF2D91D4FF2C8DD2FF1B5698FF0A2042C20000013300000009000000000000
+          000000000000000000050000001A050E1963164073E32872B0FF379BD8FF53AB
+          E0FF2E91D4FF2986CAFF1B5598FF0C2451D80104095A2772B1FF5ABCE5FF5ABE
+          E6FF58BBE5FF54B8E4FF51B5E3FF4EB1E2FF90CDECFF349CD9FF319AD7FF3096
+          D6FF2F94D5FF2E91D3FF2B8DD2FF2068AAFF0D2C5AE000000021000000000000
+          00020000000D01020431113051B12566A5FD3794CFFF3DA4DEFF3DA3DDFF60B3
+          E4FF3094D5FF2D8FD3FF2A8AD1FF216DB3FF11356CF92775B4FF64C7EBFF61C4
+          E9FF5DC1E8FF5BBEE7FF57BBE5FF54B7E4FF9DD5EFFF349ED9FF339CD8FF3299
+          D6FF3095D6FF2E93D4FF2D90D3FF2C8DD2FF133B7BFF00000030000000050000
+          001A0919287020588EEB3589C2FF44ABDFFF43ABE0FF41A9E0FF40A6DFFF6DBB
+          E7FF3197D7FF2E92D4FF2C8DD2FF2988D0FF2477BFFF2877B5FF6ACDEEFF66CA
+          ECFF63C8EBFF61C4E9FF5EC1E8FF5ABEE7FFAADDF2FF35A1DAFF349ED9FF329B
+          D8FF3198D7FF2F95D5FF2E93D4FF2D90D3FF133C7CFF00000031000000131942
+          68B8317EBAFF47ABDBFF4BB5E4FF49B2E4FF48B1E3FF44AEE1FF43ACE0FF7AC3
+          E9FF339BD8FF3096D6FF2E90D3FF2B8CD1FF2780C6FF297AB8FF6FD3F0FF6CD0
+          EFFF6ACEEEFF66CAECFF64C7EBFF61C5EAFFB4E2F4FF43A9DEFF35A0DAFF349D
+          D8FF329BD7FF3197D6FF2F95D4FF2E92D3FF143E7FFF000000300000001F2B73
+          B2FF54BFE8FF53BDE7FF51BBE6FF4FB8E5FF4CB5E4FF4AB3E3FF48B1E3FF87CB
+          ECFF349DDAFF3298D7FF2F94D5FF2D8FD3FF2981C7FF2A7BB9FF75D8F3FF73D6
+          F1FF6FD3EFFF6CD0EFFF6ACDEDFF7FD3EFFFB3C9E2FF8BCFEDFF4FB2E2FF37A1
+          DAFF339DD8FF329AD7FF3097D6FF2F94D5FF143F80FF0000002E000000202C75
+          B4FF5CC4E9FF58C2E9FF56C0E8FF53BEE7FF51BBE6FF4FBAE5FF4CB6E4FF95D3
+          EFFF35A1DAFF339CD9FF3197D6FF2E92D4FF2A84C8FF2B7DBAFF7ADDF4FF77DB
+          F3FF75D9F2FF7CD8F2FFC1EBF9FFC8F1FCFF7FBBDEFF97D4F0FF51B7E5FF52B6
+          E4FF49ADE0FF339CD9FF3299D7FF3097D6FF154081FF0000002D0000001E2D77
+          B6FF60CAECFF5EC7EBFF5CC5EAFF59C3E9FF57C1E8FF54BEE7FF52BCE7FFA2DA
+          F2FF37A3DCFF359FDAFF339AD8FF3095D6FF2B87C8FF2C7FBCFF7EE1F6FF7EDF
+          F5FFB5ECF9FFD3F5FCFFADECFAFFA5E8FAFF7FBBDEFFA2D8F1FF51B7E5FF51B7
+          E5FF51B7E5FF55B9E6FF40A6DDFF3298D7FF154282FF0000002B0000001C2F7B
+          B7FF66CFEEFF63CCEDFF62CAECFF5FC8EBFF5DC6EAFF59C3E9FF57C2E8FFAFE1
+          F4FF39A6DDFF37A2DBFF349DD9FF3198D7FF2D8BCBFF2C81BDFF8BD6EEFFCCED
+          F8FF6FC0E4FF50B1DEFF4BAFDDFF46ACDBFF3591CAFFABDCF2FF9FD7F1FF95D3
+          EFFF8ACEEDFF7FCAECFF76C6EBFF5DABDAFF1F5294FF0002072F0000001A307D
+          BAFF6BD4EFFF69D2EFFF66D0EEFF65CDEDFF62CBECFF5FC9ECFF5DC7EBFFBBE7
+          F6FF3AA9DFFF38A4DDFF36A0DAFF339CD9FF3092D2FF2B83C1FF2A7CBAFF6CAD
+          D6FFC2E7F5FF96D3EFFF74C5EAFF74C5EAFF6FBDE5FF3491CAFF7DBBDEFF7CB9
+          DEFF7AB8DEFF64A6D4FF346BA9FF0E326CE1051020680000000E00000018317F
+          BCFF71D9F2FF6ED7F1FF6CD5F0FF6AD2EFFF68D1EFFF65CEEEFF63CCECFFC7EC
+          F8FF3BABDFFF3AA7DDFF37A3DCFF349FDAFF3299D6FF2F92D2FF2B88CBFF287B
+          BEFF2877B7FF6BAAD2FFC2E7F5FF96D3EFFF74C5EAFF42AADAFFA2E6F9FF84D1
+          EEFF4689BCFF143F6FD4061322630000001A0000000A00000002000000163280
+          BDFF75DDF3FF74DBF2FF71D9F2FF6FD8F2FF6CD5F1FF6BD3EFFF83D9F2FFEAF8
+          FDFF86CDECFF63BCE6FF38A5DEFF37A1DBFF349CD9FF3198D7FF2F91D4FF2B8B
+          D0FF2981C8FF2677BBFF2672B2FF6AA7D0FFC1E7F5FF63B7DFFF4A91C3FF1747
+          78CE071524590000001400000008000000020000000000000000000000143482
+          BFFF7BE0F5FF79DFF5FF76DDF3FF74DBF2FF7EDCF3FFBAEDF9FFD9F3FAFFA1D5
+          EBFF78C7EBFF5CBBE6FF82CBEBFF52B0E0FF369FDBFF339BD8FF3096D6FF2D91
+          D4FF2B8CD1FF2885CCFF257CC5FF184785FF1B5383CF1B507FC70818274E0000
+          000D000000060000000100000000000000000000000000000000000000123585
+          C0FF7FE4F7FF7CE2F6FF80E1F5FFB0EDF9FFD7F7FDFFB7E9F6FF91D1E9FF6FAC
+          D0FF81CBECFF51B7E5FF51B7E5FF5FBCE7FF7BC6E9FF43A6DCFF3299D7FF2F95
+          D5FF2D8FD3FF2A8AD1FF2785CDFF123775FF0000002B00000005000000030000
+          0001000000000000000000000000000000000000000000000000000000103787
+          C2FF83E6F8FFA4EDFAFFD1F7FDFFC5F4FDFFACEAF7FF9AD9EDFF88C6DFFF5F94
+          C1FF8CD0EEFF51B7E5FF51B7E5FF51B7E5FF51B7E5FF64BFE7FF72C2E8FF3A9E
+          D8FF2E92D4FF2C8DD2FF2988D0FF133977FF0000002700000000000000000000
+          00000000000000000000000000000000000000000000000000000000000C3887
+          C2FFB4E8F4FFB0DDECFF99CFE3FF92CBE0FF8AC2DAFF7AB2D0FF6AA1C5FF4777
+          ABFF97D4F0FF51B7E5FF51B7E5FF51B7E5FF51B7E5FF51B7E5FF51B7E5FF6DC6
+          EBFF64BAE6FF3294D4FF2B8BD1FF143B7AFF0000002500000000000000000000
+          0000000000000000000000000000000000000000000000000000000000061C42
+          5E884A8DBDF288C3DFFFA1D9EEFFA1D9EEFFA1D9EEFFA1D9EEFFA1D9EEFF7EB0
+          D6FFA2D8F1FF51B7E5FF51B7E5FF51B7E5FF51B7E5FF51B7E5FF51B7E5FF51B7
+          E5FF54B9E6FF71C9EDFF58B0E1FF153D7DFF0000002400000000000000000000
+          0000000000000000000000000000000000000000000000000000000000010000
+          0005010202101431476F3572A0DD68ADD1FF83CAE6FF86CEE9FF86CEE9FF6FB0
+          D7FFABDCF2FF9FD7F1FF95D3EFFF8ACEEDFF7FCAECFF76C6EBFF6EC3E9FF66C0
+          E8FF60BDE7FF5BBBE7FF58B7E3FF29649DFF0000001C00000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          000000000001000000040000000B0B1C2847275980B95BA0C9FD7FC6E3FF80C6
+          E4FF6FB0D7FF69A8D2FF7EB0D6FF487DB0FF609BC8FF68A7D0FF68ADD7FF4E94
+          C8FF2E6AA9FF153E7AEE0C2346A7040B164D0000000A00000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          00000000000000000000000000010000000300000008040A0F261B405E924E90
+          BCF679BEDEFF86CEE9FFA1D9EEFF67A6C9FF67B7DBFF4590C3FF1E528CEE1131
+          54AB0612205A0000001A0000000E000000060000000100000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000002000000060101
+          0212102A406D407DA7E388C2DFFF25619DF6173F67B30A1B2D63000000160000
+          000D000000060000000100000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0001000000050000000C0A192849010304180000000B00000005000000010000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000100000002000000010000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000}
+        Layout = blGlyphTop
+        ParentFont = False
+        TabOrder = 5
+        OnClick = btnCadastrarTodosClick
+        ExplicitLeft = 6
+        ExplicitTop = 55
+        ExplicitWidth = 62
       end
     end
     object DBGridEh1: TDBGridEh
       Left = 2
       Top = 18
-      Width = 934
-      Height = 422
+      Width = 913
+      Height = 414
       Align = alClient
       DataSource = dsDetail
       DynProps = <>
@@ -1746,8 +1908,8 @@ object FrmXml: TFrmXml
     end
     object GroupBox1: TGroupBox
       Left = 2
-      Top = 440
-      Width = 1004
+      Top = 432
+      Width = 1002
       Height = 43
       Align = alBottom
       Caption = 'Produto Vinculado'
@@ -1758,8 +1920,8 @@ object FrmXml: TFrmXml
       Font.Style = []
       ParentFont = False
       TabOrder = 2
-      ExplicitTop = 428
-      ExplicitWidth = 1000
+      ExplicitTop = 440
+      ExplicitWidth = 1004
       object DBText1: TDBText
         Left = 14
         Top = 19

@@ -3,8 +3,8 @@ object frmImportar: TfrmImportar
   Top = 0
   BorderStyle = bsDialog
   Caption = 'Menu Importa'#231#227'o'
-  ClientHeight = 505
-  ClientWidth = 557
+  ClientHeight = 531
+  ClientWidth = 580
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,7 +21,7 @@ object frmImportar: TfrmImportar
   object GroupBox2: TGroupBox
     Left = 0
     Top = 0
-    Width = 557
+    Width = 580
     Height = 87
     Align = alTop
     Caption = 'Filtrar'
@@ -32,6 +32,7 @@ object frmImportar: TfrmImportar
     Font.Style = []
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 557
     object Label1: TLabel
       Left = 32
       Top = 23
@@ -257,8 +258,8 @@ object frmImportar: TfrmImportar
   object PageControl1: TPageControl
     Left = 0
     Top = 87
-    Width = 557
-    Height = 418
+    Width = 580
+    Height = 444
     ActivePage = TabSheet2
     Align = alClient
     Font.Charset = ANSI_CHARSET
@@ -269,13 +270,15 @@ object frmImportar: TfrmImportar
     ParentFont = False
     TabOrder = 1
     OnChange = PageControl1Change
+    ExplicitWidth = 557
+    ExplicitHeight = 418
     object TabSheet1: TTabSheet
       Caption = 'Pedido de Venda'
       TabVisible = False
       object Label3: TLabel
         Left = 0
         Top = 0
-        Width = 549
+        Width = 572
         Height = 23
         Align = alTop
         Alignment = taCenter
@@ -291,8 +294,8 @@ object frmImportar: TfrmImportar
       object btnPedido: TBitBtn
         AlignWithMargins = True
         Left = 3
-        Top = 360
-        Width = 543
+        Top = 386
+        Width = 566
         Height = 45
         Align = alBottom
         Caption = 'F2 | Importar Pedido'
@@ -435,12 +438,14 @@ object frmImportar: TfrmImportar
         ParentFont = False
         TabOrder = 0
         OnClick = btnPedidoClick
+        ExplicitTop = 360
+        ExplicitWidth = 543
       end
       object DBGrid2: TDBGrid
         Left = 0
         Top = 23
-        Width = 549
-        Height = 334
+        Width = 572
+        Height = 360
         Align = alClient
         DataSource = dsPedido2
         Font.Charset = ANSI_CHARSET
@@ -502,7 +507,7 @@ object frmImportar: TfrmImportar
       object Label4: TLabel
         Left = 0
         Top = 0
-        Width = 549
+        Width = 572
         Height = 23
         Align = alTop
         Alignment = taCenter
@@ -518,8 +523,8 @@ object frmImportar: TfrmImportar
       object btnOrcamento: TBitBtn
         AlignWithMargins = True
         Left = 3
-        Top = 360
-        Width = 543
+        Top = 386
+        Width = 566
         Height = 45
         Align = alBottom
         Caption = 'F3 | Importar Or'#231'amento'
@@ -663,12 +668,14 @@ object frmImportar: TfrmImportar
         TabOrder = 0
         StyleElements = [seFont, seBorder]
         OnClick = btnOrcamentoClick
+        ExplicitTop = 360
+        ExplicitWidth = 543
       end
       object DBGrid1: TDBGrid
         Left = 0
         Top = 23
-        Width = 549
-        Height = 334
+        Width = 572
+        Height = 360
         Align = alClient
         DataSource = dsOrcamento
         Font.Charset = ANSI_CHARSET
@@ -729,7 +736,7 @@ object frmImportar: TfrmImportar
       object Label5: TLabel
         Left = 0
         Top = 0
-        Width = 549
+        Width = 572
         Height = 23
         Align = alTop
         Alignment = taCenter
@@ -745,8 +752,8 @@ object frmImportar: TfrmImportar
       object btnOS: TBitBtn
         AlignWithMargins = True
         Left = 3
-        Top = 360
-        Width = 543
+        Top = 386
+        Width = 566
         Height = 45
         Align = alBottom
         Caption = 'F4 | Importar OS'
@@ -889,12 +896,14 @@ object frmImportar: TfrmImportar
         ParentFont = False
         TabOrder = 0
         OnClick = btnOSClick
+        ExplicitTop = 360
+        ExplicitWidth = 543
       end
       object DBGrid3: TDBGrid
         Left = 0
         Top = 23
-        Width = 549
-        Height = 334
+        Width = 572
+        Height = 360
         Align = alClient
         DataSource = DsOs_Master
         Font.Charset = ANSI_CHARSET
@@ -955,7 +964,7 @@ object frmImportar: TfrmImportar
       object Label6: TLabel
         Left = 0
         Top = 0
-        Width = 549
+        Width = 572
         Height = 23
         Align = alTop
         Alignment = taCenter
@@ -971,8 +980,8 @@ object frmImportar: TfrmImportar
       object DBGrid4: TDBGrid
         Left = 0
         Top = 23
-        Width = 549
-        Height = 334
+        Width = 572
+        Height = 360
         Align = alClient
         DataSource = dsPedidoWeb
         Font.Charset = ANSI_CHARSET
@@ -1029,8 +1038,8 @@ object frmImportar: TfrmImportar
       object btnPedidoWeb: TBitBtn
         AlignWithMargins = True
         Left = 3
-        Top = 360
-        Width = 543
+        Top = 386
+        Width = 566
         Height = 45
         Align = alBottom
         Caption = 'F5 | Importar Pedido'
@@ -1173,6 +1182,8 @@ object frmImportar: TfrmImportar
         ParentFont = False
         TabOrder = 1
         OnClick = btnPedidoWebClick
+        ExplicitTop = 360
+        ExplicitWidth = 543
       end
     end
     object TabSheet5: TTabSheet
@@ -1182,7 +1193,7 @@ object frmImportar: TfrmImportar
       object Label7: TLabel
         Left = 0
         Top = 0
-        Width = 549
+        Width = 572
         Height = 23
         Align = alTop
         Alignment = taCenter
@@ -1199,8 +1210,8 @@ object frmImportar: TfrmImportar
       object DBGrid5: TDBGrid
         Left = 0
         Top = 23
-        Width = 549
-        Height = 334
+        Width = 572
+        Height = 360
         Align = alClient
         DataSource = dsPreVendaM
         Font.Charset = ANSI_CHARSET
@@ -1257,8 +1268,8 @@ object frmImportar: TfrmImportar
       object btnPreVenda: TBitBtn
         AlignWithMargins = True
         Left = 3
-        Top = 360
-        Width = 543
+        Top = 386
+        Width = 566
         Height = 45
         Align = alBottom
         Caption = 'F6 | Importar Pr'#233'-Venda'
@@ -1401,6 +1412,8 @@ object frmImportar: TfrmImportar
         ParentFont = False
         TabOrder = 1
         OnClick = btnPreVendaClick
+        ExplicitTop = 360
+        ExplicitWidth = 543
       end
     end
   end

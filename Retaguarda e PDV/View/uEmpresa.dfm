@@ -21,7 +21,7 @@ object frmEmpresa: TfrmEmpresa
   object Label19: TLabel
     Left = 32
     Top = 96
-    Width = 208
+    Width = 209
     Height = 15
     Caption = 'Plano de Contas Transfer'#234'ncia (Cr'#233'dito)'
     FocusControl = DBEdit17
@@ -1802,9 +1802,9 @@ object frmEmpresa: TfrmEmpresa
             object DBCheckBox23: TDBCheckBox
               Left = 21
               Top = 216
-              Width = 240
+              Width = 274
               Height = 17
-              Caption = 'Informar Respons'#225'vel T'#233'cnico XML NFe/NFCe'
+              Caption = 'Informar Respons. T'#233'cnico XML NFe/NFCe'
               DataField = 'RESPONSAVEL_TECNICO'
               DataSource = dsEmpresa
               TabOrder = 8
@@ -1822,6 +1822,17 @@ object frmEmpresa: TfrmEmpresa
               TabOrder = 9
               ValueChecked = 'S'
               ValueUnchecked = 'N'
+            end
+            object DBCheckBox24: TDBCheckBox
+              Left = 21
+              Top = 259
+              Width = 260
+              Height = 37
+              Caption = 'Calcula Impostos no pre'#231'o de Custo ao importar XML de Compra.'
+              DataField = 'NT_COMPRA_IMP_CUSTO'
+              DataSource = dsEmpresa
+              TabOrder = 10
+              WordWrap = True
             end
           end
           object GroupBox10: TGroupBox
@@ -2828,7 +2839,7 @@ object frmEmpresa: TfrmEmpresa
               'Santander'
               'Sicoob'
               'Bradesco'
-              'Outros'
+              'Pix Est'#225'tico'
               'Mercado Pago')
             TabOrder = 0
             Values.Strings = (
@@ -2892,6 +2903,7 @@ object frmEmpresa: TfrmEmpresa
                 '1'
                 '2'
                 '3')
+              OnChange = DBRadioGroup4Change
             end
           end
           object PageControl4: TPageControl
@@ -2899,7 +2911,7 @@ object frmEmpresa: TfrmEmpresa
             Top = 118
             Width = 928
             Height = 261
-            ActivePage = tabMercadoPago
+            ActivePage = tabBancoBrasil
             Align = alClient
             TabOrder = 2
             object tabBancoBrasil: TTabSheet
@@ -3054,9 +3066,36 @@ object frmEmpresa: TfrmEmpresa
               Caption = 'Bradesco'
               ImageIndex = 4
             end
-            object tabOutros: TTabSheet
-              Caption = 'Outros'
+            object tabStatico: TTabSheet
+              Caption = 'Chave Est'#225'tica'
               ImageIndex = 5
+              object GBoxStatica: TGroupBox
+                Left = 23
+                Top = 21
+                Width = 666
+                Height = 92
+                Caption = 'Digite a Chave'
+                TabOrder = 0
+                object edtChavePIX: TJvMaskEdit
+                  Left = 13
+                  Top = 35
+                  Width = 381
+                  Height = 25
+                  TabOrder = 0
+                  Text = ''
+                  OnKeyPress = edtChavePIXKeyPress
+                end
+              end
+              object cxDBTextEdit82: TcxDBTextEdit
+                Left = 36
+                Top = 119
+                TabStop = False
+                DataBinding.DataField = 'CHAVE_PIX'
+                DataBinding.DataSource = dsEmpresa
+                TabOrder = 1
+                Visible = False
+                Width = 325
+              end
             end
             object tabMercadoPago: TTabSheet
               Caption = 'Mercado Pago'
@@ -3071,7 +3110,7 @@ object frmEmpresa: TfrmEmpresa
                 object Label81: TLabel
                   Left = 14
                   Top = 58
-                  Width = 70
+                  Width = 71
                   Height = 15
                   Caption = 'Access Token'
                   FocusControl = DBEdit44
@@ -3588,8 +3627,8 @@ object frmEmpresa: TfrmEmpresa
   end
   object ACBrValidador1: TACBrValidador
     IgnorarChar = './-'
-    Left = 552
-    Top = 368
+    Left = 672
+    Top = 200
   end
   object ACBrCEP1: TACBrCEP
     ProxyPort = '8080'
@@ -3599,8 +3638,8 @@ object frmEmpresa: TfrmEmpresa
     ChaveAcesso = '1STa9eKhhfKvc7Ljh6W6CO5Kr/bFOl.'
     PesquisarIBGE = True
     OnBuscaEfetuada = ACBrCEP1BuscaEfetuada
-    Left = 552
-    Top = 288
+    Left = 520
+    Top = 176
   end
   object qryEmpresa: TFDQuery
     BeforeEdit = qryEmpresaBeforeEdit
@@ -4587,6 +4626,17 @@ object frmEmpresa: TfrmEmpresa
       Origin = 'USA_WHATS'
       Size = 1
     end
+    object qryEmpresaPEDIR_COLE_ETIQUETA: TStringField
+      FieldName = 'PEDIR_COLE_ETIQUETA'
+      Origin = 'PEDIR_COLE_ETIQUETA'
+      FixedChar = True
+      Size = 1
+    end
+    object qryEmpresaCHAVE_PIX: TStringField
+      FieldName = 'CHAVE_PIX'
+      Origin = 'CHAVE_PIX'
+      Size = 150
+    end
   end
   object dsPaises: TDataSource
     DataSet = Dados.qryPaises
@@ -4617,7 +4667,7 @@ object frmEmpresa: TfrmEmpresa
     HintStyle.Font.Style = []
     HintPause = 250
     HintHidePause = 3500
-    Left = 776
-    Top = 567
+    Left = 816
+    Top = 599
   end
 end

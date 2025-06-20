@@ -2,9 +2,9 @@ object FrmSpedSf: TFrmSpedSf
   Left = 0
   Top = 0
   BorderStyle = bsDialog
-  Caption = 'SPED Fiscal (EFD ICMS/IPI)'
-  ClientHeight = 324
-  ClientWidth = 531
+  Caption = 'SPED Fiscal (EFD ICMS/IPI) '#8211' Escritura'#231#227'o Fiscal Digital'
+  ClientHeight = 434
+  ClientWidth = 509
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,21 +19,101 @@ object FrmSpedSf: TFrmSpedSf
   OnShow = FormShow
   TextHeight = 13
   object Panel2: TPanel
-    AlignWithMargins = True
-    Left = 3
-    Top = 250
-    Width = 525
-    Height = 71
+    Left = 0
+    Top = 374
+    Width = 509
+    Height = 60
     Align = alBottom
+    BevelOuter = bvNone
+    Color = clWhite
+    ParentBackground = False
     TabOrder = 0
-    ExplicitTop = 490
-    ExplicitWidth = 803
+    object cxSair: TcxButton
+      AlignWithMargins = True
+      Left = 136
+      Top = 7
+      Width = 128
+      Height = 46
+      Margins.Left = 7
+      Margins.Top = 7
+      Margins.Right = 0
+      Margins.Bottom = 7
+      Align = alLeft
+      Caption = 'ESC | Sair'
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.SkinName = 'DevExpressDarkStyle'
+      OptionsImage.Glyph.SourceDPI = 96
+      OptionsImage.Glyph.Data = {
+        89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+        F40000001D744558745469746C6500436C6F73653B457869743B426172733B52
+        6962626F6E3B4603B9E80000067749444154785EC5975B8C955715C77FFB0C03
+        33C3CC30F70B3894D62284526BB11A630CC6041F7C6C4C7CD0686234B16AD486
+        165B07DBDADA02112592A8313ED4C4F8A0D6A4DE22314D0DB4182EA558532816
+        2D22B470E6C2309773CE9CF9F65E6B393D7B67BE1C652693F0E097AC597BCF5E
+        7BFEFFBDD67FAF6F3E6766FC3F1F0770F9E03E3018BAFF61B79CF89B347BFDA9
+        C76CD3EEC77302970EEC61FDCE6197E685E4DD32C1DD32095B320134590A48C0
+        A71F7DE823ED4D4D7B0BCEDD0386A56DC983190BBF27CE359F80FDF71E4BD105
+        30C58B9E1E2B9586771CFCD19F8100D80AF2A7D0DEB8F2E7BD3B3EDCDFD4DF07
+        66C93402A9C6B128A6423E5630C14440051305115403A8804433152A2313DBEC
+        EF6FFE0CB805904420CF8006E95FD1A8CC9E394D7E4CB0053244AF8699629A08
+        461F89A962D1D2389153452B152C843EA021619267009C7A8F56CA58F0398184
+        8D691A5B1D09CC52161493E823B8448212308D6B966584CCE7A5AF2700E23D16
+        32340BE4E84490E4731239789E811CDCC4C0847C2E48F048161625E0240B98F7
+        98CF484F0E080BBAB01AB0E1EAB220A0D19B1AA4AC246DA02258E611BF0481AC
+        5CAE9D5E7D96C7249957CB555E7DFE38D72E1719BC7D3D776C7F2F858602A812
+        7CE0CC9153BCF9FA45BAD7F572D7F66DAC6C5A1949254226010D9EB9E952DD15
+        2DE413A88E5F271B29A273199AF91A11F59EEA7489D3BF3F4CF5F6BBE97DE400
+        93ED6B79F9D00BF86A153F57E5D4A11799EA1C62ED933FC06F7E3F27FE78B4B6
+        C7BC47BD60B5BF13C826AE53199FACCB40A14E8462F8B12295F3E70853939144
+        F09C3DFC126CFB10FD9FF80C1BDFBD89ADBB86C9D66DE2AF7F3A366FC7999B1F
+        F77FEE2BDCBA752377DDBF93E60F7E94578FFE0D4DE5947285AC78856C6A0A09
+        8B8BD0A92A1A02522933FBC6795C4B0B8D1D5D4C8F4CB0FDE01798758D74AE69
+        056714767D8333FBF71244E9FBEC971918E8A2A7BB1DCCD8FEE0D7F8CD8EDF12
+        A6A791D20C9A650BFA5065895BA0D408980866C0CC0C3253A27BB08B0B3FF921
+        DBBEF908D54C5185EEDE0EEED835CCE454998E8E56BA3BDB30355A9B1A38F1E4
+        77E85BD743363E1E819D81827A41040016C98045118A000E4B22DC706B2FFF7C
+        E5255ED9B787F73C3C4CA92A007477B7D3356F0006B4AD6AE0D413DF62F2E563
+        6CB9733DFEDA0446EA98383404546B902EDA0D4A60C1C7A6913722B2F131DEB9
+        7980F3C75EE0E4E3199BBFBE1B289007818A727CEF134C1D7F912D77DF46363A
+        927A972E5C5D1545456E2842072022484DFD310BF33E9209816A710424303131
+        C3D8580904C85F0FA8417966164CA85CB9124BF9B6F9B7BDD4C61A04D1254BA0
+        A9040ACE812AE662CFBF3452267BD73DB47FEA4B980331C320B1886719FAEA43
+        9CDFFF6D2EBC76820D036D14483116332AF525A8F9FFD180F92C3277907E50BC
+        EEF19BDF47DB27EFA36FA08BAE8ED598291DAB1B311A982C790CA5ABAB8D8D0F
+        ECE68D034F71F9DC4986BA9A2338402A81AA2E710B4408998F6D137016395432
+        E3CE9DBB28DB8A080E74B4347266FF1ECCA8F585899207A0B3AB9D0F3CFA1847
+        EEFD182A010052EB560D4890A5FA00988F41CE81A9033356B736537DFE776CF8
+        F4E7295703EDCD2B38F7BD7D4CFCE50866C659075B1E1C66BAE2696D5EC9BF9E
+        7E9AB6B6164C322C7F8322216601E086B74044109F45D11891048E819E162E3D
+        FB0C00B7DDFB71CE7EF7C75C3B7684A1C13560C6E5A38779CD8CADF77D917FFC
+        F4192EFEFA97AC5FDB811F1F4D2F2B0043832C5A02B7A0816A2C010089443636
+        CA3BFAFB29FEE1592EFCEA17B4B63633D8B39AF2BCDA01D6F6F5317AF228879E
+        7B8E96E6466E59D7493636827AC1111B91295810546CA94EA804B15A20712B0E
+        301364E42A7DBD3D340CAC21944A54E7C193C699BD7295DE9E6E06FBFA91D92A
+        95AB45508F012AA49328228A982EAE0113C1BCA1AAB9789C8B3E134A6FBD05EA
+        A23AB1DAD8A5D3558A455052DB755804A2FEFF08C144EAFB40CE06276AE88206
+        1C140C97440409D80073092892A4000818699ED62001E330334414155DB4159B
+        88C43AA944ACA41F88DED51D2A6581024E351E32464512A4B95A0EA00BD9B568
+        39010344828C8C5D9FEB6F2A7854638CA9D5A71250E728600BEC345F8B802ECE
+        AD6E9FA39C15F0AAA340A8D70028307771B6F2409055DF2FD0D403F9FDD5046C
+        B9C7CCE52932F2960BD1CCF23514C321A6D7FE9DCDEE02AA40DE91926F005601
+        4DB93670CBFC1473CBFC34F3097CF6465F469216B2A5406EC22CC7216F873705
+        72F364F80FA3C7188E64BF0D450000000049454E44AE426082}
+      TabOrder = 0
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      OnClick = cxSairClick
+    end
     object cxGerar: TcxButton
       AlignWithMargins = True
-      Left = 8
-      Top = 8
-      Width = 150
-      Height = 55
+      Left = 7
+      Top = 7
+      Width = 122
+      Height = 46
       Margins.Left = 7
       Margins.Top = 7
       Margins.Right = 0
@@ -124,115 +204,6 @@ object FrmSpedSf: TFrmSpedSf
         883A6EBA450ECBA29BF0E7ECE42737AD60257358D92D98FBC1516E428D826E02
         9C83FDCCFB41F0FF1989F292E94D086316A20B2CFCFFB0FF02A614B488B3A126
         BC0000000049454E44AE426082}
-      TabOrder = 0
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      OnClick = cxGerarClick
-      ExplicitLeft = 7
-      ExplicitTop = 7
-      ExplicitHeight = 51
-    end
-    object cxSair: TcxButton
-      AlignWithMargins = True
-      Left = 165
-      Top = 8
-      Width = 150
-      Height = 55
-      Margins.Left = 7
-      Margins.Top = 7
-      Margins.Right = 0
-      Margins.Bottom = 7
-      Align = alLeft
-      Caption = 'ESC | Sair'
-      LookAndFeel.NativeStyle = False
-      LookAndFeel.SkinName = 'DevExpressDarkStyle'
-      OptionsImage.Glyph.SourceDPI = 96
-      OptionsImage.Glyph.Data = {
-        89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
-        F400000023744558745469746C650043616E63656C3B53746F703B457869743B
-        426172733B526962626F6E3B4C9696B2000009AA49444154785E8D96097054D7
-        9946CF7DBD6869ADAD1648AC025B8AC35694C106EC84C910E2B552C626768D17
-        927126953126D86106B298941D3B4E4219882B95C2E5D8659C541687C5186C27
-        98D8C090106C30036637C8C6420809099044AB97F7FADD25AF6EF54B75854A25
-        57F5EBEB5BAA7AE7FB37BD165D2B9E020460E5CA63C00840DB0BA3BFFBB8E01F
-        1F3A9E586E0C06A30D020255F633068CD14198E25DD3B6FAA744D186E6871610
-        3A305C79A2C996102A4AE34AABD0F2E40F0D60C3EF395E2483556D306830868F
-        57BD0440545B57DAC229C50B1180C785100710FB962D995253563E2FE2389F17
-        980A4730C56883D2EA089ABC2BFD1D17B3D9CD739E7BE130A063CD13B435D27D
-        D4A035C69AB181560A6BC028EBE8CAAC1BC68759460E7D67E99D8978FCE9584D
-        756BA2ED2ACAC78EC089C5890F6B000C5EEFC5A9DAF3C87774CDAA3AD1BEFCF8
-        D225ED97F3F92767AD797E23A0622326E942D7618D36802D3F4A692C474985D1
-        BAA4C286D8B03601383B163DD432B2AEEE378991CD33EA6E9846D9F006E4E020
-        EAF265D4904FA6F323301AA722018E43D55523A9BB6E326EEFA5D6F23FEDFDF5
-        A1C58B1E3D70AEFBCB0F6E7AED747CD4140918AF63BFB11590B2D802A5213400
-        C49AAEB159BFF7E8E27F4F5627D6A566CFAC4FB4B550E83E47F683330060DB66
-        15B4467A0356FDBEF3D650A4A696E6DBFE8DC4C933D74D7BE7CF7BB6DCFB1F0F
-        DCF1CAEFB6037E59CB74BCF6778D94AA68404A821B08417CE4440BDFFDF0C239
-        C9DA9A379ABE38371E118ADCD143608A6C0CA258CA709AB193AD8350A034FE85
-        3E0AE7CF53317A0CA3EFB9BD5EADFFFDE64D5F9A3FEFAE8DAF5A135A29A38B06
-        C489258F32FE9B0F523676AA2DFBE6FF5CD0DA3A7CF8EED1F36F6D3099016450
-        EED2F10C81188A6A570BAC81623B95C2DE038DD62711A966DA7FB5A57F5F67E7
-        E716BFFDF64940EEB9F73E7DC32BBF255AB89C06290907AEA5BA766DEAC6E90D
-        7AE042001FF8BBD5B4E0A2DA08E1816A9BBD3514A8D1D2DEBDA01231AFC08839
-        B392535ECFBD08CC057400B72938856C9EB2ABA6DBEC777DEDAB775734266755
-        D49653B8D887F16510BE0D7730CDBEF56FF187956B39F8C6FF21F36EF837A4EB
-        72F0CD3FF1FAAA5FB267C31F71D343185FA17D89917ED08E6E2A130E95C31B66
-        BC72CB6D7703514060B74029C2EC134EF489E4B409E43B3B402A8C1000F83997
-        FD01544D9A49E382A50CFE7E3DFB376FE7DADB3E0BC6F0FE9BBB709BAE66C4D3
-        4BC8ECDCCABB9B7670FDED3752561643DB762872A73E64C48CC9F4779C5B0EBC
-        0A48C08810BEE1E65BE7B64D6CDB3A6AF654BCDE1E848563F5E05B7BF0DAA691
-        BAEB7E9A5235F852717CF50AE2E74E5903B9003EFCBFBEC1F0C65A9C489413CF
-        FD0C3ED8CDB573A75938520722291F398A8F769FE0E0F153772C7EFFDD6D801F
-        05009C84706E8E2562648E7C40A4B61E1171084B933E7F91D9CFFE377911A3BE
-        B60A84C159F65D8EAEFC315269863DB888A6A624A9861A6B68F6D247D93C770B
-        F805B432D8E194926C7B3B895435754EE426603B209D22C38918737D141FB7E3
-        1332C70E2107FA318502DAF71976750BA75F584373633560D01A1A1AEB98B8EC
-        31C62E5C4273006FA8AFB66B99288B7078D533345D3D06E54BB45F406632B83D
-        3D76AEE2514D0C311D8800FCAD0228FD29BC1CD22F8067C89CFC9068A28A6843
-        8AB6191338B6F3001FACF81153BFF318195701D010649C0C02C000D5017CFF53
-        DF277DF400533E772D7E4F376A68085570ED7A8220EA7B08655A8B0644388D42
-        6A5D433E87F61438B6F7F84369FCCC106E572757B58EE1E4FB7BD8F7E4F7B9E6
-        5BCB01A7F41D82569AF77EFC14E9FD7B98785D1BD96347304A85AB6A0D0442D4
-        CBA095AA0EB9610584F25500CBDA61C1080402843562F73ADB711AE3BAF4F70F
-        71E14286C692CC35964376286FFB9E3DD381830583213460CDF8D92C526ACB2C
-        6D014AC9B497F71A1C5DFCC7220442601504672FE429B44DA7E6FE8731029431
-        166EF106C061F423DFE6D4CA1FF0F1F1BD8C1B596D096883C15805819BF19052
-        0E855C073080710BEA9497F7D15A61DF904AA203D552D2D3EFE15F731DD50F2C
-        64585392645D0263347595116A2B6318FB7C4D32594DEBFF2EC74C9C41674F06
-        2D354A29B4AFB0AA35D94C81BC941F87850B2BA0B385C2FE4C363A2B562940FA
-        48276C8320EFC3E4FF5946D644B17008E0B1600D7F64E193826DE8CFF800D427
-        6B98F9F813ECBAF3566BDE846F4E6D6CC3D3699F21AF700050941AE875F3EFD4
-        A5A38B6BE2805416AE1D70105426AA70B7BF4ECB82AF9175253515514EAC5E41
-        FF5F76D9FE1E133061E963A4733E5515713E59BB96EA9A4A942C20B4C1983060
-        60C0A5CF7377961A30805A7EEAC8AEB59F9E763A1D33E3AB2B44F125031A8761
-        C3CAE97C6D0300E3EF9CCFB155CF7369CF2E4635558380AEDD3B396E0C931E5A
-        48FBCB1BE8D8B88E31236BF12EF4DACC2DD97118E8CF3230A43A56F77EB21390
-        80717E71CDB47090FDEE7C7E45DFA0414A85B2FD0F5449DCBEF334A712F4BCB1
-        8977EEBD9BF4FBBB696AA820DBDD4DEE5C37231A135CDEBB9BADF3EFA27BCB46
-        468F08E07D7D685F15E748E37B92AE8B8AB36E6E15E002B2F832D2E136F9DFEB
-        38BE61CDF8C95FAFECD7D31BAA852D3F8E00A9C805B0D4B01491541299CB920F
-        C0DA1800B2E77A48A5523407215D975C4F8F5D6761849D01AD0D3DFD3E035973
-        68F5C5331B008F70089552EC9833DDCCD9B15F01DEFFA707160B5DFB878828D4
-        D7C4238888C0FE488FA1B3DD200CE28A6FE5866C770F082C102300835D55A519
-        C848BA07C5E0DE5CFA112017660F209E1B3B91D66601C017DE3B1A05CA97348E
-        BDB9B5BCF295E15585586D854324E2E0005A08AB06AC6A4A8F097F833156A52F
-        83AC15E70622FE312FF7959786CE6F05B2805C59DF62960D7410B5BBEAC9F061
-        B60ACF5E38F3F6A2E4E8FB0B7EC58BAE57A8ADAB8078DCC1118E3541291C1366
-        5C1461E7C79392FE0C9CCF88F4875E66E1CBD9BE6D61F69B278D33273BC3AFE5
-        5A53F02518C22381FC9AFEB36FCDAB4ADD34D3AFF9F9E5BC999A2CF7A98C1B9C
-        88433C0810441C0703282DC1807D9654643DB8948D30503087F714D20BB7B983
-        C78B701F40157C947100103F69BC9AF1F52E1A8363605EFBB9B0B911A00CA85C
-        5C33E29EE648FC5B15113326115354C634424059545BB02705DA0872BE20E339
-        E42567BB7461E5F3D9DE0D40B674EAD78F6B366068EF8BB13C7B16B1AA613C2D
-        355944883530FF93DEF0E600D1A2918AFB2A1BAF1F1589DD5249E4330EA23C26
-        68C340C1E853DAE0668CFA4B00DEB6CEBDB40FC8978015C0BA318D619DF9E852
-        5960A00BF14CFDB87068AC2208BF72F3ED7467A99108102B8948D120802E865F
-        12AA18FC3031CA70E5C11AE05F3BA2449DA28601604A421715ABFFE4FC153983
-        B3D2BAD003AD0000000049454E44AE426082}
       TabOrder = 1
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
@@ -240,10 +211,7 @@ object FrmSpedSf: TFrmSpedSf
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      OnClick = cxSairClick
-      ExplicitLeft = 164
-      ExplicitTop = 7
-      ExplicitHeight = 51
+      OnClick = cxGerarClick
     end
   end
   object memoError: TMemo
@@ -255,288 +223,600 @@ object FrmSpedSf: TFrmSpedSf
       'Memo1')
     TabOrder = 1
   end
-  object Panel3: TPanel
+  object cxPageControl2: TcxPageControl
     AlignWithMargins = True
-    Left = 3
+    Left = 0
     Top = 3
-    Width = 525
-    Height = 241
+    Width = 509
+    Height = 371
+    Margins.Left = 0
+    Margins.Right = 0
+    Margins.Bottom = 0
     Align = alClient
+    Color = clWhite
+    Focusable = False
+    ParentBackground = False
+    ParentColor = False
     TabOrder = 2
-    ExplicitLeft = 0
-    ExplicitTop = 0
-    ExplicitWidth = 515
-    ExplicitHeight = 192
-    object Label1: TLabel
-      Left = 39
-      Top = 20
-      Width = 51
-      Height = 17
-      Caption = 'Empresa'
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
+    Properties.ActivePage = cxTabSheet1
+    Properties.CustomButtons.Buttons = <>
+    LookAndFeel.Kind = lfStandard
+    LookAndFeel.NativeStyle = True
+    ClientRectBottom = 367
+    ClientRectLeft = 4
+    ClientRectRight = 505
+    ClientRectTop = 24
+    object cxTabSheet1: TcxTabSheet
+      Caption = 'Dados SPED'
+      ImageIndex = 0
+      object Panel3: TPanel
+        Left = 0
+        Top = 0
+        Width = 501
+        Height = 343
+        Align = alClient
+        BevelOuter = bvNone
+        Color = clWhite
+        ParentBackground = False
+        TabOrder = 0
+        object Label1: TLabel
+          Left = 40
+          Top = 20
+          Width = 45
+          Height = 15
+          Caption = 'Empresa'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label2: TLabel
+          Left = 35
+          Top = 57
+          Width = 50
+          Height = 15
+          Caption = 'Contador'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label3: TLabel
+          Left = 28
+          Top = 89
+          Width = 57
+          Height = 15
+          Caption = 'Per'#237'odo de'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label6: TLabel
+          Left = 43
+          Top = 122
+          Width = 42
+          Height = 15
+          Caption = 'Arquivo'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label5: TLabel
+          Left = 62
+          Top = 152
+          Width = 23
+          Height = 15
+          Caption = 'Tipo'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label4: TLabel
+          Left = 275
+          Top = 89
+          Width = 16
+          Height = 15
+          Caption = 'at'#233
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+        end
+        object cbEmpresa: TDBLookupComboboxEh
+          Left = 90
+          Top = 17
+          Width = 388
+          Height = 25
+          DynProps = <>
+          DataField = ''
+          DropDownBox.AutoDrop = True
+          EditButtons = <>
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          KeyField = 'CODIGO'
+          ListField = 'FANTASIA'
+          ListSource = dsEmpresa
+          ParentFont = False
+          ParentShowHint = False
+          ReadOnly = True
+          TabOrder = 0
+          Visible = True
+        end
+        object cbContador: TDBLookupComboboxEh
+          Left = 90
+          Top = 52
+          Width = 388
+          Height = 25
+          DynProps = <>
+          DataField = ''
+          DropDownBox.AutoDrop = True
+          EditButtons = <>
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          KeyField = 'CODIGO'
+          ListField = 'NOME'
+          ListSource = dsContador
+          ParentFont = False
+          ParentShowHint = False
+          TabOrder = 1
+          Visible = True
+        end
+        object dtIni: TDateTimePicker
+          Left = 90
+          Top = 86
+          Width = 126
+          Height = 23
+          BevelInner = bvLowered
+          Date = 42215.000000000000000000
+          Time = 0.452512048606877200
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 2
+          OnExit = dtIniExit
+        end
+        object edArq: TEdit
+          Left = 90
+          Top = 121
+          Width = 388
+          Height = 19
+          TabStop = False
+          Ctl3D = False
+          ParentColor = True
+          ParentCtl3D = False
+          ReadOnly = True
+          TabOrder = 3
+        end
+        object dtFim: TDateTimePicker
+          Left = 352
+          Top = 86
+          Width = 126
+          Height = 23
+          BevelInner = bvLowered
+          Date = 42215.000000000000000000
+          Time = 0.452512048606877200
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 4
+          OnExit = dtFimExit
+        end
+        object ckSemMovimento: TCheckBox
+          Left = 328
+          Top = 154
+          Width = 110
+          Height = 17
+          Caption = 'Sem Movimento'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 5
+        end
+        object CbTipo: TComboBox
+          Left = 90
+          Top = 150
+          Width = 145
+          Height = 21
+          BevelKind = bkFlat
+          Style = csDropDownList
+          Ctl3D = False
+          ItemIndex = 0
+          ParentCtl3D = False
+          TabOrder = 6
+          Text = 'ORIGINAL'
+          Items.Strings = (
+            'ORIGINAL'
+            'SUBSTITUTO')
+        end
+        object GroupBox1: TGroupBox
+          Left = 11
+          Top = 193
+          Width = 478
+          Height = 136
+          Caption = 'Invent'#225'rio'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 7
+          object Label9: TLabel
+            Left = 16
+            Top = 64
+            Width = 105
+            Height = 17
+            Alignment = taCenter
+            Caption = 'Motivo Invent'#225'rio:'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+          end
+          object Label8: TLabel
+            Left = 233
+            Top = 31
+            Width = 91
+            Height = 17
+            Alignment = taCenter
+            Caption = 'Data Invent'#225'rio:'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+          end
+          object ckInventario: TCheckBox
+            Left = 16
+            Top = 32
+            Width = 181
+            Height = 17
+            Caption = 'Gerar Sped com invent'#225'rio'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 0
+            OnClick = ckInventarioClick
+          end
+          object dtInventario: TDateTimePicker
+            Left = 334
+            Top = 28
+            Width = 126
+            Height = 25
+            Date = 45402.000000000000000000
+            Time = 0.946228912034712300
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 1
+          end
+          object cbMotivo: TComboBox
+            Left = 17
+            Top = 87
+            Width = 443
+            Height = 23
+            BevelKind = bkFlat
+            Style = csDropDownList
+            Ctl3D = False
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ItemIndex = 0
+            ParentCtl3D = False
+            ParentFont = False
+            TabOrder = 2
+            Text = '01 - No final no per'#237'odo'
+            Items.Strings = (
+              '01 - No final no per'#237'odo'
+              '02 - Na mudan'#231'a de forma de tributa'#231#227'o da mercadoria (ICMS)'
+              
+                '03 - Na solicita'#231#227'o da baixa cadastral, paralisa'#231#227'o tempor'#225'ria e' +
+                ' outras situa'#231#245'es'
+              
+                '04 - Na altera'#231#227'o de regime de pagamento '#8211' condi'#231#227'o do contribui' +
+                'nte'
+              '05 - Por determina'#231#227'o dos fiscos')
+          end
+        end
+      end
     end
-    object Label2: TLabel
-      Left = 35
-      Top = 52
-      Width = 55
-      Height = 17
-      Caption = 'Contador'
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-    end
-    object Label3: TLabel
-      Left = 25
-      Top = 88
-      Width = 65
-      Height = 17
-      Caption = 'Per'#237'odo de'
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-    end
-    object Label6: TLabel
-      Left = 45
-      Top = 122
-      Width = 45
-      Height = 17
-      Caption = 'Arquivo'
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-    end
-    object Label5: TLabel
-      Left = 64
-      Top = 165
-      Width = 26
-      Height = 17
-      Caption = 'Tipo'
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-    end
-    object Label4: TLabel
-      Left = 283
-      Top = 89
-      Width = 18
-      Height = 17
-      Caption = 'at'#233
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-    end
-    object cbEmpresa: TDBLookupComboboxEh
-      Left = 96
-      Top = 16
-      Width = 388
-      Height = 25
-      DynProps = <>
-      DataField = ''
-      DropDownBox.AutoDrop = True
-      EditButtons = <>
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Segoe UI Semibold'
-      Font.Style = [fsBold]
-      KeyField = 'CODIGO'
-      ListField = 'FANTASIA'
-      ListSource = dsEmpresa
-      ParentFont = False
-      ParentShowHint = False
-      ReadOnly = True
-      TabOrder = 0
-      Visible = True
-    end
-    object cbContador: TDBLookupComboboxEh
-      Left = 96
-      Top = 47
-      Width = 388
-      Height = 25
-      DynProps = <>
-      DataField = ''
-      DropDownBox.AutoDrop = True
-      EditButtons = <>
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Segoe UI Semibold'
-      Font.Style = [fsBold]
-      KeyField = 'CODIGO'
-      ListField = 'NOME'
-      ListSource = dsContador
-      ParentFont = False
-      ParentShowHint = False
-      TabOrder = 1
-      Visible = True
-    end
-    object dtIni: TDateTimePicker
-      Left = 96
-      Top = 86
-      Width = 126
-      Height = 25
-      BevelInner = bvLowered
-      Date = 42215.000000000000000000
-      Time = 0.452512048606877200
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 2
-      OnExit = dtIniExit
-    end
-    object edArq: TEdit
-      Left = 96
-      Top = 121
-      Width = 388
-      Height = 23
-      TabStop = False
-      Ctl3D = False
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentColor = True
-      ParentCtl3D = False
-      ParentFont = False
-      ReadOnly = True
-      TabOrder = 3
-    end
-    object dtFim: TDateTimePicker
-      Left = 358
-      Top = 86
-      Width = 126
-      Height = 25
-      BevelInner = bvLowered
-      Date = 42215.000000000000000000
-      Time = 0.452512048606877200
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 4
-      OnExit = dtFimExit
-    end
-    object ckSemMovimento: TCheckBox
-      Left = 290
-      Top = 156
-      Width = 156
-      Height = 17
-      Caption = 'Sem Movimento'
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 5
-    end
-    object ckInventario: TCheckBox
-      Left = 290
-      Top = 179
-      Width = 193
-      Height = 17
-      Caption = 'Gerar sped com invent'#225'rio'
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 6
-    end
-    object CbTipo: TComboBox
-      Left = 96
-      Top = 161
-      Width = 145
-      Height = 25
-      BevelKind = bkFlat
-      Style = csDropDownList
-      Ctl3D = False
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ItemIndex = 0
-      ParentCtl3D = False
-      ParentFont = False
-      TabOrder = 7
-      Text = 'ORIGINAL'
-      Items.Strings = (
-        'ORIGINAL'
-        'SUBSTITUTO')
-    end
-    object cxProgressBar: TcxProgressBar
-      Left = 1
-      Top = 215
-      Align = alBottom
-      ParentFont = False
-      Properties.PeakValue = 100.000000000000000000
-      Properties.ShowTextStyle = cxtsText
-      Properties.Text = 'Aguardando...'
-      Style.Font.Charset = ANSI_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -13
-      Style.Font.Name = 'Segoe UI'
-      Style.Font.Style = []
-      Style.LookAndFeel.Kind = lfUltraFlat
-      Style.LookAndFeel.NativeStyle = True
-      Style.TextStyle = []
-      Style.IsFontAssigned = True
-      StyleDisabled.LookAndFeel.Kind = lfUltraFlat
-      StyleDisabled.LookAndFeel.NativeStyle = True
-      StyleFocused.LookAndFeel.Kind = lfUltraFlat
-      StyleFocused.LookAndFeel.NativeStyle = True
-      StyleHot.LookAndFeel.Kind = lfUltraFlat
-      StyleHot.LookAndFeel.NativeStyle = True
-      TabOrder = 8
-      ExplicitTop = 219
-      Width = 523
+    object cxTabSheet2: TcxTabSheet
+      Caption = 'Dados 1601'
+      ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
+      object Panel1: TPanel
+        AlignWithMargins = True
+        Left = 5
+        Top = 5
+        Width = 491
+        Height = 333
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
+        Align = alClient
+        BevelOuter = bvNone
+        TabOrder = 0
+        object DBGrid1: TDBGrid
+          AlignWithMargins = True
+          Left = 3
+          Top = 10
+          Width = 485
+          Height = 169
+          Margins.Top = 10
+          TabStop = False
+          Align = alTop
+          DataSource = ds1601
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+          TitleFont.Charset = DEFAULT_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -11
+          TitleFont.Name = 'Tahoma'
+          TitleFont.Style = []
+          OnEnter = DBGrid1Enter
+          OnKeyPress = DBGrid1KeyPress
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'COD_PART_IP'
+              Title.Caption = 'Adm. Pagamentos'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Tahoma'
+              Title.Font.Style = [fsBold]
+              Width = 110
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'COD_PART_IT'
+              Title.Caption = 'Intermediador'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Tahoma'
+              Title.Font.Style = [fsBold]
+              Width = 90
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'TOT_VS'
+              Title.Caption = 'Total Vendas'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Tahoma'
+              Title.Font.Style = [fsBold]
+              Width = 85
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'TOT_ISS'
+              Title.Caption = 'Total Servi'#231'o'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Tahoma'
+              Title.Font.Style = [fsBold]
+              Width = 85
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'TOT_OUTROS'
+              Title.Caption = 'Total Outros'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Tahoma'
+              Title.Font.Style = [fsBold]
+              Width = 85
+              Visible = True
+            end>
+        end
+        object cxApagarDados: TcxButton
+          AlignWithMargins = True
+          Left = 355
+          Top = 189
+          Width = 120
+          Height = 25
+          Cursor = crHandPoint
+          Margins.Left = 7
+          Margins.Top = 7
+          Margins.Right = 0
+          Margins.Bottom = 7
+          Caption = 'Limpar Dados'
+          Enabled = False
+          LookAndFeel.NativeStyle = False
+          LookAndFeel.SkinName = 'DevExpressDarkStyle'
+          OptionsImage.Glyph.SourceDPI = 96
+          OptionsImage.Glyph.Data = {
+            424D760600000000000036000000280000001400000014000000010020000000
+            000000000000C40E0000C40E0000000000000000000000000000000000000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            0000473DEA19483BEDDA483CEDEE483CEDEE483CEDEE483CEDEE483CEDEE483C
+            EDEE483CEDEE483CEDEE483CEDEE483CEDEE483BEDDA4A3FE918000000000000
+            0000000000000000000000000000000000004737EB404739EDFF4739EDFF4739
+            EDFF4739EDFF4739EDFF4739EDFF4739EDFF4739EDFF4739EDFF4739EDFF4739
+            EDFF4739EDFF4737EB4000000000000000000000000000000000000000000000
+            00004337EB404537ECFF4537ECFF4537ECFF4537ECFF4537ECFF4537ECFF4537
+            ECFF4537ECFF4537ECFF4537ECFF4537ECFF4537ECFF4337EB40000000000000
+            0000000000000000000000000000000000004333EB404335ECFF4335ECFF4335
+            ECFF4D41E4FF4235E9FF4335ECFF4335ECFF4235E9FF4C3FE5FF4335ECFF4335
+            ECFF4335ECFF4333EB4000000000000000000000000000000000000000000000
+            00003F33EB404133EBFF4133EBFF5D52E5FFF5F4FDFF9F99EBFF4033E8FF4033
+            E8FF9F99EBFFF3F2FCFF5A4FE4FF4133EBFF4133EBFF3F33EB40000000000000
+            0000000000000000000000000000000000003F2FEB403F31EAFF3F31EAFF483A
+            E4FFD4D1F5FFFFFFFFFF9E98EAFF9E98EAFFFFFFFFFFD4D1F5FF483AE4FF3F31
+            EAFF3F31EAFF3F2FEB4000000000000000000000000000000000000000000000
+            00003B2FEB403D2FEAFF3D2FEAFF3D2FEAFF4739E4FFD4D1F5FFFFFFFFFFFFFF
+            FFFFD8D5F6FF493CE2FF3D2FEAFF3D2FEAFF3D2FEAFF3B2FEB40000000000000
+            0000000000000000000000000000000000003B2BE7403B2CE9FF3B2CE9FF3B2C
+            E9FF3B2CE6FFA29CEBFFFFFFFFFFFFFFFFFFA29CEBFF3B2CE6FF3B2CE9FF3B2C
+            E9FF3B2CE9FF3B2BE74000000000000000000000000000000000000000000000
+            0000372BE740392AE8FF392AE8FF392AE5FF9B95E9FFFFFFFFFFD3D0F5FFD3D0
+            F5FFFFFFFFFF9B95E9FF392AE5FF392AE8FF392AE8FF372BE740000000000000
+            0000000000000000000000000000000000003727E7403728E8FF3728E8FF5F55
+            E2FFFFFFFFFFD3D0F5FF4134E2FF4134E2FFD3D0F5FFFFFFFFFF5E54E2FF3728
+            E8FF3728E8FF3727E74000000000000000000000000000000000000000000000
+            00003327E7403526E7FF3526E7FF3526E4FF7A71E4FF3F32E1FF3526E7FF3526
+            E7FF3F32E1FF7A71E4FF3526E4FF3526E7FF3526E7FF3327E740000000000000
+            0000000000000000000000000000000000003323E7403324E6FF3324E6FF3324
+            E6FF3324E6FF3324E6FF3324E6FF3324E6FF3324E6FF3324E6FF3324E6FF3324
+            E6FF3324E6FF3323E74000000000000000000000000000000000000000000000
+            00002F23E3403122E5FF3122E5FF3122E5FF3122E5FF3122E5FF3122E5FF3122
+            E5FF3122E5FF3122E5FF3122E5FF3122E5FF3122E5FF2F23E340000000000000
+            0000000000000000000000000000000000008B88F9857D78F5EB7D78F5EB7D78
+            F5EB7D78F5EB7D78F5EB7D78F5EB7D78F5EB7D78F5EB7D78F5EB7D78F5EB7D78
+            F5EB7D78F5EB8D89F98400000000000000000000000000000000000000000000
+            0000A7A7FF66A7A7FFFEA8A8FFFFA8A8FFFFA8A8FFFFA8A8FFFFA8A8FFFFA8A8
+            FFFFA8A8FFFFA8A8FFFFA8A8FFFFA8A8FFFFA7A7FFFEA9A9FF65000000000000
+            00000000000000000000000000000000000000000000A2A2FF0BA5A5FF11A5A5
+            FF115E54F47C584DF2FF584DF2FF584DF2FF584DF2FF5F55F47BA5A5FF11A5A5
+            FF11A2A2FF0B0000000000000000000000000000000000000000000000000000
+            000000000000000000000000000000000000664CFF0A5A4DF54F5A4EF3555A4E
+            F3555A4DF54F664CFF0A00000000000000000000000000000000000000000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            00000000000000000000000000000000000000000000}
+          TabOrder = 1
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          OnClick = cxApagarDadosClick
+        end
+      end
     end
   end
   object dsContador: TDataSource
     DataSet = DadosSped.qryContador
-    Left = 560
-    Top = 368
+    Left = 8
+    Top = 72
   end
   object dsEmpresa: TDataSource
     DataSet = DadosSped.qryEmpresa
-    Left = 496
-    Top = 368
+    Left = 8
+    Top = 16
   end
   object ACBrSPEDFiscal: TACBrSPEDFiscal
-    Path = 'C:\Program Files (x86)\Embarcadero\Studio\23.0\bin\'
+    Path = 'C:\Program Files (x86)\Embarcadero\Studio\22.0\bin\'
     Delimitador = '|'
     ReplaceDelimitador = False
     TrimString = True
     CurMascara = '#0.00'
-    Left = 408
-    Top = 368
+    Left = 8
+    Top = 144
+  end
+  object ds1601: TDataSource
+    DataSet = qry1601
+    Left = 16
+    Top = 212
+  end
+  object qry1601: TFDQuery
+    BeforePost = qry1601BeforePost
+    OnNewRecord = qry1601NewRecord
+    AggregatesActive = True
+    Connection = Dados.Conexao
+    SQL.Strings = (
+      'select * from sped_1601')
+    Left = 16
+    Top = 276
+    object qry1601CODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qry1601COD_PART_IP: TStringField
+      FieldName = 'COD_PART_IP'
+      Origin = 'COD_PART_IP'
+    end
+    object qry1601COD_PART_IT: TStringField
+      FieldName = 'COD_PART_IT'
+      Origin = 'COD_PART_IT'
+    end
+    object qry1601TOT_VS: TFMTBCDField
+      FieldName = 'TOT_VS'
+      Origin = 'TOT_VS'
+      Precision = 18
+      Size = 2
+    end
+    object qry1601TOT_ISS: TFMTBCDField
+      FieldName = 'TOT_ISS'
+      Origin = 'TOT_ISS'
+      Precision = 18
+      Size = 2
+    end
+    object qry1601TOT_OUTROS: TFMTBCDField
+      FieldName = 'TOT_OUTROS'
+      Origin = 'TOT_OUTROS'
+      Precision = 18
+      Size = 2
+    end
+    object qry1601FK_SPED: TIntegerField
+      FieldName = 'FK_SPED'
+      Origin = 'FK_SPED'
+    end
   end
 end

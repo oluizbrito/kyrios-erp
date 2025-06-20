@@ -218,7 +218,7 @@ begin
       qryFornecedorFUN.Value := 'N';
       qryFornecedorDT_CADASTRO.Value := Date;
       qryFornecedor.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
     end;
     idFornecedor := qryFornecedorCODIGO.Value;
     razaoFornecedor := qryFornecedorRAZAO.Value;
@@ -314,7 +314,7 @@ begin
       qryFornecedorFUN.Value := 'N';
       qryFornecedorDT_CADASTRO.Value := Date;
       qryFornecedor.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
     end;
     idFornecedor := qryFornecedorCODIGO.Value;
     dados.qryFornecedor.Close;
@@ -379,7 +379,7 @@ begin
         qryXmlMasterCFOP.Value := '2102';
 
       qryXmlMaster.Post;
-      Conexao.CommitRetaining;
+      Conexao.Commit;
     end;
 
 
@@ -512,7 +512,7 @@ begin
               qryXMLDetailQUANT_S.Value;
 
             qryXMLDetail.Post;
-            dados.Conexao.CommitRetaining;
+            dados.Conexao.Commit;
 
             QRYUnidade.Close;
             QRYUnidade.Params[0].Value := UpperCase(Copy(prod.uCom, 1, 2));
@@ -524,7 +524,7 @@ begin
               QRYUnidadeDESCRICAO.Value := UpperCase(prod.uCom);
               QRYUnidadeFK_USUARIO.Value := dados.idUsuario;
               QRYUnidade.Post;
-              dados.Conexao.CommitRetaining;
+              dados.Conexao.Commit;
             end;
           end;
         end;
@@ -538,7 +538,7 @@ begin
       qryXmlMasterBASE_IPI.Value := qryXmlMasterBASE_IPI.Value +
         qryXMLDetailBASE_IPI.Value;
       qryXmlMaster.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
     end;
 
     qryXMLDuplicata.Close;
@@ -559,7 +559,7 @@ begin
         .NFe.Cobr.Dup.Items[j].vDup;
       qryXMLDuplicata.Post;
 
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
 
     end;
 

@@ -1,6 +1,6 @@
 unit uConsCTe_RodoViario;
 
-interface //Suporte e Vendas direto no Whatsapp (48)998463846
+interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
@@ -14,21 +14,16 @@ uses
   Vcl.Tabs, Vcl.ExtDlgs, JPeg, frxClass, frxDBSet, frxExportPDF,
   ACBrBase, ACBrMail, ACBrDFe, ACBrNFe, ACBrNFeDANFeESCPOS, ACBrPosPrinter,
   ACBrEnterTab, ACBrNFeDANFEClass, ACBrDANFCeFortesFrA4, ACBrNFeDANFeRLClass,
-  ACBrCTeDACTEClass, ACBrCTeDACTeRLClass,
-  ACBrCTe, frxExportBaseDialog, ACBrCTeDACTEFR, ACBrDFeReport, frxExportXLS,
+  ACBrCTeDACTEClass, ACBrCTeDACTeRLClass, frxExportXLS,
+  ACBrCTe, frxExportBaseDialog, ACBrDFeReport,
   JvExComCtrls, JvComCtrls, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters,
   Vcl.Menus, cxButtons;
 
 type
   TfrmConsCTe_Rodo = class(TForm)
     Panel2: TPanel;
-    Panel3: TPanel;
-    btnInutiliza: TSpeedButton;
-    btnCancelar: TSpeedButton;
     Panel1: TPanel;
     LblSaldo: TLabel;
-    btnRecuperar: TSpeedButton;
-    btnImprimir: TSpeedButton;
     OpenDialog1: TOpenDialog;
     frxPDF: TfrxPDFExport;
     frxReport: TfrxReport;
@@ -45,8 +40,6 @@ type
     qryXMLSITUACAO: TStringField;
     qryXMLSERIE: TStringField;
     qryXMLXML: TMemoField;
-    btnNovo: TSpeedButton;
-    btnAlterar: TSpeedButton;
     dsEmpresa: TDataSource;
     DBEdit1: TDBEdit;
     Label11: TLabel;
@@ -55,7 +48,6 @@ type
     DBText2: TDBText;
     dsCorrecao: TDataSource;
     qryCorrecao: TFDQuery;
-    BtnCCe: TSpeedButton;
     PagUtilidade: TPageControl;
     TabInutilizar: TTabSheet;
     pnInutiliza: TPanel;
@@ -80,7 +72,6 @@ type
     ACBrMail1: TACBrMail;
     qryRelatorio: TFDQuery;
     frxDBDataset2: TfrxDBDataset;
-    btnRelatorio: TSpeedButton;
     qryCTE_MCODIGO: TIntegerField;
     qryCTE_MFKEMPRESA: TIntegerField;
     qryCTE_MNUMERO: TIntegerField;
@@ -163,10 +154,11 @@ type
     qryXMLTRIB_FED: TFMTBCDField;
     qryXMLTRIB_EST: TFMTBCDField;
     qryXMLTRIB_MUN: TFMTBCDField;
+    qryCTE_MPESOL: TFMTBCDField;
+    qryCTE_MPESOB: TFMTBCDField;
     qryCTE_DPRECO: TFMTBCDField;
     qryCTE_DQTD: TFMTBCDField;
     qryCTE_DTOTAL: TFMTBCDField;
-    btnEmail: TSpeedButton;
     qryCTE_MVIRTUAL_SITUACAO: TStringField;
     qryRelatorioNUMERO: TIntegerField;
     qryRelatorioDATA: TDateField;
@@ -256,9 +248,6 @@ type
     maskFim: TMaskEdit;
     maskInicio: TMaskEdit;
     edtLoc: TEdit;
-    btnWhats: TSpeedButton;
-    qryCTE_MPESOL: TBCDField;
-    qryCTE_MPESOB: TBCDField;
     Panel7: TPanel;
     cxAlterar: TcxButton;
     cxCCe: TcxButton;
@@ -270,8 +259,6 @@ type
     cxWhats: TcxButton;
     cxCancelar: TcxButton;
     cxInutiliza: TcxButton;
-    Panel12: TPanel;
-    cxSair: TcxButton;
     procedure edtLocChange(Sender: TObject);
     procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
@@ -291,11 +278,9 @@ type
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure btnSairCorrecaoClick(Sender: TObject);
     procedure btnCorrecaoClick(Sender: TObject);
-    procedure BtnCCeClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnRelatorioClick(Sender: TObject);
     procedure qryRelatorioCalcFields(DataSet: TDataSet);
-    procedure btnImprimirClick(Sender: TObject);
     procedure qryCTE_DPRECOValidate(Sender: TField);
     procedure btnEmailClick(Sender: TObject);
     procedure qryCTE_MCalcFields(DataSet: TDataSet);
@@ -304,8 +289,9 @@ type
     procedure maskFimKeyPress(Sender: TObject; var Key: Char);
     procedure qryCorrecaoNewRecord(DataSet: TDataSet);
     procedure TabSet1Change(Sender: TObject);
-    procedure btnWhatsClick(Sender: TObject);
-    procedure cxSairClick(Sender: TObject);
+    procedure cxImprimirClick(Sender: TObject);
+    procedure cxWhatsClick(Sender: TObject);
+    procedure cxCCeClick(Sender: TObject);
   private
     procedure localiza;
     procedure tamanho;
@@ -324,35 +310,18 @@ type
 var
   frmConsCTe_Rodo: TfrmConsCTe_Rodo;
 
-implementation //Acesse lojadodesenvolvedor.com.br e saiba mais sobre esse código fonte.
+implementation
 
 {$R *.dfm}
 
 uses Udados, uEmail, uCadCTe, uDmCTe, ufrmStatus;
-
-procedure TfrmConsCTe_Rodo.btnImprimirClick(Sender: TObject);
-begin
-  try
-    btnImprimir.Enabled := false;
-
-    dmCTe.ACBrCTe.Conhecimentos.Clear;
-    dmCTe.ACBrCTe.Conhecimentos.LoadFromString(qryCTE_MXML.Value);
-    dmCTe.ACBrCTe.DACTE.PathPDF := dados.qryConfigPATH_PDF_CTE.Value;
-    dmCTe.ACBrCTe.Conhecimentos.Imprimir;
-    dmCTe.ACBrCTe.Conhecimentos.ImprimirPDF;
-    dmCTe.ACBrCTe.Conhecimentos.GravarXML();
-
-  finally
-    btnImprimir.Enabled := true;
-  end;
-end;
 
 procedure TfrmConsCTe_Rodo.btnInutilizaClick(Sender: TObject);
 var
   dia, mes, ano: Word;
 begin
 
-  if not btnInutiliza.Visible then
+  if not cxInutiliza.Visible then
     exit;
 
   dmCTe.ConfiguraCTe;
@@ -367,14 +336,13 @@ begin
   edtSerie.Text := dados.qryTerminalSERIE.Value;
   edtAno.Text := IntToStr(ano);
   edtJustificativa.Text := 'QUEBRA DE SEQUÊNCIA DE NUMERAÇÃO';
-
 end;
 
 procedure TfrmConsCTe_Rodo.btnAlterarClick(Sender: TObject);
 var
   codigo: Integer;
 begin
-  if not btnAlterar.Visible then
+  if not cxAlterar.Visible then
     exit;
 
   operacao := 1;
@@ -390,7 +358,7 @@ begin
   codigo := qryCTE_MCODIGO.Value;
 
   try
-    btnAlterar.Enabled := false;
+    cxAlterar.Enabled := false;
     frmCadCTe := TfrmCadCTe.Create(Application);
     frmCadCTe.qryCTE_M.Close;
     frmCadCTe.qryCTE_M.Params[0].Value := codigo;
@@ -408,15 +376,15 @@ begin
   finally
     frmCadCTe.Release;
     btnFiltrar.Click;
-    btnAlterar.Enabled := true;
+    cxAlterar.Enabled := true;
   end;
 end;
 
 procedure TfrmConsCTe_Rodo.btnCancelarClick(Sender: TObject);
-Var
+var
   vAux: string;
 begin
-  if not btnCancelar.Visible then
+  if not cxCancelar.Visible then
     exit;
 
   dmCTe.ConfiguraCTe;
@@ -459,27 +427,6 @@ begin
       ShowMessage('Cancelamento realizado com sucesso!');
     end;
   end;
-end;
-
-procedure TfrmConsCTe_Rodo.BtnCCeClick(Sender: TObject);
-var
-  cod: Integer;
-begin
-
-  if not BtnCCe.Visible then
-    exit;
-
-  dmCTe.ConfiguraCTe;
-
-  TabCarta.TabVisible := true;
-  TabInutilizar.TabVisible := false;
-  PagUtilidade.Visible := true;
-  PagUtilidade.ActivePage := TabCarta;
-
-  qryCorrecao.Close;
-  qryCorrecao.Params[0].Value := qryCTE_MCODIGO.Value;
-  qryCorrecao.Open;
-
 end;
 
 procedure TfrmConsCTe_Rodo.btnCorrecaoClick(Sender: TObject);
@@ -529,8 +476,7 @@ end;
 
 procedure TfrmConsCTe_Rodo.btnEmailClick(Sender: TObject);
 begin
-  // email
-  try
+ try
     frmEmail := TfrmEmail.Create(Application);
     frmEmail.vNumero := qryCTE_MCODIGO.Value;
     frmEmail.vNome := dados.qryEmpresaFANTASIA.Value;
@@ -556,7 +502,7 @@ end;
 
 procedure TfrmConsCTe_Rodo.btnRecuperarClick(Sender: TObject);
 begin
-  if not btnRecuperar.Visible then
+ if not cxRecuperar.Visible then
     exit;
 
   dmCTe.ConfiguraCTe;
@@ -594,48 +540,48 @@ end;
 
 procedure TfrmConsCTe_Rodo.habilitaBotoes;
 begin
-  Panel3.Width := 630;
+  //Panel3.Width := 630;
   // btnAlterar.Visible := false;
-  btnCancelar.Visible := false;
-  btnInutiliza.Visible := false;
-  btnRecuperar.Visible := false;
-  btnImprimir.Visible := false;
+  cxCancelar.Visible := false;
+  cxInutiliza.Visible := false;
+  cxRecuperar.Visible := false;
+  cxImprimir.Visible := false;
   // BtnCCe.Visible := false;
-  btnEmail.Visible := false;
+  cxEmail.Visible := false;
   // btnRelatorio.Visible := false;
 
-  btnNovo.Left := 0;
-  btnAlterar.Left := 75;
-  btnCancelar.Left := 150;
-  btnInutiliza.Left := 225;
-  btnRecuperar.Left := 300;
-  btnImprimir.Left := 450;
-  BtnCCe.Left := 525;
-  btnEmail.Left := 600;
+  cxNovo.Left := 0;
+  cxAlterar.Left := 75;
+  cxCancelar.Left := 150;
+  cxInutiliza.Left := 225;
+  cxRecuperar.Left := 300;
+  cxImprimir.Left := 450;
+  cxCCe.Left := 525;
+  cxEmail.Left := 600;
   // btnRelatorio.Left := 675;
 
   // btnAlterar.Visible := TabSet1.TabIndex = 0;
-  btnCancelar.Visible := TabSet1.TabIndex = 1;
-  btnInutiliza.Visible := true;
-  btnRecuperar.Visible := TabSet1.TabIndex = 3;
-  btnImprimir.Visible := TabSet1.TabIndex in [1, 2, 6];
+  cxCancelar.Visible := TabSet1.TabIndex = 1;
+  cxInutiliza.Visible := true;
+  cxRecuperar.Visible := TabSet1.TabIndex = 3;
+  cxImprimir.Visible := TabSet1.TabIndex in [1, 2, 6];
   // BtnCCe.Visible := TabSet1.TabIndex = 1;
-  btnEmail.Visible := TabSet1.TabIndex = 1;
+  cxEmail.Visible := TabSet1.TabIndex = 1;
   // btnRelatorio.Visible := true;
   Botoes;
 end;
 
 procedure TfrmConsCTe_Rodo.btnRelatorioClick(Sender: TObject);
 begin
-  if qryCTE_M.IsEmpty then
+if qryCTE_M.IsEmpty then
     exit;
   try
-    btnRelatorio.Enabled := false;
+    cxRelatorio.Enabled := false;
     frxReport.LoadFromFile(ExtractFilePath(Application.ExeName) +
       '\Relatorio\ListadeCTE.fr3');
     frxReport.ShowReport;
   finally
-    btnRelatorio.Enabled := true;
+    cxRelatorio.Enabled := true;
   end;
 end;
 
@@ -646,10 +592,49 @@ begin
   Application.ProcessMessages;
 end;
 
-procedure TfrmConsCTe_Rodo.btnWhatsClick(Sender: TObject);
+procedure TfrmConsCTe_Rodo.cxCCeClick(Sender: TObject);
 var
-  arquivo: string;
-  FFone: String;
+  cod: Integer;
+begin
+
+  if not cxCCe.Visible then
+    exit;
+
+  dmCTe.ConfiguraCTe;
+
+  TabCarta.TabVisible := true;
+  TabInutilizar.TabVisible := false;
+  PagUtilidade.Visible := true;
+  PagUtilidade.ActivePage := TabCarta;
+
+  qryCorrecao.Close;
+  qryCorrecao.Params[0].Value := qryCTE_MCODIGO.Value;
+  qryCorrecao.Open;
+
+end;
+
+procedure TfrmConsCTe_Rodo.cxImprimirClick(Sender: TObject);
+begin
+ try
+    cxImprimir.Enabled := false;
+
+    dmCTe.ACBrCTe.Conhecimentos.Clear;
+    dmCTe.ACBrCTe.Conhecimentos.LoadFromString(qryCTE_MXML.Value);
+    dmCTe.ACBrCTe.DACTE.PathPDF := dados.qryConfigPATH_PDF_CTE.Value;
+    dmCTe.ACBrCTe.Conhecimentos.Imprimir;
+    dmCTe.ACBrCTe.Conhecimentos.ImprimirPDF;
+    dmCTe.ACBrCTe.Conhecimentos.GravarXML();
+
+  finally
+    cxImprimir.Enabled := true;
+  end;
+end;
+
+procedure TfrmConsCTe_Rodo.cxWhatsClick(Sender: TObject);
+var
+  vArq,
+  vFone,
+  vDescricao : string;
 begin
 
   if qryCTE_M.IsEmpty then
@@ -662,28 +647,10 @@ begin
   dmCTe.ACBrCTe.Conhecimentos.Clear;
   dmCTe.ACBrCTe.Conhecimentos.LoadFromString(qryCTE_MXML.Value);
 
-  arquivo := dmCTe.ACBrCTe.DACTE.PathPDF + qryCTE_MCHAVE.Value + '-cte.PDF';
+  vArq := dmCTe.ACBrCTe.DACTE.PathPDF + qryCTE_MCHAVE.Value + '-cte.PDF';
 
-  if not FilesExists(arquivo) then
+  if not FilesExists(vArq) then
     dmCTe.ACBrCTe.Conhecimentos.ImprimirPDF;
-
-  if FileExists(arquivo) then
-  begin
-
-    FFone := InputBox('Digite o numero do whatsapp', 'Número:', '');
-    if Length(FFone) <> 11 then
-      raise Exception.Create('Numero de Celular Inválido!');
-
-    dados.InsereMensagemZap(arquivo, FFone,
-      'Conforme solicitado, segue DACTE do CTe Número:' +
-      qryCTE_MNUMERO.AsString, '', '', dados.qryEmpresaRAZAO.AsString, 'CTE');
-  end;
-
-end;
-
-procedure TfrmConsCTe_Rodo.cxSairClick(Sender: TObject);
-begin
-      close;
 end;
 
 function TfrmConsCTe_Rodo.TemAtributo(Attr, Val: Integer): Boolean;
@@ -720,7 +687,7 @@ var
   i: Integer;
 begin
   try
-    btnInutiliza.Enabled := false;
+    cxInutiliza.Enabled := false;
     Justificativa := edtJustificativa.Text;
 
     if Length(edtJustificativa.Text) < 15 then
@@ -808,13 +775,13 @@ begin
       ShowMessage('Inutilização realizada com sucesso!');
     end;
   finally
-    btnAlterar.Enabled := true;
+    cxAlterar.Enabled := true;
   end;
 end;
 
 procedure TfrmConsCTe_Rodo.btnNovoClick(Sender: TObject);
 begin
-  if not btnNovo.Visible then
+ if not cxNovo.Visible then
     exit;
 
   operacao := 1;
@@ -825,7 +792,7 @@ begin
   end;
 
   try
-    btnNovo.Enabled := false;
+    cxNovo.Enabled := false;
     frmCadCTe := TfrmCadCTe.Create(Application);
 
     frmCadCTe.qryCTE_M.Close;
@@ -876,7 +843,7 @@ begin
   finally
     frmCadCTe.Release;
     btnFiltrar.Click;
-    btnNovo.Enabled := true;
+    cxNovo.Enabled := true;
   end;
 end;
 
@@ -891,7 +858,7 @@ end;
 
 procedure TfrmConsCTe_Rodo.DBGrid1DblClick(Sender: TObject);
 begin
-  btnAlterar.Click;
+  cxAlterar.Click;
 end;
 
 procedure TfrmConsCTe_Rodo.DBGrid1DrawColumnCell(Sender: TObject;
@@ -976,12 +943,12 @@ end;
 
 procedure TfrmConsCTe_Rodo.Botoes;
 begin
-  btnNovo.Visible := dados.qryPermissoesBotaoINCLUIR.Value = 'S';
-  btnAlterar.Visible := dados.qryPermissoesBotaoEDITAR.Value = 'S';
-  btnCancelar.Visible := dados.qryPermissoesBotaoEDITAR.Value = 'S';
-  btnInutiliza.Visible := dados.qryPermissoesBotaoEDITAR.Value = 'S';
-  btnRecuperar.Visible := dados.qryPermissoesBotaoEDITAR.Value = 'S';
-  BtnCCe.Visible := dados.qryPermissoesBotaoEDITAR.Value = 'S';
+  cxNovo.Visible := dados.qryPermissoesBotaoINCLUIR.Value = 'S';
+  cxAlterar.Visible := dados.qryPermissoesBotaoEDITAR.Value = 'S';
+  cxCancelar.Visible := dados.qryPermissoesBotaoEDITAR.Value = 'S';
+  cxInutiliza.Visible := dados.qryPermissoesBotaoEDITAR.Value = 'S';
+  cxRecuperar.Visible := dados.qryPermissoesBotaoEDITAR.Value = 'S';
+  cxCCe.Visible := dados.qryPermissoesBotaoEDITAR.Value = 'S';
 end;
 
 procedure TfrmConsCTe_Rodo.FormCreate(Sender: TObject);
@@ -998,16 +965,6 @@ begin
   TabCarta.TabVisible := false;
   TabInutilizar.TabVisible := false;
 
-  btnNovo.Caption := 'F2' + sLineBreak + 'Novo';
-  btnAlterar.Caption := 'F3' + sLineBreak + 'Alterar';
-  btnCancelar.Caption := 'F4' + sLineBreak + 'Cancelar';
-  btnInutiliza.Caption := 'F5' + sLineBreak + 'Inutilizar';
-  btnRecuperar.Caption := 'F6' + sLineBreak + 'Recuperar';
-  btnImprimir.Caption := 'F7' + sLineBreak + 'Imprimir';
-  BtnCCe.Caption := 'F8' + sLineBreak + 'CCe';
-  btnEmail.Caption := 'F9' + sLineBreak + 'Emaail';
-  btnRelatorio.Caption := 'F10' + sLineBreak + 'Relatório';
-
   dados.Habilitacoes(dados.aMenu, self.Name);
   Botoes;
 end;
@@ -1016,23 +973,23 @@ procedure TfrmConsCTe_Rodo.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   if Key = vk_f2 then
-    btnNovo.Click;
+    cxNovo.Click;
   if Key = vk_f3 then
-    btnAlterar.Click;
+    cxAlterar.Click;
   if Key = vk_f4 then
-    btnCancelar.Click;
+    cxCancelar.Click;
   if Key = vk_f5 then
-    btnInutiliza.Click;
+    cxInutiliza.Click;
   if Key = vk_f6 then
-    btnRecuperar.Click;
+    cxRecuperar.Click;
   if Key = vk_f7 then
-    btnImprimir.Click;
+    cxImprimir.Click;
   if Key = vk_f8 then
-    BtnCCe.Click;
+    cxCCe.Click;
   if Key = vk_f10 then
-    btnRelatorio.Click;
+    cxRelatorio.Click;
   if Key = vk_f11 then
-    btnWhats.Click;
+    cxWhats.Click;
   if Key = vk_f12 then
     maskInicio.SetFocus;
 end;

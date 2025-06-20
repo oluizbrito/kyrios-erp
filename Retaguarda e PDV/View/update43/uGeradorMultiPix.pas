@@ -168,7 +168,7 @@ begin
       qry.ParamByName('fk_venda_fpg').Value :=  frmFechaVenda.qryVendasFPGCODIGO.Value;
       qry.ParamByName('id_pix').Value       :=  IDPIX;
       qry.ExecSQL;
-      Dados.Conexao.CommitRetaining;
+      Dados.Conexao.Commit;
     except
       on E: Exception do
         begin

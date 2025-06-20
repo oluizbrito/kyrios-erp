@@ -28,7 +28,7 @@ uses
   dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinsDefaultPainters,
   dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue, dxSkinWXI;
+  dxSkinXmas2008Blue;
 type
   TfrmAcesso = class(TForm)
     qryUsuarios: TFDQuery;
@@ -154,7 +154,7 @@ begin
       (trim(Dados.qryEmpresaCSENHA.Value) = '') then
       Dados.qryEmpresaCSENHA.AsString := Dados.crypt('C', 'N');
     Dados.qryEmpresa.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
   end;
   Dados.eSupervisor := qryUsuariosSUPERVISOR.Value = 'S';
   if not Dados.qryTerminal.Locate('nome', Dados.Getcomputer, []) then
@@ -172,14 +172,14 @@ begin
         Dados.qryTerminal.Edit;
         Dados.qryTerminalLOGADO.Value := 'S';
         Dados.qryTerminal.Post;
-        Dados.Conexao.CommitRetaining;
+        Dados.Conexao.Commit;
       except
         Dados.qryExecute.Close;
         Dados.qryExecute.SQL.Text :=
           'update empresa set nterm=NULL where codigo=:cod';
         Dados.qryExecute.Params[0].Value := Dados.qryEmpresaCODIGO.Value;
         Dados.qryExecute.ExecSQL;
-        Dados.Conexao.CommitRetaining;
+        Dados.Conexao.Commit;
       end;
     end;
   end;

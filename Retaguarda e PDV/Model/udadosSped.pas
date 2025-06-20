@@ -1,5 +1,5 @@
 unit udadosSped;
-interface
+interface  //Suporte e Vendas direto no Whatsapp (48)998463846
 uses
   System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
@@ -59,7 +59,6 @@ type
     qryContadorUF: TStringField;
     qryContadorFK_USUARIO: TIntegerField;
     qryContadorFK_EMPRESA: TIntegerField;
-    qryInventario: TFDQuery;
     qryConsC170CST_ICMS: TStringField;
     qrProdutosCOD_PROD: TIntegerField;
     qrProdutosDESCRICAO: TStringField;
@@ -356,18 +355,48 @@ type
     QryItens_NFCe_SSEGURO: TIntegerField;
     QryItens_NFCe_SDESPESAS: TIntegerField;
     QryItens_NFCe_SVDESCONTO: TFMTBCDField;
+    qryInventario: TFDQuery;
     qryInventarioFK_PRODUTO: TIntegerField;
-    qryInventarioDESCRICAO: TStringField;
-    qryInventarioPR_CUSTO: TFMTBCDField;
+    qryInventarioDESC_PRODUTO: TStringField;
+    qryInventarioVL_UNIT: TFMTBCDField;
     qryInventarioQTDE: TFMTBCDField;
     qryInventarioQTDS: TFMTBCDField;
     qryInventarioSALDO: TFMTBCDField;
-    qryInventarioTOTAL: TFloatField;
-    procedure qryInventarioCalcFields(DataSet: TDataSet);
+    qryInventarioVL_TOTAL: TFMTBCDField;
+    qryInventarioCODIGO_UNIDADE: TStringField;
+    qryInventarioCST: TStringField;
+    qryInventarioCSOSN: TStringField;
+    qryInventarioALIQ_ICMS: TCurrencyField;
+    qryInventarioVL_ICMS: TBCDField;
+    qryInventarioCOD_BARRA: TStringField;
+    qryInventarioTIPO_ITEM: TStringField;
+    qryInventarioCOD_NCM: TStringField;
+    qryConsulta: TFDQuery;
+    qryGera1601: TFDQuery;
+    qrySped_1601: TFDQuery;
+    qryGera1601COD_PART_IP: TStringField;
+    qryGera1601REDECNPJ: TStringField;
+    qryGera1601TOT_VS: TFMTBCDField;
+    qryConfig_SpedREGIME_TRIBUTARIO: TStringField;
+    qryConfig_SpedCONFIG_1601: TStringField;
+    qryConfig_SpedADM_PADRAO_CARTAO_DEB: TIntegerField;
+    qryConfig_SpedADM_PADRAO_CARTAO_CRE: TIntegerField;
+    qryConfig_SpedADM_PADRAO_PIX: TIntegerField;
+    qryConfig_SpedADM_PADRAO_VALE_ALI: TIntegerField;
+    qrySped_1601CODIGO: TIntegerField;
+    qrySped_1601COD_PART_IP: TStringField;
+    qrySped_1601COD_PART_IT: TStringField;
+    qrySped_1601TOT_VS: TFMTBCDField;
+    qrySped_1601TOT_ISS: TFMTBCDField;
+    qrySped_1601TOT_OUTROS: TFMTBCDField;
+    qrySped_1601FK_SPED: TIntegerField;
+
+
   private
     { Private declarations }
   public
     CodSped: Integer;
+
     procedure ImportaParticipante(dtini, dtfim: Tdate; Empresa: Integer);
     procedure ImportaEntradaCompra(dtini, dtfim: Tdate; Empresa: Integer);
     procedure ImportaEntradaNFe(dtini, dtfim: Tdate; Empresa: Integer);
@@ -377,8 +406,12 @@ type
     procedure ImportaSaidaNFe(dtini, dtfim: Tdate; Empresa: Integer);
     procedure ImportaUNidade(dtini, dtfim: Tdate; Empresa: Integer);
     procedure REGC190(dtini, dtfim: Tdate; Empresa: Integer);
-    procedure ImportaInventario(dtini, dtfim: Tdate; Empresa: Integer);
+    procedure ImportaInventario(dtInventario: Tdate; Empresa: Integer);
+    procedure Importa1601(dtini, dtfim: Tdate; Tipo: string);
     procedure ApagaRegistro;
+    function EhSimplesNacional: Boolean;
+    function Apaga1601: Boolean;
+
     { Public declarations }
   end;
 var
@@ -387,51 +420,86 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 uses Udados;
 {$R *.dfm}
+
+function TDadosSped.Apaga1601: Boolean;
+begin
+  Result := False;
+
+  Dados.qryConsulta.Close;
+  Dados.qryConsulta.SQL.Clear;
+  Dados.qryConsulta.SQL.Text := 'SELECT IND_CART, CONFIG_1601 FROM SPED_CONFIG';
+  Dados.qryConsulta.Open;
+
+  if (Dados.qryConsulta.FieldByName('IND_CART').AsString = 'S') and
+     (Dados.qryConsulta.FieldByName('CONFIG_1601').AsString <> 'M') then
+     Result := True;
+end;
+
 Procedure TDadosSped.ApagaRegistro;
 begin
   Dados.qryExecute.Close;
   Dados.qryExecute.SQL.Text := ' delete from SPED_Produtos';
   Dados.qryExecute.ExecSQL;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
+
   Dados.qryExecute.Close;
   Dados.qryExecute.SQL.Text := ' delete from SPED_PARTICIPANTES';
   Dados.qryExecute.ExecSQL;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
+
   Dados.qryExecute.Close;
   Dados.qryExecute.SQL.Text := ' delete from SPED_Unidade';
   Dados.qryExecute.ExecSQL;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
+
   Dados.qryExecute.Close;
   Dados.qryExecute.SQL.Text := ' delete from SPED_H005';
   Dados.qryExecute.ExecSQL;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
+
   Dados.qryExecute.Close;
   Dados.qryExecute.SQL.Text := ' delete from SPED_H010';
   Dados.qryExecute.ExecSQL;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
+
   Dados.qryExecute.Close;
   Dados.qryExecute.SQL.Text := ' delete from SPED_c190';
   Dados.qryExecute.ExecSQL;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
+
   Dados.qryExecute.Close;
   Dados.qryExecute.SQL.Text := ' delete from SPED_c170';
   Dados.qryExecute.ExecSQL;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
+
   Dados.qryExecute.Close;
   Dados.qryExecute.SQL.Text := ' delete from SPED_c100';
   Dados.qryExecute.ExecSQL;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
+
+  if Apaga1601 then
+  begin
+    Dados.qryExecute.Close;
+    Dados.qryExecute.SQL.Text := ' delete from SPED_1601';
+    Dados.qryExecute.ExecSQL;
+    Dados.Conexao.Commit;
+  end;
 end;
+
 procedure TDadosSped.ImportaParticipante(dtini, dtfim: Tdate; Empresa: Integer);
 begin
+
   DadosSped.qrParticipantes.Close;
   DadosSped.qrParticipantes.Params[0].AsDate := dtini;
   DadosSped.qrParticipantes.Params[1].AsDate := dtfim;
   DadosSped.qrParticipantes.Params[2].Value := Empresa;
   DadosSped.qrParticipantes.Open;
+
   DadosSped.qrParticipantes.First;
+
   Dados.qrySped_Participante.Close;
   Dados.qrySped_Participante.Open;
+
   while not DadosSped.qrParticipantes.Eof do
   begin
     Dados.qrySped_Participante.Insert;
@@ -456,79 +524,128 @@ begin
     end;
     Dados.qrySped_Participantecod_pais.Value := '1058';
     if (DadosSped.qrParticipantesCODMUN.AsInteger > 0) then
-      Dados.qrySped_Participantecod_mun.Value :=
-        DadosSped.qrParticipantesCODMUN.Value
+      Dados.qrySped_Participantecod_mun.Value := DadosSped.qrParticipantesCODMUN.Value
     else
-      Dados.qrySped_Participantecod_mun.Value :=
-        Dados.qryEmpresaID_CIDADE.Value;
-    Dados.qrySped_Participanteendereco.Value :=
-      DadosSped.qrParticipantesENDERECO.Value;
+      Dados.qrySped_Participantecod_mun.Value := Dados.qryEmpresaID_CIDADE.Value;
+    Dados.qrySped_Participanteendereco.Value := DadosSped.qrParticipantesENDERECO.Value;
     if Dados.qrySped_Participanteendereco.AsString = '' then
       Dados.qrySped_Participanteendereco.Value := 'SEM ENDEREÇO';
-    Dados.qrySped_Participantenumero.Value :=
-      DadosSped.qrParticipantesNUMERO.Value;
+    Dados.qrySped_Participantenumero.Value := DadosSped.qrParticipantesNUMERO.Value;
     Dados.qrySped_Participantecomplemento.Value := '';
-    Dados.qrySped_Participantebairro.Value :=
-      DadosSped.qrParticipantesBAIRRO.Value;
+    Dados.qrySped_Participantebairro.Value := DadosSped.qrParticipantesBAIRRO.Value;
     Dados.qrySped_ParticipanteFK_EMPRESA.Value := Empresa;
     Dados.qrySped_ParticipanteFK_USUARIO.Value := Dados.idUsuario;
     Dados.qrySped_Participante.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
     DadosSped.qrParticipantes.Next;
   end;
 end;
-procedure TDadosSped.ImportaInventario(dtini, dtfim: Tdate; Empresa: Integer);
+procedure TDadosSped.ImportaInventario(dtInventario: Tdate; Empresa: Integer);
 var
   TTotal: Extended;
+  sqlText: string;
 begin
+
   TTotal := 0;
-  DadosSped.qryInventario.Close;
-  DadosSped.qryInventario.Params[0].AsDate := (StartOfTheYear(dtini) - 1);
-  DadosSped.qryInventario.Open;
-  DadosSped.qryInventario.Last;
-  DadosSped.qryInventario.First;
-  if not DadosSped.qryInventario.IsEmpty then
+
+  qryInventario.Close;
+  qryInventario.ParamByName('data').AsDateTime := dtInventario;
+  qryInventario.Open;
+
+  if qryInventario.RecordCount > 0 then
   begin
-    Dados.qrySped_H005.Close;
-    Dados.qrySped_H005.Params[0].Value := CodSped;
-    Dados.qrySped_H005.Open;
+
+    if not Dados.qrySped_H005.Active then
+      Dados.qrySped_H005.Open;
+
     Dados.qrySped_H005.Insert;
-    Dados.qrySped_H005CODIGO.Value := Dados.Numerador('SPED_H005', 'CODIGO',
-      'N', '', '');
-    Dados.qrySped_H005DT_INV.Value := (StartOfTheYear(dtini) - 1);
-    Dados.qrySped_H005VL_INV.Value := 0;
-    Dados.qrySped_H005FK_SPED.Value := CodSped;
+    Dados.qrySped_H005CODIGO.Value     := Dados.Numerador('SPED_H005', 'CODIGO', 'N', '', '');
+    Dados.qrySped_H005DT_INVE.Value    := dtInventario;
+    Dados.qrySped_H005VL_INV.Value     := 0;
+    Dados.qrySped_H005FK_SPED.Value    := CodSped;
     Dados.qrySped_H005FK_EMPRESA.Value := Dados.qryEmpresaCODIGO.Value;
     Dados.qrySped_H005FK_USUARIO.Value := Dados.idUsuario;
     Dados.qrySped_H005.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
+
     Dados.qrySped_H010.Close;
     Dados.qrySped_H010.Params[0].Value := Dados.qrySped_H005CODIGO.Value;
     Dados.qrySped_H010.Open;
+
     while not DadosSped.qryInventario.Eof do
     begin
+
+      // insere os items do inventario no bloco 0200
+
+     // Verificar se o produto já existe na tabela sped_Produtos
+      Dados.qryConsulta.Close;
+      Dados.qryConsulta.SQL.Text :=
+        'SELECT COUNT(*) AS ProdCount FROM sped_produtos WHERE fk_produto = :fkProduto';
+      Dados.qryConsulta.ParamByName('fkProduto').Value := qryInventarioFK_PRODUTO.Value;
+      Dados.qryConsulta.Open;
+
+      if Dados.qryConsulta.FieldByName('ProdCount').AsInteger = 0 then
+      begin
+        // Se o produto não existir na tabela sped_Produtos, então inseri
+        Dados.qrySped_Produto.Insert;
+        Dados.qrySped_ProdutoCODIGO.Value     := Dados.Numerador('SPED_PRODUTOS', 'CODIGO', 'N', '', '');
+        Dados.qrySped_Produtofk_sped.Value    := CodSped;
+        Dados.qrySped_ProdutoFK_PRODUTO.Value := qryInventarioFK_PRODUTO.Value;
+        Dados.qrySped_Produtodescricao.Value  := qryInventarioDESC_PRODUTO.AsString;
+        Dados.qrySped_Produtocod_barra.Value  := qryInventarioCOD_BARRA.AsString;
+        Dados.qrySped_Produtotipo_item.Value  := qryInventarioTIPO_ITEM.AsString;
+        Dados.qrySped_Produtocod_ncm.Value    := qryInventarioCOD_NCM.AsString;
+        Dados.qrySped_ProdutoALIQ_ICMS.Value  := qryInventarioALIQ_ICMS.AsFloat;
+        Dados.qrySped_ProdutoFK_EMPRESA.Value := Empresa;
+        Dados.qrySped_ProdutoFK_USUARIO.Value := Dados.idUsuario;
+
+        if DadosSped.qryConsUnidade.Locate('unidade', DadosSped.qrProdutosABREVIATURA.Value, []) then
+          Dados.qrySped_ProdutoFK_UNIDADE.Value := DadosSped.qryConsUnidadeCODIGO.Value
+        else
+        begin
+          DadosSped.qryConsUnidade.First;
+          Dados.qrySped_ProdutoFK_UNIDADE.Value := DadosSped.qryConsUnidadeCODIGO.AsInteger;
+        end;
+
+        Dados.qrySped_Produto.Post;
+        Dados.Conexao.Commit;
+      end;
+
+      // insere os itens no inventario
       Dados.qrySped_H010.Insert;
-      Dados.qrySped_H010CODIGO.Value := Dados.Numerador('SPED_H010', 'CODIGO',
-        'N', '', '');;
-      Dados.qrySped_H010QTD.Value := qryInventarioSALDO.AsFloat;
-      Dados.qrySped_H010VL_UNIT.Value :=
-        SimpleRoundTo(qryInventarioPR_CUSTO.AsFloat, -2);
-      Dados.qrySped_H010VL_ITEM.Value :=
-        SimpleRoundTo(qryInventarioTOTAL.AsFloat, -2);
-      Dados.qrySped_H010IND_PROP.Value := '0';
-      Dados.qrySped_H010FK_H005.Value := Dados.qrySped_H005CODIGO.Value;
+      Dados.qrySped_H010CODIGO.Value     := Dados.Numerador('SPED_H010', 'CODIGO', 'N', '', '');;
+      Dados.qrySped_H010QTD.Value        := qryInventarioSALDO.AsFloat;
+      Dados.qrySped_H010VL_UNIT.Value    := SimpleRoundTo(qryInventarioVL_UNIT.AsFloat, -2);
+      Dados.qrySped_H010VL_ITEM.Value    := SimpleRoundTo(qryInventarioVL_TOTAL.AsFloat, -2);
+      Dados.qrySped_H010IND_PROP.Value   := '0';
+      Dados.qrySped_H010FK_H005.Value    := Dados.qrySped_H005CODIGO.Value;
       Dados.qrySped_H010FK_PRODUTO.Value := qryInventarioFK_PRODUTO.Value;
       Dados.qrySped_H010FK_EMPRESA.Value := Dados.qryEmpresaCODIGO.Value;
+      Dados.qrySped_H010FK_UNIDADE.Value := qryInventarioCODIGO_UNIDADE.AsString;
       Dados.qrySped_H010FK_USUARIO.Value := Dados.idUsuario;
+
+      // se for SIMPLES NACIONAL vai mandar CSOSN e se for regime NORMAL manda CST
+      if EhSimplesNacional then
+        Dados.qrySped_H010CST_ICMS.Value := qryInventarioCSOSN.Value
+      else
+        Dados.qrySped_H010CST_ICMS.Value := qryInventarioCST.Value;
+
+      Dados.qrySped_H010BC_ICMS.Value   := SimpleRoundTo(qryInventarioVL_UNIT.AsFloat, -2);
+      Dados.qrySped_H010VL_ICMS.AsFloat := qryInventarioVL_ICMS.AsFloat;
+      Dados.qrySped_H010COD_CTA.Value   := '1';
       Dados.qrySped_H010.Post;
-      Dados.Conexao.CommitRetaining;
+      Dados.Conexao.Commit;
+
       TTotal := TTotal + Dados.qrySped_H010VL_ITEM.AsFloat;
+
       DadosSped.qryInventario.Next;
     end;
+
     Dados.qrySped_H005.Edit;
     Dados.qrySped_H005VL_INV.Value := TTotal;
     Dados.qrySped_H005.Post;
-    Dados.Conexao.CommitRetaining;
+
+    Dados.Conexao.Commit;
   end;
 end;
 
@@ -538,41 +655,30 @@ begin
   DadosSped.qrUnidades.Params[0].AsDate := dtini;
   DadosSped.qrUnidades.Params[1].AsDate := dtfim;
   DadosSped.qrUnidades.Params[2].Value := Empresa;
-
   DadosSped.qrUnidades.Open;
   DadosSped.qrUnidades.Last;
-
   DadosSped.qrUnidades.First;
-
   Dados.qrySped_Unidade.Close;
   Dados.qrySped_Unidade.Open;
-
   while not DadosSped.qrUnidades.Eof do
   begin
     if DadosSped.qrUnidadesABREVIATURA.AsString <> '' then
     begin
       Dados.qrySped_Unidade.Insert;
       Dados.qrySped_Unidadefk_sped.Value := CodSped;
-      Dados.qrySped_UnidadeCODIGO.Value := Dados.Numerador('SPED_UNIDADE',
-        'CODIGO', 'N', '', '');
+      Dados.qrySped_UnidadeCODIGO.Value := Dados.Numerador('SPED_UNIDADE', 'CODIGO', 'N', '', '');
       Dados.qrySped_Unidadeunidade.Value := DadosSped.qrUnidadesABREVIATURA.Value;
-      Dados.qrySped_Unidadedescricao.Value := DadosSped.qrUnidadesABREVIATURA.Value + '-'
-      + DadosSped.qrUnidadesDESCRICAO.AsString;
+      Dados.qrySped_Unidadedescricao.Value := DadosSped.qrUnidadesABREVIATURA.Value + '-' +
+        DadosSped.qrUnidadesDESCRICAO.AsString;
       Dados.qrySped_UnidadeFK_EMPRESA.Value := Empresa;
       Dados.qrySped_UnidadeFK_USUARIO.Value := Dados.idUsuario;
       Dados.qrySped_Unidade.Post;
-      Dados.Conexao.CommitRetaining;
+      Dados.Conexao.Commit;
     end;
     DadosSped.qrUnidades.Next;
   end;
 end;
 
-
-procedure TDadosSped.qryInventarioCalcFields(DataSet: TDataSet);
-begin
-  qryInventarioTOTAL.AsFloat := qryInventarioSALDO.AsFloat *
-    qryInventarioPR_CUSTO.AsFloat;
-end;
 procedure TDadosSped.ImportaProduto(dtini, dtfim: Tdate; Empresa: Integer;
   Tela: String);
 var
@@ -599,8 +705,7 @@ begin
     qrProdutos.SQL.add('PROD.ncm');
     qrProdutos.SQL.add('from  compra_itens ITECO');
     qrProdutos.SQL.add('left JOIN compra PEDICO on ITECO.fk_compra=PEDICO.id');
-    qrProdutos.SQL.add
-      ('left JOIN produto PROD on ITECO.fk_produto=PROD.codigo');
+    qrProdutos.SQL.add('left JOIN produto PROD on ITECO.fk_produto=PROD.codigo');
     qrProdutos.SQL.add('left JOIN unidade UND on PROD.unidade= UND.codigo');
     qrProdutos.SQL.add('where');
     qrProdutos.SQL.add('PEDICO.dtentrada between :data1 and :data2 and');
@@ -633,8 +738,7 @@ begin
     qrProdutos.SQL.add('PROD.tipo,');
     qrProdutos.SQL.add('PROD.ncm');
     qrProdutos.SQL.add('from  nfce_detalhe NFCD');
-    qrProdutos.SQL.add
-      ('left JOIN nfce_master NFCM  on NFCD.fkvenda=NFCM.codigo');
+    qrProdutos.SQL.add('left JOIN nfce_master NFCM  on NFCD.fkvenda=NFCM.codigo');
     qrProdutos.SQL.add('left JOIN produto PROD on NFCD.id_produto=PROD.codigo');
     qrProdutos.SQL.add('left JOIN unidade UND on PROD.unidade= UND.codigo');
     qrProdutos.SQL.add('where');
@@ -660,6 +764,7 @@ begin
     qrProdutos.SQL.add('CO.empresa=:EMPRESA');
     qrProdutos.SQL.add(')');
     qrProdutos.SQL.add('');
+
     DadosSped.qrProdutos.Params[0].AsDate := dtini;
     DadosSped.qrProdutos.Params[1].AsDate := dtfim;
     DadosSped.qrProdutos.Params[2].Value := Empresa;
@@ -686,8 +791,7 @@ begin
     qrProdutos.SQL.add('PROD.ncm');
     qrProdutos.SQL.add('from  compra_itens ITECO');
     qrProdutos.SQL.add('left JOIN compra PEDICO on ITECO.fk_compra=PEDICO.id');
-    qrProdutos.SQL.add
-      ('left JOIN produto PROD on ITECO.fk_produto=PROD.codigo');
+    qrProdutos.SQL.add('left JOIN produto PROD on ITECO.fk_produto=PROD.codigo');
     qrProdutos.SQL.add('left JOIN unidade UND on PROD.unidade= UND.codigo');
     qrProdutos.SQL.add('where');
     qrProdutos.SQL.add('PEDICO.dtentrada between :data1 and :data2 and');
@@ -704,22 +808,22 @@ begin
   DadosSped.qryConsUnidade.Params[0].Value := CodSped;
   DadosSped.qryConsUnidade.Params[1].Value := Empresa;
   DadosSped.qryConsUnidade.Open;
+
   DadosSped.qrProdutos.First;
+
   Dados.qrySped_Produto.Close;
   Dados.qrySped_Produto.Open;
+
   while not DadosSped.qrProdutos.Eof do
   begin
-    if not Dados.qrySped_Produto.Locate('fk_produto',
-      DadosSped.qrProdutosCOD_PROD.AsInteger, []) then
+    if not Dados.qrySped_Produto.Locate('fk_produto', DadosSped.qrProdutosCOD_PROD.AsInteger, []) then
     begin
       Dados.qrySped_Produto.Insert;
-      Dados.qrySped_ProdutoCODIGO.Value := Dados.Numerador('SPED_PRODUTOS',
-        'CODIGO', 'N', '', '');
+      Dados.qrySped_ProdutoCODIGO.Value := Dados.Numerador('SPED_PRODUTOS', 'CODIGO', 'N', '', '');
       Dados.qrySped_Produtofk_sped.Value := CodSped;
-      Dados.qrySped_ProdutoFK_PRODUTO.Value :=
-        DadosSped.qrProdutosCOD_PROD.AsInteger;
-      if DadosSped.qryConsUnidade.Locate('unidade',
-        DadosSped.qrProdutosABREVIATURA.Value, []) then
+      Dados.qrySped_ProdutoFK_PRODUTO.Value := DadosSped.qrProdutosCOD_PROD.AsInteger;
+
+      if DadosSped.qryConsUnidade.Locate('unidade', DadosSped.qrProdutosABREVIATURA.Value, []) then
         Dados.qrySped_ProdutoFK_UNIDADE.Value :=
           DadosSped.qryConsUnidadeCODIGO.Value
       else
@@ -728,21 +832,164 @@ begin
         Dados.qrySped_ProdutoFK_UNIDADE.Value :=
           DadosSped.qryConsUnidadeCODIGO.AsInteger;
       end;
-      Dados.qrySped_Produtodescricao.Value :=
-        DadosSped.qrProdutosDESCRICAO.Value;
+
+      Dados.qrySped_Produtodescricao.Value := DadosSped.qrProdutosDESCRICAO.Value;
       Dados.qrySped_Produtocod_barra.Value := DadosSped.qrProdutosGTIN.Value;
-      Dados.qrySped_Produtotipo_item.Value :=
-        copy(DadosSped.qrProdutosTIPO_ITEM.Value, 1, 2);
+      Dados.qrySped_Produtotipo_item.Value := copy(DadosSped.qrProdutosTIPO_ITEM.Value, 1, 2);
       Dados.qrySped_Produtocod_ncm.Value := DadosSped.qrProdutosNCM.Value;
       Dados.qrySped_ProdutoALIQ_ICMS.Value := 0;
       Dados.qrySped_ProdutoFK_EMPRESA.Value := Empresa;
       Dados.qrySped_ProdutoFK_USUARIO.Value := Dados.idUsuario;
       Dados.qrySped_Produto.Post;
-      Dados.Conexao.CommitRetaining;
+      Dados.Conexao.Commit;
     end;
     DadosSped.qrProdutos.Next;
   end;
 end;
+
+function TDadosSped.EhSimplesNacional: Boolean;
+begin
+  Result := False;
+
+  qryConfig_Sped.Close;
+  qryConfig_Sped.Open;
+
+  if qryConfig_SpedCOD_REGIME_TRIBUTARIO.AsString = 'S' then
+  Result := True;
+end;
+
+procedure TDadosSped.Importa1601(dtini, dtfim: Tdate; Tipo: string);
+begin
+
+  if (Tipo = 'M') then // modo manual, usuario informa os dados direto na tabela sped_1601
+  begin
+    Dados.qryExecute.Close;
+    Dados.qryExecute.SQL.Clear;
+    Dados.qryExecute.SQL.Text := 'UPDATE SPED_1601 SET FK_SPED = :FK_SPED';
+    Dados.qryExecute.Params[0].AsInteger := CodSped;
+    Dados.qryExecute.ExecSQL;
+  end
+  else if (Tipo = 'A') then // modo automatico, vai pegar os dados gerados por TEF direto na tabela vendas_fpg
+  begin
+
+    qryGera1601.Close;
+    qryGera1601.SQL.Clear;
+    qryGera1601.SQL.Text :=
+        'SELECT DISTINCT(''3'' || P.CODIGO) AS COD_PART_IP, VF.REDECNPJ, SUM(VF.VALOR) AS TOT_VS ' +
+        'FROM VENDAS_FPG VF ' +
+        'LEFT JOIN PESSOA P ON REPLACE(REPLACE(REPLACE(P.CNPJ, ''.'', ''''), ''-'', ''''), ''/'', '''') = VF.REDECNPJ ' +
+        'INNER JOIN VENDAS_MASTER VM ON VM.CODIGO = VF.VENDAS_MASTER ' +
+        'WHERE VF.FEZ_TEF = ''S'' AND VF.REDECNPJ <> '' '' AND VM.SITUACAO = ''F'' AND VM.DATA_EMISSAO BETWEEN :DATA_INICIAL AND :DATA_FINAL ' +
+        'GROUP BY P.CODIGO, VF.REDECNPJ;';
+
+    qryGera1601.ParamByName('DATA_INICIAL').AsDate := dtini;
+    qryGera1601.ParamByName('DATA_FINAL').AsDate   := dtfim;
+    qryGera1601.Open;
+
+    qryGera1601.First;
+
+    qrySped_1601.Close;
+    qrySped_1601.Open;
+
+    while not qryGera1601.Eof do
+    begin
+
+    if (qryGera1601COD_PART_IP.AsInteger > 0) then
+      begin
+       qrySped_1601.Insert;
+       qrySped_1601CODIGO.AsInteger      := Dados.Numerador('SPED_1601', 'CODIGO', 'N', '', '');
+       qrySped_1601COD_PART_IP.AsString := qryGera1601COD_PART_IP.AsString;
+       qrySped_1601TOT_VS.AsFloat        := qryGera1601TOT_VS.AsFloat;
+       qrySped_1601TOT_ISS.AsFloat       := 0;
+       qrySped_1601TOT_OUTROS.AsFloat    := 0;
+       qrySped_1601FK_SPED.AsInteger     := CodSped;
+       qrySped_1601.Post;
+     end;
+
+     qryGera1601.Next;
+    end;
+
+    qrySped_1601.Connection.Commit;
+  end
+  else if (Tipo = 'C') then // modo de configuração, pega as vendas debito/credito/pix/vale e pega a administradora configurada por padrao
+  begin
+
+    qryGera1601.Close;
+    qryGera1601.SQL.Clear;
+    qryGera1601.SQL.Text :=
+           ' SELECT ' +
+           ' ''3'' || ' +
+           ' CASE ' +
+           ' WHEN VF.TIPO = ''E'' THEN SC.ADM_PADRAO_CARTAO_DEB ' +
+           ' WHEN VF.TIPO = ''C'' THEN SC.ADM_PADRAO_CARTAO_CRE ' +
+           ' WHEN VF.TIPO = ''I'' THEN SC.ADM_PADRAO_PIX ' +
+           ' WHEN VF.TIPO = ''R'' THEN SC.ADM_PADRAO_VALE_ALI ' +
+           ' END AS COD_PART_IP, ' +
+           ' P.CNPJ AS REDECNPJ, ' +
+           ' SUM(VF.VALOR) AS TOT_VS ' +
+           ' FROM ' +
+           ' VENDAS_FPG VF ' +
+           ' LEFT JOIN ' +
+           ' SPED_CONFIG SC ON 1=1 ' +
+           ' LEFT JOIN ' +
+           ' PESSOA P ON P.CODIGO = ' +
+           ' CASE ' +
+           ' WHEN VF.TIPO = ''E'' THEN SC.ADM_PADRAO_CARTAO_DEB ' +
+           ' WHEN VF.TIPO = ''C'' THEN SC.ADM_PADRAO_CARTAO_CRE ' +
+           ' WHEN VF.TIPO = ''I'' THEN SC.ADM_PADRAO_PIX ' +
+           ' WHEN VF.TIPO = ''R'' THEN SC.ADM_PADRAO_VALE_ALI ' +
+           ' END ' +
+           ' INNER JOIN ' +
+           ' VENDAS_MASTER VM ON VM.CODIGO = VF.VENDAS_MASTER ' +
+           ' WHERE ' +
+           ' VM.SITUACAO = ''F'' AND ' +
+           ' VF.TIPO IN (''E'', ''C'', ''I'', ''R'') AND ' +
+           ' VM.DATA_EMISSAO BETWEEN :DATA_INICIAL AND :DATA_FINAL ' +
+           ' GROUP BY ' +
+           ' P.CNPJ, ' +
+           ' CASE ' +
+           ' WHEN VF.TIPO = ''E'' THEN SC.ADM_PADRAO_CARTAO_DEB ' +
+           ' WHEN VF.TIPO = ''C'' THEN SC.ADM_PADRAO_CARTAO_CRE ' +
+           ' WHEN VF.TIPO = ''I'' THEN SC.ADM_PADRAO_PIX ' +
+           ' WHEN VF.TIPO = ''R'' THEN SC.ADM_PADRAO_VALE_ALI ' +
+           ' END; ' ;
+
+
+
+    qryGera1601.ParamByName('DATA_INICIAL').AsDate := dtini;
+    qryGera1601.ParamByName('DATA_FINAL').AsDate   := dtfim;
+    qryGera1601.Open;
+
+    qryGera1601.First;
+
+    qrySped_1601.Close;
+    qrySped_1601.Open;
+
+    while not qryGera1601.Eof do
+    begin
+
+    if (qryGera1601COD_PART_IP.AsInteger > 0) then
+      begin
+       qrySped_1601.Insert;
+       qrySped_1601CODIGO.AsInteger      := Dados.Numerador('SPED_1601', 'CODIGO', 'N', '', '');
+       qrySped_1601COD_PART_IP.AsString  := qryGera1601COD_PART_IP.AsString;
+       qrySped_1601TOT_VS.AsFloat        := qryGera1601TOT_VS.AsFloat;
+       qrySped_1601TOT_ISS.AsFloat       := 0;
+       qrySped_1601TOT_OUTROS.AsFloat    := 0;
+       qrySped_1601FK_SPED.AsInteger     := CodSped;
+       qrySped_1601.Post;
+     end;
+
+     qryGera1601.Next;
+    end;
+
+    qrySped_1601.Connection.Commit;
+
+  end;
+
+
+end;
+
 procedure TDadosSped.ImportaEntradaCompra(dtini, dtfim: Tdate;
   Empresa: Integer);
 var
@@ -752,7 +999,7 @@ var
   vPercentualFCP: Extended;
   vNF: Extended;
   VFCP: Extended;
-  Voperacao, vOutros: Extended;
+  vOutros: Extended;
 begin
   // filtra compras
   DadosSped.qryCompra.Close;
@@ -760,35 +1007,48 @@ begin
   DadosSped.qryCompra.Params[1].AsDate := dtfim;
   DadosSped.qryCompra.Params[2].Value := Empresa;
   DadosSped.qryCompra.Open;
+
   Dados.qrySped_C100.Close;
   Dados.qrySped_C100.Open;
+
   Dados.qrySped_C170.Close;
   Dados.qrySped_C170.Open;
+
   while not DadosSped.qryCompra.Eof do // percore todas as compras
   begin
     vPercentualST := 0;
+
     vPercentualFCP := 0;
+
     vNF := DadosSped.qryCompraSUBTOTAL.AsFloat +
-      DadosSped.qryCompraFRETE.AsFloat + DadosSped.qryCompraSEGURO.AsFloat +
-      DadosSped.qryCompraDESPESAS.AsFloat - DadosSped.qryCompraDESCONTO.AsFloat
-      + DadosSped.qryCompraTOTAL_IPI.AsFloat +
-      DadosSped.qryCompraTOTAL_ST.AsFloat;
-    VFCP := DadosSped.qryCompraTOTAL.AsFloat - vNF;
+           DadosSped.qryCompraFRETE.AsFloat +
+           DadosSped.qryCompraSEGURO.AsFloat +
+           DadosSped.qryCompraDESPESAS.AsFloat -
+           DadosSped.qryCompraDESCONTO.AsFloat +
+           DadosSped.qryCompraTOTAL_IPI.AsFloat +
+           DadosSped.qryCompraTOTAL_ST.AsFloat;
+
+        if vNF > DadosSped.qryCompraTOTAL.AsFloat then
+      VFCP  := 0
+       else
+      VFCP  := DadosSped.qryCompraTOTAL.AsFloat - vNF;
+
     if DadosSped.qryCompraBASE_ST.AsFloat > 0 then
       vPercentualFCP := VFCP / DadosSped.qryCompraBASE_ICM.AsFloat;
+
     if DadosSped.qryCompraBASE_ST.AsFloat > 0 then
       vPercentualST := DadosSped.qryCompraTOTAL_ST.AsFloat /
         DadosSped.qryCompraBASE_ST.AsFloat;
+
+     // insere na tabela do sped registro c100 as compras
     Dados.qrySped_C100.Insert;
-    // insere na tabela do sped registro c100 as compras
     Dados.qrySped_C100fk_sped.Value := CodSped;
-    Dados.qrySped_C100CODIGO.Value := Dados.Numerador('SPED_C100', 'CODIGO',
-      'N', '', '');
-    Dados.qrySped_C100FK_PARTICIPANTES.AsFloat :=
-      DadosSped.qryCompraID_FORNECEDOR.AsFloat;
+    Dados.qrySped_C100CODIGO.Value := Dados.Numerador('SPED_C100', 'CODIGO', 'N', '', '');
+    Dados.qrySped_C100FK_PARTICIPANTES.AsFloat := DadosSped.qryCompraID_FORNECEDOR.AsFloat;
     Dados.qrySped_C100ind_oper.Value := '0'; // operação de entrada
     Dados.qrySped_C100ind_emit.Value := DadosSped.qryCompraTPEMISSAO.Value;
     Dados.qrySped_C100cod_mod.Value := DadosSped.qryCompraMODELO.Value;
+
     if (DadosSped.qryCompraSTATUS.Value = 'F') or
       (DadosSped.qryCompraSTATUS.Value = '2') then
       Dados.qrySped_C100cod_sit.Value := '00'; // Documento regular
@@ -797,82 +1057,73 @@ begin
       Dados.qrySped_C100cod_sit.Value := '02'; // Documento cancelado
     if (DadosSped.qryCompraSTATUS.Value = '6') then
       Dados.qrySped_C100cod_sit.Value := '04'; // Documento Denegado
-    Dados.qrySped_C100ser.Value := DadosSped.qryCompraSERIE.Value;
-    Dados.qrySped_C100num_doc.Value := DadosSped.qryCompraNR_NOTA.AsInteger;
-    Dados.qrySped_C100chv_nfe.Value := DadosSped.qryCompraCHAVE.Value;
-    Dados.qrySped_C100dt_doc.Value := DadosSped.qryCompraDTEMISSAO.Value;
-    Dados.qrySped_C100dt_e_s.Value := DadosSped.qryCompraDTENTRADA.Value;
-    Dados.qrySped_C100vl_doc.AsFloat := DadosSped.qryCompraTOTAL.AsFloat;
-    Dados.qrySped_C100ind_pgto.Value := '9';
-    Dados.qrySped_C100vl_desc.AsFloat := DadosSped.qryCompraDESCONTO.AsFloat;
-    Dados.qrySped_C100vl_merc.AsFloat := DadosSped.qryCompraSUBTOTAL.AsFloat;
-    Dados.qrySped_C100ind_frt.Value := 2;
-    Dados.qrySped_C100vl_seguro.AsFloat := DadosSped.qryCompraSEGURO.AsFloat;
-    Dados.qrySped_C100vl_out_da.AsFloat :=
-      DadosSped.qryCompraDESPESAS.AsFloat + VFCP;
-    Dados.qrySped_C100vl_frete.AsFloat := DadosSped.qryCompraFRETE.AsFloat;
-    Dados.qrySped_C100vl_bc_icms.AsFloat := DadosSped.qryCompraBASE_ICM.AsFloat;
-    Dados.qrySped_C100vl_icms.AsFloat := DadosSped.qryCompraTOTAL_ICM.AsFloat;
-    Dados.qrySped_C100vl_bc_icms_st.AsFloat :=
-      DadosSped.qryCompraBASE_ST.AsFloat;
-    Dados.qrySped_C100vl_icms_st.AsFloat := DadosSped.qryCompraTOTAL_ST.AsFloat;
-    Dados.qrySped_C100vl_ipi.AsFloat := DadosSped.qryCompraTOTAL_IPI.AsFloat;
-    Dados.qrySped_C100vl_pis.AsFloat := DadosSped.qryCompraTOTAL_PIS.AsFloat;
-    Dados.qrySped_C100vl_cofins.AsFloat := DadosSped.qryCompraTOTAL_COF.AsFloat;
+
+    Dados.qrySped_C100ser.Value             := DadosSped.qryCompraSERIE.Value;
+    Dados.qrySped_C100num_doc.Value         := DadosSped.qryCompraNR_NOTA.AsInteger;
+    Dados.qrySped_C100chv_nfe.Value         := DadosSped.qryCompraCHAVE.Value;
+    Dados.qrySped_C100dt_doc.Value          := DadosSped.qryCompraDTEMISSAO.Value;
+    Dados.qrySped_C100dt_e_s.Value          := DadosSped.qryCompraDTENTRADA.Value;
+    Dados.qrySped_C100vl_doc.AsFloat        := DadosSped.qryCompraTOTAL.AsFloat;
+    Dados.qrySped_C100ind_pgto.Value        := '9';
+    Dados.qrySped_C100vl_desc.AsFloat       := DadosSped.qryCompraDESCONTO.AsFloat;
+    Dados.qrySped_C100vl_merc.AsFloat       := DadosSped.qryCompraSUBTOTAL.AsFloat;
+    Dados.qrySped_C100ind_frt.Value         := 2;
+    Dados.qrySped_C100vl_seguro.AsFloat     := DadosSped.qryCompraSEGURO.AsFloat;
+    Dados.qrySped_C100vl_out_da.AsFloat     := DadosSped.qryCompraDESPESAS.AsFloat + VFCP;
+    Dados.qrySped_C100vl_frete.AsFloat      := DadosSped.qryCompraFRETE.AsFloat;
+    Dados.qrySped_C100vl_bc_icms.AsFloat    := DadosSped.qryCompraBASE_ICM.AsFloat;
+    Dados.qrySped_C100vl_icms.AsFloat       := DadosSped.qryCompraTOTAL_ICM.AsFloat;
+    Dados.qrySped_C100vl_bc_icms_st.AsFloat := DadosSped.qryCompraBASE_ST.AsFloat;
+    Dados.qrySped_C100vl_icms_st.AsFloat    := DadosSped.qryCompraTOTAL_ST.AsFloat;
+    Dados.qrySped_C100vl_ipi.AsFloat        := DadosSped.qryCompraTOTAL_IPI.AsFloat;
+    Dados.qrySped_C100vl_pis.AsFloat        := DadosSped.qryCompraTOTAL_PIS.AsFloat;
+    Dados.qrySped_C100vl_cofins.AsFloat     := DadosSped.qryCompraTOTAL_COF.AsFloat;
     Dados.qrySped_C100.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
+
     DadosSped.qryItensC.Close; // abre os itens da compra
     DadosSped.qryItensC.Params[0].Value := DadosSped.qryCompraID.Value;
     DadosSped.qryItensC.Open;
     DadosSped.qryItensC.First;
+
     while not DadosSped.qryItensC.Eof do
     begin // percorre os itens da compra
       if (DadosSped.qryCompraSTATUS.Value = 'F') then
       begin
         Dados.qrySped_C170.Insert; // insere itens da venda no registro c170
-        Dados.qrySped_C170CODIGO.Value := Dados.Numerador('SPED_C170', 'CODIGO',
-          'N', '', '');
+        Dados.qrySped_C170CODIGO.Value := Dados.Numerador('SPED_C170', 'CODIGO', 'N', '', '');
         Dados.qrySped_C170FK_C100.Value := Dados.qrySped_C100CODIGO.Value;
-        DadosSped.qryConsUnidade.Locate('unidade',
-          DadosSped.qryItensCUNIDADE.Value, []);
-        Dados.qrySped_C170fk_unidade.Value :=
-          DadosSped.qryConsUnidadeCODIGO.Value;
-        Dados.qrySped_C170FK_PRODUTO.Value :=
-          DadosSped.qryItensCFK_PRODUTO.AsInteger;
+        DadosSped.qryConsUnidade.Locate('unidade', DadosSped.qryItensCUNIDADE.Value, []);
+        Dados.qrySped_C170fk_unidade.Value := DadosSped.qryConsUnidadeCODIGO.Value;
+        Dados.qrySped_C170FK_PRODUTO.Value := DadosSped.qryItensCFK_PRODUTO.AsInteger;
         Dados.qrySped_C170descricao.Value := DadosSped.qryItensCDESCRICAO.Value;
         Dados.qrySped_C170qtd.AsFloat := DadosSped.qryItensCQTD.AsFloat;
         Dados.qrySped_C170vl_item.AsFloat := DadosSped.qryItensCVL_ITEM.AsFloat;
-        Dados.qrySped_C170vl_desc.AsFloat :=
-          DadosSped.qryItensCDESCONTO.AsFloat;
+        Dados.qrySped_C170vl_desc.AsFloat := DadosSped.qryItensCDESCONTO.AsFloat;
         Dados.qrySped_C170ind_mov.Value := '0';
         Dados.qrySped_C170cst_icms.Value := DadosSped.qryItensCCST_ICM.Value;
         Dados.qrySped_C170cfop.Value := DadosSped.qryItensCCFOP.Value;
-        Dados.qrySped_C170vl_bc_icms.Value :=
-          DadosSped.qryItensCBASE_ICMS.AsFloat;
-        Dados.qrySped_C170aliq_icm.AsFloat :=
-          DadosSped.qryItensCALIQ_ICMS.AsFloat;
+        Dados.qrySped_C170vl_bc_icms.Value := DadosSped.qryItensCBASE_ICMS.AsFloat;
+        Dados.qrySped_C170aliq_icm.AsFloat := DadosSped.qryItensCALIQ_ICMS.AsFloat;
         Dados.qrySped_C170vl_icms.Value := DadosSped.qryItensCVL_ICMS.AsFloat;
-        Dados.qrySped_C170vl_bc_icms_st.AsFloat :=
-          DadosSped.qryItensCBASE_ST.AsFloat;
+        Dados.qrySped_C170vl_bc_icms_st.AsFloat := DadosSped.qryItensCBASE_ST.AsFloat;
         Dados.qrySped_C170aliq_st.AsFloat := DadosSped.qryItensCALIQ_ST.AsFloat;
+
         if DadosSped.qryItensCVL_ST.AsFloat > 0 then
           Dados.qrySped_C170vl_icms_st.AsFloat :=
             DadosSped.qryItensCVL_ST.AsFloat
         else
-          Dados.qrySped_C170vl_icms_st.AsFloat :=
-            (DadosSped.qryItensCBASE_ST.AsFloat * vPercentualST);
+          Dados.qrySped_C170vl_icms_st.AsFloat := (DadosSped.qryItensCBASE_ST.AsFloat * vPercentualST);
+
         Dados.qrySped_C170cst_ipi.Value := DadosSped.qryItensCCST_IPI.Value;
-        Dados.qrySped_C170vl_bc_ipi.AsFloat :=
-          DadosSped.qryItensCBASE_IPI.AsFloat;
-        Dados.qrySped_C170aliq_ipi.AsFloat :=
-          DadosSped.qryItensCALIQ_IPI.AsFloat;
+        Dados.qrySped_C170vl_bc_ipi.AsFloat := DadosSped.qryItensCBASE_IPI.AsFloat;
+        Dados.qrySped_C170aliq_ipi.AsFloat := DadosSped.qryItensCALIQ_IPI.AsFloat;
         Dados.qrySped_C170vl_ipi.AsFloat := DadosSped.qryItensCVL_IPI.AsFloat;
-        Dados.qrySped_C170vl_bc_pis.AsFloat :=
-          DadosSped.qryItensCBASE_PIS.AsFloat;
-        Dados.qrySped_C170aliq_pis_perc.AsFloat :=
-          DadosSped.qryItensCALIQ_PIS.AsFloat;
+        Dados.qrySped_C170vl_bc_pis.AsFloat := DadosSped.qryItensCBASE_PIS.AsFloat;
+        Dados.qrySped_C170aliq_pis_perc.AsFloat := DadosSped.qryItensCALIQ_PIS.AsFloat;
         Dados.qrySped_C170vl_pis.AsFloat := DadosSped.qryItensCVL_PIS.AsFloat;
         Dados.qrySped_C170CST_PIS.Value := DadosSped.qryItensCCST_COF.Value;
+
         if (DadosSped.qryItensCCST_PIS.Value = '01') then
         begin
           Dados.qrySped_C170CST_PIS.Value := '50';
@@ -923,37 +1174,28 @@ begin
           Dados.qrySped_C170CST_PIS.Value := '99';
           Dados.qrySped_C170CST_COFINS.Value := '99';
         end;
-        Dados.qrySped_C170vl_bc_cofins.AsFloat :=
-          DadosSped.qryItensCBASE_COF.AsFloat;
-        Dados.qrySped_C170aliq_cofins_perc.AsFloat :=
-          DadosSped.qryItensCALIQ_COF.AsFloat;
-        Dados.qrySped_C170vl_cofins.AsFloat :=
-          DadosSped.qryItensCVL_COF.AsFloat;
+
+        Dados.qrySped_C170vl_bc_cofins.AsFloat := DadosSped.qryItensCBASE_COF.AsFloat;
+        Dados.qrySped_C170aliq_cofins_perc.AsFloat := DadosSped.qryItensCALIQ_COF.AsFloat;
+        Dados.qrySped_C170vl_cofins.AsFloat := DadosSped.qryItensCVL_COF.AsFloat;
+
         if dados.qrySped_C170vl_bc_icms_st.AsFloat > 0 then
           vOutros := Dados.qrySped_C170vl_bc_icms.AsFloat * vPercentualFCP;
-            Voperacao := (DadosSped.qryItensCVL_ITEM.AsFloat +
-             DadosSped.qryItensCVL_IPI.AsFloat +
-             DadosSped.qryItensCSEGURO.AsFloat +
-             DadosSped.qryItensCDESPESA.AsFloat +
-             DadosSped.qryItensCFRETE1.AsFloat +
-             DadosSped.qryItensCVL_ST.AsFloat) -
-            DadosSped.qryItensCDESCONTO.AsFloat +
-            vOutros;
-          if Voperacao < 0 then
-            Dados.qrySped_C170vl_opr.Value := 0
-          else
-            Dados.qrySped_C170vl_opr.Value := Voperacao;
+
+        Dados.qrySped_C170vl_opr.AsFloat := DadosSped.qryItensCVL_ITEM.AsFloat +
+          DadosSped.qryItensCVL_IPI.AsFloat + DadosSped.qryItensCSEGURO.AsFloat +
+          DadosSped.qryItensCDESPESA.AsFloat + DadosSped.qryItensCFRETE1.AsFloat +
+          DadosSped.qryItensCVL_ST.AsFloat - DadosSped.qryItensCDESCONTO.AsFloat + vOutros;
         Dados.qrySped_C170.Post;
-        Dados.Conexao.CommitRetaining;
+        Dados.Conexao.Commit;
       end;
       DadosSped.qryItensC.Next;
     end;
     DadosSped.qryCompra.Next;
   end;
 end;
+
 procedure TDadosSped.ImportaEntradaNFe(dtini, dtfim: Tdate; Empresa: Integer);
-var
-Voperacao: Extended;
 begin
   // filtra compras
   DadosSped.qryNFe_E.Close;
@@ -1005,7 +1247,7 @@ begin
     Dados.qrySped_C100vl_cofins.Value :=
       DadosSped.qryNFe_ETOTALICMSCOFINS.AsFloat;
     Dados.qrySped_C100.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
     DadosSped.qryItens_NFe_E.Close; // abre os itens da nfe de entrada
     DadosSped.qryItens_NFe_E.Params[0].Value :=
       DadosSped.qryNFe_EID_PEDIDOCOMPRA.Value;
@@ -1115,29 +1357,21 @@ begin
         DadosSped.qryItens_NFe_EALIQ_COFINS_ICMS.AsFloat;
       Dados.qrySped_C170vl_cofins.Value :=
         DadosSped.qryItens_NFe_EVALOR_COFINS_ICMS.AsFloat;
-       Voperacao := (DadosSped.qryItens_NFe_ETOTAL.AsFloat +
-           DadosSped.qryItens_NFe_EVALOR_IPI.AsFloat +
-           DadosSped.qryItens_NFe_ESEGURO.AsFloat +
-           DadosSped.qryItens_NFe_EDESPESAS.AsFloat +
-           DadosSped.qryItens_NFe_EFRETE.AsFloat +
-           DadosSped.qryItens_NFe_EVALOR_ICMS_ST.AsFloat) -
-          DadosSped.qryItens_NFe_EDESCONTO.AsFloat;
-          if Voperacao < 0 then
-            Dados.qrySped_C170vl_opr.Value := 0
-          else
-            Dados.qrySped_C170vl_opr.Value := Voperacao;
-
-
+      Dados.qrySped_C170vl_opr.Value := DadosSped.qryItens_NFe_ETOTAL.AsFloat +
+        DadosSped.qryItens_NFe_EVALOR_IPI.AsFloat +
+        DadosSped.qryItens_NFe_ESEGURO.AsFloat +
+        DadosSped.qryItens_NFe_EDESPESAS.AsFloat +
+        DadosSped.qryItens_NFe_EFRETE.AsFloat +
+        DadosSped.qryItens_NFe_EVALOR_ICMS_ST.AsFloat -
+        DadosSped.qryItens_NFe_EDESCONTO.AsFloat;
       Dados.qrySped_C170.Post;
-      Dados.Conexao.CommitRetaining;
+      Dados.Conexao.Commit;
       DadosSped.qryItens_NFe_E.Next;
     end;
     DadosSped.qryNFe_E.Next;
   end;
 end;
 procedure TDadosSped.ImportaSaidaNCFe(dtini, dtfim: Tdate; Empresa: Integer);
-var
-Voperacao: Extended;
 begin
   // filtra compras
   DadosSped.qryNFCE_S.Close;
@@ -1187,7 +1421,7 @@ begin
     Dados.qrySped_C100vl_cofins.Value :=
       DadosSped.qryNFCE_STOTALICMSCOFINS.AsFloat;
     Dados.qrySped_C100.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
     DadosSped.QryItens_NFCe_S.Close; // abre os itens da nfce
     DadosSped.QryItens_NFCe_S.Params[0].Value :=
       DadosSped.qryNFCE_SCODIGO.Value;
@@ -1298,30 +1532,21 @@ begin
         DadosSped.QryItens_NFCe_SALIQ_COFINS_ICMS.AsFloat;
       Dados.qrySped_C170vl_cofins.Value :=
         DadosSped.QryItens_NFCe_SVALOR_COFINS_ICMS.AsFloat;
-        Voperacao := (DadosSped.QryItens_NFCe_STOTAL.AsFloat +
-
-         DadosSped.QryItens_NFCe_SVALOR_IPI.AsFloat +
-         DadosSped.QryItens_NFCe_SSEGURO.AsFloat +
-         DadosSped.QryItens_NFCe_SDESPESAS.AsFloat +
-         DadosSped.QryItens_NFCe_SFRETE.AsFloat +
-         DadosSped.QryItens_NFCe_SVALOR_ICMS_ST.AsFloat) -
+      Dados.qrySped_C170vl_opr.Value := DadosSped.QryItens_NFCe_STOTAL.AsFloat +
+        DadosSped.QryItens_NFCe_SVALOR_IPI.AsFloat +
+        DadosSped.QryItens_NFCe_SSEGURO.AsFloat +
+        DadosSped.QryItens_NFCe_SDESPESAS.AsFloat +
+        DadosSped.QryItens_NFCe_SFRETE.AsFloat +
+        DadosSped.QryItens_NFCe_SVALOR_ICMS_ST.AsFloat -
         DadosSped.QryItens_NFCe_SVDESCONTO.AsFloat;
-        if Voperacao < 0 then
-          Dados.qrySped_C170vl_opr.Value := 0
-        else
-          Dados.qrySped_C170vl_opr.Value := Voperacao;
-
-
       Dados.qrySped_C170.Post;
-      Dados.Conexao.CommitRetaining;
+      Dados.Conexao.Commit;
       DadosSped.QryItens_NFCe_S.Next;
     end;
     DadosSped.qryNFCE_S.Next;
   end;
 end;
 procedure TDadosSped.ImportaSaidaNFe(dtini, dtfim: Tdate; Empresa: Integer);
-var
-Voperacao: Extended;
 begin
   // filtra compras
   DadosSped.qryNFE_S.Close;
@@ -1372,7 +1597,7 @@ begin
     Dados.qrySped_C100vl_cofins.Value :=
       DadosSped.qryNFE_STOTALICMSCOFINS.AsFloat;
     Dados.qrySped_C100.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
     DadosSped.qryItens_NFe_S.Close; // abre os itens da nfce
     DadosSped.qryItens_NFe_S.Params[0].Value := DadosSped.qryNFE_SCODIGO.Value;
     DadosSped.qryItens_NFe_S.Open;
@@ -1385,124 +1610,110 @@ begin
         Dados.qrySped_C170CODIGO.Value := Dados.Numerador('SPED_C170', 'CODIGO',
           'N', '', '');
         Dados.qrySped_C170FK_C100.Value := Dados.qrySped_C100CODIGO.Value;
-        DadosSped.qryConsUnidade.Locate('unidade', DadosSped.qryItens_NFe_SUNIDADE.Value, []);
-        Dados.qrySped_C170fk_unidade.Value := DadosSped.qryConsUnidadeCODIGO.Value;
-        Dados.qrySped_C170FK_PRODUTO.Value := DadosSped.qryItens_NFe_SID_PRODUTO.AsInteger;
-        Dados.qrySped_C170descricao.Value := DadosSped.qryItens_NFe_SDESCRICAO.Value;
+        DadosSped.qryConsUnidade.Locate('unidade',
+          DadosSped.qryItens_NFe_SUNIDADE.Value, []);
+        Dados.qrySped_C170fk_unidade.Value :=
+          DadosSped.qryConsUnidadeCODIGO.Value;
+        Dados.qrySped_C170FK_PRODUTO.Value :=
+          DadosSped.qryItens_NFe_SID_PRODUTO.AsInteger;
+        Dados.qrySped_C170descricao.Value :=
+          DadosSped.qryItens_NFe_SDESCRICAO.Value;
         Dados.qrySped_C170qtd.Value := DadosSped.qryItens_NFe_SQTD.AsFloat;
-        Dados.qrySped_C170vl_item.Value := DadosSped.qryItens_NFe_STOTAL.AsFloat;
-        Dados.qrySped_C170vl_desc.Value := DadosSped.qryItens_NFe_SDESCONTO.AsFloat;
+        Dados.qrySped_C170vl_item.Value :=
+          DadosSped.qryItens_NFe_STOTAL.AsFloat;
+        Dados.qrySped_C170vl_desc.Value :=
+          DadosSped.qryItens_NFe_SDESCONTO.AsFloat;
         Dados.qrySped_C170ind_mov.Value := '0';
         Dados.qrySped_C170cst_icms.Value := DadosSped.qryItens_NFe_SCST.Value;
         Dados.qrySped_C170cfop.Value := DadosSped.qryItens_NFe_SCFOP.Value;
-        Dados.qrySped_C170vl_bc_icms.Value := DadosSped.qryItens_NFe_SBASE_ICMS.AsFloat;
-        Dados.qrySped_C170aliq_icm.Value := DadosSped.qryItens_NFe_SALIQ_ICMS.AsFloat;
-        Dados.qrySped_C170vl_icms.Value := DadosSped.qryItens_NFe_SVALOR_ICMS.AsFloat;
-        Dados.qrySped_C170vl_bc_icms_st.Value := DadosSped.qryItens_NFe_SBASE_ICMS_ST.AsFloat;
-        Dados.qrySped_C170aliq_st.Value := DadosSped.qryItens_NFe_SALIQ_ICMS_ST.AsFloat;
-        Dados.qrySped_C170vl_icms_st.Value := DadosSped.qryItens_NFe_SVALOR_ICMS_ST.AsFloat;
-        Dados.qrySped_C170cst_ipi.Value := DadosSped.qryItens_NFe_SCST_IPI.Value;
-        Dados.qrySped_C170vl_bc_ipi.Value := DadosSped.qryItens_NFe_SBASE_IPI.AsFloat;
-        Dados.qrySped_C170aliq_ipi.Value := DadosSped.qryItens_NFe_SALIQ_IPI.AsFloat;
-        Dados.qrySped_C170vl_ipi.Value := DadosSped.qryItens_NFe_SVALOR_IPI.AsFloat;
-        Dados.qrySped_C170vl_bc_pis.Value := DadosSped.qryItens_NFe_SBASE_PIS_ICMS.AsFloat;
-        Dados.qrySped_C170aliq_pis_perc.Value := DadosSped.qryItens_NFe_SALIQ_PIS_ICMS.AsFloat;
-        Dados.qrySped_C170vl_pis.Value := DadosSped.qryItens_NFe_SVALOR_PIS_ICMS.AsFloat;
-        Dados.qrySped_C170CST_PIS.Value := DadosSped.qryItens_NFe_SCST_COFINS.Value;
+        Dados.qrySped_C170vl_bc_icms.Value :=
+          DadosSped.qryItens_NFe_SBASE_ICMS.AsFloat;
+        Dados.qrySped_C170aliq_icm.Value :=
+          DadosSped.qryItens_NFe_SALIQ_ICMS.AsFloat;
+        Dados.qrySped_C170vl_icms.Value :=
+          DadosSped.qryItens_NFe_SVALOR_ICMS.AsFloat;
+        Dados.qrySped_C170vl_bc_icms_st.Value :=
+          DadosSped.qryItens_NFe_SBASE_ICMS_ST.AsFloat;
+        Dados.qrySped_C170aliq_st.Value :=
+          DadosSped.qryItens_NFe_SALIQ_ICMS_ST.AsFloat;
+        Dados.qrySped_C170vl_icms_st.Value :=
+          DadosSped.qryItens_NFe_SVALOR_ICMS_ST.AsFloat;
+        Dados.qrySped_C170cst_ipi.Value :=
+          DadosSped.qryItens_NFe_SCST_IPI.Value;
+        Dados.qrySped_C170vl_bc_ipi.Value :=
+          DadosSped.qryItens_NFe_SBASE_IPI.AsFloat;
+        Dados.qrySped_C170aliq_ipi.Value :=
+          DadosSped.qryItens_NFe_SALIQ_IPI.AsFloat;
+        Dados.qrySped_C170vl_ipi.Value :=
+          DadosSped.qryItens_NFe_SVALOR_IPI.AsFloat;
+        Dados.qrySped_C170vl_bc_pis.Value :=
+          DadosSped.qryItens_NFe_SBASE_PIS_ICMS.AsFloat;
+        Dados.qrySped_C170aliq_pis_perc.Value :=
+          DadosSped.qryItens_NFe_SALIQ_PIS_ICMS.AsFloat;
+        Dados.qrySped_C170vl_pis.Value :=
+          DadosSped.qryItens_NFe_SVALOR_PIS_ICMS.AsFloat;
+        Dados.qrySped_C170CST_PIS.Value :=
+          DadosSped.qryItens_NFe_SCST_COFINS.Value;
         Dados.qrySped_C170CST_PIS.Value := '49';
         Dados.qrySped_C170CST_COFINS.Value := '49';
-        { if DadosSped.qryItens_NFe_SCST_PIS.Value = '07' then
-          begin
-          Dados.qrySped_C170CST_PIS.Value := '71';
-          Dados.qrySped_C170CST_COFINS.Value := '71';
-          end;
-          if DadosSped.qryItens_NFe_SCST_PIS.Value = '08' then
-          begin
-          Dados.qrySped_C170CST_PIS.Value := '74';
-          Dados.qrySped_C170CST_COFINS.Value := '74';
-          end;
-          if DadosSped.qryItens_NFe_SCST_PIS.Value = '09' then
-          begin
-          Dados.qrySped_C170CST_PIS.Value := '72';
-          Dados.qrySped_C170CST_COFINS.Value := '72';
-          end;
-          if DadosSped.qryItens_NFe_SCST_PIS.Value = '49' then
-          begin
-          Dados.qrySped_C170CST_PIS.Value := '99';
-          Dados.qrySped_C170CST_COFINS.Value := '99';
-          ; }
         Dados.qrySped_C170vl_bc_cofins.Value :=
           DadosSped.qryItens_NFe_SBASE_COFINS_ICMS.AsFloat;
         Dados.qrySped_C170aliq_cofins_perc.Value :=
           DadosSped.qryItens_NFe_SALIQ_COFINS_ICMS.AsFloat;
         Dados.qrySped_C170vl_cofins.Value :=
           DadosSped.qryItens_NFe_SVALOR_COFINS_ICMS.AsFloat;
-         Voperacao :=  (DadosSped.qryItens_NFe_STOTAL.AsFloat +
-           DadosSped.qryItens_NFe_SVALOR_IPI.AsFloat +
-           DadosSped.qryItens_NFe_SSEGURO.AsFloat +
-           DadosSped.qryItens_NFe_SDESPESAS.AsFloat +
-           DadosSped.qryItens_NFe_SFRETE.AsFloat +
-           DadosSped.qryItens_NFe_SVALOR_ICMS_ST.AsFloat) -
+        Dados.qrySped_C170vl_opr.Value := DadosSped.qryItens_NFe_STOTAL.AsFloat
+          + DadosSped.qryItens_NFe_SVALOR_IPI.AsFloat +
+          DadosSped.qryItens_NFe_SSEGURO.AsFloat +
+          DadosSped.qryItens_NFe_SDESPESAS.AsFloat +
+          DadosSped.qryItens_NFe_SFRETE.AsFloat +
+          DadosSped.qryItens_NFe_SVALOR_ICMS_ST.AsFloat -
           DadosSped.qryItens_NFe_SDESCONTO.AsFloat;
-        if Voperacao < 0 then
-          Dados.qrySped_C170vl_opr.Value := 0
-        else
-          Dados.qrySped_C170vl_opr.Value := Voperacao;
         Dados.qrySped_C170.Post;
-        Dados.Conexao.CommitRetaining;
+        Dados.Conexao.Commit;
       end;
       DadosSped.qryItens_NFe_S.Next;
     end;
     DadosSped.qryNFE_S.Next;
   end;
 end;
+
 procedure TDadosSped.REGC190(dtini, dtfim: Tdate; Empresa: Integer);
-var
-rREDUCAO : Extended;
 begin
+
   DadosSped.qryConsC100.Close;
   DadosSped.qryConsC100.Params[0].Value := CodSped;
   DadosSped.qryConsC100.Open;
+
   Dados.qrySped_C190.Close;
   Dados.qrySped_C190.Open;
 
-  rREDUCAO := 0;
   while not DadosSped.qryConsC100.Eof do
   begin
     DadosSped.qryConsC170.Close;
-    DadosSped.qryConsC170.Params[0].AsInteger :=
-      DadosSped.qryConsC100CODIGO.AsInteger;
+    DadosSped.qryConsC170.Params[0].AsInteger := DadosSped.qryConsC100CODIGO.AsInteger;
     DadosSped.qryConsC170.Open;
 
     while not DadosSped.qryConsC170.Eof do
     begin
       Dados.qrySped_C190.Insert;
-      Dados.qrySped_C190CODIGO.Value := Dados.Numerador('SPED_C190', 'CODIGO',  'N', '', '');  //01 REG "C190"
+      Dados.qrySped_C190CODIGO.Value := Dados.Numerador('SPED_C190', 'CODIGO', 'N', '', '');
       Dados.qrySped_C190FK_C100.Value := DadosSped.qryConsC100CODIGO.Value;
-      Dados.qrySped_C190cfop.Value := DadosSped.qryConsC170CFOP.AsString;    //03 CFOP
-
-      Dados.qrySped_C190cst_icms.Value := DadosSped.qryConsC170CST_ICMS.Value;  //02 CST_ICMS - Código da Situação Tributária, conforme a Tabela indicada no
-      Dados.qrySped_C190aliq_icms.Value := DadosSped.qryConsC170ALIQ_ICM.AsFloat; //04 ALIQ_ICMS Alíquota do ICMS N 006 O
-
-      Dados.qrySped_C190vl_opr.Value := DadosSped.qryConsC170VL_OPR.AsFloat;   //05 VL_OPR 02 Valor da operação na combinação de CST_ICMS, CFOP e alíquota do ICMS,
-
-      Dados.qrySped_C190vl_bc_icms.Value := DadosSped.qryConsC170VL_BC_ICMS.AsFloat; //06 VL_BC_ICMS Parcela correspondente ao "Valor da base de cálculo do ICMS"
-      Dados.qrySped_C190vl_icms.Value := DadosSped.qryConsC170VL_ICMS.AsFloat;     //07 VL_ICMS Parcela correspondente ao "Valor do ICMS", incluindo o FCP,
-
-      Dados.qrySped_C190vl_bc_icms_st.Value := DadosSped.qryConsC170VL_BC_ICMS_ST.AsFloat;  //08 VL_BC_ICMS_ ST Parcela correspondente ao "Valor da base de cálculo do ICMS" da substituição
-
-      Dados.qrySped_C190vl_icms_st.Value := DadosSped.qryConsC170VL_ICMS_ST.AsFloat;  //09 VL_ICMS_ST Parcela correspondente ao valor creditado/debitado
-
-      rREDUCAO :=  Dados.qrySped_C190vl_opr.AsFloat -  Dados.qrySped_C190vl_bc_icms.AsFloat;
-
-      Dados.qrySped_C190VL_RED_BC.Value  := rREDUCAO;
-
-      Dados.qrySped_C190vl_ipi.Value := DadosSped.qryConsC170VL_IPI.AsFloat; //11 VL_IPI Parcela correspondente ao "Valor do IPI"
+      Dados.qrySped_C190cfop.Value := DadosSped.qryConsC170CFOP.AsString;
+      Dados.qrySped_C190cst_icms.Value := DadosSped.qryConsC170CST_ICMS.Value;
+      Dados.qrySped_C190aliq_icms.Value := DadosSped.qryConsC170ALIQ_ICM.AsFloat;
+      Dados.qrySped_C190vl_opr.Value := DadosSped.qryConsC170VL_OPR.AsFloat;
+      Dados.qrySped_C190vl_bc_icms.Value := DadosSped.qryConsC170VL_BC_ICMS.AsFloat;
+      Dados.qrySped_C190vl_icms.Value := DadosSped.qryConsC170VL_ICMS.AsFloat;
+      Dados.qrySped_C190vl_bc_icms_st.Value := DadosSped.qryConsC170VL_BC_ICMS_ST.AsFloat;
+      Dados.qrySped_C190vl_icms_st.Value := DadosSped.qryConsC170VL_ICMS_ST.AsFloat;
+      Dados.qrySped_C190vl_ipi.Value := DadosSped.qryConsC170VL_IPI.AsFloat;
       Dados.qrySped_C190.Post;
-      Dados.Conexao.CommitRetaining;
+      Dados.Conexao.Commit;
       DadosSped.qryConsC170.Next;
     end;
     DadosSped.qryConsC100.Next;
   end;
 end;
+
 end.

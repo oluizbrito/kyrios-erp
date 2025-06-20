@@ -1,6 +1,6 @@
 unit uCadCTeOS;
 
-interface //Suporte e Vendas direto no Whatsapp (48)998463846
+interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
@@ -11,9 +11,7 @@ uses
   ACBrValidador, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
-  dxSkinsCore, dxSkinDevExpressDarkStyle, dxSkinOffice2019Colorful,
-  dxSkinOffice2019DarkGray, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters,
-  Vcl.Menus, cxButtons;
+  cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, Vcl.Menus, cxButtons;
 
 type
   TfrmCadCTeOS = class(TForm)
@@ -154,6 +152,8 @@ type
     qryCteCHAVE_REFERENCIADA: TStringField;
     qryCteNAVERBACAO: TStringField;
     qryCteCNPJ_SEGURADORA: TStringField;
+    qryCtePESOL: TFMTBCDField;
+    qryCtePESOB: TFMTBCDField;
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
     Label18: TLabel;
@@ -193,8 +193,6 @@ type
     Panel3: TPanel;
     cxSair: TcxButton;
     cxGravar: TcxButton;
-    qryCtePESOL: TBCDField;
-    qryCtePESOB: TBCDField;
     procedure DBLookupComboboxEh5Exit(Sender: TObject);
     procedure DBLookupComboboxEh1Enter(Sender: TObject);
     procedure DBLookupComboboxEh1Exit(Sender: TObject);
@@ -214,7 +212,7 @@ type
 var
   frmCadCTeOS: TfrmCadCTeOS;
 
-implementation //Acesse lojadodesenvolvedor.com.br e saiba mais sobre esse código fonte.
+implementation
 
 {$R *.dfm}
 
@@ -222,7 +220,7 @@ uses Udados;
 
 procedure TfrmCadCTeOS.cxGravarClick(Sender: TObject);
 begin
-   if qryCteFKTOMADOR.IsNull then begin
+  if qryCteFKTOMADOR.IsNull then begin
    ShowMessage('Informe o Tomador do Serviço');
    DBLookupComboboxEh1.SetFocus;
    exit;
@@ -259,8 +257,8 @@ end;
 
 procedure TfrmCadCTeOS.cxSairClick(Sender: TObject);
 begin
-  qryCte.Cancel;
-  Close;
+qryCte.Cancel;
+ Close;
 end;
 
 procedure TfrmCadCTeOS.DBLookupComboboxEh1Enter(Sender: TObject);

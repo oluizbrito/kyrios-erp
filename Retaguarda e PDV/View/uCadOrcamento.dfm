@@ -1785,7 +1785,9 @@ object frmCadOrcamento: TfrmCadOrcamento
     Connection = Dados.Conexao
     Transaction = Dados.Transacao
     UpdateTransaction = Dados.Transacao
-    FetchOptions.AssignedValues = [evCache]
+    FetchOptions.AssignedValues = [evMode, evRowsetSize, evCache]
+    FetchOptions.Mode = fmAll
+    FetchOptions.RowsetSize = -1
     FetchOptions.Cache = [fiBlobs, fiMeta]
     SQL.Strings = (
       'select * from orcamento_item'

@@ -5,11 +5,12 @@ interface
 uses
   System.SysUtils, vcl.Forms, System.Classes, ACBrNFeDANFeESCPOS,
   ACBrNFeDANFEClass, db,
-  pcnConversao, pcnConversaoNFe, ACBrDFeSSL, System.Math, blcksock,
+   ACBrDFeSSL, System.Math, blcksock,
   ACBrDANFCeFortesFrA4, ACBrPosPrinter, ACBrDFe, ACBrNFe, ACBrBase, acbrUtil,
   ACBrDFeReport, ACBrDFeDANFeReport, ACBrNFeDANFeRLClass, System.TypInfo,
-  ACBrMail, vcl.Menus, ACBrIntegrador;
-
+  ACBrMail, vcl.Menus, ACBrIntegrador,
+  {COMPONETES ACBR}
+ ACBrCTeDACTeRLClass, ACBrCTe, pcnConversao, pcnConversaoNFe, ACBrDANFCeFortesFr;
 type
   TdmNFe = class(TDataModule)
     ACBrNFeDANFeRL1: TACBrNFeDANFeRL;
@@ -20,6 +21,7 @@ type
     ACBrMail1: TACBrMail;
     ACBrIntegrador1: TACBrIntegrador;
     PopupMenu1: TPopupMenu;
+    DANFCeFortesBobina: TACBrNFeDANFCeFortes;
     procedure ACBrNFeStatusChange(Sender: TObject);
     procedure ACBrMail1MailProcess(const AMail: TACBrMail;
       const aStatus: TMailStatus);
@@ -36,6 +38,7 @@ type
     function StrToPaginaCodigo(const AValor: String): TACBrPosPaginaCodigo;
     procedure ConfiguraNFe(Tipo: String);
     procedure ImpressoraA4NFCe(Tipo: String);
+    procedure ImpressoraGraficoNFCe(Tipo: String);
     function CancelaNFe(XML: string; Justificativa: String; Codigo: Integer;
       Tipo: String; Situacao: String): boolean;
     function CartaCorrecao(Chave: string; CNPJ: string; Sequencia: Integer;
@@ -58,7 +61,8 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses Udados, ufrmStatus, uDMEstoque;
+uses
+Udados, ufrmStatus, uDMEstoque;
 
 {$R *.dfm}
 
@@ -395,14 +399,48 @@ end;
 
 procedure TdmNFe.ImpressoraA4NFCe(Tipo: String);
 begin
+  // Define o componente DANFE para o Fortes Report (A4)
   ACBrNFe.DANFE := ACBrNFeDANFCeFortesA41;
+
   ACBrNFe.DANFE.PathPDF := dados.qryConfigPATHPDF.Value;
+  ACBrNFeDANFCeFortesA41.Impressora := dados.qryTerminalIMPRESSORA_FORTESREPORT.AsString;
   ACBrNFeDANFCeFortesA41.Sistema := dados.qryParametroEMPRESA.Value + ' | ' +
     dados.qryParametroFONE1.Value + ' ' + dados.qryParametroFONE2.Value;
   ACBrNFeDANFCeFortesA41.Site := dados.qryParametroSITE.Value;
+
   if FilesExists(dados.qryConfigLOGOMARCA.Value) then
     ACBrNFeDANFCeFortesA41.Logo := dados.qryConfigLOGOMARCA.Value;
+
+  // Configuração de preview com base no banco de dados
+  if dados.qryTerminalIMPRIME_PREVIEW.Value = 'S' then
+    ACBrNFeDANFCeFortesA41.MostraPreview := True
+  else
+    ACBrNFeDANFCeFortesA41.MostraPreview := False;
+
 end;
+
+
+procedure TdmNFe.ImpressoraGraficoNFCe(Tipo: String);
+begin
+  ACBrNFe.DANFE := DANFCeFortesBobina;
+
+  // Configurações gerais
+  DANFCeFortesBobina.Impressora := dados.qryTerminalIMPRESSORA_FORTESREPORT.AsString;
+  ACBrNFe.DANFE.PathPDF := dados.qryConfigPATHPDF.Value;
+  DANFCeFortesBobina.Sistema := dados.qryParametroEMPRESA.Value + ' | ' +
+    dados.qryParametroFONE1.Value + ' ' + dados.qryParametroFONE2.Value;
+  DANFCeFortesBobina.Site := dados.qryParametroSITE.Value;
+
+  if FilesExists(dados.qryConfigLOGOMARCA.Value) then
+    DANFCeFortesBobina.Logo := dados.qryConfigLOGOMARCA.Value;
+
+  if dados.qryTerminalIMPRIME_PREVIEW.Value = 'S' then
+    DANFCeFortesBobina.MostraPreview := True
+  else
+    DANFCeFortesBobina.MostraPreview := False;
+
+end;
+
 
 function TdmNFe.StrToPaginaCodigo(const AValor: String): TACBrPosPaginaCodigo;
 begin
@@ -412,41 +450,83 @@ end;
 
 procedure TdmNFe.ImprimirNFe(XML: String; Situacao: String; Tipo: String;
   TRIBF, TRIBM, TRIBE: Extended);
+var
+  TipoImpressora: Integer;
 begin
-
+  // Limpar e carregar o XML na instância do ACBrNFe
   ACBrNFe.NotasFiscais.Clear;
   ACBrNFe.NotasFiscais.LoadFromString(XML);
-  if Tipo = 'NFe' then
-    ImpressoraA4NFe('NFe');
 
-  if Tipo = 'NFCe' then
+  // Configurar a impressão de acordo com o tipo
+  if Tipo = 'NFe' then
+  begin
+    ImpressoraA4NFe('NFe'); // Impressão para NFe
+  end
+  else if Tipo = 'NFCe' then
   begin
     dados.AbreTerminal;
-    if dados.qryTerminalTIPOIMPRESSORA.Value = '1' then
-      dmNFe.ImpressoraA4NFCe('NFCe')
+
+    // Obter o tipo de impressora e verificar como inteiro
+    TipoImpressora := StrToIntDef(dados.qryTerminalTIPOIMPRESSORA.AsString, 0);
+
+    case TipoImpressora of
+      1: dmNFe.ImpressoraA4NFCe('NFCe');
+      3: dmNFe.ImpressoraGraficoNFCe('NFCe');
     else
       dmNFe.ImpressoraBobina('NFCe');
-
+    end;
     dmNFe.ConfiguraNFe('NFCe');
   end;
 
+  // Configurar status de cancelamento na DANFE
   ACBrNFe.DANFE.Cancelada := False;
   if (Situacao = '3') or (Situacao = 'C') then
-    ACBrNFe.DANFE.Cancelada := true;
+    ACBrNFe.DANFE.Cancelada := True;
 
+  // Configurar valores de tributos na DANFE
   ACBrNFe.DANFE.vTribFed := TRIBF;
   ACBrNFe.DANFE.vTribEst := TRIBE;
   ACBrNFe.DANFE.vTribMun := TRIBM;
+  // Realizar a impressão
   ACBrNFe.NotasFiscais.Imprimir;
-
+  // Gerar PDF em condições específicas
   if (Situacao = '2') or (Situacao = 'T') then
   begin
-    if dados.qryTerminalTIPOIMPRESSORA.Value = '1' then
+    if TipoImpressora <> 2 then
       ACBrNFe.NotasFiscais.ImprimirPDF;
+   end;
 
-  end;
 end;
 
+//procedure TdmNFe.ImprimirNFe(XML: String; Situacao: String; Tipo: String;
+//  TRIBF, TRIBM, TRIBE: Extended);
+//begin
+//  ACBrNFe.NotasFiscais.Clear;
+//  ACBrNFe.NotasFiscais.LoadFromString(XML);
+//  if Tipo = 'NFe' then
+//    ImpressoraA4NFe('NFe');
+//  if Tipo = 'NFCe' then
+//  begin
+//    dados.AbreTerminal;
+//    if dados.qryTerminalTIPOIMPRESSORA.Value = '1' then
+//      dmNFe.ImpressoraA4NFCe('NFCe')
+//    else
+//      dmNFe.ImpressoraBobina('NFCe');
+//    dmNFe.ConfiguraNFe('NFCe');
+//  end;
+//  ACBrNFe.DANFE.Cancelada := False;
+//  if (Situacao = '3') or (Situacao = 'C') then
+//    ACBrNFe.DANFE.Cancelada := true;
+//  ACBrNFe.DANFE.vTribFed := TRIBF;
+//  ACBrNFe.DANFE.vTribEst := TRIBE;
+//  ACBrNFe.DANFE.vTribMun := TRIBM;
+//  ACBrNFe.NotasFiscais.Imprimir;
+//  if (Situacao = '2') or (Situacao = 'T') then
+//  begin
+//    if dados.qryTerminalTIPOIMPRESSORA.Value = '1' then
+//      ACBrNFe.NotasFiscais.ImprimirPDF;
+//  end;
+//end;
 procedure TdmNFe.ConfiguraNFe(Tipo: String);
 var
   Ok: boolean;

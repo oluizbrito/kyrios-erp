@@ -320,7 +320,7 @@ begin
     dados.qryExecute.ExecSQL;
   end;
 
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
 end;
 
@@ -374,7 +374,7 @@ begin
       (Format('UPDATE CBR_RETORNO SET SITUACAO = 1, DTHORA_PROCESSAMENTO = CURRENT_TIMESTAMP WHERE ID_EMPRESA = %d AND ID_CBR_RETORNO = %d',
       [dados.qryempresaCodigo.Value, vID_CBR_RETORNO]));
 
-    qryDefault.Connection.CommitRetaining;
+    qryDefault.Connection.Commit;
 
     qryDefault.Close;
     qryDefault.Open;
@@ -411,7 +411,7 @@ begin
       (Format('UPDATE CBR_RETORNO SET SITUACAO = 2, DTHORA_ARQUIVAMENTO = CURRENT_TIMESTAMP  WHERE ID_EMPRESA = %d AND ID_CBR_RETORNO = %d',
       [dados.qryempresaCodigo.Value, vID_CBR_RETORNO]));
 
-    qryDefault.Connection.CommitRetaining;
+    qryDefault.Connection.Commit;
 
     qryDefault.Close;
     qryDefault.Open;
@@ -716,7 +716,7 @@ begin
           insCBR_RETORNO_TITULOS.ExecSQL;
         end;
 
-        qryDefault.Connection.CommitRetaining;
+        qryDefault.Connection.Commit;
 
         qryDefault.Close;
         qryDefault.Open;
@@ -851,7 +851,7 @@ begin
       'delete from crrecebimento where fkreceber=:id';
     dados.qryExecute.Params[0].Value := aCodigo;
     dados.qryExecute.ExecSQL;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     qryRecebimento.Close;
     qryRecebimento.Params[0].Value := aCodigo;
@@ -882,7 +882,7 @@ begin
 
     Result := qryRecebimentoCODIGO.Value;
 
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
   end;
 
 end;

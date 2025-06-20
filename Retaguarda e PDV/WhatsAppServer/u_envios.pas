@@ -153,7 +153,7 @@ begin
         end;
       sMensagem :=  'Envios Finalizados';
       Synchronize(LogEnvio);
-      frmPrincipal.Conexao.CommitRetaining;
+      frmPrincipal.Conexao.Commit;
     end;
 end;
 

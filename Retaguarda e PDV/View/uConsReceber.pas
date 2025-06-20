@@ -185,6 +185,7 @@ type
     procedure btnWhatsClick(Sender: TObject);
     procedure cxSairClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormDestroy(Sender: TObject);
   private
     procedure tamanho;
     procedure HabilitaCheck;
@@ -625,7 +626,7 @@ begin
     exit;
   if not dados.qryCRRecebimento.IsEmpty then
     dados.qryCRRecebimento.Delete;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
   dados.qrysomarec.Close;
   dados.qrysomarec.Params[0].Value := dados.qrycrCODIGO.Value;
   dados.qrysomarec.Open;
@@ -643,7 +644,7 @@ begin
   then
     dados.qrycrSITUACAO.Value := 'P';
   dados.qrycr.Post;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
   // btnFiltrarClick(self);
   ShowMessage('Estorno de título efetuado com sucesso!');
 end;
@@ -934,7 +935,7 @@ begin
           'update creceber set FLAG=''S'' where codigo=:codigo';
         dados.qryExecute.Params[0].Value := dados.qrycrCODIGO.Value;
         dados.qryExecute.ExecSQL;
-        dados.Conexao.CommitRetaining;
+        dados.Conexao.Commit;
       end;
       if not ChckSeleciona.Checked then
       begin
@@ -943,7 +944,7 @@ begin
           'update creceber set FLAG=''N'' where codigo=:codigo';
         dados.qryExecute.Params[0].Value := dados.qrycrCODIGO.Value;
         dados.qryExecute.ExecSQL;
-        dados.Conexao.CommitRetaining;
+        dados.Conexao.Commit;
       end;
       dados.qrycr.Next;
     end;
@@ -1044,7 +1045,7 @@ begin
       if (dados.qryCRFK_USUARIO.Value = dados.idUsuario) then
         dados.qryCRFK_USUARIO.Clear;
       dados.qrycr.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
     end
     else
     begin
@@ -1052,10 +1053,10 @@ begin
       dados.qryCRFLAG.Value := 'S';
       dados.qryCRFK_USUARIO.Value := dados.idUsuario;
       dados.qrycr.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
     end;
   end;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 procedure TfrmConsReceber.dbGrid1DblClick(Sender: TObject);
 begin
@@ -1233,7 +1234,7 @@ begin
 end;
 procedure TfrmConsReceber.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-    //frmPrincipal.dxStatusBar1.Panels[0].Text := '';
+    Action := caFree;
 end;
 
 procedure TfrmConsReceber.FormCreate(Sender: TObject);
@@ -1243,6 +1244,11 @@ begin
   maskFim.EditText := datetostr(date);
   PageControl1.ActivePageIndex := 0;
 end;
+procedure TfrmConsReceber.FormDestroy(Sender: TObject);
+begin
+   frmConsReceber := nil;
+end;
+
 procedure TfrmConsReceber.FormKeyDown(Sender: TObject; var Key: Word;
 Shift: TShiftState);
 begin

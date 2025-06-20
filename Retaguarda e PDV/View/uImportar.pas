@@ -389,7 +389,7 @@ begin
       Dados.qryExecute.Params[2].Value := Dados.Lote;
       Dados.qryExecute.Params[3].AsInteger := qryPedido2CODIGO.AsInteger;
       Dados.qryExecute.ExecSQL;
-      Dados.Conexao.CommitRetaining;
+      Dados.Conexao.Commit;
 
       FrmPDV.qryVenda.Close;
       FrmPDV.qryVenda.Params[0].AsInteger := qryPedido2CODIGO.AsInteger;
@@ -432,7 +432,7 @@ begin
     qryPedido.Edit;
     qryPedidoSITUACAO.Value := 'F';
     qryPedido.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
     ShowMessage('Já existe NFC-e gerada para esta venda!');
     exit;
   end;
@@ -456,7 +456,7 @@ begin
     FrmPDV.qryVendaLOTE.Value := Dados.Lote;
 
     FrmPDV.qryVenda.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
     //FrmPDV.lblVendedor.Caption := qryPedidoVIRTUAL_VENDEDOR.AsString;
     //FrmPDV.lblVendedor.Refresh;
 
@@ -492,7 +492,7 @@ begin
   if qryPedidoWeb.IsEmpty then
     exit;
 
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
   if not FrmPDV.qryItem.IsEmpty then
   begin
@@ -534,7 +534,7 @@ begin
     qryPedidoWeb.Edit;
   qryPedidoWebSITUACAO.AsString :=  'F';
   qryPedidoWeb.Post;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
   qryPedidoWebDetalhe.Close;
   qryPedidoWebDetalhe.Params[0].Value := dados.qryConsulta.FieldByName
@@ -589,7 +589,7 @@ begin
       FrmPDV.qryItemTOTAL.AsFloat := FrmPDV.qryItemVALOR_ITEM.AsFloat -
         FrmPDV.qryItemVDESCONTO.AsFloat;
       FrmPDV.qryItem.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
     end;
 
     qryPedidoWebDetalhe.Next;
@@ -622,7 +622,7 @@ begin
   if qryPreVendaM.IsEmpty then
     Exit;
 
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
   if not FrmPDV.qryItem.IsEmpty then
   begin
@@ -660,14 +660,14 @@ begin
     FrmPDV.qryVendaID_CLIENTE.Value := dados.qryConsulta.FieldByName('ID_CLIENTE').Value;
 
   FrmPDV.qryVenda.Post;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
   // Atualizar o status da pré-venda para "Importada"
   if not (qryPreVendaM.State in [dsEdit, dsInsert]) then
     qryPreVendaM.Edit;
   qryPreVendaMSITUACAO.AsString := 'I'; // Status "Importada"
   qryPreVendaM.Post;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
   // Importar os itens da pré-venda
   qryPreVendaD.Close;
@@ -726,7 +726,7 @@ begin
       FrmPDV.qryItemTOTAL.AsFloat := FrmPDV.qryItemVALOR_ITEM.AsFloat - FrmPDV.qryItemVDESCONTO.AsFloat;
 
       FrmPDV.qryItem.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
     end;
 
     qryPreVendaD.Next;
@@ -740,7 +740,7 @@ begin
   FrmPDV.qryVendaTOTAL.AsFloat := FrmPDV.qryVendaSUBTOTAL.AsFloat - FrmPDV.qryVendaDESCONTO.AsFloat;
 
   FrmPDV.qryVenda.Post;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 
   Application.ProcessMessages;
   ShowMessage('Importação realizada com sucesso!');
@@ -900,7 +900,7 @@ begin
     dados.qryExecute.Params[4].Value := frmpdv.qryItemCODIGO.Value;
     dados.qryExecute.ExecSQL;
 
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     TSoma := TSoma + ValorDesconto;
     TSomaOutro := TSomaOutro + ValorAcrescimo;
@@ -936,7 +936,7 @@ begin
     dados.qryExecute.Params[1].Value := TDifOutro;
     dados.qryExecute.Params[2].Value := MaiorItem;
     dados.qryExecute.ExecSQL;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
   end;
 end;
 
@@ -949,7 +949,7 @@ begin
   if qryOs_Master.IsEmpty then
     exit;
 
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
   if not FrmPDV.qryItem.IsEmpty then
   begin
@@ -978,7 +978,7 @@ begin
   FrmPDV.qryVendaID_CLIENTE.Value := dados.qryConfigCLIENTE_PADRAO.Value;
   FrmPDV.qryVendaFK_OS.Value := qryOs_MasterCODIGO.Value;
   FrmPDV.qryVenda.Post;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
   qryOS_Detalhe.Close;
   qryOS_Detalhe.Params[0].Value := dados.qryConsulta.FieldByName
     ('codigo').Value;
@@ -1020,7 +1020,7 @@ begin
     FrmPDV.qryItemTOTAL.AsFloat := FrmPDV.qryItemVALOR_ITEM.AsFloat -
       FrmPDV.qryItemVDESCONTO.AsFloat;
     FrmPDV.qryItem.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
     qryOS_Detalhe.Next;
   end;
 
@@ -1125,7 +1125,7 @@ begin
   if qryOrcamento.IsEmpty then
     exit;
 
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
   if not FrmPDV.qryItem.IsEmpty then
   begin
@@ -1165,7 +1165,7 @@ begin
  // FrmPDV.qryVendaPERCENTUAL.AsFloat :=  qryOrcamentoPERCENTUAL.AsFloat;
 
   FrmPDV.qryVenda.Post;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
   dados.qryItensO.Close;
   dados.qryItensO.Params[0].Value := dados.qryConsulta.FieldByName
@@ -1243,7 +1243,7 @@ begin
       FrmPDV.qryItemTOTAL.AsFloat := FrmPDV.qryItemVALOR_ITEM.AsFloat -
         FrmPDV.qryItemVDESCONTO.AsFloat;
       FrmPDV.qryItem.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
     end;
 
     dados.qryItensO.Next;
@@ -1271,7 +1271,7 @@ begin
       qryOrcamentoSITUACAO.AsString :=  'I';
       qryOrcamento.Post;
       ShowMessage('Importação realizada com sucesso!');
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
     end
   else
     ShowMessage('Sem produtos para serem importados.'+sLineBreak+
@@ -1291,7 +1291,7 @@ begin
       (FrmPDV.qryVendaDESCONTO.AsFloat / FrmPDV.qryVendaSUBTOTAL.AsFloat) * 100;
 
   FrmPDV.qryVenda.Post;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
   //fim correção
 
   Application.ProcessMessages;

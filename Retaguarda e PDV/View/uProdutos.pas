@@ -807,7 +807,7 @@ begin
       qryClone.FieldByName('REFERENCIA').Clear;
       qryClone.FieldByName('QTD_ATUAL').Value :=  0;
       qryClone.Post;
-      Dados.Conexao.CommitRetaining;
+      Dados.Conexao.Commit;
       Dados.qryProdutos.Close;
       Dados.qryProdutos.Open;
       if Dados.qryProdutos.Locate('CODIGO', ID, []) then

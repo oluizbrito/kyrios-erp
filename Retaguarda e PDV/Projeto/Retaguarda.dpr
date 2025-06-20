@@ -255,8 +255,10 @@ uses
   UAniversariante in '..\View\UAniversariante.pas' {FrmAniversariante},
   uEtiquetasFast in '..\View\uEtiquetasFast.pas' {frmEtiquetasFast},
   uFormMensagem in '..\View\uFormMensagem.pas',
-  uConsRotaViagem in '..\View\uConsRotaViagem.pas' {frmConsRotaViagem},
-  uCadRota in '..\View\uCadRota.pas' {frmCadRota};
+  uCadvenda in '..\View\uCadvenda.pas' {frmCadvenda},
+  funcoes_diversas in '..\View\funcoes_diversas.pas',
+  UXmlComprasRecord in '..\View\UXmlComprasRecord.pas',
+  UEmpresaRecord in '..\View\UEmpresaRecord.pas';
 
 {$R *.res}
 
@@ -299,7 +301,7 @@ begin
   Application.CreateForm(TFrmAcertaGrupo, FrmAcertaGrupo);
   Application.CreateForm(TfrmEtiquetasFast, frmEtiquetasFast);
   Application.CreateForm(TFrmAniversariante, FrmAniversariante);
-  Application.CreateForm(TfrmCadRota, frmCadRota);
+  Application.CreateForm(TfrmCadvenda, frmCadvenda);
   Application.Run;
   CloseHandle(MutexHandle);
 

@@ -207,7 +207,7 @@ implementation //Acesse lojadodesenvolvedor.com.br e saiba mais sobre esse códig
 
 {$R *.dfm}
 
-uses Udados, udtmCBR;
+uses Udados, udtmCBR, uConsReceber;
 
 function TfrmCRParcela.ChecaParcela: boolean;
 var
@@ -455,7 +455,7 @@ begin
       qryCR.Edit;
       qryCRVALOR.Value := SimpleRoundTo(qryCRVALOR.Value + vDif, -2);
       qryCR.Post;
-      Dados.Conexao.CommitRetaining;
+      Dados.Conexao.Commit;
     end;
 
   finally
@@ -489,6 +489,11 @@ end;
 
 procedure TfrmCRParcela.Button1Click(Sender: TObject);
 begin
+  {qryCRBoleto.Close;
+  qryCRBoleto.open;
+
+  qryCarne.close;
+  qryCarne.open;}
 
   qryCarne.Close;
   qryCarne.Params[0].Value := idVenda;
@@ -571,12 +576,13 @@ begin
   qryCR.Params[0].Value := idVenda;
   qryCR.Params[1].Value := eOpcao;
   qryCR.Open;
+
   cxGerar.Click;
 end;
 
 procedure TfrmCRParcela.qryCRAfterPost(DataSet: TDataSet);
 begin
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TfrmCRParcela.qryCRBeforePost(DataSet: TDataSet);

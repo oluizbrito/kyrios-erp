@@ -479,7 +479,7 @@ begin
             qryFornecedorFUN.Value := 'N';
             qryFornecedorDT_CADASTRO.Value := date;
             qryFornecedor.Post;
-            dados.Conexao.CommitRetaining;
+            dados.Conexao.Commit;
           end;
 
           idFornecedor := qryFornecedorCODIGO.Value;
@@ -555,7 +555,7 @@ begin
             qryCompraEHFISCAL.Value := 'S';
             qryCompraLEUXML.Value := 'S';
             qryCompra.Post;
-            dados.Conexao.CommitRetaining;
+            dados.Conexao.Commit;
 
 
 
@@ -566,7 +566,7 @@ begin
               'delete from compra_itens where fk_compra=:id';
             dados.qryexecute.Params[0].Value := qryCompraID.Value;
             dados.qryexecute.ExecSQL;
-            dados.Conexao.CommitRetaining;
+            dados.Conexao.Commit;
 
             for n := 0 to ACBrNFe.NotasFiscais.Count - 1 do
             begin
@@ -684,7 +684,7 @@ begin
                       qryProdutosCODBARRA.Value := prod.cEAN;
                       qryProdutosTIPO.Value := '00-MERCADORIA PARA REVENDA';
                       qryProdutos.Post;
-                      dados.Conexao.CommitRetaining;
+                      dados.Conexao.Commit;
                     end;
 
                     qryItensCompra.Close;
@@ -743,7 +743,7 @@ begin
                     else
                       qryItensCompraCFOP.Value := '2102';
                     qryItensCompra.Post;
-                    dados.Conexao.CommitRetaining;
+                    dados.Conexao.Commit;
 
                   end;
                 end;

@@ -94,7 +94,7 @@ begin
         qryCampos.Next
       end;
 
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
     end;
 
   finally

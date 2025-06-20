@@ -193,7 +193,7 @@ begin
     dadosweb.updWeb.Params[0].Value := gid;
     dadosweb.updWeb.Params[1].Value := cdsPessoascodigo.Value;
     dadosweb.updWeb.ExecSQL;
-    dadosweb.ConexaoApp.CommitRetaining;
+    dadosweb.ConexaoApp.Commit;
   except
   end;
 end;
@@ -206,7 +206,7 @@ begin
   dadosweb.updWeb.Params[0].Value := gid;
   dadosweb.updWeb.Params[1].Value := dadosweb.cdsOrcamentocodigo.Value;
   dadosweb.updWeb.ExecSQL;
-  dadosweb.ConexaoApp.CommitRetaining;
+  dadosweb.ConexaoApp.Commit;
 end;
 
 procedure TFrmPedidoWeb.BaixarPessoa;
@@ -268,7 +268,7 @@ begin
 
         UpdateGidPessoa(IntToStr(dados.qryPessoasCODIGO.Value));
 
-        dados.Conexao.CommitRetaining;
+        dados.Conexao.Commit;
       except
         dados.Conexao.RollbackRetaining;
       end;
@@ -284,7 +284,7 @@ begin
     ' update orcamento set situacao=''B'' where codigo=:codigo';
   dadosweb.updWeb.Params[0].Value := gid;
   dadosweb.updWeb.ExecSQL;
-  dadosweb.ConexaoApp.CommitRetaining;
+  dadosweb.ConexaoApp.Commit;
 end;
 
 procedure TFrmPedidoWeb.BaixaOrcamento;
@@ -372,7 +372,7 @@ begin
 
       StatusOrcamento(dadosweb.cdsOrcamento.FieldByName('codigo').Value);
 
-      dadosweb.ConexaoApp.CommitRetaining;
+      dadosweb.ConexaoApp.Commit;
 
       dadosweb.cdsItens.close;
       dadosweb.cdsItens.Params[0].Value := dadosweb.cdsOrcamento.FieldByName
@@ -410,7 +410,7 @@ begin
         item := item + 1;
       end;
 
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
 
       dadosweb.cdsOrcamento.Next;
     end;

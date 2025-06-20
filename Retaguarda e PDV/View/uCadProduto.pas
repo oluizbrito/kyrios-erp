@@ -364,6 +364,9 @@ type
     GroupBox10: TGroupBox;
     Label61: TLabel;
     Label62: TLabel;
+    Label63: TLabel;
+    DBEdit35: TDBEdit;
+    qryProdutosCOD_BENEFICIO: TStringField;
     procedure Button1Click(Sender: TObject);
     procedure DBImage1Click(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -548,7 +551,7 @@ begin
     'delete from produto_grade where FK_PRODUTO=:codigo';
   dados.qryExecute.Params[0].Value := qryProdutosCODIGO.Value;
   dados.qryExecute.ExecSQL;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TFrmCadProduto.btnCancelarTabClick(Sender: TObject);
@@ -1244,7 +1247,7 @@ begin
 
     dados.vCodProduto := qryProdutosCODIGO.Value;
     qryProdutos.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
   end;
   close;
 end;
@@ -1330,7 +1333,7 @@ begin
   if qryComposicaoTVENDA.AsVariant > 0 then
     total := qryComposicaoTVENDA.Value;
 
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
   if not(qryProdutos.State in dsEditModes) then
     qryProdutos.Edit;
   qryProdutosPR_CUSTO.Value := total;
@@ -1422,7 +1425,7 @@ begin
       dados.qryAcertaQTD_F.Value := 0;
       dados.qryAcertaE_S.Value := 'E';
       dados.qryAcerta.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
     end;
   end;
 
@@ -1523,12 +1526,12 @@ end;
 
 procedure TFrmCadProduto.qryTabPrecoItemAfterDelete(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TFrmCadProduto.qryTabPrecoItemAfterPost(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TFrmCadProduto.qryTabPrecoItemNewRecord(DataSet: TDataSet);

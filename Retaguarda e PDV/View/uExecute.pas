@@ -115,7 +115,7 @@ begin
     // faz nada
   end;
 
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
 end;
 
@@ -124,8 +124,8 @@ procedure TfrmExecute.UpdateAtualiza;
 begin
   try
     IBScript.ExecuteScript(MemoUpdate.Lines);
-    Dados.Conexao.CommitRetaining;
-    ShowMessage('Banco de Dados atualizado com sucesso!' + #13#10 + 'Versão usando Generator do Firebird.');
+    Dados.Conexao.Commit;
+    ShowMessage('Banco de Dados atualizado com sucesso!' + #13#10 + 'Versão 6.2');
   except
     on e: exception do
       ShowMessage(e.Message);
@@ -481,7 +481,7 @@ begin
       dados.qryExecute.SQL.Text := 'UPDATE CONFIG SET DATA_ATUALIZACAO=:DATA';
       dados.qryExecute.Params[0].AsDateTime := now;
       dados.qryExecute.ExecSQL;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
 
     end;
 

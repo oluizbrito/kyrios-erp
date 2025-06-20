@@ -343,7 +343,7 @@ begin
       exit;
     end;
     Dados.qrySped_Contador.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
   end;
 
   PageControl1.ActivePage := Lista;

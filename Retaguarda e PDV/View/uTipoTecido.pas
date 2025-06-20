@@ -303,7 +303,7 @@ begin
     end;
 
     Dados.qryTipoTecido.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
   end;
 
   PageControl1.ActivePage := Lista;

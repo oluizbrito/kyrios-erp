@@ -1,5 +1,7 @@
 unit uPedidoVenda;
-interface //Suporte e Vendas direto no Whatsapp (48)998463846
+
+interface
+
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, dateutils, acbrUtil,
@@ -12,25 +14,9 @@ uses
   Vcl.Tabs, Vcl.ExtDlgs, JPeg, frxClass, frxDBSet, frxExportPDF, frxOLE,
   DBGridEh, DBCtrlsEh, DBLookupEh, frxExportBaseDialog, ACBrNFeDANFEClass,
   ACBrNFeDANFeESCPOS, ACBrBase, ACBrPosPrinter, ACBrDFeReport,
-  ACBrDFeDANFeReport, frxExportXLS, Vcl.Imaging.pngimage, dxSkinsCore,
-  dxSkinBasic, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
-  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
-  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
-  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
-  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
-  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
-  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
-  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
-  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
-  dxSkinOffice2016Dark, dxSkinOffice2019Black, dxSkinOffice2019Colorful,
-  dxSkinOffice2019DarkGray, dxSkinOffice2019White, dxSkinPumpkin, dxSkinSeven,
-  dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus, dxSkinSilver,
-  dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
-  dxSkinTheBezier, dxSkinsDefaultPainters, dxSkinValentine,
-  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
-  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters,
+  ACBrDFeDANFeReport, frxExportXLS, Vcl.Imaging.pngimage, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters,
   Vcl.Menus, cxButtons;
+
 type
   TfrmPedidoVenda = class(TForm)
     Panel2: TPanel;
@@ -39,16 +25,12 @@ type
     DBText2: TDBText;
     Label2: TLabel;
     dsPedido: TDataSource;
-    btnImp: TSpeedButton;
     frxReport: TfrxReport;
     frxPDFExport1: TfrxPDFExport;
     frxDBPV: TfrxDBDataset;
     frxDBItens: TfrxDBDataset;
     frxDBEmpresa: TfrxDBDataset;
     dsEmpresa: TDataSource;
-    btnAtualizar: TSpeedButton;
-    btnCancelar: TSpeedButton;
-    btnEmail: TSpeedButton;
     qryComposicao: TFDQuery;
     qryComposicaoID_PRODUTO: TIntegerField;
     qryComposicaoQUANTIDADE: TFMTBCDField;
@@ -167,6 +149,8 @@ type
     cxEmail: TcxButton;
     Image2: TImage;
     qryVendasFPGTOTAL: TBCDField;
+    cxAlterar: TcxButton;
+    cxNovo: TcxButton;
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure edtLocChange(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -180,9 +164,7 @@ type
     procedure btnAtualizarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
-    procedure btnImpClick(Sender: TObject);
     procedure Button3Click(Sender: TObject);
-    procedure btnEmailClick(Sender: TObject);
     procedure tabFiltroClick(Sender: TObject);
     procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
@@ -195,6 +177,11 @@ type
     procedure TabSet1Change(Sender: TObject);
     procedure cxSairClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormDestroy(Sender: TObject);
+    procedure cxImprimirClick(Sender: TObject);
+    procedure cxEmailClick(Sender: TObject);
+    procedure cxNovoClick(Sender: TObject);
+    procedure cxAlterarClick(Sender: TObject);
   private
     procedure localiza;
     procedure tamanho;
@@ -207,14 +194,21 @@ type
   public
     idx: Integer;
     vOrdem, vSql: String;
+
     { Public declarations }
   end;
+
 var
   frmPedidoVenda: TfrmPedidoVenda;
-implementation //Acesse lojadodesenvolvedor.com.br e saiba mais sobre esse código fonte.
+
+implementation
+
 {$R *.dfm}
-uses Udados, uCadPessoa, uCadCompra, uCadOrcamento, uSupervisor, uEmail,
-  udmImpressao, uDMEstoque, uPrincipal;
+
+uses Udados, uCadPedido, uCadPessoa, uCadCompra, uCadOrcamento, uSupervisor,
+  uEmail,
+  udmImpressao, uDMEstoque, uPrincipal, uCadvenda;
+
 procedure TfrmPedidoVenda.btnAtualizarClick(Sender: TObject);
 var
   codigo: Integer;
@@ -228,6 +222,7 @@ begin
     cxAtualizar.Enabled := true;
   end;
 end;
+
 function TfrmPedidoVenda.VerificaCR(aVenda: Integer): Boolean;
 begin
   result := false;
@@ -239,6 +234,7 @@ begin
   if Dados.qryConsulta.Fields[0].Value > 0 then
     result := true;
 end;
+
 function TfrmPedidoVenda.VerificaNFCe(aVenda: Integer): Boolean;
 begin
   result := false;
@@ -250,6 +246,7 @@ begin
   if (Dados.qryConsulta.RecordCount > 0) then
     result := true;
 end;
+
 function TfrmPedidoVenda.VerificaDevolucao(aVenda: Integer): Boolean;
 var
   qryDevolucao: TFDQuery;
@@ -274,6 +271,7 @@ begin
     qryDevolucao.Free;
   end;
 end;
+
 procedure TfrmPedidoVenda.btnCancelarClick(Sender: TObject);
 begin
   if qryPV.IsEmpty then
@@ -355,57 +353,13 @@ begin
     qryPV_Itens.EnableControls;
   end;
 end;
-procedure TfrmPedidoVenda.btnEmailClick(Sender: TObject);
-begin
-  if qryPV.IsEmpty then
-    exit;
-  try
-    cxImprimir.Enabled := false;
-    qryPV.Filter := 'CODIGO=' + qryPVCODIGO.AsString;
-    qryPV.Filtered := true;
-    qryPV_Itens.close;
-    qryPV_Itens.Params[0].Value := qryPVCODIGO.Value;
-    qryPV_Itens.Open;
-    frxReport.LoadFromFile(ExtractFilePath(Application.ExeName) +
-      '\Relatorio\RelPedidoVenda.fr3');
-    frxPDFExport1.FileName := 'PDV.PDF';
-    frxPDFExport1.DefaultPath := ExtractFilePath(Application.ExeName) + '\Temp';
-    frxPDFExport1.ShowDialog := false;
-    frxPDFExport1.ShowProgress := false;
-    frxPDFExport1.OverwritePrompt := false;
-    frxReport.PrepareReport();
-    frxReport.Export(frxPDFExport1);
-    Dados.qrySped_contador.close;
-    Dados.qrySped_contador.Open;
-    Dados.qrySped_contador.Locate('fk_empresa',
-      Dados.qryEmpresaCODIGO.Value, []);
-    frmEmail := TfrmEmail.Create(Application);
-    frmEmail.vNome := Dados.qryEmpresaFANTASIA.Value;
-    frmEmail.vTipo := 'PDV';
-    frmEmail.vTituloAnexo := 'PDV N.' + qryPVCODIGO.AsString;
-    frmEmail.eNotaFiscal := false;
-    frmEmail.AnexaArquivo := true;
-    frmEmail.edtEmail.Text := LowerCase(Dados.qryEmpresaEMAIL.AsString);
-    frmEmail.EdtAssunto.Text := 'PEDIDO DE VENDA N.' + qryPVCODIGO.AsString;
-    frmEmail.edtMensagem.Text := 'SEGUE EM ANEXO ' + frmEmail.EdtAssunto.Text;
-    frmEmail.LstAnexo.Items.add(ExtractFilePath(Application.ExeName) +
-      'Temp\PDV.PDF');
-    frmEmail.ShowModal;
-  finally
-    frmEmail.Release;
-    cxImprimir.Enabled := true;
-    qryPV.Filtered := false;
-  end;
-end;
+
 procedure TfrmPedidoVenda.btnFiltrarClick(Sender: TObject);
 begin
   localiza;
   edtLoc.SetFocus;
 end;
-procedure TfrmPedidoVenda.btnImpClick(Sender: TObject);
-begin
-  pnImpressao.Visible := true;
-end;
+
 procedure TfrmPedidoVenda.Button1Click(Sender: TObject);
 begin
   try
@@ -442,10 +396,12 @@ begin
     qryPV.Filtered := false;
   end;
 end;
+
 procedure TfrmPedidoVenda.Button2Click(Sender: TObject);
 begin
   ImprimePedido;
 end;
+
 procedure TfrmPedidoVenda.ImprimePedido;
 var
   vEndereco, sTexto: String;
@@ -589,13 +545,130 @@ begin
     qryPV.Filtered := false;
   end;
 end;
+
 procedure TfrmPedidoVenda.Button3Click(Sender: TObject);
 begin
   pnImpressao.Visible := false;
 end;
+
+procedure TfrmPedidoVenda.cxAlterarClick(Sender: TObject);
+var
+  vSituacao: string;
+  vPedido: Integer;
+begin
+  Dados.vAutorizar := true;
+  vSituacao := qryPVSITUACAO.AsString;
+  vPedido := qryPVCODIGO.AsInteger;
+
+  if (vSituacao = 'X') or (vSituacao = 'G') then
+  begin
+    if not Dados.eSupervisor then
+    begin
+      try
+        frmSupervisor := TFrmSupervisor.Create(Application);
+        Dados.vAutorizar := false;
+        frmSupervisor.ShowModal;
+      finally
+        frmSupervisor.Release;
+      end;
+    end;
+
+    if not Dados.vAutorizar then
+      exit;
+
+    try
+      frmCadvenda := TfrmCadvenda.Create(Application);
+      with frmCadvenda do
+      begin
+        Tag := 1;
+        vpessoa := qryPVRAZAO.AsString;
+        AbreVenda(vPedido, 'PVENDA');
+        Panel3.Enabled := true;
+      end;
+      frmCadvenda.ShowModal;
+      Application.ProcessMessages;
+    finally
+      frmCadvenda.Release;
+      qryPV.Refresh;
+    end;
+  end
+  else
+    ShowMessage('Não é possivel Alterar.');
+end;
+
+procedure TfrmPedidoVenda.cxEmailClick(Sender: TObject);
+begin
+  if qryPV.IsEmpty then
+    exit;
+  try
+    cxImprimir.Enabled := false;
+    qryPV.Filter := 'CODIGO=' + qryPVCODIGO.AsString;
+    qryPV.Filtered := true;
+    qryPV_Itens.close;
+    qryPV_Itens.Params[0].Value := qryPVCODIGO.Value;
+    qryPV_Itens.Open;
+    frxReport.LoadFromFile(ExtractFilePath(Application.ExeName) +
+      '\Relatorio\RelPedidoVenda.fr3');
+    frxPDFExport1.FileName := 'PDV.PDF';
+    frxPDFExport1.DefaultPath := ExtractFilePath(Application.ExeName) + '\Temp';
+    frxPDFExport1.ShowDialog := false;
+    frxPDFExport1.ShowProgress := false;
+    frxPDFExport1.OverwritePrompt := false;
+    frxReport.PrepareReport();
+    frxReport.Export(frxPDFExport1);
+    Dados.qrySped_contador.close;
+    Dados.qrySped_contador.Open;
+    Dados.qrySped_contador.Locate('fk_empresa',
+      Dados.qryEmpresaCODIGO.Value, []);
+    frmEmail := TfrmEmail.Create(Application);
+    frmEmail.vNome := Dados.qryEmpresaFANTASIA.Value;
+    frmEmail.vTipo := 'PDV';
+    frmEmail.vTituloAnexo := 'PDV N.' + qryPVCODIGO.AsString;
+    frmEmail.eNotaFiscal := false;
+    frmEmail.AnexaArquivo := true;
+    frmEmail.edtEmail.Text := LowerCase(Dados.qryEmpresaEMAIL.AsString);
+    frmEmail.EdtAssunto.Text := 'PEDIDO DE VENDA N.' + qryPVCODIGO.AsString;
+    frmEmail.edtMensagem.Text := 'SEGUE EM ANEXO ' + frmEmail.EdtAssunto.Text;
+    frmEmail.LstAnexo.Items.add(ExtractFilePath(Application.ExeName) +
+      'Temp\PDV.PDF');
+    frmEmail.ShowModal;
+  finally
+    frmEmail.Release;
+    cxImprimir.Enabled := true;
+    qryPV.Filtered := false;
+  end;
+end;
+
+procedure TfrmPedidoVenda.cxImprimirClick(Sender: TObject);
+begin
+  pnImpressao.Visible := true;
+end;
+
+procedure TfrmPedidoVenda.cxNovoClick(Sender: TObject);
+begin
+  if not cxNovo.Visible then
+    exit;
+
+  cxNovo.Enabled := false;
+  try
+    frmCadvenda := TfrmCadvenda.Create(Application);
+    try
+      frmCadvenda.PageControl1.ActivePage := TabSheet2;
+      Application.ProcessMessages;
+      frmCadvenda.ShowModal;
+    finally
+      frmCadvenda.Free;
+    end;
+  finally
+    cxNovo.Enabled := true;
+    btnAtualizarClick(self);
+  end;
+end;
+
 procedure TfrmPedidoVenda.cxSairClick(Sender: TObject);
 begin
-     close;
+  close;
+  // FreeAndNil(self);
 end;
 
 procedure TfrmPedidoVenda.tamanho;
@@ -607,6 +680,7 @@ begin
   DBGrid1.Columns[4].Width := round(Screen.Width * 0.08);
   DBGrid1.Columns[5].Width := round(Screen.Width * 0.08);
 end;
+
 procedure TfrmPedidoVenda.DBGrid1DrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
 begin
@@ -637,6 +711,7 @@ begin
     DBGrid1.Canvas.Font.Color := clGreen;
   (Sender as TDBGrid).DefaultDrawColumnCell(Rect, DataCol, Column, State);
 end;
+
 procedure TfrmPedidoVenda.DBGrid1TitleClick(Column: TColumn);
 var
   i: Integer;
@@ -666,15 +741,18 @@ begin
   DBGrid1.Columns[idx].Title.Font.Style := [fsbold];
   localiza;
 end;
+
 procedure TfrmPedidoVenda.dsPedidoDataChange(Sender: TObject; Field: TField);
 begin
   qryPV_Itens.close;
   qryPV_Itens.Open;
 end;
+
 procedure TfrmPedidoVenda.edtLocChange(Sender: TObject);
 begin
   localiza;
 end;
+
 procedure TfrmPedidoVenda.edtLocKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
@@ -683,6 +761,7 @@ begin
   if Key = VK_DOWN then
     qryPV.Next;
 end;
+
 procedure TfrmPedidoVenda.edtLocKeyPress(Sender: TObject; var Key: Char);
 begin
   if idx = 0 then
@@ -696,19 +775,23 @@ begin
       Key := #0;
   end;
 end;
+
 procedure TfrmPedidoVenda.FormActivate(Sender: TObject);
 begin
   Dados.vForm := nil;
   Dados.vForm := self;
   Dados.GetComponentes;
 end;
+
 procedure TfrmPedidoVenda.Botoes;
 begin
   cxCancelar.Visible := Dados.qryPermissoesBotaoEDITAR.Value = 'S';
 end;
+
 procedure TfrmPedidoVenda.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-    frmPrincipal.dxStatusBar1.Panels[0].Text := '';
+  frmPrincipal.dxStatusBar1.Panels[0].Text := '';
+  Action := caFree
 end;
 
 procedure TfrmPedidoVenda.FormCreate(Sender: TObject);
@@ -716,19 +799,26 @@ begin
   vOrdem := ' ASC';
   maskInicio.Text := DateToStr(StartOfTheWeek(DATE));
   maskFim.Text := DateToStr(DATE);
-  btnCancelar.Caption := 'F4' + sLineBreak + 'Cancelar';
-  btnAtualizar.Caption := 'F5' + sLineBreak + 'Atualizar';
-  btnImp.Caption := 'F6' + sLineBreak + 'Imprimir';
-  btnEmail.Caption := 'F9' + sLineBreak + 'Email';
   Dados.Habilitacoes(Dados.aMenu, self.Name);
   Botoes;
 end;
+
+procedure TfrmPedidoVenda.FormDestroy(Sender: TObject);
+begin
+  frmPedidoVenda := nil;
+end;
+
 procedure TfrmPedidoVenda.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   if Key = vk_f4 then
   begin
     btnCancelarClick(self);
+    abort;
+  end;
+  if Key = vk_f2 then
+  begin
+    cxNovoClick(self);
     abort;
   end;
   if Key = vk_f5 then
@@ -738,7 +828,7 @@ begin
   end;
   if Key = vk_f6 then
   begin
-    btnImpClick(self);
+    cxImprimirClick(self);
     abort;
   end;
   if Key = vk_f12 then
@@ -748,10 +838,11 @@ begin
   end;
   if Key = vk_f9 then
   begin
-    btnEmailClick(self);
+    cxEmailClick(self);
     abort;
   end;
 end;
+
 procedure TfrmPedidoVenda.FormKeyPress(Sender: TObject; var Key: Char);
 begin
   If Key = #13 then
@@ -760,6 +851,7 @@ begin
     Perform(CM_DialogKey, Vk_Tab, 0);
   end;
 end;
+
 procedure TfrmPedidoVenda.FormShow(Sender: TObject);
 var
   topo: Integer;
@@ -775,6 +867,7 @@ begin
   pnImpressao.top := topo - (round(topo * 0.30));
   pnImpressao.left := (Width div 2) - (pnImpressao.Width div 2);
 end;
+
 procedure TfrmPedidoVenda.frxReportGetValue(const VarName: string;
   var Value: Variant);
 var
@@ -802,6 +895,7 @@ begin
   if VarName = 'FFPG' then
     Value := FPG + FParcelas;
 end;
+
 procedure TfrmPedidoVenda.localiza;
 var
   filtro, filtro1, filtro2, ordem: string;
@@ -810,84 +904,98 @@ begin
   filtro1 := '';
   filtro2 := '';
   ordem := '';
+
+  // Se vSql estiver vazio, definimos a instrução básica
   if vSql = '' then
-    vSql := qryPV.SQL.Text;
-  filtro := ' WHERE pv.fkempresa=' + Dados.qryEmpresaCODIGO.AsString;
-  filtro := filtro + ' and PV.data_emissao>=' +
-    QuotedStr(FormatDateTime('mm/dd/yyyy', strtodate(maskInicio.EditText))) +
-    ' and PV.data_emissao<=' + QuotedStr(FormatDateTime('mm/dd/yyyy',
-    strtodate(maskFim.EditText)));
+    vSql := 'SELECT ' + '  PV.*, ' + '  PES.razao, ' + '  VE.nome AS vendedor, '
+      + '  PES.razao AS VIRTUAL_CLIENTE, ' + '  VE.nome AS virtual_vendedor ' +
+      'FROM VENDAS_MASTER PV ' +
+      'LEFT JOIN pessoa PES ON PES.codigo = PV.id_cliente ' +
+      'LEFT JOIN vendedores VE ON VE.codigo = PV.fk_vendedor ' +
+      'WHERE PV.FKEMPRESA = :EMPRESA ' + '/*WHERE*/';
+
+  // Monta filtros de datas
+  filtro := filtro + ' AND PV.data_emissao >= ' +
+    QuotedStr(FormatDateTime('yyyy-mm-dd', StrToDate(maskInicio.EditText))) +
+    ' AND PV.data_emissao <= ' + QuotedStr(FormatDateTime('yyyy-mm-dd',
+    StrToDate(maskFim.EditText)));
+
+  // Filtros de acordo com idx
   case idx of
     0:
-      begin
-        if (Trim(edtLoc.Text) <> '') then
-          filtro := filtro + ' and pv.codigo=' + edtLoc.Text;
-      end;
+      if Trim(edtLoc.Text) <> '' then
+        filtro := filtro + ' AND PV.codigo = ' + edtLoc.Text;
     2:
-      begin
-        if (Trim(edtLoc.Text) <> '') then
-          filtro := filtro + ' and PES.RAZAO like ' +
-            QuotedStr(edtLoc.Text + '%');
-      end;
+      if Trim(edtLoc.Text) <> '' then
+        filtro := filtro + ' AND PES.RAZAO LIKE ' +
+          QuotedStr(edtLoc.Text + '%');
     3:
-      begin
-        if (Trim(edtLoc.Text) <> '') then
-          filtro := filtro + ' and VE.Nome like ' +
-            QuotedStr(edtLoc.Text + '%');
-      end;
+      if Trim(edtLoc.Text) <> '' then
+        filtro := filtro + ' AND VE.nome LIKE ' + QuotedStr(edtLoc.Text + '%');
     4:
-      begin
-        if (Trim(edtLoc.Text) <> '') then
-          filtro := filtro + ' and PV.total >= ' + StringReplace(edtLoc.Text,
-            ',', '.', []);
-      end;
+      if Trim(edtLoc.Text) <> '' then
+        filtro := filtro + ' AND PV.total >= ' + StringReplace(edtLoc.Text,
+          ',', '.', []);
   end;
+
+  // Filtros de acordo com TabSet1
   case TabSet1.TabIndex of
     0:
-      filtro1 := ' and (PV.situacao in (''A'',''F'',''C'',''G'',''X''))';
+      filtro1 := ' AND (PV.situacao IN (''A'',''F'',''C'',''G'',''X''))';
     1:
-      filtro1 := ' and PV.situacao=''A''';
+      filtro1 := ' AND PV.situacao = ''A''';
     2:
-      filtro1 := ' and PV.situacao=''G''';
+      filtro1 := ' AND PV.situacao = ''G''';
     3:
-      filtro1 := ' and PV.situacao=''F''';
+      filtro1 := ' AND PV.situacao = ''F''';
     4:
-      filtro1 := ' and PV.situacao=''C''';
+      filtro1 := ' AND PV.situacao = ''C''';
   end;
+
+  // Filtros de acordo com tabFiltro
   case tabFiltro.TabIndex of
     0:
-      filtro2 := ' and not(PV.necf>1)';
+      filtro2 := ' AND NOT (PV.necf > 1)';
     1:
-      filtro2 := ' and pv.necf>1';
+      filtro2 := ' AND PV.necf > 1';
   end;
+
+  // Ordenação
   case idx of
     0:
-      ordem := ' order by PV.codigo' + vOrdem;
+      ordem := ' ORDER BY PV.codigo' + vOrdem;
     1:
-      ordem := ' order by PV.data_emissao' + vOrdem;
+      ordem := ' ORDER BY PV.data_emissao' + vOrdem;
     2:
-      ordem := ' order by PES.Razao' + vOrdem;
+      ordem := ' ORDER BY PES.Razao' + vOrdem;
     3:
-      ordem := ' order by ve.nome' + vOrdem;
+      ordem := ' ORDER BY VE.nome' + vOrdem;
     4:
-      ordem := ' order by PV.total' + vOrdem;
+      ordem := ' ORDER BY PV.total' + vOrdem;
   end;
+
   qryPV.close;
-  qryPV.SQL.Text := vSql;
-  qryPV.SQL.Text := StringReplace(qryPV.SQL.Text, '/*where*/',
-    filtro + filtro1 + filtro2 + ordem, [rfReplaceAll]);
+  qryPV.SQL.Clear;
+  // Substitui /*WHERE*/ pelos filtros montados
+  qryPV.SQL.Text := vSql.Replace('/*WHERE*/',
+    filtro + filtro1 + filtro2 + ordem);
+  // Passa o parâmetro EMPRESA
+  qryPV.Params[0].Value := Dados.qryEmpresaCODIGO.Value;
   qryPV.Open;
 end;
+
 procedure TfrmPedidoVenda.maskFimKeyPress(Sender: TObject; var Key: Char);
 begin
   if (Key = #13) then
     btnFiltrar.SetFocus;
 end;
+
 procedure TfrmPedidoVenda.maskInicioKeyPress(Sender: TObject; var Key: Char);
 begin
   if (Key = #13) then
     maskFim.SetFocus;
 end;
+
 procedure TfrmPedidoVenda.qryPVCalcFields(DataSet: TDataSet);
 begin
   if qryPVSITUACAO.Value = 'A' then
@@ -905,12 +1013,15 @@ begin
   if qryPVTIPO.Value = 'V' then
     qryPVVIRTUAL_TIPO.Value := 'VENDA';
 end;
+
 procedure TfrmPedidoVenda.TabSet1Change(Sender: TObject);
 begin
   localiza;
 end;
+
 procedure TfrmPedidoVenda.tabFiltroClick(Sender: TObject);
 begin
   localiza;
 end;
+
 end.

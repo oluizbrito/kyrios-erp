@@ -114,6 +114,8 @@ object frmTransportadora: TfrmTransportadora
       'Inativos')
     TabIndex = 0
     OnClick = TabSet2Click
+    ExplicitTop = 470
+    ExplicitWidth = 834
   end
   object Panel2: TPanel
     Left = 0
@@ -124,6 +126,8 @@ object frmTransportadora: TfrmTransportadora
     Color = 15724527
     ParentBackground = False
     TabOrder = 2
+    ExplicitTop = 494
+    ExplicitWidth = 834
     object bbNovo: TSpeedButton
       AlignWithMargins = True
       Left = 4
@@ -892,6 +896,7 @@ object frmTransportadora: TfrmTransportadora
     Font.Style = []
     ParentFont = False
     TabOrder = 3
+    ExplicitWidth = 834
     object edtLoc: TEdit
       Left = 13
       Top = 23
@@ -952,7 +957,7 @@ object frmTransportadora: TfrmTransportadora
     Top = 139
   end
   object frxReport: TfrxReport
-    Version = '2022.3'
+    Version = '2022.1.3'
     DataSetName = 'frxDBCo'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'

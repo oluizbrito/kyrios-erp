@@ -1,12 +1,10 @@
 object frmCadCTe: TfrmCadCTe
   Left = 0
   Top = 0
-  BorderIcons = [biSystemMenu]
-  BorderStyle = bsSingle
   Caption = 'Emissao de CTe'
-  ClientHeight = 719
-  ClientWidth = 1014
-  Color = 5723991
+  ClientHeight = 704
+  ClientWidth = 1000
+  Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -19,61 +17,48 @@ object frmCadCTe: TfrmCadCTe
   OnShow = FormShow
   TextHeight = 13
   object Panel3: TPanel
-    AlignWithMargins = True
-    Left = 7
-    Top = 7
+    Left = 0
+    Top = 0
     Width = 1000
-    Height = 248
-    Margins.Left = 7
-    Margins.Top = 7
-    Margins.Right = 7
-    Margins.Bottom = 7
+    Height = 220
     Align = alTop
     BevelOuter = bvNone
-    Color = clWhite
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'Segoe UI'
-    Font.Style = []
-    ParentBackground = False
-    ParentFont = False
     TabOrder = 0
     object Label1: TLabel
       Left = 11
-      Top = 9
-      Width = 41
-      Height = 17
+      Top = 4
+      Width = 37
+      Height = 15
       Caption = 'N'#186' CTe'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label2: TLabel
       Left = 10
-      Top = 99
-      Width = 70
-      Height = 17
+      Top = 84
+      Width = 63
+      Height = 15
       Caption = 'Destinat'#225'rio'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -13
+      Font.Color = clWindowText
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label5: TLabel
       Left = 11
-      Top = 54
-      Width = 84
-      Height = 17
+      Top = 47
+      Width = 74
+      Height = 15
       Caption = 'Transportador'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
@@ -81,116 +66,116 @@ object frmCadCTe: TfrmCadCTe
     object Label10: TLabel
       Left = 436
       Top = 9
-      Width = 178
-      Height = 17
+      Width = 158
+      Height = 15
       Caption = 'Natureza de Opera'#231#227'o / CFOP'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label28: TLabel
       Left = 547
-      Top = 99
-      Width = 99
-      Height = 17
+      Top = 84
+      Width = 89
+      Height = 15
       Caption = 'Tomador Servi'#231'o'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -13
+      Font.Color = clWindowText
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label29: TLabel
       Left = 546
-      Top = 54
-      Width = 98
-      Height = 17
+      Top = 48
+      Width = 86
+      Height = 15
       Caption = 'Data de Emiss'#227'o'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label36: TLabel
       Left = 11
-      Top = 145
-      Width = 62
-      Height = 17
+      Top = 124
+      Width = 57
+      Height = 15
       Caption = 'Remetente'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label3: TLabel
       Left = 752
-      Top = 54
-      Width = 83
-      Height = 17
+      Top = 45
+      Width = 77
+      Height = 15
       Caption = 'Placa Principal'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label8: TLabel
-      Left = 650
-      Top = 54
-      Width = 95
-      Height = 17
+      Left = 649
+      Top = 47
+      Width = 83
+      Height = 15
       Caption = 'Data de Entrega'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label9: TLabel
       Left = 11
-      Top = 191
-      Width = 152
-      Height = 17
+      Top = 167
+      Width = 136
+      Height = 15
       Caption = 'Origem do Carregamento'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label25: TLabel
       Left = 471
-      Top = 191
-      Width = 182
-      Height = 17
+      Top = 167
+      Width = 164
+      Height = 15
       Caption = 'Destino Final do Carregamento'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label4: TLabel
       Left = 728
-      Top = 145
-      Width = 26
-      Height = 17
+      Top = 124
+      Width = 24
+      Height = 15
       Caption = 'Tipo'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
@@ -198,31 +183,31 @@ object frmCadCTe: TfrmCadCTe
     object Label6: TLabel
       Left = 89
       Top = 9
-      Width = 50
-      Height = 17
+      Width = 47
+      Height = 15
       Caption = 'Emitente'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object DBEdit1: TDBEdit
       Left = 11
-      Top = 28
+      Top = 19
       Width = 72
-      Height = 23
+      Height = 27
       TabStop = False
       CharCase = ecUpperCase
       Ctl3D = False
       DataField = 'NUMERO'
       DataSource = dsCTE_M
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
+      Font.Color = clBlue
+      Font.Height = -16
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
       ParentColor = True
       ParentCtl3D = False
       ParentFont = False
@@ -231,9 +216,9 @@ object frmCadCTe: TfrmCadCTe
     end
     object DBLookupComboboxEh1: TDBLookupComboboxEh
       Left = 67
-      Top = 118
+      Top = 101
       Width = 474
-      Height = 23
+      Height = 21
       Ctl3D = False
       ParentCtl3D = False
       DynProps = <>
@@ -243,8 +228,8 @@ object frmCadCTe: TfrmCadCTe
       DropDownBox.ShowTitles = True
       EditButtons = <>
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -13
+      Font.Color = clBlue
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
@@ -256,16 +241,16 @@ object frmCadCTe: TfrmCadCTe
     end
     object DBEdit5: TDBEdit
       Left = 11
-      Top = 73
+      Top = 62
       Width = 52
-      Height = 23
+      Height = 21
       CharCase = ecUpperCase
       Ctl3D = False
       DataField = 'FKTRANSPORTADOR'
       DataSource = dsCTE_M
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -13
+      Font.Color = clBlue
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentCtl3D = False
@@ -274,9 +259,9 @@ object frmCadCTe: TfrmCadCTe
     end
     object DBLookupComboboxEh2: TDBLookupComboboxEh
       Left = 67
-      Top = 73
+      Top = 62
       Width = 474
-      Height = 23
+      Height = 21
       Ctl3D = False
       ParentCtl3D = False
       DynProps = <>
@@ -286,8 +271,8 @@ object frmCadCTe: TfrmCadCTe
       DropDownBox.ShowTitles = True
       EditButtons = <>
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -13
+      Font.Color = clBlue
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       KeyField = 'CODIGO'
@@ -302,17 +287,17 @@ object frmCadCTe: TfrmCadCTe
     end
     object DBComboBoxEh4: TDBComboBoxEh
       Left = 547
-      Top = 118
+      Top = 101
       Width = 175
-      Height = 23
+      Height = 21
       Ctl3D = False
       DataField = 'TOMADOR'
       DataSource = dsCTE_M
       DynProps = <>
       EditButtons = <>
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -13
+      Font.Color = clBlue
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       Items.Strings = (
@@ -328,17 +313,17 @@ object frmCadCTe: TfrmCadCTe
     end
     object DBEdit10: TDBEdit
       Left = 546
-      Top = 73
+      Top = 62
       Width = 100
-      Height = 23
+      Height = 21
       TabStop = False
       CharCase = ecUpperCase
       Ctl3D = False
       DataField = 'DATA'
       DataSource = dsCTE_M
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -13
+      Font.Color = clBlue
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentColor = True
@@ -349,9 +334,9 @@ object frmCadCTe: TfrmCadCTe
     end
     object DBLookupComboboxEh4: TDBLookupComboboxEh
       Left = 436
-      Top = 28
+      Top = 24
       Width = 70
-      Height = 23
+      Height = 21
       Ctl3D = False
       ParentCtl3D = False
       DynProps = <>
@@ -361,8 +346,8 @@ object frmCadCTe: TfrmCadCTe
       DropDownBox.ShowTitles = True
       EditButtons = <>
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -13
+      Font.Color = clBlue
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       KeyField = 'CODIGO'
@@ -378,17 +363,17 @@ object frmCadCTe: TfrmCadCTe
     end
     object DBEdit26: TDBEdit
       Left = 512
-      Top = 28
-      Width = 489
-      Height = 23
+      Top = 24
+      Width = 474
+      Height = 21
       TabStop = False
       CharCase = ecUpperCase
       Ctl3D = False
       DataField = 'VIRTUAL_CFOP'
       DataSource = dsCTE_M
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -13
+      Font.Color = clBlue
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentColor = True
@@ -399,9 +384,9 @@ object frmCadCTe: TfrmCadCTe
     end
     object DBLookupComboboxEh3: TDBLookupComboboxEh
       Left = 752
-      Top = 73
+      Top = 62
       Width = 104
-      Height = 23
+      Height = 21
       Ctl3D = False
       ParentCtl3D = False
       DynProps = <>
@@ -411,8 +396,8 @@ object frmCadCTe: TfrmCadCTe
       DropDownBox.ShowTitles = True
       EditButtons = <>
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -13
+      Font.Color = clBlue
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
@@ -424,16 +409,16 @@ object frmCadCTe: TfrmCadCTe
     end
     object DBEdit7: TDBEdit
       Left = 11
-      Top = 118
+      Top = 101
       Width = 52
-      Height = 23
+      Height = 21
       CharCase = ecUpperCase
       Ctl3D = False
       DataField = 'FK_DESTINATARIO'
       DataSource = dsCTE_M
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -13
+      Font.Color = clBlue
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentCtl3D = False
@@ -442,17 +427,17 @@ object frmCadCTe: TfrmCadCTe
     end
     object DBEdit2: TDBEdit
       Left = 649
-      Top = 73
+      Top = 62
       Width = 100
-      Height = 23
+      Height = 21
       CharCase = ecUpperCase
       Color = clWhite
       Ctl3D = False
       DataField = 'DATA_ENTREGA'
       DataSource = dsCTE_M
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -13
+      Font.Color = clBlue
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentCtl3D = False
@@ -460,17 +445,17 @@ object frmCadCTe: TfrmCadCTe
       TabOrder = 6
     end
     object DBCheckBox1: TDBCheckBox
-      Left = 730
+      Left = 733
       Top = 99
-      Width = 135
-      Height = 46
+      Width = 132
+      Height = 32
       Caption = 'Informar Documentos Avulso'
       DataField = 'DOCUMENTO'
       DataSource = dsCTE_M
-      Font.Charset = ANSI_CHARSET
+      Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
+      Font.Height = -11
+      Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
       TabOrder = 11
@@ -480,9 +465,9 @@ object frmCadCTe: TfrmCadCTe
     end
     object DBLookupComboboxEh5: TDBLookupComboboxEh
       Left = 67
-      Top = 211
+      Top = 183
       Width = 398
-      Height = 23
+      Height = 21
       Ctl3D = False
       ParentCtl3D = False
       DynProps = <>
@@ -492,8 +477,8 @@ object frmCadCTe: TfrmCadCTe
       DropDownBox.ShowTitles = True
       EditButtons = <>
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -13
+      Font.Color = clBlue
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       KeyField = 'CODIGO'
@@ -508,9 +493,9 @@ object frmCadCTe: TfrmCadCTe
     end
     object DBLookupComboboxEh9: TDBLookupComboboxEh
       Left = 528
-      Top = 211
+      Top = 183
       Width = 328
-      Height = 23
+      Height = 21
       Ctl3D = False
       ParentCtl3D = False
       DynProps = <>
@@ -520,8 +505,8 @@ object frmCadCTe: TfrmCadCTe
       DropDownBox.ShowTitles = True
       EditButtons = <>
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -13
+      Font.Color = clBlue
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       KeyField = 'CODIGO'
@@ -536,9 +521,9 @@ object frmCadCTe: TfrmCadCTe
     end
     object DBComboBoxEh2: TDBComboBoxEh
       Left = 11
-      Top = 211
+      Top = 183
       Width = 51
-      Height = 23
+      Height = 21
       Ctl3D = False
       DataField = 'UFINI'
       DataSource = dsCTE_M
@@ -546,8 +531,8 @@ object frmCadCTe: TfrmCadCTe
       DropDownBox.AutoDrop = True
       EditButtons = <>
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -13
+      Font.Color = clBlue
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       Items.Strings = (
@@ -613,9 +598,9 @@ object frmCadCTe: TfrmCadCTe
     end
     object DBComboBoxEh3: TDBComboBoxEh
       Left = 471
-      Top = 211
+      Top = 183
       Width = 51
-      Height = 23
+      Height = 21
       Ctl3D = False
       DataField = 'UFFIM'
       DataSource = dsCTE_M
@@ -623,8 +608,8 @@ object frmCadCTe: TfrmCadCTe
       DropDownBox.AutoDrop = True
       EditButtons = <>
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -13
+      Font.Color = clBlue
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       Items.Strings = (
@@ -690,16 +675,16 @@ object frmCadCTe: TfrmCadCTe
     end
     object DBEdit3: TDBEdit
       Left = 11
-      Top = 164
+      Top = 142
       Width = 52
-      Height = 23
+      Height = 21
       CharCase = ecUpperCase
       Ctl3D = False
       DataField = 'FK_REMETENTE'
       DataSource = dsCTE_M
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -13
+      Font.Color = clBlue
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentCtl3D = False
@@ -708,9 +693,9 @@ object frmCadCTe: TfrmCadCTe
     end
     object DBComboBoxEh6: TDBComboBoxEh
       Left = 729
-      Top = 164
+      Top = 142
       Width = 127
-      Height = 23
+      Height = 21
       CharCase = ecUpperCase
       Ctl3D = False
       DataField = 'FINALIDADE'
@@ -718,8 +703,8 @@ object frmCadCTe: TfrmCadCTe
       DynProps = <>
       EditButtons = <>
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -13
+      Font.Color = clBlue
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       Items.Strings = (
@@ -735,9 +720,9 @@ object frmCadCTe: TfrmCadCTe
     end
     object DBLookupComboboxEh6: TDBLookupComboboxEh
       Left = 68
-      Top = 164
+      Top = 142
       Width = 655
-      Height = 23
+      Height = 21
       Ctl3D = False
       ParentCtl3D = False
       DynProps = <>
@@ -746,8 +731,8 @@ object frmCadCTe: TfrmCadCTe
       DropDownBox.AutoDrop = True
       EditButtons = <>
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -13
+      Font.Color = clBlue
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
@@ -760,9 +745,9 @@ object frmCadCTe: TfrmCadCTe
     end
     object DBEdit9: TDBEdit
       Left = 89
-      Top = 28
+      Top = 24
       Width = 342
-      Height = 23
+      Height = 21
       TabStop = False
       CharCase = ecUpperCase
       Color = 16053492
@@ -770,8 +755,8 @@ object frmCadCTe: TfrmCadCTe
       DataField = 'VIRTUAL_EMPRESA'
       DataSource = dsCTE_M
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -13
+      Font.Color = clBlue
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentCtl3D = False
@@ -781,55 +766,47 @@ object frmCadCTe: TfrmCadCTe
     end
   end
   object PageControl2: TPageControl
-    AlignWithMargins = True
-    Left = 7
-    Top = 262
+    Left = 0
+    Top = 220
     Width = 1000
-    Height = 264
-    Margins.Left = 7
-    Margins.Top = 0
-    Margins.Right = 7
-    Margins.Bottom = 7
+    Height = 305
     ActivePage = TabSheet5
     Align = alClient
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
-    Font.Height = -13
+    Font.Height = -12
     Font.Name = 'Segoe UI'
     Font.Style = []
     ParentFont = False
+    Style = tsFlatButtons
     TabOrder = 1
     TabStop = False
+    ExplicitHeight = 313
     object TabSheet5: TTabSheet
       Caption = 'Itens'
       object Label37: TLabel
         Left = 0
         Top = 0
         Width = 992
-        Height = 19
+        Height = 15
         Align = alTop
         AutoSize = False
         Caption = '     Clique nas teclas [CTRL + Delete] para excluir ITEM'
-        Font.Charset = ANSI_CHARSET
+        Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
-        Font.Height = -13
-        Font.Name = 'Segoe UI'
+        Font.Height = -11
+        Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
         Layout = tlCenter
-        ExplicitWidth = 1004
+        ExplicitWidth = 988
       end
       object DBGridEh1: TDBGridEh
-        AlignWithMargins = True
-        Left = 5
-        Top = 24
-        Width = 982
-        Height = 203
+        Left = 0
+        Top = 15
+        Width = 992
+        Height = 257
         Hint = 'D'#234' Duplo Click para Alterar os Dados Produto'
-        Margins.Left = 5
-        Margins.Top = 5
-        Margins.Right = 5
-        Margins.Bottom = 5
         Align = alClient
         DataSource = dsCTE_D
         DynProps = <>
@@ -837,7 +814,7 @@ object frmCadCTe: TfrmCadCTe
         Font.Charset = ANSI_CHARSET
         Font.Color = clNavy
         Font.Height = -13
-        Font.Name = 'Segoe UI'
+        Font.Name = 'Courier New'
         Font.Style = []
         ParentFont = False
         ParentShowHint = False
@@ -845,9 +822,9 @@ object frmCadCTe: TfrmCadCTe
         TabOrder = 0
         TitleParams.Font.Charset = ANSI_CHARSET
         TitleParams.Font.Color = clBlack
-        TitleParams.Font.Height = -13
-        TitleParams.Font.Name = 'Segoe UI Semibold'
-        TitleParams.Font.Style = [fsBold]
+        TitleParams.Font.Height = -12
+        TitleParams.Font.Name = 'Segoe UI'
+        TitleParams.Font.Style = []
         TitleParams.ParentFont = False
         OnEnter = DBGridEh1Enter
         OnExit = DBGridEh1Exit
@@ -855,15 +832,12 @@ object frmCadCTe: TfrmCadCTe
         OnKeyPress = DBGridEh1KeyPress
         Columns = <
           item
-            Alignment = taCenter
             CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'NUMERO'
             Footers = <>
-            Title.Alignment = taCenter
             Title.Caption = 'Documento'
-            Width = 90
           end
           item
             CellButtons = <>
@@ -872,7 +846,7 @@ object frmCadCTe: TfrmCadCTe
             FieldName = 'DESCRICAO'
             Footers = <>
             Title.Caption = 'Descri'#231#227'o'
-            Width = 320
+            Width = 300
           end
           item
             CellButtons = <>
@@ -884,35 +858,32 @@ object frmCadCTe: TfrmCadCTe
             Width = 300
           end
           item
-            Alignment = taCenter
             CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'PRECO'
             Footers = <>
-            Title.Alignment = taCenter
+            Title.Alignment = taRightJustify
             Title.Caption = 'Pre'#231'o'
             Width = 71
           end
           item
-            Alignment = taCenter
             CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'QTD'
             Footers = <>
-            Title.Alignment = taCenter
+            Title.Alignment = taRightJustify
             Title.Caption = 'Qtd.'
             Width = 75
           end
           item
-            Alignment = taCenter
             CellButtons = <>
             DynProps = <>
             EditButtons = <>
             FieldName = 'TOTAL'
             Footers = <>
-            Title.Alignment = taCenter
+            Title.Alignment = taRightJustify
             Title.Caption = 'Total'
             Width = 88
           end>
@@ -926,8 +897,8 @@ object frmCadCTe: TfrmCadCTe
       object DBMemoEh1: TDBMemoEh
         Left = 0
         Top = 0
-        Width = 996
-        Height = 244
+        Width = 992
+        Height = 272
         Align = alClient
         AutoSize = False
         Ctl3D = False
@@ -948,6 +919,7 @@ object frmCadCTe: TfrmCadCTe
         WantReturns = True
         OnEnter = DBMemoEh1Enter
         OnExit = DBMemoEh1Exit
+        ExplicitHeight = 280
       end
     end
     object TabSheet8: TTabSheet
@@ -956,8 +928,8 @@ object frmCadCTe: TfrmCadCTe
       object DBMemoEh2: TDBMemoEh
         Left = 0
         Top = 0
-        Width = 996
-        Height = 244
+        Width = 992
+        Height = 272
         Align = alClient
         AutoSize = False
         Ctl3D = False
@@ -978,6 +950,7 @@ object frmCadCTe: TfrmCadCTe
         WantReturns = True
         OnEnter = DBMemoEh2Enter
         OnExit = DBMemoEh2Exit
+        ExplicitHeight = 280
       end
     end
     object TabSheet4: TTabSheet
@@ -986,22 +959,22 @@ object frmCadCTe: TfrmCadCTe
       object JvDBGrid1: TJvDBGrid
         Left = 0
         Top = 0
-        Width = 996
-        Height = 244
+        Width = 992
+        Height = 272
         Align = alClient
         DataSource = dsCTe_Seguradora
         TabOrder = 0
         TitleFont.Charset = ANSI_CHARSET
         TitleFont.Color = clWindowText
-        TitleFont.Height = -13
+        TitleFont.Height = -12
         TitleFont.Name = 'Segoe UI'
         TitleFont.Style = []
         SelectColumnsDialogStrings.Caption = 'Select columns'
         SelectColumnsDialogStrings.OK = '&OK'
         SelectColumnsDialogStrings.NoSelectionWarning = 'At least one column must be visible!'
         EditControls = <>
-        RowsHeight = 21
-        TitleRowHeight = 21
+        RowsHeight = 19
+        TitleRowHeight = 19
         Columns = <
           item
             Expanded = False
@@ -1049,7 +1022,7 @@ object frmCadCTe: TfrmCadCTe
         Left = 25
         Top = 25
         Width = 703
-        Height = 23
+        Height = 21
         Ctl3D = False
         DataField = 'CHAVE_REFERENCIADA'
         DataSource = dsCTE_M
@@ -1065,10 +1038,10 @@ object frmCadCTe: TfrmCadCTe
     end
   end
   object DBGrid1: TDBGrid
-    Left = 872
-    Top = 67
-    Width = 132
-    Height = 172
+    Left = 864
+    Top = 57
+    Width = 124
+    Height = 149
     Ctl3D = False
     DataSource = dsReboque
     Options = [dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -1084,173 +1057,163 @@ object frmCadCTe: TfrmCadCTe
       item
         Expanded = False
         FieldName = 'PLACA'
-        Width = 115
+        Width = 100
         Visible = True
       end>
   end
   object PageControl1: TPageControl
-    AlignWithMargins = True
-    Left = 7
-    Top = 533
+    Left = 0
+    Top = 525
     Width = 1000
-    Height = 83
-    Margins.Left = 7
-    Margins.Top = 0
-    Margins.Right = 7
-    Margins.Bottom = 0
+    Height = 76
     ActivePage = TabSheet2
     Align = alBottom
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'Segoe UI'
-    Font.Style = []
-    ParentFont = False
     TabOrder = 3
+    ExplicitTop = 533
     object TabSheet2: TTabSheet
       Caption = 'Totais / Impostos'
       ImageIndex = 1
       object Label27: TLabel
-        Left = 7
-        Top = 3
-        Width = 68
-        Height = 17
+        Left = 3
+        Top = 6
+        Width = 62
+        Height = 15
         Caption = 'Quantidade'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
-        Font.Height = -13
+        Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
       end
       object Label32: TLabel
-        Left = 82
-        Top = 3
-        Width = 49
-        Height = 17
+        Left = 71
+        Top = 6
+        Width = 44
+        Height = 15
         Caption = 'Unidade'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
-        Font.Height = -13
+        Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
       end
       object Label33: TLabel
-        Left = 200
-        Top = 3
-        Width = 88
-        Height = 17
+        Left = 189
+        Top = 6
+        Width = 76
+        Height = 15
         Caption = 'Valor da Carga'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
-        Font.Height = -13
+        Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
       end
       object Label34: TLabel
-        Left = 586
-        Top = 3
-        Width = 73
-        Height = 17
+        Left = 575
+        Top = 6
+        Width = 67
+        Height = 15
         Caption = 'Base Calculo'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
-        Font.Height = -13
+        Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
       end
       object Label35: TLabel
-        Left = 682
-        Top = 3
-        Width = 48
-        Height = 17
+        Left = 671
+        Top = 6
+        Width = 45
+        Height = 15
         Caption = 'Al'#237'quota'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
-        Font.Height = -13
+        Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
       end
       object Label11: TLabel
-        Left = 320
-        Top = 3
-        Width = 96
-        Height = 17
+        Left = 309
+        Top = 6
+        Width = 84
+        Height = 15
         Caption = 'Valor do Servi'#231'o'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
-        Font.Height = -13
+        Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
       end
       object Label12: TLabel
-        Left = 419
-        Top = 3
-        Width = 89
-        Height = 17
+        Left = 408
+        Top = 6
+        Width = 78
+        Height = 15
         Caption = 'Valor Recebido'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
-        Font.Height = -13
+        Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
       end
       object Label13: TLabel
-        Left = 778
-        Top = 3
-        Width = 64
-        Height = 17
+        Left = 767
+        Top = 6
+        Width = 57
+        Height = 15
         Caption = 'Valor ICMS'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
-        Font.Height = -13
+        Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
       end
       object Label14: TLabel
-        Left = 874
-        Top = 3
-        Width = 91
-        Height = 17
+        Left = 863
+        Top = 6
+        Width = 82
+        Height = 15
         Caption = 'Outros Tributos'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
-        Font.Height = -13
+        Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
       end
       object Label15: TLabel
-        Left = 538
-        Top = 3
-        Width = 22
-        Height = 17
+        Left = 527
+        Top = 6
+        Width = 21
+        Height = 15
         Caption = 'CST'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
-        Font.Height = -13
+        Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
       end
       object DBEdit28: TDBEdit
-        Left = 7
-        Top = 22
-        Width = 67
-        Height = 23
+        Left = 3
+        Top = 21
+        Width = 61
+        Height = 21
         Ctl3D = False
         DataField = 'QTD'
         DataSource = dsCTE_M
         Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -13
+        Font.Color = clBlue
+        Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentCtl3D = False
@@ -1258,16 +1221,16 @@ object frmCadCTe: TfrmCadCTe
         TabOrder = 0
       end
       object DBEdit30: TDBEdit
-        Left = 200
-        Top = 22
+        Left = 189
+        Top = 21
         Width = 115
-        Height = 23
+        Height = 21
         Ctl3D = False
         DataField = 'VALOR_CARGA'
         DataSource = dsCTE_M
         Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -13
+        Font.Color = clBlue
+        Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentCtl3D = False
@@ -1275,52 +1238,54 @@ object frmCadCTe: TfrmCadCTe
         TabOrder = 2
       end
       object DBEdit31: TDBEdit
-        Left = 586
-        Top = 22
+        Left = 575
+        Top = 21
         Width = 90
-        Height = 23
+        Height = 21
         Ctl3D = False
         DataField = 'BASE_ICMS'
         DataSource = dsCTE_M
         Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -13
+        Font.Color = clBlue
+        Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentCtl3D = False
         ParentFont = False
         TabOrder = 6
+        OnExit = DBEdit31Exit
       end
       object DBEdit32: TDBEdit
-        Left = 682
-        Top = 22
+        Left = 671
+        Top = 21
         Width = 90
-        Height = 23
+        Height = 21
         Ctl3D = False
         DataField = 'ALIQUOTA_ICMS'
         DataSource = dsCTE_M
         Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -13
+        Font.Color = clBlue
+        Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentCtl3D = False
         ParentFont = False
         TabOrder = 7
+        OnExit = DBEdit32Exit
       end
       object DBComboBoxEh1: TDBComboBoxEh
-        Left = 82
-        Top = 22
+        Left = 71
+        Top = 21
         Width = 112
-        Height = 23
+        Height = 21
         Ctl3D = False
         DataField = 'METRAGEM'
         DataSource = dsCTE_M
         DynProps = <>
         EditButtons = <>
         Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -13
+        Font.Color = clBlue
+        Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = []
         Items.Strings = (
@@ -1341,16 +1306,16 @@ object frmCadCTe: TfrmCadCTe
         Visible = True
       end
       object DBEdit11: TDBEdit
-        Left = 321
-        Top = 22
+        Left = 310
+        Top = 21
         Width = 92
-        Height = 23
+        Height = 21
         Ctl3D = False
         DataField = 'VALOR_SERVICO'
         DataSource = dsCTE_M
         Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -13
+        Font.Color = clBlue
+        Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentCtl3D = False
@@ -1358,16 +1323,16 @@ object frmCadCTe: TfrmCadCTe
         TabOrder = 3
       end
       object DBEdit12: TDBEdit
-        Left = 419
-        Top = 22
+        Left = 408
+        Top = 21
         Width = 115
-        Height = 23
+        Height = 21
         Ctl3D = False
         DataField = 'RECEBIDO'
         DataSource = dsCTE_M
         Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -13
+        Font.Color = clBlue
+        Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentCtl3D = False
@@ -1375,16 +1340,16 @@ object frmCadCTe: TfrmCadCTe
         TabOrder = 4
       end
       object DBEdit13: TDBEdit
-        Left = 778
-        Top = 22
+        Left = 767
+        Top = 21
         Width = 90
-        Height = 23
+        Height = 21
         Ctl3D = False
         DataField = 'VALOR_ICMS'
         DataSource = dsCTE_M
         Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -13
+        Font.Color = clBlue
+        Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentCtl3D = False
@@ -1392,16 +1357,16 @@ object frmCadCTe: TfrmCadCTe
         TabOrder = 8
       end
       object DBEdit14: TDBEdit
-        Left = 874
-        Top = 22
+        Left = 863
+        Top = 21
         Width = 90
-        Height = 23
+        Height = 21
         Ctl3D = False
         DataField = 'OUTROS_TRIBUTOS'
         DataSource = dsCTE_M
         Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -13
+        Font.Color = clBlue
+        Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentCtl3D = False
@@ -1409,30 +1374,31 @@ object frmCadCTe: TfrmCadCTe
         TabOrder = 9
       end
       object DBEdit16: TDBEdit
-        Left = 538
-        Top = 22
+        Left = 527
+        Top = 21
         Width = 45
-        Height = 23
+        Height = 21
         CharCase = ecUpperCase
         Ctl3D = False
         DataField = 'CST_ICMS'
         DataSource = dsCTE_M
         Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -13
+        Font.Color = clBlue
+        Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentCtl3D = False
         ParentFont = False
         TabOrder = 5
+        OnExit = DBEdit16Exit
       end
     end
   end
   object Panel5: TPanel
     AlignWithMargins = True
     Left = 7
-    Top = 623
-    Width = 1000
+    Top = 608
+    Width = 986
     Height = 89
     Margins.Left = 7
     Margins.Top = 7
@@ -1443,6 +1409,9 @@ object frmCadCTe: TfrmCadCTe
     Color = clWhite
     ParentBackground = False
     TabOrder = 4
+    ExplicitLeft = 0
+    ExplicitTop = 615
+    ExplicitWidth = 1000
     object cxTransmitir: TcxButton
       AlignWithMargins = True
       Left = 114
@@ -2306,7 +2275,7 @@ object frmCadCTe: TfrmCadCTe
       'where'
       'codigo=:cod')
     Left = 53
-    Top = 328
+    Top = 304
     ParamData = <
       item
         Name = 'COD'
@@ -2591,48 +2560,56 @@ object frmCadCTe: TfrmCadCTe
     object qryCTE_MTOTAL: TFMTBCDField
       FieldName = 'TOTAL'
       Origin = 'TOTAL'
+      DisplayFormat = '0.00'
       Precision = 18
       Size = 2
     end
     object qryCTE_MRECEBIDO: TFMTBCDField
       FieldName = 'RECEBIDO'
       Origin = 'RECEBIDO'
+      DisplayFormat = '0.00'
       Precision = 18
       Size = 2
     end
     object qryCTE_MVPIS: TFMTBCDField
       FieldName = 'VPIS'
       Origin = 'VPIS'
+      DisplayFormat = '0.00'
       Precision = 18
       Size = 2
     end
     object qryCTE_MVCOFINS: TFMTBCDField
       FieldName = 'VCOFINS'
       Origin = 'VCOFINS'
+      DisplayFormat = '0.00'
       Precision = 18
       Size = 2
     end
     object qryCTE_MVINSS: TFMTBCDField
       FieldName = 'VINSS'
       Origin = 'VINSS'
+      DisplayFormat = '0.00'
       Precision = 18
       Size = 2
     end
     object qryCTE_MVIR: TFMTBCDField
       FieldName = 'VIR'
       Origin = 'VIR'
+      DisplayFormat = '0.00'
       Precision = 18
       Size = 2
     end
     object qryCTE_MVCLSS: TFMTBCDField
       FieldName = 'VCLSS'
       Origin = 'VCLSS'
+      DisplayFormat = '0.00'
       Precision = 18
       Size = 2
     end
     object qryCTE_MVTOTTIRB: TFMTBCDField
       FieldName = 'VTOTTIRB'
       Origin = 'VTOTTIRB'
+      DisplayFormat = '0.00'
       Precision = 18
       Size = 2
     end
@@ -2645,12 +2622,35 @@ object frmCadCTe: TfrmCadCTe
     object qryCTE_MVALOR_SERVICO: TFMTBCDField
       FieldName = 'VALOR_SERVICO'
       Origin = 'VALOR_SERVICO'
+      DisplayFormat = ',0.00'
       Precision = 18
       Size = 2
     end
     object qryCTE_MVALOR_CARGA: TFMTBCDField
       FieldName = 'VALOR_CARGA'
       Origin = 'VALOR_CARGA'
+      DisplayFormat = ',0.00'
+      Precision = 18
+      Size = 2
+    end
+    object qryCTE_MALIQUOTA_ICMS: TFMTBCDField
+      FieldName = 'ALIQUOTA_ICMS'
+      Origin = 'ALIQUOTA_ICMS'
+      DisplayFormat = ',0.00'
+      Precision = 18
+      Size = 2
+    end
+    object qryCTE_MBASE_ICMS: TFMTBCDField
+      FieldName = 'BASE_ICMS'
+      Origin = 'BASE_ICMS'
+      DisplayFormat = ',0.00'
+      Precision = 18
+      Size = 2
+    end
+    object qryCTE_MVALOR_ICMS: TFMTBCDField
+      FieldName = 'VALOR_ICMS'
+      Origin = 'VALOR_ICMS'
+      DisplayFormat = ',0.00'
       Precision = 18
       Size = 2
     end
@@ -2659,39 +2659,22 @@ object frmCadCTe: TfrmCadCTe
       Origin = 'CST_ICMS'
       Size = 3
     end
-    object qryCTE_MALIQUOTA_ICMS: TFMTBCDField
-      FieldName = 'ALIQUOTA_ICMS'
-      Origin = 'ALIQUOTA_ICMS'
-      Precision = 18
-      Size = 2
-    end
-    object qryCTE_MBASE_ICMS: TFMTBCDField
-      FieldName = 'BASE_ICMS'
-      Origin = 'BASE_ICMS'
-      Precision = 18
-      Size = 2
-    end
-    object qryCTE_MVALOR_ICMS: TFMTBCDField
-      FieldName = 'VALOR_ICMS'
-      Origin = 'VALOR_ICMS'
-      Precision = 18
-      Size = 2
-    end
     object qryCTE_MOUTROS_TRIBUTOS: TFMTBCDField
       FieldName = 'OUTROS_TRIBUTOS'
       Origin = 'OUTROS_TRIBUTOS'
+      DisplayFormat = ',0.00'
       Precision = 18
       Size = 2
     end
-    object qryCTE_MPESOB: TBCDField
-      FieldName = 'PESOB'
-      Origin = 'PESOB'
-      Precision = 18
-    end
-    object qryCTE_MPESOL: TBCDField
+    object qryCTE_MPESOL: TFMTBCDField
       FieldName = 'PESOL'
-      Origin = 'PESOL'
       Precision = 18
+      Size = 4
+    end
+    object qryCTE_MPESOB: TFMTBCDField
+      FieldName = 'PESOB'
+      Precision = 18
+      Size = 4
     end
   end
   object dsCTE_M: TDataSource
@@ -2726,8 +2709,8 @@ object frmCadCTe: TfrmCadCTe
       'CD.FK_CTE_MASTER=:CODIGO'
       'order by 1'
       '')
-    Left = 115
-    Top = 328
+    Left = 123
+    Top = 304
     ParamData = <
       item
         Name = 'CODIGO'
@@ -3296,8 +3279,8 @@ object frmCadCTe: TfrmCadCTe
   end
   object dsReboque: TDataSource
     DataSet = qryVeiculo_Reboque
-    Left = 640
-    Top = 440
+    Left = 840
+    Top = 296
   end
   object qryESOrigem: TFDQuery
     Connection = Dados.Conexao
@@ -3379,16 +3362,16 @@ object frmCadCTe: TfrmCadCTe
   object dsVeiculo: TDataSource
     DataSet = qryVeiculo
     OnDataChange = dsVeiculoDataChange
-    Left = 720
-    Top = 432
+    Left = 888
+    Top = 200
   end
   object qryDestinatario: TFDQuery
     Connection = Dados.Conexao
     SQL.Strings = (
       'select * from cte_destinatario'
       'order by nome')
-    Left = 128
-    Top = 440
+    Left = 904
+    Top = 320
     object qryDestinatarioCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -3470,8 +3453,8 @@ object frmCadCTe: TfrmCadCTe
     SQL.Strings = (
       'select * from cte_remetente'
       'order by nome')
-    Left = 256
-    Top = 320
+    Left = 240
+    Top = 248
     object qryRemetenteCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Origin = 'CODIGO'
@@ -3615,11 +3598,6 @@ object frmCadCTe: TfrmCadCTe
       Origin = 'CNPJ'
       EditMask = '##.###.###/####-##;0;'
     end
-    object qryCte_SeguradoraVALOR_SEGURADO: TBCDField
-      FieldName = 'VALOR_SEGURADO'
-      Origin = 'VALOR_SEGURADO'
-      Precision = 18
-    end
     object qryCte_SeguradoraAPOLICE: TStringField
       FieldName = 'APOLICE'
       Origin = 'APOLICE'
@@ -3629,6 +3607,11 @@ object frmCadCTe: TfrmCadCTe
       FieldName = 'AVERBACAO'
       Origin = 'AVERBACAO'
       Size = 100
+    end
+    object qryCte_SeguradoraVALOR_SEGURADO: TBCDField
+      FieldName = 'VALOR_SEGURADO'
+      Origin = 'VALOR_SEGURADO'
+      Precision = 18
     end
   end
 end

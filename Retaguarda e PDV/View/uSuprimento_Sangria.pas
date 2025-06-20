@@ -207,7 +207,7 @@ begin
 
   end;
   qryConta_Movimento.Post;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
   try
     if Application.messageBox(pwidechar('Deseja imprimir comprovante?'),
@@ -335,7 +335,7 @@ end;
 procedure TFrmSuprimento_Sangria.qryConta_MovimentoAfterPost(DataSet: TDataSet);
 begin
   // estorna lançamento
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
   dados.qryCaixa.Close;
   dados.qryCaixa.Open;
@@ -390,7 +390,7 @@ begin
     dados.qryCaixaCODIGO.Value := dados.Numerador('CAIXA', 'CODIGO',
       'N', '', '');
     dados.qryCaixa.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
   end;
 
 end;

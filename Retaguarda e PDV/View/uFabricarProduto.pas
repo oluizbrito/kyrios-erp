@@ -430,7 +430,7 @@ begin
       'delete from ACERTA_ESTOQUE where fk_fabrica=:fabrica';
     qryProduto.Params[0].Value := aFabricar;
     qryProduto.ExecSQL;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     qryProduto.Close;
     qryProduto.SQL.Clear;
@@ -457,7 +457,7 @@ end;
 
 procedure TfrmFabricar.qryFabricarAfterPost(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
   BaixaInsumo(qryFabricarFK_PRODUTO.AsInteger, qryFabricarQUANTIDADE.AsFloat,
     qryFabricarCODIGO.AsInteger);

@@ -274,7 +274,7 @@ begin
   Dados.qryExecute.Close;
   Dados.qryExecute.SQL.Text := 'update produto set etq=''N''';
   Dados.qryExecute.ExecSQL;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 function TfrmEtiquetas.Valor: string;
@@ -414,7 +414,7 @@ begin
     Dados.qryExecute.Close;
     Dados.qryExecute.SQL.Text := 'delete from etiqueta_impressao';
     Dados.qryExecute.ExecSQL;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
     localizaEtiqueta;
   end;
 
@@ -459,7 +459,7 @@ begin
       qryProdutos.Next;
     end;
   end;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TfrmEtiquetas.DBGrid1DrawColumnCell(Sender: TObject;
@@ -542,7 +542,7 @@ begin
     qryProdutos.Post;
   end;
 
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TfrmEtiquetas.DBGrid2DrawColumnCell(Sender: TObject;
@@ -830,7 +830,7 @@ begin
         qryImpressaoFK_EMPRESA.Value := Dados.qryEmpresaCODIGO.Value;
         qryImpressaoQTD.Value := 1;
         qryImpressao.Post;
-        Dados.Conexao.CommitRetaining;
+        Dados.Conexao.Commit;
       end;
       qrySelecionados.Next;
     end;

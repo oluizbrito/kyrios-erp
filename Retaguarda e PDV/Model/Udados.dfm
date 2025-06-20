@@ -7,8 +7,6 @@ object Dados: TDados
     Params.Strings = (
       'User_Name=sysdba'
       'Password=masterkey'
-      'Database=C:\Sistema\Dados\DADOS.FDB'
-      'CharacterSet=WIN1252'
       'DriverID=FB')
     FetchOptions.AssignedValues = [evMode, evAutoClose]
     FormatOptions.AssignedValues = [fvFmtDisplayDate, fvFmtDisplayNumeric]
@@ -3002,6 +3000,10 @@ object Dados: TDados
   object qryItensO: TFDQuery
     BeforeOpen = qryItensOBeforeOpen
     Connection = Conexao
+    FetchOptions.AssignedValues = [evMode, evRowsetSize, evRecordCountMode, evAutoFetchAll]
+    FetchOptions.Mode = fmAll
+    FetchOptions.RowsetSize = -1
+    FetchOptions.RecordCountMode = cmTotal
     SQL.Strings = (
       
         'select oi.*, pro.descricao VIRTUAL_PRODUTO, pro.pr_venda VIRTUAL' +
@@ -3758,6 +3760,21 @@ object Dados: TDados
       FixedChar = True
       Size = 1
     end
+    object qryTerminalIMPRIME_PREVIEW: TStringField
+      FieldName = 'IMPRIME_PREVIEW'
+      Origin = 'IMPRIME_PREVIEW'
+      Size = 1
+    end
+    object qryTerminalTIPOFECHAMENTO: TStringField
+      FieldName = 'TIPOFECHAMENTO'
+      Origin = 'TIPOFECHAMENTO'
+      Size = 30
+    end
+    object qryTerminalMEIAFOLHA: TStringField
+      FieldName = 'MEIAFOLHA'
+      Origin = 'MEIAFOLHA'
+      Size = 1
+    end
   end
   object qryConfig: TFDQuery
     BeforePost = qryConfigBeforePost
@@ -4459,6 +4476,135 @@ object Dados: TDados
       FieldName = 'MFE_CHAVE_REQUISICAO'
       Origin = 'MFE_CHAVE_REQUISICAO'
       BlobType = ftMemo
+    end
+    object qryConfigPATHXMLENTRADA: TStringField
+      FieldName = 'PATHXMLENTRADA'
+      Origin = 'PATHXMLENTRADA'
+      Size = 100
+    end
+    object qryConfigTEF_GP: TIntegerField
+      FieldName = 'TEF_GP'
+      Origin = 'TEF_GP'
+    end
+    object qryConfigTEF_AUTO_ATIVAR_GP: TStringField
+      FieldName = 'TEF_AUTO_ATIVAR_GP'
+      Origin = 'TEF_AUTO_ATIVAR_GP'
+      Size = 1
+    end
+    object qryConfigTEF_MULT_CARTOES: TStringField
+      FieldName = 'TEF_MULT_CARTOES'
+      Origin = 'TEF_MULT_CARTOES'
+      Size = 1
+    end
+    object qryConfigTEF_AUTO_PAGAMENTO: TStringField
+      FieldName = 'TEF_AUTO_PAGAMENTO'
+      Origin = 'TEF_AUTO_PAGAMENTO'
+      Size = 1
+    end
+    object qryConfigTEF_AUTO_FINALIZA: TStringField
+      FieldName = 'TEF_AUTO_FINALIZA'
+      Origin = 'TEF_AUTO_FINALIZA'
+      Size = 1
+    end
+    object qryConfigTEF_EXIBIR_MSG_AUTETI: TStringField
+      FieldName = 'TEF_EXIBIR_MSG_AUTETI'
+      Origin = 'TEF_EXIBIR_MSG_AUTETI'
+      Size = 1
+    end
+    object qryConfigTEF_SLEEP: TIntegerField
+      FieldName = 'TEF_SLEEP'
+      Origin = 'TEF_SLEEP'
+    end
+    object qryConfigTEF_STS: TIntegerField
+      FieldName = 'TEF_STS'
+      Origin = 'TEF_STS'
+    end
+    object qryConfigTEF_NUM_VIAS: TIntegerField
+      FieldName = 'TEF_NUM_VIAS'
+      Origin = 'TEF_NUM_VIAS'
+    end
+    object qryConfigTEF_APLICACAO: TStringField
+      FieldName = 'TEF_APLICACAO'
+      Origin = 'TEF_APLICACAO'
+      Size = 100
+    end
+    object qryConfigTEF_RAZAO: TStringField
+      FieldName = 'TEF_RAZAO'
+      Origin = 'TEF_RAZAO'
+      Size = 150
+    end
+    object qryConfigTEF_REGISTRO_CERT: TStringField
+      FieldName = 'TEF_REGISTRO_CERT'
+      Origin = 'TEF_REGISTRO_CERT'
+      Size = 200
+    end
+    object qryConfigTEF_SOFT_HOUSE: TStringField
+      FieldName = 'TEF_SOFT_HOUSE'
+      Origin = 'TEF_SOFT_HOUSE'
+      Size = 100
+    end
+    object qryConfigTEF_VERS_APLICACAO: TStringField
+      FieldName = 'TEF_VERS_APLICACAO'
+      Origin = 'TEF_VERS_APLICACAO'
+      Size = 15
+    end
+    object qryConfigTIPO_IMP_ETQ: TStringField
+      FieldName = 'TIPO_IMP_ETQ'
+      Origin = 'TIPO_IMP_ETQ'
+      Size = 1
+    end
+    object qryConfigMODELO_ETQ_FAST: TStringField
+      FieldName = 'MODELO_ETQ_FAST'
+      Origin = 'MODELO_ETQ_FAST'
+      Size = 1
+    end
+    object qryConfigIMPRESSORA_FAST_ETQ: TStringField
+      FieldName = 'IMPRESSORA_FAST_ETQ'
+      Origin = 'IMPRESSORA_FAST_ETQ'
+      Size = 100
+    end
+    object qryConfigVENDAS_SIMPLES_NAO_MOV_CAIXA: TStringField
+      FieldName = 'VENDAS_SIMPLES_NAO_MOV_CAIXA'
+      Origin = 'VENDAS_SIMPLES_NAO_MOV_CAIXA'
+      Size = 1
+    end
+    object qryConfigSH_CON_LOGIN: TStringField
+      FieldName = 'SH_CON_LOGIN'
+      Origin = 'SH_CON_LOGIN'
+      Size = 200
+    end
+    object qryConfigSH_CON_PASS: TStringField
+      FieldName = 'SH_CON_PASS'
+      Origin = 'SH_CON_PASS'
+    end
+    object qryConfigSH_CON_SERVER: TStringField
+      FieldName = 'SH_CON_SERVER'
+      Origin = 'SH_CON_SERVER'
+      Size = 200
+    end
+    object qryConfigSH_CON_DATABASE: TStringField
+      FieldName = 'SH_CON_DATABASE'
+      Origin = 'SH_CON_DATABASE'
+      Size = 200
+    end
+    object qryConfigDASH_CON_LOGIN: TStringField
+      FieldName = 'DASH_CON_LOGIN'
+      Origin = 'DASH_CON_LOGIN'
+      Size = 200
+    end
+    object qryConfigDASH_CON_PASS: TStringField
+      FieldName = 'DASH_CON_PASS'
+      Origin = 'DASH_CON_PASS'
+    end
+    object qryConfigDASH_CON_SERVER: TStringField
+      FieldName = 'DASH_CON_SERVER'
+      Origin = 'DASH_CON_SERVER'
+      Size = 200
+    end
+    object qryConfigDASH_CON_DATABASE: TStringField
+      FieldName = 'DASH_CON_DATABASE'
+      Origin = 'DASH_CON_DATABASE'
+      Size = 200
     end
   end
   object qryTransf: TFDQuery
@@ -5679,6 +5825,31 @@ object Dados: TDados
       FieldName = 'CEST'
       Origin = 'CEST'
       Size = 8
+    end
+    object QRYNFCE_DBLOQUEADO: TStringField
+      FieldName = 'BLOQUEADO'
+      Origin = 'BLOQUEADO'
+      Size = 1
+    end
+    object QRYNFCE_DVICMSDESON: TBCDField
+      FieldName = 'VICMSDESON'
+      Origin = 'VICMSDESON'
+      Precision = 18
+    end
+    object QRYNFCE_DALIQICMSDESON: TBCDField
+      FieldName = 'ALIQICMSDESON'
+      Origin = 'ALIQICMSDESON'
+      Precision = 18
+    end
+    object QRYNFCE_DFK_GRADE: TIntegerField
+      FieldName = 'FK_GRADE'
+      Origin = 'FK_GRADE'
+    end
+    object QRYNFCE_DREDUCAO_BASE: TFMTBCDField
+      FieldName = 'REDUCAO_BASE'
+      Origin = 'REDUCAO_BASE'
+      Precision = 18
+      Size = 2
     end
   end
   object qryCC: TFDQuery
@@ -7986,157 +8157,6 @@ object Dados: TDados
       Precision = 18
       Size = 3
     end
-    object qryVeiculos_cavaloSITUACAO: TStringField
-      FieldName = 'SITUACAO'
-      Origin = 'SITUACAO'
-    end
-    object qryVeiculos_cavaloDATA_CADASTRO: TDateField
-      FieldName = 'DATA_CADASTRO'
-      Origin = 'DATA_CADASTRO'
-      EditMask = '!99/99/0000;1;_'
-    end
-    object qryVeiculos_cavaloDATA_MODIFICACAO: TDateField
-      FieldName = 'DATA_MODIFICACAO'
-      Origin = 'DATA_MODIFICACAO'
-      EditMask = '!99/99/0000;1;_'
-    end
-    object qryVeiculos_cavaloUSUARIO_MODIFICACAO_ID: TIntegerField
-      FieldName = 'USUARIO_MODIFICACAO_ID'
-      Origin = 'USUARIO_MODIFICACAO_ID'
-    end
-    object qryVeiculos_cavaloDATA_AQUISICAO: TDateField
-      FieldName = 'DATA_AQUISICAO'
-      Origin = 'DATA_AQUISICAO'
-      EditMask = '!99/99/0000;1;_'
-    end
-    object qryVeiculos_cavaloVALOR_AQUISICAO: TFMTBCDField
-      FieldName = 'VALOR_AQUISICAO'
-      Origin = 'VALOR_AQUISICAO'
-      currency = True
-      Precision = 18
-      Size = 2
-    end
-    object qryVeiculos_cavaloVALOR_ALUGUEL_MENSAL: TFMTBCDField
-      FieldName = 'VALOR_ALUGUEL_MENSAL'
-      Origin = 'VALOR_ALUGUEL_MENSAL'
-      currency = True
-      Precision = 18
-      Size = 2
-    end
-    object qryVeiculos_cavaloVENCIMENTO_ALUGUEL: TDateField
-      FieldName = 'VENCIMENTO_ALUGUEL'
-      Origin = 'VENCIMENTO_ALUGUEL'
-      EditMask = '!99/99/0000;1;_'
-    end
-    object qryVeiculos_cavaloMARCA: TStringField
-      FieldName = 'MARCA'
-      Origin = 'MARCA'
-      Size = 50
-    end
-    object qryVeiculos_cavaloMODELO: TStringField
-      FieldName = 'MODELO'
-      Origin = 'MODELO'
-      Size = 100
-    end
-    object qryVeiculos_cavaloCOR: TStringField
-      FieldName = 'COR'
-      Origin = 'COR'
-      Size = 30
-    end
-    object qryVeiculos_cavaloANO_FABRICACAO: TSmallintField
-      FieldName = 'ANO_FABRICACAO'
-      Origin = 'ANO_FABRICACAO'
-    end
-    object qryVeiculos_cavaloANO_MODELO: TSmallintField
-      FieldName = 'ANO_MODELO'
-      Origin = 'ANO_MODELO'
-    end
-    object qryVeiculos_cavaloALTURA_METROS: TCurrencyField
-      FieldName = 'ALTURA_METROS'
-      Origin = 'ALTURA_METROS'
-    end
-    object qryVeiculos_cavaloCOMPRIMENTO_METROS: TCurrencyField
-      FieldName = 'COMPRIMENTO_METROS'
-      Origin = 'COMPRIMENTO_METROS'
-    end
-    object qryVeiculos_cavaloLARGURA_METROS: TCurrencyField
-      FieldName = 'LARGURA_METROS'
-      Origin = 'LARGURA_METROS'
-    end
-    object qryVeiculos_cavaloCAPACIDADE_CARGA_KG: TFMTBCDField
-      FieldName = 'CAPACIDADE_CARGA_KG'
-      Origin = 'CAPACIDADE_CARGA_KG'
-      Precision = 18
-      Size = 2
-    end
-    object qryVeiculos_cavaloCAPACIDADE_CARGA_M3: TFMTBCDField
-      FieldName = 'CAPACIDADE_CARGA_M3'
-      Origin = 'CAPACIDADE_CARGA_M3'
-      Precision = 18
-      Size = 2
-    end
-    object qryVeiculos_cavaloODOMETRO_ATUAL: TIntegerField
-      FieldName = 'ODOMETRO_ATUAL'
-      Origin = 'ODOMETRO_ATUAL'
-    end
-    object qryVeiculos_cavaloVALOR_IPVA: TFMTBCDField
-      FieldName = 'VALOR_IPVA'
-      Origin = 'VALOR_IPVA'
-      currency = True
-      Precision = 18
-      Size = 2
-    end
-    object qryVeiculos_cavaloVALOR_LICENCIAMENTO: TFMTBCDField
-      FieldName = 'VALOR_LICENCIAMENTO'
-      Origin = 'VALOR_LICENCIAMENTO'
-      currency = True
-      Precision = 18
-      Size = 2
-    end
-    object qryVeiculos_cavaloVALOR_SEGURO_OBRIGATORIO: TFMTBCDField
-      FieldName = 'VALOR_SEGURO_OBRIGATORIO'
-      Origin = 'VALOR_SEGURO_OBRIGATORIO'
-      currency = True
-      Precision = 18
-      Size = 2
-    end
-    object qryVeiculos_cavaloSEGURADORA_NOME: TStringField
-      FieldName = 'SEGURADORA_NOME'
-      Origin = 'SEGURADORA_NOME'
-      Size = 100
-    end
-    object qryVeiculos_cavaloSEGURADORA_APOLICE: TStringField
-      FieldName = 'SEGURADORA_APOLICE'
-      Origin = 'SEGURADORA_APOLICE'
-      Size = 50
-    end
-    object qryVeiculos_cavaloSEGURADORA_VALOR: TFMTBCDField
-      FieldName = 'SEGURADORA_VALOR'
-      Origin = 'SEGURADORA_VALOR'
-      currency = True
-      Precision = 18
-      Size = 2
-    end
-    object qryVeiculos_cavaloSEGURADORA_DATA_INICIO: TDateField
-      FieldName = 'SEGURADORA_DATA_INICIO'
-      Origin = 'SEGURADORA_DATA_INICIO'
-      EditMask = '!99/99/0000;1;_'
-    end
-    object qryVeiculos_cavaloSEGURADORA_DATA_VENCIMENTO: TDateField
-      FieldName = 'SEGURADORA_DATA_VENCIMENTO'
-      Origin = 'SEGURADORA_DATA_VENCIMENTO'
-      EditMask = '!99/99/0000;1;_'
-    end
-    object qryVeiculos_cavaloSEGURADORA_TIPO_COBERTURA: TStringField
-      FieldName = 'SEGURADORA_TIPO_COBERTURA'
-      Origin = 'SEGURADORA_TIPO_COBERTURA'
-      Size = 50
-    end
-    object qryVeiculos_cavaloOBSERVACOES: TMemoField
-      FieldName = 'OBSERVACOES'
-      Origin = 'OBSERVACOES'
-      BlobType = ftMemo
-    end
   end
   object qryVeiculos_Reboque: TFDQuery
     OnNewRecord = qryVeiculos_ReboqueNewRecord
@@ -8412,6 +8432,32 @@ object Dados: TDados
       FieldName = 'COD_REGIME_TRIBUTARIO'
       Origin = 'COD_REGIME_TRIBUTARIO'
       Size = 1
+    end
+    object qrySped_ConfigREGIME_TRIBUTARIO: TStringField
+      FieldName = 'REGIME_TRIBUTARIO'
+      Origin = 'REGIME_TRIBUTARIO'
+      Size = 1
+    end
+    object qrySped_ConfigCONFIG_1601: TStringField
+      FieldName = 'CONFIG_1601'
+      Origin = 'CONFIG_1601'
+      Size = 1
+    end
+    object qrySped_ConfigADM_PADRAO_CARTAO_DEB: TIntegerField
+      FieldName = 'ADM_PADRAO_CARTAO_DEB'
+      Origin = 'ADM_PADRAO_CARTAO_DEB'
+    end
+    object qrySped_ConfigADM_PADRAO_CARTAO_CRE: TIntegerField
+      FieldName = 'ADM_PADRAO_CARTAO_CRE'
+      Origin = 'ADM_PADRAO_CARTAO_CRE'
+    end
+    object qrySped_ConfigADM_PADRAO_PIX: TIntegerField
+      FieldName = 'ADM_PADRAO_PIX'
+      Origin = 'ADM_PADRAO_PIX'
+    end
+    object qrySped_ConfigADM_PADRAO_VALE_ALI: TIntegerField
+      FieldName = 'ADM_PADRAO_VALE_ALI'
+      Origin = 'ADM_PADRAO_VALE_ALI'
     end
   end
   object qrySped_contador: TFDQuery
@@ -8753,6 +8799,10 @@ object Dados: TDados
       Precision = 18
       Size = 2
     end
+    object qrySped_H005DT_INVE: TDateField
+      FieldName = 'DT_INVE'
+      Origin = 'DT_INVE'
+    end
   end
   object qrySped_H010: TFDQuery
     Connection = Conexao
@@ -8777,26 +8827,21 @@ object Dados: TDados
       Origin = 'CODIGO'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
-      DisplayFormat = ',0.00'
     end
-    object qrySped_H010QTD: TFMTBCDField
+    object qrySped_H010QTD: TBCDField
       FieldName = 'QTD'
       Origin = 'QTD'
-      DisplayFormat = ',0.00'
       Precision = 18
-      Size = 4
     end
     object qrySped_H010VL_UNIT: TFMTBCDField
       FieldName = 'VL_UNIT'
       Origin = 'VL_UNIT'
-      DisplayFormat = ',0.00'
       Precision = 18
       Size = 2
     end
     object qrySped_H010VL_ITEM: TFMTBCDField
       FieldName = 'VL_ITEM'
       Origin = 'VL_ITEM'
-      DisplayFormat = ',0.00'
       Precision = 18
       Size = 2
     end
@@ -8808,7 +8853,6 @@ object Dados: TDados
     object qrySped_H010COD_PART: TIntegerField
       FieldName = 'COD_PART'
       Origin = 'COD_PART'
-      DisplayFormat = ',0.00'
     end
     object qrySped_H010TXT_COMPL: TStringField
       FieldName = 'TXT_COMPL'
@@ -8823,27 +8867,40 @@ object Dados: TDados
     object qrySped_H010FK_H005: TIntegerField
       FieldName = 'FK_H005'
       Origin = 'FK_H005'
-      DisplayFormat = ',0.00'
     end
     object qrySped_H010FK_PRODUTO: TIntegerField
       FieldName = 'FK_PRODUTO'
       Origin = 'FK_PRODUTO'
-      DisplayFormat = ',0.00'
     end
-    object qrySped_H010FK_UNIDADE: TIntegerField
+    object qrySped_H010FK_UNIDADE: TStringField
       FieldName = 'FK_UNIDADE'
       Origin = 'FK_UNIDADE'
-      DisplayFormat = ',0.00'
+      Size = 11
     end
     object qrySped_H010FK_EMPRESA: TIntegerField
       FieldName = 'FK_EMPRESA'
       Origin = 'FK_EMPRESA'
-      DisplayFormat = ',0.00'
     end
     object qrySped_H010FK_USUARIO: TIntegerField
       FieldName = 'FK_USUARIO'
       Origin = 'FK_USUARIO'
-      DisplayFormat = ',0.00'
+    end
+    object qrySped_H010CST_ICMS: TStringField
+      FieldName = 'CST_ICMS'
+      Origin = 'CST_ICMS'
+      Size = 3
+    end
+    object qrySped_H010BC_ICMS: TFMTBCDField
+      FieldName = 'BC_ICMS'
+      Origin = 'BC_ICMS'
+      Precision = 18
+      Size = 2
+    end
+    object qrySped_H010VL_ICMS: TFMTBCDField
+      FieldName = 'VL_ICMS'
+      Origin = 'VL_ICMS'
+      Precision = 18
+      Size = 2
     end
   end
   object qrySped_C100: TFDQuery
@@ -10501,69 +10558,16 @@ object Dados: TDados
     object qryMotoristaCNH: TStringField
       FieldName = 'CNH'
       Origin = 'CNH'
-      EditMask = '#########\-##;1;_'
     end
     object qryMotoristaVALIDADE: TDateField
       FieldName = 'VALIDADE'
       Origin = 'VALIDADE'
-      EditMask = '!99/99/0000;1;_'
     end
     object qryMotoristaCPF: TStringField
       FieldName = 'CPF'
       Origin = 'CPF'
       EditMask = '###.###.###-##;0;'
       Size = 11
-    end
-    object qryMotoristaDATA_NASCIMENTO: TDateField
-      DisplayLabel = 'DATA NASCIMENTO'
-      FieldName = 'DATA_NASCIMENTO'
-      Origin = 'DATA_NASCIMENTO'
-      EditMask = '!99/99/0000;1;_'
-    end
-    object qryMotoristaTELEFONE: TStringField
-      FieldName = 'TELEFONE'
-      Origin = 'TELEFONE'
-      EditMask = '!\(99\)\9 0000-0000;1;_'
-    end
-    object qryMotoristaWHATSAPP: TStringField
-      FieldName = 'WHATSAPP'
-      Origin = 'WHATSAPP'
-      EditMask = '!\(99\)\9 0000-0000;1;_'
-    end
-    object qryMotoristaEMAIL: TStringField
-      FieldName = 'EMAIL'
-      Origin = 'EMAIL'
-      Size = 100
-    end
-    object qryMotoristaCNH_CATEGORIA: TStringField
-      DisplayLabel = 'CNH CATEGORIA'
-      FieldName = 'CNH_CATEGORIA'
-      Origin = 'CNH_CATEGORIA'
-      Size = 5
-    end
-    object qryMotoristaCNH_DATA_EMISSAO: TDateField
-      DisplayLabel = 'CNH DATA EMISS'#195'O'
-      FieldName = 'CNH_DATA_EMISSAO'
-      Origin = 'CNH_DATA_EMISSAO'
-      EditMask = '!99/99/0000;1;_'
-    end
-    object qryMotoristaEXAMES_OBSERVACOES: TMemoField
-      DisplayLabel = 'EXAMES OBSERVA'#199#213'ES'
-      FieldName = 'EXAMES_OBSERVACOES'
-      Origin = 'EXAMES_OBSERVACOES'
-      BlobType = ftMemo
-    end
-    object qryMotoristaEXAMES_DATA_VENCIMENTO: TDateField
-      DisplayLabel = 'EXAMES DATA VENCIMENTO'
-      FieldName = 'EXAMES_DATA_VENCIMENTO'
-      Origin = 'EXAMES_DATA_VENCIMENTO'
-      EditMask = '!99/99/0000;1;_'
-    end
-    object qryMotoristaOBSERVACOES: TMemoField
-      DisplayLabel = 'OBSERVA'#199#213'ES GERAIS'
-      FieldName = 'OBSERVACOES'
-      Origin = 'OBSERVACOES'
-      BlobType = ftMemo
     end
   end
   object qryAtualiza: TFDQuery
@@ -13646,402 +13650,6 @@ object Dados: TDados
       Origin = 'QTD_ATACADO'
       Precision = 18
       Size = 3
-    end
-  end
-  object qryManutencao: TFDQuery
-    AggregatesActive = True
-    Connection = Conexao
-    FormatOptions.AssignedValues = [fvFmtDisplayDate, fvFmtDisplayNumeric]
-    FormatOptions.FmtDisplayDate = '##/##/#####;1;'
-    FormatOptions.FmtDisplayNumeric = ',0.00'
-    SQL.Strings = (
-      'SELECT '
-      '    m.*, '
-      '    mts.NOME AS TIPO_SERVICO '
-      'FROM veiculo_manutencao m'
-      
-        'LEFT JOIN VEICULO_MANUTENCAO_TIPO_SERVICO mts ON mts.CODIGO = m.' +
-        'TIPO_SERVICO_CODIGO'
-      'WHERE'
-      'veiculo_placa LIKE :placa'
-      '')
-    Left = 580
-    Top = 950
-    ParamData = <
-      item
-        Name = 'PLACA'
-        DataType = ftString
-        ParamType = ptInput
-        Size = 7
-        Value = ''
-      end>
-    object qryManutencaoCODIGO: TIntegerField
-      FieldName = 'CODIGO'
-      Origin = 'CODIGO'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      DisplayFormat = ',0.00'
-    end
-    object qryManutencaoVEICULO_PLACA: TStringField
-      FieldName = 'VEICULO_PLACA'
-      Origin = 'VEICULO_PLACA'
-      Size = 7
-    end
-    object qryManutencaoMOTORISTA_CODIGO: TIntegerField
-      FieldName = 'MOTORISTA_CODIGO'
-      Origin = 'MOTORISTA_CODIGO'
-      DisplayFormat = ',0.00'
-    end
-    object qryManutencaoFORNECEDOR_CODIGO: TIntegerField
-      FieldName = 'FORNECEDOR_CODIGO'
-      Origin = 'FORNECEDOR_CODIGO'
-      DisplayFormat = ',0.00'
-    end
-    object qryManutencaoDATA_ENTRADA: TDateField
-      FieldName = 'DATA_ENTRADA'
-      Origin = 'DATA_ENTRADA'
-      EditMask = '!99/99/0000;1;_'
-    end
-    object qryManutencaoHORA_ENTRADA: TTimeField
-      FieldName = 'HORA_ENTRADA'
-      Origin = 'HORA_ENTRADA'
-      EditMask = '!90:00;1;_'
-    end
-    object qryManutencaoDATA_SAIDA: TDateField
-      FieldName = 'DATA_SAIDA'
-      Origin = 'DATA_SAIDA'
-      EditMask = '!99/99/0000;1;_'
-    end
-    object qryManutencaoHORA_SAIDA: TTimeField
-      FieldName = 'HORA_SAIDA'
-      Origin = 'HORA_SAIDA'
-      EditMask = '!90:00;1;_'
-    end
-    object qryManutencaoKM_PROXIMA_REVISAO: TIntegerField
-      FieldName = 'KM_PROXIMA_REVISAO'
-      Origin = 'KM_PROXIMA_REVISAO'
-      DisplayFormat = ',0.00'
-    end
-    object qryManutencaoOBSERVACOES: TMemoField
-      FieldName = 'OBSERVACOES'
-      Origin = 'OBSERVACOES'
-      BlobType = ftMemo
-    end
-    object qryManutencaoTIPO_SERVICO_CODIGO: TIntegerField
-      FieldName = 'TIPO_SERVICO_CODIGO'
-      Origin = 'TIPO_SERVICO_CODIGO'
-      DisplayFormat = ',0.00'
-    end
-    object qryManutencaoTIPO_SERVICO: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'TIPO_SERVICO'
-      Origin = 'NOME'
-      ProviderFlags = []
-      ReadOnly = True
-      Size = 100
-    end
-  end
-  object qryManutencaoItem: TFDQuery
-    Connection = Conexao
-    Transaction = Transacao
-    UpdateTransaction = Transacao
-    FormatOptions.AssignedValues = [fvFmtDisplayDate, fvFmtDisplayNumeric]
-    FormatOptions.FmtDisplayDate = '##/##/#####;1;'
-    FormatOptions.FmtDisplayNumeric = ',0.00'
-    SQL.Strings = (
-      'select * from veiculo_manutencao_item'
-      'where'
-      'manutencao_codigo like :manutencao_codigo')
-    Left = 720
-    Top = 950
-    ParamData = <
-      item
-        Name = 'MANUTENCAO_CODIGO'
-        DataType = ftString
-        ParamType = ptInput
-        Size = 30
-      end>
-    object qryManutencaoItemCODIGO: TIntegerField
-      FieldName = 'CODIGO'
-      Origin = 'CODIGO'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      DisplayFormat = ',0.00'
-    end
-    object qryManutencaoItemMANUTENCAO_CODIGO: TIntegerField
-      FieldName = 'MANUTENCAO_CODIGO'
-      Origin = 'MANUTENCAO_CODIGO'
-      Required = True
-      DisplayFormat = ',0.00'
-    end
-    object qryManutencaoItemTIPO: TStringField
-      FieldName = 'TIPO'
-      Origin = 'TIPO'
-    end
-    object qryManutencaoItemDESCRICAO: TStringField
-      FieldName = 'DESCRICAO'
-      Origin = 'DESCRICAO'
-      Size = 255
-    end
-    object qryManutencaoItemQUANTIDADE: TFMTBCDField
-      FieldName = 'QUANTIDADE'
-      Origin = 'QUANTIDADE'
-      DisplayFormat = ',0.00'
-      Precision = 18
-      Size = 2
-    end
-    object qryManutencaoItemVALOR_UNITARIO: TBCDField
-      FieldName = 'VALOR_UNITARIO'
-      Origin = 'VALOR_UNITARIO'
-      DisplayFormat = ',0.00'
-      Precision = 18
-    end
-    object qryManutencaoItemDESCONTO: TBCDField
-      FieldName = 'DESCONTO'
-      Origin = 'DESCONTO'
-      DisplayFormat = ',0.00'
-      Precision = 18
-    end
-    object qryManutencaoItemVALOR_TOTAL: TFMTBCDField
-      FieldName = 'VALOR_TOTAL'
-      Origin = 'VALOR_TOTAL'
-      DisplayFormat = ',0.00'
-      Precision = 18
-      Size = 6
-    end
-  end
-  object qryManutencaoTipo: TFDQuery
-    AggregatesActive = True
-    Connection = Conexao
-    FormatOptions.AssignedValues = [fvFmtDisplayDate, fvFmtDisplayNumeric]
-    FormatOptions.FmtDisplayDate = '##/##/#####;1;'
-    FormatOptions.FmtDisplayNumeric = ',0.00'
-    SQL.Strings = (
-      'select * from VEICULO_MANUTENCAO_TIPO_SERVICO')
-    Left = 870
-    Top = 950
-    object qryManutencaoTipoCODIGO: TIntegerField
-      FieldName = 'CODIGO'
-      Origin = 'CODIGO'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      DisplayFormat = ',0.00'
-    end
-    object qryManutencaoTipoNOME: TStringField
-      FieldName = 'NOME'
-      Origin = 'NOME'
-      Required = True
-      Size = 100
-    end
-    object qryManutencaoTipoDESCRICAO: TMemoField
-      FieldName = 'DESCRICAO'
-      Origin = 'DESCRICAO'
-      BlobType = ftMemo
-    end
-  end
-  object qryRota: TFDQuery
-    Connection = Conexao
-    SQL.Strings = (
-      'SELECT * FROM VEICULOS_ROTA'
-      '/*where*/')
-    Left = 984
-    Top = 949
-    object qryRotaCODIGO: TIntegerField
-      FieldName = 'CODIGO'
-      Origin = 'CODIGO'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
-    object qryRotaVEICULO_PLACA: TStringField
-      FieldName = 'VEICULO_PLACA'
-      Origin = 'VEICULO_PLACA'
-      Required = True
-      Size = 10
-    end
-    object qryRotaORIGEM: TStringField
-      FieldName = 'ORIGEM'
-      Origin = 'ORIGEM'
-      Size = 100
-    end
-    object qryRotaDESTINO_FINAL: TStringField
-      FieldName = 'DESTINO_FINAL'
-      Origin = 'DESTINO_FINAL'
-      Size = 100
-    end
-    object qryRotaDATA_SAIDA: TDateField
-      FieldName = 'DATA_SAIDA'
-      Origin = 'DATA_SAIDA'
-      EditMask = '!99/99/0000;1;_'
-    end
-    object qryRotaHORA_SAIDA: TTimeField
-      FieldName = 'HORA_SAIDA'
-      Origin = 'HORA_SAIDA'
-      EditMask = '!90:00;1;_'
-    end
-    object qryRotaDATA_CHEGADA: TDateField
-      FieldName = 'DATA_CHEGADA'
-      Origin = 'DATA_CHEGADA'
-      EditMask = '!99/99/0000;1;_'
-    end
-    object qryRotaHORA_CHEGADA: TTimeField
-      FieldName = 'HORA_CHEGADA'
-      Origin = 'HORA_CHEGADA'
-      EditMask = '!90:00;1;_'
-    end
-    object qryRotaKM_INICIAL: TFMTBCDField
-      FieldName = 'KM_INICIAL'
-      Origin = 'KM_INICIAL'
-      Precision = 18
-      Size = 2
-    end
-    object qryRotaKM_FINAL: TFMTBCDField
-      FieldName = 'KM_FINAL'
-      Origin = 'KM_FINAL'
-      Precision = 18
-      Size = 2
-    end
-    object qryRotaOBSERVACAO: TStringField
-      FieldName = 'OBSERVACAO'
-      Origin = 'OBSERVACAO'
-      Size = 255
-    end
-    object qryRotaSTATUS: TStringField
-      FieldName = 'STATUS'
-      Origin = 'STATUS'
-    end
-  end
-  object qryRotaParadas: TFDQuery
-    Connection = Conexao
-    SQL.Strings = (
-      'SELECT * FROM VEICULOS_ROTA_PARADA'
-      'WHERE'
-      'ROTA_CODIGO = :ROTA_CODIGO')
-    Left = 1072
-    Top = 949
-    ParamData = <
-      item
-        Name = 'ROTA_CODIGO'
-        DataType = ftInteger
-        ParamType = ptInput
-      end>
-    object qryRotaParadasCODIGO: TIntegerField
-      FieldName = 'CODIGO'
-      Origin = 'CODIGO'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
-    object qryRotaParadasROTA_CODIGO: TIntegerField
-      FieldName = 'ROTA_CODIGO'
-      Origin = 'ROTA_CODIGO'
-      Required = True
-    end
-    object qryRotaParadasORDEM: TIntegerField
-      FieldName = 'ORDEM'
-      Origin = 'ORDEM'
-      Required = True
-    end
-    object qryRotaParadasCLIENTE_CODIGO: TIntegerField
-      FieldName = 'CLIENTE_CODIGO'
-      Origin = 'CLIENTE_CODIGO'
-      Required = True
-    end
-    object qryRotaParadasENDERECO_CLIENTE: TStringField
-      FieldName = 'ENDERECO_CLIENTE'
-      Origin = 'ENDERECO_CLIENTE'
-      Size = 255
-    end
-    object qryRotaParadasKM_DESTINO: TFMTBCDField
-      FieldName = 'KM_DESTINO'
-      Origin = 'KM_DESTINO'
-      Required = True
-      Precision = 18
-      Size = 2
-    end
-    object qryRotaParadasOBSERVACAO: TStringField
-      FieldName = 'OBSERVACAO'
-      Origin = 'OBSERVACAO'
-      Size = 255
-    end
-  end
-  object qryRotaDespesas: TFDQuery
-    Connection = Conexao
-    SQL.Strings = (
-      'SELECT * FROM VEICULO_ROTA_DESPESA'
-      'WHERE'
-      'ROTA_CODIGO = :ROTA_CODIGO')
-    Left = 1192
-    Top = 949
-    ParamData = <
-      item
-        Name = 'ROTA_CODIGO'
-        DataType = ftInteger
-        ParamType = ptInput
-      end>
-    object qryRotaDespesasCODIGO: TIntegerField
-      FieldName = 'CODIGO'
-      Origin = 'CODIGO'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
-    object qryRotaDespesasROTA_CODIGO: TIntegerField
-      FieldName = 'ROTA_CODIGO'
-      Origin = 'ROTA_CODIGO'
-      Required = True
-    end
-    object qryRotaDespesasTIPO_DESPESA_CODIGO: TIntegerField
-      FieldName = 'TIPO_DESPESA_CODIGO'
-      Origin = 'TIPO_DESPESA_CODIGO'
-      Required = True
-    end
-    object qryRotaDespesasFORNECEDOR_CODIGO: TIntegerField
-      FieldName = 'FORNECEDOR_CODIGO'
-      Origin = 'FORNECEDOR_CODIGO'
-    end
-    object qryRotaDespesasDESCRICAO: TStringField
-      FieldName = 'DESCRICAO'
-      Origin = 'DESCRICAO'
-      Size = 255
-    end
-    object qryRotaDespesasVALOR: TFMTBCDField
-      FieldName = 'VALOR'
-      Origin = 'VALOR'
-      Required = True
-      Precision = 18
-      Size = 2
-    end
-    object qryRotaDespesasDATA_VENCIMENTO: TDateField
-      FieldName = 'DATA_VENCIMENTO'
-      Origin = 'DATA_VENCIMENTO'
-      Required = True
-      EditMask = '!99/99/0000;1;_'
-    end
-    object qryRotaDespesasOBSERVACAO: TStringField
-      FieldName = 'OBSERVACAO'
-      Origin = 'OBSERVACAO'
-      Size = 255
-    end
-    object qryRotaDespesasCOMPROVANTE_DOC: TBlobField
-      FieldName = 'COMPROVANTE_DOC'
-      Origin = 'COMPROVANTE_DOC'
-    end
-    object qryRotaDespesasIMPORTADO_FIN: TStringField
-      FieldName = 'IMPORTADO_FIN'
-      Origin = 'IMPORTADO_FIN'
-      FixedChar = True
-      Size = 1
-    end
-  end
-  object qryRotaTipoDespesa: TFDQuery
-    Connection = Conexao
-    SQL.Strings = (
-      'SELECT * FROM VEICULO_ROTA_TIPO_DESPESA')
-    Left = 1296
-    Top = 909
-    object qryRotaTipoDespesaCODIGO: TIntegerField
-      FieldName = 'CODIGO'
-      Origin = 'CODIGO'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object qryRotaTipoDespesaDESCRICAO: TStringField
-      FieldName = 'DESCRICAO'
-      Origin = 'DESCRICAO'
-      Required = True
-      Size = 100
     end
   end
 end

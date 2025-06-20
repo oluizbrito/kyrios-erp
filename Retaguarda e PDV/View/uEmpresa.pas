@@ -28,7 +28,8 @@ uses
   dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinsDefaultPainters,
   dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue, dxScreenTip, cxClasses, dxCustomHint, cxHint;
+  dxSkinXmas2008Blue, dxScreenTip, cxClasses, dxCustomHint, cxHint, cxControls,
+  cxContainer, cxEdit, JvExMask, JvToolEdit, JvMaskEdit, cxTextEdit, cxDBEdit;
 type
   TfrmEmpresa = class(TForm)
     OpenPicture: TOpenPictureDialog;
@@ -435,7 +436,7 @@ type
     tabSantander: TTabSheet;
     tabSicoob: TTabSheet;
     tabBradesco: TTabSheet;
-    tabOutros: TTabSheet;
+    tabStatico: TTabSheet;
     tabMercadoPago: TTabSheet;
     GroupBox12: TGroupBox;
     Label81: TLabel;
@@ -473,6 +474,12 @@ type
     DBCheckBox_USA_WHATS: TDBCheckBox;
     OpenPictureDialog1: TOpenPictureDialog;
     cxHintStyleController1: TcxHintStyleController;
+    DBCheckBox24: TDBCheckBox;
+    GBoxStatica: TGroupBox;
+    cxDBTextEdit82: TcxDBTextEdit;
+    edtChavePIX: TJvMaskEdit;
+    qryEmpresaPEDIR_COLE_ETIQUETA: TStringField;
+    qryEmpresaCHAVE_PIX: TStringField;
     procedure btnSairClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure DBImage1Click(Sender: TObject);
@@ -511,6 +518,8 @@ type
     procedure cxGravarClick(Sender: TObject);
     procedure CxSairClick(Sender: TObject);
     procedure DBRadioGroup2Change(Sender: TObject);
+    procedure DBRadioGroup4Change(Sender: TObject);
+    procedure edtChavePIXKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
     function ListaDescImposto(Tipo: string): string;
@@ -654,9 +663,53 @@ begin
     4:
       PageControl4.ActivePage :=  tabBradesco;
     5:
-      PageControl4.ActivePage :=  tabOutros;
+      PageControl4.ActivePage :=  tabStatico;
     6:
       PageControl4.ActivePage :=  tabMercadoPago;
+  end;
+end;
+
+procedure TfrmEmpresa.DBRadioGroup4Change(Sender: TObject);
+begin
+if PageControl4.ActivePage = tabStatico then
+  begin
+   // edtChavePIX.Clear;
+    edtChavePIX.SetFocus;
+    //cxDBTextEdit82
+
+    case DBRadioGroup4.ItemIndex of
+      0:
+      begin
+       edtChavePIX.Width := 200;
+       edtChavePIX.EditMask := '';
+      end;
+      1:
+      begin
+       edtChavePIX.Width := 170;
+       edtChavePIX.EditMask := '!\(99\) 99999-9999;1;_';
+      end;  // Telefone
+      2, 3:
+      begin
+      edtChavePIX.Width := 450;
+      edtChavePIX.EditMask := '';
+        end
+
+    else
+      edtChavePIX.EditMask := '';
+    end;
+  end;
+end;
+
+procedure TfrmEmpresa.edtChavePIXKeyPress(Sender: TObject; var Key: Char);
+begin
+if DBRadioGroup4.ItemIndex = 0 then
+  begin
+    // Permitir apenas números e backspace
+    if not (Key in ['0'..'9', #8]) then
+    begin
+      Key := #0;
+      Exit;
+    end;
   end;
 end;
 
@@ -701,7 +754,7 @@ begin
   tabSantander.TabVisible :=  False;
   tabSicoob.TabVisible :=  False;
   tabBradesco.TabVisible :=  False;
-  tabOutros.TabVisible :=  False;
+  tabStatico.TabVisible :=  False;
   tabMercadoPago.TabVisible :=  False;
 end;
 procedure TfrmEmpresa.FormKeyDown(Sender: TObject; var Key: Word;
@@ -715,6 +768,7 @@ end;
 procedure TfrmEmpresa.FormShow(Sender: TObject);
 begin
   cbPessoa.SetFocus;
+  edtChavePIX.Text :=  cxDBTextEdit82.Text;
 end;
 function TfrmEmpresa.IsValidCNPJ(pCNPJ: string): Boolean;
 var
@@ -863,7 +917,7 @@ begin
           Dados.qryProdImpPadraoEMPRESA.Value :=
             qryEmpresaCODIGO.Value;
           Dados.qryProdImpPadrao.Post;
-          Dados.Conexao.CommitRetaining;
+          Dados.Conexao.Commit;
           Dados.qryProdImpPadrao.First;
           {$ENDREGION}
         end;
@@ -872,7 +926,7 @@ begin
 end;
 procedure TfrmEmpresa.qryEmpresaAfterPost(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
   dados.qryEmpresa.close;
   dados.qryEmpresa.Open;
   dados.qryEmpresa.Locate('CODIGO', dados.idempresa, []);
@@ -1013,12 +1067,19 @@ begin
   end;
 end;
 procedure TfrmEmpresa.cxGravarClick(Sender: TObject);
+var
+ CChavePIX: string;
 begin
    PageControl1.ActivePageIndex := 0;
   cbPessoa.SetFocus;
   if qryEmpresa.State in [dsInsert, dsEdit] then
   begin
     DBEdit9.SetFocus;
+    CChavePIX := Trim(edtChavePIX.Text);
+
+     if  CChavePIX  <> '' then
+     qryEmpresaCHAVE_PIX.Value := CChavePIX;
+
     if trim(qryEmpresaRAZAO.Value) = '' then
     begin
       ShowMessage('Digite o Nome ou Razão Social!');
@@ -1117,12 +1178,12 @@ begin
     if (Trim(qryEmpresaCNPJ_REPRESENTANTE.AsString)) = '' then
       begin
         { TODO : Coloca CNPJ Representante padrão caso o cliente não insira. }
-        qryEmpresaCNPJ_REPRESENTANTE.AsString :=  '57270732000119';
+        qryEmpresaCNPJ_REPRESENTANTE.AsString :=  '00000000000000';
       end;
     qryEmpresa.Post;
     if Dados.qryProdImpPadrao.State in [dsInsert, dsEdit] then
       dados.qryProdImpPadrao.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
     close;
   end;
 end;

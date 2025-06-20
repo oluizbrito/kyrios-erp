@@ -1,5 +1,7 @@
 unit uConsCTe;
-interface //Suporte e Vendas direto no Whatsapp (48)998463846
+
+interface
+
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, System.Math, System.zip, dateutils,
@@ -11,12 +13,13 @@ uses
   Vcl.Mask, pcnConversao, acbrUtil, ACBrDFeSSL, blcksock,
   Vcl.Tabs, Vcl.ExtDlgs, JPeg, frxClass, frxDBSet, ACBRDFeUtil,
   ACBrBase, ACBrMail, DBGridEh, DBCtrlsEh, DBLookupEh, Vcl.Menus, ACBrEnterTab,
-  ACBrCTeDACTEFR, ACBrDFeReport, ACBrCTeDACTEClass, ACBrCTeDACTeRLClass,
-  ACBrDFe, ACBrCTe, JvComponentBase, JvEnterTab, dxSkinsCore,
-  dxSkinDevExpressDarkStyle, dxSkinOffice2019Colorful, dxSkinOffice2019DarkGray,
-  cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, cxButtons;
+  ACBrDFeReport, ACBrCTeDACTEClass, ACBrCTeDACTeRLClass,
+  ACBrDFe, ACBrCTe, JvComponentBase, JvEnterTab, cxGraphics, cxLookAndFeels,
+  cxLookAndFeelPainters, cxButtons;
+
 type
   TfrmConsCTe = class(TForm)
+    Panel2: TPanel;
     Panel1: TPanel;
     LblSaldo: TLabel;
     qryCte: TFDQuery;
@@ -146,13 +149,17 @@ type
     edtInicial: TEdit;
     edtFinal: TEdit;
     edtJustificativa: TEdit;
+    Panel5: TPanel;
     btnInutilizar: TSpeedButton;
     btnFechar: TSpeedButton;
     TabCarta: TTabSheet;
     Panel6: TPanel;
     Label14: TLabel;
+    Panel8: TPanel;
     btnCorrecao: TSpeedButton;
     btnSairCorrecao: TSpeedButton;
+    qryCtePESOL: TFMTBCDField;
+    qryCtePESOB: TFMTBCDField;
     qryCorrecaoCAMPO: TStringField;
     qryCorrecaoGRUPO: TStringField;
     qryCorrecaoVALOR: TStringField;
@@ -172,8 +179,6 @@ type
     maskInicio: TMaskEdit;
     edtLoc: TEdit;
     JvEnterAsTab1: TJvEnterAsTab;
-    qryCtePESOL: TBCDField;
-    qryCtePESOB: TBCDField;
     Panel7: TPanel;
     cxAlterar: TcxButton;
     cxCCe: TcxButton;
@@ -185,8 +190,6 @@ type
     cxWhats: TcxButton;
     cxTransmitir: TcxButton;
     cxInutiliza: TcxButton;
-    Panel12: TPanel;
-    cxSair: TcxButton;
     procedure edtLocChange(Sender: TObject);
     procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
@@ -210,15 +213,14 @@ type
     procedure TabControl1Change(Sender: TObject);
     procedure cxNovoClick(Sender: TObject);
     procedure cxAlterarClick(Sender: TObject);
-    procedure cxCancelarClick(Sender: TObject);
     procedure cxTransmitirClick(Sender: TObject);
-    procedure cxRecuperarClick(Sender: TObject);
     procedure cxInutilizaClick(Sender: TObject);
+    procedure cxCancelarClick(Sender: TObject);
+    procedure cxRecuperarClick(Sender: TObject);
     procedure cxCCeClick(Sender: TObject);
     procedure cxGerarClick(Sender: TObject);
     procedure cxImprimirClick(Sender: TObject);
     procedure cxWhatsClick(Sender: TObject);
-    procedure cxSairClick(Sender: TObject);
   private
     procedure localiza;
     procedure tamanho;
@@ -229,14 +231,20 @@ type
   public
     operacao, idx: Integer;
     vOrdem, vSql: String;
+
     { Public declarations }
   end;
+
 var
   frmConsCTe: TfrmConsCTe;
-implementation //Acesse lojadodesenvolvedor.com.br e saiba mais sobre esse código fonte.
+
+implementation
+
 {$R *.dfm}
+
 uses Udados, uNFe, ufrmStatus, pcteConversaoCTe, uCadCTeOS, uTransportador,
   uDadosWeb, uDmCTe;
+
 function TfrmConsCTe.Getcomputer: String;
 var
   lpBuffer: PChar;
@@ -250,6 +258,7 @@ begin
   Result := String(lpBuffer);
   StrDispose(lpBuffer);
 end;
+
 procedure TfrmConsCTe.BitBtn3Click(Sender: TObject);
 begin
   try
@@ -257,6 +266,7 @@ begin
     if (qryCorrecao.State in dsEditmodes) then
       qryCorrecao.Post;
     dados.Conexao.CommitRetaining;
+
     dmCTe.ACBrCTe.EventoCTe.Evento.Clear;
     with dmCTe.ACBrCTe.EventoCTe.Evento.Add do
     begin
@@ -271,16 +281,19 @@ begin
     begin
       dmCTe.ACBrCTe.ImprimirEvento;
     end;
+
   finally
     cxCCe.Enabled := true;
   end;
 end;
+
 procedure TfrmConsCTe.CTE_OS;
 begin
   dmCTe.ACBrCTe.Conhecimentos.Clear;
   with dmCTe.ACBrCTe.Conhecimentos.Add.CTe do
   begin
-    infCTe.versao := 3.0;
+    infCTe.versao := 4.0;
+
     Ide.cUF := UFtoCUF(dados.qryEmpresaUF.Value);
     Ide.cCT := qryCteNUMERO.Value;
     Ide.CFOP := qryCteCFOP.Value;
@@ -296,6 +309,7 @@ begin
       Ide.tpAmb := taProducao
     else
       Ide.tpAmb := taHomologacao;
+
     Ide.tpCTe := tcNormal;
     case qryCteTIPOSERVICO.Value of
       0:
@@ -316,7 +330,7 @@ begin
         Ide.tpServ := tsExcessoBagagem;
     end;
     Ide.procEmi := peAplicativoContribuinte;
-    Ide.verProc := '3.0';
+    Ide.verProc := '4.0';
     Ide.cMunEnv := dados.qryEmpresaID_CIDADE.Value;
     Ide.xMunEnv := dados.qryEmpresaCIDADE.Value;
     Ide.UFEnv := dados.qryEmpresaUF.Value;
@@ -328,6 +342,7 @@ begin
     Ide.cMunFim := qryCteCODMUNFIM.Value;
     Ide.xMunFim := qryCteMINICIPIOFIM.Value;
     Ide.UFFim := qryCteUFFIM.Value;
+
     Emit.CNPJ := TiraPontos(dados.qryEmpresaCNPJ.Value);
     Emit.IE := TiraPontos(dados.qryEmpresaIE.Value);
     Emit.xNome := dados.qryEmpresaRAZAO.Value;
@@ -341,6 +356,7 @@ begin
     Emit.enderEmit.CEP := dados.qryEmpresaCEP.AsInteger;
     Emit.enderEmit.UF := dados.qryEmpresaUF.Value;
     Emit.enderEmit.fone := dados.qryEmpresaFONE.Value;
+
     // Adiciona dados do tomador do serviço
     qryTomador.Close;
     qryTomador.Params[0].Value := qryCteFKTOMADOR.Value;
@@ -362,9 +378,11 @@ begin
     toma.enderToma.cPais := 1058;
     toma.enderToma.xPais := 'BRASIL';
     toma.email := '';
+
     { Carrega valores da prestacao de servico }
     vPrest.vTPrest := qryCteTOTAL.AsFloat;
     vPrest.vRec := qryCteRECEBIDO.AsFloat;
+
     // 90 - ICMS Outros
     if Emit.enderEmit.UF = Rem.enderReme.UF then
     begin
@@ -385,19 +403,23 @@ begin
       Imp.ICMS.ICMSOutraUF.pICMSOutraUF := 0;
       Imp.ICMS.ICMSOutraUF.vICMSOutraUF := 0;
     end;
+
     Imp.infAdFisco :=
       'Lei da Transparencia: O valor aproximado de tributos incidentes sobre o preço deste servico é de R$'
       + FormatFloat(',0.00', qryCteVTOTTIRB.AsFloat) + ' Fonte: IBPT';
     Imp.vTotTrib := qryCteVTOTTIRB.AsFloat;
+
     // Impostos federais
     Imp.infTribFed.vPIS := qryCteVPIS.AsFloat;
     Imp.infTribFed.vCOFINS := qryCteVCOFINS.AsFloat;
     Imp.infTribFed.vIR := qryCteVIR.AsFloat;
     Imp.infTribFed.vINSS := qryCteVINSS.AsFloat;
     Imp.infTribFed.vCSLL := qryCteVCLSS.AsFloat;
+
     { Carrega as informacoes CTe Normal }
     infCTeNorm.infServico.xDescServ := qryCteDESCRICAOSERVICO.Value;;;
     infCTeNorm.infServico.qCarga := qryCteQTD.AsFloat;;
+
     { Carrega informacoes do seguro }
     with infCTeNorm.Seg.Add do
     begin
@@ -405,28 +427,34 @@ begin
       xSeg := qryCteXSEG.Value;
       nApol := qryCteNAPOLICE.Value;
     end;
+
     { Carrega Informacoes do Modal }
     { Rodoviario }
+
     infCTeNorm.rodoOS.TAF := qryCteTAF.AsString;
     infCTeNorm.rodoOS.NroRegEstadual := qryCteNROREGESTADUAL.AsString;
     infCTeNorm.rodoOS.infFretamento.tpFretamento := TtpFretamento(1);
     infCTeNorm.rodoOS.infFretamento.dhViagem := now;
+
     // responsavel tecnico 22-03-2019
     if dados.qryEmpresaRESPONSAVEL_TECNICO.Value = 'S' then
     begin
-      dados.qryParametro.Close;
-      dados.qryParametro.Open;
 
-      infRespTec.CNPJ := tirapontos(dados.qryParametroCNPJ.Value);
-      infRespTec.xContato := dados.qryParametroCONTATO.Value;
-      infRespTec.email := dados.qryParametroEMAIL_SUPORTE.Value;
-      infRespTec.fone := tirapontos(dados.qryParametroFONE1.Value);
-      infRespTec.hashCSRT := '';
+      dados.qryRespTecnico.Close;
+      dados.qryRespTecnico.Open;
+
+      infRespTec.CNPJ := TiraPontos(dados.qryRespTecnicoCNPJ.Value);
+      infRespTec.xContato := dados.qryRespTecnicoNOME.Value;
+      infRespTec.email := dados.qryRespTecnicoEMAIL.Value;
+      infRespTec.fone := TiraPontos(dados.qryRespTecnicoTELEFONE.Value);
+      infRespTec.hashCSRT := dados.qryRespTecnicoCSRT.Value;
     end;
+
     { Carega inf veiculos do modal rodo 0-1 }
     qryTransp.Close;
     qryTransp.Params[0].Value := qryCteFKTRANSPORTADOR.Value;
     qryTransp.Open;
+
     with infCTeNorm.rodoOS.veic do
     begin
       placa := qryTranspPLACA.Value;
@@ -435,28 +463,36 @@ begin
     end;
   end;
 end;
+
 procedure TfrmConsCTe.cxAlterarClick(Sender: TObject);
 var
   codigo: Integer;
 begin
+
   if not cxAlterar.Visible then
     exit;
+
   operacao := 1;
   if qryCte.IsEmpty then
     exit;
+
   if qryCteSITUACAO.Value <> '1' then
   begin
     ShowMessage('CTe não pode ser alterado!');
     exit;
   end;
+
   codigo := qryCteCODIGO.Value;
+
   try
     cxAlterar.Enabled := false;
     frmCadCTeOS := TfrmCadCTeOS.Create(Application);
     frmCadCTeOS.qryCte.Close;
     frmCadCTeOS.qryCte.Params[0].Value := codigo;
     frmCadCTeOS.qryCte.Open;
+
     frmCadCTeOS.qryCte.edit;
+
     frmCadCTeOS.cxGravar.Enabled := true;
     frmCadCTeOS.ShowModal;
   finally
@@ -464,6 +500,7 @@ begin
     btnFiltrar.Click;
     cxAlterar.Enabled := true;
   end;
+
 end;
 
 procedure TfrmConsCTe.cxCancelarClick(Sender: TObject);
@@ -472,6 +509,7 @@ var
 begin
   if not cxCancelar.Visible then
     exit;
+
   operacao := 0;
   dmCTe.ConfiguraCTe;
   dmCTe.ACBrCTe.Configuracoes.Arquivos.PathEvento :=
@@ -482,6 +520,7 @@ begin
     idLote := '1';
     CNPJ := copy(Chave, 7, 14);
     Protocolo := qryCtePROTOCOLO.Value;
+
     InputQuery('Cancelamento', 'Justificativa do Cancelamento', Justificativa);
     if length(Justificativa) < 15 then
     begin
@@ -490,6 +529,7 @@ begin
         ('Justificativa de cancelamento deve ter mais de 15 caracteres!');
       exit;
     end;
+
     with dmCTe.ACBrCTe.EventoCTe.Evento.Add do
     begin
       infEvento.nSeqEvento := 1;
@@ -500,10 +540,13 @@ begin
       infEvento.detEvento.xJust := Justificativa;
       infEvento.detEvento.nProt := Protocolo;
     end;
+
     dmCTe.ACBrCTe.EnviarEvento(StrToInt(idLote));
+
     dmCTe.ACBrCTe.Conhecimentos.Clear;
     dmCTe.ACBrCTe.WebServices.Consulta.CTeChave := qryCteCHAVE.Value;
     dmCTe.ACBrCTe.WebServices.Consulta.Executar;
+
     if dmCTe.ACBrCTe.WebServices.Consulta.cStat = 101 then
     begin
       qryCte.edit;
@@ -523,21 +566,28 @@ begin
     cxCancelar.Enabled := true;
     btnFiltrar.Click;
   end;
+
 end;
+
 procedure TfrmConsCTe.cxCCeClick(Sender: TObject);
 var
   cod: Integer;
 begin
+
   if not cxCCe.Visible then
     exit;
+
   dmCTe.ConfiguraCTe;
+
   TabCarta.TabVisible := true;
   TabInutilizar.TabVisible := false;
   PagUtilidade.Visible := true;
   PagUtilidade.ActivePage := TabCarta;
+
   qryCorrecao.Close;
   qryCorrecao.Params[0].Value := qryCteCODIGO.Value;
   qryCorrecao.Open;
+
   qryCorrecao.First;
   cod := qryCorrecaoSEQUENCIA.AsInteger + 1;
   qryCorrecao.Insert;
@@ -548,6 +598,7 @@ begin
   qryCorrecaoFK_EMPRESA.Value := qryCteFKEMPRESA.Value;
   qryCorrecaoDATA.Value := date;
 end;
+
 procedure TfrmConsCTe.cxGerarClick(Sender: TObject);
 begin
   dmCTe.ConfiguraCTe;
@@ -556,46 +607,59 @@ begin
   dmCTe.ACBrCTe.Conhecimentos.Items[0].GravarXML();
   dmCTe.ACBrCTe.Conhecimentos.Items[0].ImprimirPDF;
 end;
+
 procedure TfrmConsCTe.cxImprimirClick(Sender: TObject);
 begin
   try
     cxImprimir.Enabled := false;
+
     dmCTe.ACBrCTe.Conhecimentos.Clear;
     dmCTe.ACBrCTe.Conhecimentos.LoadFromString(qryCteXML.Value);
     dmCTe.ACBrCTe.Conhecimentos.Imprimir;
+
   finally
     cxImprimir.Enabled := true;
   end;
 end;
+
 procedure TfrmConsCTe.cxInutilizaClick(Sender: TObject);
 var
   dia, mes, ano: Word;
 begin
+
   if not cxInutiliza.Visible then
     exit;
+
   dmCTe.ConfiguraCTe;
   TabCarta.TabVisible := false;
   TabInutilizar.TabVisible := true;
   PagUtilidade.Visible := true;
   PagUtilidade.ActivePage := TabInutilizar;
+
   DecodeDate(date, ano, mes, dia);
   edtModelo.Text := qryCteMODELO.AsString;
   edtSerie.Text := dados.qryConfigCTE_SERIE.Value;
   edtAno.Text := IntToStr(ano);
   edtJustificativa.Text := 'QUEBRA DE SEQUÊNCIA DE NUMERAÇÃO';
+
 end;
+
 procedure TfrmConsCTe.cxNovoClick(Sender: TObject);
 begin
   if not cxNovo.Visible then
     exit;
+
   operacao := 1;
   try
     cxNovo.Enabled := false;
     frmCadCTeOS := TfrmCadCTeOS.Create(Application);
+
     frmCadCTeOS.qryCte.Close;
     frmCadCTeOS.qryCte.Params[0].Value := -1;
     frmCadCTeOS.qryCte.Open;
+
     frmCadCTeOS.qryCte.Insert;
+
     frmCadCTeOS.qryCteCODIGO.Value := dados.Numerador('CTE_MASTER', 'CODIGO',
       'N', '', '');
     frmCadCTeOS.qryCteFKEMPRESA.Value := dados.qryEmpresaCODIGO.Value;
@@ -605,7 +669,9 @@ begin
     dados.qryExecute.Params[0].Value := dados.qryConfigCTE_SERIE.Value;
     dados.qryExecute.Params[1].Value := frmCadCTeOS.qryCteFKEMPRESA.Value;
     dados.qryExecute.Open;
+
     frmCadCTeOS.qryCteNUMERO.Value := dados.qryExecute.Fields[0].AsInteger + 1;
+
     frmCadCTeOS.qryCteSITUACAO.Value := '1';
     frmCadCTeOS.qryCteDATA.Value := date;
     frmCadCTeOS.qryCteHORA.Value := time;
@@ -625,6 +691,7 @@ begin
     frmCadCTeOS.qryCteTIPOSERVICO.Value := 5;
     frmCadCTeOS.qryCteRESPSEG.Value := 0;
     frmCadCTeOS.qryCteDOCUMENTO.Value := 'N';
+
     frmCadCTeOS.qryCteSERIE.Value := dados.qryConfigCTE_SERIE.AsInteger;
     frmCadCTeOS.ShowModal;
   finally
@@ -633,19 +700,26 @@ begin
     cxNovo.Enabled := true;
   end;
 end;
+
 procedure TfrmConsCTe.cxRecuperarClick(Sender: TObject);
 begin
   if not cxRecuperar.Visible then
     exit;
+
   try
+
     dmCTe.ConfiguraCTe;
+
     cxRecuperar.Enabled := false;
     operacao := 1;
+
     dmCTe.ACBrCTe.Conhecimentos.Clear;
     dmCTe.ACBrCTe.Conhecimentos.LoadFromString(qryCteXML.Value);
     dmCTe.ACBrCTe.Consultar;
+
     if dmCTe.ACBrCTe.WebServices.Consulta.cStat = 100 then
     begin
+
       qryCte.edit;
       qryCteCHAVE.Value := dmCTe.ACBrCTe.Conhecimentos.Items[0]
         .CTe.procCTe.chCTe;
@@ -657,9 +731,12 @@ begin
       qryCteHORA.Value := now;
       qryCte.Post;
       dados.Conexao.CommitRetaining;
+
       dmCTe.ACBrCTe.Conhecimentos.GravarXML();
+
       dmCTe.ACBrCTe.Conhecimentos.Imprimir;
       dmCTe.ACBrCTe.Conhecimentos.ImprimirPDF;
+
       Application.ProcessMessages;
       ShowMessage('CTe Recuperado com sucesso!');
     end
@@ -674,17 +751,16 @@ begin
     cxRecuperar.Enabled := true;
     btnFiltrar.Click;
   end;
-end;
-procedure TfrmConsCTe.cxSairClick(Sender: TObject);
-begin
-      close;
+
 end;
 
 procedure TfrmConsCTe.cxTransmitirClick(Sender: TObject);
 begin
-   if not cxTransmitir.Visible then
+  if not cxTransmitir.Visible then
     exit;
+
   dmCTe.ConfiguraCTe;
+
   if qryCteSITUACAO.Value <> '1' then
   begin
     ShowMessage('Cte não está Aberto!');
@@ -697,6 +773,7 @@ begin
   end;
   try
     try
+
       if not(qryCteCHAVE.IsNull) and (trim(qryCteCHAVE.Value) <> '') and
         (length(qryCteCHAVE.Value) = 44) then
       begin
@@ -714,9 +791,11 @@ begin
           exit;
         end;
       end;
+
       CTE_OS;
       if dmCTe.ACBrCTe.Enviar(1, false) then
       begin
+
         qryCte.edit;
         qryCteCHAVE.Value := dmCTe.ACBrCTe.Conhecimentos.Items[0]
           .CTe.procCTe.chCTe;
@@ -736,33 +815,42 @@ begin
         raise Exception.Create(e.Message);
     end;
   finally
-    // btnTransmitir.Enabled := true;
+    // cxTransmitir.Enabled := true;
   end;
 end;
+
 procedure TfrmConsCTe.cxWhatsClick(Sender: TObject);
 var
   arquivo: string;
   FFone: String;
 begin
+
   if qryCte.IsEmpty then
     exit;
+
   if trim(qryCteXML.AsString) = '' then
     exit;
+
   dmCTe.ConfiguraCTe;
   dmCTe.ACBrCTe.Conhecimentos.Clear;
   dmCTe.ACBrCTe.Conhecimentos.LoadFromString(qryCteXML.Value);
   arquivo := dmCTe.ACBrCTe.DACTE.PathPDF + qryCteCHAVE.Value + '-cte.PDF';
+
   if not FilesExists(arquivo) then
     dmCTe.ACBrCTe.Conhecimentos.ImprimirPDF;
+
   if FileExists(arquivo) then
   begin
+
     FFone := InputBox('Digite o numero do whatsapp', 'Número:', '');
     if length(FFone) <> 11 then
       raise Exception.Create('Numero de Celular Inválido!');
+
     dados.InsereMensagemZap(arquivo, FFone,
       'Conforme solicitado, segue DACTE do CTe Número:' + qryCteNUMERO.AsString,
       '', '', dados.qryEmpresaRAZAO.AsString, 'CTE');
   end;
+
 end;
 
 procedure TfrmConsCTe.btnCorrecaoClick(Sender: TObject);
@@ -772,9 +860,11 @@ begin
     if (qryCorrecao.State in dsEditmodes) then
       qryCorrecao.Post;
     dados.Conexao.CommitRetaining;
+
     dmCTe.ACBrCTe.Conhecimentos.Clear;
     dmCTe.ACBrCTe.Conhecimentos.LoadFromString(qryCteXML.Value);
     dmCTe.ACBrCTe.EventoCTe.Evento.Clear;
+
     with dmCTe.ACBrCTe.EventoCTe.Evento.New do
     begin
       // Para o Evento de CCe: nSeqEvento varia de 1 até 20 por CT-e
@@ -784,9 +874,12 @@ begin
       infEvento.CNPJ := TiraPontos(dados.qryEmpresaCNPJ.Value);
       infEvento.dhEvento := now;
       infEvento.tpEvento := teCCe;
+
       infEvento.detEvento.xCondUso := '';
+
       dmCTe.ACBrCTe.EventoCTe.Evento.Items[0]
         .infEvento.detEvento.infCorrecao.Clear;
+
       with dmCTe.ACBrCTe.EventoCTe.Evento.Items[0]
         .infEvento.detEvento.infCorrecao.New do
       begin
@@ -796,21 +889,26 @@ begin
         nroItemAlterado := 1;
       end;
     end;
+
     if dmCTe.ACBrCTe.EnviarEvento(1) then
       dmCTe.ACBrCTe.ImprimirEvento;
+
   finally
     btnCorrecao.Enabled := true;
   end;
 end;
+
 procedure TfrmConsCTe.btnFecharClick(Sender: TObject);
 begin
   PagUtilidade.Visible := false;
 end;
+
 procedure TfrmConsCTe.btnFiltrarClick(Sender: TObject);
 begin
   localiza;
   edtLoc.SetFocus;
 end;
+
 procedure TfrmConsCTe.btnInutilizarClick(Sender: TObject);
 begin
   try
@@ -828,12 +926,14 @@ begin
     btnInutilizar.Enabled := false;
   end;
 end;
+
 procedure TfrmConsCTe.btnSairCorrecaoClick(Sender: TObject);
 begin
   qryCorrecao.Cancel;
   PagUtilidade.Visible := false;
   Application.ProcessMessages;
 end;
+
 procedure TfrmConsCTe.tamanho;
 begin
   DBGrid1.Columns[0].Width := round(Screen.Width * 0.07);
@@ -843,17 +943,21 @@ begin
   DBGrid1.Columns[4].Width := round(Screen.Width * 0.09);
   DBGrid1.Columns[5].Width := round(Screen.Width * 0.08);
 end;
+
 procedure TfrmConsCTe.DBGrid1DblClick(Sender: TObject);
 begin
   cxAlterar.Click;
 end;
+
 procedure TfrmConsCTe.DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
   DataCol: Integer; Column: TColumn; State: TGridDrawState);
 begin
+
   if odd((Sender as TDBGrid).DataSource.DataSet.RecNo) then
     (Sender as TDBGrid).Canvas.Brush.Color := $00F1ECE7
   else
     (Sender as TDBGrid).Canvas.Brush.Color := $00FAF8F5;
+
   if (gdSelected in State) then
   begin
     (Sender as TDBGrid).Canvas.Font.Color := clBlack;
@@ -864,6 +968,7 @@ begin
     DBGrid1.Canvas.Font.Style := [];
   (Sender as TDBGrid).DefaultDrawColumnCell(Rect, DataCol, Column, State);
 end;
+
 procedure TfrmConsCTe.DBGrid1TitleClick(Column: TColumn);
 var
   i: Integer;
@@ -877,6 +982,7 @@ begin
   end
   else
     vOrdem := ' DESC';
+
   idx := Column.Index;
   DBGrid1.Columns[0].Title.Caption := 'Número';
   DBGrid1.Columns[1].Title.Caption := 'Data';
@@ -884,19 +990,26 @@ begin
   DBGrid1.Columns[3].Title.Caption := 'Protocolo';
   DBGrid1.Columns[4].Title.Caption := 'Total';
   DBGrid1.Columns[5].Title.Caption := 'Situação';
+
   lblDescricao.Caption := 'Localizar <<' + DBGrid1.Columns[idx]
     .Title.Caption + '>>';
+
   DBGrid1.Columns[idx].Title.Caption := '>>' + DBGrid1.Columns[idx]
     .Title.Caption;
+
   for i := 0 to DBGrid1.Columns.Count - 1 do
     DBGrid1.Columns[i].Title.Font.Style := [];
+
   DBGrid1.Columns[idx].Title.Font.Style := [fsbold];
+
   localiza;
+
   if (idx in [1 .. 2]) then
     maskInicio.SetFocus
   else
     edtLoc.SetFocus;
 end;
+
 procedure TfrmConsCTe.dsCTeDataChange(Sender: TObject; Field: TField);
 begin
   cxTransmitir.Enabled := qryCteSITUACAO.Value = '1';
@@ -905,10 +1018,12 @@ begin
   cxCancelar.Enabled := qryCteSITUACAO.Value = '2';
   cxImprimir.Enabled := qryCteSITUACAO.Value = '2';
 end;
+
 procedure TfrmConsCTe.edtLocChange(Sender: TObject);
 begin
   localiza;
 end;
+
 procedure TfrmConsCTe.edtLocKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
@@ -917,12 +1032,14 @@ begin
   if Key = VK_DOWN then
     qryCte.Next;
 end;
+
 procedure TfrmConsCTe.FormActivate(Sender: TObject);
 begin
   dados.vForm := nil;
   dados.vForm := self;
   dados.GetComponentes;
 end;
+
 procedure TfrmConsCTe.Botoes;
 begin
   cxNovo.Visible := dados.qryPermissoesBotaoINCLUIR.Value = 'S';
@@ -933,6 +1050,7 @@ begin
   cxRecuperar.Visible := dados.qryPermissoesBotaoEDITAR.Value = 'S';
   cxCCe.Visible := dados.qryPermissoesBotaoEDITAR.Value = 'S';
 end;
+
 procedure TfrmConsCTe.FormCreate(Sender: TObject);
 var
   dia, mes, ano: Word;
@@ -942,9 +1060,12 @@ begin
   maskInicio.EditText := '01' + '/' + FormatFloat('00', mes) + '/' +
     IntToStr(ano);
   maskFim.EditText := datetostr(date);
+
   dados.Habilitacoes(dados.aMenu, self.Name);
   Botoes;
+
 end;
+
 procedure TfrmConsCTe.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
@@ -970,29 +1091,38 @@ begin
     cxWhats.Click;
   if Key = vk_f12 then
     maskInicio.SetFocus;
+
 end;
+
 procedure TfrmConsCTe.FormShow(Sender: TObject);
 begin
+
   dados.qryConfig.Close;
   dados.qryConfig.Params[0].Value := dados.qryEmpresaCODIGO.Value;
   dados.qryConfig.Open;
+
   dados.qryProd.Close;
   dados.qryProd.Params[0].Value := dados.qryEmpresaCODIGO.Value;
   dados.qryProd.Open;
+
   dados.qryTerminal.Close;
   dados.qryTerminal.Params[0].Value := dados.Getcomputer;
   dados.qryTerminal.Open;
+
   if not dados.qryTerminal.Locate('nome', Getcomputer, []) then
   begin
     ShowMessage('Terminal não cadastrado!');
   end;
+
   tamanho;
   maskInicio.EditText := datetostr(StartOfTheMonth(date));
   maskFim.EditText := datetostr(date);
   DBGrid1TitleClick(DBGrid1.Columns[0]);
   qryCte.Last;
   edtLoc.SetFocus;
+
 end;
+
 procedure TfrmConsCTe.localiza;
 var
   parte, filtro, filtro1, ordem: string;
@@ -1001,15 +1131,20 @@ begin
   filtro1 := '';
   ordem := '';
   parte := '';
+
   if dados.qryEmpresaPESQUISA_POR_PARTE.AsString = 'S' then
     parte := '%';
+
   vSql := ' select CTe.* from CTE_MASTER CTe  ' + ' where ' +
     ' situacao in (''1'',''2'',''3'',''4'',''5'') ' + ' /*where*/ ';
+
   filtro := filtro + ' and CTE.fkempresa=' + dados.qryEmpresaCODIGO.AsString;
+
   filtro := filtro + ' and CTE.Data>=' +
     QuotedStr(FormatDateTime('mm/dd/yyyy', strtodate(maskInicio.EditText))) +
     ' and CTE.Data<=' + QuotedStr(FormatDateTime('mm/dd/yyyy',
     strtodate(maskFim.EditText)));
+
   case idx of
     0:
       begin
@@ -1017,6 +1152,7 @@ begin
           filtro := filtro + ' and CTE.numero like ' +
             QuotedStr(edtLoc.Text + '%');
       end;
+
     2:
       begin
         if (trim(edtLoc.Text) <> '') then
@@ -1035,7 +1171,9 @@ begin
           filtro := filtro + ' and cte.total >= ' + StringReplace(edtLoc.Text,
             ',', '.', []);
       end;
+
   end;
+
   case idx of
     0:
       ordem := ' order by numero ' + vOrdem;
@@ -1049,23 +1187,30 @@ begin
       ordem := ' order by total ' + vOrdem;
     5:
       ordem := ' order by situacao ' + vOrdem;
+
   end;
+
   qryCte.Close;
+
   qryCte.SQL.Text := vSql;
   qryCte.SQL.Text := StringReplace(qryCte.SQL.Text, '/*where*/',
     filtro + filtro1 + ordem, [rfReplaceAll]);
   qryCte.Open;
 end;
+
 procedure TfrmConsCTe.maskFimKeyPress(Sender: TObject; var Key: Char);
 begin
   if (Key = #13) then
     btnFiltrar.SetFocus;
+
 end;
+
 procedure TfrmConsCTe.maskInicioKeyPress(Sender: TObject; var Key: Char);
 begin
   if (Key = #13) then
     maskFim.SetFocus;
 end;
+
 procedure TfrmConsCTe.qryCteCalcFields(DataSet: TDataSet);
 begin
   if qryCteSITUACAO.Value = '1' then
@@ -1080,10 +1225,12 @@ begin
     qryCteVIRTUAL_SITUACAO.Value := 'INUTILIZADA';
   if qryCteSITUACAO.Value = '6' then
     qryCteVIRTUAL_SITUACAO.Value := 'DENEGADA';
+
 end;
+
 procedure TfrmConsCTe.TabControl1Change(Sender: TObject);
 begin
   localiza;
 end;
-end.
 
+end.

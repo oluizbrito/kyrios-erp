@@ -450,7 +450,7 @@ if Dados.qryPessoas.State in [dsInsert, dsEdit] then
       qryContatos.Post;
 
     Dados.qryPessoas.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
   end;
   frmCadPessoa.close;
 end;
@@ -585,7 +585,7 @@ end;
 
 procedure TfrmCadPessoa.qryContatosAfterPost(DataSet: TDataSet);
 begin
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TfrmCadPessoa.qryContatosBeforeInsert(DataSet: TDataSet);
@@ -593,7 +593,7 @@ begin
   try
     if (Dados.qryPessoas.State in dsEditModes) then
       Dados.qryPessoas.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
   except
     On E: Exception do
       raise Exception.Create(E.Message);

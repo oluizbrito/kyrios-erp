@@ -271,7 +271,7 @@ begin
     try
       if (qryRecebimento.State in dsEditModes) then
         qryRecebimento.Post;
-      Dados.Conexao.CommitRetaining;
+      Dados.Conexao.Commit;
 
       qryCaixa.Close;
       qryCaixa.Params[0].Value := qryRecebimentoCODIGO.AsString;
@@ -297,7 +297,7 @@ begin
       qryCaixaFKRECEBER.Value := qryRecebimentoCODIGO.Value;
       qryCaixaEMPRESA.Value := qryCRFKEMPRESA.Value;
       qryCaixa.Post;
-      Dados.Conexao.CommitRetaining;
+      Dados.Conexao.Commit;
 
       Dados.qrysomarec.Close;
       Dados.qrysomarec.Params[0].Value := qryCRCODIGO.Value;
@@ -316,7 +316,7 @@ begin
       if (qryCRVL_RESTANTE.Value > 0) and (qryCRVRECEBIDO.Value > 0) then
         qryCRSITUACAO.Value := 'P';
       qryCR.Post;
-      Dados.Conexao.CommitRetaining;
+      Dados.Conexao.Commit;
       Application.ProcessMessages;
       ShowMessage('Baixa de título efetuada com sucesso!');
       Close;

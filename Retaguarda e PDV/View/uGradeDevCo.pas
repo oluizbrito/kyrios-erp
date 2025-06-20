@@ -89,7 +89,7 @@ end;
 
 procedure TFrmGradeDevCO.qryGradeAfterPost(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TFrmGradeDevCO.GeraGrade(aItens: INteger; aQtd: Extended;
@@ -135,7 +135,7 @@ begin
       qryGradeQTD.AsFloat := aQtd;
       qryGrade.Post;
 
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
 
       qryPesquisa.Next;
     end;

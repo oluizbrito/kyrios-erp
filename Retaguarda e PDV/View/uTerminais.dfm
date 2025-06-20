@@ -3,8 +3,8 @@ object frmTerminais: TfrmTerminais
   Top = 0
   BorderStyle = bsSingle
   Caption = 'Configura'#231#245'es de Terminais'
-  ClientHeight = 694
-  ClientWidth = 736
+  ClientHeight = 661
+  ClientWidth = 784
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -21,7 +21,7 @@ object frmTerminais: TfrmTerminais
     Left = 0
     Top = 0
     Width = 214
-    Height = 630
+    Height = 597
     Align = alLeft
     DataSource = dsTerminais
     Font.Charset = ANSI_CHARSET
@@ -48,66 +48,105 @@ object frmTerminais: TfrmTerminais
   object PageControl3: TPageControl
     Left = 214
     Top = 0
-    Width = 522
-    Height = 630
+    Width = 570
+    Height = 597
     ActivePage = TabSheet11
     Align = alClient
     TabOrder = 1
+    OnChange = PageControl3Change
     object TabSheet11: TTabSheet
       Caption = 'Configura'#231#245'es'
+      DesignSize = (
+        562
+        565)
       object Label24: TLabel
-        Left = 265
+        Left = 338
         Top = 4
         Width = 41
         Height = 17
         Caption = 'N'#186' Vias'
         FocusControl = DBEdit6
       end
-      object Label13: TLabel
-        Left = 3
-        Top = 41
-        Width = 124
-        Height = 17
-        Caption = 'Modelo da Impressora'
-      end
-      object Label15: TLabel
-        Left = 3
-        Top = 78
-        Width = 93
-        Height = 17
-        Caption = 'Caminho Padr'#227'o'
-      end
       object Label23: TLabel
-        Left = 200
+        Left = 273
         Top = 4
         Width = 50
         Height = 17
         Caption = 'N'#186' Inicial'
       end
       object Label27: TLabel
-        Left = 327
-        Top = 4
+        Left = 400
+        Top = 3
         Width = 28
         Height = 17
         Caption = 'S'#233'rie'
         FocusControl = DBEdit6
       end
       object Label17: TLabel
-        Left = 2
-        Top = 119
+        Left = 946
+        Top = 148
         Width = 99
         Height = 17
         Caption = 'Caminho Cozinha'
       end
       object Label21: TLabel
-        Left = 3
-        Top = 160
+        Left = 947
+        Top = 191
         Width = 72
         Height = 17
         Caption = 'Caminho Bar'
       end
+      object lblImpressora: TLabel
+        Left = 11
+        Top = 192
+        Width = 158
+        Height = 17
+        Caption = 'Caminho Impressora Gr'#225'fico'
+      end
+      object btnImpressora: TSpeedButton
+        Left = 512
+        Top = 217
+        Width = 39
+        Height = 23
+        Glyph.Data = {
+          36040000424D3604000000000000360000002800000010000000100000000100
+          2000000000000004000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000090000
+          000E000000100000001000000010000000100000001000000011000000110000
+          001100000011000000100000000B00000003000000000000000019427ACA245A
+          A5FF255CA7FF255BA7FF245AA6FF2459A6FF2358A5FF2358A4FF2356A4FF2256
+          A4FF2255A3FF2154A3FF2153A1FF1C468AE303080F2900000002255DA5FF316B
+          AEFF6DA6D5FF86CAF0FF46A6E4FF44A3E4FF41A1E3FF3FA0E2FF3C9EE2FF3B9C
+          E1FF389BE0FF369AE0FF3498DFFF2C77C1FF10284D8B000000082B68AEFF4984
+          BEFF4B8BC5FFB2E3F8FF68BBECFF55B0E8FF52AEE8FF4EACE7FF4CA9E6FF49A8
+          E5FF47A6E4FF44A4E4FF41A2E3FF3A92D6FF1C4885D50000000D2F6FB4FF6CA7
+          D2FF3F87C4FFAED9F0FF9AD8F5FF66BDEEFF63BBEDFF60B9EBFF5DB6EBFF5BB5
+          EAFF57B2EAFF55B0E9FF51AEE7FF4FABE7FF2D69B1FF040B142F3276B9FF8FC7
+          E6FF509FD4FF86BCE0FFC5EFFCFF78CAF2FF74C8F1FF72C5F0FF6FC4F0FF6DC2
+          EFFF69C0EEFF66BDEEFF63BBEDFF60B9EBFF448BC9FF122D4D81357CBCFFAFE3
+          F5FF75C8EDFF59A2D4FFDDF7FDFFDFF8FEFFDDF7FEFFDBF7FEFFD8F5FEFFD4F4
+          FDFFD0F2FDFFCCEFFCFFC7EDFBFFC1EBFBFF9ACBE9FF215187CB3882C1FFC7F5
+          FEFF97E5FCFF64BAE5FF4D9FD3FF4D9DD2FF4B9BD1FF4A99CFFF4998CFFF4896
+          CEFF4694CCFF4592CBFF3073B7FF3072B6FF2F71B5FF2A65A4EA3A88C5FFCDF7
+          FEFFA6ECFEFF9CE8FDFF93E4FBFF8EE1FBFF89DFFBFF86DEFAFF81DAFAFF7ED8
+          F9FF7BD7F9FF79D6F9FF2A6BB0FF000000140000000A000000073D8EC8FFD0F8
+          FEFFAEF0FEFFAAEEFEFFA6EDFEFFA5EBFDFFBBF2FDFFD4F9FEFFD5F9FEFFD3F8
+          FEFFD1F8FEFFCEF7FDFF3680BFFF0000000800000000000000003F92CBFFD3F9
+          FEFFB6F3FEFFB3F1FDFFB0F1FEFFB8EDFAFF4895CBFF3B8CC6FF3B8AC6FF3A89
+          C5FF3A88C5FF3A87C3FF2A6391C20000000500000000000000004197CEFFE2FC
+          FEFFE2FCFEFFE1FCFEFFD4F3FAFF458FBFEC040A0E1B00000006000000060000
+          000600000006000000060000000400000001000000000000000031739ABF429A
+          D0FF4299D0FF4299D0FF4297CFFF153244590000000200000000000000000000
+          0000000000000000000000000000000000000000000000000000000000020000
+          0003000000030000000400000003000000020000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000}
+        OnClick = btnImpressoraClick
+      end
       object DBEdit6: TDBEdit
-        Left = 265
+        Left = 338
         Top = 22
         Width = 56
         Height = 21
@@ -124,7 +163,7 @@ object frmTerminais: TfrmTerminais
         TabOrder = 1
       end
       object DBEdit17: TDBEdit
-        Left = 327
+        Left = 400
         Top = 22
         Width = 35
         Height = 21
@@ -141,7 +180,7 @@ object frmTerminais: TfrmTerminais
         TabOrder = 2
       end
       object DBEdit18: TDBEdit
-        Left = 200
+        Left = 273
         Top = 22
         Width = 61
         Height = 21
@@ -157,80 +196,13 @@ object frmTerminais: TfrmTerminais
         ParentFont = False
         TabOrder = 0
       end
-      object cbModeloImpressora: TDBComboBox
-        Left = 3
-        Top = 57
-        Width = 470
-        Height = 23
-        BevelKind = bkFlat
-        Ctl3D = False
-        DataField = 'MODELO'
-        DataSource = dsTerminais
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlue
-        Font.Height = -12
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        Items.Strings = (
-          'TEXTO'
-          'ELGIN'
-          'EPSON'
-          'BEMATECH'
-          'DARUMA'
-          'VOX'
-          'DIEBOLD'
-          'EPSONP2'
-          'POSSTAR'
-          'GPRINTER'
-          'JIANG')
-        ParentCtl3D = False
-        ParentFont = False
-        TabOrder = 3
-      end
-      object cbPortaImpressora: TDBComboBox
-        Left = 3
-        Top = 95
-        Width = 470
-        Height = 23
-        BevelKind = bkFlat
-        Ctl3D = False
-        DataField = 'PORTA'
-        DataSource = dsTerminais
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlue
-        Font.Height = -12
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        Items.Strings = (
-          '75'
-          '110'
-          '134'
-          '150'
-          '300'
-          '600'
-          '1200'
-          '1800'
-          '2400'
-          '4800'
-          '7200'
-          '9600'
-          '14400'
-          '19200'
-          '38400'
-          '57600'
-          '115200'
-          '128000')
-        ParentCtl3D = False
-        ParentFont = False
-        TabOrder = 4
-      end
       object DBRadioGroup2: TDBRadioGroup
         Left = 3
         Top = 4
-        Width = 191
-        Height = 39
+        Width = 264
+        Height = 42
         Caption = 'Tip de Impressora'
-        Columns = 2
+        Columns = 3
         DataField = 'TIPOIMPRESSORA'
         DataSource = dsTerminais
         Font.Charset = ANSI_CHARSET
@@ -239,18 +211,20 @@ object frmTerminais: TfrmTerminais
         Font.Name = 'Segoe UI Semilight'
         Font.Style = []
         Items.Strings = (
-          'Papel A4'
-          'Bobina')
+          'Pedido A4'
+          'ESC/POS'
+          'Gr'#225'fico')
         ParentFont = False
-        TabOrder = 7
+        TabOrder = 5
         Values.Strings = (
           '1'
-          '2')
+          '2'
+          '3')
       end
       object cbCozinha: TDBComboBox
-        Left = 3
-        Top = 136
-        Width = 470
+        Left = 947
+        Top = 165
+        Width = 118
         Height = 23
         BevelKind = bkFlat
         Ctl3D = False
@@ -282,12 +256,12 @@ object frmTerminais: TfrmTerminais
           '128000')
         ParentCtl3D = False
         ParentFont = False
-        TabOrder = 5
+        TabOrder = 3
       end
       object cbBar: TDBComboBox
-        Left = 3
-        Top = 178
-        Width = 470
+        Left = 947
+        Top = 209
+        Width = 124
         Height = 23
         BevelKind = bkFlat
         Ctl3D = False
@@ -319,12 +293,12 @@ object frmTerminais: TfrmTerminais
           '128000')
         ParentCtl3D = False
         ParentFont = False
-        TabOrder = 6
+        TabOrder = 4
       end
       object DBCheckBox15: TDBCheckBox
-        Left = 368
-        Top = 14
-        Width = 105
+        Left = 444
+        Top = 17
+        Width = 112
         Height = 29
         TabStop = False
         Caption = 'Usar N'#186' Inicial'
@@ -336,18 +310,1140 @@ object frmTerminais: TfrmTerminais
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        TabOrder = 8
+        TabOrder = 6
         ValueChecked = 'S'
         ValueUnchecked = 'N'
         WordWrap = True
       end
-      object GroupBox_ecf: TGroupBox
+      object GroupBox_pdv: TGroupBox
+        Left = 292
+        Top = 317
+        Width = 264
+        Height = 130
+        Caption = 'Configura'#231#245'es do PDV'
+        TabOrder = 7
+        object DBCheckBox3: TDBCheckBox
+          Left = 16
+          Top = 25
+          Width = 97
+          Height = 17
+          TabStop = False
+          Caption = 'Usa Gaveta'
+          DataField = 'USAGAVETA'
+          DataSource = dsTerminais
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+          ValueChecked = 'S'
+          ValueUnchecked = 'N'
+        end
+        object DBCheckBox12: TDBCheckBox
+          Left = 16
+          Top = 48
+          Width = 150
+          Height = 17
+          TabStop = False
+          Caption = 'Usa controle de Caixa'
+          DataField = 'EH_CAIXA'
+          DataSource = dsTerminais
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 1
+          ValueChecked = 'S'
+          ValueUnchecked = 'N'
+        end
+        object DBCheckBox2: TDBCheckBox
+          Left = 16
+          Top = 71
+          Width = 183
+          Height = 17
+          TabStop = False
+          Caption = 'Perguntar se quer Imprimir'
+          DataField = 'IMPRIME'
+          DataSource = dsTerminais
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 2
+          ValueChecked = 'S'
+          ValueUnchecked = 'N'
+        end
+        object DBCheckPREVIEW: TDBCheckBox
+          Left = 16
+          Top = 94
+          Width = 245
+          Height = 17
+          TabStop = False
+          Caption = 'Preview da Impress'#227'o (Modo Gr'#225'fico)'
+          DataField = 'IMPRIME_PREVIEW'
+          DataSource = dsTerminais
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 3
+          ValueChecked = 'S'
+          ValueUnchecked = 'N'
+        end
+      end
+      object DBEdit_impressora: TDBEdit
+        Left = 11
+        Top = 215
+        Width = 495
+        Height = 25
+        DataField = 'IMPRESSORA_FORTESREPORT'
+        DataSource = dsTerminais
+        TabOrder = 8
+      end
+      object ckMeiaFolha: TDBCheckBox
+        Left = 20
+        Top = 323
+        Width = 193
+        Height = 17
+        Caption = 'Modo Economia - Meia Folha'
+        DataField = 'MEIAFOLHA'
+        DataSource = dsTerminais
+        TabOrder = 9
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        Visible = False
+      end
+      object GroupBox2: TGroupBox
         Left = 3
-        Top = 379
+        Top = 54
+        Width = 553
+        Height = 132
+        Caption = 'Configura'#231#245'es ESC/POS'
+        TabOrder = 10
+        object Label15: TLabel
+          Left = 8
+          Top = 72
+          Width = 93
+          Height = 17
+          Caption = 'Caminho Padr'#227'o'
+        end
+        object Label13: TLabel
+          Left = 8
+          Top = 26
+          Width = 124
+          Height = 17
+          Caption = 'Modelo da Impressora'
+        end
+        object cbPortaImpressora: TDBComboBox
+          Left = 8
+          Top = 92
+          Width = 529
+          Height = 23
+          BevelKind = bkFlat
+          Ctl3D = False
+          DataField = 'PORTA'
+          DataSource = dsTerminais
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlue
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Items.Strings = (
+            '75'
+            '110'
+            '134'
+            '150'
+            '300'
+            '600'
+            '1200'
+            '1800'
+            '2400'
+            '4800'
+            '7200'
+            '9600'
+            '14400'
+            '19200'
+            '38400'
+            '57600'
+            '115200'
+            '128000')
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 0
+        end
+        object cbModeloImpressora: TDBComboBox
+          Left = 8
+          Top = 45
+          Width = 529
+          Height = 23
+          BevelKind = bkFlat
+          Ctl3D = False
+          DataField = 'MODELO'
+          DataSource = dsTerminais
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlue
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Items.Strings = (
+            'TEXTO'
+            'ELGIN'
+            'EPSON'
+            'BEMATECH'
+            'DARUMA'
+            'VOX'
+            'DIEBOLD'
+            'EPSONP2'
+            'POSSTAR'
+            'GPRINTER'
+            'JIANG')
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 1
+        end
+      end
+      object GroupBox3: TGroupBox
+        Left = 292
+        Top = 453
+        Width = 264
+        Height = 105
+        Caption = 'Quais abas exibir no PDV ?'
+        TabOrder = 11
+        object DBCheckBox10: TDBCheckBox
+          Left = 16
+          Top = 50
+          Width = 109
+          Height = 17
+          TabStop = False
+          Caption = 'Exibe - Delivery'
+          DataField = 'DELIVERY'
+          DataSource = dsTerminais
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+          ValueChecked = 'S'
+          ValueUnchecked = 'N'
+        end
+        object DBCheckBox11: TDBCheckBox
+          Left = 16
+          Top = 73
+          Width = 109
+          Height = 17
+          TabStop = False
+          Caption = 'Exibe - Mesas'
+          DataField = 'RESTAURANTE'
+          DataSource = dsTerminais
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 1
+          ValueChecked = 'S'
+          ValueUnchecked = 'N'
+        end
+        object DBCheckBox4: TDBCheckBox
+          Left = 16
+          Top = 27
+          Width = 109
+          Height = 17
+          TabStop = False
+          Caption = 'Exibe - PDV'
+          DataField = 'PDV'
+          DataSource = dsTerminais
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 2
+          ValueChecked = 'S'
+          ValueUnchecked = 'N'
+        end
+      end
+      object GroupBox4: TGroupBox
+        Left = 3
+        Top = 356
+        Width = 264
+        Height = 202
+        Caption = 'Tipo de Opera'#231#227'o padr'#227'o.'
+        TabOrder = 12
+        object Label3: TLabel
+          Left = 17
+          Top = 29
+          Width = 90
+          Height = 17
+          Caption = 'Selecione o tipo'
+        end
+        object DBCheckBox5: TDBCheckBox
+          Left = 17
+          Top = 107
+          Width = 200
+          Height = 17
+          TabStop = False
+          Caption = 'Bot'#227'o F4 - Transmitir (NFCe) '
+          DataField = 'EXIBE_F4'
+          DataSource = dsTerminais
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+          ValueChecked = 'S'
+          ValueUnchecked = 'N'
+        end
+        object DBCheckBox6: TDBCheckBox
+          Left = 17
+          Top = 130
+          Width = 125
+          Height = 26
+          TabStop = False
+          Caption = 'Bot'#227'o F5 - Pedido '
+          DataField = 'EXIBE_F5'
+          DataSource = dsTerminais
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 1
+          ValueChecked = 'S'
+          ValueUnchecked = 'N'
+        end
+        object DBCheckBox7: TDBCheckBox
+          Left = 17
+          Top = 161
+          Width = 141
+          Height = 17
+          TabStop = False
+          Caption = 'Bot'#227'o F6 - Finalizar'
+          DataField = 'EXIBE_F6'
+          DataSource = dsTerminais
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 2
+          ValueChecked = 'S'
+          ValueUnchecked = 'N'
+        end
+        object DBCheckBox1: TDBCheckBox
+          Left = 17
+          Top = 82
+          Width = 232
+          Height = 17
+          TabStop = False
+          Caption = 'Bot'#227'o F3 - Conting'#234'ncia (NFCe)'
+          DataField = 'EXIBE_F3'
+          DataSource = dsTerminais
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 3
+          ValueChecked = 'S'
+          ValueUnchecked = 'N'
+        end
+        object DBComboBoxEh3: TDBComboBoxEh
+          Left = 17
+          Top = 52
+          Width = 183
+          Height = 23
+          DataField = 'FLAG'
+          DataSource = dsTerminais
+          DynProps = <>
+          EditButtons = <>
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlue
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Items.Strings = (
+            'Modo H'#237'brido'
+            'NFCe - Conting'#234'ncia'
+            'NFCe - Transmitir '
+            'Pedido N'#227'o Fiscal'
+            'ECF Fiscal - Finalizar')
+          KeyItems.Strings = (
+            ''
+            'O'
+            'N'
+            'P'
+            'F')
+          ParentFont = False
+          TabOrder = 4
+          Visible = True
+          OnKeyDown = DBComboBoxEh3KeyDown
+        end
+      end
+      object grptipoCaixa: TDBRadioGroup
+        Left = 3
+        Top = 248
+        Width = 553
+        Height = 55
+        Anchors = [akLeft]
+        Caption = 'Tipo de Fechamento Caixa'
+        Columns = 4
+        DataField = 'TIPOFECHAMENTO'
+        DataSource = dsTerminais
+        Items.Strings = (
+          'A4 - Padr'#227'o'
+          'A4 - Detalhado'
+          'Bobina - Detalhado'
+          'Bobina - Sint'#233'tico')
+        TabOrder = 13
+        Values.Strings = (
+          '0'
+          '1'
+          '2'
+          '3')
+        OnChange = grptipoCaixaChange
+      end
+    end
+    object TabSheet12: TTabSheet
+      Caption = 'Balan'#231'as'
+      ImageIndex = 1
+      object Label28: TLabel
+        Left = 27
+        Top = 7
+        Width = 44
+        Height = 17
+        Caption = 'Balan'#231'a'
+      end
+      object Label84: TLabel
+        Left = 27
+        Top = 48
+        Width = 29
+        Height = 17
+        Caption = 'Porta'
+      end
+      object Label85: TLabel
+        Left = 27
+        Top = 88
+        Width = 61
+        Height = 17
+        Caption = 'Velocidade'
+      end
+      object Label86: TLabel
+        Left = 27
+        Top = 208
+        Width = 48
+        Height = 17
+        Caption = 'Stop Bits'
+      end
+      object Label87: TLabel
+        Left = 27
+        Top = 169
+        Width = 49
+        Height = 17
+        Caption = 'Paridade'
+      end
+      object Label88: TLabel
+        Left = 27
+        Top = 129
+        Width = 50
+        Height = 17
+        Caption = 'Data Bits'
+      end
+      object Label89: TLabel
+        Left = 27
+        Top = 250
+        Width = 72
+        Height = 17
+        Caption = 'Handshaking'
+      end
+      object DBComboBoxEh28: TDBComboBoxEh
+        Left = 27
+        Top = 267
+        Width = 187
+        Height = 23
+        DataField = 'BALANCA_HANDSHAKING'
+        DataSource = dsTerminais
+        DynProps = <>
+        EditButtons = <>
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlue
+        Font.Height = -12
+        Font.Name = 'Segoe UI Semilight'
+        Font.Style = []
+        Items.Strings = (
+          'Nenhum'
+          'XON/XOFF'
+          'RTS/CTS'
+          'DTR/DSR')
+        KeyItems.Strings = (
+          '0'
+          '1'
+          '2'
+          '3')
+        ParentFont = False
+        TabOrder = 6
+        Visible = True
+      end
+      object DBComboBoxEh27: TDBComboBoxEh
+        Left = 27
+        Top = 227
+        Width = 187
+        Height = 23
+        DataField = 'BALANCA_STOPBITS'
+        DataSource = dsTerminais
+        DynProps = <>
+        EditButtons = <>
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlue
+        Font.Height = -12
+        Font.Name = 'Segoe UI Semilight'
+        Font.Style = []
+        Items.Strings = (
+          's1'
+          's1,5'
+          's2')
+        KeyItems.Strings = (
+          '0'
+          '1'
+          '2')
+        ParentFont = False
+        TabOrder = 5
+        Visible = True
+      end
+      object DBComboBoxEh26: TDBComboBoxEh
+        Left = 27
+        Top = 186
+        Width = 187
+        Height = 23
+        DataField = 'BALANCA_PARIDADE'
+        DataSource = dsTerminais
+        DynProps = <>
+        EditButtons = <>
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlue
+        Font.Height = -12
+        Font.Name = 'Segoe UI Semilight'
+        Font.Style = []
+        Items.Strings = (
+          'none'
+          'odd'
+          'even'
+          'mark'
+          'space')
+        KeyItems.Strings = (
+          '0'
+          '1'
+          '2'
+          '3'
+          '4')
+        ParentFont = False
+        TabOrder = 4
+        Visible = True
+      end
+      object DBComboBoxEh25: TDBComboBoxEh
+        Left = 27
+        Top = 146
+        Width = 187
+        Height = 23
+        DataField = 'BALANCA_DATABITS'
+        DataSource = dsTerminais
+        DynProps = <>
+        EditButtons = <>
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlue
+        Font.Height = -12
+        Font.Name = 'Segoe UI Semilight'
+        Font.Style = []
+        Items.Strings = (
+          '5'
+          '6'
+          '7'
+          '8')
+        KeyItems.Strings = (
+          '5'
+          '6'
+          '7'
+          '8')
+        ParentFont = False
+        TabOrder = 3
+        Visible = True
+      end
+      object DBComboBox5: TDBComboBox
+        Left = 27
+        Top = 65
+        Width = 187
+        Height = 23
+        BevelKind = bkFlat
+        Ctl3D = False
+        DataField = 'BALANCA_PORTA'
+        DataSource = dsTerminais
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlue
+        Font.Height = -12
+        Font.Name = 'Segoe UI Semilight'
+        Font.Style = []
+        Items.Strings = (
+          'COM1'
+          'COM2'
+          'COM3'
+          'COM4'
+          'COM5'
+          'COM6'
+          'COM7'
+          'COM8'
+          'COM9'
+          'COM10')
+        ParentCtl3D = False
+        ParentFont = False
+        TabOrder = 1
+      end
+      object cbBalanca: TDBComboBoxEh
+        Left = 27
+        Top = 25
+        Width = 187
+        Height = 23
+        DataField = 'BALANCA_MARCA'
+        DataSource = dsTerminais
+        DynProps = <>
+        EditButtons = <>
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlue
+        Font.Height = -12
+        Font.Name = 'Segoe UI Semilight'
+        Font.Style = []
+        Items.Strings = (
+          'balNenhum'
+          'balFilizola'
+          'balToledo'
+          'balToledo2090'
+          'balToledo2180'
+          'balUrano'
+          'balLucasTec'
+          'balMagna'
+          'balDigitron'
+          'balMagellan'
+          'balUranoPOP'
+          'balLider'
+          'balRinnert'
+          'balMuller'
+          'balSaturno'
+          'balAFTS'
+          'balGenerica'
+          'balLibratek'
+          'balMicheletti'
+          'balAlfa'
+          'balToledo9091_8530_8540'
+          'balWeightechWT1000'
+          'balMarelCG62XL'
+          'balWeightechWT3000_ABS'
+          'balToledo2090N'
+          'balToledoBCS21'
+          'balPrecision'
+          'balDigitron_UL'
+          'balLibratekWT3000IR')
+        KeyItems.Strings = (
+          '0'
+          '1'
+          '2'
+          '3'
+          '4'
+          '5'
+          '6'
+          '7'
+          '8'
+          '9'
+          '10'
+          '11'
+          '12'
+          '13'
+          '14'
+          '15'
+          '16'
+          '17'
+          '18'
+          '19'
+          '20'
+          '21'
+          '22'
+          '23'
+          '24'
+          '25'
+          '26'
+          '27'
+          '28')
+        ParentFont = False
+        TabOrder = 0
+        Visible = True
+      end
+      object DBComboBox4: TDBComboBox
+        Left = 27
+        Top = 105
+        Width = 187
+        Height = 23
+        BevelKind = bkFlat
+        DataField = 'BALANCA_VELOCIDADE'
+        DataSource = dsTerminais
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlue
+        Font.Height = -12
+        Font.Name = 'Segoe UI Semilight'
+        Font.Style = []
+        Items.Strings = (
+          '110'
+          '300'
+          '600'
+          '1200'
+          '2400'
+          '4800'
+          '9600'
+          '14400'
+          '19200'
+          '38400'
+          '56000'
+          '57600')
+        ParentFont = False
+        TabOrder = 2
+      end
+      object DBCheckBox16: TDBCheckBox
+        Left = 27
+        Top = 296
+        Width = 187
+        Height = 33
+        Caption = 'Habilita leitura Peso no PDV'
+        DataField = 'LER_PESO'
+        DataSource = dsTerminais
+        TabOrder = 7
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+      end
+    end
+    object TabSheet1: TTabSheet
+      Caption = 'SAT'
+      ImageIndex = 2
+      object Label2: TLabel
+        Left = 24
+        Top = 18
+        Width = 24
+        Height = 17
+        Caption = 'Tipo'
+      end
+      object Label20: TLabel
+        Left = 24
+        Top = 78
+        Width = 118
+        Height = 17
+        Caption = 'Caminho da DLL SAT'
+        FocusControl = DBEdit14
+      end
+      object btnSat: TSpeedButton
+        Left = 398
+        Top = 95
+        Width = 23
+        Height = 24
+        Glyph.Data = {
+          76010000424D7601000000000000760000002800000020000000100000000100
+          04000000000000010000130B0000130B00001000000000000000000000000000
+          800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+          FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF0033333333B333
+          333B33FF33337F3333F73BB3777BB7777BB3377FFFF77FFFF77333B000000000
+          0B3333777777777777333330FFFFFFFF07333337F33333337F333330FFFFFFFF
+          07333337F3FF3FFF7F333330F00F000F07333337F77377737F333330FFFFFFFF
+          07333FF7F3FFFF3F7FFFBBB0F0000F0F0BB37777F7777373777F3BB0FFFFFFFF
+          0BBB3777F3FF3FFF77773330F00F000003333337F773777773333330FFFF0FF0
+          33333337F3FF7F37F3333330F08F0F0B33333337F7737F77FF333330FFFF003B
+          B3333337FFFF77377FF333B000000333BB33337777777F3377FF3BB3333BB333
+          3BB33773333773333773B333333B3333333B7333333733333337}
+        NumGlyphs = 2
+        OnClick = btnSatClick
+      end
+      object lbvsSat: TLabel
+        Left = 277
+        Top = 18
+        Width = 41
+        Height = 17
+        Caption = ' Vers'#227'o'
+        Color = clDefault
+        ParentColor = False
+      end
+      object cbSatTipoDLL: TDBComboBox
+        Left = 24
+        Top = 35
+        Width = 247
+        Height = 25
+        DataField = 'TIPO_SAT_DLL'
+        DataSource = dsTerminais
+        TabOrder = 0
+      end
+      object DBEdit14: TDBEdit
+        Left = 24
+        Top = 95
+        Width = 368
+        Height = 25
+        DataField = 'CAMINHO_SAT_DLL'
+        DataSource = dsTerminais
+        TabOrder = 1
+      end
+      object DBCheckBox8: TDBCheckBox
+        Left = 24
+        Top = 126
+        Width = 97
+        Height = 17
+        Caption = 'Emulador'
+        DataField = 'MODELO_SAT_DLL'
+        DataSource = dsTerminais
+        TabOrder = 2
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+      end
+      object Button1: TButton
+        Left = 24
+        Top = 160
+        Width = 193
+        Height = 25
+        Caption = 'Testar SAT'
+        TabOrder = 3
+        OnClick = Button1Click
+      end
+      object CBXvssat: TJvHTComboBox
+        Left = 277
+        Top = 35
+        Width = 76
+        Height = 22
+        HideSel = False
+        DropWidth = 145
+        ColorHighlight = clHighlight
+        ColorHighlightText = clHighlightText
+        ColorDisabledText = clGrayText
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        Items.Strings = (
+          '0.07'
+          '0.08'
+          '0.09')
+        ParentFont = False
+        SuperSubScriptRatio = 0.666666666666666600
+        TabOrder = 4
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = 'TEF/POS'
+      ImageIndex = 3
+      object Label39: TLabel
+        Left = 3
+        Top = 8
+        Width = 92
+        Height = 17
+        Caption = 'Gerenciador TEF'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Segoe UI Semilight'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label12: TLabel
+        Left = 3
+        Top = 283
+        Width = 79
+        Height = 17
+        Caption = 'Troco M'#225'ximo'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label10: TLabel
+        Left = 101
+        Top = 283
+        Width = 69
+        Height = 17
+        Caption = 'M'#225'x.Cart'#245'es'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label18: TLabel
+        Left = 2
+        Top = 148
+        Width = 108
+        Height = 17
+        Caption = 'Registro/Serial POS'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label16: TLabel
+        Left = 3
+        Top = 195
+        Width = 92
+        Height = 17
+        Caption = 'Nome Aplica'#231#227'o'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label19: TLabel
+        Left = 339
+        Top = 195
+        Width = 37
+        Height = 17
+        Caption = 'Vers'#227'o'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label14: TLabel
+        Left = 3
+        Top = 99
+        Width = 71
+        Height = 17
+        Caption = 'Raz'#227'o Social'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label11: TLabel
+        Left = 3
+        Top = 56
+        Width = 45
+        Height = 17
+        Alignment = taRightJustify
+        Caption = 'Arq.Log:'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object SbArqLog: TSpeedButton
+        Left = 423
+        Top = 71
+        Width = 24
+        Height = 22
+        Caption = '...'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        OnClick = SbArqLogClick
+      end
+      object Label22: TLabel
+        Left = 339
+        Top = 148
+        Width = 110
+        Height = 17
+        Caption = 'N'#186' Estabelecimento'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object cbxGP: TDBComboBoxEh
+        Left = 3
+        Top = 27
+        Width = 444
+        Height = 25
+        DataField = 'TEF_GERENCIADOR'
+        DataSource = Dados.dsCP
+        DynProps = <>
+        EditButtons = <>
+        Items.Strings = (
+          'Nenhum '
+          'TefDial '
+          'TefDisc'
+          'HiperTef'
+          'CliSiTef'
+          'TefGpu'
+          'VeSPague'
+          'Banese'
+          'TefAuttar'
+          'GoodCard'
+          'FoxWin'
+          'CliDTEF'
+          'Petrocard'
+          'CrediShop'
+          'TicketCar'
+          'ConvCard'
+          'Cappta'
+          'PayGo')
+        KeyItems.Strings = (
+          '0'
+          '1'
+          '2'
+          '3'
+          '4'
+          '5'
+          '6'
+          '7'
+          '8'
+          '9'
+          '10'
+          '11'
+          '12'
+          '13'
+          '14'
+          '15'
+          '16'
+          '17')
+        TabOrder = 0
+        Visible = True
+      end
+      object edLog: TDBEdit
+        Left = 2
+        Top = 74
+        Width = 415
+        Height = 25
+        DataField = 'TEF_LOG'
+        DataSource = dsTerminais
+        TabOrder = 1
+      end
+      object DBEdit10: TDBEdit
+        Left = 2
+        Top = 117
+        Width = 445
+        Height = 25
+        DataField = 'TEF_SOFT_HOUSE'
+        DataSource = dsTerminais
+        TabOrder = 2
+      end
+      object DBEdit11: TDBEdit
+        Left = 2
+        Top = 164
+        Width = 331
+        Height = 25
+        DataField = 'TEF_REGISTRO'
+        DataSource = dsTerminais
+        TabOrder = 3
+      end
+      object DBEdit12: TDBEdit
+        Left = 2
+        Top = 212
+        Width = 331
+        Height = 25
+        DataField = 'TEF_APLICACAO'
+        DataSource = dsTerminais
+        TabOrder = 5
+      end
+      object DBEdit13: TDBEdit
+        Left = 339
+        Top = 212
+        Width = 108
+        Height = 25
+        DataField = 'TEF_VERSAO'
+        DataSource = dsTerminais
+        TabOrder = 6
+      end
+      object DBEdit15: TDBEdit
+        Left = 2
+        Top = 300
+        Width = 92
+        Height = 25
+        DataField = 'TEF_TROCO_MAXIMO'
+        DataSource = dsTerminais
+        TabOrder = 9
+      end
+      object DBEdit16: TDBEdit
+        Left = 100
+        Top = 300
+        Width = 92
+        Height = 25
+        DataField = 'TEF_MAX_CARTOES'
+        DataSource = dsTerminais
+        TabOrder = 10
+      end
+      object cbIMprimirViaReduzida: TDBCheckBox
+        Left = 2
+        Top = 240
+        Width = 169
+        Height = 17
+        Caption = 'Imprimir Via Reduzida'
+        DataField = 'TEF_VIA_REDUZIDA'
+        DataSource = dsTerminais
+        TabOrder = 7
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+      end
+      object cbMultiplosCartoes: TDBCheckBox
+        Left = 2
+        Top = 263
+        Width = 169
+        Height = 17
+        Caption = 'Multiplos Cart'#245'es'
+        DataField = 'TEF_MULTIPLO_CARTOES'
+        DataSource = dsTerminais
+        TabOrder = 8
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+      end
+      object DBCheckBox13: TDBCheckBox
+        Left = 2
+        Top = 331
+        Width = 97
+        Height = 17
+        TabStop = False
+        Caption = 'Usa POS'
+        DataField = 'USA_POS'
+        DataSource = dsTerminais
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 11
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+      end
+      object DBCheckBox14: TDBCheckBox
+        Left = 2
+        Top = 348
+        Width = 97
+        Height = 17
+        TabStop = False
+        Caption = 'Usa TEF'
+        DataField = 'USA_TEF'
+        DataSource = dsTerminais
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 12
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+      end
+      object DBEdit9: TDBEdit
+        Left = 339
+        Top = 164
+        Width = 108
+        Height = 25
+        DataField = 'NUMERO_LOJA'
+        DataSource = dsTerminais
+        TabOrder = 4
+      end
+    end
+    object TabSheet_ECF: TTabSheet
+      Caption = 'ECF'
+      ImageIndex = 4
+      object GroupBox_ecf: TGroupBox
+        Left = 19
+        Top = 19
         Width = 503
         Height = 206
         Caption = 'Configura'#231#245'es da ECF Fiscal'
-        TabOrder = 9
+        TabOrder = 0
         object Label1: TLabel
           Left = 19
           Top = 27
@@ -757,941 +1853,17 @@ object frmTerminais: TfrmTerminais
           ValueUnchecked = 'N'
         end
       end
-      object GroupBox_pdv: TGroupBox
-        Left = 2
-        Top = 215
-        Width = 503
-        Height = 158
-        Caption = 'Configura'#231#245'es do PDV'
-        TabOrder = 10
-        object Label3: TLabel
-          Left = 9
-          Top = 25
-          Width = 144
-          Height = 17
-          Caption = 'Tipo de Opera'#231#227'o Padr'#227'o'
-        end
-        object Label25: TLabel
-          Left = 220
-          Top = 18
-          Width = 142
-          Height = 17
-          Caption = 'Habilite no modo hibrido.'
-        end
-        object DBCheckBox1: TDBCheckBox
-          Left = 209
-          Top = 42
-          Width = 176
-          Height = 17
-          TabStop = False
-          Caption = 'Exibe F3 - CONTING'#202'NCIA'
-          DataField = 'EXIBE_F3'
-          DataSource = dsTerminais
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 0
-          ValueChecked = 'S'
-          ValueUnchecked = 'N'
-        end
-        object DBCheckBox5: TDBCheckBox
-          Left = 209
-          Top = 69
-          Width = 159
-          Height = 17
-          TabStop = False
-          Caption = 'Exibe F4 - TRANSMITIR '
-          DataField = 'EXIBE_F4'
-          DataSource = dsTerminais
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 1
-          ValueChecked = 'S'
-          ValueUnchecked = 'N'
-        end
-        object DBCheckBox6: TDBCheckBox
-          Left = 209
-          Top = 90
-          Width = 125
-          Height = 26
-          TabStop = False
-          Caption = 'Exibe F5 - PEDIDO'
-          DataField = 'EXIBE_F5'
-          DataSource = dsTerminais
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 2
-          ValueChecked = 'S'
-          ValueUnchecked = 'N'
-        end
-        object DBCheckBox7: TDBCheckBox
-          Left = 209
-          Top = 120
-          Width = 141
-          Height = 17
-          TabStop = False
-          Caption = 'Exibe F6 - FINALIZAR'
-          DataField = 'EXIBE_F6'
-          DataSource = dsTerminais
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 3
-          ValueChecked = 'S'
-          ValueUnchecked = 'N'
-        end
-        object DBCheckBox3: TDBCheckBox
-          Left = 9
-          Top = 73
-          Width = 97
-          Height = 17
-          TabStop = False
-          Caption = 'Usa Gaveta'
-          DataField = 'USAGAVETA'
-          DataSource = dsTerminais
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 4
-          ValueChecked = 'S'
-          ValueUnchecked = 'N'
-        end
-        object DBCheckBox12: TDBCheckBox
-          Left = 9
-          Top = 96
-          Width = 150
-          Height = 17
-          TabStop = False
-          Caption = 'Usa controle de Caixa'
-          DataField = 'EH_CAIXA'
-          DataSource = dsTerminais
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 5
-          ValueChecked = 'S'
-          ValueUnchecked = 'N'
-        end
-        object DBCheckBox2: TDBCheckBox
-          Left = 9
-          Top = 119
-          Width = 183
-          Height = 17
-          TabStop = False
-          Caption = 'Perguntar se quer Imprimir'
-          DataField = 'IMPRIME'
-          DataSource = dsTerminais
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 6
-          ValueChecked = 'S'
-          ValueUnchecked = 'N'
-        end
-        object DBComboBoxEh3: TDBComboBoxEh
-          Left = 9
-          Top = 45
-          Width = 183
-          Height = 23
-          DataField = 'FLAG'
-          DataSource = dsTerminais
-          DynProps = <>
-          EditButtons = <>
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clBlue
-          Font.Height = -12
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          Items.Strings = (
-            'Modo H'#237'brido'
-            'NFCe - Conting'#234'ncia'
-            'NFCe - Transmitir '
-            'Pedido N'#227'o Fiscal'
-            'ECF Fiscal - Finalizar')
-          KeyItems.Strings = (
-            ''
-            'O'
-            'N'
-            'P'
-            'F')
-          ParentFont = False
-          TabOrder = 7
-          Visible = True
-          OnKeyDown = DBComboBoxEh3KeyDown
-        end
-        object DBCheckBox10: TDBCheckBox
-          Left = 379
-          Top = 98
-          Width = 109
-          Height = 17
-          TabStop = False
-          Caption = 'Exibe - Delivery'
-          DataField = 'DELIVERY'
-          DataSource = dsTerminais
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 8
-          ValueChecked = 'S'
-          ValueUnchecked = 'N'
-          Visible = False
-        end
-        object DBCheckBox11: TDBCheckBox
-          Left = 379
-          Top = 121
-          Width = 109
-          Height = 17
-          TabStop = False
-          Caption = 'Exibe - Mesas'
-          DataField = 'RESTAURANTE'
-          DataSource = dsTerminais
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 9
-          ValueChecked = 'S'
-          ValueUnchecked = 'N'
-          Visible = False
-        end
-        object DBCheckBox4: TDBCheckBox
-          Left = 379
-          Top = 75
-          Width = 109
-          Height = 17
-          TabStop = False
-          Caption = 'Exibe - PDV'
-          DataField = 'PDV'
-          DataSource = dsTerminais
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 10
-          ValueChecked = 'S'
-          ValueUnchecked = 'N'
-        end
-      end
-    end
-    object TabSheet12: TTabSheet
-      Caption = 'Balan'#231'as'
-      ImageIndex = 1
-      object Label28: TLabel
-        Left = 27
-        Top = 7
-        Width = 44
-        Height = 17
-        Caption = 'Balan'#231'a'
-      end
-      object Label84: TLabel
-        Left = 27
-        Top = 48
-        Width = 29
-        Height = 17
-        Caption = 'Porta'
-      end
-      object Label85: TLabel
-        Left = 27
-        Top = 88
-        Width = 61
-        Height = 17
-        Caption = 'Velocidade'
-      end
-      object Label86: TLabel
-        Left = 27
-        Top = 208
-        Width = 48
-        Height = 17
-        Caption = 'Stop Bits'
-      end
-      object Label87: TLabel
-        Left = 27
-        Top = 169
-        Width = 49
-        Height = 17
-        Caption = 'Paridade'
-      end
-      object Label88: TLabel
-        Left = 27
-        Top = 129
-        Width = 50
-        Height = 17
-        Caption = 'Data Bits'
-      end
-      object Label89: TLabel
-        Left = 27
-        Top = 250
-        Width = 72
-        Height = 17
-        Caption = 'Handshaking'
-      end
-      object DBComboBoxEh28: TDBComboBoxEh
-        Left = 27
-        Top = 267
-        Width = 187
-        Height = 23
-        DataField = 'BALANCA_HANDSHAKING'
-        DataSource = dsTerminais
-        DynProps = <>
-        EditButtons = <>
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlue
-        Font.Height = -12
-        Font.Name = 'Segoe UI Semilight'
-        Font.Style = []
-        Items.Strings = (
-          'Nenhum'
-          'XON/XOFF'
-          'RTS/CTS'
-          'DTR/DSR')
-        KeyItems.Strings = (
-          '0'
-          '1'
-          '2'
-          '3')
-        ParentFont = False
-        TabOrder = 6
-        Visible = True
-      end
-      object DBComboBoxEh27: TDBComboBoxEh
-        Left = 27
-        Top = 227
-        Width = 187
-        Height = 23
-        DataField = 'BALANCA_STOPBITS'
-        DataSource = dsTerminais
-        DynProps = <>
-        EditButtons = <>
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlue
-        Font.Height = -12
-        Font.Name = 'Segoe UI Semilight'
-        Font.Style = []
-        Items.Strings = (
-          's1'
-          's1,5'
-          's2')
-        KeyItems.Strings = (
-          '0'
-          '1'
-          '2')
-        ParentFont = False
-        TabOrder = 5
-        Visible = True
-      end
-      object DBComboBoxEh26: TDBComboBoxEh
-        Left = 27
-        Top = 186
-        Width = 187
-        Height = 23
-        DataField = 'BALANCA_PARIDADE'
-        DataSource = dsTerminais
-        DynProps = <>
-        EditButtons = <>
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlue
-        Font.Height = -12
-        Font.Name = 'Segoe UI Semilight'
-        Font.Style = []
-        Items.Strings = (
-          'none'
-          'odd'
-          'even'
-          'mark'
-          'space')
-        KeyItems.Strings = (
-          '0'
-          '1'
-          '2'
-          '3'
-          '4')
-        ParentFont = False
-        TabOrder = 4
-        Visible = True
-      end
-      object DBComboBoxEh25: TDBComboBoxEh
-        Left = 27
-        Top = 146
-        Width = 187
-        Height = 23
-        DataField = 'BALANCA_DATABITS'
-        DataSource = dsTerminais
-        DynProps = <>
-        EditButtons = <>
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlue
-        Font.Height = -12
-        Font.Name = 'Segoe UI Semilight'
-        Font.Style = []
-        Items.Strings = (
-          '5'
-          '6'
-          '7'
-          '8')
-        KeyItems.Strings = (
-          '5'
-          '6'
-          '7'
-          '8')
-        ParentFont = False
-        TabOrder = 3
-        Visible = True
-      end
-      object DBComboBox5: TDBComboBox
-        Left = 27
-        Top = 65
-        Width = 187
-        Height = 23
-        BevelKind = bkFlat
-        Ctl3D = False
-        DataField = 'BALANCA_PORTA'
-        DataSource = dsTerminais
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlue
-        Font.Height = -12
-        Font.Name = 'Segoe UI Semilight'
-        Font.Style = []
-        Items.Strings = (
-          'COM1'
-          'COM2'
-          'COM3'
-          'COM4'
-          'COM5'
-          'COM6'
-          'COM7'
-          'COM8'
-          'COM9'
-          'COM10')
-        ParentCtl3D = False
-        ParentFont = False
-        TabOrder = 1
-      end
-      object cbBalanca: TDBComboBoxEh
-        Left = 27
-        Top = 25
-        Width = 187
-        Height = 23
-        DataField = 'BALANCA_MARCA'
-        DataSource = dsTerminais
-        DynProps = <>
-        EditButtons = <>
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlue
-        Font.Height = -12
-        Font.Name = 'Segoe UI Semilight'
-        Font.Style = []
-        Items.Strings = (
-          'balNenhum'
-          'balFilizola'
-          'balToledo'
-          'balToledo2090'
-          'balToledo2180'
-          'balUrano'
-          'balLucasTec'
-          'balMagna'
-          'balDigitron'
-          'balMagellan'
-          'balUranoPOP'
-          'balLider'
-          'balRinnert'
-          'balMuller'
-          'balSaturno'
-          'balAFTS'
-          'balGenerica'
-          'balLibratek'
-          'balMicheletti'
-          'balAlfa'
-          'balToledo9091_8530_8540'
-          'balWeightechWT1000'
-          'balMarelCG62XL'
-          'balWeightechWT3000_ABS'
-          'balToledo2090N'
-          'balToledoBCS21'
-          'balPrecision'
-          'balDigitron_UL'
-          'balLibratekWT3000IR')
-        KeyItems.Strings = (
-          '0'
-          '1'
-          '2'
-          '3'
-          '4'
-          '5'
-          '6'
-          '7'
-          '8'
-          '9'
-          '10'
-          '11'
-          '12'
-          '13'
-          '14'
-          '15'
-          '16'
-          '17'
-          '18'
-          '19'
-          '20'
-          '21'
-          '22'
-          '23'
-          '24'
-          '25'
-          '26'
-          '27'
-          '28')
-        ParentFont = False
-        TabOrder = 0
-        Visible = True
-      end
-      object DBComboBox4: TDBComboBox
-        Left = 27
-        Top = 105
-        Width = 187
-        Height = 23
-        BevelKind = bkFlat
-        DataField = 'BALANCA_VELOCIDADE'
-        DataSource = dsTerminais
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlue
-        Font.Height = -12
-        Font.Name = 'Segoe UI Semilight'
-        Font.Style = []
-        Items.Strings = (
-          '110'
-          '300'
-          '600'
-          '1200'
-          '2400'
-          '4800'
-          '9600'
-          '14400'
-          '19200'
-          '38400'
-          '56000'
-          '57600')
-        ParentFont = False
-        TabOrder = 2
-      end
-      object DBCheckBox16: TDBCheckBox
-        Left = 27
-        Top = 296
-        Width = 187
-        Height = 33
-        Caption = 'Habilita leitura Peso no PDV'
-        DataField = 'LER_PESO'
-        DataSource = dsTerminais
-        TabOrder = 7
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-    end
-    object TabSheet1: TTabSheet
-      Caption = 'SAT'
-      ImageIndex = 2
-      object Label2: TLabel
-        Left = 24
-        Top = 18
-        Width = 24
-        Height = 17
-        Caption = 'Tipo'
-      end
-      object Label20: TLabel
-        Left = 24
-        Top = 78
-        Width = 118
-        Height = 17
-        Caption = 'Caminho da DLL SAT'
-        FocusControl = DBEdit14
-      end
-      object btnSat: TSpeedButton
-        Left = 398
-        Top = 95
-        Width = 23
-        Height = 24
-        Glyph.Data = {
-          76010000424D7601000000000000760000002800000020000000100000000100
-          04000000000000010000130B0000130B00001000000000000000000000000000
-          800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
-          FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF0033333333B333
-          333B33FF33337F3333F73BB3777BB7777BB3377FFFF77FFFF77333B000000000
-          0B3333777777777777333330FFFFFFFF07333337F33333337F333330FFFFFFFF
-          07333337F3FF3FFF7F333330F00F000F07333337F77377737F333330FFFFFFFF
-          07333FF7F3FFFF3F7FFFBBB0F0000F0F0BB37777F7777373777F3BB0FFFFFFFF
-          0BBB3777F3FF3FFF77773330F00F000003333337F773777773333330FFFF0FF0
-          33333337F3FF7F37F3333330F08F0F0B33333337F7737F77FF333330FFFF003B
-          B3333337FFFF77377FF333B000000333BB33337777777F3377FF3BB3333BB333
-          3BB33773333773333773B333333B3333333B7333333733333337}
-        NumGlyphs = 2
-        OnClick = btnSatClick
-      end
-      object cbSatTipoDLL: TDBComboBox
-        Left = 24
-        Top = 35
-        Width = 247
-        Height = 25
-        DataField = 'TIPO_SAT_DLL'
-        DataSource = dsTerminais
-        TabOrder = 0
-      end
-      object DBEdit14: TDBEdit
-        Left = 24
-        Top = 95
-        Width = 368
-        Height = 25
-        DataField = 'CAMINHO_SAT_DLL'
-        DataSource = dsTerminais
-        TabOrder = 1
-      end
-      object DBCheckBox8: TDBCheckBox
-        Left = 24
-        Top = 126
-        Width = 97
-        Height = 17
-        Caption = 'Emulador'
-        DataField = 'MODELO_SAT_DLL'
-        DataSource = dsTerminais
-        TabOrder = 2
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-      object Button1: TButton
-        Left = 24
-        Top = 160
-        Width = 193
-        Height = 25
-        Caption = 'Testar SAT'
-        TabOrder = 3
-        OnClick = Button1Click
-      end
-    end
-    object TabSheet2: TTabSheet
-      Caption = 'TEF / POS'
-      ImageIndex = 3
-      object Label39: TLabel
-        Left = 3
-        Top = 8
-        Width = 92
-        Height = 17
-        Caption = 'Gerenciador TEF'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -13
-        Font.Name = 'Segoe UI Semilight'
-        Font.Style = []
-        ParentFont = False
-        Transparent = True
-      end
-      object Label12: TLabel
-        Left = 3
-        Top = 283
-        Width = 79
-        Height = 17
-        Caption = 'Troco M'#225'ximo'
-        Color = clBtnFace
-        ParentColor = False
-      end
-      object Label10: TLabel
-        Left = 101
-        Top = 283
-        Width = 69
-        Height = 17
-        Caption = 'M'#225'x.Cart'#245'es'
-        Color = clBtnFace
-        ParentColor = False
-      end
-      object Label18: TLabel
-        Left = 2
-        Top = 148
-        Width = 108
-        Height = 17
-        Caption = 'Registro/Serial POS'
-        Color = clBtnFace
-        ParentColor = False
-      end
-      object Label16: TLabel
-        Left = 3
-        Top = 195
-        Width = 92
-        Height = 17
-        Caption = 'Nome Aplica'#231#227'o'
-        Color = clBtnFace
-        ParentColor = False
-      end
-      object Label19: TLabel
-        Left = 339
-        Top = 195
-        Width = 37
-        Height = 17
-        Caption = 'Vers'#227'o'
-        Color = clBtnFace
-        ParentColor = False
-      end
-      object Label14: TLabel
-        Left = 3
-        Top = 99
-        Width = 71
-        Height = 17
-        Caption = 'Raz'#227'o Social'
-        Color = clBtnFace
-        ParentColor = False
-      end
-      object Label11: TLabel
-        Left = 3
-        Top = 56
-        Width = 45
-        Height = 17
-        Alignment = taRightJustify
-        Caption = 'Arq.Log:'
-        Color = clBtnFace
-        ParentColor = False
-      end
-      object SbArqLog: TSpeedButton
-        Left = 423
-        Top = 71
-        Width = 24
-        Height = 22
-        Caption = '...'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        ParentFont = False
-        OnClick = SbArqLogClick
-      end
-      object Label22: TLabel
-        Left = 339
-        Top = 148
-        Width = 110
-        Height = 17
-        Caption = 'N'#186' Estabelecimento'
-        Color = clBtnFace
-        ParentColor = False
-      end
-      object cbxGP: TDBComboBoxEh
-        Left = 3
-        Top = 27
-        Width = 444
-        Height = 25
-        DataField = 'TEF_GERENCIADOR'
-        DataSource = dsTerminais
-        DynProps = <>
-        EditButtons = <>
-        Items.Strings = (
-          'Nenhum '
-          'TefDial '
-          'TefDisc'
-          'HiperTef'
-          'CliSiTef'
-          'TefGpu'
-          'VeSPague'
-          'Banese'
-          'TefAuttar'
-          'GoodCard'
-          'FoxWin'
-          'CliDTEF'
-          'Petrocard'
-          'CrediShop'
-          'TicketCar'
-          'ConvCard'
-          'Cappta'
-          'PayGo')
-        KeyItems.Strings = (
-          '0'
-          '1'
-          '2'
-          '3'
-          '4'
-          '5'
-          '6'
-          '7'
-          '8'
-          '9'
-          '10'
-          '11'
-          '12'
-          '13'
-          '14'
-          '15'
-          '16'
-          '17')
-        TabOrder = 0
-        Visible = True
-      end
-      object edLog: TDBEdit
-        Left = 2
-        Top = 74
-        Width = 415
-        Height = 25
-        DataField = 'TEF_LOG'
-        DataSource = dsTerminais
-        TabOrder = 1
-      end
-      object DBEdit10: TDBEdit
-        Left = 2
-        Top = 117
-        Width = 445
-        Height = 25
-        DataField = 'TEF_SOFT_HOUSE'
-        DataSource = dsTerminais
-        TabOrder = 2
-      end
-      object DBEdit11: TDBEdit
-        Left = 2
-        Top = 164
-        Width = 331
-        Height = 25
-        DataField = 'TEF_REGISTRO'
-        DataSource = dsTerminais
-        TabOrder = 3
-      end
-      object DBEdit12: TDBEdit
-        Left = 2
-        Top = 212
-        Width = 331
-        Height = 25
-        DataField = 'TEF_APLICACAO'
-        DataSource = dsTerminais
-        TabOrder = 5
-      end
-      object DBEdit13: TDBEdit
-        Left = 339
-        Top = 212
-        Width = 108
-        Height = 25
-        DataField = 'TEF_VERSAO'
-        DataSource = dsTerminais
-        TabOrder = 6
-      end
-      object DBEdit15: TDBEdit
-        Left = 2
-        Top = 300
-        Width = 92
-        Height = 25
-        DataField = 'TEF_TROCO_MAXIMO'
-        DataSource = dsTerminais
-        TabOrder = 9
-      end
-      object DBEdit16: TDBEdit
-        Left = 100
-        Top = 300
-        Width = 92
-        Height = 25
-        DataField = 'TEF_MAX_CARTOES'
-        DataSource = dsTerminais
-        TabOrder = 10
-      end
-      object cbIMprimirViaReduzida: TDBCheckBox
-        Left = 2
-        Top = 240
-        Width = 169
-        Height = 17
-        Caption = 'Imprimir Via Reduzida'
-        DataField = 'TEF_VIA_REDUZIDA'
-        DataSource = dsTerminais
-        TabOrder = 7
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-      object cbMultiplosCartoes: TDBCheckBox
-        Left = 2
-        Top = 263
-        Width = 169
-        Height = 17
-        Caption = 'Multiplos Cart'#245'es'
-        DataField = 'TEF_MULTIPLO_CARTOES'
-        DataSource = dsTerminais
-        TabOrder = 8
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-      object DBCheckBox13: TDBCheckBox
-        Left = 2
-        Top = 331
-        Width = 97
-        Height = 17
-        TabStop = False
-        Caption = 'Usa POS'
-        DataField = 'USA_POS'
-        DataSource = dsTerminais
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 11
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-      object DBCheckBox14: TDBCheckBox
-        Left = 2
-        Top = 348
-        Width = 97
-        Height = 17
-        TabStop = False
-        Caption = 'Usa TEF'
-        DataField = 'USA_TEF'
-        DataSource = dsTerminais
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 12
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-      object DBEdit9: TDBEdit
-        Left = 339
-        Top = 164
-        Width = 108
-        Height = 25
-        DataField = 'NUMERO_LOJA'
-        DataSource = dsTerminais
-        TabOrder = 4
-      end
     end
   end
   object Panel2: TPanel
     Left = 0
-    Top = 630
-    Width = 736
+    Top = 597
+    Width = 784
     Height = 64
     Align = alBottom
     TabOrder = 2
+    ExplicitTop = 630
+    ExplicitWidth = 736
     object cxGravar: TcxButton
       AlignWithMargins = True
       Left = 208
@@ -2039,7 +2211,7 @@ object frmTerminais: TfrmTerminais
     ConfigBarras.Margem = 0
     InfoRodapeCupom.Imposto.ModoCompacto = False
     Left = 96
-    Top = 80
+    Top = 104
   end
   object OpenDialog1: TOpenDialog
     Left = 80
@@ -2453,6 +2625,93 @@ object frmTerminais: TfrmTerminais
       Origin = 'USAR_NUMERO_INICIAL'
       Size = 1
     end
+    object qryTerminalMODELO_TEF: TIntegerField
+      FieldName = 'MODELO_TEF'
+      Origin = 'MODELO_TEF'
+    end
+    object qryTerminalIP_SERVIDOR_TEF: TStringField
+      FieldName = 'IP_SERVIDOR_TEF'
+      Origin = 'IP_SERVIDOR_TEF'
+      Size = 30
+    end
+    object qryTerminalNUMERO_LOGICO_TERMINAL: TIntegerField
+      FieldName = 'NUMERO_LOGICO_TERMINAL'
+      Origin = 'NUMERO_LOGICO_TERMINAL'
+    end
+    object qryTerminalPORTA_PIN_PAD: TIntegerField
+      FieldName = 'PORTA_PIN_PAD'
+      Origin = 'PORTA_PIN_PAD'
+    end
+    object qryTerminalMENSAGEM_PIN_PAD: TStringField
+      FieldName = 'MENSAGEM_PIN_PAD'
+      Origin = 'MENSAGEM_PIN_PAD'
+      Size = 200
+    end
+    object qryTerminalIMPRESSORA_FASTREPORT: TStringField
+      FieldName = 'IMPRESSORA_FASTREPORT'
+      Origin = 'IMPRESSORA_FASTREPORT'
+      Size = 1
+    end
+    object qryTerminalMOSTRA_PREVIEW: TStringField
+      FieldName = 'MOSTRA_PREVIEW'
+      Origin = 'MOSTRA_PREVIEW'
+      Size = 1
+    end
+    object qryTerminalMOSTRAR_TELA_CAIXA_LIVRE: TStringField
+      FieldName = 'MOSTRAR_TELA_CAIXA_LIVRE'
+      Origin = 'MOSTRAR_TELA_CAIXA_LIVRE'
+      Size = 1
+    end
+    object qryTerminalTIME_TELA_CAIXA_LIVRE: TIntegerField
+      FieldName = 'TIME_TELA_CAIXA_LIVRE'
+      Origin = 'TIME_TELA_CAIXA_LIVRE'
+    end
+    object qryTerminalPESQUISA_RAPIDA: TStringField
+      FieldName = 'PESQUISA_RAPIDA'
+      Origin = 'PESQUISA_RAPIDA'
+      Size = 1
+    end
+    object qryTerminalBUSCA_BALANCA_BARRAS: TStringField
+      FieldName = 'BUSCA_BALANCA_BARRAS'
+      Origin = 'BUSCA_BALANCA_BARRAS'
+      Size = 1
+    end
+    object qryTerminalIMPRESSORA_FORTESREPORT: TStringField
+      DisplayWidth = 100
+      FieldName = 'IMPRESSORA_FORTESREPORT'
+      Origin = 'IMPRESSORA_FORTESREPORT'
+      Size = 100
+    end
+    object qryTerminalMENSAGEM_PDV: TStringField
+      FieldName = 'MENSAGEM_PDV'
+      Origin = 'MENSAGEM_PDV'
+      Size = 300
+    end
+    object qryTerminalMOSTRAR_MENSAGEM_PDV: TStringField
+      FieldName = 'MOSTRAR_MENSAGEM_PDV'
+      Origin = 'MOSTRAR_MENSAGEM_PDV'
+      Size = 1
+    end
+    object qryTerminalQTD_TENTATIVA_CONECT_BAL: TIntegerField
+      FieldName = 'QTD_TENTATIVA_CONECT_BAL'
+      Origin = 'QTD_TENTATIVA_CONECT_BAL'
+    end
+    object qryTerminalIMPRIMIR_TEF_ESCPOS: TStringField
+      FieldName = 'IMPRIMIR_TEF_ESCPOS'
+      Origin = 'IMPRIMIR_TEF_ESCPOS'
+      Size = 1
+    end
+    object qryTerminalIMPRIME_PREVIEW: TStringField
+      FieldName = 'IMPRIME_PREVIEW'
+      Origin = 'IMPRIME_PREVIEW'
+      Size = 1
+    end
+    object qryTerminalTIPOFECHAMENTO: TStringField
+      FieldName = 'TIPOFECHAMENTO'
+    end
+    object qryTerminalMEIAFOLHA: TStringField
+      FieldName = 'MEIAFOLHA'
+    end
     object qryTerminalLER_PESO: TStringField
       FieldName = 'LER_PESO'
       Origin = 'LER_PESO'
@@ -2462,6 +2721,10 @@ object frmTerminais: TfrmTerminais
   end
   object JvEnterAsTab1: TJvEnterAsTab
     Left = 96
-    Top = 160
+    Top = 176
+  end
+  object prtImpressora: TPrintDialog
+    Left = 74
+    Top = 444
   end
 end

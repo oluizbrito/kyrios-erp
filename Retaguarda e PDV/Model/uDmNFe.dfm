@@ -1,6 +1,6 @@
 object dmNFe: TdmNFe
-  Height = 360
-  Width = 571
+  Height = 490
+  Width = 787
   object ACBrNFeDANFeRL1: TACBrNFeDANFeRL
     MostraStatus = False
     Sistema = 'Projeto ACBr - www.projetoacbr.com.br'
@@ -21,7 +21,6 @@ object dmNFe: TdmNFe
     CasasDecimais.MaskvUnCom = ',0.00'
     CasasDecimais.Aliquota = 2
     CasasDecimais.MaskAliquota = ',0.00'
-    ImprimeTributos = trbSeparadamente
     Left = 315
     Top = 20
   end
@@ -48,7 +47,7 @@ object dmNFe: TdmNFe
     Top = 20
   end
   object ACBrPosPrinter1: TACBrPosPrinter
-    Modelo = ppEscPosEpson
+    Modelo = ppCustomPos
     PaginaDeCodigo = pc860
     ColunasFonteNormal = 42
     ConfigBarras.MostrarCodigo = False
@@ -66,7 +65,6 @@ object dmNFe: TdmNFe
     Top = 164
   end
   object ACBrNFeDANFeESCPOS1: TACBrNFeDANFeESCPOS
-    MostraSetup = True
     Sistema = 'Projeto ACBr - www.projetoacbr.com.br'
     MargemInferior = 8.000000000000000000
     MargemSuperior = 8.000000000000000000
@@ -89,13 +87,12 @@ object dmNFe: TdmNFe
     TipoDANFE = tiNFCe
     ImprimeNomeFantasia = True
     ImprimeDescAcrescItem = False
-    ImprimeQRCodeLateral = True
     EspacoFinal = 5
     ImprimeEmUmaLinha = True
     FormularioContinuo = True
     PosPrinter = ACBrPosPrinter1
-    Left = 208
-    Top = 160
+    Left = 320
+    Top = 352
   end
   object ACBrNFeDANFCeFortesA41: TACBrNFeDANFCeFortesA4
     UsaSeparadorPathPDF = True
@@ -125,7 +122,7 @@ object dmNFe: TdmNFe
     ImprimeLogoLateral = True
     ImprimeEmUmaLinha = True
     FormularioContinuo = True
-    Left = 352
+    Left = 408
     Top = 96
   end
   object ACBrMail1: TACBrMail
@@ -137,7 +134,7 @@ object dmNFe: TdmNFe
     DefaultCharset = UTF_8
     IDECharset = CP1252
     OnMailProcess = ACBrMail1MailProcess
-    Left = 355
+    Left = 435
     Top = 168
   end
   object ACBrIntegrador1: TACBrIntegrador
@@ -150,5 +147,41 @@ object dmNFe: TdmNFe
   object PopupMenu1: TPopupMenu
     Left = 72
     Top = 16
+  end
+  object DANFCeFortesBobina: TACBrNFeDANFCeFortes
+    UsaSeparadorPathPDF = True
+    Sistema = 'Projeto ACBr - www.projetoacbr.com.br'
+    MargemInferior = 5.000000000000000000
+    MargemSuperior = 5.000000000000000000
+    MargemEsquerda = 4.000000000000000000
+    MargemDireita = 4.000000000000000000
+    ExpandeLogoMarcaConfig.Altura = 0
+    ExpandeLogoMarcaConfig.Esquerda = 0
+    ExpandeLogoMarcaConfig.Topo = 0
+    ExpandeLogoMarcaConfig.Largura = 0
+    ExpandeLogoMarcaConfig.Dimensionar = False
+    ExpandeLogoMarcaConfig.Esticar = True
+    CasasDecimais.Formato = tdetInteger
+    CasasDecimais.qCom = 2
+    CasasDecimais.vUnCom = 2
+    CasasDecimais.MaskqCom = ',0.00'
+    CasasDecimais.MaskvUnCom = ',0.00'
+    CasasDecimais.Aliquota = 2
+    CasasDecimais.MaskAliquota = ',0.00'
+    AlterarEscalaPadrao = True
+    TipoDANFE = tiNFCe
+    QuebraLinhaEmDetalhamentos = False
+    ImprimeNomeFantasia = True
+    ImprimeQRCodeLateral = True
+    ImprimeLogoLateral = True
+    ImprimeEmDuasLinhas = True
+    FormularioContinuo = True
+    FonteLinhaItem.Charset = DEFAULT_CHARSET
+    FonteLinhaItem.Color = clWindowText
+    FonteLinhaItem.Height = -9
+    FonteLinhaItem.Name = 'Lucida Console'
+    FonteLinhaItem.Style = []
+    Left = 547
+    Top = 344
   end
 end

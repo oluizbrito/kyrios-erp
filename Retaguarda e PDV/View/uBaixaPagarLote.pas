@@ -246,7 +246,7 @@ begin
 
   try
     qryBaixaLote.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     BaixaCPPAGAMENTO;
 
@@ -290,7 +290,7 @@ begin
     else
       qryCPSITUACAO.Value := 'P';
     qryCP.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
   end;
 
 end;
@@ -388,7 +388,7 @@ begin
       SomaDesconto := SomaDesconto + qryPagamentoDESCONTO.AsFloat;
 
       qryPagamento.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
 
       BaixaCP;
       GerarCaixa;
@@ -428,7 +428,7 @@ begin
   qryCaixaFKPAGAR.Value := qryPagamentoCODIGO.Value;
   qryCaixaEMPRESA.Value := qryCPFKEMPRESA.Value;
   qryCaixa.Post;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TfrmBaixaPagarLote.DBEdit3Exit(Sender: TObject);

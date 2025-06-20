@@ -114,7 +114,7 @@ begin
       qryGradeQTD.Value := 0;
       qryGrade.Post;
 
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
 
       qryPesquisa.Next;
     end;

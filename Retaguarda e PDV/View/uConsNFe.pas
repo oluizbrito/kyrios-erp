@@ -1037,7 +1037,7 @@ begin
     btnCorrecao.Enabled := false;
     if (qryCorrecao.State in dsEditmodes) then
       qryCorrecao.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     ACBrNFe.EventoNFe.Evento.Clear;
     with ACBrNFe.EventoNFe.Evento.Add do
@@ -1552,7 +1552,7 @@ begin
       qryInutiliza.edit;
       qryInutilizaSITUACAO.Value := '5';
       qryInutiliza.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
       Application.ProcessMessages;
     end
     else
@@ -1576,7 +1576,7 @@ begin
       qryInutilizaTOTAL.Value := 0;
       qryInutilizaSITUACAO.Value := '5';
       qryInutiliza.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
     end;
   end;
 end;

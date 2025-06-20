@@ -263,7 +263,7 @@ begin
   Dados.qryMesasFK_EMPRESA.Value := Dados.idEmpresa;
   Dados.qryMesasDESCRICAO.Value := 'MESA ' + Dados.qryMesasCODIGO.AsString;
   Dados.qryMesas.Post;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TfrmMesas.localiza;
@@ -311,7 +311,7 @@ begin
     end;
 
     Dados.qryMesas.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
   end;
 
   PageControl1.ActivePage := Lista;

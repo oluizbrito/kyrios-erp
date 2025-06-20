@@ -74,7 +74,7 @@ begin
     'update comanda_pessoa set PDV=''S'' where codigo=:cod';
   dados.qryExecute.Params[0].Value := codigo;
   dados.qryExecute.ExecSQL;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TfrmComanda.btnImportarClick(Sender: TObject);
@@ -107,7 +107,7 @@ begin
     Frmpdv.qryVendaFK_VENDEDOR.Value := dados.qryConfigVENDEDOR_PADRAO.Value;
     Frmpdv.qryVendaID_CLIENTE.Value := dados.qryConfigCLIENTE_PADRAO.Value;
     Frmpdv.qryVenda.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     qryItensCo.close;
     qryItensCo.Params[0].Value := qryComandaCODIGO.Value;
@@ -146,7 +146,7 @@ begin
       Frmpdv.qryItemTOTAL.AsFloat := Frmpdv.qryItemVALOR_ITEM.AsFloat -
         Frmpdv.qryItemVDESCONTO.AsFloat;
       Frmpdv.qryItem.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
 
       qryItensCo.Next;
     end;

@@ -979,19 +979,6 @@ type
     qrySped_C190FK_C100: TIntegerField;
     qrySped_C190FK_EMPRESA: TIntegerField;
     qrySped_C190FK_USUARIO: TIntegerField;
-    qrySped_H010CODIGO: TIntegerField;
-    qrySped_H010QTD: TFMTBCDField;
-    qrySped_H010VL_UNIT: TFMTBCDField;
-    qrySped_H010VL_ITEM: TFMTBCDField;
-    qrySped_H010IND_PROP: TStringField;
-    qrySped_H010COD_PART: TIntegerField;
-    qrySped_H010TXT_COMPL: TStringField;
-    qrySped_H010COD_CTA: TStringField;
-    qrySped_H010FK_H005: TIntegerField;
-    qrySped_H010FK_PRODUTO: TIntegerField;
-    qrySped_H010FK_UNIDADE: TIntegerField;
-    qrySped_H010FK_EMPRESA: TIntegerField;
-    qrySped_H010FK_USUARIO: TIntegerField;
     qrySped_H005VL_INV: TFMTBCDField;
     qryCaixaTIPO_MOVIMENTO: TStringField;
     qryContasVIRTUAL_SITUACAO: TStringField;
@@ -2342,105 +2329,64 @@ type
     qryEmpresaUSA_WHATS: TStringField;
     qryEmpresaPEDIR_COLE_ETIQUETA: TStringField;
     qryTerminalLER_PESO: TStringField;
-    qryVeiculos_cavaloSITUACAO: TStringField;
-    qryVeiculos_cavaloDATA_CADASTRO: TDateField;
-    qryVeiculos_cavaloDATA_MODIFICACAO: TDateField;
-    qryVeiculos_cavaloUSUARIO_MODIFICACAO_ID: TIntegerField;
-    qryVeiculos_cavaloDATA_AQUISICAO: TDateField;
-    qryVeiculos_cavaloVALOR_AQUISICAO: TFMTBCDField;
-    qryVeiculos_cavaloVALOR_ALUGUEL_MENSAL: TFMTBCDField;
-    qryVeiculos_cavaloVENCIMENTO_ALUGUEL: TDateField;
-    qryVeiculos_cavaloMARCA: TStringField;
-    qryVeiculos_cavaloMODELO: TStringField;
-    qryVeiculos_cavaloCOR: TStringField;
-    qryVeiculos_cavaloANO_FABRICACAO: TSmallintField;
-    qryVeiculos_cavaloANO_MODELO: TSmallintField;
-    qryVeiculos_cavaloALTURA_METROS: TCurrencyField;
-    qryVeiculos_cavaloCOMPRIMENTO_METROS: TCurrencyField;
-    qryVeiculos_cavaloLARGURA_METROS: TCurrencyField;
-    qryVeiculos_cavaloCAPACIDADE_CARGA_KG: TFMTBCDField;
-    qryVeiculos_cavaloCAPACIDADE_CARGA_M3: TFMTBCDField;
-    qryVeiculos_cavaloODOMETRO_ATUAL: TIntegerField;
-    qryVeiculos_cavaloVALOR_IPVA: TFMTBCDField;
-    qryVeiculos_cavaloVALOR_LICENCIAMENTO: TFMTBCDField;
-    qryVeiculos_cavaloVALOR_SEGURO_OBRIGATORIO: TFMTBCDField;
-    qryVeiculos_cavaloSEGURADORA_NOME: TStringField;
-    qryVeiculos_cavaloSEGURADORA_APOLICE: TStringField;
-    qryVeiculos_cavaloSEGURADORA_VALOR: TFMTBCDField;
-    qryVeiculos_cavaloSEGURADORA_DATA_INICIO: TDateField;
-    qryVeiculos_cavaloSEGURADORA_DATA_VENCIMENTO: TDateField;
-    qryVeiculos_cavaloSEGURADORA_TIPO_COBERTURA: TStringField;
-    qryVeiculos_cavaloOBSERVACOES: TMemoField;
-    qryMotoristaDATA_NASCIMENTO: TDateField;
-    qryMotoristaTELEFONE: TStringField;
-    qryMotoristaWHATSAPP: TStringField;
-    qryMotoristaEMAIL: TStringField;
-    qryMotoristaCNH_CATEGORIA: TStringField;
-    qryMotoristaCNH_DATA_EMISSAO: TDateField;
-    qryMotoristaEXAMES_OBSERVACOES: TMemoField;
-    qryMotoristaEXAMES_DATA_VENCIMENTO: TDateField;
-    qryMotoristaOBSERVACOES: TMemoField;
-    qryManutencao: TFDQuery;
-    qryManutencaoItem: TFDQuery;
-    qryManutencaoCODIGO: TIntegerField;
-    qryManutencaoVEICULO_PLACA: TStringField;
-    qryManutencaoMOTORISTA_CODIGO: TIntegerField;
-    qryManutencaoFORNECEDOR_CODIGO: TIntegerField;
-    qryManutencaoDATA_ENTRADA: TDateField;
-    qryManutencaoHORA_ENTRADA: TTimeField;
-    qryManutencaoDATA_SAIDA: TDateField;
-    qryManutencaoHORA_SAIDA: TTimeField;
-    qryManutencaoKM_PROXIMA_REVISAO: TIntegerField;
-    qryManutencaoOBSERVACOES: TMemoField;
-    qryManutencaoItemCODIGO: TIntegerField;
-    qryManutencaoItemMANUTENCAO_CODIGO: TIntegerField;
-    qryManutencaoItemTIPO: TStringField;
-    qryManutencaoItemDESCRICAO: TStringField;
-    qryManutencaoItemQUANTIDADE: TFMTBCDField;
-    qryManutencaoItemVALOR_UNITARIO: TBCDField;
-    qryManutencaoItemDESCONTO: TBCDField;
-    qryManutencaoItemVALOR_TOTAL: TFMTBCDField;
-    qryManutencaoTIPO_SERVICO_CODIGO: TIntegerField;
-    qryManutencaoTipo: TFDQuery;
-    qryManutencaoTipoCODIGO: TIntegerField;
-    qryManutencaoTipoNOME: TStringField;
-    qryManutencaoTipoDESCRICAO: TMemoField;
-    qryManutencaoTIPO_SERVICO: TStringField;
-    qryRota: TFDQuery;
-    qryRotaCODIGO: TIntegerField;
-    qryRotaVEICULO_PLACA: TStringField;
-    qryRotaORIGEM: TStringField;
-    qryRotaDESTINO_FINAL: TStringField;
-    qryRotaDATA_SAIDA: TDateField;
-    qryRotaHORA_SAIDA: TTimeField;
-    qryRotaDATA_CHEGADA: TDateField;
-    qryRotaHORA_CHEGADA: TTimeField;
-    qryRotaKM_INICIAL: TFMTBCDField;
-    qryRotaKM_FINAL: TFMTBCDField;
-    qryRotaOBSERVACAO: TStringField;
-    qryRotaSTATUS: TStringField;
-    qryRotaParadas: TFDQuery;
-    qryRotaParadasCODIGO: TIntegerField;
-    qryRotaParadasROTA_CODIGO: TIntegerField;
-    qryRotaParadasORDEM: TIntegerField;
-    qryRotaParadasCLIENTE_CODIGO: TIntegerField;
-    qryRotaParadasENDERECO_CLIENTE: TStringField;
-    qryRotaParadasKM_DESTINO: TFMTBCDField;
-    qryRotaParadasOBSERVACAO: TStringField;
-    qryRotaDespesas: TFDQuery;
-    qryRotaDespesasCODIGO: TIntegerField;
-    qryRotaDespesasROTA_CODIGO: TIntegerField;
-    qryRotaDespesasTIPO_DESPESA_CODIGO: TIntegerField;
-    qryRotaDespesasFORNECEDOR_CODIGO: TIntegerField;
-    qryRotaDespesasDESCRICAO: TStringField;
-    qryRotaDespesasVALOR: TFMTBCDField;
-    qryRotaDespesasDATA_VENCIMENTO: TDateField;
-    qryRotaDespesasOBSERVACAO: TStringField;
-    qryRotaDespesasCOMPROVANTE_DOC: TBlobField;
-    qryRotaDespesasIMPORTADO_FIN: TStringField;
-    qryRotaTipoDespesa: TFDQuery;
-    qryRotaTipoDespesaCODIGO: TIntegerField;
-    qryRotaTipoDespesaDESCRICAO: TStringField;
+    qrySped_H010CODIGO: TIntegerField;
+    qrySped_H010QTD: TBCDField;
+    qrySped_H010VL_UNIT: TFMTBCDField;
+    qrySped_H010VL_ITEM: TFMTBCDField;
+    qrySped_H010IND_PROP: TStringField;
+    qrySped_H010COD_PART: TIntegerField;
+    qrySped_H010TXT_COMPL: TStringField;
+    qrySped_H010COD_CTA: TStringField;
+    qrySped_H010FK_H005: TIntegerField;
+    qrySped_H010FK_PRODUTO: TIntegerField;
+    qrySped_H010FK_UNIDADE: TStringField;
+    qrySped_H010FK_EMPRESA: TIntegerField;
+    qrySped_H010FK_USUARIO: TIntegerField;
+    qrySped_H010CST_ICMS: TStringField;
+    qrySped_H010BC_ICMS: TFMTBCDField;
+    qrySped_H010VL_ICMS: TFMTBCDField;
+    qrySped_H005DT_INVE: TDateField;
+    qrySped_ConfigREGIME_TRIBUTARIO: TStringField;
+    qrySped_ConfigCONFIG_1601: TStringField;
+    qrySped_ConfigADM_PADRAO_CARTAO_DEB: TIntegerField;
+    qrySped_ConfigADM_PADRAO_CARTAO_CRE: TIntegerField;
+    qrySped_ConfigADM_PADRAO_PIX: TIntegerField;
+    qrySped_ConfigADM_PADRAO_VALE_ALI: TIntegerField;
+    qryConfigPATHXMLENTRADA: TStringField;
+    qryConfigTEF_GP: TIntegerField;
+    qryConfigTEF_AUTO_ATIVAR_GP: TStringField;
+    qryConfigTEF_MULT_CARTOES: TStringField;
+    qryConfigTEF_AUTO_PAGAMENTO: TStringField;
+    qryConfigTEF_AUTO_FINALIZA: TStringField;
+    qryConfigTEF_EXIBIR_MSG_AUTETI: TStringField;
+    qryConfigTEF_SLEEP: TIntegerField;
+    qryConfigTEF_STS: TIntegerField;
+    qryConfigTEF_NUM_VIAS: TIntegerField;
+    qryConfigTEF_APLICACAO: TStringField;
+    qryConfigTEF_RAZAO: TStringField;
+    qryConfigTEF_REGISTRO_CERT: TStringField;
+    qryConfigTEF_SOFT_HOUSE: TStringField;
+    qryConfigTEF_VERS_APLICACAO: TStringField;
+    qryConfigTIPO_IMP_ETQ: TStringField;
+    qryConfigMODELO_ETQ_FAST: TStringField;
+    qryConfigIMPRESSORA_FAST_ETQ: TStringField;
+    qryConfigVENDAS_SIMPLES_NAO_MOV_CAIXA: TStringField;
+    qryConfigSH_CON_LOGIN: TStringField;
+    qryConfigSH_CON_PASS: TStringField;
+    qryConfigSH_CON_SERVER: TStringField;
+    qryConfigSH_CON_DATABASE: TStringField;
+    qryConfigDASH_CON_LOGIN: TStringField;
+    qryConfigDASH_CON_PASS: TStringField;
+    qryConfigDASH_CON_SERVER: TStringField;
+    qryConfigDASH_CON_DATABASE: TStringField;
+    QRYNFCE_DBLOQUEADO: TStringField;
+    QRYNFCE_DVICMSDESON: TBCDField;
+    QRYNFCE_DALIQICMSDESON: TBCDField;
+    QRYNFCE_DFK_GRADE: TIntegerField;
+    QRYNFCE_DREDUCAO_BASE: TFMTBCDField;
+    qryTerminalIMPRIME_PREVIEW: TStringField;
+    qryTerminalTIPOFECHAMENTO: TStringField;
+    qryTerminalMEIAFOLHA: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure serial;
     procedure ConsultaCliente(var Codigo: Integer; var Razao: string;
@@ -2643,6 +2589,7 @@ type
     // Boleto
     function SoNumero(fField: String): String;
     function EhSoNumero(fField: string): boolean;
+    function VerificaCodigoVenda(codigo: Integer): Boolean;
     function IncluiBoleto(dm: TdmForte; iCodCliente: Integer;
       dtVencimento: TDate; NumDocumento: string; rValor: Extended;
       rVlrJuros: Extended; rVlrDesconto: Extended; rVlrAbatimento: Extended;
@@ -2714,7 +2661,7 @@ begin
     qryPermissoes.ParamByName('VISIVEL').Value := 'N';
     end; }
   qryPermissoes.execsql;
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.AjustaPermissoes;
@@ -2759,7 +2706,7 @@ begin
     'update cbr_remessa set CANCELADA=''S'' where ID_CBR_REMESSA_UUID=:ID';
   Dados.qryUpdate.Params[0].Value := Arquivo;
   Dados.qryUpdate.execsql;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TDados.UpdateTela(aform: string);
@@ -2775,7 +2722,7 @@ begin
     qryTela.Params[0].Value := aform;
     qryTela.Params[1].Value := Dados.aMenu;
     qryTela.execsql;
-    Conexao.CommitRetaining;
+    Conexao.Commit;
   except
     Conexao.RollbackRetaining;
   end;
@@ -2809,7 +2756,7 @@ begin
   Dados.qryExecute.sql.Text := 'DELETE FROM CAIXA WHERE FKRECEBER=:CODIGO';
   Dados.qryExecute.Params[0].Value := Codigo;
   Dados.qryExecute.execsql;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TDados.ChecaPDV;
@@ -3013,7 +2960,7 @@ begin
       Dados.qryParametroSENHA_LI.AsString := Dados.Crypt('C', '');
 
       Dados.qryParametro.Post;
-      Conexao.CommitRetaining;
+      Conexao.Commit;
     end;
   except
   end;
@@ -3040,7 +2987,7 @@ begin
     'update produto set data_preco=current_date where codigo=:codigo';
   Dados.qryExecute.Params[0].Value := Codigo;
   Dados.qryExecute.execsql;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TDados.CriaPastas;
@@ -3197,7 +3144,7 @@ begin
   Dados.qryConsulta.Params[0].Value := idSerial;
   Dados.qryConsulta.Prepare;
   Dados.qryConsulta.execsql;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 function iff(bExpressao: boolean; vValor1, vValor2: Variant): Variant;
@@ -3356,7 +3303,7 @@ begin
       qryUsuariosSENHA.Value := Senha;
       qryUsuariosECAIXA.Value := 'C';
       qryUsuarios.Post;
-      Conexao.CommitRetaining;
+      Conexao.Commit;
     end;
     qryUsuarios.Next;
   end;
@@ -3369,7 +3316,7 @@ begin
   Dados.qryChave.Open;
   if not Dados.qryChave.IsEmpty then
     Dados.qryChave.Delete;
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 function TDados.BloqueiaValidade: boolean;
@@ -3385,7 +3332,7 @@ begin
     Dados.qryEmpresaNSERIE.Value := '...';
     Dados.qryEmpresaDATA_VALIDADE.Value := Dados.Crypt('C', '01/01/1900');
     Dados.qryEmpresa.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
   end;
   if Dados.Crypt('D', Dados.qryEmpresaCSENHA.AsString) = 'S' then
   // sistema bloqueado
@@ -3395,7 +3342,7 @@ begin
     Dados.qryEmpresaNSERIE.Value := '...';
     Dados.qryEmpresaDATA_VALIDADE.Value := Dados.Crypt('C', '01/01/1900');
     Dados.qryEmpresa.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
     Dados.ApagaNumeroSerie;
   end;
   if (trim(qryEmpresaDATA_VALIDADE.AsString) = '') or
@@ -3406,7 +3353,7 @@ begin
     Dados.qryEmpresaNSERIE.Value := '...';
     Dados.qryEmpresaDATA_VALIDADE.Value := Dados.Crypt('C', '01/01/1900');
     Dados.qryEmpresa.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
     Dados.ApagaNumeroSerie;
   end;
   try
@@ -3416,7 +3363,7 @@ begin
     Dados.qryEmpresa.Edit;
     Dados.qryEmpresaDATA_VALIDADE.Value := Dados.Crypt('C', '01/01/1900');
     Dados.qryEmpresa.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
   end;
   if (DataValidade < Date) then // data de validade vencida
   begin
@@ -3425,7 +3372,7 @@ begin
     Dados.qryEmpresaNSERIE.Value := '...';
     Dados.qryEmpresaDATA_VALIDADE.Value := Dados.Crypt('C', '01/01/1900');
     Dados.qryEmpresa.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
     ApagaNumeroSerie;
   end;
   if Result = true then
@@ -3515,7 +3462,7 @@ begin
       Dados.qryTerminalDATA_SISTEMA.AsDateTime := FDataSistema;
       Dados.qryTerminal.Post;
     end;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
     Dados.qryTerminal.Refresh;
   except
     // faz nada
@@ -3750,7 +3697,7 @@ begin
       qryTradutorOBJETO.Value := objeto;
       qryTradutorTEXTO_PT_BR.Value := Valor;
       qryTradutor.Post;
-      Conexao.CommitRetaining;
+      Conexao.Commit;
     end;
   end;
 end;
@@ -3888,7 +3835,7 @@ begin
   Dados.qryExecute.Params[0].Value := Dados.idEmpresa;
   Dados.qryExecute.Params[1].Value := Getcomputer;
   Dados.qryExecute.execsql;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TDados.GravarTraducao(Codigo, idioma: Integer;
@@ -3938,7 +3885,7 @@ begin
     Dados.qryUpdate.ParamByName('codigo').Value := Codigo;
     Dados.qryUpdate.ParamByName('nboleto').Value := Dados.RetornoNumeroBoleto;
     Dados.qryUpdate.execsql;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
   end;
 end;
 
@@ -3971,7 +3918,7 @@ begin
           ('codigo').AsString;
         Dados.qryUpdate.Prepare;
         Dados.qryUpdate.execsql;
-        Dados.Conexao.CommitRetaining;
+        Dados.Conexao.Commit;
         Dados.qryConsulta.Next;
       end;
       // compras itens
@@ -3994,7 +3941,7 @@ begin
         Dados.qryUpdate.Params[1].Value := Dados.qryConsulta.FieldByName
           ('codigo').AsInteger;
         Dados.qryUpdate.execsql;
-        Dados.Conexao.CommitRetaining;
+        Dados.Conexao.Commit;
         Dados.qryConsulta.Next;
       end;
     end;
@@ -4020,7 +3967,7 @@ begin
         Dados.qryUpdate.Params[1].AsInteger := Dados.qryConsulta.FieldByName
           ('codigo').AsInteger;
         Dados.qryUpdate.execsql;
-        Dados.Conexao.CommitRetaining;
+        Dados.Conexao.Commit;
         Dados.qryConsulta.Next;
       end;
       // orcamento itens
@@ -4043,7 +3990,7 @@ begin
         Dados.qryUpdate.Params[1].Value := Dados.qryConsulta.FieldByName
           ('codigo').AsInteger;
         Dados.qryUpdate.execsql;
-        Dados.Conexao.CommitRetaining;
+        Dados.Conexao.Commit;
         Dados.qryConsulta.Next;
       end;
     end;
@@ -4069,7 +4016,7 @@ begin
         Dados.qryUpdate.Params[1].Value := Dados.qryConsulta.FieldByName
           ('codigo').AsInteger;
         Dados.qryUpdate.execsql;
-        Dados.Conexao.CommitRetaining;
+        Dados.Conexao.Commit;
         Dados.qryConsulta.Next;
       end;
       // os itens
@@ -4092,7 +4039,7 @@ begin
         Dados.qryUpdate.Params[1].Value := Dados.qryConsulta.FieldByName
           ('codigo').AsInteger;
         Dados.qryUpdate.execsql;
-        Dados.Conexao.CommitRetaining;
+        Dados.Conexao.Commit;
         Dados.qryConsulta.Next;
       end;
     end;
@@ -4118,7 +4065,7 @@ begin
         Dados.qryUpdate.Params[1].Value := Dados.qryConsulta.FieldByName
           ('codigo').AsInteger;
         Dados.qryUpdate.execsql;
-        Dados.Conexao.CommitRetaining;
+        Dados.Conexao.Commit;
         Dados.qryConsulta.Next;
       end;
       // os itens
@@ -4141,7 +4088,7 @@ begin
         Dados.qryUpdate.Params[1].Value := Dados.qryConsulta.FieldByName
           ('codigo').AsInteger;
         Dados.qryUpdate.execsql;
-        Dados.Conexao.CommitRetaining;
+        Dados.Conexao.Commit;
         Dados.qryConsulta.Next;
       end;
     end;
@@ -4182,7 +4129,7 @@ begin
   Dados.qryMensagemZapEMPRESA.Value := Empresa;
   Dados.qryMensagemZapORIGEM.Value := Origem;
   Dados.qryMensagemZap.Post;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TDados.DataModuleCreate(Sender: TObject);
@@ -4268,7 +4215,7 @@ begin
     'UPDATE VENDAS_FPG SET NSU=null, INDICE=null, REDE=null, REDECNPJ=null, FEZ_TEF=''N'' WHERE NSU=:ID';
   Dados.qryExecute.ParamByName('ID').AsString := NSU;
   Dados.qryExecute.execsql;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 function TDados.Numerador(Tabela, Campo, filtra, where, Valor: String): Integer;
@@ -4297,29 +4244,29 @@ begin
     'SELECT REMESSA_ARQUIVO, ID_CBR_REMESSA_UUID FROM CRECEBER WHERE FK_VENDA=:VD';
   Dados.qryExecute.Params[0].Value := Codigo;
   Dados.qryExecute.Open;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
   DeletaRemessa(Dados.qryExecute.FieldByName('REMESSA_ARQUIVO').AsString,
     Dados.qryExecute.FieldByName('ID_CBR_REMESSA_UUID').AsString);
   Dados.qryExecute.Close;
   Dados.qryExecute.sql.Text := 'DELETE FROM CAIXA WHERE FKVENDA=:VD';
   Dados.qryExecute.Params[0].Value := Codigo;
   Dados.qryExecute.execsql;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
   Dados.qryExecute.Close;
   Dados.qryExecute.sql.Text := 'DELETE FROM CRECEBER WHERE FK_VENDA=:VD';
   Dados.qryExecute.Params[0].Value := Codigo;
   Dados.qryExecute.execsql;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
   Dados.qryExecute.Close;
   Dados.qryExecute.sql.Text := 'DELETE FROM PESSOA_CONTA WHERE FKVENDA=:VD';
   Dados.qryExecute.Params[0].Value := Codigo;
   Dados.qryExecute.execsql;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
   Dados.qryExecute.Close;
   Dados.qryExecute.sql.Text := 'DELETE FROM CONTAS_MOVIMENTO WHERE FKVENDA=:VD';
   Dados.qryExecute.Params[0].Value := Codigo;
   Dados.qryExecute.execsql;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TDados.EstornaEstoque(Codigo: Integer; QtdAtual, QtdFiscal: real;
@@ -4335,13 +4282,13 @@ begin
     Dados.qryExecute.Params[1].Value := QtdFiscal;
     Dados.qryExecute.Params[2].Value := Codigo;
     Dados.qryExecute.execsql;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
   end;
 end;
 
 procedure TDados.qryCaixaAfterPost(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
   Dados.qryTransf.Close;
   Dados.qryTransf.Open;
   if qryCaixaTRANSFERENCIA.Value = 1 then
@@ -4370,7 +4317,7 @@ begin
     Dados.qryTransfTRANSFERENCIA.Value := 1;
     Dados.qryTransf.Post;
   end;
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.qryCaixaBeforePost(DataSet: TDataSet);
@@ -4399,12 +4346,12 @@ begin
   qryEmpresaCHECA.Value := Crypt('C', 'PRODUCAO');
   qryEmpresaNSERIE.Value := '...';
   qryEmpresa.Post;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TDados.qryConfigBeforeDelete(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.qryConfigBeforePost(DataSet: TDataSet);
@@ -4498,7 +4445,7 @@ end;
 
 procedure TDados.qryConfiguracaoAfterPost(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.qryContasCalcFields(DataSet: TDataSet);
@@ -4517,7 +4464,7 @@ end;
 
 procedure TDados.qryCPAfterPost(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.qryCRAfterOpen(DataSet: TDataSet);
@@ -4528,7 +4475,7 @@ end;
 
 procedure TDados.qryCRAfterPost(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.qryEmpresaBeforePost(DataSet: TDataSet);
@@ -4611,7 +4558,7 @@ end;
 
 procedure TDados.qryEtiquetaAfterPost(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.qryEtiquetaNewRecord(DataSet: TDataSet);
@@ -4622,7 +4569,7 @@ end;
 
 procedure TDados.qryEtq_CamposAfterPost(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.qryEtq_CamposBeforeInsert(DataSet: TDataSet);
@@ -4683,7 +4630,7 @@ end;
   - 1) * 100;
   qryAjustaPreco.FieldByName('ULT_COMPRA').Value := compra;
   qryAjustaPreco.Post;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
   if qryAjustaPrecoPR_VENDA.AsFloat <> vPrecoAnterior then
   AlteraDataPreco(qryAjustaPrecoCODIGO.AsInteger);
   except
@@ -4740,7 +4687,7 @@ begin
 
     qryAjustaPreco.FieldByName('ULT_COMPRA').Value := compra;
     qryAjustaPreco.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
 
   except
     Dados.Conexao.RollbackRetaining;
@@ -4749,17 +4696,17 @@ end;
 
 procedure TDados.qryFichaClienteAfterDelete(DataSet: TDataSet);
 begin
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TDados.qryFichaClienteAfterPost(DataSet: TDataSet);
 begin
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TDados.qryFPGAfterPost(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.qryFPGBeforePost(DataSet: TDataSet);
@@ -4773,7 +4720,7 @@ end;
 
 procedure TDados.qryGrupoAfterPost(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.qryGrupoBeforePost(DataSet: TDataSet);
@@ -4785,7 +4732,7 @@ end;
 
 procedure TDados.qryIdiomasAfterPost(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.qryIdiomasNewRecord(DataSet: TDataSet);
@@ -4795,7 +4742,7 @@ end;
 
 procedure TDados.qryItensCompraAfterPost(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.qryItensCompraBeforeOpen(DataSet: TDataSet);
@@ -4827,12 +4774,12 @@ end;
 
 procedure TDados.qryMotoristaAfterDelete(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.qryMotoristaAfterPost(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.qryMotoristaBeforeInsert(DataSet: TDataSet);
@@ -4869,12 +4816,12 @@ end;
 
 procedure TDados.qryNFCE_MAfterDelete(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.qryNFCE_MAfterPost(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.qryNFCE_MBeforePost(DataSet: TDataSet);
@@ -4896,12 +4843,12 @@ end;
 
 procedure TDados.qryParametroAfterDelete(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.qryParametroAfterPost(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.qryParametroBeforeEdit(DataSet: TDataSet);
@@ -4938,7 +4885,7 @@ begin
     Dados.qryAtualiza.ParamByName('COD').Value := Dados.qryEmpresaCODIGO.Value;
     Dados.qryAtualiza.Prepare;
     Dados.qryAtualiza.execsql;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
   except
     on e: Exception do
       raise Exception.Create(e.Message);
@@ -4947,19 +4894,19 @@ end;
 
 procedure TDados.qryPermissoesAfterDelete(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.qryPermissoesAfterPost(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.qryPessoasAfterPost(DataSet: TDataSet);
 var
   aTask: ITask;
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.qryPessoasBeforePost(DataSet: TDataSet);
@@ -4999,7 +4946,7 @@ end;
 
 procedure TDados.qryPlanoAfterPost(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.qryProdutosBeforeOpen(DataSet: TDataSet);
@@ -5020,12 +4967,12 @@ end;
 
 procedure TDados.qryTelasAfterDelete(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.qryTelasAfterPost(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.qryTerminalNewRecord(DataSet: TDataSet);
@@ -5044,7 +4991,7 @@ end;
 
 procedure TDados.qryTranspAfterPost(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.qryTranspBeforePost(DataSet: TDataSet);
@@ -5064,12 +5011,12 @@ end;
 
 procedure TDados.qryVendedorAfterPost(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.QryXmlDetailAfterDelete(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.QryXmlDetailAfterEdit(DataSet: TDataSet);
@@ -5087,7 +5034,7 @@ end;
 procedure TDados.QryXmlDetailAfterPost(DataSet: TDataSet);
 begin
   vCodGrupo := QryXmlDetailFK_GRUPO.Value;
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.QryXmlDetailBeforePost(DataSet: TDataSet);
@@ -5117,22 +5064,22 @@ end;
 
 procedure TDados.qryXmlMasterAfterDelete(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.qryXmlMasterAfterPost(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.qryXMLProdutoAfterDelete(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.qryXMLProdutoAfterPost(DataSet: TDataSet);
 begin
-  Conexao.CommitRetaining;
+  Conexao.Commit;
 end;
 
 procedure TDados.serial;
@@ -5228,7 +5175,7 @@ begin
     'update creceber set flag=''N'' where fkcliente=:id';
   Dados.qryExecute.Params[0].Value := Codigo;
   Dados.qryExecute.execsql;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TDados.limpaFlagCP(Codigo: Integer);
@@ -5238,7 +5185,7 @@ begin
     'update cpagar set flag=''N'' where FKFORNECE=:id';
   Dados.qryExecute.Params[0].Value := Codigo;
   Dados.qryExecute.execsql;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 function TDados.buscacodigoPessoa(referencia: STRING): Integer;
@@ -5485,7 +5432,7 @@ begin
       qryAjustaPrecoMARGEM.AsFloat := 0;
 
     qryAjustaPreco.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
   except
     Dados.Conexao.RollbackRetaining;
   end;
@@ -6127,9 +6074,6 @@ begin
   Result := Result / Factor;
 end;
 
-// Fim modificações update 4.3
-
-// update 5
 function TDados.EhSoNumero(fField: string): boolean;
 var
   i: Byte;
@@ -6144,5 +6088,15 @@ begin
     end;
   end;
 end;
+
+function TDados.VerificaCodigoVenda(codigo: Integer): Boolean;
+begin
+  qryConsulta.Close;
+  qryConsulta.SQL.Text := 'SELECT CODIGO FROM VENDAS_MASTER WHERE SITUACAO=''F''AND CODIGO = :CODIGO';
+  qryConsulta.ParamByName('CODIGO').AsInteger := codigo;
+  qryConsulta.Open;
+  Result := not qryConsulta.IsEmpty;
+end;
+
 
 end.

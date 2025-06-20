@@ -547,7 +547,7 @@ begin
       exit;
     end;
     qryDestinatario.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
   end;
   PageControl1.ActivePageIndex := 0;
   edtLoc.SetFocus;

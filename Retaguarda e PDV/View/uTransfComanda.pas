@@ -101,7 +101,7 @@ begin
     dados.qryUpdate.Params[0].Value := edtOrigem.Text;
     dados.qryUpdate.Prepare;
     dados.qryUpdate.ExecSQL;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     dados.qryUpdate.Close;
     dados.qryUpdate.SQL.Text :=
@@ -109,7 +109,7 @@ begin
     dados.qryUpdate.Params[0].Value := edtDestino.Text;
     dados.qryUpdate.Prepare;
     dados.qryUpdate.ExecSQL;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     dados.qryConsulta.Close;
     dados.qryConsulta.SQL.Text :=
@@ -129,7 +129,7 @@ begin
       dados.qryUpdate.Params[0].Value := idPedidoO;
       dados.qryUpdate.Prepare;
       dados.qryUpdate.ExecSQL;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
 
       if dados.qryMesas.Locate('codigo', edtDestino.Text) then
       begin
@@ -144,7 +144,7 @@ begin
         dados.qryUpdate.Params[1].Value := idPedidoO;
         dados.qryUpdate.Prepare;
         dados.qryUpdate.ExecSQL;
-        dados.Conexao.CommitRetaining;
+        dados.Conexao.Commit;
 
         frmpdv.qryVenda.Refresh;
 

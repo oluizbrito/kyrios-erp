@@ -259,7 +259,7 @@ begin
   qryPreMasterSITUACAO.AsString := 'C';
   qryPreMaster.Post;
   CancelarPreVendasDetalhes;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
   if FrmCadPreVenda.Tag = 0 then
   begin
     bIniciar := Application.MessageBox('Deseja iniciar uma nova Pré-Venda?',
@@ -282,7 +282,7 @@ begin
   qryPreMasterSITUACAO.AsString := 'F';
   qryPreMaster.Post;
   FinalizarPreVendasDetalhes;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 
   ImprimirPreVenda;
   if FrmCadPreVenda.Tag = 0 then
@@ -648,7 +648,7 @@ begin
   try
     if qryPreMaster.State in [dsInsert, dsEdit] then
       qryPreMaster.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
 
     if not(qryPesqProdCODIGO.Value > 0) then
       Exit;
@@ -724,7 +724,7 @@ begin
   begin
     try
       qryPreMaster.Post;
-      Dados.Conexao.CommitRetaining;
+      Dados.Conexao.Commit;
       Break;
     except
       on E: Exception do
@@ -772,7 +772,7 @@ end;
 
 procedure TFrmCadPreVenda.qryPreDetalheAfterDelete(DataSet: TDataSet);
 begin
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 
   qrySoma.Close;
   qrySoma.Params[0].Value := qryPreMasterCODIGO.Value;
@@ -793,7 +793,7 @@ begin
     qryPreDetalhe.Refresh;
   end;
 
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 
   qrySoma.Close;
   qrySoma.Params[0].Value := qryPreMasterCODIGO.Value;
@@ -845,7 +845,7 @@ end;
 
 procedure TFrmCadPreVenda.qryPreMasterAfterPost(DataSet: TDataSet);
 begin
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TFrmCadPreVenda.qryPreMasterAfterScroll(DataSet: TDataSet);

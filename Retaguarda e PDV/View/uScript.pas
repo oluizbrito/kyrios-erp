@@ -66,7 +66,7 @@ procedure TfrmScript.ExecuteScript;
 begin
   try
     IBScript.ExecuteScript(MemoSql.Lines);
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
     ShowMessage('SQL executado com sucesso!');
   except
     on e: exception do

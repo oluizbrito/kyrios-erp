@@ -78,7 +78,7 @@ begin
       dados.qryPermissoes.Next;
     end;
   end;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TfrmPermissoes.chkExcluirClick(Sender: TObject);
@@ -105,7 +105,7 @@ begin
       dados.qryPermissoes.Next;
     end;
   end;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TfrmPermissoes.chkIncluirClick(Sender: TObject);
@@ -132,7 +132,7 @@ begin
       dados.qryPermissoes.Next;
     end;
   end;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TfrmPermissoes.chkVerClick(Sender: TObject);
@@ -159,7 +159,7 @@ begin
       dados.qryPermissoes.Next;
     end;
   end;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TfrmPermissoes.cxButton1Click(Sender: TObject);

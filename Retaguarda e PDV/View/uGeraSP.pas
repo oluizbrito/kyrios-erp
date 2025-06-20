@@ -11,14 +11,13 @@ uses
   DBLookupEh, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, ACBrSpedFiscal;
+  FireDAC.Comp.Client, ACBrSpedFiscal, cxGraphics, cxLookAndFeels,
+  cxLookAndFeelPainters, Vcl.Menus, cxButtons;
 
 type
   TFrmSpedSP = class(TForm)
     Panel2: TPanel;
     memoError: TMemo;
-    btnExecute: TSpeedButton;
-    btnSair: TSpeedButton;
     dsContador: TDataSource;
     dsEmpresa: TDataSource;
     Panel3: TPanel;
@@ -38,9 +37,9 @@ type
     Label7: TLabel;
     edArq: TEdit;
     ACBrSPEDContribuicoes: TACBrSPEDPisCofins;
-    procedure btnExecuteClick(Sender: TObject);
+    cxGerar: TcxButton;
+    cxSair: TcxButton;
     procedure FormCreate(Sender: TObject);
-    procedure btnSairClick(Sender: TObject);
     procedure dtFimExit(Sender: TObject);
     procedure dtIniExit(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -48,6 +47,8 @@ type
     procedure cbContadorExit(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure cxGerarClick(Sender: TObject);
+    procedure cxSairClick(Sender: TObject);
   private
     procedure AbreTabelas;
     procedure Importa;
@@ -198,7 +199,7 @@ begin
   Dados.qryExecute.SQL.Text := 'DELETE FROM SPED';
   Dados.qryExecute.ExecSQL;
 
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TFrmSpedSP.GeraSped;
@@ -230,7 +231,7 @@ begin
       'N', '', '');
     DadosSped.CodSped := Dados.qrySpedCODIGO.Value;
     Dados.qrySped.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
   end
   else
   begin
@@ -253,7 +254,7 @@ begin
 
       DadosSped.CodSped := Dados.qrySpedCODIGO.Value;
 
-      Dados.Conexao.CommitRetaining;
+      Dados.Conexao.Commit;
 
       DadosSped.ApagaRegistro;
 
@@ -1062,10 +1063,20 @@ begin
   end;
 end;
 
-procedure TFrmSpedSP.btnExecuteClick(Sender: TObject);
+procedure TFrmSpedSP.cbContadorExit(Sender: TObject);
 begin
-  try
-    btnExecute.Enabled := false;
+  NomeCaminho;
+end;
+
+procedure TFrmSpedSP.cbEmpresaExit(Sender: TObject);
+begin
+  NomeCaminho;
+end;
+
+procedure TFrmSpedSP.cxGerarClick(Sender: TObject);
+begin
+       try
+    cxgerar.Enabled := false;
     memoError.Lines.Clear;
     if CbTipo.ItemIndex = 1 then
     begin
@@ -1089,23 +1100,13 @@ begin
     else
       ShowMessage('Sped Contribuições Gerado com sucesso');
   finally
-    btnExecute.Enabled := true;
+    cxGerar.Enabled := true;
   end;
 end;
 
-procedure TFrmSpedSP.btnSairClick(Sender: TObject);
+procedure TFrmSpedSP.cxSairClick(Sender: TObject);
 begin
-  Close;
-end;
-
-procedure TFrmSpedSP.cbContadorExit(Sender: TObject);
-begin
-  NomeCaminho;
-end;
-
-procedure TFrmSpedSP.cbEmpresaExit(Sender: TObject);
-begin
-  NomeCaminho;
+   Close;
 end;
 
 procedure TFrmSpedSP.dtFimExit(Sender: TObject);
@@ -1148,10 +1149,10 @@ procedure TFrmSpedSP.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   if Key = VK_F2 then
-    btnExecute.Click;
+    cxGerar.Click;
 
   if Key = VK_ESCAPE then
-    btnSair.Click;
+    cxSair.Click;
   if Key = VK_RETURN then
     Perform(Wm_NextDlgCtl, 0, 0);
 end;

@@ -585,7 +585,7 @@ begin
         qryTabelas.FieldByName('ORDEM').Value :=
           Dados.Numerador('TABELA', 'ORDEM', 'N', '', '');
         qryTabelas.Post;
-        Dados.Conexao.CommitRetaining;
+        Dados.Conexao.Commit;
       end;
     end;
     qryBuscaTabelas.Next;
@@ -624,7 +624,7 @@ begin
           qryTabelas.FieldByName('FK_SERVIDOR').Value := BancosTableID.Value;
           qryTabelas.FieldByName('ORDEM').Value := qryAuxORDEM.Value;
           qryTabelas.Post;
-          Dados.Conexao.CommitRetaining;
+          Dados.Conexao.Commit;
         end;
 
         qryAux.Next;
@@ -697,7 +697,7 @@ begin
     BancosTableTABELASENVIA.Value := copy(TEnvia, 1, length(TEnvia) - 1);
     BancosTableTABELASRECEBE.Value := copy(TRecebe, 1, length(TRecebe) - 1);
     BancosTable.Post;
-    Conexao.CommitRetaining;
+    Conexao.Commit;
 
   end;
 end;
@@ -764,12 +764,12 @@ end;
 
 procedure TFrmEstrutura.qryTabelasAfterDelete(DataSet: TDataSet);
 begin
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TFrmEstrutura.qryTabelasAfterPost(DataSet: TDataSet);
 begin
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TFrmEstrutura.qryTabelasBeforePost(DataSet: TDataSet);

@@ -293,7 +293,7 @@ if qryCFOP.State in [dsInsert, dsEdit] then
     end;
 
     qryCFOP.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
   end;
 
   PageControl1.ActivePage := Lista;

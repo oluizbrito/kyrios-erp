@@ -289,7 +289,7 @@ begin
     qryCaixaEMPRESA.Value := qryCRFKEMPRESA.Value;
     qryCaixaCODIGO.Value := Dados.Numerador('CAIXA', 'CODIGO', 'N', '', '');
     qryCaixa.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
 
     SomaParcela := SomaParcela + qryCaixaENTRADA.AsFloat;
 
@@ -301,7 +301,7 @@ begin
         qryCaixa.Edit;
         qryCaixaENTRADA.AsFloat := qryCaixaENTRADA.AsFloat - valorDif;
         qryCaixa.Post;
-        Dados.Conexao.CommitRetaining;
+        Dados.Conexao.Commit;
       end;
     end;
 
@@ -328,7 +328,7 @@ begin
       qryCaixaTRANSFERENCIA.Value := 0;
       qryCaixaCODIGO.Value := Dados.Numerador('CAIXA', 'CODIGO', 'N', '', '');
       qryCaixa.Post;
-      Dados.Conexao.CommitRetaining;
+      Dados.Conexao.Commit;
 
       SomaTaxa := SomaTaxa + qryCaixaSAIDA.AsFloat;
 
@@ -340,7 +340,7 @@ begin
           qryCaixa.Edit;
           qryCaixaSAIDA.AsFloat := qryCaixaSAIDA.AsFloat - valorDif;
           qryCaixa.Post;
-          Dados.Conexao.CommitRetaining;
+          Dados.Conexao.Commit;
         end;
       end;
     end;
@@ -364,7 +364,7 @@ begin
   else
     qryCRSITUACAO.Value := 'P';
   qryCR.Post;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TfrmBaixaReceber.Button2Click(Sender: TObject);
@@ -426,7 +426,7 @@ begin
     try
       if (qryRecebimento.State in dsEditModes) then
         qryRecebimento.Post;
-      Dados.Conexao.CommitRetaining;
+      Dados.Conexao.Commit;
 
       if qryRecebimentoVALOR_RECEBIDO.AsFloat > 0 then
         GerarCaixa;

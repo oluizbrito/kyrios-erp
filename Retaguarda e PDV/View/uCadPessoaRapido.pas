@@ -285,7 +285,7 @@ begin
     end;
 
     qryPessoas.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
   end;
   frmCadPessoaRapido.Close;
 end;
@@ -404,7 +404,7 @@ end;
 
 procedure TfrmCadPessoaRapido.qryContatosAfterPost(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TfrmCadPessoaRapido.qryContatosBeforeInsert(DataSet: TDataSet);
@@ -412,7 +412,7 @@ begin
   try
     if (qryPessoas.State in dsEditModes) then
       qryPessoas.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
   except
     On E: Exception do
       raise Exception.Create(E.Message);
@@ -421,7 +421,7 @@ end;
 
 procedure TfrmCadPessoaRapido.qryPessoasAfterPost(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TfrmCadPessoaRapido.qryPessoasBeforePost(DataSet: TDataSet);

@@ -140,7 +140,7 @@ begin
       qryParametroDATA_SCRIPT.AsString := '01/01/1900';
       qryParametro.Post;
     end;
-    IBTrans.CommitRetaining;
+    IBTrans.Commit;
 
     if qryParametroDATA_SCRIPT.AsDateTime < strtodate('01/01/2018') then
     begin
@@ -152,7 +152,7 @@ begin
       qryParametro.Edit;
       qryParametroDATA_SCRIPT.AsString := '01/01/2018';
       qryParametro.Post;
-      IBTrans.CommitRetaining;
+      IBTrans.Commit;
     end;
 
     if qryParametroDATA_SCRIPT.AsDateTime < strtodate('01/11/2018') then
@@ -165,7 +165,7 @@ begin
       qryParametro.Edit;
       qryParametroDATA_SCRIPT.AsString := '01/11/2018';
       qryParametro.Post;
-      IBTrans.CommitRetaining;
+      IBTrans.Commit;
     end;
 
     if qryParametroDATA_SCRIPT.AsDateTime < strtodate('31/12/2018') then
@@ -178,7 +178,7 @@ begin
       qryParametro.Edit;
       qryParametroDATA_SCRIPT.AsString := '31/12/2018';
       qryParametro.Post;
-      IBTrans.CommitRetaining;
+      IBTrans.Commit;
     end;
 
     if qryParametroDATA_SCRIPT.AsDateTime < strtodate('01/03/2019') then
@@ -191,7 +191,7 @@ begin
       qryParametro.Edit;
       qryParametroDATA_SCRIPT.AsString := '01/03/2019';
       qryParametro.Post;
-      IBTrans.CommitRetaining;
+      IBTrans.Commit;
     end;
 
     if qryParametroDATA_SCRIPT.AsDateTime < strtodate('01/05/2019') then
@@ -204,7 +204,7 @@ begin
       qryParametro.Edit;
       qryParametroDATA_SCRIPT.AsString := '01/05/2019';
       qryParametro.Post;
-      IBTrans.CommitRetaining;
+      IBTrans.Commit;
     end;
 
     qryConsulta.Close;

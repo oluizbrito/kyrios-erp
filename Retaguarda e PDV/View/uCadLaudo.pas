@@ -274,7 +274,7 @@ end;
 
 procedure TfrmCadLaudo.qryLaudoAfterPost(DataSet: TDataSet);
 begin
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TfrmCadLaudo.qryLaudoBeforePost(DataSet: TDataSet);
@@ -320,7 +320,7 @@ end;
 
 procedure TfrmCadLaudo.qryItensAfterPost(DataSet: TDataSet);
 begin
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TfrmCadLaudo.btnSairClick(Sender: TObject);

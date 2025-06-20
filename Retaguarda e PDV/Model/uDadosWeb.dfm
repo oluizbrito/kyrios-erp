@@ -1,35 +1,30 @@
 object DadosWeb: TDadosWeb
   OnCreate = DataModuleCreate
-  Height = 553
-  Width = 815
-  PixelsPerInch = 120
+  Height = 442
+  Width = 652
   object ConexaoAPP: TFDConnection
     Params.Strings = (
-      'Server=50.6.138.85'
-      'User_Name=atonap25_admin'
-      'Password=852456Ky*'
-      'Database=atonap25_licencas'
+      'Server='
       'DriverID=MySQL')
     LoginPrompt = False
     Transaction = TransacaoAPP
     UpdateTransaction = TransacaoAPP
-    Left = 173
-    Top = 30
+    Left = 138
+    Top = 24
   end
   object TransacaoAPP: TFDTransaction
     Connection = ConexaoAPP
-    Left = 299
-    Top = 30
+    Left = 239
+    Top = 24
   end
   object Cursor: TFDGUIxWaitCursor
     Provider = 'Forms'
-    Left = 399
-    Top = 34
+    Left = 319
+    Top = 27
   end
   object MysqlAPP: TFDPhysMySQLDriverLink
-    VendorLib = 'C:\Sistema\libmySQL.dll'
-    Left = 60
-    Top = 40
+    Left = 48
+    Top = 32
   end
   object cdsProdutos: TFDQuery
     Connection = ConexaoAPP
@@ -38,8 +33,8 @@ object DadosWeb: TDadosWeb
         'select codigo, descricao, tipo, codbarra,referencia, unidade, pr' +
         '_custo, pr_venda, qtd_atual  from produto'
       'order by descricao')
-    Left = 500
-    Top = 40
+    Left = 400
+    Top = 32
     object cdsProdutoscodigo: TIntegerField
       FieldName = 'codigo'
       Origin = 'codigo'
@@ -101,8 +96,8 @@ object DadosWeb: TDadosWeb
     SQL.Strings = (
       'select * from pessoa'
       'order by razao')
-    Left = 620
-    Top = 50
+    Left = 496
+    Top = 40
     object cdsPessoascodigo: TFDAutoIncField
       FieldName = 'codigo'
       Origin = 'codigo'
@@ -215,8 +210,8 @@ object DadosWeb: TDadosWeb
       'where '
       'orc.situacao='#39'A'#39
       'order by orc.data')
-    Left = 60
-    Top = 120
+    Left = 48
+    Top = 96
     object cdsOrcamentocodigo: TFDAutoIncField
       FieldName = 'codigo'
       Origin = 'codigo'
@@ -318,8 +313,8 @@ object DadosWeb: TDadosWeb
       'left join produto pro on pro.codigo=orc.fk_produto'
       'where '
       'orc.fk_orcamento=:CODIGO')
-    Left = 180
-    Top = 140
+    Left = 144
+    Top = 112
     ParamData = <
       item
         Name = 'CODIGO'
@@ -382,8 +377,8 @@ object DadosWeb: TDadosWeb
     SQL.Strings = (
       'select  * from cidade'
       'order by descricao')
-    Left = 280
-    Top = 130
+    Left = 224
+    Top = 104
     object CdsCidadecodigo: TIntegerField
       FieldName = 'codigo'
       Origin = 'codigo'
@@ -412,8 +407,8 @@ object DadosWeb: TDadosWeb
     SQL.Strings = (
       'select  * from vendedor'
       'order by nome')
-    Left = 399
-    Top = 140
+    Left = 319
+    Top = 112
     object cdsVendedorcodigo: TIntegerField
       FieldName = 'codigo'
       Origin = 'codigo'
@@ -435,13 +430,13 @@ object DadosWeb: TDadosWeb
       'select * from orcamento '
       'where'
       'situacao='#39'A'#39)
-    Left = 520
-    Top = 150
+    Left = 416
+    Top = 120
   end
   object TransacaoChave: TFDTransaction
     Connection = ConexaoChave
-    Left = 179
-    Top = 420
+    Left = 143
+    Top = 336
   end
   object ConexaoChave: TFDConnection
     Params.Strings = (
@@ -450,13 +445,12 @@ object DadosWeb: TDadosWeb
     LoginPrompt = False
     Transaction = TransacaoChave
     UpdateTransaction = TransacaoChave
-    Left = 183
-    Top = 330
+    Left = 146
+    Top = 264
   end
   object MysqlChave: TFDPhysMySQLDriverLink
-    VendorLib = 'C:\Sistema\libmySQL.dll'
-    Left = 50
-    Top = 240
+    Left = 40
+    Top = 192
   end
   object qryEmpresa: TFDQuery
     Connection = ConexaoChave
@@ -464,8 +458,8 @@ object DadosWeb: TDadosWeb
       'select * from empresa'
       'where'
       'cnpj=:cnpj')
-    Left = 435
-    Top = 260
+    Left = 348
+    Top = 208
     ParamData = <
       item
         Name = 'CNPJ'
@@ -478,8 +472,8 @@ object DadosWeb: TDadosWeb
     SQL.Strings = (
       'SELECT * FROM terminais WHERE FK_EMPRESA = :emp'
       '')
-    Left = 620
-    Top = 290
+    Left = 496
+    Top = 232
     ParamData = <
       item
         Name = 'EMP'
@@ -490,12 +484,12 @@ object DadosWeb: TDadosWeb
   end
   object updWeb: TFDQuery
     Connection = ConexaoAPP
-    Left = 639
-    Top = 150
+    Left = 511
+    Top = 120
   end
   object qryTeste: TFDQuery
     Connection = ConexaoChave
-    Left = 450
-    Top = 380
+    Left = 360
+    Top = 304
   end
 end

@@ -143,7 +143,7 @@ begin
   qryPOS.FieldByName('CODIGO').AsInteger := dados.Numerador('VENDA_MFE_POS',
     'CODIGO', 'N', '', '');
   qryPOS.Post;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
 end;
 

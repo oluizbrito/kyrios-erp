@@ -365,7 +365,7 @@ begin
       qryOS_Master.Edit;
     qryOS_MasterSITUACAO.Value := 'F';
     qryOS_Master.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
   finally
     VerificaEstoque := true;
@@ -399,7 +399,7 @@ begin
     qryOS_DetalheNUMERO.AsInteger := i;
     qryOS_Detalhe.Post;
   end;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
   Abre_OS_Detalhe;
 
 end;
@@ -545,7 +545,7 @@ begin
     qryOs_Imagem.Edit;
     qryOs_ImagemCAMINHO.Value := OpenPicture.FileName;
     qryOs_Imagem.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
   end;
 end;
 
@@ -592,23 +592,23 @@ end;
 
 procedure TfrmCadOS_Roupa.qryPessoa_CobrancaAfterPost(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TfrmCadOS_Roupa.qryPessoa_entregaAfterPost(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TfrmCadOS_Roupa.qryOS_DetalheAfterDelete(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
   CalculaTotais;
 end;
 
 procedure TfrmCadOS_Roupa.qryOS_DetalheAfterPost(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
   CalculaTotais;
 end;
 
@@ -686,7 +686,7 @@ end;
 
 procedure TfrmCadOS_Roupa.qryOS_MasterAfterDelete(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TfrmCadOS_Roupa.qryOS_MasterAfterOpen(DataSet: TDataSet);
@@ -707,7 +707,7 @@ end;
 
 procedure TfrmCadOS_Roupa.qryOS_MasterAfterPost(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TfrmCadOS_Roupa.qryOS_MasterBeforePost(DataSet: TDataSet);
@@ -761,7 +761,7 @@ end;
 
 procedure TfrmCadOS_Roupa.qryItensAfterPost(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
   CalculaTotais;
 end;
 
@@ -798,7 +798,7 @@ begin
 
   if qryOS_Master.State in dsEditModes then
     qryOS_Master.Post;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
   OpenPicture.Execute;
   if OpenPicture.FileName <> '' then
@@ -813,7 +813,7 @@ begin
     qryOs_ImagemCAMINHO.Value := OpenPicture.FileName;
     qryOs_ImagemFK_OS_MASTER.Value := qryOS_MasterCODIGO.Value;
     qryOs_Imagem.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
   end;
 
 end;
@@ -823,7 +823,7 @@ begin
   If Application.messagebox('Tem ceretza que deseja excluir imagem?',
     'Confirmação', mb_yesno + mb_iconquestion) = idyes then
     qryOs_Imagem.Delete;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TfrmCadOS_Roupa.DBEdit11Exit(Sender: TObject);

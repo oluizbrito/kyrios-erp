@@ -59,115 +59,114 @@ var
   QtdEstoque: Extended;
   qryConsulta: TFDQuery;
   qryExecute: TFDQuery;
+  ehComposicao: Boolean;
 begin
-
   try
     qryConsulta := TFDQuery.Create(self);
     qryConsulta.Connection := dados.Conexao;
 
-    qryExecute := TFDQuery.Create(self);
-    qryExecute.Connection := dados.Conexao;
-
+    // Verifica se é composição
     qryConsulta.Close;
     qryConsulta.SQL.Clear;
-    qryConsulta.SQL.Add(' select * from produto');
-    qryConsulta.SQL.Add(' where');
-    qryConsulta.SQL.Add(' codigo=:id');
+    qryConsulta.SQL.Text := 'select composicao from produto where codigo=:id';
     qryConsulta.Params[0].Value := aProduto;
     qryConsulta.Open;
 
-    if not qryConsulta.IsEmpty then
+    ehComposicao := qryConsulta.FieldByName('composicao').AsString = 'S';
+
+    // Só baixa estoque se NÃO for composição
+    if not ehComposicao then
     begin
+      qryExecute := TFDQuery.Create(self);
+      qryExecute.Connection := dados.Conexao;
 
-      QtdEstoque := aQuantidade - aQuantidade_Anterior;
+      qryConsulta.Close;
+      qryConsulta.SQL.Clear;
+      qryConsulta.SQL.Add(' select * from produto');
+      qryConsulta.SQL.Add(' where');
+      qryConsulta.SQL.Add(' codigo=:id');
+      qryConsulta.Params[0].Value := aProduto;
+      qryConsulta.Open;
 
-      if QtdEstoque >= 0 then
+      if not qryConsulta.IsEmpty then
       begin
+        QtdEstoque := aQuantidade - aQuantidade_Anterior;
 
-        if aMovimento = 'E' then // Movimento de entrada
+        if QtdEstoque >= 0 then
         begin
+          if aMovimento = 'E' then // Movimento de entrada
+          begin
+            if aTipo = 'R' then
+            begin // Estoque Real
+              qryExecute.Close;
+              qryExecute.SQL.Clear;
+              qryExecute.SQL.Add(' update produto');
+              qryExecute.SQL.Add(' set');
+              qryExecute.SQL.Add(' QTD_ATUAL=QTD_ATUAL + :QTD_ATUAL');
+              qryExecute.SQL.Add(' where');
+              qryExecute.SQL.Add('codigo=:id and ((servico is null) or (servico=''N''))');
+              qryExecute.Params[0].Value := QtdEstoque;
+              qryExecute.Params[1].Value := aProduto;
+              qryExecute.ExecSQL;
+              dados.Conexao.Commit;
+            end;
 
-          if aTipo = 'R' then
-          begin // Estoque Real
-
-            qryExecute.Close;
-            qryExecute.SQL.Clear;
-            qryExecute.SQL.Add(' update produto');
-            qryExecute.SQL.Add(' set');
-            qryExecute.SQL.Add(' QTD_ATUAL=QTD_ATUAL + :QTD_ATUAL');
-            qryExecute.SQL.Add(' where');
-            qryExecute.SQL.Add
-              ('codigo=:id and ((servico is null) or (servico=''N''))');
-            qryExecute.Params[0].Value := QtdEstoque;
-            qryExecute.Params[1].Value := aProduto;
-            qryExecute.ExecSQL;
-            dados.Conexao.CommitRetaining;
-
+            if aTipo = 'F' then
+            begin // Estoque Fiscal
+              qryExecute.Close;
+              qryExecute.SQL.Clear;
+              qryExecute.SQL.Add(' update produto');
+              qryExecute.SQL.Add(' set');
+              qryExecute.SQL.Add(' QTD_FISCAL=QTD_FISCAL + :QTD_FISCAL');
+              qryExecute.SQL.Add(' where');
+              qryExecute.SQL.Add(' codigo=:id and ((servico is null) or (servico=''N''))');
+              qryExecute.Params[0].Value := QtdEstoque;
+              qryExecute.Params[1].Value := aProduto;
+              qryExecute.ExecSQL;
+              dados.Conexao.Commit;
+            end;
           end;
 
-          if aTipo = 'F' then
-          begin // Estoque Fiscal
+          if aMovimento = 'S' then // Movimento de Saída
+          begin
+            if aTipo = 'R' then
+            begin // Estoque Real
+              qryExecute.Close;
+              qryExecute.SQL.Clear;
+              qryExecute.SQL.Add(' update produto');
+              qryExecute.SQL.Add(' set');
+              qryExecute.SQL.Add(' QTD_ATUAL=QTD_ATUAL - :QTD_ATUAL');
+              qryExecute.SQL.Add(' where');
+              qryExecute.SQL.Add(' codigo=:id and ((servico is null) or (servico=''N''))');
+              qryExecute.Params[0].Value := QtdEstoque;
+              qryExecute.Params[1].Value := aProduto;
+              qryExecute.ExecSQL;
+              dados.Conexao.Commit;
+            end;
 
-            qryExecute.Close;
-            qryExecute.SQL.Clear;
-            qryExecute.SQL.Add(' update produto');
-            qryExecute.SQL.Add(' set');
-            qryExecute.SQL.Add(' QTD_FISCAL=QTD_FISCAL + :QTD_FISCAL');
-            qryExecute.SQL.Add(' where');
-            qryExecute.SQL.Add
-              (' codigo=:id and ((servico is null) or (servico=''N''))');
-            qryExecute.Params[0].Value := QtdEstoque;
-            qryExecute.Params[1].Value := aProduto;
-            qryExecute.ExecSQL;
-            dados.Conexao.CommitRetaining;
-
+            if aTipo = 'F' then
+            begin // Estoque Fiscal
+              qryExecute.Close;
+              qryExecute.SQL.Clear;
+              qryExecute.SQL.Add(' update produto');
+              qryExecute.SQL.Add(' set');
+              qryExecute.SQL.Add(' QTD_FISCAL=QTD_FISCAL - :QTD_FISCAL');
+              qryExecute.SQL.Add(' where');
+              qryExecute.SQL.Add(' codigo=:id and ((servico is null) or (servico=''N''))');
+              qryExecute.Params[0].Value := QtdEstoque;
+              qryExecute.Params[1].Value := aProduto;
+              qryExecute.ExecSQL;
+              dados.Conexao.Commit;
+            end;
           end;
-        end;
-
-        if aMovimento = 'S' then // Movimento de Saída
-        begin
-          if aTipo = 'R' then
-          begin // Estoque Real
-
-            qryExecute.Close;
-            qryExecute.SQL.Clear;
-            qryExecute.SQL.Add(' update produto');
-            qryExecute.SQL.Add(' set');
-            qryExecute.SQL.Add(' QTD_ATUAL=QTD_ATUAL - :QTD_ATUAL');
-            qryExecute.SQL.Add(' where');
-            qryExecute.SQL.Add
-              (' codigo=:id and ((servico is null) or (servico=''N''))');
-            qryExecute.Params[0].Value := QtdEstoque;
-            qryExecute.Params[1].Value := aProduto;
-            qryExecute.ExecSQL;
-            dados.Conexao.CommitRetaining;
-
-          end;
-
-          if aTipo = 'F' then
-          begin // Estoque Fiscal
-
-            qryExecute.Close;
-            qryExecute.SQL.Clear;
-            qryExecute.SQL.Add(' update produto');
-            qryExecute.SQL.Add(' set');
-            qryExecute.SQL.Add(' QTD_FISCAL=QTD_FISCAL - :QTD_FISCAL');
-            qryExecute.SQL.Add(' where');
-            qryExecute.SQL.Add
-              (' codigo=:id and ((servico is null) or (servico=''N''))');
-            qryExecute.Params[0].Value := QtdEstoque;
-            qryExecute.Params[1].Value := aProduto;
-            qryExecute.ExecSQL;
-            dados.Conexao.CommitRetaining;
-          end;
-        end;
-      end
-      else
-        raise Exception.Create('Saldo do estoque não pode ser negativo !');
+        end
+        else
+          raise Exception.Create('Saldo do estoque não pode ser negativo !');
+      end;
+      qryExecute.Free;
     end;
   finally
     qryConsulta.Free;
-    qryExecute.Free;
   end;
 end;
 
@@ -183,7 +182,7 @@ begin
     dados.qryExecute.Params[0].AsFloat := aQuantidade;
     dados.qryExecute.Params[1].Value := aGrade;
     dados.qryExecute.ExecSQL;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
   end;
 
   if aMovimento = 'S' then
@@ -194,7 +193,7 @@ begin
     dados.qryExecute.Params[0].AsFloat := aQuantidade;
     dados.qryExecute.Params[1].Value := aGrade;
     dados.qryExecute.ExecSQL;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
   end;
 
   if aPreco > 0 then
@@ -205,7 +204,7 @@ begin
     dados.qryExecute.Params[0].AsFloat := aPreco;
     dados.qryExecute.Params[1].Value := aGrade;
     dados.qryExecute.ExecSQL;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
   end;
 
@@ -238,7 +237,7 @@ begin
       qryPesquisa.Close;
       qryPesquisa.SQL.Clear;
       qryPesquisa.SQL.Text :=
-        'select COMPOSICAO from produto where codigo=:codigo and (fabricado is null or fabricado<>''S'')';
+        'select ID_PRODUTO, QUANTIDADE from produto_composicao where fk_produto=:codigo';
       qryPesquisa.Params[0].Value := aProduto;
       qryPesquisa.Open;
 
@@ -246,12 +245,13 @@ begin
 
       while not qryPesquisa.Eof do
       begin
-
-        DMEstoque.AtualizaEstoque(qryPesquisa.FieldByName('ID_PRODUTO')
-          .AsInteger, aQuantidade * qryPesquisa.FieldByName('QUANTIDADE')
-          .AsFloat, aQuantidade_Anterior * qryPesquisa.FieldByName('QUANTIDADE')
-          .AsFloat, aMovimento, aTipo);
-
+        // Apenas baixa o estoque dos itens da composição
+        DMEstoque.AtualizaEstoque(
+          qryPesquisa.FieldByName('ID_PRODUTO').AsInteger,
+          aQuantidade * qryPesquisa.FieldByName('QUANTIDADE').AsFloat,
+          aQuantidade_Anterior * qryPesquisa.FieldByName('QUANTIDADE').AsFloat,
+          aMovimento, aTipo
+        );
         qryPesquisa.Next;
       end;
 
@@ -393,7 +393,7 @@ begin
       'delete from compra_grade where FK_COMPRA=:compra and qtd=0 ';
     qryEstoque.Params[0].Value := aCompra;
     qryEstoque.ExecSQL;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
   finally
     qryEstoque.Free;
   end;
@@ -414,7 +414,7 @@ begin
       'delete from devolucao_compra_grade where FK_DEVOLUCAO=:DEVOLUCAO and qtd_devolvida=0';
     qryEstoque.Params[0].Value := aDevolucao;
     qryEstoque.ExecSQL;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
   finally
     qryEstoque.Free;
   end;
@@ -641,7 +641,7 @@ begin
     qryInsere.ParamByName('TRANSACAO').AsString := aTransacao;
     qryInsere.ParamByName('FK_FABRICA').AsInteger := aFabrica;
     qryInsere.ExecSQL;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
   finally
     qryInsere.Free;
   end;

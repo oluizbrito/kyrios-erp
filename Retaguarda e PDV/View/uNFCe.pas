@@ -1,4 +1,4 @@
-{ SITUA«√O DA VENDA
+{ SITUA√á√ÉO DA VENDA
   0:ABERTA
   1:GERADA
   2:TRANSMITIDA
@@ -24,7 +24,8 @@ uses
   ACBrNFeDANFEClass, ACBrNFeDANFeESCPOS, ACBrPosPrinter, ACBrDFeReport,
   ACBrDFeDANFeReport, ACBrNFeDANFeRLClass, ACBrDFe, ACBrNFe,
   ACBrDANFCeFortesFrA4, frxExportXLS, System.Actions, Vcl.ActnList, cxGraphics,
-  cxLookAndFeels, cxLookAndFeelPainters, Vcl.Menus, cxButtons;
+  cxLookAndFeels, cxLookAndFeelPainters, Vcl.Menus, cxButtons,
+  ACBrDANFCeFortesFr;
 type
   TfrmNFCe = class(TForm)
     Panel1: TPanel;
@@ -618,6 +619,12 @@ type
     cxPDF: TcxButton;
     Panel12: TPanel;
     cxSair: TcxButton;
+    PopupMenu_NFCe: TPopupMenu;
+    Visualizar1: TMenuItem;
+    N1: TMenuItem;
+    Imprimir1: TMenuItem;
+    ACBrNFeDANFCeFortes1: TACBrNFeDANFCeFortes;
+    ACBrNFe1: TACBrNFe;
     procedure edtLocChange(Sender: TObject);
     procedure edtLocKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
@@ -626,7 +633,6 @@ type
     procedure bbInutilizarClick(Sender: TObject);
     procedure btnRecuperarClick(Sender: TObject);
     procedure btnPDFClick(Sender: TObject);
-    procedure btnImprimirClick(Sender: TObject);
     procedure dsVendaDataChange(Sender: TObject; Field: TField);
     procedure DBGrid1DblClick(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
@@ -671,6 +677,9 @@ type
     procedure btnWhatsClick(Sender: TObject);
     procedure actEnviarExecute(Sender: TObject);
     procedure cxSairClick(Sender: TObject);
+    procedure Imprimir1Click(Sender: TObject);
+    procedure Visualizar1Click(Sender: TObject);
+    procedure cxImprimirClick(Sender: TObject);
   private
     vSql1, vSql2, vsql3: String;
     procedure localiza;
@@ -717,7 +726,7 @@ type
   end;
 var
   frmNFCe: TfrmNFCe;
-implementation //Acesse lojadodesenvolvedor.com.br e saiba mais sobre esse cÛdigo fonte.
+implementation //Acesse lojadodesenvolvedor.com.br e saiba mais sobre esse c√≥digo fonte.
 {$R *.dfm}
 uses Udados, ufrmStatus, uEmail, uCadProduto, uDadosWeb, uDmNFe, uDMEstoque;
 procedure TfrmNFCe.Botoes;
@@ -833,7 +842,7 @@ begin
       if qryIBPT.IsEmpty then
       begin
             raise Exception.CreateFmt
-              ('NCM do produto "%s" - "%s" N„o foi encontrado!',
+              ('NCM do produto "%s" - "%s" N√£o foi encontrado!',
               [QRYNFCE_DID_PRODUTO.AsString,
               QRYNFCE_DDESCRICAO.AsString]);
       end else
@@ -851,7 +860,7 @@ begin
       end;
       if (QRYNFCE_D.State in dsEditModes) then
       QRYNFCE_D.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
 
     i := i + 1;
     QRYNFCE_D.Next;
@@ -893,7 +902,7 @@ begin
   qryOrcamento.Params[0].Value := StrToIntDef(edtNumero.Text, 0);
   qryOrcamento.Open;
   if qryOrcamento.IsEmpty then
-    raise Exception.Create('OrÁamento n„o foi localizado!');
+    raise Exception.Create('Or√ßamento n√£o foi localizado!');
   if qryDocumento.Locate('CODIGO', edtNumero.Text) then
     exit;
   qryDocumento.Insert;
@@ -915,7 +924,7 @@ begin
   qryPedido.Params[0].Value := StrToIntDef(edtNumero.Text, 0);
   qryPedido.Open;
   if qryPedido.IsEmpty then
-    raise Exception.Create('Pedido n„o foi localizado!');
+    raise Exception.Create('Pedido n√£o foi localizado!');
   qryItensPedido.Close;
   qryItensPedido.Params[0].Value := qryOrcamentoCODIGO.AsInteger;
   qryItensPedido.Open;
@@ -1021,7 +1030,7 @@ begin
     if qryIBPT.IsEmpty then
     begin
       ShowMessage('NCM do produto ' + qryProdutoCODIGO.AsString + '-' +
-        qryProdutoDESCRICAO.AsString + #13 + 'N„o foi encontrado!');
+        qryProdutoDESCRICAO.AsString + #13 + 'N√£o foi encontrado!');
       exit;
     end;
     QRYNFCE_DTRIB_MUN.AsFloat :=
@@ -1037,7 +1046,7 @@ begin
       SimpleRoundTo((strtofloat(stringreplace(qryIBPTIMPORTADOSFEDERAL.Value,
       '.', ',', [])) * qryItemTOTAL.AsFloat) / 100, -2);
     QRYNFCE_D.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
     i := i + 1;
     qryItensPedido.Next;
   end;
@@ -1119,7 +1128,7 @@ begin
     if qryIBPT.IsEmpty then
     begin
       ShowMessage('NCM do produto ' + qryProdutoCODIGO.AsString + '-' +
-        qryProdutoDESCRICAO.AsString + #13 + 'N„o foi encontrado!');
+        qryProdutoDESCRICAO.AsString + #13 + 'N√£o foi encontrado!');
       exit;
     end;
     QRYNFCE_DTRIB_MUN.AsFloat :=
@@ -1135,11 +1144,25 @@ begin
       SimpleRoundTo((strtofloat(stringreplace(qryIBPTIMPORTADOSFEDERAL.Value,
       '.', ',', [])) * qryItemTOTAL.AsFloat) / 100, -2);
     QRYNFCE_D.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
     i := i + 1;
     qryItensOrcamento.Next;
   end;
 end;
+procedure TfrmNFCe.Imprimir1Click(Sender: TObject);
+begin
+if qryVenda.IsEmpty then
+    exit;
+  try
+    btnImprimir.Enabled := false;
+    dmnfe.ImprimirNFe(qryVendaXML.Value, qryVendaSITUACAO.Value, 'NFCe',
+      qryVendaTRIB_FED.AsFloat, qryVendaTRIB_MUN.AsFloat,
+      qryVendaTRIB_EST.AsFloat);
+  finally
+    btnImprimir.Enabled := true;
+  end;
+end;
+
 procedure TfrmNFCe.ACBrMail1MailProcess(const AMail: TACBrMail;
   const aStatus: TMailStatus);
 begin
@@ -1167,7 +1190,7 @@ begin
   edtModelo.Text := '65';
   edtSerie.Text := qryVendaSERIE.Value;
   edtAno.Text := IntToStr(ano);
-  edtJustificativa.Text := 'QUEBRA DE SEQU NCIA DE NUMERA«√O';
+  edtJustificativa.Text := 'QUEBRA DE SEQU√äNCIA DE NUMERA√á√ÉO';
   edtInicial.Text := qryVendaNUMERO.AsString;
   edtFinal.Text := qryVendaNUMERO.AsString;
 end;
@@ -1235,7 +1258,7 @@ procedure TfrmNFCe.btnCorrecaoClick(Sender: TObject);
 begin
   if (qryCorrecao.State in dsEditmodes) then
     qryCorrecao.Post;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
   dmnfe.ACBrNFe.EventoNFe.Evento.Clear;
   with dmnfe.ACBrNFe.EventoNFe.Evento.Add do
   begin
@@ -1269,8 +1292,8 @@ begin
     frmEmail.ACBrNFe1.NotasFiscais.LoadFromString(qryVendaXML.AsString);
     frmEmail.edtEmail.Text := qryVendaEMAIL1.Value;
     frmEmail.ACBrNFe1.Configuracoes.Geral.ModeloDF := TpcnModeloDF(1);
-    frmEmail.EdtAssunto.Text := 'NFC-e n∫' + qryVendaNUMERO.AsString;
-    frmEmail.edtMensagem.Text := 'SEGUE EM ANEXO XML E DANFE NFC-e n∫' +
+    frmEmail.EdtAssunto.Text := 'NFC-e n¬∫' + qryVendaNUMERO.AsString;
+    frmEmail.edtMensagem.Text := 'SEGUE EM ANEXO XML E DANFE NFC-e n¬∫' +
       qryVendaNUMERO.AsString;
     frmEmail.ACBrNFe1.DANFE.vTribFed := qryXMLTRIB_FED.AsFloat;
     frmEmail.ACBrNFe1.DANFE.vTribEst := qryXMLTRIB_EST.AsFloat;
@@ -1309,23 +1332,63 @@ begin
       'Tempo: ' + Tempo);
   end;
 end;
+procedure TfrmNFCe.Visualizar1Click(Sender: TObject);
+var
+ XMLContent,CaminhoXML: string;
+begin
+ try
+// Verifica se h√° registros na tabela
+    if not qryVenda.IsEmpty then
+    begin
+      // Obt√©m o XML do campo da tabela
+      XMLContent := qryVenda.FieldByName('XML').AsString;
+
+      if Trim(XMLContent) = '' then
+      begin
+        ShowMessage('O XML da NFC-e n√£o est√° dispon√≠vel.');
+        Exit;
+      end;
+
+
+    ACBrNFe1.NotasFiscais.Clear;
+    ACBrNFe1.NotasFiscais.LoadFromString(XMLContent);
+    ACBrNFeDANFCeFortes1.TipoDANFE     := tiNFCe;
+    ACBrNFe1.DANFE            := ACBrNFeDANFCeFortes1;
+    ACBrNFeDANFCeFortes1.MostraPreview := True;
+    ACBrNFe1.NotasFiscais.Imprimir;
+    end;
+ except
+    on E: Exception do
+      ShowMessage('Erro ao visualizar a NFC-e: ' + E.Message);
+  end;
+
+end;
+
 procedure TfrmNFCe.GerarNFCe(NumNFe: String);
 var
   vMsg: string;
   FAliqDeson: Extended;
   FTOTALDESON: Extended;
+  Wdiferencavalor, WtotalFpg, WtotalNfce: Double; // Troco UP06
 begin
   try
+
+    Wdiferencavalor := 0; //
+    WtotalFpg := 0;  //
+    WtotalNfce := 0;  //
     vMsg := '';
     FAliqDeson := 0;
     FTOTALDESON := 0;
     qryNFCE_M.Close;
     qryNFCE_M.Params[0].Value := qryVendaCODIGO.Value;
     qryNFCE_M.Open;
+
+    WtotalNfce := qryNfce_Mtotal.asFloat; //
+
     with dmnfe.ACBrNFe.NotasFiscais.Add.NFe do
     begin
       ide.cNF := qryNFCE_MCNF.AsInteger;
-      // Caso n„o seja preenchido ser· gerado um n˙mero aleatÛrio pelo componente
+      // Caso n√£o seja preenchido ser√° gerado um n√∫mero aleat√≥rio pelo componente
       ide.natOp := 'VENDA';
       ide.indPag := ipVista;
       ide.Modelo := 65;
@@ -1338,7 +1401,7 @@ begin
       // Ide.hSaiEnt := now;
       ide.tpNF := tnSaida;
       ide.tpEmis := TpcnTipoEmissao(0);
-      // n„o mudar È forma de emiss„o mesmo
+      // n√£o mudar √© forma de emiss√£o mesmo
       if Dados.qryConfigAMBIENTE.Value = 0 then
         ide.tpAmb := taProducao
       else
@@ -1509,7 +1572,7 @@ begin
                 FTOTALDESON := FTOTALDESON + ICMS.vICMSDeson;
               end;
               if (dados.qryEmpresaCRT.Value <> 1) and (dados.qryEmpresaCRT.Value <> 4) then          //Wagner - Upt 6
-              begin // empresas que n„o s„o do simples nacional
+              begin // empresas que n√£o s√£o do simples nacional
                 if copy(QRYNFCE_DCST.Value, 2, 2) = '00' then
                   CST := cst00;
                 if copy(QRYNFCE_DCST.Value, 2, 2) = '10' then
@@ -1517,7 +1580,7 @@ begin
                 if copy(QRYNFCE_DCST.Value, 2, 2) = '20' then
                 begin
                   CST := cst20;
-                  vMsg := 'Credito presumido na base de calculo do icms 77,5% de acordo com a resoluÁ„o n∫004 de 17 de janeiro de 2017';
+                  vMsg := 'Credito presumido na base de calculo do icms 77,5% de acordo com a resolu√ß√£o n¬∫004 de 17 de janeiro de 2017';
                 end;
                 if copy(QRYNFCE_DCST.Value, 2, 2) = '30' then
                   CST := cst30;
@@ -1574,7 +1637,7 @@ begin
                 ICMS.orig := oeNacional;
               end;
               if (Dados.qryEmpresaCRT.Value = 1) or (Dados.qryEmpresaCRT.Value = 4) then
-              begin // empresas que s„o do simples nacional
+              begin // empresas que s√£o do simples nacional
                 if QRYNFCE_DCSOSN.Value = '101' then
                   CSOSN := csosn101;
                 CSOSN := csosn102;
@@ -1687,13 +1750,27 @@ begin
       Total.ICMSTot.vPIS := qryNFCE_MTOTALICMSPIS.AsFloat;
       Total.ICMSTot.vCOFINS := qryNFCE_MTOTALICMSCOFINS.AsFloat;
       Total.ICMSTot.vNF := qryNFCE_MTOTAL.AsFloat;
-      Transp.modFrete := mfSemFrete; // NFC-e n„o pode ter FRETE
+      Transp.modFrete := mfSemFrete; // NFC-e n√£o pode ter FRETE
+
+
       if qryNFCE_MTOTAL.Value = qryVendaTOTAL.AsFloat then
       begin
         qryTotalFPG.Close;
         qryTotalFPG.Params[0].Value := qryVendaFK_VENDA.Value;
         qryTotalFPG.Open;
         qryTotalFPG.First;
+
+        { TODO : Valida√ß√£o do troco.}
+        Wtotalfpg := qrytotalfpgvalor.asfloat; //
+       if (qryTotalfpgValor.asFloat <> dados.qryNfce_Mtotal.asFloat) then //
+        begin
+          if WtotalFPG > WtotalNFCE then
+          WdiferencaValor := (WtotalFPG - WtotalNFCE)
+          else
+          WdiferencaValor := (WtotalNFCE - WtotalFPG);
+        end; //
+
+
         while not qryTotalFPG.Eof do
         begin
           if qryTotalFPGVALOR.Value > 0 then
@@ -1818,7 +1895,7 @@ begin
               begin
                 tPag := fpPagamentoInstantaneoEstatico;
                 vPag := qryTotalFPGVALOR.AsFloat;
-                //tpIntegra := tiPagNaoIntegrado; // Vamos usar essa Tag quando enviar os dados da transaÁ„o Pix no XML.
+                //tpIntegra := tiPagNaoIntegrado; // Vamos usar essa Tag quando enviar os dados da transa√ß√£o Pix no XML.
               end;
             end;
           end;
@@ -1844,7 +1921,10 @@ begin
           vPag := qryNFCE_MTOTAL.AsFloat;
         end;
       end;
-      pag.vTroco := qryNFCE_MTROCO.AsFloat;
+      if (WtotalFPG <> WtotalNfce) then // troco
+      pag.vTroco := WdiferencaValor
+      else
+      pag.vTroco := qryNFCE_MTROCO.AsFloat; //
       InfAdic.infCpl := '';
       // responsavel tecnico 22-03-2019
       if Dados.qryEmpresaRESPONSAVEL_TECNICO.Value = 'S' then
@@ -1979,7 +2059,7 @@ begin
     ChaveTemp := copy(ChaveTemp, 1, 45);
   end;
   Chaveatual := copy(Trim(ChaveTemp), 1, pos(']', ChaveTemp) - 1);
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
   if Chaveatual <> '' then
   begin
     Dados.qryExecute.Close;
@@ -1991,7 +2071,7 @@ begin
     Dados.qryExecute.ParamByName('CHAVE').AsString := Chaveatual;
     Dados.qryExecute.ParamByName('CODIGO').Value := qryVendaCODIGO.Value;
     Dados.qryExecute.ExecSQL;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
   end;
 end;
 procedure TfrmNFCe.recuperanfce;
@@ -2010,7 +2090,7 @@ begin
     qryVendaSITUACAO.Value := 'T';
     qryVendaFLAG.Value := 'N';
     qryVenda.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
     dmnfe.ACBrNFe.NotasFiscais.Items[0].GravarXML();
     dmnfe.ACBrNFe.DANFE := dmnfe.ACBrNFeDANFCeFortesA41;
     dmnfe.ACBrNFe.DANFE.vTribFed := qryVendaTRIB_FED.AsFloat +
@@ -2041,7 +2121,7 @@ begin
     .NFe.procNFe.nProt;
   qryVendaXML.Value := dmnfe.ACBrNFe.NotasFiscais.Items[0].XML;
   qryVenda.Post;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
   // atualiza status da nfce
   if dmnfe.ACBrNFe.webservices.Enviar.cStat = 100 then
   begin
@@ -2066,7 +2146,7 @@ begin
       .NFe.ide.hSaiEnt;
     qryVendaFK_VENDA.Value := qryVendaCODIGO.Value;
     qryVenda.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
     dmEstoque.AtualizaEstoqueFiscal('NFCE', qryVendaCODIGO.Value, 'S',
       Dados.qryEmpresaEXIBE_ESTOQUE_FISCAL.Value);
   end;
@@ -2091,7 +2171,7 @@ begin
   qryVendaHORA_SAIDA.Value := dmnfe.ACBrNFe.NotasFiscais.Items[0]
     .NFe.ide.hSaiEnt;
   qryVenda.Post;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
   ShowMessage('Retorno:' + dmnfe.ACBrNFe.webservices.Enviar.cStat.ToString +
     ' - ' + dmnfe.ACBrNFe.webservices.Enviar.xMotivo);
 end;
@@ -2110,7 +2190,7 @@ begin
   qryVendaHORA_SAIDA.Value := dmnfe.ACBrNFe.NotasFiscais.Items[0]
     .NFe.ide.hSaiEnt;
   qryVenda.Post;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
   ShowMessage('Retorno:' + dmnfe.ACBrNFe.webservices.Enviar.cStat.ToString +
     ' - ' + dmnfe.ACBrNFe.webservices.Enviar.xMotivo);
 end;
@@ -2134,7 +2214,7 @@ begin
   qryVendaHORA_SAIDA.Value := dmnfe.ACBrNFe.NotasFiscais.Items[0]
     .NFe.ide.hSaiEnt;
   qryVenda.Post;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
   ShowMessage('Retorno:' + dmnfe.ACBrNFe.webservices.Enviar.cStat.ToString +
     ' - ' + dmnfe.ACBrNFe.webservices.Enviar.xMotivo);
 end;
@@ -2151,7 +2231,7 @@ begin
   qryVendaABERTO.Value := 'N';
   qryVendaSITUACAO.Value := 'X';
   qryVenda.Post;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
   ShowMessage('Retorno:' + dmnfe.ACBrNFe.webservices.Enviar.cStat.ToString +
     ' - ' + dmnfe.ACBrNFe.webservices.Enviar.xMotivo);
 end;
@@ -2168,7 +2248,7 @@ begin
     Dados.qryExecute.SQL.Text := 'DELETE FROM NFCE_DETALHE WHERE FKVENDA=:ID';
     Dados.qryExecute.Params[0].Value := aCodigo;
     Dados.qryExecute.ExecSQL;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
     qryNFCE_M.Close;
     qryNFCE_M.Params[0].AsInteger := aCodigo;
     qryNFCE_M.Open;
@@ -2204,7 +2284,7 @@ begin
       .NFe.Total.ICMSTot.vCOFINS;
     qryNFCE_MXML.Value := dmnfe.ACBrNFe.NotasFiscais.Items[0].XML;
     qryNFCE_M.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
     for N := 0 to dmnfe.ACBrNFe.NotasFiscais.Count - 1 do
     begin
       with dmnfe.ACBrNFe.NotasFiscais.Items[N].NFe do
@@ -2243,7 +2323,7 @@ begin
             QRYNFCE_DVALOR_COFINS_ICMS.AsCurrency := Imposto.COFINS.vCOFINS;
           end;
           QRYNFCE_D.Post;
-          Dados.Conexao.CommitRetaining;
+          Dados.Conexao.Commit;
         end;
       end;
     end;
@@ -2268,7 +2348,7 @@ begin
   try
     btnRecuperar.Enabled := false;
     // DmNFe.ACBrNFe.Configuracoes.Geral.ValidarDigest := false;
-    If Application.messagebox('Deseja Recuperar Todos?', 'ConfirmaÁ„o',
+    If Application.messagebox('Deseja Recuperar Todos?', 'Confirma√ß√£o',
       mb_yesno + mb_iconquestion) = idyes then
     begin
       while not qryVenda.Eof do
@@ -2403,7 +2483,7 @@ begin
       else
         dmnfe.ImpressoraBobina('NFCe');
       dmnfe.ConfiguraNFe('NFCe');
-      If Application.messagebox('Deseja Enviar Todos?', 'ConfirmaÁ„o',
+      If Application.messagebox('Deseja Enviar Todos?', 'Confirma√ß√£o',
         mb_yesno + mb_iconquestion) = idyes then
       begin
         while not qryVenda.Eof do
@@ -2436,7 +2516,7 @@ begin
     end;
     if not FilesExists(edtArquivo.Text) then
     begin
-      ShowMessage('Arquivo n„o existe');
+      ShowMessage('Arquivo n√£o existe');
       exit;
     end;
     GerarRelatorio;
@@ -2481,6 +2561,11 @@ begin
     qryDiferente.Free
   end;
 end;
+procedure TfrmNFCe.cxImprimirClick(Sender: TObject);
+begin
+PopupMenu_NFCe.Popup(Mouse.CursorPos.X, Mouse.CursorPos.Y);
+end;
+
 procedure TfrmNFCe.cxSairClick(Sender: TObject);
 begin
     close;
@@ -2534,12 +2619,12 @@ begin
   end;
   if FileExists(arquivo) then
   begin
-    FFone := InputBox('Digite o numero do whatsapp', 'N˙mero:',
+    FFone := InputBox('Digite o numero do whatsapp', 'N√∫mero:',
       Trim(TiraPontos(qryVendaWHATSAPP.AsString)));
     if Length(FFone) <> 11 then
-      raise Exception.Create('Numero de Celular Inv·lido!');
+      raise Exception.Create('Numero de Celular Inv√°lido!');
     Dados.InsereMensagemZap(arquivo, FFone,
-      'Conforme solicitado, segue DANFE da NFCe N˙mero:' +
+      'Conforme solicitado, segue DANFE da NFCe N√∫mero:' +
       qryVendaNUMERO.AsString, '', qryVendaRAZAO.AsString,
       Dados.qryEmpresaRAZAO.AsString, 'NFE');
   end;
@@ -2557,16 +2642,16 @@ var
   ZipFile: TZipFile;
   arquivo: string;
 begin
-  // Cria uma inst‚ncia da classe TZipFile
+  // Cria uma inst√¢ncia da classe TZipFile
   ZipFile := TZipFile.Create;
   try
-    // Indica o diretÛrio e nome do arquivo Zip que ser· criado
+    // Indica o diret√≥rio e nome do arquivo Zip que ser√° criado
     ZipFile.Open(Caminho + '\' + pasta + '.zip', zmWrite);
     for arquivo in memLista.Items do
       ZipFile.Add(arquivo);
-    MessageDlg('CompactaÁ„o concluÌda!', mtInformation, [mbOK], 0);
+    MessageDlg('Compacta√ß√£o conclu√≠da!', mtInformation, [mbOK], 0);
   finally
-    // Libera o objeto da memÛria
+    // Libera o objeto da mem√≥ria
     ZipFile.Free;
   end;
 end;
@@ -2625,7 +2710,7 @@ begin
   DecodeDate(strtodate(maskFim.Text), ano1, mes1, dia1);
   if (mes + ano) <> (mes1 + ano1) then
   begin
-    ShowMessage('PerÌodo Inv·lido');
+    ShowMessage('Per√≠odo Inv√°lido');
     exit;
   end;
   Dados.qryConsulta.Close;
@@ -2639,7 +2724,7 @@ begin
   if not Dados.qryConsulta.IsEmpty then
   begin
     ShowMessage('Existem NFC-E com DUPLICIDADE, GRAVADO E/OU OFFLINE!' +
-      sLineBreak + 'N„o È Possivel Continuar!');
+      sLineBreak + 'N√£o √© Possivel Continuar!');
     exit;
   end;
   try
@@ -2688,7 +2773,7 @@ begin
   dmnfe.ACBrNFeDANFCeFortesA41.MostraStatus := false;
   try
     if (Trim(qryXMLXML.AsString) = '') or (qryXMLXML.IsNull) then
-      raise Exception.Create('ERRO XML n„o encontrado NFCe.' +
+      raise Exception.Create('ERRO XML n√£o encontrado NFCe.' +
         qryVendaNUMERO.AsString);
     dmnfe.ACBrNFe.NotasFiscais.Clear;
     if (qryXMLSITUACAO.Value = 'T') then
@@ -2771,17 +2856,17 @@ begin
   else
     vOrdem := ' ASC';
   idx := Column.Index;
-  DBGrid1.Columns[0].Title.caption := 'SÈrie';
-  DBGrid1.Columns[1].Title.caption := 'N˙mero';
-  DBGrid1.Columns[2].Title.caption := 'Dt.Emiss„o';
+  DBGrid1.Columns[0].Title.caption := 'S√©rie';
+  DBGrid1.Columns[1].Title.caption := 'N√∫mero';
+  DBGrid1.Columns[2].Title.caption := 'Dt.Emiss√£o';
   DBGrid1.Columns[3].Title.caption := 'Chave';
   DBGrid1.Columns[4].Title.caption := 'Protocolo';
   DBGrid1.Columns[5].Title.caption := 'CPF';
   DBGrid1.Columns[6].Title.caption := 'Caixa';
-  DBGrid1.Columns[7].Title.caption := 'Usu·rio';
+  DBGrid1.Columns[7].Title.caption := 'Usu√°rio';
   DBGrid1.Columns[8].Title.caption := 'Vendedor';
   DBGrid1.Columns[9].Title.caption := 'Total';
-  DBGrid1.Columns[10].Title.caption := 'N∫ Pedido';
+  DBGrid1.Columns[10].Title.caption := 'N¬∫ Pedido';
   lblDescricao.caption := 'Localizar <<' + DBGrid1.Columns[idx]
     .Title.caption + '>>';
   DBGrid1.Columns[idx].Title.caption := '>>' + DBGrid1.Columns[idx]
@@ -2800,7 +2885,7 @@ begin
   if not Dados.vLiberaProduto then
   begin
     ShowMessage
-      ('Usu·rio n„o tem permiss„o para alterar os dados cadastrais do produto!');
+      ('Usu√°rio n√£o tem permiss√£o para alterar os dados cadastrais do produto!');
     exit;
   end;
   if not qryItem.IsEmpty then
@@ -2825,11 +2910,11 @@ procedure TfrmNFCe.DBGrid3KeyDown(Sender: TObject; var Key: Word;
 begin
   if Key = vk_delete then
   begin
-    If Application.messagebox('Deseja excluir DOCUMENTO?', 'ConfirmaÁ„o',
+    If Application.messagebox('Deseja excluir DOCUMENTO?', 'Confirma√ß√£o',
       mb_yesno + mb_iconquestion) = idyes then
     begin
       qryDocumento.Delete;
-      Dados.Conexao.CommitRetaining;
+      Dados.Conexao.Commit;
     end;
   end;
 end;
@@ -2874,10 +2959,10 @@ begin
   btnRecuperar.caption := 'F4' + sLineBreak + 'Recuperar';
   btnTransmitir.caption := 'F5' + sLineBreak + 'Transmitir';
   btnImprimir.caption := 'F6' + sLineBreak + 'Imprimir';
-  btnRelatorio.caption := 'F7' + sLineBreak + 'RelatÛrio';
+  btnRelatorio.caption := 'F7' + sLineBreak + 'Relat√≥rio';
   btnEmail.caption := 'F8' + sLineBreak + 'Email';
   btnLote.caption := 'F9' + sLineBreak + 'Importar Lote';
-  btnPDF.caption := 'F11' + sLineBreak + 'Fechar MÍs';
+  btnPDF.caption := 'F11' + sLineBreak + 'Fechar M√™s';
   Dados.Habilitacoes(Dados.aMenu, self.Name);
   Botoes;
 end;
@@ -2920,7 +3005,7 @@ begin
   Dados.qryTerminal.Open;
   if not Dados.qryTerminal.Locate('nome', Dados.Getcomputer, []) then
   begin
-    ShowMessage('Terminal n„o cadastrado!');
+    ShowMessage('Terminal n√£o cadastrado!');
   end;
   qryProd.Close;
   qryProd.Open;
@@ -3121,7 +3206,7 @@ begin
 end;
 procedure TfrmNFCe.qryItemAfterPost(DataSet: TDataSet);
 begin
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 procedure TfrmNFCe.qryItemBeforeDelete(DataSet: TDataSet);
 begin
@@ -3163,7 +3248,7 @@ begin
 end;
 procedure TfrmNFCe.qryVendaAfterPost(DataSet: TDataSet);
 begin
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 procedure TfrmNFCe.qryVendaBeforeDelete(DataSet: TDataSet);
 begin
@@ -3238,19 +3323,6 @@ begin
     TiraPontos(Dados.qryEmpresaCNPJ.AsString) + '\' + FormatDateTime('yyyymm',
     strtodate(maskInicio.Text)) + '\';
 end;
-procedure TfrmNFCe.btnImprimirClick(Sender: TObject);
-begin
-  if qryVenda.IsEmpty then
-    exit;
-  try
-    btnImprimir.Enabled := false;
-    dmnfe.ImprimirNFe(qryVendaXML.Value, qryVendaSITUACAO.Value, 'NFCe',
-      qryVendaTRIB_FED.AsFloat, qryVendaTRIB_MUN.AsFloat,
-      qryVendaTRIB_EST.AsFloat);
-  finally
-    btnImprimir.Enabled := true;
-  end;
-end;
 procedure TfrmNFCe.InsereNFe;
 begin
   qryNFCE_M.Close;
@@ -3289,7 +3361,7 @@ begin
   qryNFCE_MTIPO_DESCONTO.Value := 'D';
   qryNFCE_MTROCO.AsFloat := 0;
   qryNFCE_M.Post;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 procedure TfrmNFCe.ApagaItensInutiliza(codigo: Integer);
 begin
@@ -3297,7 +3369,7 @@ begin
   Dados.qryExecute.SQL.Text := 'delete from NFCE_DETALHE where codigo=:codigo';
   Dados.qryExecute.Params[0].Value := codigo;
   Dados.qryExecute.ExecSQL;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 procedure TfrmNFCe.InutilizaNFCe;
 var
@@ -3313,10 +3385,10 @@ begin
     begin
       qryInutiliza.Edit;
       qryInutilizaSITUACAO.Value := 'I';
-      qryInutilizaCHAVE.Value := 'CHAVE N√O GERADA';
+      qryInutilizaCHAVE.Value := 'CHAVE N√ÉO GERADA';
       qryInutiliza.Post;
       ApagaItensInutiliza(qryInutilizaCODIGO.Value);
-      Dados.Conexao.CommitRetaining;
+      Dados.Conexao.Commit;
       Application.ProcessMessages;
     end
     else
@@ -3325,7 +3397,7 @@ begin
       qryInutilizaCODIGO.Value := Dados.Numerador('NFCE_MASTER', 'CODIGO',
         'N', '', '');
       qryInutilizaNUMERO.Value := i;
-      qryInutilizaCHAVE.Value := 'CHAVE N√O GERADA';
+      qryInutilizaCHAVE.Value := 'CHAVE N√ÉO GERADA';
       qryInutilizaMODELO.Value := '65';
       qryInutilizaSERIE.Value := Dados.qryTerminalSERIE.Value;
       qryInutilizaDATA_EMISSAO.Value := DATE;
@@ -3340,7 +3412,7 @@ begin
       qryInutilizaTOTAL.Value := 0;
       qryInutilizaSITUACAO.Value := 'I';
       qryInutiliza.Post;
-      Dados.Conexao.CommitRetaining;
+      Dados.Conexao.Commit;
     end;
   end;
 end;

@@ -1067,11 +1067,19 @@
       Top = 179
       Width = 557
       Height = 221
-      ActivePage = TabSheet7
+      ActivePage = TabSheet1
       TabOrder = 31
       OnChange = PageControl1Change
       object TabSheet1: TTabSheet
         Caption = 'Impostos'
+        object Label63: TLabel
+          Left = 144
+          Top = 158
+          Width = 98
+          Height = 13
+          Caption = 'C'#243'd. Benef'#237'cio Fiscal'
+          FocusControl = DBEdit35
+        end
         object GroupBox2: TGroupBox
           Left = 3
           Top = 3
@@ -1166,7 +1174,7 @@
             Left = 48
             Top = 25
             Width = 35
-            Height = 19
+            Height = 21
             BiDiMode = bdLeftToRight
             CharCase = ecUpperCase
             Ctl3D = False
@@ -1186,7 +1194,7 @@
             Left = 48
             Top = 81
             Width = 35
-            Height = 19
+            Height = 21
             CharCase = ecUpperCase
             Ctl3D = False
             DataField = 'CSTICMS'
@@ -1206,7 +1214,7 @@
             Left = 48
             Top = 140
             Width = 60
-            Height = 19
+            Height = 21
             CharCase = ecUpperCase
             Ctl3D = False
             DataField = 'ALIQ_ICM'
@@ -1245,7 +1253,7 @@
             Left = 48
             Top = 52
             Width = 35
-            Height = 19
+            Height = 21
             BiDiMode = bdLeftToRight
             CharCase = ecUpperCase
             Ctl3D = False
@@ -1266,7 +1274,7 @@
           Left = 248
           Top = 3
           Width = 136
-          Height = 174
+          Height = 142
           Caption = 'PIS/COFINS'
           TabOrder = 2
           object Label21: TLabel
@@ -1301,7 +1309,7 @@
             Left = 86
             Top = 81
             Width = 44
-            Height = 19
+            Height = 21
             CharCase = ecUpperCase
             Ctl3D = False
             DataField = 'ALIQ_PIS'
@@ -1319,7 +1327,7 @@
             Left = 86
             Top = 110
             Width = 44
-            Height = 19
+            Height = 21
             CharCase = ecUpperCase
             Ctl3D = False
             DataField = 'ALIQ_COF'
@@ -1401,7 +1409,7 @@
             Left = 57
             Top = 37
             Width = 50
-            Height = 19
+            Height = 21
             CharCase = ecUpperCase
             Ctl3D = False
             DataField = 'ALIQ_IPI'
@@ -1470,7 +1478,7 @@
             Left = 57
             Top = 21
             Width = 50
-            Height = 19
+            Height = 21
             CharCase = ecUpperCase
             Ctl3D = False
             DataField = 'FCP'
@@ -1488,7 +1496,7 @@
             Left = 57
             Top = 48
             Width = 50
-            Height = 19
+            Height = 21
             CharCase = ecUpperCase
             Ctl3D = False
             DataField = 'MVA'
@@ -1506,7 +1514,7 @@
             Left = 57
             Top = 76
             Width = 50
-            Height = 19
+            Height = 21
             CharCase = ecUpperCase
             Ctl3D = False
             DataField = 'REDUCAO_BASE'
@@ -1525,7 +1533,7 @@
           Left = 137
           Top = 3
           Width = 107
-          Height = 174
+          Height = 142
           BiDiMode = bdLeftToRight
           Caption = 'ICMS Externo'
           ParentBiDiMode = False
@@ -1600,7 +1608,7 @@
             Left = 41
             Top = 25
             Width = 35
-            Height = 19
+            Height = 21
             BiDiMode = bdLeftToRight
             CharCase = ecUpperCase
             Ctl3D = False
@@ -1620,7 +1628,7 @@
             Left = 41
             Top = 52
             Width = 35
-            Height = 19
+            Height = 21
             CharCase = ecUpperCase
             Ctl3D = False
             DataField = 'CST_EXTERNO'
@@ -1639,7 +1647,7 @@
             Left = 41
             Top = 110
             Width = 60
-            Height = 19
+            Height = 21
             CharCase = ecUpperCase
             Ctl3D = False
             DataField = 'ALIQ_ICMS_EXTERNO'
@@ -1674,6 +1682,27 @@
             TabOrder = 3
             OnEnter = DBLookupComboBox2Enter
           end
+        end
+        object DBEdit35: TDBEdit
+          Left = 248
+          Top = 154
+          Width = 135
+          Height = 23
+          CharCase = ecUpperCase
+          Ctl3D = True
+          DataField = 'COD_BENEFICIO'
+          DataSource = dsProdutos
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlue
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentCtl3D = False
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 5
+          TextHint = 'cBenef'
         end
       end
       object TabSheet2: TTabSheet
@@ -1918,7 +1947,7 @@
           Left = 214
           Top = 93
           Width = 87
-          Height = 19
+          Height = 21
           CharCase = ecUpperCase
           Ctl3D = False
           DataField = 'PRECO_PROMO_VAREJO'
@@ -1936,7 +1965,7 @@
           Left = 214
           Top = 38
           Width = 87
-          Height = 19
+          Height = 21
           CharCase = ecUpperCase
           Ctl3D = False
           DataField = 'INICIO_PROMOCAO'
@@ -1954,7 +1983,7 @@
           Left = 214
           Top = 65
           Width = 87
-          Height = 19
+          Height = 21
           CharCase = ecUpperCase
           Ctl3D = False
           DataField = 'FIM_PROMOCAO'
@@ -1972,7 +2001,7 @@
           Left = 214
           Top = 120
           Width = 87
-          Height = 19
+          Height = 21
           CharCase = ecUpperCase
           Ctl3D = False
           DataField = 'PRECO_PROMO_ATACADO'
@@ -2002,7 +2031,7 @@
           Left = 14
           Top = 29
           Width = 474
-          Height = 19
+          Height = 21
           CharCase = ecUpperCase
           Ctl3D = False
           DataField = 'APLICACAO'
@@ -2456,7 +2485,7 @@
           Left = 126
           Top = 20
           Width = 163
-          Height = 19
+          Height = 21
           CharCase = ecUpperCase
           Ctl3D = False
           DataField = 'ANP'
@@ -2474,7 +2503,7 @@
           Left = 126
           Top = 47
           Width = 85
-          Height = 19
+          Height = 21
           CharCase = ecUpperCase
           Ctl3D = False
           DataField = 'GLP'
@@ -2492,7 +2521,7 @@
           Left = 126
           Top = 74
           Width = 85
-          Height = 19
+          Height = 21
           CharCase = ecUpperCase
           Ctl3D = False
           DataField = 'GNN'
@@ -2510,7 +2539,7 @@
           Left = 126
           Top = 101
           Width = 85
-          Height = 19
+          Height = 21
           CharCase = ecUpperCase
           Ctl3D = False
           DataField = 'GNI'
@@ -2528,7 +2557,7 @@
           Left = 126
           Top = 128
           Width = 85
-          Height = 19
+          Height = 21
           CharCase = ecUpperCase
           Ctl3D = False
           DataField = 'PESO_LIQ'
@@ -3807,6 +3836,10 @@
       FieldName = 'ISSQN'
       Origin = 'ISSQN'
       Precision = 18
+    end
+    object qryProdutosCOD_BENEFICIO: TStringField
+      FieldName = 'COD_BENEFICIO'
+      Origin = 'COD_BENEFICIO'
     end
   end
   object qryComposicao: TFDQuery

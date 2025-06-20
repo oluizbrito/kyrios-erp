@@ -9,37 +9,125 @@
   7:DENEGADA
 }
 unit uFormaPagamento;
-interface //Suporte e Vendas direto no Whatsapp (48)998463846
+
+interface
+
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics, blcksock, winInet, System.TypInfo,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, ACBRSAT,
-  Vcl.Mask, Vcl.ExtCtrls, Vcl.Buttons, pcnConversao, pcnConversaoNFe, acbrUtil,
-  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
-  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
-  FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, math, ACBrPosPrinter, ACBrDFeSSL,
-  Vcl.ComCtrls, Vcl.DBCtrls, DBGridEhGrouping, ToolCtrlsEh, DBGridEhToolCtrls,
-  DynVarsEh, EhLibVCL, GridsEh, DBAxisGridsEh, DBGridEh,
-  Vcl.Imaging.pngimage, Vcl.Menus, ACBrValidador, ACBRDFeUtil,
-  frxClass, frxDBSet, frxExportBaseDialog, frxExportPDF, ACBrBase,
-  ACBrNFeDANFEClass, ACBrNFeDANFeESCPOS, ACBrDFeReport, ACBrDFeDANFeReport,
-  ACBrNFeDANFeRLClass, ACBrDFe, ACBrNFe, ACBrDANFCeFortesFrA4, Vcl.Grids,
-  Vcl.DBGrids, Vcl.DBCGrids, ACBrSATClass, ACBrIntegrador,
-  ACBrSATExtratoReportClass, ACBrSATExtratoFortesFr, ACBrSATExtratoClass,
-  ACBrSATExtratoESCPOS, ACBrMail, DBCtrlsEh, DBLookupEh, Vcl.Imaging.jpeg,
+  ACBRDFeUtil,
+  ACBRSAT,
+  ACBrBase,
+  ACBrDANFCeFortesFr,
+  ACBrDANFCeFortesFrA4,
+  ACBrDFe,
+  ACBrDFeDANFeReport,
+  ACBrDFeReport,
+  ACBrDFeSSL,
+  ACBrIntegrador,
+  ACBrMail,
+  ACBrNFe,
+  ACBrNFeDANFEClass,
+  ACBrNFeDANFEFR,
+  ACBrNFeDANFeESCPOS,
+  ACBrNFeDANFeRLClass,
+  ACBrPosPrinter,
+  ACBrSATClass,
+  ACBrSATExtratoClass,
+  ACBrSATExtratoESCPOS,
+  ACBrSATExtratoFortesFr,
+  ACBrSATExtratoReportClass,
+  ACBrTEFComum,
+  ACBrTEFD,
+  ACBrTEFDClass,
   ACBrTEFPayGoComum,
-  Vcl.ExtDlgs, ACBrTEFD, ACBrTEFDClass, ACBrTEFPayGoWebComum, ACBrTEFComum,
-  frxExportXLS, JvComponentBase, JvEnterTab, System.Actions, Vcl.ActnList,
-  dxSkinDevExpressDarkStyle, cxGraphics, cxLookAndFeels,
-  cxLookAndFeelPainters, cxButtons, dxSkinsCore, dxSkinOffice2019Colorful,
-  dxSkinOffice2019DarkGray, cxControls, cxContainer, cxEdit, cxTrackBar,
-  dxRangeTrackBar, cxTextEdit, cxMaskEdit, cxSpinEdit, cxDBEdit,
-  Vcl.Samples.Spin, JvExMask, JvSpin, ACBrNFeDANFEFR, ACBrDANFCeFortesFr,
-  StrUtils;
+  ACBrTEFPayGoWebComum,
+  ACBrValidador,
+  DBAxisGridsEh,
+  DBCtrlsEh,
+  DBGridEh,
+  DBGridEhGrouping,
+  DBGridEhToolCtrls,
+  DBLookupEh,
+  DynVarsEh,
+  EhLibVCL,
+  GridsEh,
+  JvComponentBase,
+  JvEnterTab,
+  JvExMask,
+  JvSpin,
+  ToolCtrlsEh,
+  acbrUtil,
+  blcksock,
+  cxButtons,
+  cxContainer,
+  cxControls,
+  cxDBEdit,
+  cxEdit,
+  cxGraphics,
+  cxLookAndFeelPainters,
+  cxLookAndFeels,
+  cxMaskEdit,
+  cxSpinEdit,
+  cxTextEdit,
+  cxTrackBar,
+  dxRangeTrackBar,
+  frxClass,
+  frxDBSet,
+  frxExportBaseDialog,
+  frxExportPDF,
+  frxExportXLS,
+  math,
+  pcnConversao,
+  pcnConversaoNFe,
+  winInet,
+
+  Data.DB,
+
+  FireDAC.Comp.Client,
+  FireDAC.Comp.DataSet,
+  FireDAC.DApt,
+  FireDAC.DApt.Intf,
+  FireDAC.DatS,
+  FireDAC.Phys.Intf,
+  FireDAC.Stan.Async,
+  FireDAC.Stan.Error,
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Param,
+
+  System.Actions,
+  System.Classes,
+  System.SysUtils,
+  System.StrUtils,
+  System.TypInfo,
+  System.Variants,
+
+  Vcl.ActnList,
+  Vcl.Buttons,
+  Vcl.ComCtrls,
+  Vcl.Controls,
+  Vcl.DBCGrids,
+  Vcl.DBCtrls,
+  Vcl.DBGrids,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Vcl.ExtDlgs,
+  Vcl.Forms,
+  Vcl.Graphics,
+  Vcl.Grids,
+  Vcl.Imaging.jpeg,
+  Vcl.Imaging.pngimage,
+  Vcl.Mask,
+  Vcl.Menus,
+  Vcl.Samples.Spin,
+  Vcl.StdCtrls,
+
+  Winapi.Messages,
+  Winapi.Windows;
+
 type
   TStatusVenda = (stsLivre, stsIniciada, stsEmPagamento, stsCancelada,
     stsAguardandoTEF, stsOperacaoTEF, stsFinalizada);
+
   TfrmFechaVenda = class(TForm)
     qryFPG: TFDQuery;
     dsFPG: TDataSource;
@@ -370,6 +458,7 @@ type
     qryVendasFPGULTIMOSQUATRODIGITOS: TStringField;
     qryVendasFPGTOTAL: TBCDField;
     qryVendaTOTAL: TFMTBCDField;
+    qryProdutoREDUCAO_BASE: TFMTBCDField;
     procedure FormShow(Sender: TObject);
     procedure qryVendasFPGNewRecord(DataSet: TDataSet);
     procedure qryVendasFPGBeforeOpen(DataSet: TDataSet);
@@ -439,10 +528,13 @@ type
     vUsaGaveta, vImprime, vContingencia, voffline, vFazEntrega: Boolean;
     vNumeracao, vSerie, vVias: Integer;
     bPixJaFeito: Boolean;
-    FOperacaoEmProgresso: Boolean;
-    const
-      DSistema: string = 'Loja do Desenvolvedor';
-      DSite: string = 'www.lojadodesenvolvedor.com.br';
+    procedure CalculaTotalDescontos(var vtDesconto: Extended);
+    function JaDeuDesconto: double;
+
+  const
+    DSistema: string = 'LojaDev';
+    DSite: string = 'www.lojadodesenvolvedor.com.br';
+   // tTelaPEDIDO: string = 'N';
     procedure GerarNFCe(NumNFe: String);
     procedure GeraFinanceiro;
     procedure ImportaPedido;
@@ -452,6 +544,7 @@ type
     procedure ApagaFpgZerada;
     procedure CadastraFPG;
     procedure ImprimeA4;
+    procedure Imprime80MM;
     procedure CalculaTroco;
     procedure GravaTotal;
     procedure BuscaOS(numero: Integer);
@@ -475,7 +568,9 @@ type
     procedure sInutilizado;
     function Parcelas: string;
     function StrToPaginaCodigo(const AValor: String): TACBrPosPaginaCodigo;
+
     procedure GerarCFe(const ASerie, ANumero: Integer);
+
     procedure EnviarCFe(const ASerie, ANumero: Integer);
     procedure ImprimePedido;
     function GravarCFe(const ASerie, ANumero, ASerieSat, ANumeroSat: Integer;
@@ -504,26 +599,33 @@ type
     procedure FormaPagamentoPix(var bPixAprovado: Boolean);
     procedure PixMercadoPago(var bPixAprovado: Boolean);
     procedure PixBancoBrasil(var bPixAprovado: Boolean);
+    procedure PixStatico(var bPixAprovado: Boolean);
     function ComoGerarPix: Integer;
     { Private declarations }
   public
-    vPessoa: String;
+    vTelaPEDIDO, vPessoa: String;
     vInsereFPG, vFinalizou, vTerminalCaixa: Boolean;
   end;
+
 var
   frmFechavenda: TfrmFechaVenda;
-implementation //Acesse lojadodesenvolvedor.com.br e saiba mais sobre esse código fonte.
+
+implementation
+
 {$R *.dfm}
-uses Udados, uPDV, uVendaPagar, uVendaCheque, uVendaCartao, uContaDeposito,
+
+uses uCadvenda, Udados, uPDV, uVendaPagar, uVendaCheque, uVendaCartao, uContaDeposito,
   uDadosWeb, ufrmStatus, uSupervisor, uEstoque_FI_Insuficiente, frExibeMensagem,
-  uTef, uDmNFe, udmImpressao, uDMSat, uDMEstoque, uMFE_POS, uGeradorPixMercadoPago, uGerarPixNormalQrCode, uGeradorMultiPix,
-  unit_esmaecer_fundo;
+  uTef, uDmNFe, udmImpressao, uDMSat, uDMEstoque, uMFE_POS,
+  uGeradorPixMercadoPago, uGerarPixNormalQrCode, uGeradorMultiPix, uAguardarGeracaoPix, funcoes_diversas;
+
 function TfrmFechaVenda.StrToPaginaCodigo(const AValor: String)
   : TACBrPosPaginaCodigo;
 begin
   Result := TACBrPosPaginaCodigo
     (GetEnumValue(TypeInfo(TACBrPosPaginaCodigo), AValor));
 end;
+
 procedure TfrmFechaVenda.GerarCFe(const ASerie, ANumero: Integer);
 var
   NumItem: Integer;
@@ -534,13 +636,16 @@ begin
   dados.qryNFCE_M.Close;
   dados.qryNFCE_M.Params[0].Value := qryVendaCODIGO.Value;
   dados.qryNFCE_M.Open;
+
   dados.qryNFCE_D.Close;
   dados.qryNFCE_D.Params[0].Value := dados.qryNFCE_MCODIGO.Value;
   dados.qryNFCE_D.Open;
+
   ImportaPedido; // passo 3: importa dados da venda
   dados.qryNFCE_D.Close;
   dados.qryNFCE_D.Params[0].Value := dados.qryNFCE_MCODIGO.Value;
   dados.qryNFCE_D.Open;
+
   if dados.qryNFCE_D.IsEmpty then
   begin
     ShowMessage('Não Existe Produto Cadastrado Para Venda!' + #13 +
@@ -553,7 +658,12 @@ begin
   ProgressBar1.Position := 50;
   Application.ProcessMessages;
   try
+
+    dmSat.ACBrSAT1.CFe.RetirarAcentos := True;
+    dmSat.ACBrSAT1.CFe.IdentarXML := true;
+    dmSat.ACBrSAT1.CFe.TamanhoIdentacao := 3;
     dmSat.ACBrSAT1.InicializaCFe;
+
     // Montando uma Venda //
     with dmSat.ACBrSAT1.CFe do
     begin
@@ -725,14 +835,16 @@ begin
       Total.DescAcrEntr.vDescSubtot := dados.qryNFCE_MDESCONTO.AsFloat;
       Total.vCFeLei12741 := dados.qryNFCE_MTRIB_FED.AsFloat +
         dados.qryNFCE_MTRIB_EST.AsFloat + dados.qryNFCE_MTRIB_MUN.AsFloat;
+
       if dados.qryNFCE_MTOTAL.Value = qryVendaTOTAL.AsFloat then
       begin
         qryVendasFPG.First;
         while not qryVendasFPG.Eof do
+
         begin
           if qryVendasFPGVALOR.Value > 0 then
           begin
-            if UpperCase(qryVendasFPGVIRTUAL_TIPO.Value) = 'D' then
+            if UpperCase(qryVendasFPGVIRTUAL_TIPO.Value) = 'D' then //DINHEIRO
             begin
               with Pagto.add do
               begin
@@ -741,7 +853,7 @@ begin
               end;
             end;
           end;
-          if UpperCase(qryVendasFPGVIRTUAL_TIPO.Value) = 'Q' then
+          if UpperCase(qryVendasFPGVIRTUAL_TIPO.Value) = 'Q' then   //CHEQUE
           begin
             if qryVendasFPGVALOR.Value > 0 then
             begin
@@ -752,7 +864,12 @@ begin
               end;
             end;
           end;
-          if UpperCase(qryVendasFPGVIRTUAL_TIPO.Value) = 'T' then
+
+
+        if (UpperCase(qryTotalFPGTIPO.Value) = 'T') or
+           (UpperCase(qryTotalFPGTIPO.Value) = 'N') or
+           (UpperCase(qryTotalFPGTIPO.Value) = 'X') or
+           (UpperCase(qryTotalFPGTIPO.Value) = 'V') then   //OUTROS
           begin
             if qryVendasFPGVALOR.Value > 0 then
             begin
@@ -770,7 +887,7 @@ begin
               with Pagto.add do
               begin
                 cMP := mpCartaodeCredito;
-                vMP := qryVendasFPGVALOR.AsFloat;
+                vMP := qryVendasFPGVALOR.AsCurrency;
                 cAdmC := 999;
                 cAut := inttostr (qryVendaCODIGO.Value);
               end;
@@ -783,7 +900,7 @@ begin
               with Pagto.add do
               begin
                 cMP := mpCartaodeDebito;
-                vMP := qryVendasFPGVALOR.AsFloat;                              // upd6 - Wagner Elias
+                vMP := qryVendasFPGVALOR.AsCurrency;
                 cAdmC := 999;
                 cAut := inttostr (qryVendaCODIGO.Value);
               end;
@@ -800,28 +917,28 @@ begin
               end;
             end;
           end;
-          if UpperCase(qryVendasFPGVIRTUAL_TIPO.Value) = 'N' then
-          begin
-            if qryVendasFPGVALOR.Value > 0 then
-            begin
-              with Pagto.add do
-              begin
-                cMP := mpCreditoLoja;
-                vMP := qryVendasFPGVALOR.AsFloat;
-              end;
-            end;
-          end;
-          if UpperCase(qryVendasFPGVIRTUAL_TIPO.Value) = 'X' then
-          begin
-            if qryVendasFPGVALOR.Value > 0 then
-            begin
-              with Pagto.add do
-              begin
-                cMP := mpCreditoLoja;
-                vMP := qryVendasFPGVALOR.AsFloat;
-              end;
-            end;
-          end;
+//          if UpperCase(qryVendasFPGVIRTUAL_TIPO.Value) = 'N' then
+//          begin
+//            if qryVendasFPGVALOR.Value > 0 then
+//            begin
+//              with Pagto.add do
+//              begin
+//                cMP := mpCreditoLoja;
+//                vMP := qryVendasFPGVALOR.AsFloat;
+//              end;
+//            end;
+//          end;
+//          if UpperCase(qryVendasFPGVIRTUAL_TIPO.Value) = 'X' then
+//          begin
+//            if qryVendasFPGVALOR.Value > 0 then
+//            begin
+//              with Pagto.add do
+//              begin
+//                cMP := mpCreditoLoja;
+//                vMP := qryVendasFPGVALOR.AsFloat;
+//              end;
+//            end;
+//          end;
           qryVendasFPG.Next;
         end;
       end
@@ -836,9 +953,10 @@ begin
     end;
   except
     on e: Exception do
-      raise Exception.Create(e.Message);
+      raise Exception.Create('Erro ao processar pagamentos: ' + e.Message);
   end;
 end;
+
 procedure TfrmFechaVenda.EnviarCFe(const ASerie, ANumero: Integer);
 begin
   try
@@ -854,12 +972,34 @@ begin
     end;
   end;
 end;
+
 procedure TfrmFechaVenda.GerarNFCe(NumNFe: String);
 var
-  vMsg: string;
+  XMLGerado, CaminhoXML, vMsg: string;
   FAliqDeson: Extended;
   FTOTALDESON: Extended;
+  LTotaisSemReducao, LDiferencaBase, LTotaisReducao: Double;
 begin
+  dados.qryNFCE_M.Close;
+  dados.qryNFCE_M.Params[0].Value := qryVendaCODIGO.Value;
+  dados.qryNFCE_M.Open;
+
+  dados.qryNFCE_D.Close;
+  dados.qryNFCE_D.Params[0].Value := dados.qryNFCE_MCODIGO.Value;
+  dados.qryNFCE_D.Open;
+
+  if dados.qryNFCE_D.IsEmpty then
+  begin
+    ShowMessage('Não Existe Produto Cadastrado Para Venda!' + #13 +
+      'Vá na tela cadastro de produtos' + #13 +
+      ' e marque a opção Permitir Venda');
+    exit;
+  end;
+
+  ProgressBar1.Visible := true;
+  ProgressBar1.Position := 50;
+  Application.ProcessMessages;
+
   try
     vMsg := '';
     FAliqDeson := 0;
@@ -891,7 +1031,7 @@ begin
       if dados.qryConfigAMBIENTE.Value = 0 then
         ide.tpAmb := taProducao
       else
-        ide.tpAmb := taHomologacao;
+      ide.tpAmb := taHomologacao;
       ide.cUF := dados.qryEmpresaID_UF.Value;
       ide.cMunFG := dados.qryEmpresaID_CIDADE.Value;
       ide.finNFe := fnNormal;
@@ -925,7 +1065,7 @@ begin
         3:
           Emit.CRT := crtRegimeNormal;
         4:
-          Emit.CRT := crtMEI;
+        Emit.CRT := crtMEI;
       end;
       dados.qryConsulta.Close;
       dados.qryConsulta.SQL.Text := 'SELECT * FROM PESSOA WHERE CODIGO=:ID';
@@ -970,7 +1110,15 @@ begin
         Dest.EnderDest.UF := dados.qryEmpresaUF.AsString;
       end;
       Dest.indIEDest := inNaoContribuinte;
+
+
+      //Passa os itens da NFC-e para o componente
+      LTotaisReducao := 0;
+      LDiferencaBase := 0;
+      LTotaisSemReducao := 0;
       dados.qryNFCE_D.First;
+
+      //Goveia NFCe
       while not dados.qryNFCE_D.Eof do
       begin
         with Det.add do
@@ -986,12 +1134,13 @@ begin
               Prod.cEAN := FormatFloat('0000000000000',
                 StrToFloatDef(dados.QRYNFCE_DCOD_BARRA.Value, 0));
           end;
+
           Prod.xProd := dados.qryNFCE_DDESCRICAO.AsString;
           Prod.NCM := dados.qryNFCE_DNCM.AsString;
           Prod.EXTIPI := '';
           Prod.CFOP := dados.qryNFCE_DCFOP.AsString;
           Prod.uCom := dados.QRYNFCE_DUNIDADE.AsString;
-          Prod.qCom := dados.QRYNFCE_DQTD.AsFloat;;
+          Prod.qCom := dados.QRYNFCE_DQTD.AsFloat;
           Prod.vUnCom := SimpleRoundTo(dados.QRYNFCE_DPRECO.AsFloat, -2);
           Prod.vProd := SimpleRoundTo(dados.QRYNFCE_DVALOR_ITEM.AsFloat, -2);
           Prod.cEANTrib := 'SEM GTIN';
@@ -1009,7 +1158,7 @@ begin
           Prod.vOutro := dados.qryNFCE_DOUTROS.AsFloat;
           Prod.vFrete := 0;
           Prod.vSeg := 0;
-          Prod.vDesc := dados.QRYNFCE_DVDESCONTO.AsFloat;
+          Prod.vDesc := dados.QRYNFCE_DVDESCONTO.AsFloat; //Desconto
           Prod.CEST := dados.QRYNFCE_DCEST.Value;
           // pesquisa produto
           dados.qryConsulta.Close;
@@ -1034,11 +1183,14 @@ begin
             Prod.comb.vPart := dados.qryConsulta.FieldByName
               ('PESO_LIQ').AsFloat;
           end;
+
+          //imposto
           with Imposto do
           begin
             vTotTrib := dados.QRYNFCE_DTRIB_MUN.AsFloat +
               dados.QRYNFCE_DTRIB_IMP.AsFloat + dados.QRYNFCE_DTRIB_EST.AsFloat
               + dados.QRYNFCE_DTRIB_FED.AsFloat;
+
             with ICMS do
             begin
               if Trim(dados.qryConsulta.FieldByName('COD_BENEFICIO').AsString)
@@ -1054,51 +1206,73 @@ begin
                   * FAliqDeson), -2);
                 FTOTALDESON := FTOTALDESON + ICMS.vICMSDeson;
               end;
-              if (dados.qryEmpresaCRT.Value <> 1) and (dados.qryEmpresaCRT.Value <> 4) then          //Wagner - Upt 6
-              begin // empresas que não são do simples nacional
-                if copy(dados.QRYNFCE_DCST.Value, 2, 2) = '00' then
+
+              if (dados.qryEmpresaCRT.Value <> 1) and (dados.qryEmpresaCRT.Value <> 4) then 
+              begin // empresas que não são do simples nacional / MEI
+                if copy(dados.QRYNFCE_DCST.Value, 1, 2) = '00' then
                   CST := cst00;
-                if copy(dados.QRYNFCE_DCST.Value, 2, 2) = '10' then
+                if copy(dados.QRYNFCE_DCST.Value, 1, 2) = '10' then
                   CST := cst10;
-                if copy(dados.QRYNFCE_DCST.Value, 2, 2) = '20' then
+
+
+                if copy(dados.QRYNFCE_DCST.Value, 1, 2) = '20' then
                 begin
+
                   CST := cst20;
-                  vMsg := 'Credito presumido na base de calculo do icms 77,5% de acordo com a resolução nº004 de 17 de janeiro de 2017';
+                  ICMS.modBC := dbiValorOperacao;
+                  ICMS.pICMS := dados.QRYNFCE_DALIQ_ICMS.AsFloat;
+                  ICMS.pRedBC := dados.QRYNFCE_DREDUCAO_BASE.AsFloat; //perc. reducao
+                  ICMS.vBC := dados.qryNFCE_DBASE_ICMS.AsFloat;//* (1 - (ICMS.pRedBC / 100));
+                  ICMS.vICMS := ICMS.vBC * (ICMS.pICMS / 100);
+                  vMsg := 'Crédito presumido na base de cálculo do ICMS 77,5% de acordo com a resolução nº004 de 17 de janeiro de 2017';
+
+                //  LTotaisReducao := LTotaisReducao + ICMS.vICMS;
+                 // LDiferencaBase :=  LDiferencaBase + (dados.qryNFCE_DBASE_ICMS.AsFloat - ICMS.vBC);
+
+
+                end
+                else begin
+                  ICMS.modBC := dbiValorOperacao;
+                  ICMS.vBC := dados.qryNFCE_DBASE_ICMS.AsFloat;
+                  ICMS.pICMS := dados.QRYNFCE_DALIQ_ICMS.AsFloat;
+                  ICMS.vICMS := dados.qryNFCE_DVALOR_ICMS.AsFloat;
+                  ICMS.modBCST := dbisMargemValorAgregado;
+                  ICMS.pMVAST := 0; // dados.qryNFCE_DALIQ_ICMS.Value;;
+
+                  LTotaisSemReducao := LTotaisSemReducao +  ICMS.vICMS;
+
+                  ICMS.pRedBCST := 0;
+                  ICMS.vBCST := 0;
+                  ICMS.pICMSST := 0;
+                  ICMS.vICMSST := 0;
+                  ICMS.pRedBC := 0;
                 end;
-                if copy(dados.QRYNFCE_DCST.Value, 2, 2) = '30' then
+
+
+                if copy(dados.QRYNFCE_DCST.Value, 1, 2) = '30' then
                   CST := cst30;
-                if copy(dados.QRYNFCE_DCST.Value, 2, 2) = '40' then
+                if copy(dados.QRYNFCE_DCST.Value, 1, 2) = '40' then
                   CST := cst40;
-                if copy(dados.QRYNFCE_DCST.Value, 2, 2) = '41' then
+                if copy(dados.QRYNFCE_DCST.Value, 1, 2) = '41' then
                   CST := cst41;
-                if copy(dados.QRYNFCE_DCST.Value, 2, 2) = '45' then
+                if copy(dados.QRYNFCE_DCST.Value, 1, 2) = '45' then
                   CST := cst45;
-                if copy(dados.QRYNFCE_DCST.Value, 2, 2) = '50' then
+                if copy(dados.QRYNFCE_DCST.Value, 1, 2) = '50' then
                   CST := cst50;
-                if copy(dados.QRYNFCE_DCST.Value, 2, 2) = '51' then
+                if copy(dados.QRYNFCE_DCST.Value, 1, 2) = '51' then
                   CST := cst51;
-                if copy(dados.QRYNFCE_DCST.Value, 2, 2) = '60' then
+                if copy(dados.QRYNFCE_DCST.Value, 1, 2) = '60' then
                   CST := cst60;
-                if copy(dados.QRYNFCE_DCST.Value, 2, 2) = '70' then
+                if copy(dados.QRYNFCE_DCST.Value, 1, 2) = '70' then
                   CST := cst70;
-                if copy(dados.QRYNFCE_DCST.Value, 2, 2) = '80' then
+                if copy(dados.QRYNFCE_DCST.Value, 1, 2) = '80' then
                   CST := cst80;
-                if copy(dados.QRYNFCE_DCST.Value, 2, 2) = '81' then
+                if copy(dados.QRYNFCE_DCST.Value, 1, 2) = '81' then
                   CST := cst81;
-                if copy(dados.QRYNFCE_DCST.Value, 2, 2) = '90' then
+                if copy(dados.QRYNFCE_DCST.Value, 1, 2) = '90' then
                   CST := cst90;
-                ICMS.modBC := dbiValorOperacao;
-                ICMS.vBC := dados.qryNFCE_DBASE_ICMS.AsFloat;
-                ICMS.pICMS := dados.QRYNFCE_DALIQ_ICMS.AsFloat;
-                ICMS.vICMS := dados.qryNFCE_DVALOR_ICMS.AsFloat;
-                ICMS.modBCST := dbisMargemValorAgregado;
-                ICMS.pMVAST := 0; // dados.qryNFCE_DALIQ_ICMS.Value;;
-                ICMS.pRedBCST := 0;
-                ICMS.vBCST := 0;
-                ICMS.pICMSST := 0;
-                ICMS.vICMSST := 0;
-                ICMS.pRedBC := 0;
               end;
+
               case dados.qryConsulta.FieldByName('ORIGEM').AsInteger of
                 0:
                   ICMS.orig := oeNacional;
@@ -1120,7 +1294,7 @@ begin
                 ICMS.orig := oeNacional;
               end;
 
-              if (Dados.qryEmpresaCRT.Value = 1) or (Dados.qryEmpresaCRT.Value = 4) then      //Wagner - upt6
+              if (Dados.qryEmpresaCRT.Value = 1) or (Dados.qryEmpresaCRT.Value = 4) then  
               begin // empresas que são do simples nacional
                 if dados.QRYNFCE_DCSOSN.Value = '101' then
                   CSOSN := csosn101;
@@ -1149,13 +1323,16 @@ begin
                 ICMS.vICMS := 0;
                 ICMS.modBCST := dbisMargemValorAgregado;
                 ICMS.pMVAST := 0; // dados.qryNFCE_DALIQ_ICMS.Value;;
-                ICMS.pRedBCST := 0;
+                ICMS.pRedBCST := 0;//dados.QRYNFCE_DP_REDUCAO_ICMS.Value;
                 ICMS.vBCST := 0;
                 ICMS.pICMSST := 0;
                 ICMS.vICMSST := 0;
                 ICMS.pRedBC := 0;
               end;
             end;
+
+
+
             with PIS do
             begin
               if dados.QRYNFCE_DCST_PIS.Value = '01' then
@@ -1214,13 +1391,26 @@ begin
             end;
           end;
         end;
+
         dados.qryNFCE_D.Next;
+
+
       end;
+
       Total.ICMSTot.vTotTrib := dados.qryNFCE_MTRIB_MUN.AsFloat +
         dados.QRYNFCE_MTRIB_IMP.AsFloat + dados.qryNFCE_MTRIB_EST.AsFloat +
         dados.qryNFCE_MTRIB_FED.AsFloat;
+
       Total.ICMSTot.vBC := dados.qryNFCE_MBASEICMS.AsFloat;
+     // if  LDiferencaBase > 0 then
+     //  Total.ICMSTot.vBC := dados.qryNFCE_MBASEICMS.AsFloat - LDiferencaBase ; //ok
+
       Total.ICMSTot.vICMS := dados.qryNFCE_MTOTALICMS.AsFloat;
+
+     // if LTotaisReducao > 0 then
+     //  Total.ICMSTot.vICMS :=  LTotaisSemReducao + LTotaisReducao ;
+
+
       Total.ICMSTot.vBCST := 0;
       Total.ICMSTot.vST := 0;
       Total.ICMSTot.vICMSDeson := FTOTALDESON;
@@ -1235,6 +1425,8 @@ begin
       Total.ICMSTot.vCOFINS := dados.qryNFCE_MTOTALICMSCOFINS.AsFloat;
       Total.ICMSTot.vNF := dados.qryNFCE_MTOTAL.AsFloat;
       Transp.modFrete := mfSemFrete; // NFC-e não pode ter FRETE
+
+
       if dados.qryNFCE_MTOTAL.Value = qryVendaTOTAL.AsFloat then
       begin
         qryTotalFPG.Close;
@@ -1301,10 +1493,9 @@ begin
                 tPag := fpCartaoDebito;
                 vPag := qryTotalFPGVALOR.AsFloat;
                 tpIntegra := tiPagNaoIntegrado;
-
                 tBand := bcOutros;
                 cAut := inttostr (qryVendaCODIGO.Value);
-                InfAdic.infCpl := 'cAdmC: 999';                                //mfe - wagner elias
+                InfAdic.infCpl := 'cAdmC: 999';
               end;
             end;
           end;
@@ -1371,9 +1562,10 @@ begin
             begin
               with pag.add do
               begin
-                tPag := fpPagamentoInstantaneoEstatico;
+                tPag := fpPagamentoInstantaneoEstatico;//fpPagamentoInstantaneo;
                 vPag := qryTotalFPGVALOR.AsFloat;
-                //tpIntegra := tiPagNaoIntegrado; // Vamos usar essa Tag quando enviar os dados da transação Pix no XML.
+               /// tpIntegra := tiPagNaoIntegrado; // adicionado o pix sem rede
+
               end;
             end;
           end;
@@ -1428,13 +1620,23 @@ begin
         InfAdic.infCpl := dados.qryNFCE_MOBSERVACOES.Value + sLineBreak +
           dados.qryEmpresaOBSNFCE.Value;
       InfAdic.infAdFisco := vMsg;
-      dmnfe.ACBrNFe.NotasFiscais.GerarNFe;
+
+     dmnfe.ACBrNFe.NotasFiscais.GerarNFe;
+      {$IFDEF DEBUG}
+     CaminhoXML := IncludeTrailingPathDelimiter(ExtractFilePath(ParamStr(0))) + 'logs\' + NumNFe + '-nfcedebug.xml';
+     dmnfe.ACBrNFe.NotasFiscais.Items[0].GravarXML(CaminhoXML);
+       {$ENDIF}
+
     end;
   except
     on e: Exception do
       raise Exception.Create('Erro:' + e.Message);
   end;
 end;
+
+
+
+
 procedure TfrmFechaVenda.GeraFinanceiro;
 var
   ValorTaxa: Extended;
@@ -1498,6 +1700,7 @@ begin
     dados.qryConsulta.Next;
   end;
 end;
+
 procedure TfrmFechaVenda.GravaTotal;
 begin
   if not(qryVenda.State in dsEditModes) then
@@ -1515,11 +1718,13 @@ begin
   qryVenda.Post;
   dados.Conexao.CommitRetaining;
 end;
+
 procedure TfrmFechaVenda.grpPessoaExit(Sender: TObject);
 begin
   DBGridPes.Visible := False;
-  //pnPedido.Height := 48;
+  // pnPedido.Height := 48;
 end;
+
 function TfrmFechaVenda.SomaCartao: Extended;
 begin
   Result := 0;
@@ -1536,6 +1741,7 @@ begin
   dados.qryConsulta.Open;
   Result := dados.qryConsulta.FieldByName('total').AsFloat;
 end;
+
 function TfrmFechaVenda.TotalCartaoTEF: Extended;
 begin
   Result := 0;
@@ -1553,6 +1759,7 @@ begin
   dados.qryConsulta.Open;
   Result := dados.qryConsulta.FieldByName('total').AsFloat;
 end;
+
 function TfrmFechaVenda.TotalTEF: Extended;
 begin
   Result := 0;
@@ -1567,6 +1774,7 @@ begin
   dados.qryConsulta.Open;
   Result := dados.qryConsulta.FieldByName('total').AsFloat;
 end;
+
 procedure TfrmFechaVenda.LancaTroco;
 begin
   if qryVendaTROCO.AsFloat > 0 then
@@ -1589,19 +1797,24 @@ begin
     dados.Conexao.CommitRetaining;
   end;
 end;
+
 procedure TfrmFechaVenda.FechaTef;
 begin
   FrmTEF.TVenda(qryVendaCODIGO.AsInteger, TotalCartaoTEF, TotalTEF,
     dados.qryTerminalCOLUNAS.AsInteger);
   FrmTEF.FinalizarVenda;
   DMImpressao.ConfiguraImpressora('');
-  FrmTEF.mImpressao.Lines.SaveToFile('c:\ERP\tef.txt');
-  if DMImpressao.aCBrPosPrinter1.Ativo then
+
+  FrmTEF.mImpressao.Lines.SaveToFile(ExtractFilePath(Application.ExeName) + '\tef.txt');
+
+
+  if DMImpressao.ACBrPosPrinter1.Ativo then
   begin
-    DMImpressao.aCBrPosPrinter1.Buffer.Assign(FrmTEF.mImpressao.Lines);
-    DMImpressao.aCBrPosPrinter1.Imprimir;
+    DMImpressao.ACBrPosPrinter1.Buffer.Assign(FrmTEF.mImpressao.Lines);
+    DMImpressao.ACBrPosPrinter1.Imprimir;
   end;
 end;
+
 function TfrmFechaVenda.ChamaTEF: Boolean;
 Var
   okTef: Boolean;
@@ -1641,7 +1854,7 @@ begin
     if (TotalCartaoTEF = TotalTEF) and (okTef) then
     begin
       try
-        cxTransmitirClick(self);
+        cxTransmitirClick(Self);
         FechaTef;
       except
         FechaTef;
@@ -1651,9 +1864,10 @@ begin
     FrmTEF.CancelarVenda;
   end;
 end;
+
 procedure TfrmFechaVenda.FinalizaPedido;
 begin
-  progressBar1.Visible := true;
+  ProgressBar1.Visible := true;
   try
     dados.vEnviarSefa := 'N';
     TipoEmissao := 'OFF';
@@ -1691,6 +1905,7 @@ begin
     cxFinalizar.Enabled := true;
   end;
 end;
+
 procedure TfrmFechaVenda.FinalizaNFCeOffLine;
 begin
   // grava chave do nfe no banco de dados
@@ -1710,25 +1925,28 @@ begin
   dados.qryNFCE_M.Post;
   dados.Conexao.CommitRetaining;
 end;
+
 procedure TfrmFechaVenda.ModoImpressao;
 var
   Ok: Boolean;
 begin
-  Ok := (dados.qryTerminalUSA_TEF.Value <> 'S') and
-    (dados.qryTerminalUSA_POS.Value <> 'S') and
+  Ok := (dados.qryTerminalUSA_TEF.Value <> 'S') or
+    (dados.qryTerminalUSA_POS.Value <> 'S') or
     (dados.qryEmpresaTRANSMITIR_CARTAO_AUTO.Value <> 'S');
   if Ok then
   begin
     if dados.qryTerminalFLAG.Value = 'O' then
-      cxOfflineClick(self);
+      cxOfflineClick(Self);
     if dados.qryTerminalFLAG.Value = 'N' then
-      cxTransmitirClick(self);
-    if dados.qryTerminalFLAG.Value = 'P' then
-      cxPedidoClick(self);
+      cxTransmitirClick(Self);
+    if (dados.qryTerminalFLAG.Value = 'P') OR (vTelaPEDIDO = 'S') then
+      cxPedidoClick(Self);
     if dados.qryTerminalFLAG.Value = 'F' then
-      cxFinalizarClick(self);
+      cxFinalizarClick(Self);
   end;
 end;
+
+
 procedure TfrmFechaVenda.actAcrescimoExecute(Sender: TObject);
 begin
   if PageControl1.ActivePage = TabPrecoNormal then
@@ -1742,16 +1960,19 @@ begin
       cxPedido.Click;
   end;
 end;
+
 procedure TfrmFechaVenda.actBuscaExecute(Sender: TObject);
 begin
   if PageControl1.ActivePage = TabPrecoNormal then
     DBEdit27.SetFocus;
 end;
+
 procedure TfrmFechaVenda.actConcluirExecute(Sender: TObject);
 begin
   if PageControl1.ActivePage = TabPrecoNormal then
     btnConcluir.Click;
 end;
+
 procedure TfrmFechaVenda.actCPFExecute(Sender: TObject);
 var
   CPFTef: string;
@@ -1786,6 +2007,7 @@ begin
       cxFinalizar.Click;
   end;
 end;
+
 procedure TfrmFechaVenda.actDescontoExecute(Sender: TObject);
 begin
   if PageControl1.ActivePage = TabPrecoNormal then
@@ -1799,6 +2021,7 @@ begin
       cxTransmitir.Click;
   end;
 end;
+
 procedure TfrmFechaVenda.actSelecionaGridExecute(Sender: TObject);
 begin
   if PageControl1.ActivePage = TabPrecoNormal then
@@ -1808,6 +2031,7 @@ begin
     JVDBGrid1.SelectedIndex := 2;
   end;
 end;
+
 procedure TfrmFechaVenda.actTabelaExecute(Sender: TObject);
 begin
   if PageControl1.ActivePage = TabPrecoNormal then
@@ -1821,6 +2045,7 @@ begin
       cxOffline.Click;
   end;
 end;
+
 procedure TfrmFechaVenda.ApagaFpgZerada;
 begin
   dados.qryExecute.Close;
@@ -1830,10 +2055,179 @@ begin
   dados.qryExecute.ExecSQL;
   dados.Conexao.CommitRetaining;
 end;
+
+
+procedure TfrmFechaVenda.CalculaTotalDescontos(var vtDesconto: Extended);
+begin
+  vtDesconto := 0;
+
+  qryItem.DisableControls;
+  try
+    qryItem.First;
+    while not qryItem.Eof do
+    begin
+      vtDesconto := vtDesconto + qryItem.FieldByName('VDESCONTO').AsFloat; // Soma o valor de desconto
+      qryItem.Next;
+    end;
+  finally
+    qryItem.EnableControls;
+  end;
+end;
+
+function TfrmFechaVenda.JaDeuDesconto: double;
+var
+  LValorDesconto: double;
+begin
+  Result := 0; // Inicializa a variável de desconto total
+  LValorDesconto := 0;
+
+  qryItem.DisableControls;
+  try
+    qryItem.First; // Move para o primeiro registro
+    while not qryItem.Eof do
+    begin
+      LValorDesconto := LValorDesconto + qryItem.FieldByName('VDESCONTO').AsFloat; // Soma o valor de desconto
+      qryItem.Next; // Move para o próximo registro
+    end;
+  finally
+    qryItem.EnableControls; // Reativa os controles após o loop
+  end;
+
+  Result := LValorDesconto;
+
+end;
+
+// impresão bobina
+
+
+//procedure TfrmFechaVenda.ImprimePedido;
+//var
+//  vEndereco, sTexto: String;
+//  SL: TStringList;
+//  TotalDescontos: Extended;
+//begin
+//  try
+//    SL := TStringList.Create;
+//
+//    // Cabeçalho da Empresa
+//    SL.Add('</ce><n>' + dados.qryEmpresaFANTASIA.AsString + '</n>');
+//    SL.Add('</ce>' + dados.qryEmpresaENDERECO.AsString + ', ' + dados.qryEmpresaNUMERO.Value);
+//    SL.Add('</ce>' + Trim(dados.qryEmpresaBAIRRO.AsString) + ' - ' +
+//      Trim(dados.qryEmpresaCIDADE.AsString) + '-' + Trim(dados.qryEmpresaUF.AsString));
+//    SL.Add('</ce>Fone: ' + Trim(dados.qryEmpresaFONE.AsString));
+//    SL.Add('</linha_dupla>'); // Linha dupla separadora
+//
+//    // Nota e Cliente
+//    sTexto := 'NOTA No. ' + FormatFloat('0000', qryVendaCODIGO.AsFloat);
+//    SL.Add('<n>' + PadCenter(sTexto, dados.qryTerminalCOLUNAS.AsInteger, '*') + '</n>');
+//    SL.Add('</linha_simples>');
+//
+//    qryCliente.Locate('CODIGO', qryVendaID_CLIENTE.Value);
+//    vEndereco := qryCliente.FieldByName('ENDERECO').AsString + ', ' +
+//      qryCliente.FieldByName('NUMERO').AsString;
+//
+//    SL.Add('</ae>Cliente: ' + qryCliente.FieldByName('RAZAO').AsString);
+//    SL.Add('CNPJ/CPF: ' + qryCliente.FieldByName('CNPJ').AsString);
+//    SL.Add('Endereço: ' + vEndereco);
+//
+//    // Informações de entrega, se aplicável
+//    if chkEntrega.Checked then
+//    begin
+//      SL.Add('Complemento: ' + qryCliente.FieldByName('COMPLEMENTO').AsString);
+//      SL.Add('Bairro: ' + qryCliente.FieldByName('BAIRRO').AsString);
+//      SL.Add('Cidade: ' + qryCliente.FieldByName('MUNICIPIO').AsString + '-' +
+//        qryCliente.FieldByName('UF').AsString);
+//      SL.Add('CEP: ' + qryCliente.FieldByName('CEP').AsString);
+//    end;
+//
+//    SL.Add('</linha_dupla>');
+//
+//    // Produtos
+//    SL.Add('<c>' + PadRight('COD', 5) + PadRight('PRODUTO', 26) +
+//      PadRight('QTD', 4) + PadLeft('VALOR', 8) + PadLeft('DESC', 5) + PadLeft('TOTAL', 10) + '</c>');
+//    SL.Add('</linha_simples>');
+//
+//    qryItem.Close;
+//    qryItem.Params[0].Value := qryVendaCODIGO.Value;
+//    qryItem.Open;
+//    qryItem.First;
+//
+//    while not qryItem.Eof do
+//    begin
+//      SL.Add('<c>' + PadRight(qryItem.FieldByName('ID_PRODUTO').AsString, 5) +
+//        PadRight(qryItem.FieldByName('DESCRICAO_SL').AsString, 26) +
+//        PadRight(qryItem.FieldByName('QTD').AsString, 4) +
+//        PadLeft(FormatFloat('0.00', qryItem.FieldByName('PRECO').AsFloat), 8) +
+//        PadLeft(FormatFloat('0.00', qryItem.FieldByName('VDESCONTO').AsFloat), 5) +
+//        PadLeft(FormatFloat('0.00', qryItem.FieldByName('TOTAL').AsFloat), 10));
+//      qryItem.Next;
+//    end;
+//
+//    SL.Add('</linha_dupla>');
+//
+//    // Totais
+//    CalculaTotalDescontos(TotalDescontos);
+//
+//    if dados.TerminalCaixa then
+//    begin
+//      SL.Add('<ad>SubTotal: ' + FormatFloat('###,##0.00', qryVendaSUBTOTAL.AsFloat + TotalDescontos));
+//      SL.Add('<ad>Desconto: ' + FormatFloat('###,##0.00', TotalDescontos));
+//      SL.Add('<ad>Total: ' + FormatFloat('###,##0.00', qryVendaTOTAL.AsFloat));
+//      SL.Add('</linha_simples>');
+//    end;
+//
+//    // Forma de Pagamento
+//    if dados.TerminalCaixa then
+//    begin
+//      SL.Add('<ae>FORMA DE PAGAMENTO:');
+//      qryVendasFPG.First;
+//      while not qryVendasFPG.Eof do
+//      begin
+//        if qryVendasFPGVALOR.AsFloat > 0 then
+//          SL.Add(PadRight(qryVendasFPGVIRTUAL_FORMA.Value, 20, '.') + ': R$ ' +
+//            FormatFloat('###,##0.00', qryVendasFPGVALOR.AsFloat));
+//        qryVendasFPG.Next;
+//      end;
+//    end;
+//
+//    SL.Add('</linha_dupla>');
+//
+//    // Assinatura
+//    SL.Add('<ae>Declaro ter recebido a mercadoria, ');
+//    SL.Add('');
+//    SL.Add('Assinatura: ____________________________');
+//    SL.Add('</linha_dupla>'); // Linha dupla separadora
+//
+//    // Rodapé
+//    SL.Add('<ce>**OBRIGADO, VOLTE SEMPRE!**');
+//    SL.Add('</corte>'); // Comando de corte
+//
+//    // Envia para Impressora
+//    Memo1.Lines.Text := SL.Text;
+//
+//    if not DMImpressao.ACBrPosPrinter1.Ativo then
+//    begin
+//      DMImpressao.ConfiguraImpressora('');
+//      DMImpressao.ACBrPosPrinter1.Ativo := True;
+//    end;
+//
+//    if DMImpressao.ACBrPosPrinter1.Ativo then
+//    begin
+//      DMImpressao.ImprimeTexto(Memo1.Text);
+//    end
+//    else
+//    begin
+//      ShowMessage('Erro ao imprimir!');
+//    end;
+//  finally
+//    SL.Free;
+//  end;
+//end;
 procedure TfrmFechaVenda.ImprimePedido;
 var
   vEndereco, sTexto: String;
   SL: TStringList;
+  TotalDescontos: Extended;
 begin
   try
     SL := TStringList.Create;
@@ -1848,10 +2242,10 @@ begin
     vEndereco := qryCliente.FieldByName('ENDERECO').AsString + ',' +
       qryCliente.FieldByName('NUMERO').AsString;
     SL.add('</linha_simples>');
-    sTexto := 'NOTA No. ' + FormatFloat('0000', qryVendaCODIGO.AsFloat);
+    sTexto := 'DAV No. ' + FormatFloat('0000', qryVendaCODIGO.AsFloat);
     SL.add('<n>' + PadCenter(sTexto, dados.qryTerminalCOLUNAS.AsInteger, '*')
       + '</n>');
-    SL.add('</linha_simples>');
+    SL.add('</linha_dupla>');
     sTexto := FormatFloat('0000', qryCliente.FieldByName('CODIGO').AsFloat) +
       '=>' + qryCliente.FieldByName('RAZAO').AsString;
     SL.add('</ae>Cliente...: ' + sTexto);
@@ -1871,39 +2265,51 @@ begin
     SL.add('Hora......:' + timetostr(time));
     SL.add('Vendedor..:' + qryVendaVIRTUAL_VENDEDOR.Value);
     SL.add('</linha_simples>');
-    SL.add('<c>' + PadRight('COD', 5) + PadRight('PRODUTO', 26) +
-      PadRight('QTD', 6) + PadLeft('VALOR', 8) + PadLeft('TOTAL', 10) + '</c>');
+
+    SL.Add('<c><n>' + '|COD|  |DESCRICAO| QTD|   |UND| |VL.UN|  |DESC|     |TOTAL|' + '</c></n>');
     SL.add('</linha_simples>');
+
     qryItem.Close;
     qryItem.Params[0].Value := qryVendaCODIGO.Value;
     qryItem.Open;
     qryItem.First;
-    While not qryItem.Eof do
+
+    while not qryItem.Eof do
     begin
-      SL.add('<c>' + PadRight(qryItem.FieldByName('ID_PRODUTO').AsString, 5) +
-        PadRight(qryItem.FieldByName('DESCRICAO_SL').AsString, 26) +
-        PadRight(qryItem.FieldByName('QTD').AsString, 6) +
-        PadLeft(FormatFloat('0.00', qryItem.FieldByName('PRECO').AsFloat), 8) +
-        PadLeft(FormatFloat('0.00', qryItem.FieldByName('VALOR_ITEM').AsFloat),
-        10) + '</c>');
+      SL.Add('<c>' +
+             qryItem.FieldByName('ID_PRODUTO').AsString.PadRight(6) + ' ' +
+             Copy(qryItem.FieldByName('DESCRICAO_SL').AsString, 1, 45).PadRight(45) + '</c>');
+      SL.Add('<c>' +
+             '                     ' +  // Espaçamento inicial
+             qryItem.FieldByName('QTD').AsString.PadRight(6) +
+             qryItem.FieldByName('UNIDADE').AsString.PadRight(6) +
+             FormatFloat('0.00', qryItem.FieldByName('PRECO').AsFloat).PadRight(8) +
+             FormatFloat('0.00', qryItem.FieldByName('VDESCONTO').AsFloat).PadLeft(6) +
+             FormatFloat('0.00', qryItem.FieldByName('TOTAL').AsFloat).PadLeft(12) + '</c>');
       qryItem.Next;
     end;
     SL.add('</linha_simples>');
+
+    CalculaTotalDescontos(TotalDescontos);
+
     if dados.TerminalCaixa then
     begin
-      SL.add('</ae>SubtTotal..: ' + FormatFloat('###,##00.00',
-        qryVendaSUBTOTAL.AsFloat));
-      SL.add('Desconto...: ' + FormatFloat('##00.00',
-        qryVenda.FieldByName('DESCONTO').AsFloat));
+      SL.add('<ae><n>'+'SubtTotal..: ' + FormatFloat('###,##00.00', TotalDescontos + qryVendaSUBTOTAL.AsFloat));
+
+    if qryVenda.FieldByName('DESCONTO').Value > 0 then
+    begin
+    SL.add('Desconto...: ' + FormatFloat('##00.00', qryVenda.FieldByName('DESCONTO').AsFloat));
+    end
+    else if (TotalDescontos > 0) and (qryVenda.FieldByName('DESCONTO').Value = 0)  then
+     SL.add('Desconto...: ' + FormatFloat('##00.00', TotalDescontos));
     end;
-    SL.add('Total......: ' + FormatFloat('###,##00.00', qryVendaTOTAL.AsFloat));
+    SL.add('Total......: ' + FormatFloat('0.00', qryVendaTOTAL.AsFloat));
     if dados.TerminalCaixa then
     begin
-      SL.add('Valor Pago.: ' + FormatFloat('###,##00.00',
-        qryVendaDINHEIRO.AsFloat));
-      SL.add('Troco......: ' + FormatFloat('###,##00.00',
-        qryVendaTROCO.AsFloat));
+      SL.add('Valor Pago.: ' + FormatFloat('0.00',qryVendaDINHEIRO.AsFloat));
+      SL.add('Troco......: ' + FormatFloat('0.00',qryVendaTROCO.AsFloat));
     end;
+      SL.add('<mp_espaco>');
     if dados.TerminalCaixa then
     begin
       SL.add('<n>' + PadCenter('Forma de pagamento',
@@ -1948,10 +2354,11 @@ begin
       SL.add(qryVendaOBSERVACOES.AsString);
     end;
     SL.add('</linha_simples>');
-    SL.add('</ae>Declaro ter recebido a mercadoria, ');
-    SL.add('Assinatura:');
+//    SL.add('</ae>Declaro ter recebido a mercadoria, ');
+//    SL.add('Assinatura:');
     SL.add('</linha_simples>');
     SL.add('<ce><n>DOCUMENTO NAO FISCAL</n></ce>');
+    SL.add('<ce>!!DAV DEVE SER FINALIZADO!!</ce>');
     SL.add('<ce>**Obrigado Pela Preferência**</ce>');
     SL.add('</linha_dupla>');
     SL.add('</corte>');
@@ -1959,7 +2366,12 @@ begin
   finally
     SL.Free;
   end;
-  DMImpressao.ConfiguraImpressora('');
+
+  if not DMImpressao.ACBrPosPrinter1.Ativo then
+    begin
+      DMImpressao.ConfiguraImpressora('');
+      DMImpressao.ACBrPosPrinter1.Ativo := True;
+    end;
   Memo1.Lines.SaveToFile(ExtractFilePath(Application.ExeName) + 'caixa.txt');
   if DMImpressao.aCBrPosPrinter1.Ativo then
   begin
@@ -1969,30 +2381,93 @@ begin
   else
     ShowMessage('Erro ao imprimir!');
 end;
+
+
 procedure TfrmFechaVenda.JVDBGrid1ColEnter(Sender: TObject);
 begin
   if JVDBGrid1.SelectedIndex <> 2 then
     JVDBGrid1.SelectedIndex := 2;
 end;
+
 procedure TfrmFechaVenda.JVDBGrid1Enter(Sender: TObject);
 begin
   JVDBGrid1.SelectedIndex := 2;
 end;
+
 procedure TfrmFechaVenda.JVDBGrid1Exit(Sender: TObject);
 begin
   DBEdit5.SetFocus;
 end;
+
+// procedure TfrmFechaVenda.JvDBGrid1KeyPress(Sender: TObject; var Key: Char);
+// procedure setvalorRestante;
+// begin
+// if StrToFloatDef(edtVlRestante.Text, 0) > 0 then
+// begin
+// if (not(qryVendasFPG.State in dsEditModes)) then
+// qryVendasFPG.Edit;
+// qryVendasFPGVALOR.AsFloat := StrToFloatDef(edtVlRestante.Text, 0);
+// qryVendasFPG.Post;
+//
+//
+//
+// end;
+// end;
+//
+// begin
+// if Key = #13 then //enter
+// begin
+// if qryVendasFPG.State = dsEdit then
+// qryVendasFPG.Post;
+// if not qryVendasFPG.Eof then
+// begin
+// Key := #0;
+// if (Sender is TDBGrid) then
+// TDBGrid(Sender).Perform(WM_KEYDOWN, VK_DOWN, 0)
+// else
+// Perform(Wm_NextDlgCtl, 0, 0);
+// end;
+//
+//
+/// /    if StrToFloatDef(edtVlRestante.Text, 0) > 0 then
+// if qryVendasFPGTTOTAL.AsVariant < qryVendaTOTAL.AsFloat then
+// begin
+// //======== joga o valor para o proximo.
+// qryVendasFPG.Edit;
+// qryVendasFPGVALOR.AsFloat := StrToFloatDef(edtVlRestante.Text, 0);
+// qryVendasFPG.Post;
+// end;
+//
+//
+// if qryVendasFPGTTOTAL.AsVariant >= qryVendaTOTAL.AsFloat then
+// DBEdit5.SetFocus;
+//
+// end;
+//
+// if Dados.EhLetra(Key) then
+// begin
+// if qryVendasFPG.Locate('ID_FORMA',
+// Dados.GetIdFormaForAtalho(UpperCase(Key)), [])
+// then
+// //DBGridEh1.SelectedIndex :=  1;
+// JVDBGrid1.SelectedIndex :=  1;
+// setvalorRestante;
+// end;
+//
+// end;
 procedure TfrmFechaVenda.JvDBGrid1KeyPress(Sender: TObject; var Key: Char);
-  procedure setvalorRestante;
+  procedure SetValorRestante;
   begin
     if StrToFloatDef(edtVlRestante.Text, 0) > 0 then
     begin
-      if (not(qryVendasFPG.State in dsEditModes)) then
+      if not(qryVendasFPG.State in dsEditModes) then
         qryVendasFPG.Edit;
-      qryVendasFPGVALOR.Value := edtVlRestante.Text;
+
+      qryVendasFPGVALOR.AsFloat := StrToFloatDef(edtVlRestante.Text, 0);
       qryVendasFPG.Post;
     end;
   end;
+
 begin
   if Key = #13 then
   begin
@@ -2009,194 +2484,64 @@ begin
     if qryVendasFPGTTOTAL.AsVariant >= qryVendaTOTAL.AsFloat then
       DBEdit5.SetFocus;
   end;
-  if Dados.EhLetra(Key) then
+  if dados.EhLetra(Key) then
+  begin
+    if qryVendasFPG.Locate('ID_FORMA', dados.GetIdFormaForAtalho(UpperCase(Key)
+      ), []) then
+      // DBGridEh1.SelectedIndex :=  1;
+      JVDBGrid1.SelectedIndex := 1;
+    SetValorRestante;
+  end;
+
+  // begin  // ESSA FUNÇÃO FOI CRIADA PARA USAR O SALDO NO PROXIMO PAGAMENTO (TESTE)
+  // if Key = #13 then // tecla enter
+  // begin
+  // Key := #0;
+  //
+  // if qryVendasFPG.State = dsEdit then
+  // qryVendasFPG.Post;
+  // if not qryVendasFPG.Eof then
+  // begin
+  // // Verificamos se há um saldo
+  // if StrToFloatDef(edtVlRestante.Text, 0) > 0 then
+  // begin
+  // // Move para o próximo campo da grid
+  // if (Sender is TDBGrid) then
+  // begin
+  // TDBGrid(Sender).Perform(WM_KEYDOWN, VK_DOWN, 0);
+  // TDBGrid(Sender).Perform(WM_KEYDOWN, VK_RIGHT, 0);
+  // end
+  // else
+  // Perform(Wm_NextDlgCtl, 0, 0);
+  // SetValorRestante;
+  // end
+  // else
+  // begin
+  // DBEdit5.SetFocus;
+  // end;
+  //
+  // end;
+  //
+  // end;
+  // Tratamento adicional para atalhos
+  if dados.EhLetra(Key) then
+  begin
+    if qryVendasFPG.Locate('ID_FORMA', dados.GetIdFormaForAtalho(UpperCase(Key)
+      ), []) then
     begin
-      if qryVendasFPG.Locate('ID_FORMA',
-          Dados.GetIdFormaForAtalho(UpperCase(Key)), [])
-      then
-        //DBGridEh1.SelectedIndex :=  1;
-        JVDBGrid1.SelectedIndex :=  1;
-        setvalorRestante;
+      JVDBGrid1.SelectedIndex := 1; // Seleciona o campo desejado na grid
+      SetValorRestante;
     end;
- { case Key of
-    #65, #97:
-      begin // A
-        qryVendasFPG.RecNo := 1;
-        JVDBGrid1.SetFocus;
-        setvalorRestante;
-      end;
-    #66, #98:
-      begin // B
-        qryVendasFPG.RecNo := 2;
-        JVDBGrid1.SetFocus;
-        setvalorRestante;
-      end;
-    #67, #99:
-      begin // C
-        qryVendasFPG.RecNo := 3;
-        JVDBGrid1.SetFocus;
-        setvalorRestante;
-      end;
-    #68, #100:
-      begin
-        // D
-        qryVendasFPG.RecNo := 4;
-        JVDBGrid1.SetFocus;
-        setvalorRestante;
-      end;
-    #69, #101:
-      begin
-        // E
-        qryVendasFPG.RecNo := 5;
-        JVDBGrid1.SetFocus;
-        setvalorRestante;
-      end;
-    #70, #102:
-      begin
-        // F
-        qryVendasFPG.RecNo := 6;
-        JVDBGrid1.SetFocus;
-        setvalorRestante;
-      end;
-    #71, #103:
-      begin
-        // G
-        qryVendasFPG.RecNo := 7;
-        JVDBGrid1.SetFocus;
-        setvalorRestante;
-      end;
-    #72, #104:
-      begin
-        // H
-        qryVendasFPG.RecNo := 8;
-        JVDBGrid1.SetFocus;
-        setvalorRestante;
-      end;
-    #73, #105:
-      begin
-        // I
-        qryVendasFPG.RecNo := 9;
-        JVDBGrid1.SetFocus;
-        setvalorRestante;
-      end;
-    #74, #106:
-      begin
-        // J
-        qryVendasFPG.RecNo := 10;
-        JVDBGrid1.SetFocus;
-        setvalorRestante;
-      end;
-    #75, #107:
-      begin
-        // K
-        qryVendasFPG.RecNo := 11;
-        JVDBGrid1.SetFocus;
-        setvalorRestante;
-      end;
-    #76, #108:
-      begin
-        // L
-        qryVendasFPG.RecNo := 12;
-        JVDBGrid1.SetFocus;
-        setvalorRestante;
-      end;
-    #77, #109:
-      begin
-        // M
-        qryVendasFPG.RecNo := 13;
-        JVDBGrid1.SetFocus;
-        setvalorRestante;
-      end;
-    #78, #110:
-      begin
-        // N
-        qryVendasFPG.RecNo := 14;
-        JVDBGrid1.SetFocus;
-        setvalorRestante;
-      end;
-    #79, #111:
-      begin
-        // O
-        qryVendasFPG.RecNo := 15;
-        JVDBGrid1.SetFocus;
-        setvalorRestante;
-      end;
-    #80, #112:
-      begin
-        // P
-        qryVendasFPG.RecNo := 16;
-        JVDBGrid1.SetFocus;
-        setvalorRestante;
-      end;
-    #81, #113:
-      begin
-        // Q
-        qryVendasFPG.RecNo := 17;
-        JVDBGrid1.SetFocus;
-        setvalorRestante;
-      end;
-    #82, #114:
-      begin
-        // R
-        qryVendasFPG.RecNo := 18;
-        JVDBGrid1.SetFocus;
-        setvalorRestante;
-      end;
-    #83, #115:
-      begin // S
-        qryVendasFPG.RecNo := 19;
-        JVDBGrid1.SetFocus;
-        setvalorRestante;
-      end;
-    #84, #116:
-      begin // T
-        qryVendasFPG.RecNo := 20;
-        JVDBGrid1.SetFocus;
-        setvalorRestante;
-      end;
-    #85, #117:
-      begin // U
-        qryVendasFPG.RecNo := 21;
-        JVDBGrid1.SetFocus;
-        setvalorRestante;
-      end;
-    #86, #118:
-      begin // V
-        qryVendasFPG.RecNo := 22;
-        JVDBGrid1.SetFocus;
-        setvalorRestante;
-      end;
-    #87, #119:
-      begin // W
-        qryVendasFPG.RecNo := 23;
-        JVDBGrid1.SetFocus;
-        setvalorRestante;
-      end;
-    #88, #120:
-      begin // X
-        qryVendasFPG.RecNo := 24;
-        JVDBGrid1.SetFocus;
-        setvalorRestante;
-      end;
-    #89, #121:
-      begin // Y
-        qryVendasFPG.RecNo := 25;
-        JVDBGrid1.SetFocus;
-        setvalorRestante;
-      end;
-    #90, #122:
-      begin // Z
-        qryVendasFPG.RecNo := 26;
-        JVDBGrid1.SetFocus;
-        setvalorRestante;
-      end;
-  end; }
+  end;
 end;
+
 procedure TfrmFechaVenda.JvSpinEdit1Change(Sender: TObject);
 begin
-//cxMaskEditPorPessoa.Text := FormatFloat('0.00', (strtofloat (DBEdit3.Text)) / (JvSpinEdit1.Value));   Errado
-  cxMaskEditPorPessoa.Text := FormatFloat('0.00', (qryvendatotal.AsFloat) / (JvSpinEdit1.Value));   // Certo
+  // cxMaskEditPorPessoa.Text := FormatFloat('0.00', (strtofloat (DBEdit3.Text)) / (JvSpinEdit1.Value));   Errado
+  cxMaskEditPorPessoa.Text := FormatFloat('0.00', (qryVendaTOTAL.AsFloat) /
+    (JvSpinEdit1.Value)); // Certo
 end;
+
 procedure TfrmFechaVenda.sInutilizado;
 begin
   if not(dados.qryNFCE_M.State in dsEditModes) then
@@ -2216,6 +2561,7 @@ begin
   ShowMessage('Retorno:' + dmnfe.ACBrNFe.WebServices.Enviar.cStat.ToString +
     ' - ' + dmnfe.ACBrNFe.WebServices.Enviar.xMotivo);
 end;
+
 procedure TfrmFechaVenda.sDuplicidade;
 begin
   if not(dados.qryNFCE_M.State in dsEditModes) then
@@ -2235,6 +2581,7 @@ begin
   ShowMessage('Retorno:' + dmnfe.ACBrNFe.WebServices.Enviar.cStat.ToString +
     ' - ' + dmnfe.ACBrNFe.WebServices.Enviar.xMotivo);
 end;
+
 procedure TfrmFechaVenda.sDenegado;
 begin
   if not(dados.qryNFCE_M.State in dsEditModes) then
@@ -2254,6 +2601,7 @@ begin
   ShowMessage('Retorno:' + dmnfe.ACBrNFe.WebServices.Enviar.cStat.ToString +
     ' - ' + dmnfe.ACBrNFe.WebServices.Enviar.xMotivo);
 end;
+
 procedure TfrmFechaVenda.sCancelada;
 begin
   if not(dados.qryNFCE_M.State in dsEditModes) then
@@ -2273,10 +2621,12 @@ begin
   ShowMessage('Retorno:' + dmnfe.ACBrNFe.WebServices.Enviar.cStat.ToString +
     ' - ' + dmnfe.ACBrNFe.WebServices.Enviar.xMotivo);
 end;
+
 procedure TfrmFechaVenda.sTransmitida;
 begin
-  // atualiza status da nfce
+
   if dmnfe.ACBrNFe.WebServices.Enviar.cStat = 100 then
+
   begin
     dmnfe.ACBrNFe.NotasFiscais.Items[0].GravarXML('');
     if not(dados.qryNFCE_M.State in dsEditModes) then
@@ -2304,7 +2654,7 @@ begin
     // abre gaveta
     begin
       dmnfe.ACBrNFe.DANFE := dmnfe.ACBrNFeDANFeESCPOS1;
-      dmnfe.aCBrPosPrinter1.AbrirGaveta;
+      dmnfe.ACBrPosPrinter1.AbrirGaveta;
     end;
     if dados.qryTerminalIMPRIME.AsString <> 'S' then
     // perguntar se quer imprimir
@@ -2331,6 +2681,7 @@ begin
     end;
   end;
 end;
+
 function TfrmFechaVenda.GravarCFe(const ASerie, ANumero, ASerieSat,
   ANumeroSat: Integer; const AChave, ANumeroProtocolo: String;
   const ADataHoraRecto: TDateTime; const AXML: String): Boolean;
@@ -2358,6 +2709,7 @@ begin
   FechaVenda('S');
   ApagaFpgZerada;
 end;
+
 function TfrmFechaVenda.ChecaLancamento: Boolean;
 begin
   Result := true;
@@ -2446,6 +2798,7 @@ begin
     dados.qryConsulta.Next;
   end;
 end;
+
 function TfrmFechaVenda.ChecaNotinhas: Boolean;
 var
   totaldebito: Real;
@@ -2536,6 +2889,7 @@ begin
     end;
   end;
 end;
+
 function TfrmFechaVenda.ChecaFaturas: Boolean;
 begin
   Result := true;
@@ -2590,6 +2944,7 @@ begin
     end;
   end;
 end;
+
 function TfrmFechaVenda.ChecaLimite: Boolean;
 var
   VlCompra: Real;
@@ -2686,11 +3041,13 @@ begin
   end;
   // fim de checagem de limite
 end;
+
 function TfrmFechaVenda.ValidaCPF_CNPJ: Boolean;
 begin
   // Valida CPF/CNPF CPF NA NOTA
   Result := true;
-  if (Trim(TiraPontos(qryVendaCPF_NOTA.AsString)) <> '') and (Trim(TiraPontos(qryVendaCPF_NOTA.AsString)) <> '00000000000')then
+  if (Trim(TiraPontos(qryVendaCPF_NOTA.AsString)) <> '') and
+    (Trim(TiraPontos(qryVendaCPF_NOTA.AsString)) <> '00000000000') then
   begin
     if (length(TiraPontos(qryVendaCPF_NOTA.Value)) <> 11) and
       (length(TiraPontos(qryVendaCPF_NOTA.Value)) <> 14) then
@@ -2738,6 +3095,7 @@ begin
     end;
   end;
 end;
+
 procedure TfrmFechaVenda.LancaTroca;
 begin
   dados.qryExecute.Close;
@@ -2756,6 +3114,7 @@ begin
   qryVenda.Post;
   dados.Conexao.CommitRetaining;
 end;
+
 procedure TfrmFechaVenda.LancaChequesCR;
 begin
   try
@@ -2778,6 +3137,7 @@ begin
     frmCRParcela.Release;
   end;
 end;
+
 procedure TfrmFechaVenda.LancaDepositoConta;
 begin
   try
@@ -2792,6 +3152,7 @@ begin
     FrmContaDeposito.Release;
   end;
 end;
+
 procedure TfrmFechaVenda.LancaContasReceber(idForma: Integer; Tipo: String);
 begin
   BuscaOS(0);
@@ -2824,6 +3185,7 @@ begin
     frmCRParcela.Release;
   end;
 end;
+
 procedure TfrmFechaVenda.LancaCartaoCreditoParcelas;
 begin
   qryFPG.Locate('codigo', dados.qryConsulta.FieldByName('ID_FORMA')
@@ -2847,6 +3209,7 @@ begin
     frmCartaoParcela.Release;
   end;
 end;
+
 procedure TfrmFechaVenda.LancaCartaCreditoCaixa;
 var
   i, Parcelas, Intervalo: Integer;
@@ -2962,6 +3325,7 @@ begin
     end;
   end;
 end;
+
 procedure TfrmFechaVenda.LancaNotinha;
 begin
   dados.qryCC.Close;
@@ -2984,6 +3348,7 @@ begin
   dados.qryCC.Post;
   dados.Conexao.CommitRetaining;
 end;
+
 procedure TfrmFechaVenda.LancaCartaoDebitoCaixa;
 var
   i, Parcelas, Intervalo: Integer;
@@ -3092,6 +3457,7 @@ begin
     end;
   end;
 end;
+
 procedure TfrmFechaVenda.ImprimeA4;
 begin
   dados.qryPV.Close;
@@ -3124,6 +3490,82 @@ begin
     frxReport.ShowReport;
   end;
 end;
+
+procedure TfrmFechaVenda.Imprime80MM;
+var
+pRelatorio: String;
+Pagina: TfrxReportPage;
+begin
+  dados.qryPV.Close;
+  dados.qryPV.SQL.Text :=
+    ' select PV.*, PES.razao, ve.nome as vendedor,  co.descricao as conta from VENDAS_MASTER PV '
+    + ' LEFT JOIN pessoa PES on PES.codigo= PV.id_cliente ' +
+    ' LEFT JOIN contas co on co.codigo= PV.fk_caixa ' +
+    ' LEFT JOIN vendedores ve on ve.codigo= PV.fk_vendedor ' + ' where' +
+    ' pv.codigo=:codigo';
+  dados.qryPV.Params[0].Value := qryVendaCODIGO.Value;
+  dados.qryPV.Open;
+  dados.qryPV_Itens.Close;
+  dados.qryPV_Itens.Params[0].Value := qryVendaCODIGO.Value;
+  dados.qryPV_Itens.Open;
+  qryCliente.Close;
+  qryCliente.Params[0].Value := '%';
+  qryCliente.Params[1].Value := '%';
+  qryCliente.Open;
+  qryCliente.Locate('CODIGO', qryVendaID_CLIENTE.Value, []);
+
+  if not chkEntrega.Checked then
+  begin
+
+   pRelatorio := ExtractFilePath(Application.ExeName) + 'Relatorio\RelPedidoVenda80mm.fr3';
+
+  end
+  else
+   pRelatorio := ExtractFilePath(Application.ExeName) + 'Relatorio\RelPedidoVendaEntrega.fr3';
+
+  frxReport.LoadFromFile(pRelatorio);
+
+  if UpperCase(dados.qryTerminalIMPRIME_PREVIEW.AsString) = 'S' then
+  begin
+    frxReport.ShowReport;
+  end
+  else
+  begin
+    // Configurações de impressão direta
+    if Trim(dados.qryTerminalIMPRESSORA_FORTESREPORT.AsString) <> '' then
+    begin
+
+      frxReport.PrepareReport; // Garante que o relatório está pronto
+
+        if (frxReport.Report.PagesCount > 0) and (frxReport.Report.Pages[0] is TfrxReportPage) then
+        begin
+          Pagina := TfrxReportPage(frxReport.Report.Pages[0]); // Correto
+
+          Pagina.PaperWidth := 78.5;
+          Pagina.LeftMargin := 5.0;
+          Pagina.RightMargin := 5.0;
+          Pagina.TopMargin := 10.0;
+          Pagina.BottomMargin := 10.0;
+
+        end;
+
+
+      frxReport.PrintOptions.Printer := dados.qryTerminalIMPRESSORA_FORTESREPORT.AsString; // Nome da impressora
+      frxReport.PrintOptions.ShowDialog := False;
+
+      frxReport.PrintOptions.Copies := 1;
+
+      frxReport.Print; // Envia para a impressora
+
+    end
+    else
+    begin
+
+      ShowMessage('Nenhuma impressora configurada. Verifique as configurações do terminal.');
+    end;
+  end;
+end;
+
 procedure TfrmFechaVenda.Pedido1Click(Sender: TObject);
 begin
   cxPedido.Click;
@@ -3131,6 +3573,7 @@ begin
     = mrYes then
     cxFinalizar.Click;
 end;
+
 procedure TfrmFechaVenda.pnPessoaExit(Sender: TObject);
 begin
   if not qryCliente.IsEmpty then
@@ -3143,6 +3586,7 @@ begin
   DBGridPes.Visible := False;
   pnPessoa.Height := 52;
 end;
+
 procedure TfrmFechaVenda.ChamaEstoque_FI_Insuficiente;
 begin
   try
@@ -3157,6 +3601,7 @@ begin
     frmEstoque_FI_Insuficiente.Release;
   end;
 end;
+
 function TfrmFechaVenda.VerificaEstoqueFiscal: Boolean;
 begin
   Result := False;
@@ -3254,7 +3699,7 @@ begin
     if dados.qryTerminalUSAGAVETA.Value = 'S' then // abre gaveta
     begin
       try
-        dmnfe.aCBrPosPrinter1.AbrirGaveta;
+        dmnfe.ACBrPosPrinter1.AbrirGaveta;
       except
         vFinalizou := true;
         Close;
@@ -3296,9 +3741,10 @@ begin
   Close;
 end;
 
-{procedure TfrmFechaVenda.cxTransmitirClick(Sender: TObject);
+procedure TfrmFechaVenda.cxTransmitirClick(Sender: TObject);
 var
-  i: Integer;
+  TipoImpressora, i: Integer;
+   sErro: string;
 begin
   if not dados.TerminalCaixa then
     exit;
@@ -3312,10 +3758,18 @@ begin
     if dados.qryConfigTIPO_APLICATIVO.Value = 'N' then
     begin
       dados.AbreTerminal;
-      if dados.qryTerminalTIPOIMPRESSORA.Value = '1' then
-        dmnfe.ImpressoraA4NFCe('NFCe')
+
+      TipoImpressora := StrToIntDef(dados.qryTerminalTIPOIMPRESSORA.AsString, 0);
+
+      case TipoImpressora of
+        1:
+          dmnfe.ImpressoraA4NFCe('NFCe'); // Impressora A4 para NFCe
+        3:
+          dmnfe.ImpressoraGraficoNFCe('NFCe');
       else
-        dmnfe.ImpressoraBobina('NFCe');
+        dmnfe.ImpressoraBobina('NFCe'); // Impressora ESC/POS (padrão)
+      end;
+
       dmnfe.ConfiguraNFe('NFCe');
     end;
     if (dados.qryConfigTIPO_APLICATIVO.Value = 'S') or
@@ -3354,6 +3808,7 @@ begin
           end;
         end;
       end;
+
       ImportaPedido; // passo 3: importa dados da venda
       dados.qryNFCE_D.Close;
       dados.qryNFCE_D.Params[0].Value := dados.qryNFCE_MCODIGO.Value;
@@ -3368,173 +3823,22 @@ begin
       // Verifica atualiza cadastro de produtos
       ProgressBar1.Position := 50;
       Application.ProcessMessages;
-      // nfce
+
+      // nfce (gera e envia)
       if dados.qryConfigTIPO_APLICATIVO.Value = 'N' then
       begin
         GerarNFCe(dados.qryNFCE_MNUMERO.AsString);
+     //   ShowMessage('XML GERADO NA PASTA');
         EnviarGravarNFCe;
       end;
-      if dados.qryConfigTIPO_APLICATIVO.Value = 'S' then
-      begin
-        dmSat.ACBrSAT1.DesInicializar;
-        dmSat.ACBrSAT1.Inicializar;
-        if pos('8000', dmSat.ACBrSAT1.ConsultarSAT) <> 0 then
-        begin
-          GerarCFe(dados.qryNFCE_MSERIE.AsInteger, dados.qryNFCE_MNUMERO.Value);
-          EnviarCFe(dados.qryNFCE_MSERIE.AsInteger,
-            dados.qryNFCE_MNUMERO.Value);
-          if dmSat.ACBrSAT1.Resposta.codigoDeRetorno = 6000 then
-          begin
-            try
-              dmSat.ACBrSAT1.ImprimirExtrato;
-            except
-              on e: Exception do
-                raise Exception.Create(e.Message);
-            end;
-            GravarCFe(dados.qryNFCE_MSERIE.AsInteger,
-              dados.qryNFCE_MNUMERO.Value, dmSat.ACBrSAT1.CFe.ide.nserieSAT,
-              dmSat.ACBrSAT1.CFe.ide.nCFe,
-              OnlyNumber(dmSat.ACBrSAT1.CFe.infCFe.ID), '',
-              dmSat.ACBrSAT1.CFe.ide.dEmi + dmSat.ACBrSAT1.CFe.ide.hEmi,
-              dmSat.ACBrSAT1.CFe.AsXMLString);
-          end
-          else
-            raise Exception.CreateFmt('%d - %s',
-              [dmSat.ACBrSAT1.Resposta.codigoDeErro,
-              dmSat.ACBrSAT1.Resposta.mensagemRetorno]);
-        end
-        else
-          raise Exception.Create(dmSat.ACBrSAT1.ConsultarSAT);
-      end;
-      if dados.qryConfigTIPO_APLICATIVO.Value = 'M' then
-      begin
-        dmSat.ACBrSAT1.DesInicializar;
-        dmSat.ACBrSAT1.Inicializar;
-        if pos('8000', dmSat.ACBrSAT1.ConsultarSAT) <> 0 then
-        begin
-          GerarCFe(dados.qryNFCE_MSERIE.AsInteger, dados.qryNFCE_MNUMERO.Value);
-          EnviarCFe(dados.qryNFCE_MSERIE.AsInteger,
-            dados.qryNFCE_MNUMERO.Value);
-          if dmSat.ACBrSAT1.Resposta.codigoDeRetorno = 6000 then
-          begin
-            try
-              dmSat.ACBrSAT1.ImprimirExtrato;
-            except
-              on e: Exception do
-                raise Exception.Create(e.Message);
-            end;
-            GravarCFe(dados.qryNFCE_MSERIE.AsInteger,
-              dados.qryNFCE_MNUMERO.Value, dmSat.ACBrSAT1.CFe.ide.nserieSAT,
-              dmSat.ACBrSAT1.CFe.ide.nCFe,
-              OnlyNumber(dmSat.ACBrSAT1.CFe.infCFe.ID), '',
-              dmSat.ACBrSAT1.CFe.ide.dEmi + dmSat.ACBrSAT1.CFe.ide.hEmi,
-              dmSat.ACBrSAT1.CFe.AsXMLString);
-          end
-          else
-            raise Exception.CreateFmt('%d - %s',
-              [dmSat.ACBrSAT1.Resposta.codigoDeErro,
-              dmSat.ACBrSAT1.Resposta.mensagemRetorno]);
-        end
-        else
-          raise Exception.Create(dmSat.ACBrSAT1.ConsultarSAT);
-      end;
-    finally
-      dados.Conexao.CommitRetaining;
-      cxTransmitir.Enabled := true;
-    end;
-    vFinalizou := true;
-    Close;
-  except
-    on e: Exception do
-      raise Exception.Create(e.Message);
-  end;
-end;}
 
-procedure TfrmFechaVenda.cxTransmitirClick(Sender: TObject);
-var
-  i: Integer;
-begin
-  // Controle de Duplo Clique: se já estiver em operação, sai imediatamente
-  if FOperacaoEmProgresso then
-    Exit;
-  FOperacaoEmProgresso := True;
-  try
-    if not dados.TerminalCaixa then
-      Exit;
-    ProgressBar1.Visible := true;
-    try
-      if dados.qryConfigVERSAODF.Value < 3 then
-      begin
-        ShowMessage('Informe a Versão do NFCE ');
-        Exit;
-      end;
-      if dados.qryConfigTIPO_APLICATIVO.Value = 'N' then
-      begin
-        dados.AbreTerminal;
-        if dados.qryTerminalTIPOIMPRESSORA.Value = '1' then
-          dmnfe.ImpressoraA4NFCe('NFCe')
-        else
-          dmnfe.ImpressoraBobina('NFCe');
-        dmnfe.ConfiguraNFe('NFCe');
-      end;
+          // Gera e envia o CF-e (SAT)
       if (dados.qryConfigTIPO_APLICATIVO.Value = 'S') or
          (dados.qryConfigTIPO_APLICATIVO.Value = 'M') then
-        dmSat.ConfiguraSAT;
-      if Trim(Mensagem) <> '' then
-      begin
-        ShowMessage(Mensagem);
-        Exit;
-      end;
-      ProgressBar1.Position := 0;
-      cxTransmitir.Enabled := False;
-      Application.ProcessMessages;
-      ProgressBar1.Position := 25;
-      Application.ProcessMessages;
-      TipoEmissao := 'ON';
-      dmnfe.ACBrNFe.NotasFiscais.Clear;
-      dmnfe.ACBrNFe.Configuracoes.Geral.ModeloDF := moNFCe;
-      dados.qryNFCE_M.Close;
-      dados.qryNFCE_M.Params[0].Value := qryVendaCODIGO.Value;
-      dados.qryNFCE_M.Open;
-      dados.qryNFCE_D.Close;
-      dados.qryNFCE_D.Params[0].Value := dados.qryNFCE_MCODIGO.Value;
-      dados.qryNFCE_D.Open;
-      if dados.qryEmpresaEXIBE_ESTOQUE_FISCAL.Value = 'S' then
-      begin
-        if VerificaEstoqueFiscal then
-          ChamaEstoque_FI_Insuficiente;
-        if not dados.vMudouEstoque then
-        begin
-          if VerificaEstoqueFiscal then
-          begin
-            ShowMessage('Existem produtos sem estoque fiscal!');
-            Exit;
-          end;
-        end;
-      end;
-      ImportaPedido; // passo 3: importa dados da venda
-      dados.qryNFCE_D.Close;
-      dados.qryNFCE_D.Params[0].Value := dados.qryNFCE_MCODIGO.Value;
-      dados.qryNFCE_D.Open;
-      if dados.qryNFCE_D.IsEmpty then
-      begin
-        ShowMessage('Não Existe Produto Cadastrado Para Venda!' + #13 +
-          'Vá na tela cadastro de produtos' + #13 +
-          ' e marque a opção Permitir Venda');
-        Exit;
-      end;
-      ProgressBar1.Position := 50;
-      Application.ProcessMessages;
-      // nfce
-      if dados.qryConfigTIPO_APLICATIVO.Value = 'N' then
-      begin
-        GerarNFCe(dados.qryNFCE_MNUMERO.AsString);
-        EnviarGravarNFCe;
-      end;
-      if dados.qryConfigTIPO_APLICATIVO.Value = 'S' then
       begin
         dmSat.ACBrSAT1.DesInicializar;
         dmSat.ACBrSAT1.Inicializar;
+
         if pos('8000', dmSat.ACBrSAT1.ConsultarSAT) <> 0 then
         begin
           GerarCFe(dados.qryNFCE_MSERIE.AsInteger, dados.qryNFCE_MNUMERO.Value);
@@ -3601,10 +3905,14 @@ begin
     end;
     vFinalizou := true;
     Close;
-  except
-    on e: Exception do
-      raise Exception.Create(e.Message);
-  end;
+    except
+        on e: Exception do
+        begin
+          sErro := 'Erro ao transmitir venda: ' + e.Message;
+          ShowMessage(sErro);
+          raise Exception.Create(sErro);
+        end;
+      end;
 end;
 
 procedure TfrmFechaVenda.cxFinalizarClick(Sender: TObject);
@@ -3621,14 +3929,16 @@ begin
   end;
   FinalizaPedido;
 end;
+
 procedure TfrmFechaVenda.cxButton1Click(Sender: TObject);
 begin
   Close;
 end;
+
 procedure TfrmFechaVenda.cxPedidoClick(Sender: TObject);
 var
   PodeImpimir: Boolean;
-  i: Integer;
+  TipoImpressora, i: Integer;
 begin
   ClicouPedido := true;
   ProgressBar1.Visible := true;
@@ -3641,15 +3951,24 @@ begin
     TipoEmissao := 'OFF';
     cxPedido.Enabled := False;
     dados.AbreTerminal;
-    if dados.qryTerminalTIPOIMPRESSORA.Value = '1' then
-      dmnfe.ImpressoraA4NFCe('NFCe')
+    // aqui vai receber o tipo de impressao
+    TipoImpressora := StrToIntDef(dados.qryTerminalTIPOIMPRESSORA.AsString, 0);
+
+    case TipoImpressora of
+      1:
+        dmnfe.ImpressoraA4NFCe('NFCe');
+      3:
+        dmnfe.ImpressoraGraficoNFCe('NFCe');
+
     else
-      dmnfe.ImpressoraBobina('NFCe');
+      dmnfe.ImpressoraBobina('NFCe'); // Impressora ESC/POS (padrão)
+    end;
+
     Application.ProcessMessages;
     if dados.qryTerminalUSAGAVETA.Value = 'S' then
     begin
       dmnfe.ACBrNFe.DANFE := dmnfe.ACBrNFeDANFeESCPOS1;
-      dmnfe.aCBrPosPrinter1.AbrirGaveta;
+      dmnfe.ACBrPosPrinter1.AbrirGaveta;
     end;
     ProgressBar1.Position := 50;
     Sleep(200);
@@ -3670,6 +3989,17 @@ begin
         dados.Conexao.CommitRetaining;
         ImprimeA4;
       end;
+
+      if dados.qryTerminalTIPOIMPRESSORA.Value = '3' then
+      begin
+        if not(qryVenda.State in dsEditModes) then
+          qryVenda.Edit;
+        qryVendaFORMA_PAGAMENTO.Value := Parcelas;
+        qryVenda.Post;
+        dados.Conexao.CommitRetaining;
+         Imprime80MM;
+      end;
+
       if dados.qryTerminalTIPOIMPRESSORA.Value = '2' then
       begin
         for i := 1 to dados.qryTerminalNVIAS.AsInteger do
@@ -3696,20 +4026,29 @@ begin
     cxPedido.Enabled := true;
   end;
 end;
+
 procedure TfrmFechaVenda.cxOfflineClick(Sender: TObject);
 begin
-    Contingencia('C');
+  Contingencia('C');
 end;
+
 procedure TfrmFechaVenda.btnConcluirClick(Sender: TObject);
 var
   bPixAprovado: Boolean;
+  VendaCODIGO, CFormaPagamento : Integer;
+  EEspecie, TTef: string;
 begin
+
+   CFormaPagamento := 0;
+   TTef := '';
+
   try
     if qryVenda.State in dsEditModes then
       qryVenda.Post;
     if qryVendasFPG.State in dsEditModes then
       qryVendasFPG.Post;
     FTotalCartao := SomaCartao;
+
     FPodeFecharPos := False;
     vImprime := dados.qryTerminalIMPRIME.Value = 'S';
     btnConcluir.Enabled := False;
@@ -3726,7 +4065,8 @@ begin
       exit;
     end;
 
-    //DESCONTO
+    // DESCONTO
+
     if dados.qryEmpresaDESCONTO_MAXIMO.AsFloat < qryVendaPERCENTUAL.AsFloat then
     // By verifica desconto maximo
     begin
@@ -3747,39 +4087,49 @@ begin
         end;
       end;
     end;
-    //ACRESCIMO
-  if dados.qryEmpresaACRESCIMO_MAXIMO.AsFloat < frmpdv.qryVendaPERCENTUAL_ACRESCIMO.AsFloat
-  then // By verifica acrescimo maximo
-  begin
-    if dados.qryEmpresaACRESCIMO_MAXIMO.AsFloat > 0 then
+    // ACRESCIMO
+
+    if (vTelaPEDIDO = 'N') or (vTelaPEDIDO ='') then
     begin
-      ShowMessage('ATENÇÃO! Acrescimo maior que o máximo permitido!');
-
-      dados.vAutorizar := true;
-
-      try
-        frmSupervisor := TFrmSupervisor.Create(Application);
-        dados.vAutorizar := false;
-        frmSupervisor.ShowModal;
-      finally
-        frmSupervisor.Release;
-      end;
-
-      if not dados.vAutorizar then
+    if dados.qryEmpresaACRESCIMO_MAXIMO.AsFloat <
+      frmpdv.qryVendaPERCENTUAL_ACRESCIMO.AsFloat then
+    end
+    else
+    begin
+      if dados.qryEmpresaACRESCIMO_MAXIMO.AsFloat <
+        FrmCadvenda.qryVendaPERCENTUAL_ACRESCIMO.AsFloat then
+    end;
+    // By verifica acrescimo maximo
+    begin
+      if dados.qryEmpresaACRESCIMO_MAXIMO.AsFloat > 0 then
       begin
-        exit;
+        ShowMessage('ATENÇÃO! Acrescimo maior que o máximo permitido!');
+
+        dados.vAutorizar := true;
+
+        try
+          frmSupervisor := TFrmSupervisor.Create(Application);
+          dados.vAutorizar := False;
+          frmSupervisor.ShowModal;
+        finally
+          frmSupervisor.Release;
+        end;
+
+        if not dados.vAutorizar then
+        begin
+          exit;
+        end;
       end;
     end;
-  end;
-  //PDV - EXCLUISIVO CAIXA
+    // PDV - EXCLUISIVO CAIXA
     dados.vChamaImpressao := true;
     dados.qryTerminal.Close;
-    //dados.qryTerminal.Params[0].Value := dados.Getcomputer;
+    // dados.qryTerminal.Params[0].Value := dados.Getcomputer;
     dados.qryTerminal.Open;
     if not dados.qryTerminal.Locate('nome', dados.Getcomputer, []) then
     begin
       ShowMessage('Terminal não cadastrado!');
-      exit;
+    exit;
     end;
     chkEntrega.Enabled := true;
     if dados.FTIpoPDV = 'DELIVERY' then
@@ -3801,11 +4151,16 @@ begin
         qrySomaFPG.Close;
         qrySomaFPG.Params[0].Value := qryVendaCODIGO.Value;
         qrySomaFPG.Open;
-        RatearDesconto;
+
+        if JaDeuDesconto = 0 then
+          RatearDesconto;
+
         GravaTotal;
         AtualizaTotal;
         if (qryVenda.State in dsEditModes) then
           qryVenda.Post;
+         VendaCODIGO := qryVendaCODIGO.AsInteger;
+
         if qryVendaTOTAL.AsFloat > qrySomaFPGTOTAL.AsFloat then
         begin
           ShowMessage('Total do pagamento menor que Total da Venda!');
@@ -3814,7 +4169,7 @@ begin
         end;
         if qrySomaFPGOUTROS.AsFloat > qryVendaTOTAL.AsFloat then
         begin
-          ShowMessage('Valor do pagamento está incorreto!');
+          ShowMessage('Não exite troco para outras Especies!!!');
           exit;
         end;
         if (qryVenda.State in dsEditModes) then
@@ -3855,35 +4210,72 @@ begin
             cxFinalizar.Visible := true
           else
             cxFinalizar.Visible := False;
-          if FTotalCartao > 0 then
-          begin
-            if dados.qryTerminalUSA_TEF.Value = 'S' then
+
+          TTef := dados.qryTerminalUSA_TEF.Value;
+
+        //  ShowMessage('Codigo da Especie:' + inttostr(CFormaPagamento));
+
+          if UsaTEF(VendaCODIGO,CFormaPagamento, TTef) then
             begin
               if not ChamaTEF then
-                exit
+                Exit // Sai se o TEF falhar
               else if dados.qryEmpresaTRANSMITIR_CARTAO_AUTO.Value = 'S' then
-                cxTransmitirClick(self);
+                cxTransmitirClick(Self);
             end
-            else if dados.qryEmpresaTRANSMITIR_CARTAO_AUTO.Value = 'S' then
-              cxTransmitirClick(self);
-          end;
+           else
+            begin
+              // Se o total de cartão for maior que 0 e não usar TEF, continua
+              if FTotalCartao > 0 then
+              begin
+                if dados.qryEmpresaTRANSMITIR_CARTAO_AUTO.Value = 'S' then
+                  cxTransmitirClick(Self);
+              end;
+            end;
 
-          if dados.qryTerminalFLAG.value = 'N' then  // Correção update6
-          cxTransmitirClick(self);
+//          if UsaTEF(CFormaPagamento, TTef) then
+//          begin
+//            begin
+//              if not ChamaTEF then
+//                exit
+//              else if dados.qryEmpresaTRANSMITIR_CARTAO_AUTO.Value = 'S' then
+//                cxTransmitirClick(self);
+//            end
+//
+//          end else
+//          begin
+//           FTotalCartao > 0
+//          if not UsaTEF(CFormaPagamento, TTef) then
+//           begin
+//
+//            if dados.qryEmpresaTRANSMITIR_CARTAO_AUTO.Value = 'S' then
+//          //   ShowMessage('passou agora vai enviar a nfe');
+//                  cxTransmitirClick(self);
+//           end;
+//          end;
 
+
+          if dados.qryTerminalFLAG.Value = 'N' then
+          // AJUSTADO PRA EMITIR QUANDO HABITA MODO FISCAL
+            cxTransmitirClick(Self);
           // verifica se gerou pix
-          FormaPagamentoPix(bPixAprovado);
+
           // fim
+          FormaPagamentoPix(bPixAprovado);
           ModoImpressao;
           PageControl1.ActivePageIndex := 1;
           frmFechavenda.Caption := 'Tipo de Impressão';
           Application.ProcessMessages;
         end;
-      except
-        On e: Exception do
-          raise Exception.Create(e.Message);
-      end;
+
+        except
+          on e: Exception do
+          begin
+            ShowMessage(e.Message);
+            raise;
+          end;
+        end;
     end;
+
   finally
     btnConcluir.Enabled := true;
   end;
@@ -3902,6 +4294,7 @@ begin
     qryVendasFPG.Next;
   end;
 end;
+
 procedure TfrmFechaVenda.ImprimeTicket;
 var
   SL: TStringList;
@@ -3936,7 +4329,7 @@ begin
         SL.SaveToFile(ExtractFilePath(Application.ExeName) + 'ticket.txt');
         Memo1.Text := SL.Text;
         DMImpressao.ConfiguraImpressora('');
-        if DMImpressao.aCBrPosPrinter1.Ativo then
+        if DMImpressao.ACBrPosPrinter1.Ativo then
           DMImpressao.ImprimeTexto(Memo1.Text);
       end;
       qryTicket.Next;
@@ -3945,6 +4338,7 @@ begin
     SL.Free;
   end;
 end;
+
 // inicio botao pedido
 procedure TfrmFechaVenda.RatearDesconto;
 var
@@ -3979,6 +4373,7 @@ begin
     TSomaOutro := TSomaOutro + SimpleRoundTo(ValorAcrescimo, -2);
     qryItem.Next;
   end;
+
   qryItem.Close;
   qryItem.Open;
   qryVenda.Refresh;
@@ -4038,44 +4433,50 @@ end;
 procedure TfrmFechaVenda.ImportaPedido;
 var
   i: Integer;
+  basePISCONFIS, baseICMS: Double;
+
+ // LTotaisSemReducao, LDiferencaBase, LTotaisReducao: Double;
 begin
   try
     qryItem.DisableControls;
     qryItem.Close;
     qryItem.Open;
+
+//      LTotaisReducao := 0;
+//      LDiferencaBase := 0;
+//      LTotaisSemReducao := 0;
+
+
     // importa cabecalho
     if dados.qryNFCE_M.IsEmpty then
     begin
       dados.qryNFCE_M.Insert;
       dados.qryNFCE_MSERIE.Value := dados.qryTerminalSERIE.Value;
-      dados.qryNFCE_MCODIGO.Value := dados.Numerador('NFCE_MASTER', 'CODIGO',
-        'N', '', '');
-      //Verificar se esta marcado usar Nº Inicial como Prioridade
+      dados.qryNFCE_MCODIGO.Value := dados.Numerador('NFCE_MASTER', 'CODIGO','N', '', '');
+      // Verificar se esta marcado usar Nº Inicial como Prioridade
       if dados.qryTerminalUSAR_NUMERO_INICIAL.Value = 'S' then
-        begin
-          dados.qryNFCE_MNUMERO.Value := StrToIntDef(dados.qryTerminalNUMERACAO_INICIAL.AsString, 1);
-          dados.qryNFCE_MCNF.AsInteger :=
-            GerarCodigoDFe(dados.qryNFCE_MNUMERO.Value);
-          if not (dados.qryTerminal.State in [dsEdit, dsInsert]) then
-            dados.qryTerminal.Edit;
-          dados.qryTerminalUSAR_NUMERO_INICIAL.Value  :=  'N';
-          dados.qryTerminal.Post;
-        end
+      begin
+        dados.qryNFCE_MNUMERO.Value := StrToIntDef(dados.qryTerminalNUMERACAO_INICIAL.AsString, 1);
+        dados.qryNFCE_MCNF.AsInteger := GerarCodigoDFe(dados.qryNFCE_MNUMERO.Value);
+        if not(dados.qryTerminal.State in [dsEdit, dsInsert]) then
+          dados.qryTerminal.Edit;
+        dados.qryTerminalUSAR_NUMERO_INICIAL.Value := 'N';
+        dados.qryTerminal.Post;
+      end
       else
-        begin
-          dados.qryExecute.Close;
-          dados.qryExecute.SQL.Text :=
-            'SELECT COALESCE(MAX(NUMERO),0) qtd FROM NFCE_MASTER WHERE SERIE=:SERIE AND FKEMPRESA=:EMPRESA';
-          dados.qryExecute.Params[0].Value := dados.qryTerminalSERIE.Value;
-          dados.qryExecute.Params[1].Value := qryVendaFKEMPRESA.Value;
-          dados.qryExecute.Open;
-          if dados.qryExecute.Fields[0].AsInteger = 0 then
-            dados.qryNFCE_MNUMERO.Value := dados.qryTerminalNUMERACAO_INICIAL.Value
-          else
-            dados.qryNFCE_MNUMERO.Value := dados.qryExecute.Fields[0].AsInteger + 1;
-          dados.qryNFCE_MCNF.AsInteger :=
-            GerarCodigoDFe(dados.qryNFCE_MNUMERO.Value);
-        end;
+      begin
+        dados.qryExecute.Close;
+        dados.qryExecute.SQL.Text := 'SELECT COALESCE(MAX(NUMERO),0) qtd FROM NFCE_MASTER WHERE SERIE=:SERIE AND FKEMPRESA=:EMPRESA';
+        dados.qryExecute.Params[0].Value := dados.qryTerminalSERIE.Value;
+        dados.qryExecute.Params[1].Value := qryVendaFKEMPRESA.Value;
+        dados.qryExecute.Open;
+        if dados.qryExecute.Fields[0].AsInteger = 0 then
+          dados.qryNFCE_MNUMERO.Value := dados.qryTerminalNUMERACAO_INICIAL.Value
+        else
+          dados.qryNFCE_MNUMERO.Value := dados.qryExecute.Fields[0]
+            .AsInteger + 1;
+        dados.qryNFCE_MCNF.AsInteger := GerarCodigoDFe(dados.qryNFCE_MNUMERO.Value);
+      end;
       dados.qryNFCE_MMODELO.Value := '65';
       if dados.qryConfigTIPO_APLICATIVO.Value = 'S' then
         dados.qryNFCE_MMODELO.Value := '59';
@@ -4083,7 +4484,8 @@ begin
       dados.qryNFCE_MFK_VENDA.Value := qryVendaCODIGO.Value;
     end
     else
-      dados.qryNFCE_M.Edit;
+   //aqui começa a montagem do master da nfce
+    dados.qryNFCE_M.Edit;
     dados.qryNFCE_MFKEMPRESA.Value := qryVendaFKEMPRESA.Value;
     dados.qryNFCE_MDATA_EMISSAO.Value := DATE;
     dados.qryNFCE_MDATA_SAIDA.Value := DATE;
@@ -4099,18 +4501,21 @@ begin
     dados.qryNFCE_MSUBTOTAL.AsFloat := qryVendaSUBTOTAL.AsFloat;
     dados.qryNFCE_MOUTROS.AsFloat := qryVendaACRESCIMO.AsFloat;
     dados.qryNFCE_MDESCONTO.AsFloat := qryVendaDESCONTO.AsFloat;
-    dados.qryNFCE_MTOTAL.AsFloat := qryVendaSUBTOTAL.AsFloat -
-      qryVendaDESCONTO.AsFloat + qryVendaACRESCIMO.AsFloat;
+    dados.qryNFCE_MTOTAL.AsFloat := qryVendaSUBTOTAL.AsFloat - qryVendaDESCONTO.AsFloat + qryVendaACRESCIMO.AsFloat;
     dados.qryNFCE_MTIPO_DESCONTO.Value := qryVendaTIPO_DESCONTO.Value;
     dados.qryNFCE_MTROCO.AsFloat := qryVendaTROCO.AsFloat;
     dados.qryNFCE_M.Post;
     dados.Conexao.CommitRetaining;
+
     dados.qryExecute.Close;
     dados.qryExecute.SQL.Text := 'delete from nfce_detalhe where fkvenda=:fk';
     dados.qryExecute.Params[0].Value := dados.qryNFCE_MCODIGO.Value;
     dados.qryExecute.ExecSQL;
     dados.Conexao.CommitRetaining;
     i := 1;
+
+
+    //itens da NFC-e
     qryItem.First;
     while not qryItem.Eof do
     begin
@@ -4129,9 +4534,10 @@ begin
         qryProduto.Params[0].Value := qryItemID_PRODUTO.Value;
         qryProduto.Open;
       end;
+
+      //começa a insercao
       dados.qryNFCE_D.Insert;
-      dados.QRYNFCE_DCODIGO.Value := dados.Numerador('NFCE_DETALHE', 'CODIGO',
-        'N', '', '');
+      dados.QRYNFCE_DCODIGO.Value := dados.Numerador('NFCE_DETALHE', 'CODIGO','N', '', '');
       dados.QRYNFCE_DFKVENDA.Value := dados.qryNFCE_MCODIGO.Value;
       if dados.qryEmpresaEXIBE_ESTOQUE_FISCAL.Value = 'S' then
       begin
@@ -4142,17 +4548,25 @@ begin
       end
       else
         dados.qryNFCE_DID_PRODUTO.Value := qryItemID_PRODUTO.Value;
+
       dados.qryNFCE_DITEM.Value := i;
       dados.QRYNFCE_DCOD_BARRA.Value := qryProdutoCODBARRA.Value;
       dados.qryNFCE_DNCM.Value := qryProdutoNCM.Value;
       dados.qryNFCE_DCFOP.Value := qryProdutoCFOP.Value;
+
       dados.QRYNFCE_DCST.Value := qryProdutoCSTICMS.Value;
+
+
       dados.QRYNFCE_DCST_PIS.Value := qryProdutoCSTS.Value;
       dados.QRYNFCE_DCST_COFINS.Value := qryProdutoCSTS.Value;
       dados.QRYNFCE_DCSOSN.Value := qryProdutoCSOSN.Value;
       dados.QRYNFCE_DCEST.Value := qryProdutoCEST.Value;
       dados.QRYNFCE_DTIPO.Value := qryProdutoTIPO.Value;
       dados.QRYNFCE_DUNIDADE.Value := qryProdutoUNIDADE.Value;
+
+
+      dados.QRYNFCE_DVDESCONTO.AsFloat := qryItemVDESCONTO.AsFloat;
+
       if dados.qryEmpresaEXIBE_ESTOQUE_FISCAL.Value = 'S' then
       begin
         if qryItemID_PRODUTO_SIMILAR.IsNull then
@@ -4174,7 +4588,9 @@ begin
       dados.QRYNFCE_DVALOR_ITEM.AsFloat := qryItemVALOR_ITEM.AsFloat;
       dados.QRYNFCE_DVDESCONTO.AsFloat := qryItemVDESCONTO.AsFloat;
       dados.qryNFCE_DOUTROS.AsFloat := qryItemACRESCIMO.AsFloat;
-      //Wagner upt6
+
+    //  baseICMS := qryItemTOTAL.AsFloat;
+
       if (Dados.qryEmpresaCRT.Value = 1) or (Dados.qryEmpresaCRT.Value = 4) then // simples nacional
       begin
         dados.QRYNFCE_DALIQ_ICMS.AsFloat := 0;
@@ -4183,36 +4599,45 @@ begin
       end
       else
       begin
+
         dados.QRYNFCE_DALIQ_ICMS.AsFloat := qryProdutoALIQ_ICM.Value;
         dados.qryNFCE_DBASE_ICMS.AsFloat := 0;
-        if dados.QRYNFCE_DALIQ_ICMS.AsFloat > 0 then
-          dados.qryNFCE_DBASE_ICMS.AsFloat := qryItemTOTAL.AsFloat;
-        dados.qryNFCE_DVALOR_ICMS.AsFloat :=
-          SimpleRoundTo((qryProdutoALIQ_ICM.AsFloat * qryItemTOTAL.AsFloat)
-          / 100, -2);
+        Dados.QRYNFCE_DP_REDUCAO_ICMS.AsFloat := qryProdutoREDUCAO_BASE.AsFloat;
+
+       if (dados.QRYNFCE_DALIQ_ICMS.AsFloat > 0)  and (Dados.QRYNFCE_DP_REDUCAO_ICMS.AsFloat = 0) then
+          dados.qryNFCE_DBASE_ICMS.AsFloat := qryItemTOTAL.AsFloat;//aqui tem que ter o calque
+          dados.qryNFCE_DVALOR_ICMS.AsFloat := SimpleRoundTo((qryProdutoALIQ_ICM.AsFloat * qryItemTOTAL.AsFloat) / 100, -2);
+
+       if Dados.QRYNFCE_DP_REDUCAO_ICMS.AsFloat > 0 then
+       {base com redução}
+        dados.qryNFCE_DBASE_ICMS.AsFloat  :=  qryItemTOTAL.AsFloat * (1 - (Dados.QRYNFCE_DP_REDUCAO_ICMS.AsFloat / 100));
+        dados.qryNFCE_DVALOR_ICMS.AsFloat :=  qryItemTOTAL.AsFloat * (1 - (Dados.QRYNFCE_DP_REDUCAO_ICMS.AsFloat / 100)) * ( dados.QRYNFCE_DALIQ_ICMS.AsFloat/100);
+        // ICMS.vICMS := ICMS.vBC * (ICMS.pICMS / 100);
+
+
       end;
       dados.QRYNFCE_DALIQ_COFINS_ICMS.AsFloat := qryProdutoALIQ_COF.Value;
       dados.QRYNFCE_DBASE_COFINS_ICMS.AsFloat := 0;
+
+      basePISCONFIS := qryItemTOTAL.AsFloat - (qryProdutoALIQ_ICM.Value * qryItemTOTAL.AsFloat / 100);
+      //Cofins
       if dados.QRYNFCE_DALIQ_COFINS_ICMS.AsFloat > 0 then
-        dados.QRYNFCE_DBASE_COFINS_ICMS.AsFloat := qryItemTOTAL.AsFloat;
-      dados.qryNFCE_DVALOR_COFINS_ICMS.AsFloat :=
-        SimpleRoundTo((qryProdutoALIQ_COF.AsFloat * qryItemTOTAL.AsFloat /
-        100), -2);
+      dados.QRYNFCE_DBASE_COFINS_ICMS.AsFloat := SimpleRoundTo(basePISCONFIS, -2);//qryItemTOTAL.AsFloat;
+      dados.qryNFCE_DVALOR_COFINS_ICMS.AsFloat := SimpleRoundTo((qryProdutoALIQ_COF.AsFloat * basePISCONFIS / 100), -2);
       dados.QRYNFCE_DALIQ_PIS_ICMS.Value := qryProdutoALIQ_PIS.Value;
       dados.QRYNFCE_DBASE_PIS_ICMS.Value := 0;
+      //pis
       if dados.QRYNFCE_DALIQ_PIS_ICMS.Value > 0 then
-        dados.QRYNFCE_DBASE_PIS_ICMS.Value := qryItemTOTAL.AsFloat;
-      dados.qryNFCE_DVALOR_PIS_ICMS.Value :=
-        SimpleRoundTo((qryProdutoALIQ_PIS.Value * qryItemTOTAL.AsFloat /
-        100), -2);
+
+      dados.QRYNFCE_DBASE_PIS_ICMS.Value := SimpleRoundTo(basePISCONFIS, -2);
+
+      dados.qryNFCE_DVALOR_PIS_ICMS.Value := SimpleRoundTo((qryProdutoALIQ_PIS.Value * basePISCONFIS / 100), -2);
       dados.QRYNFCE_DBASE_ISS.Value := 0;
       dados.QRYNFCE_DALIQ_ISS.Value := 0;
       dados.QRYNFCE_DVALOR_ISS.Value := 0;
       qryIBPT.Close;
       qryIBPT.Params[0].Value := qryProdutoNCM.Value;
       qryIBPT.Open;
-
-
       if qryIBPT.IsEmpty then
       begin
             TabPrecoNormal.TabVisible := True;
@@ -4239,8 +4664,6 @@ begin
       if (dados.QRYNFCE_D.State in dsEditModes) then
       dados.qryNFCE_D.Post;
       dados.Conexao.CommitRetaining;
-
-
       i := i + 1;
       qryItem.Next;
     end;
@@ -4248,47 +4671,31 @@ begin
     qrySomaNFCe.Params[0].Value := dados.qryNFCE_MCODIGO.Value;
     qrySomaNFCe.Open;
     dados.qryNFCE_M.Edit;
-
-    //Wagner - upt6
-
-    if (Dados.qryEmpresaCRT.Value = 1) or (Dados.qryEmpresaCRT.Value = 4) then
+   if (Dados.qryEmpresaCRT.Value = 1) or (Dados.qryEmpresaCRT.Value = 4) then
     begin // simples nacional
       dados.qryNFCE_MBASEICMS.Value := 0;
       dados.qryNFCE_MTOTALICMS.Value := 0;
     end
     else
     begin
-      dados.qryNFCE_MBASEICMS.Value :=
-        SimpleRoundTo(qrySomaNFCeBASE_ICMS.AsFloat, -2);
-      dados.qryNFCE_MTOTALICMS.Value :=
-        SimpleRoundTo(qrySomaNFCeVALOR_ICMS.AsFloat, -2);
+      dados.qryNFCE_MBASEICMS.Value := SimpleRoundTo(qrySomaNFCeBASE_ICMS.AsFloat, -2); //base icms
+      dados.qryNFCE_MTOTALICMS.Value := SimpleRoundTo(qrySomaNFCeVALOR_ICMS.AsFloat, -2);//valor do icms
     end;
-    dados.qryNFCE_MBASEISS.Value :=
-      SimpleRoundTo(qrySomaNFCeBASE_ISS.AsFloat, -2);
-    dados.qryNFCE_MTOTALISS.Value :=
-      SimpleRoundTo(qrySomaNFCeVALOR_ISS.AsFloat, -2);
-    dados.qryNFCE_MBASEICMSPIS.Value :=
-      SimpleRoundTo(qrySomaNFCeBASE_PIS_ICMS.AsFloat, -2);
-    dados.qryNFCE_MTOTALICMSPIS.Value :=
-      SimpleRoundTo(qrySomaNFCeVALOR_PIS_ICMS.AsFloat, -2);
-    dados.qryNFCE_MBASEICMSCOF.Value :=
-      SimpleRoundTo(qrySomaNFCeBASE_COF_ICMS.AsFloat, -2);
-    dados.qryNFCE_MTOTALICMSCOFINS.Value :=
-      SimpleRoundTo(qrySomaNFCeVALOR_COF_ICMS.AsFloat, -2);
-    dados.qryNFCE_MTRIB_MUN.Value :=
-      SimpleRoundTo(qrySomaNFCeTOTALMUN.AsFloat, -2);
-    dados.QRYNFCE_MTRIB_IMP.Value :=
-      SimpleRoundTo(qrySomaNFCeTOTALIMP.AsFloat, -2);
-    dados.qryNFCE_MTRIB_EST.Value :=
-      SimpleRoundTo(qrySomaNFCeTOTALEST.AsFloat, -2);
-    dados.qryNFCE_MTRIB_FED.Value :=
-      SimpleRoundTo(qrySomaNFCeTOTALFED.AsFloat, -2);
-    dados.qryNFCE_MSUBTOTAL.Value :=
-      SimpleRoundTo(qrySomaNFCeTOTAL.AsFloat, -2);
-    dados.qryNFCE_MDESCONTO.Value :=
-      SimpleRoundTo(qrySomaNFCeDESCONTOS.AsFloat, -2);
-    dados.qryNFCE_MTOTAL.Value := qrySomaNFCeTOTAL.AsFloat -
-      qrySomaNFCeDESCONTOS.AsFloat + qrySomaNFCeOUTROS.AsFloat;
+    dados.qryNFCE_MBASEISS.Value := SimpleRoundTo(qrySomaNFCeBASE_ISS.AsFloat, -2);
+    dados.qryNFCE_MTOTALISS.Value := SimpleRoundTo(qrySomaNFCeVALOR_ISS.AsFloat, -2);
+    //base dos inpostos do cabeçalho
+    dados.qryNFCE_MBASEICMSPIS.Value := SimpleRoundTo(qrySomaNFCeBASE_PIS_ICMS.AsFloat, -2);    //base pis
+    dados.qryNFCE_MTOTALICMSPIS.Value := SimpleRoundTo(qrySomaNFCeVALOR_PIS_ICMS.AsFloat, -2);  //total pis
+    dados.qryNFCE_MBASEICMSCOF.Value := SimpleRoundTo(qrySomaNFCeBASE_COF_ICMS.AsFloat, -2);    //base cofins
+    dados.qryNFCE_MTOTALICMSCOFINS.Value := SimpleRoundTo(qrySomaNFCeVALOR_COF_ICMS.AsFloat, -2);//total cofins
+
+    dados.qryNFCE_MTRIB_MUN.Value := SimpleRoundTo(qrySomaNFCeTOTALMUN.AsFloat, -2);
+    dados.QRYNFCE_MTRIB_IMP.Value := SimpleRoundTo(qrySomaNFCeTOTALIMP.AsFloat, -2);
+    dados.qryNFCE_MTRIB_EST.Value := SimpleRoundTo(qrySomaNFCeTOTALEST.AsFloat, -2);
+    dados.qryNFCE_MTRIB_FED.Value := SimpleRoundTo(qrySomaNFCeTOTALFED.AsFloat, -2);
+    dados.qryNFCE_MSUBTOTAL.Value := SimpleRoundTo(qrySomaNFCeTOTAL.AsFloat, -2);
+    dados.qryNFCE_MDESCONTO.Value := SimpleRoundTo(qrySomaNFCeDESCONTOS.AsFloat, -2);
+    dados.qryNFCE_MTOTAL.Value := qrySomaNFCeTOTAL.AsFloat - qrySomaNFCeDESCONTOS.AsFloat + qrySomaNFCeOUTROS.AsFloat;
     dados.qryNFCE_M.Post;
   finally
     qryItem.EnableControls;
@@ -4308,9 +4715,10 @@ begin
       edtTroco.Text := FormatFloat('0.00', qrySomaFPGTOTAL.AsFloat -
         qryVendaTOTAL.AsFloat)
     else
-        edtTroco.Text := '0,00';
+      edtTroco.Text := '0,00';
   end;
 end;
+
 procedure TfrmFechaVenda.LancaContaMovimento;
 begin
   qryVenda.Refresh;
@@ -4337,6 +4745,7 @@ begin
   end;
   dados.Conexao.CommitRetaining;
 end;
+
 procedure TfrmFechaVenda.FechaVenda(Tipo: string);
 begin
   dados.qryUpdate.Close;
@@ -4352,6 +4761,7 @@ begin
   dados.Conexao.CommitRetaining;
   LancaContaMovimento;
 end;
+
 procedure TfrmFechaVenda.edtPercentualAcrescimoExit(Sender: TObject);
 begin
   if dados.qryEmpresaHABILITA_ACRESCIMO.Value = 'S' then
@@ -4375,6 +4785,7 @@ begin
     Gera;
   end;
 end;
+
 procedure TfrmFechaVenda.edtAcrescimoExit(Sender: TObject);
 begin
   if dados.qryEmpresaHABILITA_ACRESCIMO.Value = 'S' then
@@ -4408,6 +4819,7 @@ begin
     end;
   end;
 end;
+
 procedure TfrmFechaVenda.GetCliente;
 begin
   if (qryVenda.State in dsEditModes) then
@@ -4424,6 +4836,7 @@ begin
     qryVendaNOME.Clear;
   end;
 end;
+
 procedure TfrmFechaVenda.DBEdit27Change(Sender: TObject);
 begin
   if ActiveControl = DBEdit27 then
@@ -4447,6 +4860,7 @@ begin
   end;
   qryCliente.Open;
 end;
+
 procedure TfrmFechaVenda.DBEdit27KeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
@@ -4455,11 +4869,13 @@ begin
   if Key = VK_DOWN then
     qryCliente.Next;
 end;
+
 procedure TfrmFechaVenda.DBEdit5KeyPress(Sender: TObject; var Key: Char);
 begin
   if not(Key in ['0' .. '9', #8, #9, #13, #27]) then
     Key := #0;
 end;
+
 procedure TfrmFechaVenda.DBGridEh1KeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
@@ -4478,15 +4894,18 @@ begin
     qryVendasFPG.Post;
   end;
 end;
+
 procedure TfrmFechaVenda.DBGridPesDblClick(Sender: TObject);
 begin
   qryVendaNOME.AsString := qryClienteRAZAO.Value;
 end;
+
 procedure TfrmFechaVenda.DBGridPesKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
     qryVendaNOME.AsString := qryClienteRAZAO.Value;
 end;
+
 procedure TfrmFechaVenda.DBLookupComboBox4Exit(Sender: TObject);
 begin
   if not(qryVenda.State in dsEditModes) then
@@ -4511,14 +4930,17 @@ begin
   AtualizaTotal;
   Gera;
 end;
+
 procedure TfrmFechaVenda.DBLookupComboboxEh1Enter(Sender: TObject);
 begin
   KeyPreview := False;
 end;
+
 procedure TfrmFechaVenda.DBLookupComboboxEh1Exit(Sender: TObject);
 begin
   KeyPreview := true;
 end;
+
 procedure TfrmFechaVenda.DBLookupComboboxEh2Exit(Sender: TObject);
 begin
   qryCliente.Locate('codigo', qryVendaID_CLIENTE.Value, []);
@@ -4535,14 +4957,17 @@ begin
   else
     qryVendaCPF_NOTA.Value := '';
 end;
+
 procedure TfrmFechaVenda.DBMemo1Enter(Sender: TObject);
 begin
   KeyPreview := False;
 end;
+
 procedure TfrmFechaVenda.DBMemo1Exit(Sender: TObject);
 begin
   KeyPreview := true;
 end;
+
 procedure TfrmFechaVenda.dsVendasFPGDataChange(Sender: TObject; Field: TField);
 var
   vTotal: Extended;
@@ -4553,10 +4978,13 @@ begin
   else
   begin
     if qryVendasFPGTTOTAL.Value < qryVendaTOTAL.AsFloat then
+    begin
       edtVlRestante.Text := FormatFloat('0.00', qryVendaTOTAL.AsFloat -
         qryVendasFPGTTOTAL.Value);
+    end;
   end;
 end;
+
 procedure TfrmFechaVenda.BuscaOS(numero: Integer);
 begin
   if dados.qryEmpresaLOJA_ROUPA.Value = 'S' then
@@ -4566,6 +4994,7 @@ begin
     qryBuscaOS.Open;
   end;
 end;
+
 procedure TfrmFechaVenda.ZeraFPG;
 begin
   dados.qryExecute.Close;
@@ -4576,6 +5005,7 @@ begin
   dados.Conexao.CommitRetaining;
   qryVendasFPG.Refresh;
 end;
+
 procedure TfrmFechaVenda.Gera;
 begin
   { if (ActiveControl = edtPercenutal) or  (ActiveControl = DBLookupComboBox4) or(ActiveControl = edtDesconto) or
@@ -4606,6 +5036,7 @@ begin
   end;
   // end;
 end;
+
 procedure TfrmFechaVenda.edtDescontoExit(Sender: TObject);
 begin
   AtualizaTotal;
@@ -4631,6 +5062,7 @@ begin
     end;
   end;
 end;
+
 procedure TfrmFechaVenda.edtPercenutalExit(Sender: TObject);
 begin
   if not(qryVenda.State in dsEditModes) then
@@ -4651,14 +5083,16 @@ begin
   if dados.TerminalCaixa then
     Gera;
 end;
+
 procedure TfrmFechaVenda.FinalizarPedido1Click(Sender: TObject);
 begin
   cxFinalizar.Click;
 end;
+
 procedure TfrmFechaVenda.FormActivate(Sender: TObject);
 begin
   dados.vForm := nil;
-  dados.vForm := self;
+  dados.vForm := Self;
   dados.GetComponentes;
 end;
 
@@ -4684,17 +5118,15 @@ begin
     end
     else
     begin
-        if Application.MessageBox(
-          'Tem certeza de que deseja sair da tela de forma de pagamento?',
-          'Confirmação', MB_YESNO) <> IDYES then
-        begin
-          if Assigned(FrmTEF) then
-          FrmTEF.CancelarVenda;
-          Action := caNone;
-        end;
+      if Application.messageBox
+        ('Tem certeza de que deseja sair da tela de forma de pagamento?',
+        'Confirmação', mb_Yesno) <> mrYes then
+      begin
+        FrmTEF.CancelarVenda;
+        Action := canone;
       end;
     end;
-    form_esmaecer_fundo.hide;
+  end;
 end;
 
 procedure TfrmFechaVenda.FormCreate(Sender: TObject);
@@ -4730,6 +5162,7 @@ begin
     dados.qryConfig.Open;
   end;
 end;
+
 procedure TfrmFechaVenda.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
@@ -4741,6 +5174,7 @@ begin
       Close;
   end;
 end;
+
 procedure TfrmFechaVenda.CadastraFPG;
 begin
   try
@@ -4825,6 +5259,7 @@ begin
     vInsereFPG := False;
   end;
 end;
+
 procedure TfrmFechaVenda.FormShow(Sender: TObject);
 begin
   begin
@@ -4860,6 +5295,8 @@ begin
     end;
     vFinalizou := False;
     CadastraFPG;
+    if vTelaPEDIDO = '' then
+    vTelaPEDIDO := 'N';
     qryVendasFPG.Close;
     qryVendasFPG.Params[0].Value := qryVendaCODIGO.Value;
     qryVendasFPG.Open;
@@ -4874,12 +5311,14 @@ begin
     PnDesconto.Enabled := true
   else
     PnDesconto.Enabled := False;
-   if dados.qryEmpresaMOSTRA_RATEIO.Value = 'S' then
-      PnDivisao.Visible := true
-   else
-      PnDivisao.Visible := false;
-    cxMaskEditPorPessoa.Text := FormatFloat('0.00', (qryvendatotal.AsFloat) / (JvSpinEdit1.Value));  // Certo
+  if dados.qryEmpresaMOSTRA_RATEIO.Value = 'S' then
+    PnDivisao.Visible := true
+  else
+    PnDivisao.Visible := False;
+  cxMaskEditPorPessoa.Text := FormatFloat('0.00', (qryVendaTOTAL.AsFloat) /
+    (JvSpinEdit1.Value)); // Certo
 end;
+
 procedure TfrmFechaVenda.frxReportGetValue(const VarName: string;
   var Value: Variant);
 var
@@ -4907,24 +5346,29 @@ begin
     Value := Value + FParcelas;
   end;
 end;
+
 procedure TfrmFechaVenda.qryCMovimentoBeforePost(DataSet: TDataSet);
 begin
-  if qryCMovimento.State = dsinsert then
+  if qryCMovimento.State = dsInsert then
     qryCMovimentoCODIGO.Value := dados.Numerador('CONTAS_MOVIMENTO', 'CODIGO',
       'N', '', '');
 end;
+
 procedure TfrmFechaVenda.qryFPGAfterPost(DataSet: TDataSet);
 begin
   dados.Conexao.CommitRetaining;
 end;
+
 procedure TfrmFechaVenda.qryItemAfterDelete(DataSet: TDataSet);
 begin
   dados.Conexao.CommitRetaining;
 end;
+
 procedure TfrmFechaVenda.qryItemAfterPost(DataSet: TDataSet);
 begin
   dados.Conexao.CommitRetaining;
 end;
+
 procedure TfrmFechaVenda.AtualizaTotal;
 begin
   if not(qryVenda.State in dsEditModes) then
@@ -4938,10 +5382,12 @@ begin
   qryVendaTOTAL.Value := qryVendaSUBTOTAL.Value - qryVendaDESCONTO.Value +
     qryVendaACRESCIMO.Value;
 end;
+
 procedure TfrmFechaVenda.qryVendaAfterDelete(DataSet: TDataSet);
 begin
   dados.Conexao.CommitRetaining;
 end;
+
 procedure TfrmFechaVenda.qryVendaAfterPost(DataSet: TDataSet);
 begin
   dados.Conexao.CommitRetaining;
@@ -4949,19 +5395,23 @@ begin
     (qryVendaSITUACAO.Value = 'G') then
     ApagaFpgZerada;
 end;
+
 procedure TfrmFechaVenda.qryVendaBeforePost(DataSet: TDataSet);
 begin
   AtualizaTotal;
 end;
+
 procedure TfrmFechaVenda.qryVendasFPGAfterDelete(DataSet: TDataSet);
 begin
   dados.Conexao.CommitRetaining;
 end;
+
 procedure TfrmFechaVenda.qryVendasFPGAfterPost(DataSet: TDataSet);
 begin
   dados.Conexao.CommitRetaining;
   CalculaTroco;
 end;
+
 procedure TfrmFechaVenda.qryVendasFPGBeforeInsert(DataSet: TDataSet);
 begin
   if (not vInsereFPG) then
@@ -4970,11 +5420,13 @@ begin
     qryVenda.Post;
   dados.Conexao.CommitRetaining;
 end;
+
 procedure TfrmFechaVenda.qryVendasFPGBeforeOpen(DataSet: TDataSet);
 begin
   qryFPG.Close;
   qryFPG.Open;
 end;
+
 procedure TfrmFechaVenda.qryVendasFPGCalcFields(DataSet: TDataSet);
 begin
   case qryVendasFPG.RecNo of
@@ -5030,6 +5482,7 @@ begin
       qryVendasFPG.FieldByName('FLAG').Value := 'Z';
   end;
 end;
+
 procedure TfrmFechaVenda.qryVendasFPGNewRecord(DataSet: TDataSet);
 begin
   qryVendasFPGCODIGO.Value := dados.Numerador('VENDAS_FPG', 'CODIGO',
@@ -5039,6 +5492,7 @@ begin
   qryVendasFPGVALOR.Value := 0;
   qryVendasFPGTROCO.Value := 0;
 end;
+
 function TfrmFechaVenda.ValidaNegocios: Boolean;
 var
   Msg: String;
@@ -5058,8 +5512,14 @@ begin
   end;
 end;
 
-{procedure TfrmFechaVenda.EnviarGravarNFCe;
+procedure TfrmFechaVenda.EnviarGravarNFCe;
 begin
+
+  if not(dados.qryNFCE_MCHAVE.IsNull) then
+  begin
+    exit;
+  end;
+
   if (dados.qryNFCE_MCHAVE.IsNull) or (Trim(dados.qryNFCE_MCHAVE.AsString) = '')
   then
   begin
@@ -5143,274 +5603,230 @@ begin
       end;
     end;
   end;
-end; }
-
-procedure TfrmFechaVenda.EnviarGravarNFCe;
-var
-  cStatEnviar, cStatRetorno: Integer;
-begin
-  // Se a chave da NF-e não estiver preenchida, atualiza os campos
-  if (dados.qryNFCE_MCHAVE.IsNull) or (Trim(dados.qryNFCE_MCHAVE.AsString) = '') then
-  begin
-    dados.qryNFCE_M.Edit;
-    dados.qryNFCE_MCHAVE.Value :=
-      copy(dmnfe.ACBrNFe.NotasFiscais.Items[0].NFe.infNFe.ID, 4, 100);
-    dados.qryNFCE_MXML.Value := dmnfe.ACBrNFe.NotasFiscais.Items[0].XML;
-    dados.qryNFCE_M.Post;
-  end;
-  dados.Conexao.CommitRetaining;
-
-  // Atualiza a interface
-  ProgressBar1.Visible := true;
-  ProgressBar1.Position := 75;
-  Application.ProcessMessages;
-
-  try
-    // Tenta enviar a NFC-e
-    if dmnfe.ACBrNFe.Enviar('1', False, True) then
-    begin
-      sTransmitida;
-      Exit;
-    end;
-  except
-    on E: Exception do
-    begin
-      // Obtem os códigos de retorno do envio e do retorno do SAT
-      cStatEnviar := dmnfe.ACBrNFe.WebServices.Enviar.cStat;
-      cStatRetorno := dmnfe.ACBrNFe.WebServices.Retorno.cStat;
-
-      // Primeiramente, trata o retorno do método Enviar
-      case cStatEnviar of
-        101: sCancelada;
-        110: sDenegado;
-        204, 539:
-          begin
-            dmnfe.ACBrNFe.Consultar;
-            if dmnfe.ACBrNFe.WebServices.Consulta.cStat = 100 then
-              sTransmitida
-            else
-              sDuplicidade;
-          end;
-        206, 563: sInutilizado;
-      else
-        // Se o Enviar não tratou, tenta com o código de Retorno
-        case cStatRetorno of
-          101: sCancelada;
-          204, 539:
-            begin
-              dmnfe.ACBrNFe.Consultar;
-              if dmnfe.ACBrNFe.WebServices.Consulta.cStat = 100 then
-                sTransmitida
-              else
-                sDuplicidade;
-            end;
-          206, 563: sInutilizado;
-        else
-          // Verifica se a mensagem contém "DUPLICIDADE"
-          if (Pos('DUPLICIDADE', UpperCase(E.Message)) > 0) then
-          begin
-            dmnfe.ACBrNFe.Consultar;
-            if dmnfe.ACBrNFe.WebServices.Consulta.cStat = 100 then
-              sTransmitida
-            else
-              sDuplicidade;
-          end
-          else
-          begin
-            // Verifica alguns códigos de erro que indicam problemas de conexão ou timeout
-            if (Pos('12007', UpperCase(E.Message)) > 0) or
-               (Pos('12002', UpperCase(E.Message)) > 0) or
-               (Pos('12029', UpperCase(E.Message)) > 0) or
-               (Pos('10060', UpperCase(E.Message)) > 0) or
-               (Pos('TIMED OUT', UpperCase(E.Message)) > 0) then
-              ShowMessage('Falha na conexão com o servidor SEFAZ!' +
-                sLineBreak + 'NFCe será emitido em contingência!')
-            else
-              ShowMessage(E.Message);
-            Contingencia('T');
-          end;
-        end;
-      end;
-    end;
-  end;
 end;
-
 
 // Inicio Implementação PIX
 function TfrmFechaVenda.ComoGerarPix: Integer;
 begin
   try
-    Result  :=  0;
-    frmGerarPixNormalQrCode :=  TfrmGerarPixNormalQrCode.Create(Application);
+    Result := 0;
+    frmGerarPixNormalQrCode := TfrmGerarPixNormalQrCode.Create(Application);
     frmGerarPixNormalQrCode.ShowModal;
     if frmGerarPixNormalQrCode.vGerar = TQRCode then
-      Result  :=  0
+      Result := 0
     else if frmGerarPixNormalQrCode.vGerar = TNormal then
-      Result  :=  1;
+      Result := 1;
   finally
     frmGerarPixNormalQrCode.Release;
   end;
 end;
+
 function TfrmFechaVenda.ValidaDocPIX(Doc: string): Boolean;
 begin
   try
-    Result  :=  False;
+    Result := False;
     if Trim(TiraPontos(Doc)) <> '' then
+    begin
+      if length(TiraPontos(Doc)) = 11 then
       begin
-        if length(TiraPontos(Doc)) = 11 then
-          begin
-            ACBrValidador1.TipoDocto := docCPF;
-            ACBrValidador1.Documento := TiraPontos(Doc);
-            if ACBrValidador1.Validar then
-              Result  :=  True;
-          end
-        else if length(TiraPontos(Doc)) = 14 then
-          begin
-            ACBrValidador1.TipoDocto := docCNPJ;
-            ACBrValidador1.Documento := TiraPontos(Doc);
-            if ACBrValidador1.Validar then
-              Result  :=  True;
-          end;
+        ACBrValidador1.TipoDocto := docCPF;
+        ACBrValidador1.Documento := TiraPontos(Doc);
+        if ACBrValidador1.Validar then
+          Result := true;
+      end
+      else if length(TiraPontos(Doc)) = 14 then
+      begin
+        ACBrValidador1.TipoDocto := docCNPJ;
+        ACBrValidador1.Documento := TiraPontos(Doc);
+        if ACBrValidador1.Validar then
+          Result := true;
       end;
+    end;
   except
-    Result  :=  False;
+    Result := False;
   end;
 end;
+
 procedure TfrmFechaVenda.FormaPagamentoPix(var bPixAprovado: Boolean);
+var
+  bValorVENDA: Boolean;
 begin
-   if (Dados.BuscaValor(frmpdv.qryVendaCODIGO.Value, 'I') > 0) then
+
+  if (vTelaPEDIDO = 'N') OR (vTelaPEDIDO = '') then
+      bValorVENDA :=   (dados.BuscaValor(frmpdv.qryVendaCODIGO.Value, 'I') > 0) ;
+
+  if vTelaPEDIDO = 'S' then
+    bValorVENDA :=   (dados.BuscaValor(FrmCadvenda.qryVendaCODIGO.Value, 'I') > 0) ;
+
+  if bValorVENDA then
+  begin
+    // Verificar se é para gerar QRCode
+    if ComoGerarPix = 1 then
+      exit;
+    // Verifica se já fez o PIX
+    if not bPixJaFeito then
     begin
-      //Verificar se é para gerar QRCode
-      if ComoGerarPix = 1 then
-        Exit;
-      //Verifica se já fez o PIX
-      if not bPixJaFeito then
-        begin
-          //Verificar API Pix a usar
-          case dados.qryEmpresaAPI_PIX_BANCO.AsInteger of
-            0: //tabBancoBrasil
-              PixBancoBrasil(bPixAprovado);
-            1: //tabGerenciaNet
-              ;
-            2: //tabSantander
-              ;
-            3: //tabSicoob
-              ;
-            4: //tabBradesco
-              ;
-            5: //tabOutros
-              ;
-            6: //tabMercadoPago
-              PixMercadoPago(bPixAprovado);
-          end;
-        end;
+      // Verificar API Pix a usar
+      case dados.qryEmpresaAPI_PIX_BANCO.AsInteger of
+        0: // tabBancoBrasil
+          PixBancoBrasil(bPixAprovado);
+        1: // tabGerenciaNet
+          ;
+        2: // tabSantander
+          ;
+        3: // tabSicoob
+          ;
+        4: // tabBradesco
+          ;
+        5: //tabStatico;
+          PixStatico(bPixAprovado);
+        6: // tabMercadoPago
+          PixMercadoPago(bPixAprovado);
+      end;
     end;
+  end;
 end;
+
 procedure TfrmFechaVenda.PixMercadoPago(var bPixAprovado: Boolean);
 begin
-  //API Mercado Pago
-  if Dados.qryEmpresaUSAAPIPIX_MERCADOPAGO.Value = 'S' then
+  // API Mercado Pago
+  if dados.qryEmpresaUSAAPIPIX_MERCADOPAGO.Value = 'S' then
+  begin
+    if length(dados.qryEmpresaACCESSTOKEN_MERCADOPAGO.Value) > 0 then
     begin
-      if Length(Dados.qryEmpresaACCESSTOKEN_MERCADOPAGO.Value) > 0 then
+      try
+        frmGeradorPixMercadoPago := TfrmGeradorPixMercadoPago.Create
+          (Application);
+        frmGeradorPixMercadoPago.rValorTotalPix :=
+          dados.BuscaValor(frmpdv.qryVendaCODIGO.Value, 'I');
+        if ValidaDocPIX(qryVendaCPF_NOTA.Value) then
         begin
-          try
-            frmGeradorPixMercadoPago  :=  TfrmGeradorPixMercadoPago.Create(Application);
-            frmGeradorPixMercadoPago.rValorTotalPix :=
-              Dados.BuscaValor(frmpdv.qryVendaCODIGO.Value, 'I');
-            if ValidaDocPIX(qryVendaCPF_NOTA.Value) then
-              begin
-                frmGeradorPixMercadoPago.sDescricao :=
-                  'Referente a Venda Num: '+IntToStr(frmpdv.qryVendaCODIGO.AsInteger);
-                if (Trim(qryClienteEMAIL1.AsString) <> '') and
-                   (Pos('@', qryClienteEMAIL1.AsString) > 0)
-                then
-                  frmGeradorPixMercadoPago.sEmail :=  qryClienteEMAIL1.AsString
-                else
-                  frmGeradorPixMercadoPago.sEmail :=  'c@c.com';
-                frmGeradorPixMercadoPago.sNome  := qryClienteRAZAO.AsString;
-                frmGeradorPixMercadoPago.sSobreNome :=  qryClienteFANTASIA.AsString;
-                frmGeradorPixMercadoPago.sDoc :=  TiraPontos(frmpdv.qryVendaCPF_NOTA.Value);
-              end
-            else
-              begin
-                frmGeradorPixMercadoPago.sDescricao :=
-                  'Referente a Venda Num: '+IntToStr(frmpdv.qryVendaCODIGO.AsInteger);
-                frmGeradorPixMercadoPago.sEmail :=  'c@c.com';
-                frmGeradorPixMercadoPago.sNome  :=  'CONSUMIDOR';
-                frmGeradorPixMercadoPago.sSobreNome :=  'FINAL';
-                frmGeradorPixMercadoPago.sDoc :=  '00000000000';
-              end;
-
-            frmGeradorPixMercadoPago.ShowModal;
-          finally
-            bPixAprovado  := frmGeradorPixMercadoPago.bAprovado;
-            bPixJaFeito :=  bPixAprovado;
-            frmGeradorPixMercadoPago.Release;
-          end;
-          if not bPixAprovado then
-            begin
-              Application.ProcessMessages;
-              raise Exception.Create('PAGAMENTO PIX CANCELADO, VERIFIQUE E TENTE NOVAMENTE!');
-            end;
+          frmGeradorPixMercadoPago.sDescricao := 'Referente a Venda Num: ' +
+            IntToStr(frmpdv.qryVendaCODIGO.AsInteger);
+          if (Trim(qryClienteEMAIL1.AsString) <> '') and
+            (pos('@', qryClienteEMAIL1.AsString) > 0) then
+            frmGeradorPixMercadoPago.sEmail := qryClienteEMAIL1.AsString
+          else
+            frmGeradorPixMercadoPago.sEmail := 'c@c.com';
+          frmGeradorPixMercadoPago.sNome := qryClienteRAZAO.AsString;
+          frmGeradorPixMercadoPago.sSobreNome := qryClienteFANTASIA.AsString;
+          frmGeradorPixMercadoPago.sDoc :=
+            TiraPontos(frmpdv.qryVendaCPF_NOTA.Value);
+        end
+        else
+        begin
+          frmGeradorPixMercadoPago.sDescricao := 'Referente a Venda Num: ' +
+            IntToStr(frmpdv.qryVendaCODIGO.AsInteger);
+          frmGeradorPixMercadoPago.sEmail := 'c@c.com';
+          frmGeradorPixMercadoPago.sNome := 'CONSUMIDOR';
+          frmGeradorPixMercadoPago.sSobreNome := 'FINAL';
+          frmGeradorPixMercadoPago.sDoc := '00000000000';
         end;
+
+        frmGeradorPixMercadoPago.ShowModal;
+      finally
+        bPixAprovado := frmGeradorPixMercadoPago.bAprovado;
+        bPixJaFeito := bPixAprovado;
+        frmGeradorPixMercadoPago.Release;
+      end;
+      if not bPixAprovado then
+      begin
+        Application.ProcessMessages;
+        raise Exception.Create
+          ('PAGAMENTO PIX CANCELADO, VERIFIQUE E TENTE NOVAMENTE!');
+      end;
     end;
+  end;
 end;
+
+procedure TfrmFechaVenda.PixStatico(var bPixAprovado: Boolean);
+begin
+  if dados.qryEmpresaAPI_PIX_BANCO.Value = 5 then
+  begin
+    // Se o Pix já foi aprovado anteriormente, não precisa abrir a tela novamente
+    if bPixJaFeito then
+    begin
+      bPixAprovado := True;
+      Exit; // Sai da função sem chamar a tela de Pix novamente
+    end;
+
+    try
+      frmAguardarGeracaoPix := TfrmAguardarGeracaoPix.Create(Application);
+      frmAguardarGeracaoPix.rValorTotalPix := dados.BuscaValor(frmpdv.qryVendaCODIGO.Value, 'I');
+      frmAguardarGeracaoPix.iCodVenda := IntToStr(frmpdv.qryVendaCODIGO.AsInteger);
+      frmAguardarGeracaoPix.nVenda  := 'PV' + IntToStr(frmpdv.qryVendaCODIGO.AsInteger);
+      frmAguardarGeracaoPix.ShowModal;
+    finally
+      bPixAprovado := frmAguardarGeracaoPix.bAprovado;
+      bPixJaFeito := bPixAprovado;
+
+      if FileExists(frmAguardarGeracaoPix.sDirQrCodePNG) then
+          DeleteFile(PWideChar(frmAguardarGeracaoPix.sDirQrCodePNG));
+      frmAguardarGeracaoPix.Release;
+
+    end;
+
+    if not bPixAprovado then
+    begin
+      Application.ProcessMessages;
+      raise Exception.Create('PAGAMENTO PIX NÃO RECEBIDO, TENTE NOVAMENTE!');
+    end;
+  end;
+end;
+
+
 procedure TfrmFechaVenda.PixBancoBrasil(var bPixAprovado: Boolean);
 begin
-  //API Banco do Brasil
-  if Dados.qryEmpresaUSAAPIPIX_BB.Value = 'S' then
+  // API Banco do Brasil
+  if dados.qryEmpresaUSAAPIPIX_BB.Value = 'S' then
+  begin
+    if (length(dados.qryEmpresaBASICTOKEN_BB.Value) > 0) and
+      (length(dados.qryEmpresaAPPKEY_BB.Value) > 0) then
     begin
-      if
-        (Length(Dados.qryEmpresaBASICTOKEN_BB.Value) > 0) and
-        (Length(Dados.qryEmpresaAPPKEY_BB.Value) > 0)
-      then
+      { Form que vai Trabalhar com Component MultiPix }
+      try
+        frmGeradorMultiPix := TfrmGeradorMultiPix.Create(Application);
+        frmGeradorMultiPix.rValorTotalPix :=
+          dados.BuscaValor(frmpdv.qryVendaCODIGO.Value, 'I');
+        frmGeradorMultiPix.iCodVenda := frmpdv.qryVendaCODIGO.AsInteger;
+        if ValidaDocPIX(qryVendaCPF_NOTA.Value) then
         begin
-          {Form que vai Trabalhar com Component MultiPix}
-          try
-            frmGeradorMultiPix  :=  TfrmGeradorMultiPix.Create(Application);
-            frmGeradorMultiPix.rValorTotalPix :=
-              Dados.BuscaValor(frmpdv.qryVendaCODIGO.Value, 'I');
-            frmGeradorMultiPix.iCodVenda  :=  frmpdv.qryVendaCODIGO.AsInteger;
-            if ValidaDocPIX(qryVendaCPF_NOTA.Value) then
-              begin
-                frmGeradorMultiPix.sDescricao :=
-                  'Referente a Venda Num: '+IntToStr(frmpdv.qryVendaCODIGO.AsInteger);
-                if (Trim(qryClienteEMAIL1.AsString) <> '') and
-                   (Pos('@', qryClienteEMAIL1.AsString) > 0)
-                then
-                  frmGeradorMultiPix.sEmail :=  qryClienteEMAIL1.AsString
-                else
-                  frmGeradorMultiPix.sEmail :=  'c@c.com';
-                frmGeradorMultiPix.sNome  := qryClienteRAZAO.AsString;
-                frmGeradorMultiPix.sSobreNome :=  qryClienteFANTASIA.AsString;
-                frmGeradorMultiPix.sDoc :=  TiraPontos(frmpdv.qryVendaCPF_NOTA.Value);
-              end
-            else
-              begin
-                frmGeradorMultiPix.sDescricao :=
-                  'Referente a Venda Num: '+IntToStr(frmpdv.qryVendaCODIGO.AsInteger);
-                frmGeradorMultiPix.sEmail :=  'c@c.com';
-                frmGeradorMultiPix.sNome  :=  '';
-                frmGeradorMultiPix.sSobreNome :=  '';
-                frmGeradorMultiPix.sDoc :=  '';
-              end;
-
-            frmGeradorMultiPix.ShowModal;
-          finally
-            bPixAprovado  := frmGeradorMultiPix.bAprovado;
-            bPixJaFeito :=  bPixAprovado;
-            frmGeradorMultiPix.Release;
-          end;
-          if not bPixAprovado then
-            begin
-              Application.ProcessMessages;
-              raise Exception.Create('PAGAMENTO PIX CANCELADO, VERIFIQUE E TENTE NOVAMENTE!');
-            end;
+          frmGeradorMultiPix.sDescricao := 'Referente a Venda Num: ' +
+            IntToStr(frmpdv.qryVendaCODIGO.AsInteger);
+          if (Trim(qryClienteEMAIL1.AsString) <> '') and
+            (pos('@', qryClienteEMAIL1.AsString) > 0) then
+            frmGeradorMultiPix.sEmail := qryClienteEMAIL1.AsString
+          else
+            frmGeradorMultiPix.sEmail := 'c@c.com';
+          frmGeradorMultiPix.sNome := qryClienteRAZAO.AsString;
+          frmGeradorMultiPix.sSobreNome := qryClienteFANTASIA.AsString;
+          frmGeradorMultiPix.sDoc := TiraPontos(frmpdv.qryVendaCPF_NOTA.Value);
+        end
+        else
+        begin
+          frmGeradorMultiPix.sDescricao := 'Referente a Venda Num: ' +
+            IntToStr(frmpdv.qryVendaCODIGO.AsInteger);
+          frmGeradorMultiPix.sEmail := 'c@c.com';
+          frmGeradorMultiPix.sNome := '';
+          frmGeradorMultiPix.sSobreNome := '';
+          frmGeradorMultiPix.sDoc := '';
         end;
+
+        frmGeradorMultiPix.ShowModal;
+      finally
+        bPixAprovado := frmGeradorMultiPix.bAprovado;
+        bPixJaFeito := bPixAprovado;
+        frmGeradorMultiPix.Release;
+      end;
+      if not bPixAprovado then
+      begin
+        Application.ProcessMessages;
+        raise Exception.Create
+          ('PAGAMENTO PIX CANCELADO, VERIFIQUE E TENTE NOVAMENTE!');
+      end;
     end;
+  end;
 end;
 // Fim Implementação PÌx
 
-
 end.
-

@@ -399,25 +399,25 @@ begin
   dados.qryExecute.sql.Text := 'DELETE FROM CAIXA WHERE FKVENDA=:VD';
   dados.qryExecute.Params[0].Value := frmpdv.qryVendaCODIGO.Value;
   dados.qryExecute.ExecSQL;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
   dados.qryExecute.Close;
   dados.qryExecute.sql.Text := 'DELETE FROM CRECEBER WHERE FK_VENDA=:VD';
   dados.qryExecute.Params[0].Value := frmpdv.qryVendaCODIGO.Value;
   dados.qryExecute.ExecSQL;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
   dados.qryExecute.Close;
   dados.qryExecute.sql.Text := 'DELETE FROM CRECEBER WHERE FK_VENDA=:VD';
   dados.qryExecute.Params[0].Value := frmpdv.qryVendaCODIGO.Value;
   dados.qryExecute.ExecSQL;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
   dados.qryExecute.Close;
   dados.qryExecute.sql.Text := 'DELETE FROM CAIXA WHERE FKVENDA=:VD';
   dados.qryExecute.Params[0].Value := frmpdv.qryVendaCODIGO.Value;
   dados.qryExecute.ExecSQL;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
   // TROCA
 
@@ -427,7 +427,7 @@ begin
       frmpdv.qryVenda.Edit;
     frmpdv.qryVendaTOTAL_TROCA.Value := dados.qryconsulta.Fields[0].AsFloat;
     frmpdv.qryVenda.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
   end;
 
   // DINHEIRO
@@ -577,7 +577,7 @@ begin
         dados.qryCaixaFKVENDA.Value := frmpdv.qryVendaCODIGO.Value;
         dados.qryCaixaTRANSFERENCIA.Value := 0;
         dados.qryCaixa.Post;
-        dados.Conexao.CommitRetaining;
+        dados.Conexao.Commit;
 
         if ValorTaxa > 0 then
         begin
@@ -612,7 +612,7 @@ begin
           dados.qryCaixa.Post;
         end;
 
-        dados.Conexao.CommitRetaining;
+        dados.Conexao.Commit;
         dados.qryExecute.Next;
       end;
     end;
@@ -711,7 +711,7 @@ begin
     dados.qryCaixaTRANSFERENCIA.Value := 0;
     dados.qryCaixaFPG.Value := dados.buscafpg('E');
     dados.qryCaixa.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     if ValorTaxa > 0 then
     begin
@@ -738,7 +738,7 @@ begin
       dados.qryCaixa.Post;
     end;
 
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
   end;
 
@@ -765,7 +765,7 @@ begin
     dados.qryCCFKEMPRESA.Value := dados.qryEmpresaCODIGO.Value;
     dados.qryCCBLOQUEADO.Value := 'S';
     dados.qryCC.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
   end;
 end;
 
@@ -1284,7 +1284,7 @@ begin
     'delete from vendas_fpg  where vendas_master=:codigo and valor=0';
   dados.qryExecute.Params[0].Value := frmpdv.qryVendaCODIGO.Value;
   dados.qryExecute.ExecSQL;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
 end;
 
@@ -1305,7 +1305,7 @@ begin
       frmpdv.qryVendaLOTE.Value := frmpdv.Lote;
       frmpdv.qryVendaDATA_EMISSAO.Value := now;
       frmpdv.qryVenda.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
       ApagaFpgZerada;
     end;
 
@@ -1606,7 +1606,7 @@ begin
     dados.qryNFCE_MHORA_SAIDA.Value := now;
     dados.qryNFCE_MFK_VENDA.Value := frmpdv.qryVendaCODIGO.Value;
     dados.qryNFCE_M.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     frmpdv.qryVenda.Edit;
     frmpdv.qryVendaSITUACAO.Value := 'F';
@@ -1614,7 +1614,7 @@ begin
     frmpdv.qryVendaLOTE.Value := frmpdv.Lote;
     frmpdv.qryVendaNECF.Value := dados.qryNFCE_MNUMERO.Value;
     frmpdv.qryVenda.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     ApagaFpgZerada;
 
@@ -1631,7 +1631,7 @@ begin
     ACBrNFe.NotasFiscais.Imprimir;
 
   finally
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
     btnTransmitir.Enabled := true;
   end;
 
@@ -1725,7 +1725,7 @@ begin
     dados.qryExecute.Params[2].Value := frmpdv.qryItemCODIGO.Value;
     dados.qryExecute.ExecSQL;
 
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     TSoma := TSoma + ValorDesconto;
     TSomaOutro := TSomaOutro + ValorAcrescimo;
@@ -1757,7 +1757,7 @@ begin
     frmpdv.qryItemVDESCONTO.Value := frmpdv.qryItemVDESCONTO.Value + TDif;
     frmpdv.qryItemACRESCIMO.Value := frmpdv.qryItemACRESCIMO.Value + TDifOutro;
     frmpdv.qryItem.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
   end;
 
 end;
@@ -1819,13 +1819,13 @@ begin
     dados.qryNFCE_MTIPO_DESCONTO.Value := frmpdv.qryVendaTIPO_DESCONTO.Value;
     dados.qryNFCE_MTROCO.Value := frmpdv.qryVendaTROCO.AsFloat;
     dados.qryNFCE_M.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     dados.qryExecute.Close;
     dados.qryExecute.sql.Text := 'delete from nfce_detalhe where fkvenda=:fk';
     dados.qryExecute.Params[0].Value := dados.qryNFCE_MCODIGO.Value;
     dados.qryExecute.ExecSQL;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
     i := 1;
     frmpdv.qryItem.First;
     while not frmpdv.qryItem.Eof do
@@ -1908,7 +1908,7 @@ begin
         '.', ',', [])) * frmpdv.qryItemTOTAL.AsFloat) / 100, -2);
 
       dados.qryNFCE_D.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
       i := i + 1;
       frmpdv.qryItem.Next;
     end;
@@ -2281,7 +2281,7 @@ begin
       qryFPG.Next;
     end;
   end;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TfrmFechaVendaECF.FormShow(Sender: TObject);
@@ -2332,7 +2332,7 @@ end;
 
 procedure TfrmFechaVendaECF.qryFPGAfterPost(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TfrmFechaVendaECF.qryVendasFPGAfterScroll(DataSet: TDataSet);
@@ -2341,7 +2341,7 @@ begin
   begin
     if ActiveControl = DBGridEh1 then
     begin
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
       if not qryVendasFPGTTOTAL.IsNull then
       begin
         if qryVendasFPGTTOTAL.Value = frmpdv.qryVendaTOTAL.AsFloat then
@@ -2358,7 +2358,7 @@ begin
 
   if (frmpdv.qryVenda.State in dsEditModes) then
     frmpdv.qryVenda.Post;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TfrmFechaVendaECF.qryVendasFPGBeforeOpen(DataSet: TDataSet);
@@ -2466,7 +2466,7 @@ begin
       copy(ACBrNFe.NotasFiscais.Items[0].NFe.infNFe.id, 4, 100);
     dados.qryNFCE_MXML.Value := ACBrNFe.NotasFiscais.Items[0].XML;
     dados.qryNFCE_M.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
 
     // grava chave do nfe no banco de dados
@@ -2492,7 +2492,7 @@ begin
           .NFe.procNFe.nProt;
         dados.qryNFCE_MXML.Value := ACBrNFe.NotasFiscais.Items[0].XML;
         dados.qryNFCE_M.Post;
-        dados.Conexao.CommitRetaining;
+        dados.Conexao.Commit;
 
         // atualiza status da nfce
 
@@ -2516,14 +2516,14 @@ begin
           dados.qryNFCE_MHORA_SAIDA.Value := now;
           dados.qryNFCE_MFK_VENDA.Value := frmpdv.qryVendaCODIGO.Value;
           dados.qryNFCE_M.Post;
-          dados.Conexao.CommitRetaining;
+          dados.Conexao.Commit;
 
           frmpdv.qryVenda.Edit;
           frmpdv.qryVendaSITUACAO.Value := 'F';
           frmpdv.qryVendaTIPO.Value := 'V';
           frmpdv.qryVendaLOTE.Value := frmpdv.Lote;
           frmpdv.qryVenda.Post;
-          dados.Conexao.CommitRetaining;
+          dados.Conexao.Commit;
 
           if vImprime then
             ACBrNFe.NotasFiscais.Imprimir
@@ -2561,7 +2561,7 @@ begin
               frmpdv.qryVendaTIPO.Value := 'V';
               frmpdv.qryVendaLOTE.Value := frmpdv.Lote;
               frmpdv.qryVenda.Post;
-              dados.Conexao.CommitRetaining;
+              dados.Conexao.Commit;
 
               ApagaFpgZerada;
 
@@ -2583,14 +2583,14 @@ begin
               dados.qryNFCE_MHORA_SAIDA.Value := now;
               dados.qryNFCE_MFK_VENDA.Value := frmpdv.qryVendaCODIGO.Value;
               dados.qryNFCE_M.Post;
-              dados.Conexao.CommitRetaining;
+              dados.Conexao.Commit;
 
               frmpdv.qryVenda.Edit;
               frmpdv.qryVendaSITUACAO.Value := 'F';
               frmpdv.qryVendaTIPO.Value := 'V';
               frmpdv.qryVendaLOTE.Value := frmpdv.Lote;
               frmpdv.qryVenda.Post;
-              dados.Conexao.CommitRetaining;
+              dados.Conexao.Commit;
 
               ApagaFpgZerada;
 
@@ -2616,14 +2616,14 @@ begin
               dados.qryNFCE_MHORA_SAIDA.Value := now;
               dados.qryNFCE_MFK_VENDA.Value := frmpdv.qryVendaCODIGO.Value;
               dados.qryNFCE_M.Post;
-              dados.Conexao.CommitRetaining;
+              dados.Conexao.Commit;
 
               frmpdv.qryVenda.Edit;
               frmpdv.qryVendaSITUACAO.Value := 'F';
               frmpdv.qryVendaTIPO.Value := 'V';
               frmpdv.qryVendaLOTE.Value := frmpdv.Lote;
               frmpdv.qryVenda.Post;
-              dados.Conexao.CommitRetaining;
+              dados.Conexao.Commit;
 
               ApagaFpgZerada;
 
@@ -2654,7 +2654,7 @@ begin
                   frmpdv.qryVendaTIPO.Value := 'V';
                   frmpdv.qryVendaLOTE.Value := frmpdv.Lote;
                   frmpdv.qryVenda.Post;
-                  dados.Conexao.CommitRetaining;
+                  dados.Conexao.Commit;
 
                   ApagaFpgZerada;
 
@@ -2676,14 +2676,14 @@ begin
                   dados.qryNFCE_MHORA_SAIDA.Value := now;
                   dados.qryNFCE_MFK_VENDA.Value := frmpdv.qryVendaCODIGO.Value;
                   dados.qryNFCE_M.Post;
-                  dados.Conexao.CommitRetaining;
+                  dados.Conexao.Commit;
 
                   frmpdv.qryVenda.Edit;
                   frmpdv.qryVendaSITUACAO.Value := 'F';
                   frmpdv.qryVendaTIPO.Value := 'V';
                   frmpdv.qryVendaLOTE.Value := frmpdv.Lote;
                   frmpdv.qryVenda.Post;
-                  dados.Conexao.CommitRetaining;
+                  dados.Conexao.Commit;
 
                   ApagaFpgZerada;
 
@@ -2709,14 +2709,14 @@ begin
                   dados.qryNFCE_MHORA_SAIDA.Value := now;
                   dados.qryNFCE_MFK_VENDA.Value := frmpdv.qryVendaCODIGO.Value;
                   dados.qryNFCE_M.Post;
-                  dados.Conexao.CommitRetaining;
+                  dados.Conexao.Commit;
 
                   frmpdv.qryVenda.Edit;
                   frmpdv.qryVendaSITUACAO.Value := 'F';
                   frmpdv.qryVendaTIPO.Value := 'V';
                   frmpdv.qryVendaLOTE.Value := frmpdv.Lote;
                   frmpdv.qryVenda.Post;
-                  dados.Conexao.CommitRetaining;
+                  dados.Conexao.Commit;
 
                   ApagaFpgZerada;
 
@@ -2738,7 +2738,7 @@ begin
     end;
 
   finally
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
     btnTransmitir.Enabled := true;
   end;
 

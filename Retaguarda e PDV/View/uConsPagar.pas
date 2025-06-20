@@ -1,5 +1,5 @@
 unit uConsPagar;
-interface
+interface //Suporte e Vendas direto no Whatsapp (48)998463846
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, math,
@@ -490,7 +490,7 @@ begin
     exit;
   if not(Dados.qryCPPagamento.IsEmpty) then
     Dados.qryCPPagamento.Delete;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
   Dados.qrySomaPaga.Close;
   Dados.qrySomaPaga.Params[0].Value := Dados.qryCPCODIGO.Value;
   Dados.qrySomaPaga.Open;
@@ -506,7 +506,7 @@ begin
   if (Dados.qryCPVL_RESTANTE.Value > 0) and (Dados.qryCPVLPAGO.Value > 0) then
     Dados.qryCPSITUACAO.Value := 'P';
   Dados.qryCP.Post;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
   // btnFiltrarClick(self);
   ShowMessage('Estorno de título efetuado com sucesso!');
 end;
@@ -520,7 +520,6 @@ begin
     btnFiltrar.Enabled := true;
   end;
 end;
-
 procedure TfrmConsPagar.btnImpClick(Sender: TObject);
 begin
   try
@@ -537,7 +536,6 @@ begin
       edtLoc.SetFocus;
   end;
 end;
-
 procedure TfrmConsPagar.btnNovoClick(Sender: TObject);
 begin
   if not cxNovo.Visible then
@@ -608,7 +606,7 @@ begin
       Dados.qryCP.Next;
     end;
   end;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 procedure TfrmConsPagar.cxSairClick(Sender: TObject);
 begin
@@ -634,7 +632,7 @@ begin
       Dados.qryCP.Post;
     end;
   end;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 procedure TfrmConsPagar.DBGrid1DblClick(Sender: TObject);
 begin

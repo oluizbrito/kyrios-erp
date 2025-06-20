@@ -384,7 +384,7 @@ begin
       exit;
     end;
     Dados.qryFPG.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
   end;
   PageControl1.ActivePage := Lista;
   edtLoc.SetFocus;

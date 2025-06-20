@@ -315,7 +315,7 @@ if dados.qryVendedor.State in [dsInsert, dsEdit] then
       exit;
     end;
     dados.qryVendedor.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
   end;
 
   PageControl1.ActivePage := Lista;

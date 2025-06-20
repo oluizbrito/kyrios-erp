@@ -164,7 +164,7 @@ begin
     end;
 
     qryCR.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
     close;
   end;
 end;
@@ -273,7 +273,7 @@ begin
     qryDuplicaHISTORICO.Value := qryCRHISTORICO.Value;
     qryDuplica.Post;
 
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
   end;
 
 end;
@@ -281,7 +281,7 @@ end;
 procedure TfrmCadReceber.qryCRAfterPost(DataSet: TDataSet);
 begin
   dados.UpdateTipoBoleto(qryCR.FieldByName('codigo').AsInteger);
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
   duplica(SpinEdit1.Value);
 end;

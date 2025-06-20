@@ -309,7 +309,7 @@ begin
     end;
 
     Dados.qryUnidade.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
   end;
 
   PageControl1.ActivePage := Lista;

@@ -83,7 +83,7 @@ begin
       mb_yesno + mb_iconquestion) = idyes then
     begin
       qryChecaVinculo.Delete;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
     end
     else
       exit;

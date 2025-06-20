@@ -69,7 +69,7 @@ begin
       dados.qryParametro.FieldByName('TELA_ABERTURA').AsString :=
         OpenPicture.FileName;
       dados.qryParametro.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
 
       CarregaImagem;
 

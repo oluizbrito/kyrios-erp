@@ -199,7 +199,7 @@ begin
       TExcluir:TFDQuery(dtsDefault.DataSet).Delete;
     end;
 
-    dados.conexao.CommitRetaining;
+    dados.conexao.Commit;
 
     if FOperacao in [TIncluir,TEditar] then
       if FCampoChave.Trim.Length > 0 then

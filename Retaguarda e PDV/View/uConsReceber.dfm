@@ -16,6 +16,7 @@ object frmConsReceber: TfrmConsReceber
   OnActivate = FormActivate
   OnClose = FormClose
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   OnKeyDown = FormKeyDown
   OnShow = FormShow
   DesignSize = (
@@ -2038,7 +2039,7 @@ object frmConsReceber: TfrmConsReceber
           object Label14: TLabel
             Left = 0
             Top = 0
-            Width = 102
+            Width = 104
             Height = 23
             Align = alLeft
             Caption = 'TOTAL '#192' RECEBER | '
@@ -2051,7 +2052,7 @@ object frmConsReceber: TfrmConsReceber
             ExplicitHeight = 15
           end
           object DBText11: TDBText
-            Left = 102
+            Left = 104
             Top = 0
             Width = 56
             Height = 23
@@ -2065,10 +2066,11 @@ object frmConsReceber: TfrmConsReceber
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
+            ExplicitLeft = 102
             ExplicitHeight = 15
           end
           object DBText12: TDBText
-            Left = 276
+            Left = 278
             Top = 0
             Width = 56
             Height = 23
@@ -2082,10 +2084,11 @@ object frmConsReceber: TfrmConsReceber
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
+            ExplicitLeft = 276
             ExplicitHeight = 15
           end
           object Label16: TLabel
-            Left = 158
+            Left = 160
             Top = 0
             Width = 118
             Height = 23

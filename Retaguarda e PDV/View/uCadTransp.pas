@@ -1,6 +1,6 @@
 unit uCadTransp;
 
-interface
+interface //Suporte e Vendas direto no Whatsapp (48)998463846
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
@@ -257,7 +257,7 @@ begin
     end;
     dados.qryTranspCIDADE.Value := dados.qryCidadeDESCRICAO.Value;
     dados.qryTransp.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
   end;
   frmCadTransp.close;
 end;

@@ -305,7 +305,7 @@ begin
     end;
 
     Dados.qryLCP.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
   end;
 
   PageControl1.ActivePage := Lista;

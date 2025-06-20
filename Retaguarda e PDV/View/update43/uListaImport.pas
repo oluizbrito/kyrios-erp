@@ -218,7 +218,7 @@ begin
         frmCadNFe.qryItem.First;
         while not frmCadNFe.qryItem.IsEmpty do
           frmCadNFe.qryItem.Delete;
-        dados.Conexao.CommitRetaining;
+        dados.Conexao.Commit;
 
         //Importar Itens
         while not cdsGrid.Eof do
@@ -261,7 +261,7 @@ begin
                 frmCadNFe.qryItemTOTAL.AsFloat := frmCadNFe.qryItemTOTAL.AsFloat -
                   frmCadNFe.qryItemDESCONTO.AsFloat;
                 frmCadNFe.qryItem.Post;
-                dados.Conexao.CommitRetaining;
+                dados.Conexao.Commit;
                 qryItemO.Next;
               end;
             cdsGrid.Next;
@@ -312,7 +312,7 @@ begin
         frmCadNFe.qryItem.First;
         while not frmCadNFe.qryItem.IsEmpty do
           frmCadNFe.qryItem.Delete;
-        dados.Conexao.CommitRetaining;
+        dados.Conexao.Commit;
 
         //Importar Itens
         while not cdsGrid.Eof do
@@ -358,7 +358,7 @@ begin
                 frmCadNFe.qryItemTOTAL.AsFloat := frmCadNFe.qryItemTOTAL.AsFloat -
                   frmCadNFe.qryItemDESCONTO.AsFloat;
                 frmCadNFe.qryItem.Post;
-                dados.Conexao.CommitRetaining;
+                dados.Conexao.Commit;
                 qryItemOS.Next;
               end;
             //Atualizar para importado status da O.S. - ws

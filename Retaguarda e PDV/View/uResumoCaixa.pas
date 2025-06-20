@@ -9,8 +9,10 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Buttons,
-  ACBrNFeDANFEClass, ACBrNFeDANFeESCPOS, ACBrBase, ACBrPosPrinter, frxClass,
-  frxDBSet, frxExportPDF, frxExportBaseDialog, ACBrDFeReport,
+  ACBrNFeDANFEClass, ACBrNFeDANFeESCPOS, ACBrBase, ACBrPosPrinter,
+  frxClass,
+  frxDBSet, frxExportPDF, frxExportBaseDialog,
+  ACBrDFeReport,
   ACBrDFeDANFeReport, Vcl.Mask, DBCtrlsEh, JvExMask, JvToolEdit, JvBaseEdits,
   Vcl.Imaging.pngimage, frxExportXLS, cxGraphics, cxControls, cxLookAndFeels,
   cxLookAndFeelPainters, cxContainer, cxEdit,
@@ -121,6 +123,8 @@ type
     qryResumoSAIDA: TBCDField;
     qryConsultaENTRADA: TBCDField;
     qryConsultaSAIDA: TFMTBCDField;
+    frxDBDProdutos: TfrxDBDataset;
+    frxDBqrVenda: TfrxDBDataset;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -135,6 +139,7 @@ type
   private
     procedure Imprime;
     procedure VisualizarResumo;
+    procedure VisualizarResumoOULD;   //descontinar
     { Private declarations }
   public
     VwResumo: Boolean;
@@ -145,9 +150,9 @@ var
   frmResumoCaixa: TfrmResumoCaixa;
   FResumo: TResumo;
   FRelatorio: TRelatorio;
-implementation //Acesse lojadodesenvolvedor.com.br e saiba mais sobre esse código fonte.
+implementation
 {$R *.dfm}
-uses Udados, udmImpressao;
+uses Udados, udmImpressao, funcoes_diversas;
 function Spaces(C: Integer): String;
 begin
   Result := StringOfChar(' ', C);
@@ -222,16 +227,144 @@ begin
     FResumo.OpenTabela;
   end;
   if not qryResumo.IsEmpty then
-    pnImpressao.Visible := true;
+    //pnImpressao.Visible := true;
+    VisualizarResumo;
 end;
+
 procedure TfrmResumoCaixa.VisualizarResumo;
+var
+  MeiaFolha, TipoFechamento, ArquivoFecha, FilePath, Erro: string;
+  Modelo, cLote, vUsuario: Integer;
+  LQryVendas, LQryDetalhado: TFDQuery;
+begin
+  cLote    := FLote;
+  vUsuario := FUsuario;
+  frxReport.PrintOptions.Copies := 1;
+
+  TipoFechamento := Dados.qryTerminalTIPOFECHAMENTO.AsString;
+  MeiaFolha      := Dados.qryTerminalMEIAFOLHA.AsString;
+
+  if (TipoFechamento = '0') and (MeiaFolha = 'N') then
+  begin
+    Modelo := 0;
+    ArquivoFecha := 'Padrao';
+  end
+  else if (TipoFechamento = '0') and (MeiaFolha = 'S') then
+  begin
+    Modelo := 0;
+    ArquivoFecha := '_Meia';
+    frxReport.PrintOptions.Copies := 2;
+  end
+  else if TipoFechamento = '1' then
+  begin
+    Modelo := 1;
+    ArquivoFecha := 'A4_D';
+  end
+
+  else if TipoFechamento = '2' then
+  begin
+    Modelo := 1;
+    ArquivoFecha := '80_D';
+  end
+
+  else if TipoFechamento = '3' then
+  begin
+    Modelo := 0;
+    ArquivoFecha := '80mm';
+  end
+  else
+    raise Exception.CreateFmt('Tipo de fechamento inválido: %s', [TipoFechamento]);
+
+  FilePath := IncludeTrailingPathDelimiter(ExtractFilePath(Application.ExeName)) +
+              Format('Relatorio\RelResumoCaixa%s.fr3', [ArquivoFecha]);
+
+  if not FileExists(FilePath) then
+    raise Exception.CreateFmt('Relatório não encontrado: %s', [FilePath]);
+
+
+  if not FFechamentoCaixa(0, cLote, vUsuario, qryResumo, Erro) then
+    raise Exception.Create(Erro);
+  frxDBResumo.DataSet := qryResumo;
+  if (TipoFechamento ='1') or  (TipoFechamento ='2')  then
+  begin
+
+    LQryVendas := nil;
+    LQryDetalhado := nil;
+
+    LQryDetalhado := TFDQuery.Create(nil);
+    LQryVendas    := TFDQuery.Create(nil);
+    LQryVendas.Connection :=  dados.Conexao;
+    try
+
+       with LQryVendas do
+        begin
+        Close;
+        SQL.Clear;
+        SQL.Add('SELECT VM.CODIGO, VM.DATA_EMISSAO AS DATA,');
+        SQL.Add('VM.DESCONTO, VM.ACRESCIMO, VM.NOME AS RAZAO, VM.TOTAL,');
+        SQL.Add('COUNT(VD.ID_PRODUTO)    AS ITENS,');
+        SQL.Add('SUM(VD.TOTAL)   AS TOTAL_GERAL');
+        SQL.Add('FROM   VENDAS_MASTER VM');
+        SQL.Add('JOIN   VENDAS_DETALHE VD ON VD.FKVENDA = VM.CODIGO');
+        SQL.Add('WHERE  VM.LOTE = :LOTE');
+        SQL.Add('AND  VM.FK_USUARIO = :USUARIO');
+        SQL.Add('GROUP BY VM.CODIGO, VM.DATA_EMISSAO , VM.DESCONTO, VM.ACRESCIMO, VM.NOME, VM.total');
+        SQL.Add('ORDER BY VM.DATA_EMISSAO');
+        ParamByName('LOTE').AsInteger := cLote;
+        ParamByName('USUARIO').AsInteger := vUsuario;
+        Open;
+        end;
+
+        try
+          if not FFechamentoCaixa(Modelo, cLote, vUsuario, LQryDetalhado, Erro) then
+          begin
+            if Trim(Erro) = '' then
+              Erro := 'Erro interno: Fechamento sem produtos, use o da bobina!!!';
+            raise Exception.Create(Erro);
+          end;
+        except
+          on E: Exception do
+          begin
+            raise Exception.Create('Erro ao executar fechamento de produtos: ' + E.Message);
+          end;
+        end;
+
+      frxDBDProdutos.DataSet := LQryDetalhado;
+      frxDBqrVenda.DataSet := LQryVendas;
+      with frxReport do
+      begin
+        Clear;
+        LoadFromFile(FilePath);
+        ShowReport;
+      end;
+    finally
+       LQryVendas.Free;
+       LQryDetalhado.Free;
+    end;
+  end
+  else
+  begin
+    with frxReport do
+    begin
+      Clear;
+      LoadFromFile(FilePath);
+      ShowReport;
+    end;
+  end;
+
+  pnImpressao.Visible := False;
+end;
+
+procedure TfrmResumoCaixa.VisualizarResumoOULD; //antigo
 begin
   frxReport.Clear;
   frxReport.LoadFromFile(ExtractFilePath(Application.ExeName) +
-    '\Relatorio\RelResumoCaixa.fr3');
+    '\Relatorio\RelResumoCaixaPadrao.fr3');
   frxReport.ShowReport;
   pnImpressao.Visible := false;
 end;
+
+
 procedure TfrmResumoCaixa.Button2Click(Sender: TObject);
 begin
   frxReport.Clear;
@@ -264,6 +397,8 @@ begin
   FResumo.OpenTabela;
   FResumo.GeraCaixa;
   Dados.vPodeFecharCaixa := true;
+//  Button1Click(Sender);
+  VisualizarResumo;
   close;
 end;
 procedure TfrmResumoCaixa.btnReciboClick(Sender: TObject);
@@ -357,8 +492,10 @@ begin
     Value := Dados.vUsuario;
   if VarName = 'VALOR' then
     Value := FormatFloat(',0.00', edtValor.Value);
+
   if VarName = 'ENTRADAD' then
     Value := FormatFloat(',0.00', FRelatorio.ENTRADA_DINHEIRO);
+
   if VarName = 'SAIDAD' then
     Value := FormatFloat(',0.00', FRelatorio.SAIDA_DINHEIRO);
   if VarName = 'TOTALD' then

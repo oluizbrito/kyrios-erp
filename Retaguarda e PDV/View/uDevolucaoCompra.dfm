@@ -40,8 +40,6 @@ object frmDevolucaoCompra: TfrmDevolucaoCompra
       'Fechada')
     TabIndex = 0
     OnChange = TabSet1Change
-    ExplicitWidth = 834
-    ExplicitHeight = 375
     object DBGrid1: TDBGrid
       Left = 4
       Top = 29
@@ -113,7 +111,6 @@ object frmDevolucaoCompra: TfrmDevolucaoCompra
     Color = 15724527
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = 515
     object Panel3: TPanel
       Left = 1
       Top = 1
@@ -1038,8 +1035,6 @@ object frmDevolucaoCompra: TfrmDevolucaoCompra
     Color = 16514043
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = 444
-    ExplicitWidth = 834
     object LblSaldo: TLabel
       Left = 633
       Top = 10
@@ -1069,7 +1064,7 @@ object frmDevolucaoCompra: TfrmDevolucaoCompra
     object Label2: TLabel
       Left = 10
       Top = 13
-      Width = 131
+      Width = 133
       Height = 15
       Caption = 'TOTAL DE DEVOLU'#199#213'ES |'
       Font.Charset = ANSI_CHARSET
@@ -1088,7 +1083,6 @@ object frmDevolucaoCompra: TfrmDevolucaoCompra
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 2
-    ExplicitWidth = 834
     object GroupBox2: TGroupBox
       Left = 0
       Top = 0
@@ -1103,7 +1097,6 @@ object frmDevolucaoCompra: TfrmDevolucaoCompra
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 834
       object LblPeriodo: TLabel
         Left = 10
         Top = 18
@@ -1280,7 +1273,7 @@ object frmDevolucaoCompra: TfrmDevolucaoCompra
     end
   end
   object frxReport: TfrxReport
-    Version = '2022.1.3'
+    Version = '2022.3'
     DataSetName = 'frxDBCo'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
@@ -1306,7 +1299,7 @@ object frmDevolucaoCompra: TfrmDevolucaoCompra
         DataSetName = 'frxDBItens'
       end
       item
-        DataSet = frmFechaVenda.frxDBPV
+        DataSet = frmPedidoVenda.frxDBPV
         DataSetName = 'frxDBPV'
       end>
     Variables = <>
@@ -1383,7 +1376,7 @@ object frmDevolucaoCompra: TfrmDevolucaoCompra
           Width = 115.200000000000000000
           Height = 19.200000000000000000
           DataField = 'TOTAL'
-          DataSet = frmFechaVenda.frxDBPV
+          DataSet = frmPedidoVenda.frxDBPV
           DataSetName = 'frxDBPV'
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -1435,7 +1428,7 @@ object frmDevolucaoCompra: TfrmDevolucaoCompra
           Width = 600.945270000000000000
           Height = 18.897650000000000000
           DataField = 'OBS'
-          DataSet = frmFechaVenda.frxDBPV
+          DataSet = frmPedidoVenda.frxDBPV
           DataSetName = 'frxDBPV'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1637,7 +1630,7 @@ object frmDevolucaoCompra: TfrmDevolucaoCompra
           Top = 139.400000000000000000
           Width = 201.600000000000000000
           Height = 19.200000000000000000
-          DataSet = frmFechaVenda.frxDBPV
+          DataSet = frmPedidoVenda.frxDBPV
           DataSetName = 'frxDBPV'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1656,7 +1649,7 @@ object frmDevolucaoCompra: TfrmDevolucaoCompra
           Width = 327.609400000000000000
           Height = 19.200000000000000000
           DataField = 'RAZAO'
-          DataSet = frmFechaVenda.frxDBPV
+          DataSet = frmPedidoVenda.frxDBPV
           DataSetName = 'frxDBPV'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1699,7 +1692,7 @@ object frmDevolucaoCompra: TfrmDevolucaoCompra
           Width = 328.819110000000000000
           Height = 18.897650000000000000
           DataField = 'VENDEDOR'
-          DataSet = frmFechaVenda.frxDBPV
+          DataSet = frmPedidoVenda.frxDBPV
           DataSetName = 'frxDBPV'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1735,7 +1728,7 @@ object frmDevolucaoCompra: TfrmDevolucaoCompra
           Width = 204.094620000000000000
           Height = 18.897650000000000000
           DataField = 'FK_VENDA'
-          DataSet = frmFechaVenda.frxDBPV
+          DataSet = frmPedidoVenda.frxDBPV
           DataSetName = 'frxDBPV'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1771,7 +1764,7 @@ object frmDevolucaoCompra: TfrmDevolucaoCompra
           Width = 204.094620000000000000
           Height = 18.897650000000000000
           DataField = 'TIPO_DEVOLUCAO'
-          DataSet = frmFechaVenda.frxDBPV
+          DataSet = frmPedidoVenda.frxDBPV
           DataSetName = 'frxDBPV'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack

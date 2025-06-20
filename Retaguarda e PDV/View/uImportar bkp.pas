@@ -268,7 +268,7 @@ begin
       Dados.qryExecute.Params[2].Value := Dados.Lote;
       Dados.qryExecute.Params[3].AsInteger := qryPedidoCODIGO.AsInteger;
       Dados.qryExecute.ExecSQL;
-      Dados.Conexao.CommitRetaining;
+      Dados.Conexao.Commit;
 
       FrmPDV.qryVenda.Close;
       FrmPDV.qryVenda.Params[0].AsInteger := qryPedidoCODIGO.AsInteger;
@@ -339,7 +339,7 @@ begin
     'delete from VENDAS_DETALHE where fkvenda=:codigo';
   Dados.qryExecute.Params[0].Value := FrmPDV.qryVendaCODIGO.Value;
   Dados.qryExecute.ExecSQL;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TfrmImportar.ImportaItensOrcamento;
@@ -385,7 +385,7 @@ begin
     FrmPDV.qryItemTOTAL.AsFloat := FrmPDV.qryItemVALOR_ITEM.AsFloat -
       FrmPDV.qryItemVDESCONTO.AsFloat;
     FrmPDV.qryItem.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
   end;
 end;
 
@@ -421,7 +421,7 @@ begin
     FrmPDV.qryItemVDESCONTO.AsFloat;
   FrmPDV.qryItemOS.Value := 'S';
   FrmPDV.qryItem.Post;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TfrmImportar.FormCreate(Sender: TObject);
@@ -505,7 +505,7 @@ begin
     exit;
   end;
 
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 
   if not FrmPDV.qryItem.IsEmpty then
   begin
@@ -522,7 +522,7 @@ begin
   FrmPDV.qryVendaID_CLIENTE.Value := Dados.qryConfigCLIENTE_PADRAO.Value;
   FrmPDV.qryVendaFK_OS.Value := qryOs_MasterCODIGO.Value;
   FrmPDV.qryVenda.Post;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 
   qryOS_Detalhe.Close;
   qryOS_Detalhe.Params[0].Value := Dados.qryConsulta.FieldByName
@@ -547,7 +547,7 @@ begin
     FrmPDV.qryVendaDESCONTO.AsFloat;
 
   FrmPDV.qryVenda.Post;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 
   Application.ProcessMessages;
   ShowMessage('Importação realizada com sucesso!');
@@ -605,7 +605,7 @@ begin
     end;
   end;
 
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 
   FrmPDV.PodeAtualizarEstoque := true;
   numero := qryOrcamentoCODIGO.AsString;
@@ -623,7 +623,7 @@ begin
   FrmPDV.qryVendaNOME.Value := qryOrcamentoCLIENTE.Value;
 
   FrmPDV.qryVenda.Post;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 
   qryItensO.Close;
   qryItensO.Params[0].Value := qryOrcamentoCODIGO.AsInteger;
@@ -653,7 +653,7 @@ begin
     qryOrcamento.Edit;
   qryOrcamentoSITUACAO.AsString := 'I';
   qryOrcamento.Post;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 
   Application.ProcessMessages;
   ShowMessage('Importação realizada com sucesso!');

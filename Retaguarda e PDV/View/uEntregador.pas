@@ -307,7 +307,7 @@ begin
     end;
 
     dados.qryEntregador.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
   end;
 
   PageControl1.ActivePage := Lista;

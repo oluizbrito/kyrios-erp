@@ -147,7 +147,7 @@ begin
   dados.qryExecute.ParamByName('INDICE').AsString := Indice;
   dados.qryExecute.ParamByName('ID').AsInteger := Codigo;
   dados.qryExecute.ExecSQL;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 function TFrmTEF.AdicionarPagamento(const Indice: String; AValor: Double;

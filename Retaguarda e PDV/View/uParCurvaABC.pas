@@ -124,7 +124,7 @@ begin
   dados.qryExecute.close;
   dados.qryExecute.SQL.Text := 'DELETE FROM CURVA_ABC';
   dados.qryExecute.ExecSQL;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
   qryCurva.close;
   qryCurva.Open;
@@ -147,7 +147,7 @@ begin
       qryCurvaCURVA.Value := 'C';
     qryCurva.Post;
 
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
     qryVendas.Next;
   end;
 

@@ -651,7 +651,7 @@ begin
   qryVendaCODIGO.AsFloat := codigo;
 
   qryVenda.Post;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 function TFrmECF.GerouNFCe(operacao: string): String;
@@ -866,7 +866,7 @@ begin
         qryVendaSUBTOTAL.Value := qryVendaSUBTOTAL.Value;
         qryVenda.Post;
 
-        dados.Conexao.CommitRetaining;
+        dados.Conexao.Commit;
       end;
     end;
   finally
@@ -914,14 +914,14 @@ begin
       'UPDATE CONTAS SET DATA_ABERTURA=NULL, SITUACAO=''F'', LOTE=0 WHERE CODIGO=:COD';
     dados.qryExecute.Params[0].Value := dados.idCaixa;
     dados.qryExecute.ExecSQL;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     dados.qryExecute.Close;
     dados.qryExecute.SQL.Text :=
       'delete from CONTAS_MOVIMENTO WHERE fkvenda=:COD';
     dados.qryExecute.Params[0].Value := qryVendaCODIGO.Value;
     dados.qryExecute.ExecSQL;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     Close;
   end;
@@ -943,7 +943,7 @@ begin
   begin
     if (qryVenda.State in dsEditModes) then
       qryVenda.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     if (qryItem.IsEmpty) then
     begin
@@ -969,7 +969,7 @@ begin
         'delete from vendas_fpg  where vendas_master=:codigo';
       dados.qryExecute.Params[0].Value := FrmPDV.qryVendaCODIGO.Value;
       dados.qryExecute.ExecSQL;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
 
       frmFechavenda.ShowModal;
     finally
@@ -996,7 +996,7 @@ begin
       qryVenda.Edit;
     qryVendaSITUACAO.Value := 'G';
     qryVenda.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     qryVenda.Edit;
     qryVendaDATA_EMISSAO.Value := now;
@@ -1009,7 +1009,7 @@ begin
     ShowMessage('Pedido finalizado com sucesso!');
     inserevenda;
   end;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
   FrmPDV.qryVenda.Filtered := false;
 end;
@@ -1100,7 +1100,7 @@ begin
   if qryVenda.State in [dsInsert, dsEdit] then
     qryVenda.Post;
 
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
   if copy(EdtProduto.Text, 1, 1) = '*' then
     exit;
@@ -1154,7 +1154,7 @@ begin
   if qryPesqProdGRADE.Value = 'S' then
     qryItemFK_GRADE.Value := cbGrade.KeyValue;
   qryItem.Post;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
   EdtProduto.Clear;
   edtPreco.Text := '0,00';
@@ -1162,7 +1162,7 @@ begin
   edtQtd.Text := '1';
   EdtProduto.SetFocus;
 
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
   qryItem.Refresh;
 
 end;
@@ -1204,13 +1204,13 @@ end;
 
 procedure TFrmECF.qryItemAfterDelete(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TFrmECF.qryItemAfterPost(DataSet: TDataSet);
 begin
 
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
   qrySoma.Close;
   qrySoma.Params[0].Value := qryVendaCODIGO.Value;
@@ -1411,7 +1411,7 @@ begin
     qryCMovimento.Post;
 
   end;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TFrmECF.qryVendaBeforeOpen(DataSet: TDataSet);
@@ -1446,7 +1446,7 @@ end;
 
 procedure TFrmECF.qryVendaCompAfterPost(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TFrmECF.qryVendaDESCONTOValidate(Sender: TField);
@@ -1792,7 +1792,7 @@ procedure TFrmECF.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   if (qryVenda.State in dsEditModes) then
     qryVenda.Post;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TFrmECF.FormCreate(Sender: TObject);
@@ -2012,7 +2012,7 @@ begin
           qryComposicaoQUANTIDADE.AsFloat;
         dados.qryExecute.Params[1].Value := qryComposicaoID_PRODUTO.Value;
         dados.qryExecute.ExecSQL;
-        dados.Conexao.CommitRetaining;
+        dados.Conexao.Commit;
         qryComposicao.Next;
       end;
     end;
@@ -2043,7 +2043,7 @@ begin
           qryComposicaoQUANTIDADE.AsFloat;
         dados.qryExecute.Params[1].Value := qryComposicaoID_PRODUTO.Value;
         dados.qryExecute.ExecSQL;
-        dados.Conexao.CommitRetaining;
+        dados.Conexao.Commit;
         qryComposicao.Next;
       end;
     end;
@@ -2071,7 +2071,7 @@ begin
       dados.qryExecute.Params[0].AsFloat := qtd_atual * qryItemQTD.AsFloat;
       dados.qryExecute.Params[1].Value := qryItemFK_GRADE.Value;
       dados.qryExecute.ExecSQL;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
     end;
   end;
 
@@ -2090,7 +2090,7 @@ begin
       dados.qryExecute.Params[0].AsFloat := qtd_atual * qryItemQTD.AsFloat;
       dados.qryExecute.Params[1].Value := qryItemFK_GRADE.Value;
       dados.qryExecute.ExecSQL;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
     end;
 
   end;

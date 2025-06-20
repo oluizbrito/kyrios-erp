@@ -417,7 +417,7 @@ begin
           'DELETE FROM CAIXA WHERE TRANSFERENCIA=:TRF';
         Dados.qryExecute.Params[0].Value := qryCaixaTRANSFERENCIA.Value;
         Dados.qryExecute.ExecSQL;
-        Dados.Conexao.CommitRetaining;
+        Dados.Conexao.Commit;
         qryCaixa.Close;
         qryCaixa.Open;
       end

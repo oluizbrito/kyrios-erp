@@ -299,6 +299,7 @@ type
     qryItensCompraFK_GRADE_PRODUTO: TIntegerField;
     cxFinalizar: TcxButton;
     cxImportar: TcxButton;
+    btnCadastrarTodos: TBitBtn;
     procedure FormShow(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure btnCadastrarClick(Sender: TObject);
@@ -324,6 +325,7 @@ type
     procedure FormActivate(Sender: TObject);
     procedure cxFinalizarClick(Sender: TObject);
     procedure cxImportarClick(Sender: TObject);
+    procedure btnCadastrarTodosClick(Sender: TObject);
   private
     QuantidadeAnterior: extended;
     procedure Vincular;
@@ -492,7 +494,7 @@ begin
       if iGrade > 0 then
         Dados.QryXmlDetailFK_GRADE_PRODUTO.Value  :=  iGrade;
       dados.QryXmlDetail.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
     end;
     btnLoc.Enabled := true;
     FrmPesquisaProduto.Release;
@@ -516,7 +518,7 @@ begin
       dados.QryXmlDetail.Next;
     end;
   finally
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
     dados.QryXmlDetail.First;
     dados.QryXmlDetail.EnableControls;
   end;
@@ -627,14 +629,14 @@ begin
   dados.qryConsulta.SQL.Text := 'delete from xml_master where codigo=:cod';
   dados.qryConsulta.Params[0].Value := dados.idUsuario;
   dados.qryConsulta.ExecSQL;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
   dados.qryConsulta.Close;
   dados.qryConsulta.SQL.Text :=
     'delete from xml_detail where FK_XML_MASTER=:id';
   dados.qryConsulta.Params[0].Value := dados.idUsuario;
   dados.qryConsulta.ExecSQL;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
   if not JaLeuXml then
   begin
@@ -738,7 +740,7 @@ begin
       qryFornecedorFUN.Value := 'N';
       qryFornecedorDT_CADASTRO.Value := date;
       qryFornecedor.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
     end;
     idFornecedor := qryFornecedorCODIGO.Value;
     dados.qryFornecedor.Close;
@@ -801,7 +803,7 @@ begin
         qryXmlMasterCFOP.Value := '2102';
 
       qryXmlMaster.Post;
-      Conexao.CommitRetaining;
+      Conexao.Commit;
     end;
 
     // importa itens do xml
@@ -915,7 +917,7 @@ begin
             dados.QryXmlDetailVL_ST.AsCurrency := Imposto.ICMS.vICMSST;
 
             dados.QryXmlDetail.Post;
-            dados.Conexao.CommitRetaining;
+            dados.Conexao.Commit;
 
             QRYUnidade.Close;
             QRYUnidade.Params[0].Value := UpperCase(Copy(prod.uCom, 1, 2));
@@ -927,7 +929,7 @@ begin
               QRYUnidadeDESCRICAO.Value := UpperCase(prod.uCom);
               QRYUnidadeFK_USUARIO.Value := dados.idUsuario;
               QRYUnidade.Post;
-              dados.Conexao.CommitRetaining;
+              dados.Conexao.Commit;
             end;
           end;
         end;
@@ -941,7 +943,7 @@ begin
       dados.qryXmlMasterBASE_IPI.Value := dados.qryXmlMasterBASE_IPI.Value +
         dados.QryXmlDetailBASE_IPI.Value;
       dados.qryXmlMaster.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
     end;
 
     dados.QryXmlDetail.Close;
@@ -1071,7 +1073,7 @@ begin
   dados.qryexecute.SQL.Text := 'delete from compra_itens where fk_compra=:id';
   dados.qryexecute.Params[0].Value := qryCompraID.Value;
   dados.qryexecute.ExecSQL;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
   dados.QryXmlDetail.First;
   while not dados.QryXmlDetail.eof do
   begin
@@ -1123,7 +1125,7 @@ begin
     qryItensCompraDESCONTO.Value := dados.QryXmlDetailDESCONTO.AsFloat;
     qryItensCompraPR_VENDA.Value := dados.QryXmlDetailPR_VENDA.AsFloat;
     qryItensCompra.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
     dados.QryXmlDetail.Next;
   end;
   qryItensCompra.Refresh;
@@ -1137,7 +1139,7 @@ end;
 
 procedure TFrmXml.qryCompraAfterPost(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TFrmXml.qryCompraNewRecord(DataSet: TDataSet);
@@ -1173,7 +1175,7 @@ end;
 
 procedure TFrmXml.qryItensCompraAfterPost(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TFrmXml.qryItensCompraBeforeDelete(DataSet: TDataSet);
@@ -1309,7 +1311,7 @@ begin
         dados.qryXMLProdutoQTD_S.Value := dados.QryXmlDetailQUANT_S.Value;
       end;
       dados.qryXMLProduto.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
     end;
     dados.QryXmlDetail.Next;
   end;
@@ -1333,7 +1335,7 @@ begin
       dados.qryExecute.Params[0].AsFloat := qtd_atual * qtd_atual;
       dados.qryExecute.Params[1].Value := grade;
       dados.qryExecute.ExecSQL;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
     end;
   end;
 
@@ -1351,7 +1353,7 @@ begin
       dados.qryExecute.Params[0].AsFloat := qtd_atual * qtd_atual;
       dados.qryExecute.Params[1].Value := grade;
       dados.qryExecute.ExecSQL;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
     end;
   end;
 end;
@@ -1386,7 +1388,7 @@ begin
       dados.QryXmlDetailID_PRODUTO_LOC.Value :=
         dados.qryConsulta.Fields[0].Value;
       dados.QryXmlDetail.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
       dados.QryXmlDetail.Next;
       exit;
     end;
@@ -1555,7 +1557,7 @@ begin
       if iGrade > 0 then
         dados.QryXmlDetailFK_GRADE_PRODUTO.Value := iGrade;
       dados.QryXmlDetail.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
     end;
   finally
     FrmCadProduto.DBEdit24.ReadOnly := false;
@@ -1566,6 +1568,223 @@ begin
     dados.QryXmlDetail.Next;
   end;
 end;
+
+procedure TFrmXml.btnCadastrarTodosClick(Sender: TObject);
+ var
+  iGrade: Integer;
+  vCST, vCFOP: string;
+begin
+  // Posiciona o dataset no primeiro registro da lista
+  dados.QryXmlDetail.First;
+  // Percorre todos os registros da lista
+  while not dados.QryXmlDetail.Eof do
+  begin
+    // Se já estiver vinculado, pula para o próximo registro
+    if dados.QryXmlDetailID_PRODUTO_LOC.AsInteger > 0 then
+    begin
+      dados.QryXmlDetail.Next;
+      Continue;
+    end;
+
+    // Verifica se já existe produto cadastrado com o mesmo código de barras e descrição
+    dados.qryConsulta.Close;
+    dados.qryConsulta.SQL.Text :=
+      'SELECT CODIGO, CODBARRA FROM PRODUTO WHERE CODBARRA = :COD and descricao = :descri';
+    dados.qryConsulta.Params[0].Value := dados.QryXmlDetailCODBARRA.Value;
+    dados.qryConsulta.Params[1].Value := dados.QryXmlDetailDESCRICAO_LOCAL.Value;
+    dados.qryConsulta.Open;
+
+    if not dados.qryConsulta.IsEmpty then
+    begin
+    if application.messagebox
+      ('Já existe produtos com este código de barras. Deseja Vincular a ele?',
+      'Confirmação', mb_yesno) = mrYes then
+      begin
+      dados.QryXmlDetail.Edit;
+      dados.QryXmlDetailID_PRODUTO_LOC.Value := dados.qryConsulta.Fields[0].Value;
+      dados.QryXmlDetail.Post;
+      dados.Conexao.CommitRetaining;
+      dados.QryXmlDetail.Next;
+      //Continue;
+      exit;
+      end;
+    end;
+
+    // Verifica se o grupo do item foi informado
+    if dados.QryXmlDetailFK_GRUPO.IsNull then
+    begin
+      ShowMessage('Informe o grupo do Item! ' + dados.QryXmlDetailDESCRICAO_LOCAL.AsString);
+      dados.QryXmlDetail.Next;
+      Continue;
+    end;
+
+    // Cria o formulário de cadastro de produto
+    FrmCadProduto := TFrmCadProduto.Create(Application);
+    try
+      FrmCadProduto.qryProdutos.Close;
+      FrmCadProduto.qryProdutos.Params[0].Value := -1;
+      FrmCadProduto.qryProdutos.Open;
+      FrmCadProduto.qryProdutos.Insert;
+      FrmCadProduto.qryProdutosCODIGO.Value :=
+        dados.Numerador('PRODUTO', 'CODIGO', 'N', '', '');
+      FrmCadProduto.qryProdutosATIVO.Value := 'S';
+      FrmCadProduto.qryProdutosPR_CUSTO.Value := dados.QryXmlDetailPRECO_S.Value;
+      FrmCadProduto.qryProdutosPERC_CUSTO.Value := 0;
+
+      // Adicionando os impostos se aplicável
+      if Dados.qryEmpresaNT_COMPRA_IMP_CUSTO.AsString = 'S' then
+      begin
+        FrmCadProduto.qryProdutosPR_CUSTO2.Value :=
+          ((dados.QryXmlDetailFRETE.AsCurrency +
+            dados.QryXmlDetailSEGURO.AsCurrency +
+            dados.QryXmlDetailDESPESAS.AsCurrency +
+            dados.QryXmlDetailVL_IPI.AsCurrency +
+            dados.QryXmlDetailVL_ST.AsCurrency) -
+           dados.QryXmlDetailDESCONTO.AsCurrency) +
+           dados.QryXmlDetailPRECO_S.AsCurrency;
+        if FrmCadProduto.qryProdutosPR_CUSTO2.Value < 0 then
+          FrmCadProduto.qryProdutosPR_CUSTO2.Value := dados.QryXmlDetailPRECO_S.AsCurrency;
+        if FrmCadProduto.qryProdutosPR_CUSTO.AsFloat > 0 then
+          FrmCadProduto.qryProdutosPERC_CUSTO.AsFloat :=
+            SimpleRoundTo(((FrmCadProduto.qryProdutosPR_CUSTO2.AsFloat * 100) /
+            FrmCadProduto.qryProdutosPR_CUSTO.AsFloat) - 100, -2);
+        if FrmCadProduto.qryProdutosPERC_CUSTO.AsFloat < 0 then
+          FrmCadProduto.qryProdutosPERC_CUSTO.AsFloat := 0;
+        if FrmCadProduto.qryProdutosPR_CUSTO.Value > 0 then
+          FrmCadProduto.qryProdutosMARGEM.AsFloat :=
+            ((FrmCadProduto.qryProdutosPR_VENDA.AsFloat * 100) /
+            FrmCadProduto.qryProdutosPR_CUSTO2.AsFloat) - 100;
+        if FrmCadProduto.qryProdutosMARGEM.Value < 0 then
+          FrmCadProduto.qryProdutosMARGEM.AsFloat := 0;
+      end
+      else
+        FrmCadProduto.qryProdutosPR_CUSTO2.Value := dados.QryXmlDetailPRECO_S.Value;
+
+      FrmCadProduto.qryProdutosPR_VENDA.Value :=
+        FrmCadProduto.qryProdutosPR_VENDA.Value;
+      FrmCadProduto.qryProdutosMARGEM.Value :=
+        ((FrmCadProduto.qryProdutosPR_VENDA.AsFloat /
+          FrmCadProduto.qryProdutosPR_CUSTO.AsFloat) - 1) * 100;
+      FrmCadProduto.qryProdutosDESCRICAO.Value :=
+        dados.QryXmlDetailDESCRICAO_LOCAL.Value;
+      FrmCadProduto.qryProdutosCODBARRA.Value := dados.QryXmlDetailCODBARRA.Value;
+      FrmCadProduto.qryProdutosREFERENCIA.Value := dados.QryXmlDetailREFERENCIA.Value;
+      FrmCadProduto.qryProdutosULTFORN.Value :=
+        dados.qryXmlMasterID_FORNECEDOR.Value;
+      FrmCadProduto.qryProdutosMARGEM.Value := 0;
+      FrmCadProduto.qryProdutosPR_CUSTO_ANTERIOR.Value := 0;
+      FrmCadProduto.qryProdutosPR_VENDA_ANTERIOR.Value := 0;
+      FrmCadProduto.qryProdutosULT_COMPRA.Value := 0;
+      FrmCadProduto.qryProdutosULT_COMPRA_ANTERIOR.Value := 0;
+      FrmCadProduto.qryProdutosEMPRESA.Value := dados.qryEmpresaCODIGO.Value;
+      FrmCadProduto.qryProdutosPRECO_ATACADO.Value := 0;
+      FrmCadProduto.qryProdutosCOMISSAO.Value := 0;
+      FrmCadProduto.qryProdutosAPLICACAO.Value := '';
+      FrmCadProduto.qryProdutosPRECO_VARIAVEL.Value := 'N';
+      FrmCadProduto.qryProdutosGRADE.Value := 'N';
+      FrmCadProduto.qryProdutosGRUPO.Value := dados.QryXmlDetailFK_GRUPO.Value;
+      FrmCadProduto.qryProdutosCEST.Value := dados.QryXmlDetailCEST.Value;
+      FrmCadProduto.qryProdutosUNIDADE.Value := dados.QryXmlDetailVIRTUAL_UN.Value;
+      FrmCadProduto.qryProdutosQTD_ATUAL.Value := 0;
+      FrmCadProduto.qryProdutosQTD_MIN.Value := 2;
+      FrmCadProduto.qryProdutosE_MEDIO.Value := 0;
+      FrmCadProduto.qryProdutosNCM.Value := dados.QryXmlDetailNCM.Value;
+
+      vCST := dados.QryXmlDetailCST_ICMS.Value;
+      vCFOP := dados.QryXmlDetailCFOP.Value;
+
+      if (vCST = '060') or (vCST = '010') or (vCFOP = '1401') or (vCFOP = '1403') then
+      begin
+        FrmCadProduto.qryProdutosCFOP.AsString := '5405';
+        FrmCadProduto.qryProdutosCSTICMS.AsString := '60';
+        FrmCadProduto.qryProdutosCSOSN.AsString := '500';
+        FrmCadProduto.qryProdutosCFOP_EXTERNO.AsString := '6405';
+        FrmCadProduto.qryProdutosCST_EXTERNO.AsString := '60';
+        FrmCadProduto.qryProdutosCSOSN_EXTERNO.AsString := '500';
+        FrmCadProduto.qryProdutosCSTE.AsString := '75';
+        FrmCadProduto.qryProdutosCSTS.AsString := '06';
+        FrmCadProduto.qryProdutosCSTIPI.AsString := '53';
+        FrmCadProduto.qryProdutosORIGEM.AsString := '0';
+      end
+      else
+      begin
+        FrmCadProduto.qryProdutosCFOP.AsString         := '5102';
+        FrmCadProduto.qryProdutosCSTICMS.AsString      := '41';
+        FrmCadProduto.qryProdutosCSOSN.AsString        := '102';
+        FrmCadProduto.qryProdutosCFOP_EXTERNO.AsString := '6102';
+        FrmCadProduto.qryProdutosCST_EXTERNO.AsString  := '41';
+        FrmCadProduto.qryProdutosCSOSN_EXTERNO.AsString:= '102';
+        FrmCadProduto.qryProdutosCSTE.AsString         := '73';
+        FrmCadProduto.qryProdutosCSTS.AsString         := '07';
+        FrmCadProduto.qryProdutosCSTIPI.AsString       := '53';
+        FrmCadProduto.qryProdutosORIGEM.AsString       := '0';
+      end;
+
+      FrmCadProduto.qryProdutosQTD_ATACADO.Value  := 0;
+      FrmCadProduto.qryProdutosPRECO_ATACADO.Value  := 0;
+      FrmCadProduto.qryProdutosTIPO.Value           := '00-MERCADORIA PARA REVENDA';
+      FrmCadProduto.qryProdutosUNIDADE.Value        := dados.QryXmlDetailUND_S.Value;
+      FrmCadProduto.qryProdutosALIQ_ICM.Value       := dados.qryEmpresaALIQ_ICMS.AsFloat;
+      FrmCadProduto.qryProdutosALIQ_PIS.Value       := dados.qryEmpresaALIQ_PIS.AsFloat;
+      FrmCadProduto.qryProdutosALIQ_COF.Value       := dados.qryEmpresaALIQ_COF.AsFloat;
+      FrmCadProduto.qryProdutosALIQ_IPI.Value       := dados.qryEmpresaALIQ_IPI.AsFloat;
+      FrmCadProduto.qryProdutosCSTE.Value           := dados.qryEmpresaCST_ENTRADA.Value;
+      FrmCadProduto.qryProdutosCSTS.Value           := dados.qryEmpresaCST_SAIDA.Value;
+      FrmCadProduto.qryProdutosCSTIPI.Value         := dados.qryEmpresaCST_IPI.Value;
+      FrmCadProduto.qryProdutosPAGA_COMISSAO.Value  := 'N';
+      FrmCadProduto.qryProdutosEFISCAL.Value        := 'S';
+      dados.vCodProduto := 0;
+
+      // Impedir edição de campos específicos
+      FrmCadProduto.DBEdit24.ReadOnly := True;
+      FrmCadProduto.DBEdit9.ReadOnly  := True;
+      FrmCadProduto.Tag := 1;
+
+      // Pergunta se deseja revisar o cadastro.
+      // Se sim, abre o formulário para revisão; caso contrário, realiza o cadastro automático.
+
+//
+//      if Application.MessageBox('Deseja revisar o cadastro?', 'Confirmação', MB_YESNO) = mrYes then
+//      begin
+//        FrmCadProduto.ShowModal;
+//      end
+//      else
+//      begin
+        // Cadastro automático: salva o registro automaticamente
+        if FrmCadProduto.qryProdutos.State in [dsInsert, dsEdit] then
+          FrmCadProduto.qryProdutos.Post;
+        // Atribui o código gerado ao vCodProduto para vinculação
+        dados.vCodProduto := FrmCadProduto.qryProdutosCODIGO.Value;
+//      end;
+
+      try
+        // Se o produto foi cadastrado (vCodProduto <> 0) realiza a vinculação
+        if dados.vCodProduto <> 0 then
+        begin
+          if not (dados.QryXmlDetail.State in dsEditModes) then
+            dados.QryXmlDetail.Edit;
+          dados.QryXmlDetailID_PRODUTO_LOC.Value := dados.vCodProduto;
+          // Verifica e cadastra a grade, se aplicável
+          iGrade := ChamaGrade(dados.vCodProduto);
+          if iGrade > 0 then
+            dados.QryXmlDetailFK_GRADE_PRODUTO.Value := iGrade;
+          dados.QryXmlDetail.Post;
+          dados.Conexao.CommitRetaining;
+        end;
+      finally
+        FrmCadProduto.DBEdit24.ReadOnly := False;
+        FrmCadProduto.DBEdit9.ReadOnly  := False;
+      end;
+    finally
+      if FrmCadProduto <> nil then
+        FrmCadProduto.Release;
+    end;
+
+    // Passa para o próximo registro da lista
+    dados.QryXmlDetail.Next;
+  end;
+end;
+
 
 procedure TFrmXml.btnDesvincularClick(Sender: TObject);
 begin
@@ -1583,12 +1802,12 @@ begin
     dados.qryexecute.Params[0].Value := dados.qryXmlMasterID_FORNECEDOR.Value;;
     dados.qryexecute.Params[1].Value := dados.QryXmlDetailID_PRODUTO_LOC.Value;
     dados.qryexecute.ExecSQL;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     dados.QryXmlDetail.Edit;
     dados.QryXmlDetailID_PRODUTO_LOC.Clear;
     dados.QryXmlDetail.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
   finally
     btnDesvincular.Enabled := true;
@@ -1617,7 +1836,7 @@ begin
       dados.qryexecute.Params[1].Value :=
         dados.QryXmlDetailID_PRODUTO_LOC.Value;
       dados.qryexecute.ExecSQL;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
 
       dados.qryexecute.Close;
       dados.qryexecute.SQL.Clear;
@@ -1625,7 +1844,7 @@ begin
         'update XML_DETAIL set ID_PRODUTO_LOC=null  where CODIGO=:id';
       dados.qryexecute.Params[0].Value := dados.QryXmlDetailCODIGO.Value;
       dados.qryexecute.ExecSQL;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
 
       dados.QryXmlDetail.Next;
     end;

@@ -158,7 +158,7 @@ procedure TFrmInventario.LimpaInventario;
 begin
   Dados.qryExecute.SQL.Text := 'DELETE FROM INVENTARIO';
   Dados.qryExecute.ExecSQL;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
   qryInventario.Refresh;
 end;
 
@@ -180,7 +180,7 @@ begin
       qryInventarioPR_CUSTO.AsFloat := qrySimplesPR_CUSTO.AsFloat;
       qryInventarioQTD.AsFloat := qrySimplesSALDO.AsFloat;
       qryInventario.Post;
-      Dados.Conexao.CommitRetaining;
+      Dados.Conexao.Commit;
       ProgressBar1.Position := ProgressBar1.Position + 1;
       qrySimples.Next;
     end;
@@ -276,12 +276,12 @@ end;
 
 procedure TFrmInventario.qryInventarioAfterDelete(DataSet: TDataSet);
 begin
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TFrmInventario.qryInventarioAfterPost(DataSet: TDataSet);
 begin
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TFrmInventario.qryInventarioBeforePost(DataSet: TDataSet);

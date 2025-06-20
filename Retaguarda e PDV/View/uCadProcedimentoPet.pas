@@ -1244,7 +1244,7 @@ end;
 
 procedure TFrmProcedimentoPet.qryExamesProcAfterPost(DataSet: TDataSet);
 begin
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TFrmProcedimentoPet.qryExamesProcCalcFields(DataSet: TDataSet);
@@ -1272,7 +1272,7 @@ end;
 
 procedure TFrmProcedimentoPet.qryProcDAfterDelete(DataSet: TDataSet);
 begin
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
   CalculaTotalGeral;
   TotalProdSer(qryProcDTIPO.AsString, qryProcMCODIGO.AsInteger);
   CalculaTotal;
@@ -1280,7 +1280,7 @@ end;
 
 procedure TFrmProcedimentoPet.qryProcDAfterPost(DataSet: TDataSet);
 begin
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
   CalculaTotalGeral;
   TotalProdSer(qryProcDTIPO.AsString, qryProcMCODIGO.AsInteger);
   CalculaTotal;
@@ -1443,7 +1443,7 @@ end;
 
 procedure TFrmProcedimentoPet.qryProcMAfterPost(DataSet: TDataSet);
 begin
-  Dados.Conexao.CommitRetaining;  
+  Dados.Conexao.Commit;  
 end;
 
 procedure TFrmProcedimentoPet.qryProcMCalcFields(DataSet: TDataSet);

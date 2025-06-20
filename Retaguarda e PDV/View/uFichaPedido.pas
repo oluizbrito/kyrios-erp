@@ -166,7 +166,7 @@ begin
       qryFichaFKPESSOA.Value := idCliente;
       qryFichaDOCUMENTO.Value := Documento;
       qryFicha.Post;
-      Dados.Conexao.CommitRetaining;
+      Dados.Conexao.Commit;
       vSoma := SimpleRoundTo(vSoma + qryFichaENTRADA.AsFloat, -2);
     end;
 
@@ -181,7 +181,7 @@ begin
       qryFichaSAIDA.Value := SimpleRoundTo((vTaxa * qryFichaENTRADA.AsFloat)
         / 100, -2);
       qryFicha.Post;
-      Dados.Conexao.CommitRetaining;
+      Dados.Conexao.Commit;
     end;
 
   finally

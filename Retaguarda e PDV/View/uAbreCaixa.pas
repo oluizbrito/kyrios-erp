@@ -70,7 +70,7 @@ begin
   vValor := StrToFloatDef(edtValor.Text, 0);
   if vValor > 0 then
   begin
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
     dados.qryCaixa.Close;
     dados.qryCaixa.Open;
     if not(dados.qryconsulta.IsEmpty) then
@@ -97,7 +97,7 @@ begin
       dados.qryCaixaCODIGO.Value := dados.Numerador('CAIXA', 'CODIGO',
         'N', '', '');
       dados.qryCaixa.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
     end;
   end;
 end;
@@ -122,7 +122,7 @@ begin
     dados.qryExecute.Params[1].Value := dados.idUsuario;
     dados.qryExecute.Params[2].Value := cbCaixa.KeyValue;
     dados.qryExecute.ExecSQL;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
     FrmPDV.qryConta_Movimento.Close;
     FrmPDV.qryConta_Movimento.Params[0].Value := dados.Lote;
     FrmPDV.qryConta_Movimento.Params[1].Value := cbCaixa.KeyValue;
@@ -138,7 +138,7 @@ begin
     FrmPDV.qryConta_MovimentoLOTE.Value := dados.Lote;
     FrmPDV.qryConta_MovimentoID_USUARIO.Value := dados.idUsuario;
     FrmPDV.qryConta_Movimento.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
     GeraCaixa;
     dados.idCaixa := cbCaixa.KeyValue;
     FrmPDV.habilitacampos(true);

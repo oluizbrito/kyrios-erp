@@ -1,17 +1,64 @@
 unit uTerminais;
-interface //Suporte e Vendas direto no Whatsapp (48)998463846
+interface
+
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics, ACBrPosPrinter, Printers, TypInfo, ACBrBAL,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Buttons,
-  Vcl.ExtCtrls, DBCtrlsEh, Vcl.DBCtrls, Vcl.Mask, Vcl.ComCtrls, Vcl.Grids,
-  Vcl.DBGrids, ACBrBase, ACBrECF, ACBrSATClass, FireDAC.Stan.Intf, filectrl,
-  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
-  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client, ACBrTEFDClass, Vcl.Samples.Spin,
-  ACBrTEFD, acbrUtil, ACBrTEFPayGoWebComum, JvComponentBase, JvEnterTab,
-  cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, Vcl.Menus, cxButtons;
-type
+  ACBrBAL,
+  ACBrBase,
+  ACBrECF,
+  ACBrPosPrinter,
+  ACBrSATClass,
+  ACBrTEFD,
+  ACBrTEFDClass,
+  ACBrTEFPayGoWebComum,
+  DBCtrlsEh,
+  JvComponentBase,
+  JvEnterTab,
+  Printers,
+  TypInfo,
+  acbrUtil,
+  cxButtons,
+  cxGraphics,
+  cxLookAndFeelPainters,
+  cxLookAndFeels,
+  filectrl,
+
+  Data.DB,
+
+  FireDAC.Comp.Client,
+  FireDAC.Comp.DataSet,
+  FireDAC.DApt,
+  FireDAC.DApt.Intf,
+  FireDAC.DatS,
+  FireDAC.Phys.Intf,
+  FireDAC.Stan.Async,
+  FireDAC.Stan.Error,
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Param,
+
+  System.Classes,
+  System.SysUtils,
+  System.Variants,
+
+  Vcl.Buttons,
+  Vcl.ComCtrls,
+  Vcl.Controls,
+  Vcl.DBCtrls,
+  Vcl.DBGrids,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Vcl.Forms,
+  Vcl.Graphics,
+  Vcl.Grids,
+  Vcl.Mask,
+  Vcl.Menus,
+  Vcl.Samples.Spin,
+  Vcl.StdCtrls,
+
+  Winapi.Messages,
+  Winapi.Windows, JvExStdCtrls, JvHtControls, dxSkinsCore,
+  dxSkinDevExpressDarkStyle, dxSkinOffice2007Black, dxSkinOffice2007Blue,
+  dxSkinOffice2007Green, dxSkinOffice2007Pink, JvCheckBox;type
   TfrmTerminais = class(TForm)
     DBGrid1: TDBGrid;
     PageControl3: TPageControl;
@@ -19,31 +66,14 @@ type
     Label24: TLabel;
     Label13: TLabel;
     Label15: TLabel;
-    Label1: TLabel;
     Label23: TLabel;
     Label27: TLabel;
-    Label135: TLabel;
-    Label136: TLabel;
-    Label141: TLabel;
-    Label142: TLabel;
-    Label143: TLabel;
-    Label144: TLabel;
-    Label145: TLabel;
-    Label146: TLabel;
     DBEdit6: TDBEdit;
     DBEdit17: TDBEdit;
     DBEdit18: TDBEdit;
     cbModeloImpressora: TDBComboBox;
-    cbVelocidade: TDBComboBox;
     DBCheckBox4: TDBCheckBox;
     cbPortaImpressora: TDBComboBox;
-    cbPaginaCodigo: TDBComboBox;
-    DBEdit41: TDBEdit;
-    DBEdit42: TDBEdit;
-    DBEdit43: TDBEdit;
-    DBEdit44: TDBEdit;
-    DBEdit45: TDBEdit;
-    DBEdit46: TDBEdit;
     Panel2: TPanel;
     dsTerminais: TDataSource;
     TabSheet12: TTabSheet;
@@ -61,10 +91,6 @@ type
     DBComboBox5: TDBComboBox;
     cbBalanca: TDBComboBoxEh;
     DBComboBox4: TDBComboBox;
-    DBCheckBox1: TDBCheckBox;
-    DBCheckBox5: TDBCheckBox;
-    DBCheckBox6: TDBCheckBox;
-    DBCheckBox7: TDBCheckBox;
     ACBrECF1: TACBrECF;
     TabSheet1: TTabSheet;
     cbSatTipoDLL: TDBComboBox;
@@ -74,10 +100,6 @@ type
     btnSat: TSpeedButton;
     OpenDialog1: TOpenDialog;
     DBCheckBox8: TDBCheckBox;
-    Label4: TLabel;
-    DBEdit1: TDBEdit;
-    DBEdit2: TDBEdit;
-    Label5: TLabel;
     qryTerminal: TFDQuery;
     qryTerminalIP: TStringField;
     qryTerminalNOME: TStringField;
@@ -137,16 +159,6 @@ type
     Label39: TLabel;
     cbxGP: TDBComboBoxEh;
     qryTerminalCOLUNAS: TIntegerField;
-    DBEdit3: TDBEdit;
-    GroupBox1: TGroupBox;
-    Label6: TLabel;
-    DBEdit4: TDBEdit;
-    DBEdit5: TDBEdit;
-    Label7: TLabel;
-    Label8: TLabel;
-    Label9: TLabel;
-    DBEdit7: TDBEdit;
-    DBEdit8: TDBEdit;
     qryTerminalL1: TIntegerField;
     qryTerminalL2: TIntegerField;
     qryTerminalL3: TIntegerField;
@@ -206,20 +218,86 @@ type
     qryTerminalNUMERO_LOJA: TIntegerField;
     DBCheckBox15: TDBCheckBox;
     qryTerminalUSAR_NUMERO_INICIAL: TStringField;
-    GroupBox_ecf: TGroupBox;
     GroupBox_pdv: TGroupBox;
     DBCheckBox3: TDBCheckBox;
     DBCheckBox12: TDBCheckBox;
     DBCheckBox2: TDBCheckBox;
-    DBCheckBox9: TDBCheckBox;
-    DBComboBoxEh3: TDBComboBoxEh;
-    Label3: TLabel;
-    Label25: TLabel;
     cxGravar: TcxButton;
     cxSair: TcxButton;
     cxExcluir: TcxButton;
+    DBCheckPREVIEW: TDBCheckBox;
+    qryTerminalMODELO_TEF: TIntegerField;
+    qryTerminalIP_SERVIDOR_TEF: TStringField;
+    qryTerminalNUMERO_LOGICO_TERMINAL: TIntegerField;
+    qryTerminalPORTA_PIN_PAD: TIntegerField;
+    qryTerminalMENSAGEM_PIN_PAD: TStringField;
+    qryTerminalIMPRESSORA_FASTREPORT: TStringField;
+    qryTerminalMOSTRA_PREVIEW: TStringField;
+    qryTerminalMOSTRAR_TELA_CAIXA_LIVRE: TStringField;
+    qryTerminalTIME_TELA_CAIXA_LIVRE: TIntegerField;
+    qryTerminalPESQUISA_RAPIDA: TStringField;
+    qryTerminalBUSCA_BALANCA_BARRAS: TStringField;
+    qryTerminalIMPRESSORA_FORTESREPORT: TStringField;
+    qryTerminalMENSAGEM_PDV: TStringField;
+    qryTerminalMOSTRAR_MENSAGEM_PDV: TStringField;
+    qryTerminalQTD_TENTATIVA_CONECT_BAL: TIntegerField;
+    qryTerminalIMPRIMIR_TEF_ESCPOS: TStringField;
+    qryTerminalIMPRIME_PREVIEW: TStringField;
+    prtImpressora: TPrintDialog;
+    lbvsSat: TLabel;
+    CBXvssat: TJvHTComboBox;
+    qryTerminalTIPOFECHAMENTO: TStringField;
+    qryTerminalMEIAFOLHA: TStringField;
+    TabSheet_ECF: TTabSheet;
+    GroupBox_ecf: TGroupBox;
+    Label1: TLabel;
+    Label135: TLabel;
+    Label136: TLabel;
+    Label141: TLabel;
+    Label142: TLabel;
+    Label143: TLabel;
+    Label144: TLabel;
+    Label145: TLabel;
+    Label146: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    cbPaginaCodigo: TDBComboBox;
+    cbVelocidade: TDBComboBox;
+    DBEdit1: TDBEdit;
+    DBEdit2: TDBEdit;
+    DBEdit3: TDBEdit;
+    DBEdit41: TDBEdit;
+    DBEdit42: TDBEdit;
+    DBEdit43: TDBEdit;
+    DBEdit44: TDBEdit;
+    DBEdit45: TDBEdit;
+    DBEdit46: TDBEdit;
+    GroupBox1: TGroupBox;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    DBEdit4: TDBEdit;
+    DBEdit5: TDBEdit;
+    DBEdit7: TDBEdit;
+    DBEdit8: TDBEdit;
+    DBCheckBox9: TDBCheckBox;
+    grptipoCaixa: TDBRadioGroup;
+    lblImpressora: TLabel;
+    DBEdit_impressora: TDBEdit;
+    ckMeiaFolha: TDBCheckBox;
+    btnImpressora: TSpeedButton;
     DBCheckBox16: TDBCheckBox;
     qryTerminalLER_PESO: TStringField;
+    GroupBox2: TGroupBox;
+    GroupBox3: TGroupBox;
+    GroupBox4: TGroupBox;
+    DBCheckBox5: TDBCheckBox;
+    DBCheckBox6: TDBCheckBox;
+    DBCheckBox7: TDBCheckBox;
+    DBCheckBox1: TDBCheckBox;
+    DBComboBoxEh3: TDBComboBoxEh;
+    Label3: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure DBComboBoxEh3KeyDown(Sender: TObject; var Key: Word;
@@ -232,6 +310,9 @@ type
     procedure cxExcluirClick(Sender: TObject);
     procedure cxGravarClick(Sender: TObject);
     procedure cxSairClick(Sender: TObject);
+    procedure btnImpressoraClick(Sender: TObject);
+    procedure grptipoCaixaChange(Sender: TObject);
+    procedure PageControl3Change(Sender: TObject);
   private
     FCanceladoPeloOperador: Boolean;
     FTempoDeEspera: TDateTime;
@@ -245,7 +326,7 @@ type
   end;
 var
   frmTerminais: TfrmTerminais;
-implementation //Acesse lojadodesenvolvedor.com.br e saiba mais sobre esse código fonte.
+implementation
 {$R *.dfm}
 uses Udados, frExibeMensagem, uDMSat;
 const
@@ -292,7 +373,21 @@ begin
    DBCheckBox10.Visible := true;
    DBCheckBox11.Visible := true;
   end;
+
+
+   if qryTerminalTIPOFECHAMENTO.AsString <> inttostr(0) then
+      ckMeiaFolha.Visible:= False;
+
 end;
+procedure TfrmTerminais.grptipoCaixaChange(Sender: TObject);
+begin
+
+  ckMeiaFolha.Visible := (grptipoCaixa.ItemIndex = 0);
+
+
+end;
+
+
 procedure TfrmTerminais.ListaImpressora;
 var
   I: Integer;
@@ -336,6 +431,13 @@ begin
     AFileLog := edLog.Text;
   OpenURL(AFileLog);
 end;
+procedure TfrmTerminais.PageControl3Change(Sender: TObject);
+begin
+  if (PageControl3.TabIndex = 1) and (grptipoCaixa.Value = '0') then
+    ckMeiaFolha.Visible := true;
+
+end;
+
 procedure TfrmTerminais.PathClick(Sender: TObject);
 var
   Dir: string;
@@ -348,6 +450,19 @@ begin
   then
     TDBEdit(Sender).Text := Dir;
 end;
+procedure TfrmTerminais.btnImpressoraClick(Sender: TObject);
+begin
+
+ if prtImpressora.Execute then
+ begin
+  DBEdit_impressora.Text := Printer.Printers[Printer.PrinterIndex];
+ end
+  else
+  begin
+    ShowMessage('Nenhuma impressora foi selecionada.');
+  end;
+ end;
+
 procedure TfrmTerminais.btnSatClick(Sender: TObject);
 begin
   OpenDialog1.Title := 'Selecione DLL';
@@ -364,13 +479,37 @@ begin
 end;
 
 procedure TfrmTerminais.Button1Click(Sender: TObject);
+var
+  MotivoFalha: string;
 begin
-  dmsat.ConfiguraSAT;
-  if dmsat.ACBrSAT1.Inicializado then
-    ShowMessage ('SAT/MFE Inicializado')
-  else
-     ShowMessage ('SAT/MFE não Inicializado')
+  try
+    // Configura o SAT
+    dmsat.ConfiguraSAT;
+    dmsat.ACBrSAT1.Inicializar;
+
+    // Verifica se o SAT foi inicializado
+    if dmsat.ACBrSAT1.Inicializado then
+    begin
+      ShowMessage('SAT/MFE Inicializado');
+    end
+    else
+    begin
+      // Obtém o motivo da falha
+      dmsat.ACBrSAT1.ArqLOG := 'SatMFE_log.TXT';
+    //  dmsat.ACBrSAT1.ExtrairLogs():= lnDetalhado;
+      MotivoFalha := dmsat.ACBrSAT1.RespostaComando;
+      ShowMessage('SAT/MFE não Inicializado. Motivo: ' + sLineBreak + MotivoFalha);
+    end;
+  except
+    on E: Exception do
+    begin
+      // Captura e exibe qualquer erro que ocorrer durante o processo
+      ShowMessage('Erro ao tentar inicializar o SAT/MFE: ' + sLineBreak + E.Message);
+    end;
+  end;
 end;
+
+
 procedure TfrmTerminais.cxExcluirClick(Sender: TObject);
 begin
     If Application.messagebox('Deseja realmente excluir terminal?', 'Confirmação',
@@ -379,17 +518,45 @@ begin
     Dados.Conexao.CommitRetaining;
 end;
 
-procedure TfrmTerminais.cxGravarClick(Sender: TObject);
+procedure TfrmTerminais.cxGravarClick(Sender: TObject);    //ajustar depois
 begin
+  // Verifica se o campo "VELOCIDADE" está preenchido
   if qryTerminalVELOCIDADE.IsNull then
+  begin
+    ShowMessage('Selecione o campo velocidade de impressão!');
+    Exit;
+  end;
+
+  if qryTerminal.State in [dsInsert, dsEdit] then
+  if not (grptipoCaixa.ItemIndex = 0) then
+       qryTerminalMEIAFOLHA.AsString := 'N';
+   qryTerminal.Post;
+
+  if dados.qryConfig.State in [dsInsert, dsEdit] then
+  begin
+   if CBXvssat.Items.Count > 0 then
+      begin
+        dados.qryConfigCFE_VERSAO.AsString := CBXvssat.Items[0];
+        dados.qryConfig.Post; // Salva as alterações
+      end
+    else
     begin
-      ShowMessage('Selecione campo velocidade de impressão!');
+      ShowMessage('Selecione uma Versão ! ');
       Exit;
     end;
-  if qryTerminal.State in [dsinsert, dsedit] then
-    qryTerminal.Post;
+
+
+
+
+    dados.qryConfig.Post; // Salva as alterações
+
+  end;
+
   Dados.Conexao.CommitRetaining;
-  ShowMessage('Dados gravado com sucesso! Reinicie o sistema para aplicar as configurações.');
+
+  ShowMessage('Dados gravados com sucesso! Reinicie o sistema para aplicar as configurações.');
+
+  // Fecha a tela
   Close;
 end;
 

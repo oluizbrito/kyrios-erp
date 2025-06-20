@@ -334,13 +334,13 @@ begin
     dados.qryExecute.SQL.Text := 'DELETE FROM CAIXA WHERE FKCOMPRA=:ID';
     dados.qryExecute.Params[0].Value := dados.qryCompraID.Value;
     dados.qryExecute.ExecSQL;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     dados.qryExecute.Close;
     dados.qryExecute.SQL.Text := 'DELETE FROM CPAGAR WHERE FK_COMPRA=:ID';
     dados.qryExecute.Params[0].Value := dados.qryCompraID.Value;
     dados.qryExecute.ExecSQL;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     if DBCheckBox2.Checked then
       AjustaPreco_Estoque;
@@ -553,7 +553,7 @@ end;
 
 procedure TfrmCadCompra.qryCompraAfterPost(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TfrmCadCompra.qryCompraBeforePost(DataSet: TDataSet);
@@ -677,13 +677,13 @@ end;
 
 procedure TfrmCadCompra.qryItensCompraAfterDelete(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
   CalculaTotais;
 end;
 
 procedure TfrmCadCompra.qryItensCompraAfterPost(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
   CalculaTotais;
 end;
 
@@ -777,7 +777,7 @@ begin
       dados.qryExecute.Params[0].AsFloat := qtd_atual * qtd_atual;
       dados.qryExecute.Params[1].Value := grade;
       dados.qryExecute.ExecSQL;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
     end;
   end;
 
@@ -795,7 +795,7 @@ begin
       dados.qryExecute.Params[0].AsFloat := qtd_atual * qtd_atual;
       dados.qryExecute.Params[1].Value := grade;
       dados.qryExecute.ExecSQL;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
     end;
   end;
 end;

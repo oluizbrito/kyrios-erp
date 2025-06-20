@@ -589,7 +589,7 @@ begin
               end;
 
               ExecSql;
-              dados.Conexao.CommitRetaining;
+              dados.Conexao.Commit;
               showmessage('Tributação Alterada com Sucesso!');
           end;
           Close;
@@ -652,7 +652,7 @@ begin
 
             tblTribNCM.Post;
             showmessage('Tributação Cadastrada com Sucesso!');
-            dados.Conexao.CommitRetaining;
+            dados.Conexao.Commit;
             end;
             close;
         end;
@@ -2026,7 +2026,7 @@ begin
               end;
 
               ExecSql;
-              dados.Conexao.CommitRetaining;
+              dados.Conexao.Commit;
               showmessage('Tributação Alterada com Sucesso!');
           end;
           Close;
@@ -2089,7 +2089,7 @@ begin
 
             tblTribNCM.Post;
             showmessage('Tributação Cadastrada com Sucesso!');
-            dados.Conexao.CommitRetaining;
+            dados.Conexao.Commit;
             end;
             close;
         end;

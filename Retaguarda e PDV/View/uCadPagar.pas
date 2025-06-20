@@ -160,7 +160,7 @@ begin
     qryDuplicaHISTORICO.Value := qryCPHISTORICO.Value;
     qryDuplica.Post;
 
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
   end;
 
 end;
@@ -175,6 +175,7 @@ end;
 
 procedure TfrmCadPagar.cxGravarClick(Sender: TObject);
 begin
+
   DBEdit2.SetFocus;
 
   if qryCP.State in [dsInsert, dsEdit] then
@@ -209,7 +210,7 @@ begin
     end;
 
     qryCP.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
     close;
   end;
 end;
@@ -259,9 +260,9 @@ end;
 
 procedure TfrmCadPagar.qryCPAfterPost(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
   duplica(SpinEdit1.Value);
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
 end;
 

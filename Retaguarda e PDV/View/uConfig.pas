@@ -391,6 +391,21 @@ type
     ACBrMail1: TACBrMail;
     ACBrBAL1: TACBrBAL;
     ACBrTEFD: TACBrTEFD;
+    rg1601: TDBRadioGroup;
+    DBLookupComboBox1: TDBLookupComboBox;
+    DBLookupComboBox2: TDBLookupComboBox;
+    DBLookupComboBox3: TDBLookupComboBox;
+    DBLookupComboBox4: TDBLookupComboBox;
+    gb1601: TGroupBox;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Label18: TLabel;
+    qryAdmPadrao: TFDQuery;
+    dsAdmPadrao: TDataSource;
+    qryAdmPadraoCODIGO: TIntegerField;
+    qryAdmPadraoRAZAO: TStringField;
+    qryAdmPadraoCLI: TStringField;
     procedure sbtnLogoMarcaClick(Sender: TObject);
     procedure sbPathNFeClick(Sender: TObject);
     procedure sbPathCanClick(Sender: TObject);
@@ -452,6 +467,7 @@ type
     procedure Button3Click(Sender: TObject);
     procedure cxGravarClick(Sender: TObject);
     procedure cxSairClick(Sender: TObject);
+    procedure DBCheckBox10Click(Sender: TObject);
   private
     ncopias: string;
     procedure PathClick(Sender: TObject);
@@ -905,7 +921,7 @@ procedure TfrmConfig.Button1Click(Sender: TObject);
 begin
   if Dados.qryConfig.State in dsEditModes then
     Dados.qryConfig.Post;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
   Dados.qryConfig.Refresh;
   if trim(Dados.qryConfigCAMINHO_CERTIFICADO.Value) <> '' then
     ACBrNFe1.Configuracoes.Certificados.ArquivoPFX :=
@@ -1388,7 +1404,7 @@ begin
     Dados.qrySped_Config.Post;
   BtnGravaEtq.Click;
   GravaLicenca;
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
   Close;
 end;
 procedure TfrmConfig.cxSairClick(Sender: TObject);
@@ -1451,6 +1467,29 @@ begin
     end;
   end;
 end;
+procedure TfrmConfig.DBCheckBox10Click(Sender: TObject);
+begin
+
+  if DBCheckBox10.Checked then
+  begin
+    rg1601.Enabled := True;
+    gb1601.Enabled := True;
+    DBLookupComboBox1.Enabled := True;
+    DBLookupComboBox2.Enabled := True;
+    DBLookupComboBox3.Enabled := True;
+    DBLookupComboBox4.Enabled := True;
+  end
+  else
+  begin
+    rg1601.Enabled := False;
+    gb1601.Enabled := False;
+    DBLookupComboBox1.Enabled := False;
+    DBLookupComboBox2.Enabled := False;
+    DBLookupComboBox3.Enabled := False;
+    DBLookupComboBox4.Enabled := False;
+  end;
+end;
+
 procedure TfrmConfig.DBComboBox9Change(Sender: TObject);
 begin
   Dados.ConfiguraEstilo(Dados.qryParametroESTILO.Value);
@@ -1627,6 +1666,19 @@ begin
   Dados.qryEtiqueta.Open;
   CarregaDevice;
   LeLicenca;
+
+  qryAdmPadrao.close;
+  qryAdmPadrao.Open;
+  if (Dados.qrySped_ConfigIND_CART.AsString <> 'S') then // desativa as opções dp 1601 se a empresa não gerar
+  begin
+    rg1601.Enabled := False;
+    gb1601.Enabled := False;
+    DBLookupComboBox1.Enabled := False;
+    DBLookupComboBox2.Enabled := False;
+    DBLookupComboBox3.Enabled := False;
+    DBLookupComboBox4.Enabled := False;
+  end;
+
 end;
 procedure TfrmConfig.PathClick(Sender: TObject);
 var

@@ -277,7 +277,7 @@
     Margins.Top = 7
     Margins.Right = 7
     Margins.Bottom = 0
-    ActivePage = TabSheet9
+    ActivePage = TabCTe
     Align = alClient
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
@@ -1294,7 +1294,7 @@
             Left = 26
             Top = 99
             Width = 477
-            Height = 21
+            Height = 23
             Ctl3D = False
             DataField = 'PATHSALVARNFE'
             DataSource = dsConfig
@@ -1311,7 +1311,7 @@
             Left = 26
             Top = 155
             Width = 477
-            Height = 21
+            Height = 23
             Ctl3D = False
             DataField = 'PATHSCHEMAS_NFE'
             DataSource = dsConfig
@@ -1328,7 +1328,7 @@
             Left = 26
             Top = 45
             Width = 121
-            Height = 21
+            Height = 23
             CharCase = ecUpperCase
             Ctl3D = False
             DataField = 'VERSAONFE'
@@ -1360,7 +1360,7 @@
             Left = 157
             Top = 45
             Width = 216
-            Height = 21
+            Height = 23
             CharCase = ecUpperCase
             Ctl3D = False
             DataField = 'FORMAEMISSAO'
@@ -2335,7 +2335,7 @@
             Left = 13
             Top = 101
             Width = 502
-            Height = 20
+            Height = 23
             Ctl3D = False
             DataField = 'FORMATOALERTA'
             DataSource = dsConfig
@@ -2352,7 +2352,7 @@
             Left = 13
             Top = 150
             Width = 473
-            Height = 20
+            Height = 23
             Ctl3D = False
             DataField = 'PATHSALVAR'
             DataSource = dsConfig
@@ -2369,7 +2369,7 @@
             Left = 13
             Top = 198
             Width = 473
-            Height = 20
+            Height = 23
             Ctl3D = False
             DataField = 'PATHSCHEMAS'
             DataSource = dsConfig
@@ -2458,7 +2458,7 @@
             Left = 13
             Top = 291
             Width = 126
-            Height = 20
+            Height = 23
             Ctl3D = False
             DataField = 'CLIENTE_PADRAO'
             DataSource = dsConfig
@@ -2475,7 +2475,7 @@
             Left = 13
             Top = 245
             Width = 121
-            Height = 20
+            Height = 23
             CharCase = ecUpperCase
             Ctl3D = False
             DataField = 'VERSAODF'
@@ -2507,7 +2507,7 @@
             Left = 13
             Top = 336
             Width = 473
-            Height = 20
+            Height = 23
             Ctl3D = False
             DataField = 'LOGOMARCA'
             DataSource = dsConfig
@@ -2524,7 +2524,7 @@
             Left = 145
             Top = 291
             Width = 120
-            Height = 20
+            Height = 23
             Ctl3D = False
             DataField = 'VENDEDOR_PADRAO'
             DataSource = dsConfig
@@ -2541,7 +2541,7 @@
             Left = 271
             Top = 291
             Width = 140
-            Height = 20
+            Height = 23
             Ctl3D = False
             DataField = 'TRANSPORTADOR_PADRAO'
             DataSource = dsConfig
@@ -2558,7 +2558,7 @@
             Left = 145
             Top = 245
             Width = 118
-            Height = 20
+            Height = 23
             CharCase = ecUpperCase
             Ctl3D = False
             DataField = 'VERSAOQRCODE'
@@ -3794,11 +3794,12 @@
         Font.Style = []
         Items.Strings = (
           've200'
-          've300')
+          've300'
+          've400')
         KeyItems.Strings = (
           '0'
           '1'
-          '')
+          '2')
         ParentCtl3D = False
         ParentFont = False
         TabOrder = 1
@@ -4411,29 +4412,29 @@
       Caption = 'Sped'
       ImageIndex = 7
       object lblPerfil: TLabel
-        Left = 32
-        Top = 25
+        Left = 14
+        Top = 10
         Width = 32
         Height = 17
         Caption = 'Perfil:'
       end
       object Label70: TLabel
-        Left = 116
-        Top = 25
+        Left = 72
+        Top = 10
         Width = 104
         Height = 17
         Caption = 'Regime Tribut'#225'rio'
       end
       object Label71: TLabel
-        Left = 330
-        Top = 25
+        Left = 286
+        Top = 10
         Width = 54
         Height = 17
         Caption = 'Atividade'
       end
       object Label72: TLabel
-        Left = 32
-        Top = 74
+        Left = 494
+        Top = 10
         Width = 116
         Height = 17
         BiDiMode = bdLeftToRight
@@ -4441,8 +4442,8 @@
         ParentBiDiMode = False
       end
       object Label73: TLabel
-        Left = 315
-        Top = 74
+        Left = 14
+        Top = 60
         Width = 143
         Height = 17
         BiDiMode = bdLeftToRight
@@ -4450,8 +4451,8 @@
         ParentBiDiMode = False
       end
       object Label74: TLabel
-        Left = 277
-        Top = 122
+        Left = 494
+        Top = 58
         Width = 112
         Height = 17
         BiDiMode = bdLeftToRight
@@ -4459,8 +4460,8 @@
         ParentBiDiMode = False
       end
       object Label75: TLabel
-        Left = 32
-        Top = 122
+        Left = 246
+        Top = 58
         Width = 123
         Height = 17
         BiDiMode = bdLeftToRight
@@ -4468,9 +4469,9 @@
         ParentBiDiMode = False
       end
       object DBComboBoxEh14: TDBComboBoxEh
-        Left = 31
-        Top = 44
-        Width = 79
+        Left = 13
+        Top = 29
+        Width = 49
         Height = 25
         DataField = 'IND_PERFIL'
         DataSource = dsSped
@@ -4488,9 +4489,9 @@
         Visible = True
       end
       object DBCheckBox6: TDBCheckBox
-        Left = 31
-        Top = 182
-        Width = 277
+        Left = 12
+        Top = 126
+        Width = 309
         Height = 17
         Caption = 'Ocorreu averba'#231#227'o de exporta'#231#227'o no per'#237'odo'
         DataField = 'IND_EXP'
@@ -4500,9 +4501,9 @@
         ValueUnchecked = 'N'
       end
       object DBCheckBox5: TDBCheckBox
-        Left = 31
-        Top = 207
-        Width = 488
+        Left = 12
+        Top = 151
+        Width = 461
         Height = 16
         Caption = 
           'Existem informa'#231#245'es acerca de cr'#233'ditos de ICMS a serem controlad' +
@@ -4514,9 +4515,9 @@
         ValueUnchecked = 'N'
       end
       object DBCheckBox7: TDBCheckBox
-        Left = 31
-        Top = 256
-        Width = 488
+        Left = 12
+        Top = 219
+        Width = 181
         Height = 16
         Caption = 'Usinas de a'#231#250'car e/'#225'lcool '
         DataField = 'IND_USINA'
@@ -4526,10 +4527,10 @@
         ValueUnchecked = 'N'
       end
       object DBCheckBox8: TDBCheckBox
-        Left = 31
-        Top = 231
-        Width = 472
-        Height = 17
+        Left = 12
+        Top = 175
+        Width = 365
+        Height = 37
         Caption = 
           #201' comercio varejista de combust'#237'veis com movimenta'#231#227'o e/ou estoq' +
           'ue no per'#237'odo'
@@ -4538,11 +4539,12 @@
         TabOrder = 6
         ValueChecked = 'S'
         ValueUnchecked = 'N'
+        WordWrap = True
       end
       object DBCheckBox10: TDBCheckBox
-        Left = 31
-        Top = 328
-        Width = 472
+        Left = 12
+        Top = 339
+        Width = 341
         Height = 17
         Caption = 'Realizou vendas com Cart'#227'o de Cr'#233'dito ou de d'#233'bito'
         DataField = 'IND_CART'
@@ -4550,11 +4552,12 @@
         TabOrder = 7
         ValueChecked = 'S'
         ValueUnchecked = 'N'
+        OnClick = DBCheckBox10Click
       end
       object DBCheckBox11: TDBCheckBox
-        Left = 31
-        Top = 304
-        Width = 488
+        Left = 12
+        Top = 267
+        Width = 245
         Height = 16
         Caption = 'A empresa '#233' distribuidora de energia '
         DataField = 'IND_EE'
@@ -4564,8 +4567,8 @@
         ValueUnchecked = 'N'
       end
       object DBCheckBox12: TDBCheckBox
-        Left = 31
-        Top = 279
+        Left = 12
+        Top = 242
         Width = 277
         Height = 17
         Caption = 'Existem informa'#231#245'es de Valor Agregado'
@@ -4576,9 +4579,9 @@
         ValueUnchecked = 'N'
       end
       object DBCheckBox9: TDBCheckBox
-        Left = 31
-        Top = 353
-        Width = 488
+        Left = 12
+        Top = 291
+        Width = 309
         Height = 16
         Caption = 'Foram emitidos documentos fiscais em papel'
         DataField = 'IND_FORM'
@@ -4588,9 +4591,9 @@
         ValueUnchecked = 'N'
       end
       object DBCheckBox13: TDBCheckBox
-        Left = 31
-        Top = 377
-        Width = 488
+        Left = 12
+        Top = 315
+        Width = 309
         Height = 16
         Caption = 'A empresa prestou servi'#231'os de transporte a'#233'reo'
         DataField = 'IND_AER'
@@ -4600,8 +4603,8 @@
         ValueUnchecked = 'N'
       end
       object DBComboBoxEh17: TDBComboBoxEh
-        Left = 32
-        Top = 93
+        Left = 494
+        Top = 29
         Width = 277
         Height = 25
         DataField = 'COD_INC_TRIB'
@@ -4620,9 +4623,9 @@
         Visible = True
       end
       object DBComboBoxEh18: TDBComboBoxEh
-        Left = 315
-        Top = 93
-        Width = 212
+        Left = 14
+        Top = 79
+        Width = 222
         Height = 25
         DataField = 'IND_APRO_CRED'
         DataSource = dsSped
@@ -4640,9 +4643,9 @@
         Visible = True
       end
       object DBComboBoxEh19: TDBComboBoxEh
-        Left = 277
-        Top = 143
-        Width = 250
+        Left = 494
+        Top = 79
+        Width = 277
         Height = 25
         DataField = 'IND_REG_CUM'
         DataSource = dsSped
@@ -4660,8 +4663,8 @@
         Visible = True
       end
       object DBComboBoxEh20: TDBComboBoxEh
-        Left = 32
-        Top = 143
+        Left = 246
+        Top = 79
         Width = 239
         Height = 25
         DataField = 'COD_TIPO_CONT'
@@ -4678,8 +4681,8 @@
         Visible = True
       end
       object DBComboBoxEh16: TDBComboBoxEh
-        Left = 327
-        Top = 44
+        Left = 283
+        Top = 29
         Width = 200
         Height = 25
         DataField = 'IND_ATIV'
@@ -4700,8 +4703,8 @@
         Visible = True
       end
       object DBComboBoxEh15: TDBComboBoxEh
-        Left = 116
-        Top = 44
+        Left = 72
+        Top = 29
         Width = 200
         Height = 25
         DataField = 'COD_REGIME_TRIBUTARIO'
@@ -4717,6 +4720,113 @@
         TabOrder = 1
         Visible = True
         OnExit = DBComboBoxEh15Exit
+      end
+      object rg1601: TDBRadioGroup
+        Left = 13
+        Top = 362
+        Width = 340
+        Height = 71
+        Caption = 'Gerar dados SPED 1601'
+        Columns = 3
+        DataField = 'CONFIG_1601'
+        DataSource = dsSped
+        Items.Strings = (
+          'Autom'#225'tico'
+          'Manual'
+          'Configura'#231#245'es')
+        TabOrder = 16
+        Values.Strings = (
+          'A'
+          'M'
+          'C')
+      end
+      object gb1601: TGroupBox
+        Left = 412
+        Top = 193
+        Width = 357
+        Height = 240
+        Caption = 'Administradora Padr'#227'o - SPED 1601'
+        TabOrder = 17
+        object Label13: TLabel
+          Left = 16
+          Top = 23
+          Width = 82
+          Height = 17
+          Caption = 'Cart'#227'o D'#233'bito'
+        end
+        object Label14: TLabel
+          Left = 16
+          Top = 76
+          Width = 86
+          Height = 17
+          Caption = 'Cart'#227'o Cr'#233'dito'
+        end
+        object Label15: TLabel
+          Left = 16
+          Top = 129
+          Width = 16
+          Height = 17
+          Caption = 'Pix'
+        end
+        object Label18: TLabel
+          Left = 16
+          Top = 180
+          Width = 99
+          Height = 17
+          Caption = 'Vale Alimenta'#231#227'o'
+        end
+        object DBLookupComboBox4: TDBLookupComboBox
+          Left = 16
+          Top = 202
+          Width = 321
+          Height = 25
+          DataField = 'ADM_PADRAO_VALE_ALI'
+          DataSource = dsSped
+          KeyField = 'CODIGO'
+          ListField = 'RAZAO'
+          ListFieldIndex = 1
+          ListSource = dsAdmPadrao
+          TabOrder = 0
+        end
+        object DBLookupComboBox3: TDBLookupComboBox
+          Left = 16
+          Top = 150
+          Width = 321
+          Height = 25
+          DataField = 'ADM_PADRAO_PIX'
+          DataSource = dsSped
+          KeyField = 'CODIGO'
+          ListField = 'RAZAO'
+          ListFieldIndex = 1
+          ListSource = dsAdmPadrao
+          TabOrder = 1
+        end
+        object DBLookupComboBox2: TDBLookupComboBox
+          Left = 16
+          Top = 98
+          Width = 321
+          Height = 25
+          DataField = 'ADM_PADRAO_CARTAO_CRE'
+          DataSource = dsSped
+          KeyField = 'CODIGO'
+          ListField = 'RAZAO'
+          ListFieldIndex = 1
+          ListSource = dsAdmPadrao
+          TabOrder = 2
+        end
+        object DBLookupComboBox1: TDBLookupComboBox
+          Left = 16
+          Top = 44
+          Width = 321
+          Height = 25
+          DataField = 'ADM_PADRAO_CARTAO_DEB'
+          DataSource = dsSped
+          KeyField = 'CODIGO'
+          ListField = 'RAZAO'
+          ListFieldIndex = 1
+          ListSource = dsAdmPadrao
+          TabOrder = 3
+        end
       end
     end
     object Balança: TTabSheet
@@ -7421,8 +7531,8 @@
     Configuracoes.WebServices.AguardarConsultaRet = 0
     Configuracoes.WebServices.QuebradeLinha = '|'
     Configuracoes.RespTec.IdCSRT = 0
-    Left = 408
-    Top = 376
+    Left = 392
+    Top = 368
   end
   object dsEmpresa: TDataSource
     DataSet = Dados.qryEmpresa
@@ -7462,8 +7572,8 @@
   end
   object dsIdiomas: TDataSource
     DataSet = Dados.qryIdiomas
-    Left = 520
-    Top = 488
+    Left = 376
+    Top = 440
   end
   object ACBrECF1: TACBrECF
     QuebraLinhaRodape = False
@@ -7633,5 +7743,52 @@
     TEFElgin.GPExeName = 'C:\ELGIN\TEFPassivo\E1_TEFPay_Passivo.exe'
     Left = 570
     Top = 184
+  end
+  object qryAdmPadrao: TFDQuery
+    Connection = Dados.Conexao
+    SQL.Strings = (
+      'SELECT CODIGO,RAZAO,CLI FROM('
+      
+        'SELECT (0) AS CODIGO, ('#39' <selecione a admin.>'#39') AS RAZAO, '#39'S'#39' as' +
+        ' CLI from RDB$DataBase'
+      ')'
+      'UNION '
+      'SELECT CODIGO,RAZAO,CLI FROM('
+      
+        'SELECT pe.codigo, (pe.razao||'#39' | '#39'||pe.cnpj) as razao, pe.cli FR' +
+        'OM PESSOA pe'
+      'where CODIGO>=0 and ADM='#39'S'#39
+      ')'
+      'order by 2')
+    Left = 495
+    Top = 209
+    object qryAdmPadraoCODIGO: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryAdmPadraoRAZAO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'RAZAO'
+      Origin = 'RAZAO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 123
+    end
+    object qryAdmPadraoCLI: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'CLI'
+      Origin = 'CLI'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 1
+    end
+  end
+  object dsAdmPadrao: TDataSource
+    DataSet = qryAdmPadrao
+    Left = 391
+    Top = 297
   end
 end

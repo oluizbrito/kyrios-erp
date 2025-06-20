@@ -1,6 +1,6 @@
 unit uImportarCTe;
 
-interface //Suporte e Vendas direto no Whatsapp (48)998463846
+interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
@@ -190,7 +190,7 @@ type
 var
   frmImportarCTe: TfrmImportarCTe;
 
-implementation //Acesse lojadodesenvolvedor.com.br e saiba mais sobre esse código fonte.
+implementation
 
 {$R *.dfm}
 

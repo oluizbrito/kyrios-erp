@@ -9,7 +9,7 @@ uses
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, Vcl.StdCtrls;
+  FireDAC.Comp.Client, Vcl.StdCtrls, StrUtils;
 
 type
   TfrmImportarNFe = class(TForm)
@@ -382,89 +382,191 @@ uses uPDV, Udados, uNFe, uListaImport, uListaPedidoImpNFe;
 
 procedure TfrmImportarNFe.btnDevCompraClick(Sender: TObject);
 var
-  vitem: integer;
-  qtd: real;
+  vitem  : Integer;
+  AnumeroNFE, AChaveNFE, AICFOP : string;
 begin
   try
-    btnDevCompra.Enabled := false;
+    btnDevCompra.Enabled := False;
+
+    {--- Validação simples ---}
     if Trim(edtNumero.Text) = '' then
     begin
       ShowMessage('Digite o número da Devolução de Compra');
-      exit;
+      Exit;
     end;
 
+    {--- Devolução / Itens da devolução ---}
     qryDevCompra.Close;
-    qryDevCompra.Params[0].Value := edtNumero.Text;;
+    qryDevCompra.Params[0].AsString := edtNumero.Text;
     qryDevCompra.Open;
 
     qryDevItensCompra.Close;
-    qryDevItensCompra.Params[0].Value := qryDevCompraCODIGO.Value;
+    qryDevItensCompra.Params[0].AsInteger := qryDevCompraCODIGO.AsInteger;
     qryDevItensCompra.Open;
 
     if qryDevCompra.IsEmpty then
     begin
       ShowMessage('Devolução de Compra não está Fechada ou não existe!');
-      exit;
+      Exit;
     end;
 
-    if not(frmCadNFe.qryVenda.State in dsEditModes) then
+    {--- Cabeçalho da NFe ---}
+    if not (frmCadNFe.qryVenda.State in dsEditModes) then
       frmCadNFe.qryVenda.Edit;
-    frmCadNFe.qryVendaFK_VENDEDOR.Value := 1;
-    frmCadNFe.qryVendaID_CLIENTE.Value := qryDevCompraFK_FORNECEDOR.Value;
-    frmCadNFe.qryVendaDESCONTO.Value := 0;
-    frmcadnfe.qryVendaFINALIDADE.Value :='3';
-    frmcadnfe.qryVendaMOVIMENTO.Value :='S';
+
+    frmCadNFe.qryVendaFK_VENDEDOR.AsInteger   := 1;                // fixo
+    frmCadNFe.qryVendaID_CLIENTE.AsInteger    := qryDevCompraFK_FORNECEDOR.AsInteger;
+    frmCadNFe.qryVendaDESCONTO.AsFloat        := 0;
+    frmcadnfe.qryVendaFINALIDADE.AsString     := '3';
+    frmcadnfe.DBComboBoxEh2.ItemIndex         := 3;  //nem um pagamento
+    frmcadnfe.DBComboBoxEh3.ItemIndex         := 15; //sem pagemento
+    frmcadnfe.qryVendaMOVIMENTO.AsString      := 'S';
+    frmcadnfe.qryVendaCFOP.AsString           := '5202';
+
+    {--- Estado do fornecedor para CFOP 6××× ---}
+    with Dados.qryConsulta do
+    begin
+      Close;
+      SQL.Text := 'SELECT UF FROM PESSOA WHERE CODIGO = :CODIGO';
+      ParamByName('CODIGO').AsInteger := frmCadNFe.qryVendaID_CLIENTE.AsInteger;
+      Open;
+    end;
+
+
+
+    if Dados.qryConsulta.FieldByName('UF').AsString <>
+       Dados.qryEmpresaUF.AsString then
+      frmcadnfe.qryVendaCFOP.AsString := '6202';
+
     frmCadNFe.qryVenda.Post;
     dados.Conexao.CommitRetaining;
 
+    {--- Limpa itens anteriores da NFe ---}
     frmCadNFe.qryItem.First;
     while not frmCadNFe.qryItem.IsEmpty do
       frmCadNFe.qryItem.Delete;
-
     dados.Conexao.CommitRetaining;
 
+    {--- Insere itens da devolução ---}
     qryDevItensCompra.First;
     while not qryDevItensCompra.Eof do
     begin
       dados.qryConsulta.Close;
       dados.qryConsulta.SQL.Text :=
-        ' select pr.codigo, pr.codbarra, pr.unidade, pr.cfop,  pr.ncm,  pr.qtd_atual from produto pr '
-        + ' where ' + ' pr.codigo=:id ';
-      dados.qryConsulta.Params[0].Value :=
-        qryDevItensCompraID_PRODUTO.AsInteger;
+        'SELECT PR.CODIGO, PR.CODBARRA, PR.UNIDADE, PR.CFOP, PR.NCM, PR.QTD_ATUAL ' +
+        'FROM PRODUTO PR WHERE PR.CODIGO = :ID';
+      dados.qryConsulta.Params[0].AsInteger := qryDevItensCompraID_PRODUTO.AsInteger;
       dados.qryConsulta.Open;
 
       frmCadNFe.qryItem.Last;
       vitem := frmCadNFe.qryItemITEM.AsInteger + 1;
+
       frmCadNFe.qryItem.Append;
-      frmCadNFe.qryItemCODIGO.AsFloat := dados.Numerador('NFE_DETALHE',
-        'CODIGO', 'N', '', '');
-      frmCadNFe.qryItemID_PRODUTO.Value := qryDevItensCompraID_PRODUTO.Value;
-      frmCadNFe.qryItemFKNFE.Value := frmCadNFe.qryVendaCODIGO.Value;
-      frmCadNFe.qryItemITEM.Value := vitem;
-      frmCadNFe.qryItemQTD.AsFloat := qryDevItensCompraQTD_DEVOLVIDA.AsFloat;
-      frmCadNFe.qryItemUNIDADE.AsString := dados.qryConsulta.FieldByName
-        ('UNIDADE').AsString;
-      frmCadNFe.qryItemPRECO.AsFloat := qryDevItensCompraPRECO.AsFloat;;
-      frmCadNFe.qryItemTOTAL.AsFloat := frmCadNFe.qryItemQTD.AsFloat *
-        frmCadNFe.qryItemPRECO.AsFloat;
-
-      frmCadNFe.qryItemEVENDA.AsString := 'S';
-
-      frmCadNFe.qryItemCOD_BARRA.Value := dados.qryConsulta.FieldByName
-        ('CODBARRA').AsString;
-
-      frmCadNFe.qryItemTOTAL.AsFloat := frmCadNFe.qryItemTOTAL.AsFloat;
+      frmCadNFe.qryItemCODIGO.AsFloat      := dados.Numerador('NFE_DETALHE','CODIGO','N','','');
+      frmCadNFe.qryItemID_PRODUTO.AsInteger:= qryDevItensCompraID_PRODUTO.AsInteger;
+      frmCadNFe.qryItemFKNFE.AsInteger     := frmCadNFe.qryVendaCODIGO.AsInteger;
+      frmCadNFe.qryItemITEM.AsInteger      := vitem;
+      frmCadNFe.qryItemQTD.AsFloat         := qryDevItensCompraQTD_DEVOLVIDA.AsFloat;
+      frmCadNFe.qryItemUNIDADE.AsString    := dados.qryConsulta.FieldByName('UNIDADE').AsString;
+      frmCadNFe.qryItemPRECO.AsFloat       := qryDevItensCompraPRECO.AsFloat;
+      frmCadNFe.qryItemTOTAL.AsFloat       := frmCadNFe.qryItemQTD.AsFloat *
+                                              frmCadNFe.qryItemPRECO.AsFloat;
+      frmCadNFe.qryItemEVENDA.AsString     := 'S';
+      frmCadNFe.qryItemCOD_BARRA.AsString  := dados.qryConsulta.FieldByName('CODBARRA').AsString;
       frmCadNFe.qryItem.Post;
+
       dados.Conexao.CommitRetaining;
       qryDevItensCompra.Next;
     end;
+
+    {--- Busca dados fiscais do item original da compra ---}
+    with dados.qryConsulta do
+    begin
+      Close;
+      SQL.Text :=
+        'SELECT C.ID AS CODIGO, C.CHAVE, C.EMPRESA,  C.NR_NOTA, C.STATUS, C.DTEMISSAO, ' +
+        'CI.FK_PRODUTO, CI.CFOP, CI.CST_ICM, CI.BASE_ICMS, CI.ALIQ_ICMS, CI.VL_ICMS, '+
+        ' CI.FK_PRODUTO_FORN FROM COMPRA C ' +
+        ' LEFT JOIN COMPRA_ITENS CI ON CI.FK_COMPRA = C.ID ' +
+        ' WHERE C.ID = :COMPRA ' +
+        '  AND C.EMPRESA   = :EMP ' +
+        '  AND C.FORNECEDOR = :FOR';
+      ParamByName('COMPRA').AsInteger := qryDevCompraNUMERO_COMPRA.AsInteger;
+      ParamByName('EMP').AsInteger    := Dados.idEmpresa;
+      ParamByName('FOR').AsInteger    := frmCadNFe.qryVendaID_CLIENTE.AsInteger;
+
+      Open;
+    end;
+
+    {--- Ajusta CFOP / ICMS nos itens já inseridos ---}
+    if not dados.qryConsulta.IsEmpty then
+    begin
+      dados.qryConsulta.First;
+      frmCadNFe.qryItem.First;
+
+      AChaveNFE   :=  Dados.qryConsulta.FieldByName('CHAVE').AsString;
+      ANumeroNFE  :=  Dados.qryConsulta.FieldByName('NR_NOTA').AsString;
+
+      while (not dados.qryConsulta.Eof) and (not frmCadNFe.qryItem.Eof) do
+      begin
+      dados.qryConsulta.Locate('FK_PRODUTO', frmCadNFe.qryItemID_PRODUTO.AsInteger,[]);
+      AICFOP := Dados.qryConsulta.FieldByName('CFOP').AsString;
+
+       if MatchStr(AICFOP, ['1403', '1401'] ) then
+       AICFOP := '5411' else AICFOP := '5202';
+
+       if not MatchStr(AICFOP, ['5202', '5411']) then
+       begin
+       if (AICFOP = '2403') or (AICFOP = '2401')  then
+           AICFOP := '6411' else AICFOP := '6202';
+       end;
+
+
+        frmCadNFe.qryItem.Edit;
+         frmCadNFe.qryItemCFOP.AsString := AICFOP;
+        if (AICFOP = '6202') or (AICFOP = '5202') then
+         begin
+
+         if Dados.qryEmpresaCRT.AsInteger <> 3 then
+         frmCadNFe.qryItemCSOSN.AsString := '900';
+         frmCadNFe.qryItemBASE_ICMS.AsFloat :=  Dados.qryConsulta.FieldByName('BASE_ICMS').AsFloat;
+         frmCadNFe.qryItemALIQ_ICMS.AsFloat :=  Dados.qryConsulta.FieldByName('ALIQ_ICMS').AsFloat;
+         frmCadNFe.qryItemVALOR_ICMS.AsFloat :=  Dados.qryConsulta.FieldByName('VL_ICMS').AsFloat;
+         end
+         else
+         begin
+          if Dados.qryEmpresaCRT.AsInteger <> 3 then
+          frmCadNFe.qryItemCSOSN.AsString := '500';
+          frmCadNFe.qryItemBASE_ICMS.AsFloat :=  Dados.qryConsulta.FieldByName('BASE_ICMS').AsFloat;
+          frmCadNFe.qryItemALIQ_ICMS.AsFloat :=  Dados.qryConsulta.FieldByName('ALIQ_ICMS').AsFloat;
+          frmCadNFe.qryItemVALOR_ICMS.AsFloat :=  Dados.qryConsulta.FieldByName('VL_ICMS').AsFloat;
+         end;
+
+        frmCadNFe.qryItemINFO_ADICIONAIS.AsString := 'COD FORNECEDOR : '
+                                                    + Dados.qryConsulta.FieldByName('FK_PRODUTO_FORN').AsString;
+
+        frmCadNFe.qryItem.Post;
+        dados.qryConsulta.Next;
+        frmCadNFe.qryItem.Next;
+      end;
+    end;
+    Dados.qryExecute.Close;
+    Dados.qryExecute.SQL.Clear;
+    Dados.qryExecute.SQL.Text := 'DELETE FROM NFE_REFERENCIA WHERE FK_NFE = ' +  ANumeroNFE;
+    Dados.qryExecute.ExecSQL;
+
+    if not (frmCadNFe.dsReferencia.DataSet.State in dsEditModes) then
+    frmCadNFe.dsReferencia.DataSet.Edit;
+    frmCadNFe.dsReferencia.DataSet.FieldByName('FK_NFE').AsInteger := StrToInt(ANumeroNFE);
+    frmCadNFe.dsReferencia.DataSet.FieldByName('REFERENCIA').AsString := AChaveNFE;
+    frmCadNFe.dsReferencia.DataSet.Post;
+    Dados.Conexao.Commit;
 
     Application.ProcessMessages;
     ShowMessage('Importação realizada com sucesso!');
     Close;
   finally
-    btnDevCompra.Enabled := true;
+    btnDevCompra.Enabled := True;
   end;
 end;
 
@@ -503,13 +605,13 @@ begin
     frmCadNFe.qryVendaDESCONTO.Value := 0;
     frmcadnfe.qryVendaMOVIMENTO.Value :='E';
     frmCadNFe.qryVenda.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     frmCadNFe.qryItem.First;
     while not frmCadNFe.qryItem.IsEmpty do
       frmCadNFe.qryItem.Delete;
 
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     qryItensDevVenda.First;
     while not qryItensDevVenda.Eof do
@@ -544,7 +646,7 @@ begin
 
       frmCadNFe.qryItemTOTAL.AsFloat := frmCadNFe.qryItemTOTAL.AsFloat;
       frmCadNFe.qryItem.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
       qryItensDevVenda.Next;
     end;
 
@@ -639,7 +741,7 @@ begin
     else
       frmCadNFe.qryVendaCFOP.Value := 6929;
     frmCadNFe.qryVenda.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     if not frmCadNFe.qryReferencia.Locate('REFERENCIA', qryNFCeCHAVE.AsString, []) then
       begin
@@ -653,7 +755,7 @@ begin
     while not frmCadNFe.qryItem.IsEmpty do
       frmCadNFe.qryItem.Delete;
 
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     qryNFCe_Itens.First;
     while not qryNFCe_Itens.Eof do
@@ -685,7 +787,7 @@ begin
 
       frmCadNFe.qryItemTOTAL.AsFloat := frmCadNFe.qryItemTOTAL.AsFloat;
       frmCadNFe.qryItem.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
       qryNFCe_Itens.Next;
     end;
 
@@ -725,12 +827,12 @@ begin
                 frmCadNFe.qryVendaFK_VENDEDOR.Value := frmListaPedidoImpNFe.qryPVFK_VENDEDOR.Value;
                 frmCadNFe.qryVendaID_CLIENTE.Value := frmListaPedidoImpNFe.qryPVID_CLIENTE.Value;
                 frmCadNFe.qryVenda.Post;
-                dados.Conexao.CommitRetaining;
+                dados.Conexao.Commit;
 
                 frmCadNFe.qryItem.First;
                 while not frmCadNFe.qryItem.IsEmpty do
                   frmCadNFe.qryItem.Delete;
-                dados.Conexao.CommitRetaining;
+                dados.Conexao.Commit;
 
                 while not frmListaPedidoImpNFe.qryPV.Eof do
                   begin
@@ -767,7 +869,7 @@ begin
 
                       frmCadNFe.qryItemTOTAL.AsFloat := frmCadNFe.qryItemTOTAL.AsFloat;
                       frmCadNFe.qryItem.Post;
-                      dados.Conexao.CommitRetaining;
+                      dados.Conexao.Commit;
                       frmListaPedidoImpNFe.qryPV_Itens.Next;
                     end;
                     frmListaPedidoImpNFe.qryPV.Next;
@@ -776,7 +878,7 @@ begin
                   frmCadNFe.qryVenda.Edit;
                 frmCadNFe.qryVendaDESCONTO.Value := vTotDesconto;
                 frmCadNFe.qryVenda.Post;
-                dados.Conexao.CommitRetaining;
+                dados.Conexao.Commit;
 
                 Application.ProcessMessages;
                 ShowMessage('Importação realizada com sucesso!');
@@ -812,13 +914,13 @@ begin
     frmCadNFe.qryVendaID_CLIENTE.Value := qryPVID_CLIENTE.Value;
     frmCadNFe.qryVendaDESCONTO.Value := qryPVDESCONTO.Value;
     frmCadNFe.qryVenda.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     frmCadNFe.qryItem.First;
     while not frmCadNFe.qryItem.IsEmpty do
       frmCadNFe.qryItem.Delete;
 
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     qryPV_Itens.First;
     while not qryPV_Itens.Eof do
@@ -850,7 +952,7 @@ begin
 
       frmCadNFe.qryItemTOTAL.AsFloat := frmCadNFe.qryItemTOTAL.AsFloat;
       frmCadNFe.qryItem.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
       qryPV_Itens.Next;
     end;
 
@@ -909,7 +1011,7 @@ begin
     while not frmCadNFe.qryItem.IsEmpty do
       frmCadNFe.qryItem.Delete;
 
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     qryItemO.First;
     while not qryItemO.Eof do
@@ -945,7 +1047,7 @@ begin
       frmCadNFe.qryItemTOTAL.AsFloat := frmCadNFe.qryItemTOTAL.AsFloat -
         frmCadNFe.qryItemDESCONTO.AsFloat;
       frmCadNFe.qryItem.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
       qryItemO.Next;
     end;
 
@@ -1043,7 +1145,7 @@ begin
     while not frmCadNFe.qryItem.IsEmpty do
       frmCadNFe.qryItem.Delete;
 
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     qryItemOS.First;
     while not qryItemOS.Eof do
@@ -1079,7 +1181,7 @@ begin
       frmCadNFe.qryItemTOTAL.AsFloat := frmCadNFe.qryItemTOTAL.AsFloat -
         frmCadNFe.qryItemDESCONTO.AsFloat;
       frmCadNFe.qryItem.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
       qryItemOS.Next;
     end;
    
@@ -1143,7 +1245,7 @@ begin
     while not frmCadNFe.qryItem.IsEmpty do
       frmCadNFe.qryItem.Delete;
 
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     qryItensPedidoWeb.First;
     while not qryItensPedidoWeb.Eof do
@@ -1179,7 +1281,7 @@ begin
       frmCadNFe.qryItemTOTAL.AsFloat := frmCadNFe.qryItemTOTAL.AsFloat -
         frmCadNFe.qryItemDESCONTO.AsFloat;
       frmCadNFe.qryItem.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
       qryItensPedidoWeb.Next;
     end;
 

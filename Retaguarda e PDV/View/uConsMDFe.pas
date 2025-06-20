@@ -249,7 +249,7 @@ begin
         qryMDFe_M.edit;
         qryMDFe_MSITUACAO.Value := 'C';
         qryMDFe_M.Post;
-        Dados.Conexao.CommitRetaining;
+        Dados.Conexao.Commit;
         btnFiltrarClick(Self);
       end;
     end
@@ -260,7 +260,7 @@ begin
         qryMDFe_M.edit;
         qryMDFe_MSITUACAO.Value := 'C';
         qryMDFe_M.Post;
-        Dados.Conexao.CommitRetaining;
+        Dados.Conexao.Commit;
         btnFiltrar.Click;
       end;
     end;
@@ -330,7 +330,7 @@ begin
     qryMDFe_MDATA_EMISSAO.Value := now;
     qryMDFe_MSITUACAO.Value := 'T';
     qryMDFe_M.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
   end;
   btnFiltrar.Click;
 end;

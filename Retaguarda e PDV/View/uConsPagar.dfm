@@ -32,8 +32,8 @@ object frmConsPagar: TfrmConsPagar
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    ExplicitTop = 560
-    ExplicitWidth = 1026
+    ExplicitTop = 556
+    ExplicitWidth = 1024
     object Panel4: TPanel
       Left = 697
       Top = 0
@@ -1089,8 +1089,8 @@ object frmConsPagar: TfrmConsPagar
     ParentFont = False
     Style = tsFlatButtons
     TabOrder = 1
-    ExplicitWidth = 1026
-    ExplicitHeight = 495
+    ExplicitWidth = 1024
+    ExplicitHeight = 491
     object TabSheet1: TTabSheet
       Caption = 'T'#237'tulos'
       object Label28: TLabel
@@ -1116,8 +1116,8 @@ object frmConsPagar: TfrmConsPagar
         Align = alRight
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitLeft = 942
-        ExplicitHeight = 425
+        ExplicitLeft = 940
+        ExplicitHeight = 421
         object btnBaixar: TSpeedButton
           Left = 0
           Top = 0
@@ -1425,8 +1425,8 @@ object frmConsPagar: TfrmConsPagar
         Align = alBottom
         BevelOuter = bvNone
         TabOrder = 1
-        ExplicitTop = 440
-        ExplicitWidth = 1018
+        ExplicitTop = 436
+        ExplicitWidth = 1016
         object TabSet1: TTabSet
           Left = 532
           Top = 0
@@ -1447,7 +1447,7 @@ object frmConsPagar: TfrmConsPagar
             'Pagas')
           TabIndex = 0
           OnClick = TabSet1Click
-          ExplicitLeft = 530
+          ExplicitLeft = 528
         end
         object Panel7: TPanel
           Left = 0
@@ -1461,7 +1461,7 @@ object frmConsPagar: TfrmConsPagar
           object Label14: TLabel
             Left = 12
             Top = 2
-            Width = 88
+            Width = 86
             Height = 15
             Caption = 'TOTAL '#192' PAGAR|'
             Font.Charset = ANSI_CHARSET
@@ -1504,7 +1504,7 @@ object frmConsPagar: TfrmConsPagar
           object Label15: TLabel
             Left = 251
             Top = 2
-            Width = 74
+            Width = 72
             Height = 15
             Caption = 'TOTAL PAGO |'
             Font.Charset = ANSI_CHARSET
@@ -1659,6 +1659,7 @@ object frmConsPagar: TfrmConsPagar
         ParentBackground = False
         ParentFont = False
         TabOrder = 0
+        ExplicitTop = 403
         object Bevel1: TBevel
           Left = 0
           Top = 0
@@ -1948,6 +1949,7 @@ object frmConsPagar: TfrmConsPagar
         Align = alRight
         BevelOuter = bvNone
         TabOrder = 1
+        ExplicitHeight = 403
         object btnEstornar: TSpeedButton
           Left = 4
           Top = 3
@@ -2493,7 +2495,7 @@ object frmConsPagar: TfrmConsPagar
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 2
-    ExplicitWidth = 1026
+    ExplicitWidth = 1024
     object GroupBox1: TGroupBox
       Left = 0
       Top = 0
@@ -2508,7 +2510,7 @@ object frmConsPagar: TfrmConsPagar
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 1026
+      ExplicitWidth = 1024
       object Label1: TLabel
         Left = 20
         Top = 15
@@ -2675,7 +2677,7 @@ object frmConsPagar: TfrmConsPagar
     Top = 139
   end
   object frxReport: TfrxReport
-    Version = '2022.3'
+    Version = '2022.1.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

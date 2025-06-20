@@ -450,12 +450,12 @@ end;
 
 procedure TfrmCadPedido.qryPessoa_CobrancaAfterPost(DataSet: TDataSet);
 begin
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TfrmCadPedido.qryPessoa_entregaAfterPost(DataSet: TDataSet);
 begin
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TfrmCadPedido.qryPVAfterOpen(DataSet: TDataSet);
@@ -470,7 +470,7 @@ end;
 
 procedure TfrmCadPedido.qryPVAfterPost(DataSet: TDataSet);
 begin
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
 end;
 
 procedure TfrmCadPedido.Entrega(id: Integer; Operacao: string);
@@ -647,7 +647,7 @@ end;
 
 procedure TfrmCadPedido.qryItensAfterPost(DataSet: TDataSet);
 begin
-  Dados.Conexao.CommitRetaining;
+  Dados.Conexao.Commit;
   CalculaTotais;
 end;
 

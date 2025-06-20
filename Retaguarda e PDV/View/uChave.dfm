@@ -35,8 +35,6 @@ object frmChave: TfrmChave
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 656
-    ExplicitHeight = 373
     object TabSheet1: TTabSheet
       Caption = 'Ativa'#231#227'o Offline'
       Font.Charset = ANSI_CHARSET
@@ -98,7 +96,7 @@ object frmChave: TfrmChave
           Left = 297
           Top = 51
           Width = 264
-          Height = 23
+          Height = 27
           CharCase = ecUpperCase
           Ctl3D = False
           Font.Charset = ANSI_CHARSET
@@ -115,7 +113,7 @@ object frmChave: TfrmChave
           Left = 297
           Top = 103
           Width = 264
-          Height = 23
+          Height = 27
           CharCase = ecUpperCase
           Ctl3D = False
           Font.Charset = ANSI_CHARSET
@@ -580,7 +578,7 @@ object frmChave: TfrmChave
         end
         object cxProgressBar1: TcxProgressBar
           Left = 1
-          Top = 329
+          Top = 327
           Align = alBottom
           ParentFont = False
           Properties.BeginColor = 54056
@@ -606,6 +604,7 @@ object frmChave: TfrmChave
           StyleHot.LookAndFeel.NativeStyle = False
           StyleHot.LookAndFeel.SkinName = 'Office2019Colorful'
           TabOrder = 6
+          ExplicitTop = 329
           Width = 648
         end
       end
@@ -4451,8 +4450,6 @@ object frmChave: TfrmChave
         Text = 'MAC: '
         Width = 300
       end>
-    ExplicitTop = 373
-    ExplicitWidth = 656
   end
   object Timer1: TTimer
     Interval = 300000

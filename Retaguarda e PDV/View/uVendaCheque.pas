@@ -163,7 +163,7 @@ begin
       qryCHFK_EMPRESA.Value := dados.qryEmpresaCODIGO.Value;
       qryCHHISTORICO.Value := 'REF. VENDA Nº' + IntToStr(idVenda);
       qryCH.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
       vSoma := vSoma + qryCHVALOR.AsFloat;
     end;
 
@@ -175,7 +175,7 @@ begin
       qryCH.Edit;
       qryCHVALOR.Value := simpleroundto(qryCHVALOR.Value + vDif, -2);
       qryCH.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
     end;
 
   finally
@@ -253,7 +253,7 @@ end;
 
 procedure TfrmCHParcela.qryCHAfterPost(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 end.

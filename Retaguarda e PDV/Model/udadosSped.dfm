@@ -1,7 +1,6 @@
 object DadosSped: TDadosSped
-  OldCreateOrder = False
-  Height = 360
-  Width = 609
+  Height = 519
+  Width = 852
   object qrProdutos: TFDQuery
     Connection = Dados.Conexao
     FetchOptions.AssignedValues = [evMode]
@@ -32,7 +31,7 @@ object DadosSped: TDadosSped
       'PEDICO.empresa=:EMPRESA'
       ')'
       '')
-    Left = 360
+    Left = 392
     Top = 24
     ParamData = <
       item
@@ -87,8 +86,8 @@ object DadosSped: TDadosSped
     SQL.Strings = (
       'select * from sped_config'
       'where fk_empresa=:id')
-    Left = 368
-    Top = 79
+    Left = 392
+    Top = 87
     ParamData = <
       item
         Name = 'ID'
@@ -186,6 +185,32 @@ object DadosSped: TDadosSped
       FieldName = 'FK_USUARIO'
       Origin = 'FK_USUARIO'
     end
+    object qryConfig_SpedREGIME_TRIBUTARIO: TStringField
+      FieldName = 'REGIME_TRIBUTARIO'
+      Origin = 'REGIME_TRIBUTARIO'
+      Size = 1
+    end
+    object qryConfig_SpedCONFIG_1601: TStringField
+      FieldName = 'CONFIG_1601'
+      Origin = 'CONFIG_1601'
+      Size = 1
+    end
+    object qryConfig_SpedADM_PADRAO_CARTAO_DEB: TIntegerField
+      FieldName = 'ADM_PADRAO_CARTAO_DEB'
+      Origin = 'ADM_PADRAO_CARTAO_DEB'
+    end
+    object qryConfig_SpedADM_PADRAO_CARTAO_CRE: TIntegerField
+      FieldName = 'ADM_PADRAO_CARTAO_CRE'
+      Origin = 'ADM_PADRAO_CARTAO_CRE'
+    end
+    object qryConfig_SpedADM_PADRAO_PIX: TIntegerField
+      FieldName = 'ADM_PADRAO_PIX'
+      Origin = 'ADM_PADRAO_PIX'
+    end
+    object qryConfig_SpedADM_PADRAO_VALE_ALI: TIntegerField
+      FieldName = 'ADM_PADRAO_VALE_ALI'
+      Origin = 'ADM_PADRAO_VALE_ALI'
+    end
   end
   object qryItens_NFe_S: TFDQuery
     Connection = Dados.Conexao
@@ -230,8 +255,8 @@ object DadosSped: TDadosSped
       'left join produto pro on NFE.id_produto=pro.codigo'
       'where'
       'NFM.codigo=:ID')
-    Left = 368
-    Top = 135
+    Left = 392
+    Top = 143
     ParamData = <
       item
         Name = 'ID'
@@ -497,8 +522,8 @@ object DadosSped: TDadosSped
       'where'
       'NFCM.codigo=:ID'
       '')
-    Left = 374
-    Top = 184
+    Left = 398
+    Top = 200
     ParamData = <
       item
         Name = 'ID'
@@ -772,8 +797,8 @@ object DadosSped: TDadosSped
       'NFCE.data_emissao between :data1 and :data2 and'
       'nfCE.FKEMPRESA=:EMPRESA and'
       'NFCE.situacao in ('#39'T'#39','#39'C'#39')')
-    Left = 290
-    Top = 184
+    Left = 210
+    Top = 272
     ParamData = <
       item
         Name = 'DATA1'
@@ -1385,7 +1410,23 @@ object DadosSped: TDadosSped
       'where'
       'NFE.data_emissao between :data1 and :data2  and'
       '(nfe.fkempresa=:empresa) and'
-      '(nfe.situacao ='#39'2'#39')')
+      '(nfe.situacao ='#39'2'#39')'
+      'union'
+      ''
+      'SELECT'
+      '    DISTINCT('#39'3'#39' || P.CODIGO) AS COD_PART,'
+      '    P.cnpj,'
+      '    P.ie,'
+      '    P.razao,'
+      '    P.fantasia,'
+      '    P.endereco,'
+      '    P.numero,'
+      '    P.bairro,'
+      '    P.codmun'
+      'FROM '
+      '    pessoa P'
+      'WHERE '
+      '    P.ADM = '#39'S'#39';')
     Left = 216
     Top = 80
     ParamData = <
@@ -1812,7 +1853,7 @@ object DadosSped: TDadosSped
       'nfd.fknfe=:id'
       '')
     Left = 215
-    Top = 184
+    Top = 208
     ParamData = <
       item
         Name = 'ID'
@@ -2499,8 +2540,8 @@ object DadosSped: TDadosSped
       ''
       ''
       'group by 1,2,3')
-    Left = 48
-    Top = 184
+    Left = 128
+    Top = 168
     ParamData = <
       item
         Name = 'REG'
@@ -2642,8 +2683,8 @@ object DadosSped: TDadosSped
       'left join produto pro on NFE.id_produto=pro.codigo'
       'where'
       'NFM.codigo=:ID')
-    Left = 55
-    Top = 128
+    Left = 47
+    Top = 160
     ParamData = <
       item
         Name = 'ID'
@@ -2990,61 +3031,101 @@ object DadosSped: TDadosSped
     end
   end
   object qryInventario: TFDQuery
-    OnCalcFields = qryInventarioCalcFields
-    AggregatesActive = True
     Connection = Dados.Conexao
-    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.AssignedValues = [evMode, evRowsetSize]
     FetchOptions.Mode = fmAll
+    FetchOptions.RowsetSize = 0
     SQL.Strings = (
+      'SELECT'
+      '    subquery.fk_produto AS fk_produto,'
+      '    subquery.DESC_PRODUTO AS DESC_PRODUTO,'
+      '    subquery.VL_UNIT AS VL_UNIT,'
+      '    SUM(subquery.qtde) AS qtde,'
+      '    SUM(subquery.qtds) AS qtds,'
+      '    SUM(subquery.qtde - subquery.qtds) AS saldo,'
       
-        'select fk_produto, descricao,pr_custo, sum(qtde) qtde, sum(qtds)' +
-        ' qtds, sum(qtde-qtds) saldo from('
+        '    SUM((subquery.qtde - subquery.qtds) * subquery.VL_UNIT) AS v' +
+        'l_total,'
+      '    u.codigo AS codigo_unidade,'
+      '    pro.codbarra AS COD_BARRA,'
+      '    LEFT(pro.tipo, 2) AS TIPO_ITEM,'
+      '    pro.ncm AS COD_NCM,'
+      '    MAX(pro.csticms) AS cst,'
+      '    MAX(pro.csosn) AS csosn,'
+      '    MAX(pro.aliq_icm) AS aliq_icms,'
+      '    SUM(pro.aliq_icm * subquery.VL_UNIT) AS vl_icms'
+      'FROM ('
+      '    SELECT'
+      '        ci.fk_produto,'
+      '        pro.descricao AS DESC_PRODUTO,'
+      '        pro.pr_custo AS VL_UNIT,'
+      '        ci.qtd AS qtde,'
+      '        0 AS qtds'
+      '    FROM compra_itens ci'
+      '    LEFT JOIN produto pro ON pro.codigo = ci.fk_produto'
+      '    LEFT JOIN compra co ON co.id = ci.fk_compra'
       
-        'select ci.fk_produto, pro.descricao, pro.pr_custo, ci.qtd qtde, ' +
-        '0 as qtds  from compra_itens ci'
-      'left join produto pro on pro.codigo=ci.fk_produto'
-      'left join compra co on co.id=ci.fk_compra'
-      'where'
-      'co.dtentrada<:data and co.status='#39'F'#39' AND co.ehfiscal='#39'S'#39
+        '    WHERE co.dtentrada < :data AND co.status = '#39'F'#39' AND co.ehfisc' +
+        'al = '#39'S'#39
       ''
-      'union all'
-      
-        'select vd.id_produto, pro.descricao, pro.pr_custo, 0 as qtde,  v' +
-        'd.qtd as qdts   from nfce_detalhe vd'
-      'left join produto pro on pro.codigo=vd.id_produto'
-      'left join nfce_master vm on vm.codigo=vd.fkvenda'
-      'where'
-      'vm.data_emissao<:data and VM.situacao='#39'T'#39
+      '    UNION ALL'
       ''
-      'union all'
+      '    SELECT'
+      '        vd.id_produto,'
+      '        pro.descricao AS DESC_PRODUTO,'
+      '        pro.pr_custo AS VL_UNIT,'
+      '        0 AS qtde,'
+      '        vd.qtd AS qtds'
+      '    FROM nfce_detalhe vd'
+      '    LEFT JOIN produto pro ON pro.codigo = vd.id_produto'
+      '    LEFT JOIN nfce_master vm ON vm.codigo = vd.fkvenda'
+      '    WHERE vm.data_emissao < :data AND vm.situacao = '#39'T'#39
       ''
-      
-        'select nfd.id_produto, pro.descricao, pro.pr_custo, 0 as qtde,  ' +
-        'nfd.qtd as qtds   from nfe_detalhe nfd'
-      'left join produto pro on pro.codigo=nfd.id_produto'
-      'left join nfe_master nfm on nfm.codigo=nfd.fknfe'
-      'where'
-      
-        'nfm.data_emissao<:data and nfm.situacao='#39'2'#39' and nfm.movimento='#39'S' +
-        #39
+      '    UNION ALL'
       ''
-      'union all'
+      '    SELECT'
+      '        nfd.id_produto,'
+      '        pro.descricao AS DESC_PRODUTO,'
+      '        pro.pr_custo AS VL_UNIT,'
+      '        0 AS qtde,'
+      '        nfd.qtd AS qtds'
+      '    FROM nfe_detalhe nfd'
+      '    LEFT JOIN produto pro ON pro.codigo = nfd.id_produto'
+      '    LEFT JOIN nfe_master nfm ON nfm.codigo = nfd.fknfe'
       
-        'select nfd.id_produto, pro.descricao, pro.pr_custo, nfd.qtd as q' +
-        'tde,  0 as qtds   from nfe_detalhe nfd'
-      'left join produto pro on pro.codigo=nfd.id_produto'
-      'left join nfe_master nfm on nfm.codigo=nfd.fknfe'
-      'where'
-      
-        'nfm.data_emissao<:data and nfm.situacao='#39'2'#39' and nfm.movimento='#39'E' +
-        #39
+        '    WHERE nfm.data_emissao < :data AND nfm.situacao = '#39'2'#39' AND nf' +
+        'm.movimento = '#39'S'#39
       ''
-      ')'
-      'group by 1,2,3'
-      'having sum(qtde-qtds)>0'
-      'order by 2')
-    Left = 46
-    Top = 248
+      '    UNION ALL'
+      ''
+      '    SELECT'
+      '        nfd.id_produto,'
+      '        pro.descricao AS DESC_PRODUTO,'
+      '        pro.pr_custo AS VL_UNIT,'
+      '        nfd.qtd AS qtde,'
+      '        0 AS qtds'
+      '    FROM nfe_detalhe nfd'
+      '    LEFT JOIN produto pro ON pro.codigo = nfd.id_produto'
+      '    LEFT JOIN nfe_master nfm ON nfm.codigo = nfd.fknfe'
+      
+        '    WHERE nfm.data_emissao < :data AND nfm.situacao = '#39'2'#39' AND nf' +
+        'm.movimento = '#39'E'#39
+      ') AS subquery'
+      'LEFT JOIN produto pro ON pro.codigo = subquery.fk_produto'
+      'LEFT JOIN unidade u ON u.codigo = pro.unidade'
+      'GROUP BY'
+      '    subquery.fk_produto,'
+      '    subquery.DESC_PRODUTO,'
+      '    subquery.VL_UNIT,'
+      '    u.codigo,'
+      '    pro.codbarra,'
+      '    LEFT(pro.tipo, 2),'
+      '    pro.ncm'
+      'HAVING SUM(subquery.qtde - subquery.qtds) > 0'
+      'ORDER BY subquery.DESC_PRODUTO;'
+      '')
+    Left = 48
+    Top = 256
     ParamData = <
       item
         Name = 'DATA'
@@ -3053,65 +3134,191 @@ object DadosSped: TDadosSped
         Value = Null
       end>
     object qryInventarioFK_PRODUTO: TIntegerField
-      AutoGenerateValue = arDefault
       FieldName = 'FK_PRODUTO'
       Origin = 'FK_PRODUTO'
-      ProviderFlags = []
-      ReadOnly = True
-      DisplayFormat = ',0.00'
+      Required = True
     end
-    object qryInventarioDESCRICAO: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'DESCRICAO'
-      Origin = 'DESCRICAO'
-      ProviderFlags = []
-      ReadOnly = True
+    object qryInventarioDESC_PRODUTO: TStringField
+      FieldName = 'DESC_PRODUTO'
+      Origin = 'DESC_PRODUTO'
       Size = 100
     end
-    object qryInventarioPR_CUSTO: TFMTBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'PR_CUSTO'
-      Origin = 'PR_CUSTO'
-      ProviderFlags = []
-      ReadOnly = True
-      DisplayFormat = ',0.00'
+    object qryInventarioVL_UNIT: TFMTBCDField
+      FieldName = 'VL_UNIT'
+      Origin = 'VL_UNIT'
       Precision = 18
       Size = 2
     end
     object qryInventarioQTDE: TFMTBCDField
-      AutoGenerateValue = arDefault
       FieldName = 'QTDE'
       Origin = 'QTDE'
-      ProviderFlags = []
-      ReadOnly = True
-      DisplayFormat = ',0.00'
       Precision = 18
       Size = 6
     end
     object qryInventarioQTDS: TFMTBCDField
-      AutoGenerateValue = arDefault
       FieldName = 'QTDS'
       Origin = 'QTDS'
-      ProviderFlags = []
-      ReadOnly = True
-      DisplayFormat = ',0.00'
       Precision = 18
       Size = 3
     end
     object qryInventarioSALDO: TFMTBCDField
-      AutoGenerateValue = arDefault
       FieldName = 'SALDO'
       Origin = 'SALDO'
-      ProviderFlags = []
-      ReadOnly = True
-      DisplayFormat = ',0.00'
       Precision = 18
       Size = 6
     end
-    object qryInventarioTOTAL: TFloatField
-      FieldKind = fkCalculated
-      FieldName = 'TOTAL'
-      Calculated = True
+    object qryInventarioVL_TOTAL: TFMTBCDField
+      FieldName = 'VL_TOTAL'
+      Origin = 'VL_TOTAL'
+      Precision = 18
+    end
+    object qryInventarioCODIGO_UNIDADE: TStringField
+      FieldName = 'CODIGO_UNIDADE'
+      Origin = 'CODIGO_UNIDADE'
+      Size = 10
+    end
+    object qryInventarioCST: TStringField
+      FieldName = 'CST'
+      Origin = 'CST'
+      Size = 5
+    end
+    object qryInventarioCSOSN: TStringField
+      FieldName = 'CSOSN'
+      Origin = 'CSOSN'
+      Size = 5
+    end
+    object qryInventarioALIQ_ICMS: TCurrencyField
+      FieldName = 'ALIQ_ICMS'
+      Origin = 'ALIQ_ICMS'
+    end
+    object qryInventarioVL_ICMS: TBCDField
+      FieldName = 'VL_ICMS'
+      Origin = 'VL_ICMS'
+      Precision = 18
+    end
+    object qryInventarioCOD_BARRA: TStringField
+      FieldName = 'COD_BARRA'
+      Origin = 'COD_BARRA'
+    end
+    object qryInventarioTIPO_ITEM: TStringField
+      FieldName = 'TIPO_ITEM'
+      Origin = 'TIPO_ITEM'
+      Size = 30
+    end
+    object qryInventarioCOD_NCM: TStringField
+      FieldName = 'COD_NCM'
+      Origin = 'COD_NCM'
+      Size = 10
+    end
+  end
+  object qryConsulta: TFDQuery
+    Connection = Dados.Conexao
+    SQL.Strings = (
+      'ALTER TABLE SPED_H010'
+      '    ALTER FK_UNIDADE TYPE VARCHAR(11)')
+    Left = 392
+    Top = 272
+  end
+  object qryGera1601: TFDQuery
+    Connection = Dados.Conexao
+    SQL.Strings = (
+      'SELECT '
+      '    DISTINCT('#39'3'#39' || P.CODIGO) AS COD_PART_IP,'
+      '    VF.REDECNPJ,'
+      '    SUM(VF.VALOR) AS TOT_VS'
+      'FROM '
+      '    VENDAS_FPG VF'
+      'LEFT JOIN '
+      
+        '    PESSOA P ON REPLACE(REPLACE(REPLACE(P.CNPJ, '#39'.'#39', '#39#39'), '#39'-'#39', '#39 +
+        #39'), '#39'/'#39', '#39#39') = VF.REDECNPJ'
+      'INNER JOIN '
+      '    VENDAS_MASTER VM ON VM.CODIGO = VF.VENDAS_MASTER'
+      'WHERE '
+      '    VF.FEZ_TEF = '#39'S'#39' AND'
+      '    VF.REDECNPJ <> '#39' '#39' AND'
+      '    VM.SITUACAO = '#39'F'#39' AND'
+      '    VM.DATA_EMISSAO BETWEEN :DATA_INICIAL AND :DATA_FINAL'
+      'GROUP BY '
+      '    P.CODIGO, VF.REDECNPJ;')
+    Left = 536
+    Top = 32
+    ParamData = <
+      item
+        Name = 'DATA_INICIAL'
+        DataType = ftDate
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'DATA_FINAL'
+        DataType = ftDate
+        ParamType = ptInput
+      end>
+    object qryGera1601COD_PART_IP: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'COD_PART_IP'
+      Origin = 'COD_PART_IP'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 12
+    end
+    object qryGera1601REDECNPJ: TStringField
+      FieldName = 'REDECNPJ'
+      Origin = 'REDECNPJ'
+      Size = 50
+    end
+    object qryGera1601TOT_VS: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'TOT_VS'
+      Origin = 'TOT_VS'
+      ProviderFlags = []
+      ReadOnly = True
+      Precision = 18
+      Size = 2
+    end
+  end
+  object qrySped_1601: TFDQuery
+    Connection = Dados.Conexao
+    SQL.Strings = (
+      'select * from sped_1601')
+    Left = 536
+    Top = 128
+    object qrySped_1601CODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qrySped_1601COD_PART_IP: TStringField
+      FieldName = 'COD_PART_IP'
+      Origin = 'COD_PART_IP'
+    end
+    object qrySped_1601COD_PART_IT: TStringField
+      FieldName = 'COD_PART_IT'
+      Origin = 'COD_PART_IT'
+    end
+    object qrySped_1601TOT_VS: TFMTBCDField
+      FieldName = 'TOT_VS'
+      Origin = 'TOT_VS'
+      Precision = 18
+      Size = 2
+    end
+    object qrySped_1601TOT_ISS: TFMTBCDField
+      FieldName = 'TOT_ISS'
+      Origin = 'TOT_ISS'
+      Precision = 18
+      Size = 2
+    end
+    object qrySped_1601TOT_OUTROS: TFMTBCDField
+      FieldName = 'TOT_OUTROS'
+      Origin = 'TOT_OUTROS'
+      Precision = 18
+      Size = 2
+    end
+    object qrySped_1601FK_SPED: TIntegerField
+      FieldName = 'FK_SPED'
+      Origin = 'FK_SPED'
     end
   end
 end

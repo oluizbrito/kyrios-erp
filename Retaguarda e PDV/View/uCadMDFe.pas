@@ -509,7 +509,7 @@ begin
         qryMDFE_M.Edit;
         qryMDFE_MSITUACAO.Value := 'D';
         qryMDFE_M.Post;
-        dados.Conexao.CommitRetaining;
+        dados.Conexao.Commit;
         exit;
       end;
 
@@ -531,7 +531,7 @@ begin
       COPY(DmMDFe.ACBrMDFe.Manifestos.Items[0].MDFe.infMDFe.ID, 5, 100);
     qryMDFE_MXML.Value := DmMDFe.ACBrMDFe.Manifestos.Items[0].XML;
     qryMDFE_M.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
     try
       if DmMDFe.ACBrMDFe.Enviar(strtoinT('0'), false, True) then
       begin
@@ -544,7 +544,7 @@ begin
         qryMDFE_MDATA_EMISSAO.Value := Now;
         qryMDFE_MSITUACAO.Value := 'T';
         qryMDFE_M.Post;
-        dados.Conexao.CommitRetaining;
+        dados.Conexao.Commit;
 
         showMessage(' MDFe transmitido com sucesso!');
 
@@ -610,12 +610,12 @@ end;
 
 procedure TfrmCadMDFe.QryFaturaAfterDelete(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TfrmCadMDFe.QryFaturaAfterPost(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 function TfrmCadMDFe.ValidaNegocios: boolean;
@@ -1070,7 +1070,7 @@ procedure TfrmCadMDFe.qryMdfe_averbacacoBeforeInsert(DataSet: TDataSet);
 begin
   if qryMDFe_Seguradora.State in dsEditmodes then
     qryMDFe_Seguradora.Post;
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TfrmCadMDFe.qryMdfe_averbacacoBeforePost(DataSet: TDataSet);
@@ -1087,7 +1087,7 @@ end;
 
 procedure TfrmCadMDFe.qryMDFE_DAfterDelete(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TfrmCadMDFe.qryMDFE_DAfterEdit(DataSet: TDataSet);
@@ -1098,7 +1098,7 @@ end;
 
 procedure TfrmCadMDFe.qryMDFE_DAfterPost(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 
 end;
 
@@ -1120,7 +1120,7 @@ end;
 
 procedure TfrmCadMDFe.qryMDFE_MAfterDelete(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TfrmCadMDFe.qryMDFE_MAfterEdit(DataSet: TDataSet);
@@ -1153,7 +1153,7 @@ end;
 
 procedure TfrmCadMDFe.qryMDFE_MAfterPost(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TfrmCadMDFe.qryMDFE_MBeforePost(DataSet: TDataSet);
@@ -1214,12 +1214,12 @@ end;
 
 procedure TfrmCadMDFe.qryMDFe_SeguradoraAfterDelete(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TfrmCadMDFe.qryMDFe_SeguradoraAfterPost(DataSet: TDataSet);
 begin
-  dados.Conexao.CommitRetaining;
+  dados.Conexao.Commit;
 end;
 
 procedure TfrmCadMDFe.qryMDFe_SeguradoraBeforePost(DataSet: TDataSet);

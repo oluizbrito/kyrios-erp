@@ -81,7 +81,7 @@ begin
       qryAcertaQTD_F.Value := 0;
       qryAcertaDATA.Value := DATE;
       qryAcerta.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
 
       dados.qryExecute.Close;
       dados.qryExecute.SQL.Clear;
@@ -92,7 +92,7 @@ begin
       dados.qryExecute.SQL.Add('codigo=:id ');
       dados.qryExecute.Params[0].Value := qrySaldoCODIGO.Value;
       dados.qryExecute.ExecSQL;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
 
       qrySaldo.Next;
       ProgressBar1.Position := ProgressBar1.Position + 1;

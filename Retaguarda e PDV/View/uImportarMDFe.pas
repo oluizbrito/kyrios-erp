@@ -317,7 +317,7 @@ begin
       frmCadMDFe.qryMDFE_MCARGA_PROPRIA.Value := 'S';
       frmCadMDFe.qryMDFE_MUNIDADE_CARGA.Value := '';
       frmCadMDFe.qryMDFE_M.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
 
       frmCadMDFe.qryMDFE_D.Append;
       frmCadMDFe.qryMDFE_DFK_MDFE_MASTER.Value :=
@@ -333,7 +333,7 @@ begin
       frmCadMDFe.qryMDFE_DFK_EMPRESA.Value :=
         frmCadMDFe.qryMDFE_MFK_EMPRESA.Value;
       frmCadMDFe.qryMDFE_D.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
 
       qrySoma.Close;
       qrySoma.Params[0].Value := frmCadMDFe.qryMDFE_MCODIGO.Value;
@@ -346,7 +346,7 @@ begin
       frmCadMDFe.qryMDFE_MQTD_CARGA.Value := qrySomaPESO.Value;
       frmCadMDFe.qryMDFE_MUNIDADE_CARGA.Value := '1';
       frmCadMDFe.qryMDFE_M.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
     end
     else
     begin
@@ -409,7 +409,7 @@ begin
       frmCadMDFe.qryMDFE_MVALOR_CARGA.Value := 0;
       frmCadMDFe.qryMDFE_MUNIDADE_CARGA.Value := '';
       frmCadMDFe.qryMDFE_M.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
 
       frmCadMDFe.qryMDFE_D.Append;
       frmCadMDFe.qryMDFE_DFK_MDFE_MASTER.Value :=
@@ -425,7 +425,7 @@ begin
       frmCadMDFe.qryMDFE_DFK_EMPRESA.Value :=
         frmCadMDFe.qryMDFE_MFK_EMPRESA.Value;
       frmCadMDFe.qryMDFE_D.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
 
       qrySoma.Close;
       qrySoma.Params[0].Value := frmCadMDFe.qryMDFE_MCODIGO.Value;
@@ -472,7 +472,7 @@ begin
     qryDestinatarioFK_USUARIO.Value := dados.idUsuario;
     qryDestinatarioFK_EMPRESA.Value := cbEmpresa.KeyValue;
     qryDestinatario.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
     result := qryDestinatarioCNPJ.Value;
   end
   else
@@ -543,7 +543,7 @@ begin
     frmCadMDFe.qryMDFE_MVALOR_CARGA.Value := 0;
     frmCadMDFe.qryMDFE_MUNIDADE_CARGA.Value := '';
     frmCadMDFe.qryMDFE_M.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     frmCadMDFe.qryMDFE_D.Append;
     frmCadMDFe.qryMDFE_DFK_MDFE_MASTER.Value :=
@@ -561,7 +561,7 @@ begin
     frmCadMDFe.qryMDFE_DFK_EMPRESA.Value :=
       frmCadMDFe.qryMDFE_MFK_EMPRESA.Value;
     frmCadMDFe.qryMDFE_D.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     qrySoma.Close;
     qrySoma.Params[0].Value := frmCadMDFe.qryMDFE_MCODIGO.Value;
@@ -637,7 +637,7 @@ begin
     frmCadMDFe.qryMDFE_MUNIDADE_CARGA.Value := '';
     frmCadMDFe.qryMDFE_MTIPO_MDFE.Value := 'NFE';
     frmCadMDFe.qryMDFE_M.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     frmCadMDFe.qryMDFE_D.Append;
     frmCadMDFe.qryMDFE_DFK_MDFE_MASTER.Value :=
@@ -657,7 +657,7 @@ begin
     frmCadMDFe.qryMDFE_DFK_EMPRESA.Value :=
       frmCadMDFe.qryMDFE_MFK_EMPRESA.Value;
     frmCadMDFe.qryMDFE_D.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     qrySoma.Close;
     qrySoma.Params[0].Value := frmCadMDFe.qryMDFE_MCODIGO.Value;

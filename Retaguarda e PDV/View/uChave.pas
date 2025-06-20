@@ -353,7 +353,7 @@ begin
         qryChave.Edit;
       qryChaveCHAVEACESSO.Value := crypt('C', nserial);
       qryChave.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
 
       dados.qryEmpresa.Edit;
       dados.qryEmpresaDATA_VALIDADE.AsString :=
@@ -364,7 +364,7 @@ begin
       dados.qryEmpresaCSENHA.AsString := dados.crypt('C', 'N');
 
       dados.qryEmpresa.Post;
-      dados.Conexao.CommitRetaining;
+      dados.Conexao.Commit;
       close;
     end;
   end

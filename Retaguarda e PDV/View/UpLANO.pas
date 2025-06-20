@@ -330,7 +330,7 @@ begin
     end;
 
     Dados.qryPlano.Post;
-    Dados.Conexao.CommitRetaining;
+    Dados.Conexao.Commit;
   end;
 
   PageControl1.ActivePage := Lista;

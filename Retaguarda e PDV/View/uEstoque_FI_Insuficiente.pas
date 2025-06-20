@@ -102,7 +102,7 @@ begin
       .AsInteger;
     dados.qryUpdate.Params[1].Value := ID;
     dados.qryUpdate.ExecSQL;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
     dados.vMudouEstoque := true;
   except
     on e: Exception do

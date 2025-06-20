@@ -484,7 +484,7 @@ begin
         dados.qryExecute.SQL.Text := 'DELETE FROM CPAGAR WHERE FK_COMPRA=:ID';
         dados.qryExecute.Params[0].Value := dados.qryCompraID.Value;
         dados.qryExecute.ExecSQL;
-        dados.Conexao.CommitRetaining;
+        dados.Conexao.Commit;
 
         qryItensCompra.Close;
         qryItensCompra.Params[0].Value := dados.qryCompraID.Value;
@@ -502,7 +502,7 @@ begin
           dados.qryCompra.edit;
         dados.qryCompraSTATUS.Value := 'C';
         dados.qryCompra.Post;
-        dados.Conexao.CommitRetaining;
+        dados.Conexao.Commit;
         ShowMessage('Compra Cancelada com Sucesso!');
       Finally
         qryItensCompra.EnableControls;
@@ -560,14 +560,14 @@ begin
     dados.qryConsulta.SQL.Text := 'delete from xml_master where codigo=:cod';
     dados.qryConsulta.Params[0].Value := dados.idUsuario;
     dados.qryConsulta.ExecSQL;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     dados.qryConsulta.Close;
     dados.qryConsulta.SQL.Text :=
       'delete from xml_detail where FK_XML_MASTER=:id';
     dados.qryConsulta.Params[0].Value := dados.idUsuario;
     dados.qryConsulta.ExecSQL;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     ACBrNFe.NotasFiscais.Clear;
     //fim limpeza xml

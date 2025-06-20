@@ -3,7 +3,7 @@ object frmVeiculos: TfrmVeiculos
   Top = 0
   BorderStyle = bsDialog
   Caption = 'Cadastro de Ve'#237'culos'
-  ClientHeight = 594
+  ClientHeight = 399
   ClientWidth = 811
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -22,8 +22,8 @@ object frmVeiculos: TfrmVeiculos
     Left = 0
     Top = 0
     Width = 811
-    Height = 594
-    ActivePage = Manutencao
+    Height = 399
+    ActivePage = Cadastro
     Align = alClient
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
@@ -32,8 +32,8 @@ object frmVeiculos: TfrmVeiculos
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 809
-    ExplicitHeight = 586
+    ExplicitWidth = 807
+    ExplicitHeight = 387
     object Lista: TTabSheet
       Caption = 'Lista'
       TabVisible = False
@@ -41,7 +41,7 @@ object frmVeiculos: TfrmVeiculos
         Left = 0
         Top = 0
         Width = 803
-        Height = 498
+        Height = 303
         Align = alClient
         DataSource = dsVeiculo_Cavalo
         GradientEndColor = 15529196
@@ -91,13 +91,15 @@ object frmVeiculos: TfrmVeiculos
       end
       object Panel2: TPanel
         Left = 0
-        Top = 498
+        Top = 303
         Width = 803
         Height = 86
         Align = alBottom
         Color = 15724527
         ParentBackground = False
         TabOrder = 1
+        ExplicitTop = 291
+        ExplicitWidth = 799
         object Panel3: TPanel
           Left = 1
           Top = 1
@@ -717,6 +719,7 @@ object frmVeiculos: TfrmVeiculos
           Font.Style = []
           ParentFont = False
           TabOrder = 1
+          ExplicitWidth = 493
           object edtLoc: TEdit
             Left = 11
             Top = 32
@@ -745,16 +748,463 @@ object frmVeiculos: TfrmVeiculos
       Caption = 'Cadastro'
       ImageIndex = 1
       TabVisible = False
+      object Panel1: TPanel
+        Left = 0
+        Top = 0
+        Width = 803
+        Height = 305
+        Align = alClient
+        Color = 15724527
+        ParentBackground = False
+        TabOrder = 0
+        object Label2: TLabel
+          Left = 121
+          Top = 4
+          Width = 51
+          Height = 15
+          Caption = 'Descri'#231#227'o'
+          FocusControl = DBEdit2
+        end
+        object Label3: TLabel
+          Left = 15
+          Top = 4
+          Width = 28
+          Height = 15
+          Caption = 'Placa'
+          FocusControl = DBEdit3
+        end
+        object Label4: TLabel
+          Left = 497
+          Top = 46
+          Width = 54
+          Height = 15
+          Caption = 'RENAVAM'
+          FocusControl = DBEdit4
+        end
+        object Label5: TLabel
+          Left = 623
+          Top = 46
+          Width = 29
+          Height = 15
+          Caption = 'RNTC'
+          FocusControl = DBEdit5
+        end
+        object Label6: TLabel
+          Left = 15
+          Top = 84
+          Width = 21
+          Height = 15
+          Caption = 'Tara'
+          FocusControl = DBEdit6
+        end
+        object Label7: TLabel
+          Left = 15
+          Top = 46
+          Width = 37
+          Height = 15
+          Caption = 'Cidade'
+          FocusControl = DBEdit6
+        end
+        object Label8: TLabel
+          Left = 437
+          Top = 46
+          Width = 14
+          Height = 15
+          Caption = 'UF'
+        end
+        object Label9: TLabel
+          Left = 172
+          Top = 84
+          Width = 25
+          Height = 15
+          Caption = 'Peso'
+          FocusControl = DBEdit7
+        end
+        object Label10: TLabel
+          Left = 336
+          Top = 84
+          Width = 23
+          Height = 15
+          Caption = 'Tipo'
+        end
+        object Label11: TLabel
+          Left = 532
+          Top = 84
+          Width = 54
+          Height = 15
+          Caption = 'Carroceria'
+        end
+        object DBEdit2: TDBEdit
+          Left = 118
+          Top = 18
+          Width = 609
+          Height = 21
+          CharCase = ecUpperCase
+          Ctl3D = False
+          DataField = 'DESCRICAO'
+          DataSource = dsVeiculo_Cavalo
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlue
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 1
+        end
+        object DBCheckBox1: TDBCheckBox
+          Left = 733
+          Top = 20
+          Width = 48
+          Height = 17
+          Caption = 'Ativo'
+          DataField = 'ATIVO'
+          DataSource = dsVeiculo_Cavalo
+          TabOrder = 2
+          ValueChecked = 'S'
+          ValueUnchecked = 'N'
+        end
+        object DBEdit3: TDBEdit
+          Left = 15
+          Top = 18
+          Width = 100
+          Height = 21
+          CharCase = ecUpperCase
+          Ctl3D = False
+          DataField = 'PLACA'
+          DataSource = dsVeiculo_Cavalo
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlue
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 0
+        end
+        object DBEdit4: TDBEdit
+          Left = 497
+          Top = 61
+          Width = 120
+          Height = 21
+          CharCase = ecUpperCase
+          Ctl3D = False
+          DataField = 'RENAVAM'
+          DataSource = dsVeiculo_Cavalo
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlue
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 5
+        end
+        object DBEdit5: TDBEdit
+          Left = 623
+          Top = 61
+          Width = 104
+          Height = 21
+          CharCase = ecUpperCase
+          Ctl3D = False
+          DataField = 'RNTC'
+          DataSource = dsVeiculo_Cavalo
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlue
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 6
+        end
+        object DBEdit6: TDBEdit
+          Left = 15
+          Top = 100
+          Width = 151
+          Height = 21
+          CharCase = ecUpperCase
+          Ctl3D = False
+          DataField = 'TARA'
+          DataSource = dsVeiculo_Cavalo
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlue
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 7
+        end
+        object DBComboBoxEh1: TDBComboBoxEh
+          Left = 438
+          Top = 61
+          Width = 53
+          Height = 21
+          Ctl3D = False
+          DataField = 'UF'
+          DataSource = dsVeiculo_Cavalo
+          DynProps = <>
+          DropDownBox.AutoDrop = True
+          EditButtons = <>
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlue
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Items.Strings = (
+            'AC'
+            'AL'
+            'AM'
+            'AP'
+            'BA'
+            'CE'
+            'DF'
+            'ES'
+            'GO'
+            'MA'
+            'MG'
+            'MS'
+            'MT'
+            'PA'
+            'PB'
+            'PE'
+            'PI'
+            'PR'
+            'RJ'
+            'RN'
+            'RO'
+            'RR'
+            'RS'
+            'SC'
+            'SE'
+            'SP'
+            'TO')
+          KeyItems.Strings = (
+            'AC'
+            'AL'
+            'AM'
+            'AP'
+            'BA'
+            'CE'
+            'DF'
+            'ES'
+            'GO'
+            'MA'
+            'MG'
+            'MS'
+            'MT'
+            'PA'
+            'PB'
+            'PE'
+            'PI'
+            'PR'
+            'RJ'
+            'RN'
+            'RO'
+            'RR'
+            'RS'
+            'SC'
+            'SE'
+            'SP'
+            'TO')
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 4
+          Visible = True
+        end
+        object DBLookupComboboxEh1: TDBLookupComboboxEh
+          Left = 15
+          Top = 61
+          Width = 417
+          Height = 21
+          Ctl3D = False
+          ParentCtl3D = False
+          DynProps = <>
+          DataField = 'MUNICIPIO'
+          DataSource = dsVeiculo_Cavalo
+          DropDownBox.AutoDrop = True
+          EditButtons = <>
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlue
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          KeyField = 'DESCRICAO'
+          ListField = 'DESCRICAO;UF'
+          ListSource = dsCidade
+          ParentFont = False
+          TabOrder = 3
+          Visible = True
+        end
+        object DBEdit7: TDBEdit
+          Left = 172
+          Top = 100
+          Width = 158
+          Height = 21
+          CharCase = ecUpperCase
+          Ctl3D = False
+          DataField = 'PESO'
+          DataSource = dsVeiculo_Cavalo
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlue
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentCtl3D = False
+          ParentFont = False
+          TabOrder = 8
+        end
+        object PageControl2: TPageControl
+          Left = 1
+          Top = 139
+          Width = 801
+          Height = 165
+          ActivePage = TabSheet1
+          Align = alBottom
+          TabOrder = 9
+          object TabSheet1: TTabSheet
+            Caption = 'Reboques'
+            object DBGridEh1: TDBGridEh
+              Left = 0
+              Top = 0
+              Width = 793
+              Height = 135
+              Align = alClient
+              DataSource = dsVeiculo_Reboque
+              DynProps = <>
+              TabOrder = 0
+              OnEnter = DBGridEh1Enter
+              OnExit = DBGridEh1Exit
+              OnKeyPress = DBGridEh1KeyPress
+              Columns = <
+                item
+                  CellButtons = <>
+                  DynProps = <>
+                  EditButtons = <>
+                  FieldName = 'PLACA'
+                  Footers = <>
+                  Title.Caption = 'Placa'
+                  Width = 59
+                end
+                item
+                  CellButtons = <>
+                  DynProps = <>
+                  EditButtons = <>
+                  FieldName = 'MUNICIPIO'
+                  Footers = <>
+                  Title.Caption = 'Munic'#237'pio'
+                  Width = 240
+                end
+                item
+                  CellButtons = <>
+                  DynProps = <>
+                  EditButtons = <>
+                  FieldName = 'UF'
+                  Footers = <>
+                  Width = 28
+                end
+                item
+                  CellButtons = <>
+                  DynProps = <>
+                  EditButtons = <>
+                  FieldName = 'RNTC'
+                  Footers = <>
+                  Width = 67
+                end
+                item
+                  CellButtons = <>
+                  DynProps = <>
+                  EditButtons = <>
+                  FieldName = 'RENAVAM'
+                  Footers = <>
+                  Width = 77
+                end
+                item
+                  CellButtons = <>
+                  DynProps = <>
+                  EditButtons = <>
+                  FieldName = 'PESO'
+                  Footers = <>
+                  Title.Caption = 'Peso'
+                  Width = 69
+                end
+                item
+                  CellButtons = <>
+                  DynProps = <>
+                  EditButtons = <>
+                  FieldName = 'TARA'
+                  Footers = <>
+                  Title.Caption = 'Tara'
+                  Width = 61
+                end
+                item
+                  CellButtons = <>
+                  DynProps = <>
+                  EditButtons = <>
+                  FieldName = 'VIRTUAL_CARROCERIA'
+                  Footers = <>
+                  Title.Caption = 'Carroceria'
+                  Width = 150
+                end>
+              object RowDetailData: TRowDetailPanelControlEh
+              end
+            end
+          end
+        end
+        object DBLookupComboboxEh2: TDBLookupComboboxEh
+          Left = 336
+          Top = 100
+          Width = 190
+          Height = 21
+          Ctl3D = False
+          ParentCtl3D = False
+          DynProps = <>
+          DataField = 'VIRTUAL_TIPO'
+          DataSource = dsVeiculo_Cavalo
+          DropDownBox.AutoDrop = True
+          EditButtons = <>
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlue
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 10
+          Visible = True
+        end
+        object DBLookupComboboxEh3: TDBLookupComboboxEh
+          Left = 532
+          Top = 100
+          Width = 195
+          Height = 21
+          Ctl3D = False
+          ParentCtl3D = False
+          DynProps = <>
+          DataField = 'VIRTUAL_CARROCERICA'
+          DataSource = dsVeiculo_Cavalo
+          DropDownBox.AutoDrop = True
+          EditButtons = <>
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlue
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 11
+          Visible = True
+        end
+      end
       object Panel4: TPanel
         Left = 0
-        Top = 500
+        Top = 305
         Width = 803
         Height = 84
         Align = alBottom
         BevelOuter = bvNone
         Color = 15395562
         ParentBackground = False
-        TabOrder = 0
+        TabOrder = 1
         object btnGravar: TSpeedButton
           Left = 15
           Top = 6
@@ -1050,2933 +1500,16 @@ object frmVeiculos: TfrmVeiculos
           OnClick = btnCancelarClick
         end
       end
-      object PageControl3: TPageControl
-        Left = 0
-        Top = 0
-        Width = 803
-        Height = 500
-        ActivePage = DadosGerais
-        Align = alClient
-        TabOrder = 1
-        object DadosGerais: TTabSheet
-          Caption = 'Dados Gerais'
-          object Panel1: TPanel
-            Left = 0
-            Top = 0
-            Width = 795
-            Height = 470
-            Align = alClient
-            Color = 15724527
-            ParentBackground = False
-            TabOrder = 0
-            object Label2: TLabel
-              Left = 121
-              Top = 4
-              Width = 51
-              Height = 15
-              Caption = 'Descri'#231#227'o'
-              FocusControl = DBEdit2
-            end
-            object Label3: TLabel
-              Left = 15
-              Top = 4
-              Width = 28
-              Height = 15
-              Caption = 'Placa'
-              FocusControl = DBEdit3
-            end
-            object Label4: TLabel
-              Left = 497
-              Top = 46
-              Width = 54
-              Height = 15
-              Caption = 'RENAVAM'
-              FocusControl = DBEdit4
-            end
-            object Label5: TLabel
-              Left = 623
-              Top = 46
-              Width = 30
-              Height = 15
-              Caption = 'RNTC'
-              FocusControl = DBEdit5
-            end
-            object Label6: TLabel
-              Left = 15
-              Top = 84
-              Width = 22
-              Height = 15
-              Caption = 'Tara'
-              FocusControl = DBEdit6
-            end
-            object Label7: TLabel
-              Left = 15
-              Top = 46
-              Width = 37
-              Height = 15
-              Caption = 'Cidade'
-              FocusControl = DBEdit6
-            end
-            object Label8: TLabel
-              Left = 437
-              Top = 46
-              Width = 14
-              Height = 15
-              Caption = 'UF'
-            end
-            object Label9: TLabel
-              Left = 172
-              Top = 84
-              Width = 25
-              Height = 15
-              Caption = 'Peso'
-              FocusControl = DBEdit7
-            end
-            object Label10: TLabel
-              Left = 336
-              Top = 84
-              Width = 24
-              Height = 15
-              Caption = 'Tipo'
-            end
-            object Label11: TLabel
-              Left = 532
-              Top = 84
-              Width = 54
-              Height = 15
-              Caption = 'Carroceria'
-            end
-            object Label1: TLabel
-              Left = 15
-              Top = 124
-              Width = 33
-              Height = 15
-              Caption = 'Marca'
-              FocusControl = DBEdit1
-            end
-            object Label12: TLabel
-              Left = 281
-              Top = 122
-              Width = 41
-              Height = 15
-              Caption = 'Modelo'
-              FocusControl = DBEdit8
-            end
-            object Label13: TLabel
-              Left = 532
-              Top = 124
-              Width = 19
-              Height = 15
-              Caption = 'Cor'
-              FocusControl = DBEdit9
-            end
-            object Label14: TLabel
-              Left = 15
-              Top = 164
-              Width = 82
-              Height = 15
-              Caption = 'Ano Fabrica'#231#227'o'
-              FocusControl = DBEdit10
-            end
-            object Label15: TLabel
-              Left = 111
-              Top = 164
-              Width = 66
-              Height = 15
-              Caption = 'Ano Modelo'
-              FocusControl = DBEdit11
-            end
-            object Label35: TLabel
-              Left = 304
-              Top = 164
-              Width = 74
-              Height = 15
-              Caption = 'Data Cadastro'
-              FocusControl = DBEdit31
-            end
-            object Label36: TLabel
-              Left = 417
-              Top = 164
-              Width = 93
-              Height = 15
-              Caption = 'Data Modifica'#231#227'o'
-              FocusControl = DBEdit32
-            end
-            object Label37: TLabel
-              Left = 530
-              Top = 164
-              Width = 40
-              Height = 15
-              Caption = 'Usu'#225'rio'
-            end
-            object SpeedButton1: TSpeedButton
-              Left = 648
-              Top = 131
-              Width = 80
-              Height = 70
-              Caption = 'Manuten'#231#227'o'
-              Glyph.Data = {
-                36100000424D3610000000000000360000002800000020000000200000000100
-                2000000000000010000000000000000000000000000000000000000000000000
-                00000000000000000000000000000000000026262655595959C7707070FB7171
-                71FC5B5B5BCB2929295B00000000000000000000000000000000000000000000
-                0000000000000000000025252552595959C6707070FB717171FC5B5B5BCB2929
-                295B000000000000000000000000000000000000000000000000000000000000
-                00000000000000000000000000003F3F3F8D727272FF727272FF727272FF7272
-                72FF727272FF727272FF44444497000000000000000000000000000000000000
-                0000000000003F3F3F8C727272FF727272FF727272FF727272FF727272FF7272
-                72FF444444970000000000000000000000000000000000000000000000000000
-                000000000000000000002323234E727272FF6F6F6FF93131316D0404040A0404
-                04082D2D2D646E6E6EF5727272FF2B2B2B610000000000000000000000000000
-                000024242451727272FF6F6F6FF93131316D0404040A040404082D2D2D646E6E
-                6EF5727272FF2B2B2B6100000000000000000000000000000000000000000000
-                00000000000000000000565656BF727272FF3333337200000000000000000000
-                0000000000002D2D2D64727272FF5D5D5DCF0000000000000000000000000000
-                0000575757C1727272FF33333372000000000000000000000000000000002D2D
-                2D64727272FF5D5D5DCF00000000000000000000000000000000000000000000
-                000000000000000000006B6B6BEE727272FF0A0A0A1600000000000000000000
-                00000000000004040408727272FF717171FD0000000000000000000000000000
-                00006B6B6BF0727272FF0A0A0A16000000000000000000000000000000000404
-                0408727272FF717171FD00000000000000000000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000000000000000
-                0000727272FF727272FF00000000000000000000000000000000000000000000
-                0000727272FF727272FF00000000000000000000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000000000000000
-                0000727272FF727272FF00000000000000000000000000000000000000000000
-                0000727272FF727272FF00000000000000000000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000000000000000
-                0000727272FF727272FF00000000000000000000000000000000000000000000
-                0000727272FF727272FF00000000000000000000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000000000000000
-                0000727272FF727272FF00000000000000000000000000000000000000000000
-                0000727272FF727272FF00000000000000000000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000000000000000
-                0000727272FF727272FF00000000000000000000000000000000000000000000
-                0000727272FF727272FF00000000000000000000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000000000000000
-                0000727272FF727272FF727272FF727272FF727272FF727272FF727272FF7272
-                72FF727272FF727272FF00000000000000000000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000000000000000
-                0000727272FF727272FF727272FF727272FF727272FF727272FF727272FF7272
-                72FF727272FF727272FF00000000000000000000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000000000000000
-                0000727272FF727272FF00000000000000000000000000000000000000000000
-                0000727272FF727272FF00000000000000000000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000000000000000
-                0000727272FF727272FF00000000000000000000000000000000000000000000
-                0000727272FF727272FF00000000000000000000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000000000000000
-                0000727272FF727272FF727272FF727272FF727272FF727272FF727272FF7272
-                72FF727272FF727272FF00000000000000000000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000000000000000
-                0000515151B56E6E6EF7727272FF727272FF727272FF727272FF727272FF7272
-                72FF6F6F6FF8575757C200000000000000000000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000727272FF7272
-                72FF000000000000000000000000000000000000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000727272FF7272
-                72FF000000000000000000000000000000000000000000000000000000000000
-                0000000000000D0D0D1C727272FF727272FF0000000000000000000000000000
-                00000000000000000000727272FF727272FF1010102300000000000000000000
-                00000000000000000000727272FF727272FF0000000000000000727272FF7272
-                72FF000000000000000000000000000000000000000000000000000000000000
-                00000B0B0B19636363DE727272FF646464DF0000000000000000000000000000
-                00000000000000000000626262DA727272FF666666E40F0F0F21000000000000
-                00000000000000000000727272FF727272FF0000000000000000727272FF7272
-                72FF000000000000000000000000000000000000000000000000000000000000
-                0000525252B6727272FF585858C50707070F0000000000000000000000000000
-                000000000000000000000505050B545454BC727272FF585858C4000000010000
-                00000000000000000000727272FF727272FF0000000000000000727272FF7272
-                72FF000000000000000000000000000000000000000000000000000000001E1E
-                1E44727272FF696969EB0A0A0A16000000000000000000000000000000000000
-                00000000000000000000000000000707070F666666E3727272FF252525520000
-                00000000000000000000727272FF727272FF0000000000000000727272FF7272
-                72FF000000000000000000000000000000000000000000000000000000004949
-                49A4727272FF3737377B00000000000000000000000000000000000000000000
-                0000000000000000000000000000000000003030306C727272FF4F4F4FB00000
-                00000000000000000000727272FF727272FF0000000000000000727272FF7272
-                72FF000000000000000000000000000000000000000000000000000000006464
-                64DE727272FF1313132B00000000000000001D1D1D401D1D1D401D1D1D401D1D
-                1D401D1D1D401D1D1D4000000000000000000D0D0D1E727272FF696969EB0000
-                00000000000000000000727272FF727272FF0000000000000000727272FF7272
-                72FF000000000000000000000000000000000000000000000000000000006D6D
-                6DF3727272FF0505050C0000000000000000727272FF727272FF727272FF7272
-                72FF727272FF727272FF000000000000000000000000727272FF727272FF0000
-                00000000000000000000727272FF727272FF0000000000000000727272FF7272
-                72FF000000000000000000000000000000000000000000000000000000006A6A
-                6AEC727272FF090909150000000000000000727272FF727272FF565656BF5656
-                56BF727272FF727272FF000000000000000003030306727272FF707070FA0000
-                00000000000002020204727272FF727272FF0000000000000000727272FF7272
-                72FF030303070000000000000000000000000000000000000000000000005959
-                59C6727272FF1F1F1F460000000000000000727272FF727272FF000000000000
-                0000727272FF727272FF00000000000000001A1A1A3A727272FF5E5E5ED20000
-                0000000000002B2B2B60727272FF626262DB00000000000000005B5B5BCB7272
-                72FF323232700000000000000000000000000000000000000000000000003737
-                377B727272FF4E4E4EAD0000000000000000727272FF727272FF000000000000
-                0000727272FF727272FF0000000000000000484848A0727272FF3C3C3C860000
-                000000000000606060D6727272FF2B2B2B600000000000000000242424507272
-                72FF656565E20000000000000000000000000000000000000000000000000B0B
-                0B186D6D6DF4727272FF2828285900000000727272FF727272FF000000000000
-                0000727272FF727272FF000000002121214A727272FE6F6F6FF70D0D0D1E0000
-                000000000000616161D8727272FF1E1E1E430000000000000000171717337272
-                72FF686868E80000000000000000000000000000000000000000000000000000
-                00003131316E727272FF6F6F6FF92E2E2E67727272FF727272FF000000000000
-                0000727272FF727272FF2A2A2A5E6E6E6EF5727272FF36363679000000000000
-                0000000000003F3F3F8C727272FF4444449700000000000000003D3D3D887272
-                72FF444444970000000000000000000000000000000000000000000000000000
-                00000000000042424294727272FF727272FF727272FF6A6A6AEC000000000000
-                0000636363DD727272FF727272FF727272FF4646469C00000001000000000000
-                00000000000017171734727272FF727272FF727272FF727272FF727272FF7272
-                72FF1D1D1D410000000000000000000000000000000000000000000000000000
-                000000000000000000002B2B2B61626262DC646464E02222224D000000000000
-                00001F1F1F46626262DC646464E02E2E2E680000000100000000000000000000
-                00000000000000000000535353B9727272FF727272FF727272FF727272FF5858
-                58C5010101020000000000000000000000000000000000000000}
-              Layout = blGlyphTop
-              OnClick = SpeedButton1Click
-            end
-            object DBEdit2: TDBEdit
-              Left = 118
-              Top = 18
-              Width = 609
-              Height = 21
-              CharCase = ecUpperCase
-              Ctl3D = False
-              DataField = 'DESCRICAO'
-              DataSource = dsVeiculo_Cavalo
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clBlue
-              Font.Height = -12
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentCtl3D = False
-              ParentFont = False
-              TabOrder = 1
-            end
-            object DBCheckBox1: TDBCheckBox
-              Left = 733
-              Top = 20
-              Width = 48
-              Height = 17
-              Caption = 'Ativo'
-              DataField = 'ATIVO'
-              DataSource = dsVeiculo_Cavalo
-              TabOrder = 2
-              ValueChecked = 'S'
-              ValueUnchecked = 'N'
-            end
-            object DBEdit3: TDBEdit
-              Left = 15
-              Top = 18
-              Width = 100
-              Height = 21
-              CharCase = ecUpperCase
-              Ctl3D = False
-              DataField = 'PLACA'
-              DataSource = dsVeiculo_Cavalo
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clBlue
-              Font.Height = -12
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentCtl3D = False
-              ParentFont = False
-              TabOrder = 0
-            end
-            object DBEdit4: TDBEdit
-              Left = 497
-              Top = 61
-              Width = 120
-              Height = 21
-              CharCase = ecUpperCase
-              Ctl3D = False
-              DataField = 'RENAVAM'
-              DataSource = dsVeiculo_Cavalo
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clBlue
-              Font.Height = -12
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentCtl3D = False
-              ParentFont = False
-              TabOrder = 5
-            end
-            object DBEdit5: TDBEdit
-              Left = 623
-              Top = 61
-              Width = 104
-              Height = 21
-              CharCase = ecUpperCase
-              Ctl3D = False
-              DataField = 'RNTC'
-              DataSource = dsVeiculo_Cavalo
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clBlue
-              Font.Height = -12
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentCtl3D = False
-              ParentFont = False
-              TabOrder = 6
-            end
-            object DBEdit6: TDBEdit
-              Left = 15
-              Top = 100
-              Width = 151
-              Height = 21
-              CharCase = ecUpperCase
-              Ctl3D = False
-              DataField = 'TARA'
-              DataSource = dsVeiculo_Cavalo
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clBlue
-              Font.Height = -12
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentCtl3D = False
-              ParentFont = False
-              TabOrder = 7
-            end
-            object DBComboBoxEh1: TDBComboBoxEh
-              Left = 438
-              Top = 61
-              Width = 53
-              Height = 21
-              Ctl3D = False
-              DataField = 'UF'
-              DataSource = dsVeiculo_Cavalo
-              DynProps = <>
-              DropDownBox.AutoDrop = True
-              EditButtons = <>
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clBlue
-              Font.Height = -12
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              Items.Strings = (
-                'AC'
-                'AL'
-                'AM'
-                'AP'
-                'BA'
-                'CE'
-                'DF'
-                'ES'
-                'GO'
-                'MA'
-                'MG'
-                'MS'
-                'MT'
-                'PA'
-                'PB'
-                'PE'
-                'PI'
-                'PR'
-                'RJ'
-                'RN'
-                'RO'
-                'RR'
-                'RS'
-                'SC'
-                'SE'
-                'SP'
-                'TO')
-              KeyItems.Strings = (
-                'AC'
-                'AL'
-                'AM'
-                'AP'
-                'BA'
-                'CE'
-                'DF'
-                'ES'
-                'GO'
-                'MA'
-                'MG'
-                'MS'
-                'MT'
-                'PA'
-                'PB'
-                'PE'
-                'PI'
-                'PR'
-                'RJ'
-                'RN'
-                'RO'
-                'RR'
-                'RS'
-                'SC'
-                'SE'
-                'SP'
-                'TO')
-              ParentCtl3D = False
-              ParentFont = False
-              TabOrder = 4
-              Visible = True
-            end
-            object DBLookupComboboxEh1: TDBLookupComboboxEh
-              Left = 15
-              Top = 61
-              Width = 417
-              Height = 21
-              Ctl3D = False
-              ParentCtl3D = False
-              DynProps = <>
-              DataField = 'MUNICIPIO'
-              DataSource = dsVeiculo_Cavalo
-              DropDownBox.AutoDrop = True
-              EditButtons = <>
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clBlue
-              Font.Height = -12
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              KeyField = 'DESCRICAO'
-              ListField = 'DESCRICAO;UF'
-              ListSource = dsCidade
-              ParentFont = False
-              TabOrder = 3
-              Visible = True
-            end
-            object DBEdit7: TDBEdit
-              Left = 172
-              Top = 100
-              Width = 158
-              Height = 21
-              CharCase = ecUpperCase
-              Ctl3D = False
-              DataField = 'PESO'
-              DataSource = dsVeiculo_Cavalo
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clBlue
-              Font.Height = -12
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentCtl3D = False
-              ParentFont = False
-              TabOrder = 8
-            end
-            object DBLookupComboboxEh2: TDBLookupComboboxEh
-              Left = 336
-              Top = 100
-              Width = 190
-              Height = 21
-              Ctl3D = False
-              ParentCtl3D = False
-              DynProps = <>
-              DataField = 'VIRTUAL_TIPO'
-              DataSource = dsVeiculo_Cavalo
-              DropDownBox.AutoDrop = True
-              EditButtons = <>
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clBlue
-              Font.Height = -12
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentFont = False
-              TabOrder = 9
-              Visible = True
-            end
-            object DBLookupComboboxEh3: TDBLookupComboboxEh
-              Left = 532
-              Top = 100
-              Width = 195
-              Height = 21
-              Ctl3D = False
-              ParentCtl3D = False
-              DynProps = <>
-              DataField = 'VIRTUAL_CARROCERICA'
-              DataSource = dsVeiculo_Cavalo
-              DropDownBox.AutoDrop = True
-              EditButtons = <>
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clBlue
-              Font.Height = -12
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentFont = False
-              TabOrder = 10
-              Visible = True
-            end
-            object DBEdit1: TDBEdit
-              Left = 15
-              Top = 140
-              Width = 260
-              Height = 21
-              CharCase = ecUpperCase
-              Ctl3D = False
-              DataField = 'MARCA'
-              DataSource = dsVeiculo_Cavalo
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clBlue
-              Font.Height = -12
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentCtl3D = False
-              ParentFont = False
-              TabOrder = 11
-            end
-            object DBEdit8: TDBEdit
-              Left = 281
-              Top = 140
-              Width = 245
-              Height = 21
-              CharCase = ecUpperCase
-              Ctl3D = False
-              DataField = 'MODELO'
-              DataSource = dsVeiculo_Cavalo
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clBlue
-              Font.Height = -12
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentCtl3D = False
-              ParentFont = False
-              TabOrder = 12
-            end
-            object DBEdit9: TDBEdit
-              Left = 532
-              Top = 140
-              Width = 105
-              Height = 21
-              CharCase = ecUpperCase
-              Ctl3D = False
-              DataField = 'COR'
-              DataSource = dsVeiculo_Cavalo
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clBlue
-              Font.Height = -12
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentCtl3D = False
-              ParentFont = False
-              TabOrder = 13
-            end
-            object DBEdit10: TDBEdit
-              Left = 15
-              Top = 180
-              Width = 90
-              Height = 21
-              CharCase = ecUpperCase
-              Ctl3D = False
-              DataField = 'ANO_FABRICACAO'
-              DataSource = dsVeiculo_Cavalo
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clBlue
-              Font.Height = -12
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentCtl3D = False
-              ParentFont = False
-              TabOrder = 14
-            end
-            object DBEdit11: TDBEdit
-              Left = 111
-              Top = 180
-              Width = 90
-              Height = 21
-              CharCase = ecUpperCase
-              Ctl3D = False
-              DataField = 'ANO_MODELO'
-              DataSource = dsVeiculo_Cavalo
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clBlue
-              Font.Height = -12
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentCtl3D = False
-              ParentFont = False
-              TabOrder = 15
-            end
-            object DBEdit31: TDBEdit
-              Left = 304
-              Top = 180
-              Width = 107
-              Height = 21
-              CharCase = ecUpperCase
-              Ctl3D = False
-              DataField = 'DATA_CADASTRO'
-              DataSource = dsVeiculo_Cavalo
-              Enabled = False
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clBlue
-              Font.Height = -12
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentCtl3D = False
-              ParentFont = False
-              TabOrder = 16
-            end
-            object DBEdit32: TDBEdit
-              Left = 417
-              Top = 180
-              Width = 107
-              Height = 21
-              CharCase = ecUpperCase
-              Ctl3D = False
-              DataField = 'DATA_MODIFICACAO'
-              DataSource = dsVeiculo_Cavalo
-              Enabled = False
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clBlue
-              Font.Height = -12
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentCtl3D = False
-              ParentFont = False
-              TabOrder = 17
-            end
-            object DBLookupComboBox1: TDBLookupComboBox
-              Left = 530
-              Top = 178
-              Width = 107
-              Height = 23
-              DataField = 'USUARIO_MODIFICACAO_ID'
-              DataSource = dsVeiculo_Cavalo
-              Enabled = False
-              KeyField = 'CODIGO'
-              ListField = 'LOGIN'
-              ListSource = dsUsuarios
-              TabOrder = 18
-            end
-            object PageControl2: TPageControl
-              Left = 1
-              Top = 248
-              Width = 793
-              Height = 221
-              ActivePage = Reboque
-              Align = alBottom
-              TabOrder = 19
-              object Reboque: TTabSheet
-                Caption = 'Reboques'
-                object DBGridEh1: TDBGridEh
-                  Left = 0
-                  Top = 0
-                  Width = 785
-                  Height = 191
-                  Align = alClient
-                  DataSource = dsVeiculo_Reboque
-                  DynProps = <>
-                  TabOrder = 0
-                  OnExit = DBGridEh1Exit
-                  OnKeyPress = DBGridEh1KeyPress
-                  Columns = <
-                    item
-                      CellButtons = <>
-                      DynProps = <>
-                      EditButtons = <>
-                      FieldName = 'PLACA'
-                      Footers = <>
-                      Title.Caption = 'Placa'
-                      Width = 59
-                    end
-                    item
-                      CellButtons = <>
-                      DynProps = <>
-                      EditButtons = <>
-                      FieldName = 'MUNICIPIO'
-                      Footers = <>
-                      Title.Caption = 'Munic'#237'pio'
-                      Width = 240
-                    end
-                    item
-                      CellButtons = <>
-                      DynProps = <>
-                      EditButtons = <>
-                      FieldName = 'UF'
-                      Footers = <>
-                      Width = 28
-                    end
-                    item
-                      CellButtons = <>
-                      DynProps = <>
-                      EditButtons = <>
-                      FieldName = 'RNTC'
-                      Footers = <>
-                      Width = 67
-                    end
-                    item
-                      CellButtons = <>
-                      DynProps = <>
-                      EditButtons = <>
-                      FieldName = 'RENAVAM'
-                      Footers = <>
-                      Width = 77
-                    end
-                    item
-                      CellButtons = <>
-                      DynProps = <>
-                      EditButtons = <>
-                      FieldName = 'PESO'
-                      Footers = <>
-                      Title.Caption = 'Peso'
-                      Width = 69
-                    end
-                    item
-                      CellButtons = <>
-                      DynProps = <>
-                      EditButtons = <>
-                      FieldName = 'TARA'
-                      Footers = <>
-                      Title.Caption = 'Tara'
-                      Width = 61
-                    end
-                    item
-                      CellButtons = <>
-                      DynProps = <>
-                      EditButtons = <>
-                      FieldName = 'VIRTUAL_CARROCERIA'
-                      Footers = <>
-                      Title.Caption = 'Carroceria'
-                      Width = 150
-                    end>
-                  object RowDetailData: TRowDetailPanelControlEh
-                  end
-                end
-              end
-              object TabSheet2: TTabSheet
-                Caption = 'Aquisi'#231#227'o/Aluguel'
-                ImageIndex = 1
-                object Label16: TLabel
-                  Left = 3
-                  Top = 12
-                  Width = 79
-                  Height = 15
-                  Caption = 'Data Aquisi'#231#227'o'
-                  FocusControl = DBEdit12
-                end
-                object Label17: TLabel
-                  Left = 160
-                  Top = 12
-                  Width = 81
-                  Height = 15
-                  Caption = 'Valor Aquisi'#231#227'o'
-                  FocusControl = DBEdit13
-                end
-                object Label18: TLabel
-                  Left = 3
-                  Top = 68
-                  Width = 107
-                  Height = 15
-                  Caption = 'Vencimento Aluguel'
-                  FocusControl = DBEdit14
-                end
-                object Label19: TLabel
-                  Left = 160
-                  Top = 68
-                  Width = 111
-                  Height = 15
-                  Caption = 'Valor Aluguel Mensal'
-                  FocusControl = DBEdit15
-                end
-                object DBEdit12: TDBEdit
-                  Left = 3
-                  Top = 29
-                  Width = 151
-                  Height = 21
-                  CharCase = ecUpperCase
-                  Ctl3D = False
-                  DataField = 'DATA_AQUISICAO'
-                  DataSource = dsVeiculo_Cavalo
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clBlue
-                  Font.Height = -12
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentCtl3D = False
-                  ParentFont = False
-                  TabOrder = 0
-                end
-                object DBEdit13: TDBEdit
-                  Left = 160
-                  Top = 29
-                  Width = 151
-                  Height = 21
-                  CharCase = ecUpperCase
-                  Ctl3D = False
-                  DataField = 'VALOR_AQUISICAO'
-                  DataSource = dsVeiculo_Cavalo
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clBlue
-                  Font.Height = -12
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentCtl3D = False
-                  ParentFont = False
-                  TabOrder = 1
-                end
-                object DBEdit14: TDBEdit
-                  Left = 3
-                  Top = 85
-                  Width = 151
-                  Height = 21
-                  CharCase = ecUpperCase
-                  Ctl3D = False
-                  DataField = 'VENCIMENTO_ALUGUEL'
-                  DataSource = dsVeiculo_Cavalo
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clBlue
-                  Font.Height = -12
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentCtl3D = False
-                  ParentFont = False
-                  TabOrder = 2
-                end
-                object DBEdit15: TDBEdit
-                  Left = 160
-                  Top = 85
-                  Width = 151
-                  Height = 21
-                  CharCase = ecUpperCase
-                  Ctl3D = False
-                  DataField = 'VALOR_ALUGUEL_MENSAL'
-                  DataSource = dsVeiculo_Cavalo
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clBlue
-                  Font.Height = -12
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentCtl3D = False
-                  ParentFont = False
-                  TabOrder = 3
-                end
-              end
-              object TabSheet3: TTabSheet
-                Caption = 'Tributos'
-                ImageIndex = 2
-                object Label20: TLabel
-                  Left = 10
-                  Top = 8
-                  Width = 53
-                  Height = 15
-                  Caption = 'Valor IPVA'
-                  FocusControl = DBEdit16
-                end
-                object Label21: TLabel
-                  Left = 167
-                  Top = 8
-                  Width = 107
-                  Height = 15
-                  Caption = 'Valor Licenciamento'
-                  FocusControl = DBEdit17
-                end
-                object Label22: TLabel
-                  Left = 324
-                  Top = 8
-                  Width = 130
-                  Height = 15
-                  Caption = 'Valor Seguro Obrigat'#243'rio'
-                  FocusControl = DBEdit18
-                end
-                object DBEdit16: TDBEdit
-                  Left = 10
-                  Top = 25
-                  Width = 151
-                  Height = 21
-                  CharCase = ecUpperCase
-                  Ctl3D = False
-                  DataField = 'VALOR_IPVA'
-                  DataSource = dsVeiculo_Cavalo
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clBlue
-                  Font.Height = -12
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentCtl3D = False
-                  ParentFont = False
-                  TabOrder = 0
-                end
-                object DBEdit17: TDBEdit
-                  Left = 167
-                  Top = 25
-                  Width = 151
-                  Height = 21
-                  CharCase = ecUpperCase
-                  Ctl3D = False
-                  DataField = 'VALOR_LICENCIAMENTO'
-                  DataSource = dsVeiculo_Cavalo
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clBlue
-                  Font.Height = -12
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentCtl3D = False
-                  ParentFont = False
-                  TabOrder = 1
-                end
-                object DBEdit18: TDBEdit
-                  Left = 324
-                  Top = 25
-                  Width = 151
-                  Height = 21
-                  CharCase = ecUpperCase
-                  Ctl3D = False
-                  DataField = 'VALOR_SEGURO_OBRIGATORIO'
-                  DataSource = dsVeiculo_Cavalo
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clBlue
-                  Font.Height = -12
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentCtl3D = False
-                  ParentFont = False
-                  TabOrder = 2
-                end
-              end
-              object TabSheet4: TTabSheet
-                Caption = 'Seguro'
-                ImageIndex = 3
-                object Label23: TLabel
-                  Left = 10
-                  Top = 16
-                  Width = 112
-                  Height = 15
-                  Caption = 'Nome da Seguradora'
-                  FocusControl = DBEdit19
-                end
-                object Label24: TLabel
-                  Left = 450
-                  Top = 16
-                  Width = 40
-                  Height = 15
-                  Caption = 'Ap'#243'lice'
-                  FocusControl = DBEdit20
-                end
-                object Label25: TLabel
-                  Left = 10
-                  Top = 61
-                  Width = 83
-                  Height = 15
-                  Caption = 'Valor do Seguro'
-                  FocusControl = DBEdit21
-                end
-                object Label26: TLabel
-                  Left = 173
-                  Top = 61
-                  Width = 72
-                  Height = 15
-                  Caption = 'Data de in'#237'cio'
-                  FocusControl = DBEdit22
-                end
-                object Label27: TLabel
-                  Left = 336
-                  Top = 61
-                  Width = 106
-                  Height = 15
-                  Caption = 'Data de Vencimento'
-                  FocusControl = DBEdit23
-                end
-                object Label28: TLabel
-                  Left = 499
-                  Top = 61
-                  Width = 96
-                  Height = 15
-                  Caption = 'Tipo de Cobertura'
-                  FocusControl = DBEdit24
-                end
-                object DBEdit19: TDBEdit
-                  Left = 10
-                  Top = 33
-                  Width = 434
-                  Height = 21
-                  CharCase = ecUpperCase
-                  Ctl3D = False
-                  DataField = 'SEGURADORA_NOME'
-                  DataSource = dsVeiculo_Cavalo
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clBlue
-                  Font.Height = -12
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentCtl3D = False
-                  ParentFont = False
-                  TabOrder = 0
-                end
-                object DBEdit20: TDBEdit
-                  Left = 450
-                  Top = 33
-                  Width = 179
-                  Height = 21
-                  CharCase = ecUpperCase
-                  Ctl3D = False
-                  DataField = 'SEGURADORA_APOLICE'
-                  DataSource = dsVeiculo_Cavalo
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clBlue
-                  Font.Height = -12
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentCtl3D = False
-                  ParentFont = False
-                  TabOrder = 1
-                end
-                object DBEdit21: TDBEdit
-                  Left = 10
-                  Top = 78
-                  Width = 157
-                  Height = 21
-                  CharCase = ecUpperCase
-                  Ctl3D = False
-                  DataField = 'SEGURADORA_VALOR'
-                  DataSource = dsVeiculo_Cavalo
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clBlue
-                  Font.Height = -12
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentCtl3D = False
-                  ParentFont = False
-                  TabOrder = 2
-                end
-                object DBEdit22: TDBEdit
-                  Left = 173
-                  Top = 78
-                  Width = 157
-                  Height = 21
-                  CharCase = ecUpperCase
-                  Ctl3D = False
-                  DataField = 'SEGURADORA_DATA_INICIO'
-                  DataSource = dsVeiculo_Cavalo
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clBlue
-                  Font.Height = -12
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentCtl3D = False
-                  ParentFont = False
-                  TabOrder = 3
-                end
-                object DBEdit23: TDBEdit
-                  Left = 336
-                  Top = 78
-                  Width = 157
-                  Height = 21
-                  CharCase = ecUpperCase
-                  Ctl3D = False
-                  DataField = 'SEGURADORA_DATA_VENCIMENTO'
-                  DataSource = dsVeiculo_Cavalo
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clBlue
-                  Font.Height = -12
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentCtl3D = False
-                  ParentFont = False
-                  TabOrder = 4
-                end
-                object DBEdit24: TDBEdit
-                  Left = 499
-                  Top = 78
-                  Width = 130
-                  Height = 21
-                  CharCase = ecUpperCase
-                  Ctl3D = False
-                  DataField = 'SEGURADORA_TIPO_COBERTURA'
-                  DataSource = dsVeiculo_Cavalo
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clBlue
-                  Font.Height = -12
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentCtl3D = False
-                  ParentFont = False
-                  TabOrder = 5
-                end
-              end
-              object TabSheet5: TTabSheet
-                Caption = 'Dimens'#227'o e Peso'
-                ImageIndex = 4
-                object Label29: TLabel
-                  Left = 10
-                  Top = 8
-                  Width = 80
-                  Height = 15
-                  Caption = 'Altura (metros)'
-                  FocusControl = DBEdit25
-                end
-                object Label30: TLabel
-                  Left = 167
-                  Top = 8
-                  Width = 123
-                  Height = 15
-                  Caption = 'Comprimento (metros)'
-                  FocusControl = DBEdit26
-                end
-                object Label31: TLabel
-                  Left = 324
-                  Top = 8
-                  Width = 88
-                  Height = 15
-                  Caption = 'Largura (metros)'
-                  FocusControl = DBEdit27
-                end
-                object Label32: TLabel
-                  Left = 10
-                  Top = 56
-                  Width = 121
-                  Height = 15
-                  Caption = 'Capacidade Carga (Kg)'
-                  FocusControl = DBEdit28
-                end
-                object Label33: TLabel
-                  Left = 167
-                  Top = 56
-                  Width = 122
-                  Height = 15
-                  Caption = 'Capacidade Carga (m'#179')'
-                  FocusControl = DBEdit29
-                end
-                object Label34: TLabel
-                  Left = 527
-                  Top = 8
-                  Width = 86
-                  Height = 15
-                  Caption = 'Odometro Atual'
-                  FocusControl = DBEdit30
-                end
-                object DBEdit25: TDBEdit
-                  Left = 10
-                  Top = 25
-                  Width = 151
-                  Height = 21
-                  CharCase = ecUpperCase
-                  Ctl3D = False
-                  DataField = 'ALTURA_METROS'
-                  DataSource = dsVeiculo_Cavalo
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clBlue
-                  Font.Height = -12
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentCtl3D = False
-                  ParentFont = False
-                  TabOrder = 0
-                end
-                object DBEdit26: TDBEdit
-                  Left = 167
-                  Top = 25
-                  Width = 151
-                  Height = 21
-                  CharCase = ecUpperCase
-                  Ctl3D = False
-                  DataField = 'COMPRIMENTO_METROS'
-                  DataSource = dsVeiculo_Cavalo
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clBlue
-                  Font.Height = -12
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentCtl3D = False
-                  ParentFont = False
-                  TabOrder = 1
-                end
-                object DBEdit27: TDBEdit
-                  Left = 324
-                  Top = 25
-                  Width = 151
-                  Height = 21
-                  CharCase = ecUpperCase
-                  Ctl3D = False
-                  DataField = 'LARGURA_METROS'
-                  DataSource = dsVeiculo_Cavalo
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clBlue
-                  Font.Height = -12
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentCtl3D = False
-                  ParentFont = False
-                  TabOrder = 2
-                end
-                object DBEdit28: TDBEdit
-                  Left = 10
-                  Top = 73
-                  Width = 151
-                  Height = 21
-                  CharCase = ecUpperCase
-                  Ctl3D = False
-                  DataField = 'CAPACIDADE_CARGA_KG'
-                  DataSource = dsVeiculo_Cavalo
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clBlue
-                  Font.Height = -12
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentCtl3D = False
-                  ParentFont = False
-                  TabOrder = 3
-                end
-                object DBEdit29: TDBEdit
-                  Left = 167
-                  Top = 73
-                  Width = 151
-                  Height = 21
-                  CharCase = ecUpperCase
-                  Ctl3D = False
-                  DataField = 'CAPACIDADE_CARGA_M3'
-                  DataSource = dsVeiculo_Cavalo
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clBlue
-                  Font.Height = -12
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentCtl3D = False
-                  ParentFont = False
-                  TabOrder = 4
-                end
-                object DBEdit30: TDBEdit
-                  Left = 527
-                  Top = 25
-                  Width = 186
-                  Height = 21
-                  CharCase = ecUpperCase
-                  Ctl3D = False
-                  DataField = 'ODOMETRO_ATUAL'
-                  DataSource = dsVeiculo_Cavalo
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clBlue
-                  Font.Height = -12
-                  Font.Name = 'Segoe UI'
-                  Font.Style = []
-                  ParentCtl3D = False
-                  ParentFont = False
-                  TabOrder = 5
-                end
-              end
-              object TabSheet6: TTabSheet
-                Caption = 'Observa'#231#245'es'
-                ImageIndex = 5
-                object DBMemo1: TDBMemo
-                  Left = 0
-                  Top = 0
-                  Width = 785
-                  Height = 191
-                  Align = alClient
-                  DataField = 'OBSERVACOES'
-                  DataSource = dsVeiculo_Cavalo
-                  TabOrder = 0
-                end
-              end
-            end
-          end
-        end
-        object Financeiro: TTabSheet
-          Caption = 'Financeiro'
-          ImageIndex = 1
-        end
-      end
-    end
-    object Manutencao: TTabSheet
-      Caption = 'Manuten'#231#227'o'
-      ImageIndex = 2
-      TabVisible = False
-      object PageControlManutencao: TPageControl
-        Left = 0
-        Top = 0
-        Width = 803
-        Height = 584
-        ActivePage = DadosManutencao
-        Align = alClient
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 0
-        ExplicitWidth = 801
-        ExplicitHeight = 576
-        object DadosManutencao: TTabSheet
-          Caption = 'Cadastro'
-          ImageIndex = 1
-          TabVisible = False
-          object Panel7: TPanel
-            Left = 0
-            Top = 0
-            Width = 795
-            Height = 490
-            Align = alClient
-            Color = 15724527
-            ParentBackground = False
-            TabOrder = 0
-            ExplicitWidth = 793
-            ExplicitHeight = 482
-            object Label38: TLabel
-              Left = 15
-              Top = 45
-              Width = 51
-              Height = 15
-              Caption = 'Motorista'
-            end
-            object Label40: TLabel
-              Left = 353
-              Top = 45
-              Width = 60
-              Height = 15
-              Caption = 'Fornecedor'
-            end
-            object Label41: TLabel
-              Left = 15
-              Top = 87
-              Width = 67
-              Height = 15
-              Caption = 'Data Entrada'
-              FocusControl = DBEdit33
-            end
-            object Label42: TLabel
-              Left = 276
-              Top = 87
-              Width = 55
-              Height = 15
-              Caption = 'Data Sa'#237'da'
-              FocusControl = DBEdit35
-            end
-            object Label43: TLabel
-              Left = 178
-              Top = 87
-              Width = 69
-              Height = 15
-              Caption = 'Hora Entrada'
-              FocusControl = DBEdit36
-            end
-            object Label44: TLabel
-              Left = 439
-              Top = 87
-              Width = 57
-              Height = 15
-              Caption = 'Hora Sa'#237'da'
-              FocusControl = DBEdit37
-            end
-            object Label45: TLabel
-              Left = 651
-              Top = 44
-              Width = 112
-              Height = 15
-              Caption = 'Pr'#243'xima revis'#227'o (Km)'
-              FocusControl = DBEdit38
-            end
-            object Label46: TLabel
-              Left = 15
-              Top = 140
-              Width = 67
-              Height = 15
-              Caption = 'Observa'#231#245'es'
-              FocusControl = DBEdit36
-            end
-            object Label39: TLabel
-              Left = 15
-              Top = 4
-              Width = 34
-              Height = 15
-              Caption = 'Sevi'#231'o'
-            end
-            object PageControl4: TPageControl
-              Left = 1
-              Top = 292
-              Width = 793
-              Height = 197
-              ActivePage = TabSheet8
-              Align = alBottom
-              TabOrder = 9
-              ExplicitTop = 284
-              ExplicitWidth = 791
-              object TabSheet8: TTabSheet
-                Caption = 'Itens'
-                object PanelAddItem: TPanel
-                  Left = 0
-                  Top = 0
-                  Width = 785
-                  Height = 167
-                  Align = alClient
-                  TabOrder = 0
-                  Visible = False
-                  ExplicitWidth = 783
-                  object Label47: TLabel
-                    Left = 15
-                    Top = 15
-                    Width = 51
-                    Height = 15
-                    Caption = 'Descri'#231#227'o'
-                    FocusControl = DBEditDescItem
-                  end
-                  object Label48: TLabel
-                    Left = 283
-                    Top = 15
-                    Width = 24
-                    Height = 15
-                    Caption = 'Tipo'
-                    FocusControl = DBEditDescItem
-                  end
-                  object Label49: TLabel
-                    Left = 15
-                    Top = 58
-                    Width = 26
-                    Height = 15
-                    Caption = 'Qtde'
-                    FocusControl = DBEdit39
-                  end
-                  object Label50: TLabel
-                    Left = 95
-                    Top = 58
-                    Width = 71
-                    Height = 15
-                    Caption = 'Valor Unit'#225'rio'
-                    FocusControl = DBEdit40
-                  end
-                  object Label51: TLabel
-                    Left = 201
-                    Top = 58
-                    Width = 50
-                    Height = 15
-                    Caption = 'Desconto'
-                    FocusControl = DBEdit41
-                  end
-                  object DBEditDescItem: TDBEdit
-                    Left = 15
-                    Top = 30
-                    Width = 262
-                    Height = 21
-                    CharCase = ecUpperCase
-                    Ctl3D = False
-                    DataField = 'DESCRICAO'
-                    DataSource = dsManutencaoItem
-                    Font.Charset = ANSI_CHARSET
-                    Font.Color = clBlue
-                    Font.Height = -12
-                    Font.Name = 'Segoe UI'
-                    Font.Style = []
-                    ParentCtl3D = False
-                    ParentFont = False
-                    TabOrder = 0
-                  end
-                  object DBComboBoxEhTipo: TDBComboBoxEh
-                    Left = 283
-                    Top = 29
-                    Width = 124
-                    Height = 23
-                    DataField = 'TIPO'
-                    DataSource = dsManutencaoItem
-                    DynProps = <>
-                    EditButtons = <>
-                    Items.Strings = (
-                      'PE'#199'A'
-                      'SERVI'#199'O')
-                    TabOrder = 1
-                    Visible = True
-                  end
-                  object DBEdit39: TDBEdit
-                    Left = 15
-                    Top = 75
-                    Width = 74
-                    Height = 21
-                    CharCase = ecUpperCase
-                    Ctl3D = False
-                    DataField = 'QUANTIDADE'
-                    DataSource = dsManutencaoItem
-                    Font.Charset = ANSI_CHARSET
-                    Font.Color = clBlue
-                    Font.Height = -12
-                    Font.Name = 'Segoe UI'
-                    Font.Style = []
-                    ParentCtl3D = False
-                    ParentFont = False
-                    TabOrder = 2
-                  end
-                  object DBEdit40: TDBEdit
-                    Left = 95
-                    Top = 75
-                    Width = 100
-                    Height = 21
-                    CharCase = ecUpperCase
-                    Ctl3D = False
-                    DataField = 'VALOR_UNITARIO'
-                    DataSource = dsManutencaoItem
-                    Font.Charset = ANSI_CHARSET
-                    Font.Color = clBlue
-                    Font.Height = -12
-                    Font.Name = 'Segoe UI'
-                    Font.Style = []
-                    ParentCtl3D = False
-                    ParentFont = False
-                    TabOrder = 3
-                  end
-                  object DBEdit41: TDBEdit
-                    Left = 201
-                    Top = 75
-                    Width = 100
-                    Height = 21
-                    CharCase = ecUpperCase
-                    Ctl3D = False
-                    DataField = 'DESCONTO'
-                    DataSource = dsManutencaoItem
-                    Font.Charset = ANSI_CHARSET
-                    Font.Color = clBlue
-                    Font.Height = -12
-                    Font.Name = 'Segoe UI'
-                    Font.Style = []
-                    ParentCtl3D = False
-                    ParentFont = False
-                    TabOrder = 4
-                  end
-                  object panelFotterAddItens: TPanel
-                    Left = 1
-                    Top = 123
-                    Width = 783
-                    Height = 43
-                    Align = alBottom
-                    TabOrder = 5
-                    ExplicitWidth = 781
-                    object SpeedButtonSalvarItem: TSpeedButton
-                      AlignWithMargins = True
-                      Left = 6
-                      Top = 6
-                      Width = 117
-                      Height = 31
-                      Margins.Left = 5
-                      Margins.Top = 5
-                      Margins.Right = 5
-                      Margins.Bottom = 5
-                      Align = alLeft
-                      Caption = 'Salvar'
-                      Glyph.Data = {
-                        36040000424D3604000000000000360000002800000010000000100000000100
-                        2000000000000004000000000000000000000000000000000000000000000000
-                        0000000000000000000000000000000000000000000000000000000000000000
-                        000000000000000000000000000000000000000000000000000000000000562D
-                        4580AB5989FFAB5989FFAB5989FFAB5989FFAB5989FFAB5989FFAB5989FFAB59
-                        89FFAB5989FFAB5989FFAB5989FFAB5989FF562D45800000000000000000AB59
-                        89FFAB5989FFAB5989FFFFFFFEFFFFFFFEFFAB5989FFAB5989FFFFFFFEFFFFFF
-                        FEFFFFFFFEFFFFFFFEFFAB5989FFAB5989FFAB5989FF0000000000000000AB59
-                        89FFAB5989FFAB5989FFFFFFFEFFFFFFFEFFAB5989FFAB5989FFFFFFFEFFFFFF
-                        FEFFFFFFFEFFFFFFFEFFAB5989FFAB5989FFAB5989FF0000000000000000AB59
-                        89FFAB5989FFAB5989FFFFFFFEFFFFFFFEFFAB5989FFAB5989FFFFFFFEFFFFFF
-                        FEFFFFFFFEFFFFFFFEFFAB5989FFAB5989FFAB5989FF0000000000000000AB59
-                        89FFAB5989FFAB5989FFFFFFFEFFFFFFFEFFFFFFFEFFFFFFFEFFFFFFFEFFFFFF
-                        FEFFFFFFFEFFFFFFFEFFAB5989FFAB5989FFAB5989FF0000000000000000AB59
-                        89FFAB5989FFAB5989FFAB5989FFAB5989FFAB5989FFAB5989FFAB5989FFAB59
-                        89FFAB5989FFAB5989FFAB5989FFAB5989FFAB5989FF0000000000000000AB59
-                        89FFAB5989FFAB5989FFAB5989FFAB5989FFAB5989FFAB5989FFAB5989FFAB59
-                        89FFAB5989FFAB5989FFAB5989FFAB5989FFAB5989FF0000000000000000AB59
-                        89FFAB5989FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                        FFFFFFFFFFFFFFFFFFFFFFFFFFFFAB5989FFAB5989FF0000000000000000AB59
-                        89FFAB5989FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000000000000000
-                        000000000000000000000000000000000000000000000000000000000000AB59
-                        89FFAB5989FFFFFFFFFFFFFFFFFFC1C1C1FFC1C1C1FF00000000B8824DFFB882
-                        4DFF0000000000000000B8824DFFB8824DFF251A0F330000000000000000AB59
-                        89FFAB5989FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000B8824DFFB882
-                        4DFF0000000000000000251A0F33B8824DFFB8824DFF251A0F3300000000AB59
-                        89FFAB5989FFFFFFFFFFFFFFFFFFC1C1C1FFC1C1C1FF00000000B8824DFFB882
-                        4DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFF00000000AB59
-                        89FFAB5989FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000003827174DB882
-                        4DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFF00000000AB59
-                        89FFAB5989FFAB5989FFAB5989FFAB5989FFAB5989FF00000000000000000000
-                        00000000000000000000251A0F33B8824DFFB8824DFF251A0F33000000000000
-                        0000000000000000000000000000000000000000000000000000000000000000
-                        00000000000000000000B8824DFFB8824DFF251A0F3300000000}
-                      OnClick = SpeedButtonSalvarItemClick
-                      ExplicitLeft = 10
-                      ExplicitTop = 4
-                    end
-                    object SpeedButtonCancelarItem: TSpeedButton
-                      AlignWithMargins = True
-                      Left = 133
-                      Top = 6
-                      Width = 117
-                      Height = 31
-                      Margins.Left = 5
-                      Margins.Top = 5
-                      Margins.Right = 5
-                      Margins.Bottom = 5
-                      Align = alLeft
-                      Caption = 'Cancelar'
-                      Glyph.Data = {
-                        36040000424D3604000000000000360000002800000010000000100000000100
-                        2000000000000004000000000000000000000000000000000000000000000000
-                        0000000000000000000000000000000000000000000000000000000000000000
-                        0000000000000000000000000000000000000000000000000000000000004463
-                        D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463
-                        D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF00000000000000004463
-                        D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463
-                        D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF00000000000000004463
-                        D8FF4463D8FF4463D8FF4463D8FF4261D3F94463D8FF4463D8FF4463D8FF4463
-                        D8FF4361D5FB4463D8FF4463D8FF4463D8FF4463D8FF00000000000000004463
-                        D8FF4463D8FF4463D8FF3751B0D0090D1D22344CA5C34463D8FF4463D8FF3147
-                        9BB70B1023293C57BFE14463D8FF4463D8FF4463D8FF00000000000000004463
-                        D8FF4463D8FF4260D0F6080C191E0000000003050B0D344CA5C331479BB70203
-                        0607000000000D132A314463D7FE4463D8FF4463D8FF00000000000000004463
-                        D8FF4463D8FF4463D8FF31489DB90304080A0000000003050B0D020306070000
-                        000004060D0F354DA9C74463D8FF4463D8FF4463D8FF00000000000000004463
-                        D8FF4463D8FF4463D8FF4463D8FF31489DB90304080A00000000000000000406
-                        0D0F354DA9C74463D8FF4463D8FF4463D8FF4463D8FF00000000000000004463
-                        D8FF4463D8FF4463D8FF4463D8FF31479BB70203060700000000000000000305
-                        0A0C344CA5C34463D8FF4463D8FF4463D8FF4463D8FF00000000000000004463
-                        D8FF4463D8FF4463D8FF31479BB7020306070000000004050C0E0304080A0000
-                        000003050A0C344CA5C34463D8FF4463D8FF4463D8FF00000000000000004463
-                        D8FF4463D8FF4261D3F9090D1C210000000004060D0F354DA9C731489DB90304
-                        080A000000000C11262D4362D6FD4463D8FF4463D8FF00000000000000004463
-                        D8FF4463D8FF4463D8FF3A54B7D80B102329354DA9C74463D8FF4463D8FF3148
-                        9DB90B11242B3C57BEE04463D8FF4463D8FF4463D8FF00000000000000004463
-                        D8FF4463D8FF4463D8FF4463D8FF4361D5FB4463D8FF4463D8FF4463D8FF4463
-                        D8FF4361D5FB4463D8FF4463D8FF4463D8FF4463D8FF00000000000000004463
-                        D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463
-                        D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF00000000000000004463
-                        D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463
-                        D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF00000000000000000000
-                        0000000000000000000000000000000000000000000000000000000000000000
-                        0000000000000000000000000000000000000000000000000000}
-                      OnClick = SpeedButtonCancelarItemClick
-                      ExplicitTop = 10
-                    end
-                  end
-                end
-                object PanelListaItens: TPanel
-                  Left = 0
-                  Top = 0
-                  Width = 785
-                  Height = 167
-                  Align = alClient
-                  TabOrder = 1
-                  ExplicitWidth = 783
-                  object DBGridEh2: TDBGridEh
-                    Left = 1
-                    Top = 44
-                    Width = 783
-                    Height = 122
-                    Align = alClient
-                    DataSource = dsManutencaoItem
-                    DynProps = <>
-                    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
-                    TabOrder = 0
-                    OnExit = DBGridEh1Exit
-                    OnKeyPress = DBGridEh1KeyPress
-                    Columns = <
-                      item
-                        CellButtons = <>
-                        DynProps = <>
-                        EditButtons = <>
-                        FieldName = 'TIPO'
-                        Footers = <>
-                      end
-                      item
-                        CellButtons = <>
-                        DynProps = <>
-                        EditButtons = <>
-                        FieldName = 'DESCRICAO'
-                        Footers = <>
-                        Width = 270
-                      end
-                      item
-                        CellButtons = <>
-                        DynProps = <>
-                        EditButtons = <>
-                        FieldName = 'QUANTIDADE'
-                        Footers = <>
-                        Width = 90
-                      end
-                      item
-                        CellButtons = <>
-                        DynProps = <>
-                        EditButtons = <>
-                        FieldName = 'VALOR_UNITARIO'
-                        Footers = <>
-                        Title.Caption = 'VALOR UNIT'#193'RIO'
-                        Width = 110
-                      end
-                      item
-                        CellButtons = <>
-                        DynProps = <>
-                        EditButtons = <>
-                        FieldName = 'DESCONTO'
-                        Footers = <>
-                        Width = 80
-                      end
-                      item
-                        CellButtons = <>
-                        DynProps = <>
-                        EditButtons = <>
-                        FieldName = 'VALOR_TOTAL'
-                        Footers = <>
-                        Title.Caption = 'VALOR TOTAL'
-                        Width = 50
-                      end>
-                    object RowDetailData: TRowDetailPanelControlEh
-                    end
-                  end
-                  object panelItens: TPanel
-                    Left = 1
-                    Top = 1
-                    Width = 783
-                    Height = 43
-                    Align = alTop
-                    TabOrder = 1
-                    ExplicitWidth = 781
-                    object SpeedButtonAddItem: TSpeedButton
-                      AlignWithMargins = True
-                      Left = 6
-                      Top = 6
-                      Width = 117
-                      Height = 31
-                      Margins.Left = 5
-                      Margins.Top = 5
-                      Margins.Right = 5
-                      Margins.Bottom = 5
-                      Align = alLeft
-                      Caption = 'Adicionar'
-                      Glyph.Data = {
-                        36040000424D3604000000000000360000002800000010000000100000000100
-                        2000000000000004000000000000000000000000000000000000000000000000
-                        0000000000000000000000000000000000000000000000000000000000000000
-                        0000000000000000000000000000000000000000000000000000000000000000
-                        00000000000000000000000000000000000000000000B8824DFFB8824DFF0000
-                        0000000000000000000000000000000000000000000000000000000000000000
-                        00000000000000000000000000000000000000000000B8824DFFB8824DFF0000
-                        0000000000000000000000000000000000000000000000000000000000000000
-                        00000000000000000000000000000000000000000000B8824DFFB8824DFF0000
-                        0000000000000000000000000000000000000000000000000000000000000000
-                        00000000000000000000000000000000000000000000B8824DFFB8824DFF0000
-                        0000000000000000000000000000000000000000000000000000000000000000
-                        00000000000000000000000000000000000000000000B8824DFFB8824DFF0000
-                        0000000000000000000000000000000000000000000000000000000000000000
-                        00000000000000000000000000000000000000000000B8824DFFB8824DFF0000
-                        000000000000000000000000000000000000000000000000000000000000B882
-                        4DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB882
-                        4DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFF0000000000000000B882
-                        4DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB882
-                        4DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFF00000000000000000000
-                        00000000000000000000000000000000000000000000B8824DFFB8824DFF0000
-                        0000000000000000000000000000000000000000000000000000000000000000
-                        00000000000000000000000000000000000000000000B8824DFFB8824DFF0000
-                        0000000000000000000000000000000000000000000000000000000000000000
-                        00000000000000000000000000000000000000000000B8824DFFB8824DFF0000
-                        0000000000000000000000000000000000000000000000000000000000000000
-                        00000000000000000000000000000000000000000000B8824DFFB8824DFF0000
-                        0000000000000000000000000000000000000000000000000000000000000000
-                        00000000000000000000000000000000000000000000B8824DFFB8824DFF0000
-                        0000000000000000000000000000000000000000000000000000000000000000
-                        00000000000000000000000000000000000000000000B8824DFFB8824DFF0000
-                        0000000000000000000000000000000000000000000000000000000000000000
-                        0000000000000000000000000000000000000000000000000000000000000000
-                        0000000000000000000000000000000000000000000000000000}
-                      OnClick = SpeedButtonAddItemClick
-                      ExplicitTop = 4
-                    end
-                    object SpeedButtonRemoverItem: TSpeedButton
-                      AlignWithMargins = True
-                      Left = 133
-                      Top = 6
-                      Width = 117
-                      Height = 31
-                      Margins.Left = 5
-                      Margins.Top = 5
-                      Margins.Right = 5
-                      Margins.Bottom = 5
-                      Align = alLeft
-                      Caption = 'Remover'
-                      Glyph.Data = {
-                        36040000424D3604000000000000360000002800000010000000100000000100
-                        2000000000000004000000000000000000000000000000000000000000000000
-                        0000000000000000000000000000000000000000000000000000000000000000
-                        0000000000000000000000000000000000000000000000000000000000004463
-                        D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463
-                        D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF00000000000000004463
-                        D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463
-                        D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF00000000000000004463
-                        D8FF4463D8FF4463D8FF4463D8FF4261D3F94463D8FF4463D8FF4463D8FF4463
-                        D8FF4361D5FB4463D8FF4463D8FF4463D8FF4463D8FF00000000000000004463
-                        D8FF4463D8FF4463D8FF3751B0D0090D1D22344CA5C34463D8FF4463D8FF3147
-                        9BB70B1023293C57BFE14463D8FF4463D8FF4463D8FF00000000000000004463
-                        D8FF4463D8FF4260D0F6080C191E0000000003050B0D344CA5C331479BB70203
-                        0607000000000D132A314463D7FE4463D8FF4463D8FF00000000000000004463
-                        D8FF4463D8FF4463D8FF31489DB90304080A0000000003050B0D020306070000
-                        000004060D0F354DA9C74463D8FF4463D8FF4463D8FF00000000000000004463
-                        D8FF4463D8FF4463D8FF4463D8FF31489DB90304080A00000000000000000406
-                        0D0F354DA9C74463D8FF4463D8FF4463D8FF4463D8FF00000000000000004463
-                        D8FF4463D8FF4463D8FF4463D8FF31479BB70203060700000000000000000305
-                        0A0C344CA5C34463D8FF4463D8FF4463D8FF4463D8FF00000000000000004463
-                        D8FF4463D8FF4463D8FF31479BB7020306070000000004050C0E0304080A0000
-                        000003050A0C344CA5C34463D8FF4463D8FF4463D8FF00000000000000004463
-                        D8FF4463D8FF4261D3F9090D1C210000000004060D0F354DA9C731489DB90304
-                        080A000000000C11262D4362D6FD4463D8FF4463D8FF00000000000000004463
-                        D8FF4463D8FF4463D8FF3A54B7D80B102329354DA9C74463D8FF4463D8FF3148
-                        9DB90B11242B3C57BEE04463D8FF4463D8FF4463D8FF00000000000000004463
-                        D8FF4463D8FF4463D8FF4463D8FF4361D5FB4463D8FF4463D8FF4463D8FF4463
-                        D8FF4361D5FB4463D8FF4463D8FF4463D8FF4463D8FF00000000000000004463
-                        D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463
-                        D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF00000000000000004463
-                        D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463
-                        D8FF4463D8FF4463D8FF4463D8FF4463D8FF4463D8FF00000000000000000000
-                        0000000000000000000000000000000000000000000000000000000000000000
-                        0000000000000000000000000000000000000000000000000000}
-                      OnClick = SpeedButtonRemoverItemClick
-                      ExplicitLeft = 271
-                      ExplicitTop = 4
-                    end
-                  end
-                end
-              end
-            end
-            object DBEdit33: TDBEdit
-              Left = 15
-              Top = 102
-              Width = 157
-              Height = 21
-              CharCase = ecUpperCase
-              Ctl3D = False
-              DataField = 'DATA_ENTRADA'
-              DataSource = dsManutencao
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clBlue
-              Font.Height = -12
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentCtl3D = False
-              ParentFont = False
-              TabOrder = 4
-            end
-            object DBEdit35: TDBEdit
-              Left = 276
-              Top = 102
-              Width = 157
-              Height = 21
-              CharCase = ecUpperCase
-              Ctl3D = False
-              DataField = 'DATA_SAIDA'
-              DataSource = dsManutencao
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clBlue
-              Font.Height = -12
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentCtl3D = False
-              ParentFont = False
-              TabOrder = 6
-            end
-            object DBEdit36: TDBEdit
-              Left = 178
-              Top = 102
-              Width = 79
-              Height = 21
-              CharCase = ecUpperCase
-              Ctl3D = False
-              DataField = 'HORA_ENTRADA'
-              DataSource = dsManutencao
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clBlue
-              Font.Height = -12
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentCtl3D = False
-              ParentFont = False
-              TabOrder = 5
-            end
-            object DBEdit37: TDBEdit
-              Left = 439
-              Top = 102
-              Width = 79
-              Height = 21
-              CharCase = ecUpperCase
-              Ctl3D = False
-              DataField = 'HORA_SAIDA'
-              DataSource = dsManutencao
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clBlue
-              Font.Height = -12
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentCtl3D = False
-              ParentFont = False
-              TabOrder = 7
-            end
-            object DBEdit38: TDBEdit
-              Left = 651
-              Top = 59
-              Width = 132
-              Height = 21
-              CharCase = ecUpperCase
-              Ctl3D = False
-              DataField = 'KM_PROXIMA_REVISAO'
-              DataSource = dsManutencao
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clBlue
-              Font.Height = -12
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentCtl3D = False
-              ParentFont = False
-              TabOrder = 3
-            end
-            object DBMemo2: TDBMemo
-              Left = 15
-              Top = 157
-              Width = 768
-              Height = 88
-              DataField = 'OBSERVACOES'
-              DataSource = dsManutencao
-              TabOrder = 8
-            end
-            object DBLookupComboboxEh4: TDBLookupComboboxEh
-              Left = 15
-              Top = 58
-              Width = 332
-              Height = 23
-              DynProps = <>
-              DataField = 'MOTORISTA_CODIGO'
-              DataSource = dsManutencao
-              EditButtons = <>
-              KeyField = 'CODIGO'
-              ListField = 'NOME'
-              ListSource = dsMotorista
-              TabOrder = 1
-              Visible = True
-            end
-            object DBLookupComboboxEh5: TDBLookupComboboxEh
-              Left = 353
-              Top = 58
-              Width = 292
-              Height = 23
-              DynProps = <>
-              DataField = 'FORNECEDOR_CODIGO'
-              DataSource = dsManutencao
-              EditButtons = <>
-              KeyField = 'CODIGO'
-              ListField = 'RAZAO'
-              ListSource = dsFornecedor
-              TabOrder = 2
-              Visible = True
-            end
-            object DBlucbServico: TDBLookupComboboxEh
-              Left = 15
-              Top = 19
-              Width = 232
-              Height = 23
-              DynProps = <>
-              DataField = 'TIPO_SERVICO_CODIGO'
-              DataSource = dsManutencao
-              EditButtons = <>
-              KeyField = 'CODIGO'
-              ListField = 'NOME'
-              ListSource = dsTipoServico
-              TabOrder = 0
-              Visible = True
-              OnChange = DBlucbServicoChange
-            end
-            object EditDescricaoTipoServico: TEdit
-              Left = 253
-              Top = 19
-              Width = 530
-              Height = 23
-              Enabled = False
-              TabOrder = 10
-            end
-          end
-          object Panel8: TPanel
-            Left = 0
-            Top = 490
-            Width = 795
-            Height = 84
-            Align = alBottom
-            BevelOuter = bvNone
-            Color = 15395562
-            ParentBackground = False
-            TabOrder = 1
-            ExplicitTop = 482
-            ExplicitWidth = 793
-            object SpeedButtonGravarManutencao: TSpeedButton
-              Left = 15
-              Top = 6
-              Width = 80
-              Height = 70
-              Caption = 'F5 | Gravar'
-              Flat = True
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              Glyph.Data = {
-                36100000424D3610000000000000360000002800000020000000200000000100
-                2000000000000010000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0001000000010000000200000004000000050000000600000007000000070000
-                0006000000050000000400000002000000010000000100000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000001000000010000
-                0003000000060000000B0000001000000015000000180000001A0000001A0000
-                001800000016000000110000000C000000070000000400000001000000010000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000010000000100000003000000070000
-                000E0000001707140E4D133324951D4E38D11D513BD9246448FF246448FF1E51
-                3BD91C4E38D11233249607140F4F000000190000001000000008000000040000
-                0001000000010000000000000000000000000000000000000000000000000000
-                000000000000000000000000000100000001000000040000000B000000150C21
-                176B1F563FE1257151FF278963FF299D72FF2AA176FF2BB07FFF2BAF80FF2AA2
-                76FF2A9E72FF278964FF267151FF20573FE20C21186D000000180000000D0000
-                0005000000010000000100000000000000000000000000000000000000000000
-                0000000000000000000100000001000000050000000D040C09361C503ACF2678
-                56FF2AA074FF2CB180FF2BB180FF2CB081FF2CB081FF2CB180FF2CB181FF2CB1
-                80FF2CB080FF2CB081FF2CB180FF2AA074FF277957FF1D5039D1040C093A0000
-                0010000000060000000100000001000000000000000000000000000000000000
-                00000000000000000001000000050000000E09191255236248F029946BFF2CB1
-                81FF2CB181FF2CB181FF2CB282FF2CB282FF2CB282FF2CB282FF2DB282FF2DB2
-                82FF2CB182FF2CB281FF2CB181FF2CB181FF2CB181FF29956CFF246248F10919
-                135A000000120000000600000001000000000000000000000000000000000000
-                000000000000000000040000000C09191253256C4EFA2A9F74FF2CB181FF2DB1
-                82FF2CB283FF2DB283FF2DB283FF2EB283FF2EB284FF2EB384FF2EB383FF2EB3
-                84FF2EB384FF2EB283FF2EB383FF2EB383FF2DB282FF2DB182FF2A9F74FF256D
-                4FFA091A12590000001000000005000000010000000000000000000000000000
-                00000000000200000009050F0B38246549EE2EA47AFF2EB383FF2DB283FF2EB3
-                83FF2EB384FF2EB385FF2EB484FF51C7A2FF60CFAEFF37B98DFF2EB485FF2FB5
-                85FF2FB485FF2EB485FF2EB485FF2EB384FF2EB383FF2EB384FF2FB384FF2FA5
-                7AFF23644AEF050F0B3E0000000C000000030000000100000000000000000000
-                000100000005000000101D513BCB2E9770FF30B385FF2EB384FF2EB484FF2EB4
-                85FF2FB586FF2FB586FF50C6A1FF32916EFF1E7652FF4AB995FF30B587FF31B6
-                87FF30B686FF30B587FF30B587FF2FB586FF2EB486FF2EB485FF2EB485FF30B4
-                86FF2E9871FF1D533CD000000016000000070000000100000000000000000000
-                00020000000A0C231A652D7D5CFF34B689FF2EB384FF2EB485FF2FB586FF30B5
-                86FF31B688FF4EC59FFF389774FF7CAE9AFFA2C4B6FF2F8C6AFF41BF95FF32B7
-                89FF32B789FF31B688FF31B689FF31B688FF30B588FF30B686FF2FB486FF2EB4
-                85FF34B68AFF2D7E5EFF0D241A6B0000000E0000000300000001000000010000
-                00040000000F205B43DD32A67DFF30B587FF2FB586FF30B587FF31B688FF31B7
-                88FF4BC49DFF3E9F7CFF6BA28BFFF9F5F1FFF5EFEAFF45896CFF4CB491FF35BB
-                8DFF34B98BFF34B98AFF33B98AFF32B989FF32B789FF32B688FF31B688FF30B5
-                87FF31B688FF33A77DFF215E44DF000000160000000700000001000000020000
-                0007091B144E308061FF37B98BFF30B587FF30B688FF31B688FF33B78AFF48C4
-                9BFF46A786FF5A967DFFF6F4F0FFF3E8DFFFF3E8DFFFC8D9D0FF247A58FF4FC5
-                9EFF35BB8DFF35BB8DFF34BA8CFF34BA8BFF34BA8BFF33B98AFF32B989FF31B7
-                88FF31B688FF37B98CFF308162FF0A1D15570000000B00000002000000020000
-                0009153B2B923A9B78FF35B98BFF32B788FF32B989FF33B98BFF46C39AFF4CAF
-                8EFF4A8A6FFFF4F4F1FFF4EAE2FFF4E9E0FFF3E8E0FFF7EDE7FF699D87FF409D
-                7CFF3FC094FF37BC8FFF37BC8EFF36BB8EFF36BB8DFF35BA8DFF34BA8BFF34B9
-                8BFF32B78AFF36BA8CFF3B9C79FF153C2C980000000E00000003000000020000
-                000B1E553FC63DAC86FF35B88CFF33B78AFF33B98BFF45C398FF54B797FF4084
-                67FFEAEFEAFFF5EBE3FFF2E6DEFFEDDFD6FFF4E9E1FFF4E9E0FFE3E8E1FF2570
-                50FF56C19EFF39BE91FF39BE90FF38BD90FF37BC8FFF37BC8EFF35BB8DFF35BB
-                8CFF33B98BFF35B98DFF3EAD87FF1E5640CA0000001100000004000000030000
-                000C256A4EEC3EB88EFF34BA8CFF35B98CFF3FBF94FF57BD9DFF347B5CFFE5EC
-                E8FFF6EDE6FFF1E6DDFFCAC3B6FF9DAA97FFEFE3DCFFF4EAE2FFF6EBE5FF9DBD
-                AFFF318464FF4FC8A2FF3ABF94FF3ABF92FF39BE91FF38BD90FF37BD8FFF36BB
-                8EFF35BB8CFF35BB8CFF3FB98FFF256D50ED0000001300000005000000030000
-                000C287455FA43C096FF35BA8BFF36BB8DFF37B488FF1F704EFFC9D0C8FFF7ED
-                E7FFF1E5DEFFBEBCB0FF2E7354FF246F4EFFB5B7A8FFF1E6DFFFF4EAE3FFF6F1
-                ECFF548B72FF4EAD8DFF42C49AFF3CC195FF3BC094FF3BBF92FF39BE90FF39BD
-                90FF37BC8EFF35BB8DFF44C197FF287657FA0000001300000005000000030000
-                000B287656FA4CC49BFF35BC8DFF37BC8EFF37BC8EFF24805CFF608A72FFE4D5
-                CCFFB2B5A7FF2C7757FF3CBD96FF3BBB93FF2B7151FFC8C3B6FFF4E9E2FFF5EB
-                E4FFE1E8E2FF2D7355FF5FCAABFF40C59AFF3EC197FF3CC195FF3BC094FF3ABF
-                92FF38BD90FF38BC8EFF4EC59DFF297859FA0000001200000005000000020000
-                000A267052EC55C39FFF39BD91FF38BE90FF3ABE92FF3CC096FF257E5BFF4A7C
-                61FF2B7F5EFF41CBA3FF45D3ACFF46D3ADFF39B28DFF3C7457FFDACFC5FFF5EB
-                E4FFF7EDE8FFADC7BAFF2E8061FF5ED8B7FF43CDA4FF40C99FFF3DC399FF3CBF
-                94FF3ABF92FF3BBF92FF56C5A0FF277256ED0000001100000004000000020000
-                0008205D46C559BD9DFF3DC094FF3CC296FF43CDA6FF45D2ACFF44CEA8FF319D
-                7AFF46D2ACFF48D5B0FF49D5B0FF49D5B0FF49D5B1FF34A481FF4C7B60FFE0D2
-                CAFFF5ECE5FFF9F3EFFF699882FF459D7FFF57D6B3FF44CFA6FF43CDA4FF41C8
-                A0FF3DC196FF3FC196FF5BBF9FFF205F47C80000000E00000003000000010000
-                00061643328F58B194FF49CDA6FF47D2ACFF48D3AEFF49D5AFFF49D5B0FF4AD7
-                B2FF4BD7B2FF4CD8B4FF4DD7B4FF4DD8B4FF4CD8B4FF4DD7B4FF329B78FF4B7B
-                61FFDFD2C9FFF6EBE5FFEFF0ECFF468066FF58B699FF55D6B1FF45CFA7FF45CE
-                A5FF43CAA3FF48C9A2FF58B295FF174433940000000B00000003000000010000
-                00040B201848409E80FF63DEC0FF4BD4B1FF4CD7B2FF4DD7B3FF4ED7B4FF4FD8
-                B4FF4FD9B7FF50DAB7FF50DAB7FF51DAB8FF51DAB7FF50DAB7FF51D9B7FF38A6
-                84FF47795EFFDDD0C7FFF6ECE7FFF0F2EFFF478368FF61C1A5FF56D5B3FF47CF
-                A8FF46CDA6FF62D8B8FF409C7DFF0B20184E0000000700000002000000000000
-                0002000000072D7D62DA6CD4BBFF55D9B7FF51D8B5FF51D9B6FF53DAB8FF53DB
-                BAFF54DCB9FF55DBBAFF55DCBBFF56DCBBFF55DCBAFF56DDBBFF56DDBAFF55DC
-                BAFF40B090FF487A60FFD9CCC4FFF3E9E3FFEDF1EDFF4B876DFF67C7ACFF57D6
-                B3FF4ED2ADFF6ECFB6FF29785DDC0000000E0000000400000001000000000000
-                0001000000041231275B48A98CFF72E5CAFF56DBB9FF56DBBAFF58DCBCFF58DC
-                BCFF59DDBDFF59DEBDFF5ADFBEFF5ADFBFFF5BDFBFFF5ADFBEFF5ADFBEFF59DE
-                BDFF59DDBCFF47BB9AFF367559FFBAB9ADFFECDFD8FFDDDFDAFF237150FF45BA
-                96FF70DFC3FF46A487FF10302561000000080000000200000000000000000000
-                000000000002000000062B765EC66CCEB6FF6AE3C6FF5CDDBDFF5DDEBFFF5EDE
-                C0FF5EDFC0FF5FE1C2FF60E1C2FF5FE1C2FF60E1C2FF5FE0C2FF5EE1C1FF5EE0
-                C1FF5DDFBFFF5CDFBEFF55CFAFFF2E8464FF72937DFF8FA392FF2D8463FF63D8
-                B9FF6DCBB1FF287259C80000000C000000040000000100000000000000000000
-                00000000000100000003081410283B9679EC7EDFCBFF6FE4C9FF63E0C3FF63E0
-                C3FF64E1C4FF65E2C4FF64E3C5FF64E3C5FF64E3C5FF65E3C5FF64E2C5FF63E2
-                C4FF63E2C3FF61E0C1FF5FDFBFFF5EDEBDFF48B797FF2A8362FF61D2B5FF80DB
-                C6FF379274ED07140F2D00000006000000020000000000000000000000000000
-                00000000000000000001000000041028204644A689F982DFCBFF7EEAD3FF69E2
-                C6FF69E3C7FF6AE4C7FF6AE4C8FF6AE5C9FF6AE4C8FF6AE4C8FF6AE4C8FF69E4
-                C7FF68E3C6FF66E2C4FF64E0C2FF62DFC1FF61DDBEFF7AE5CDFF82DCC7FF40A2
-                83FA0E271F4A0000000700000002000000000000000000000000000000000000
-                000000000000000000000000000100000004102921453F9E81EE77D5BEFF93F1
-                DFFF7BE9D1FF6FE5CAFF6FE6CBFF70E6CBFF70E6CBFF6FE7CCFF6EE6CBFF6DE6
-                CAFF6CE4C8FF6BE3C6FF69E2C5FF75E5CBFF92EEDAFF75D2BAFF3B9B7CEE0F28
-                204A000000070000000200000001000000000000000000000000000000000000
-                000000000000000000000000000000000001000000030814102335856DC85ABF
-                A3FF8BE4D2FF9DF4E5FF8DEFDCFF82EBD5FF7EEBD4FF75E8CFFF74E8CEFF7DEA
-                D2FF7FEAD3FF8CEDDAFF9DF2E2FF8BE4D0FF58BEA1FF318469CA071410280000
-                0006000000020000000100000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000100000002000000051738
-                2E563D987CDA54BD9EFF75D4BCFF8EE6D3FF94EAD9FFA7F5E8FFA7F5E8FF95EA
-                D9FF8DE6D3FF73D3BAFF52BB9CFF399679DA16392E5B00000007000000040000
-                0002000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000001000000010000
-                0003000000040D201A32255A4A82388D73C53B957ACE49B896FC49BA98FC3A95
-                7ACF378D74C6235A4A840C201A34000000060000000400000002000000010000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0001000000010000000200000003000000040000000500000005000000050000
-                0005000000040000000400000003000000020000000100000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000001000000010000000100000001000000010000
-                0001000000010000000100000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000}
-              Layout = blGlyphTop
-              ParentFont = False
-              OnClick = SpeedButtonGravarManutencaoClick
-            end
-            object SpeedButton8: TSpeedButton
-              Left = 101
-              Top = 6
-              Width = 80
-              Height = 70
-              Caption = 'Esc | Cancelar'
-              Flat = True
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              Glyph.Data = {
-                36100000424D3610000000000000360000002800000020000000200000000100
-                2000000000000010000000000000000000000000000000000000000000000000
-                0000000000000000000100000001000000010000000100000001000000010000
-                0001000000010000000100000001000000010000000100000001000000010000
-                0001000000010000000100000001000000010000000100000001000000010000
-                0001000000010000000100000001000000000000000000000000000000000000
-                0001000000010000000200000005000000060000000600000006000000060000
-                0006000000070000000700000007000000070000000700000007000000070000
-                0007000000070000000700000007000000070000000700000007000000070000
-                0007000000060000000600000003000000010000000100000000000000000000
-                0001000000040000000B00000013000000170000001800000019000000190000
-                001900000019000000190000001A0000001A0000001A0000001A0000001A0000
-                001B0000001B0000001B0000001B0000001B0000001B0000001C0000001C0000
-                001C0000001B000000160000000E000000050000000100000000000000010000
-                00020000000A0E0A2C5B2A208BEB2F2399FF2F2399FF2E2298FF2D2198FF2C20
-                96FF2C2096FF2B1F95FF2B1F95FF2A1E94FF2B1D93FF291C93FF291B93FF291A
-                93FF291A92FF271992FF271991FF271990FF26188FFF26178FFF26168FFF2416
-                8EFF25168DFF201380EC0A06275E0000000D0000000300000001000000010000
-                0004000000112D238DE8272DB1FF222FB9FF212DB7FF202DB7FF1F2BB6FF1F2B
-                B6FF1F2BB6FF1E2AB6FF1E2AB6FF1F2BB4FF1E2BB6FF1E2AB6FF1E2AB6FF1E2A
-                B4FF1D29B4FF1D29B4FF1C27B4FF1C28B4FF1B27B4FF1B27B3FF1B27B3FF1A26
-                B3FF1B26B3FF1D20A8FF21147FE9000000150000000600000001000000010000
-                000500000014342A9EFF2E3EC6FF2A3BC4FF2A3AC5FF2A3AC4FF2A3AC4FF2A3A
-                C4FF2A3AC3FF2A38C4FF2A38C4FF2A38C4FF2937C3FF2837C3FF2A37C3FF2837
-                C4FF2836C3FF2736C2FF2836C2FF2735C2FF2735C2FF2635C1FF2533C1FF2533
-                C1FF2533C1FF1C27B3FF261890FF000000190000000600000001000000010000
-                000500000015372DA1FF3142C7FF2D3DC6FF2E3CC5FF2D3EC5FF2D3DC6FF2C3C
-                C5FF2D3CC5FF2C3DC5FF2C3CC5FF2D3BC5FF2C3CC4FF2C3AC4FF2B39C4FF2B3B
-                C4FF2B39C4FF2B39C3FF2A38C3FF2939C3FF2937C3FF2837C3FF2736C3FF2836
-                C2FF2735C1FF1D29B4FF281A92FF0000001A0000000700000001000000000000
-                000500000014382FA4FF3747C9FF3041C7FF3041C7FF2F40C7FF3041C7FF2F40
-                C7FF2F40C7FF2F40C6FF303EC6FF2F3FC6FF2E3FC6FF2F3DC6FF2E3EC7FF2E3C
-                C6FF2D3DC6FF2D3BC6FF2C3CC5FF2D3AC5FF2B39C4FF2B39C4FF2B39C4FF2A38
-                C4FF2937C4FF1F2CB7FF2A1D94FF000000190000000600000001000000000000
-                0005000000133B32A5FF3A4CCAFF3243C9FF3343C9FF3243C8FF3243C9FF3242
-                C8FF3646C9FF4A5BD2FF5363D5FF4757D1FF3242C9FF3142C8FF3142C8FF3241
-                C8FF4555D0FF5060D4FF4857D1FF3340C7FF2E3EC7FF2E3EC6FF2E3BC5FF2D3B
-                C5FF2B3CC5FF222DB8FF2D2095FF000000190000000600000001000000000000
-                0005000000133D34A8FF3E4FCEFF3547CAFF3547CAFF3546CAFF3547CBFF3849
-                CCFF4F5DD2FF444BBCFF3D41B2FF464DBEFF4C5CD1FF3545C9FF3545C9FF4B5B
-                D1FF424ABBFF393BACFF3E44B6FF4B59CFFF3444C9FF313FC7FF303FC8FF2F40
-                C7FF2F3EC6FF2430BBFF2F2198FF000000180000000600000001000000000000
-                0004000000123E36AAFF4357CFFF384ACCFF3849CCFF384ACDFF394ACCFF4E5E
-                D2FF4046B6FF9597D4FFE8E8F6FF8081CBFF4148B8FF4F5FD4FF4E5ED4FF3F45
-                B7FF7E80C9FFE7E8F5FF9293D0FF3A3EB0FF4A58CEFF3444C9FF3243C8FF3242
-                C8FF3142C8FF2734BCFF30249AFF000000170000000600000001000000000000
-                0004000000114139ADFF495CD2FF3B4ECDFF3B4FCEFF3C4DCEFF3B4CCEFF444A
-                BAFF9597D4FFF9F4F1FFF5ECE6FFF9F5F4FF8182CBFF4046B7FF3F45B6FF7F81
-                C9FFF9F5F3FFF4EBE5FFF9F4F1FF9192D0FF3C40B3FF3647CBFF3646CAFF3545
-                C9FF3444C9FF2A38BEFF32269CFF000000160000000600000001000000000000
-                000400000010413BAFFF4D61D3FF3E52D0FF3E52CFFF3E51D0FF3E52CFFF3B3E
-                AFFFE3DADCFFE7D9D1FFF4EAE4FFF4EBE4FFF9F5F4FF7F81C9FF7F80C8FFF9F5
-                F4FFF4E9E2FFF4E9E2FFF3E8E1FFE9E2E5FF3233A6FF394ACCFF394ACCFF3849
-                CCFF3747CBFF2B3CC1FF34299EFF000000160000000500000001000000000000
-                000400000010443EB2FF5267D7FF4155D2FF4156D1FF4255D1FF4155D1FF3C44
-                B9FF6E68AFFFD6C2BBFFE9DAD2FFF4EBE5FFF4EBE5FFF9F6F5FFF9F6F4FFF4EA
-                E4FFF4EAE3FFF4EAE3FFE5D6D0FF6A64ADFF343BB1FF3D4DCEFF3B4CCEFF3B4C
-                CDFF3A4BCDFF2F3EC3FF372DA1FF000000150000000500000001000000000000
-                00040000000F4540B4FF586CD8FF4559D3FF465AD3FF4458D3FF4559D3FF4457
-                D2FF3940B4FF6D66AEFFD7C2BCFFE9DBD3FFF6ECE6FFF6ECE5FFF4ECE5FFF4EB
-                E5FFF6EBE5FFE7D8D1FF6A63ABFF3339AEFF4051CEFF3F51D0FF3F51CFFF3D50
-                CFFF3D4FCEFF3141C5FF392FA3FF000000140000000500000001000000000000
-                00040000000E4742B6FF5C72DAFF475CD5FF485DD4FF475BD4FF495CD5FF485C
-                D5FF495CD3FF3E44B5FF6D67AFFFE9DAD4FFF7EDE9FFF6EDE9FFF6EDE8FFF6ED
-                E6FFF4EBE5FF706AB4FF393EB0FF4456D0FF4356D2FF4354D2FF4153D1FF4153
-                D1FF3F52D0FF3545C8FF3B31A5FF000000130000000500000000000000000000
-                00030000000E4A45B9FF6178DDFF4B61D7FF4B60D6FF4B60D6FF4B5FD6FF4C60
-                D6FF6074DBFF4247B5FF7A79C1FFF5EFE9FFF7F0E9FFF6EFE9FFF6EFE9FFF6EF
-                E9FFF4ECE7FF7977BFFF3C3FB0FF5E70DAFF475AD4FF4758D3FF4558D2FF4457
-                D2FF4356D1FF3849CAFF3B33A8FF000000130000000500000000000000000000
-                00030000000D4C47BBFF667CDEFF4D64D8FF4E64D8FF4E64D7FF4D62D7FF6174
-                DCFF484CB8FF8080C7FFFAF8F7FFF7F0EBFFF7F1EBFFF7F0EBFFF7F0EAFFF7F0
-                EAFFF7F0EAFFFAF7F7FF7A7AC3FF3E42B0FF5C6FDAFF4A5CD5FF485CD4FF465A
-                D4FF475AD3FF3A4CCCFF3E36AAFF000000120000000500000000000000000000
-                00030000000C4D49BDFF6A82E0FF5067DAFF5066D9FF5066D9FF5166D9FF4C53
-                BCFF7D7CC5FFFAF8F7FFF8F2EFFFF8F1EDFFF8F2ECFFE9DDD8FFDECEC8FFEADE
-                D8FFF7F0EBFFF7F0EBFFFAF8F7FF7775C0FF4348B4FF4C5FD6FF4B5DD6FF4A5E
-                D5FF4A5CD5FF3E50CEFF3E38ACFF000000110000000400000000000000000000
-                00030000000C4D4BC0FF6E86E2FF536ADBFF5369DBFF5D73DCFF6F83E1FF3A3A
-                A9FFE8E2E7FFEDE3DEFFF9F2EFFFF8F3EFFFE8DDD9FF6F68ADFF6D65A9FFD8C6
-                BFFFEADFD8FFF8F2ECFFF7F1ECFFEDE9EEFF2F2D9EFF6073DCFF5367D9FF4D61
-                D7FF4C5FD7FF4155D0FF413BAFFF000000110000000400000000000000000000
-                00030000000B4F4DC2FF728AE4FF5E74DEFF798CE4FF8396E6FF8396E6FF4C51
-                B7FF8179B0FFDCCBC4FFEADFDCFFE7DBD7FF6F68ADFF474AB2FF4649B2FF6C64
-                A9FFD8C7C0FFE7DCD7FFEBDFD9FF7E75B0FF4043AFFF6E81E0FF6C7FE0FF6477
-                DEFF5267D9FF4457D1FF423DB1FF000000100000000400000000000000000000
-                00030000000A5050C4FF8A9FE9FF879AE8FF899BE8FF889CE8FF889AE8FF8191
-                E2FF4547B0FF7E75ADFFC3B1B7FF6D66ABFF484DB3FF8091E3FF7E90E3FF4549
-                B0FF6B64A9FFC2B0B6FF796FAAFF393BA7FF6F7FDCFF7386E2FF7284E1FF6E82
-                E1FF6C7FDFFF5366D7FF4741B4FF0000000F0000000400000000000000000000
-                00020000000A6164CCFFA2B6EFFF8DA1EAFF8EA1EAFF8EA1EAFF8D9FEAFF8D9F
-                EAFF8594E2FF4D51B5FF3534A2FF5358BBFF8696E6FF8899E8FF8697E8FF8292
-                E4FF4E53B8FF2E2C9CFF4347AFFF7585DEFF7B8DE4FF788BE3FF7589E3FF7487
-                E2FF7084E1FF6478DDFF5755BEFF0000000E0000000400000000000000000000
-                0002000000096C6FD2FFA6BCF1FF93A6ECFF93A6ECFF93A6ECFF93A5ECFF92A4
-                EBFF92A4EBFF91A3EBFF90A2EBFF8FA1EAFF8E9FE9FF8D9DEAFF8B9CE9FF8A9B
-                E9FF8799E8FF8697E8FF8395E7FF8293E6FF8091E6FF7E90E6FF7B8DE5FF788B
-                E5FF7588E3FF697CDFFF6363C5FF0000000E0000000300000000000000000000
-                0002000000087075D5FFABC1F2FF99ABEDFF99ABEDFF98ABEDFF98AAEDFF97A9
-                EDFF97A8ECFF96A7ECFF96A6ECFF95A5EBFF93A4EBFF92A3EBFF90A1EAFF8F9F
-                EAFF8D9EEAFF8B9CE9FF899AE8FF8698E8FF8595E7FF8294E7FF8092E6FF7D90
-                E6FF7A8DE5FF6E82E0FF6768C8FF0000000D0000000300000000000000000000
-                000200000008757AD8FFB1C5F3FF9DB1EFFF9DB0EFFF9DB0EFFF9DAFEFFF9DAE
-                EEFF9BADEEFF9BACEEFF9AABEDFF99AAEDFF98A8EDFF96A7ECFF95A6ECFF93A4
-                EBFF91A3EBFF8FA0EAFF8D9FEAFF8B9DE9FF889BE9FF8799E8FF8396E8FF8194
-                E7FF7F91E6FF7386E3FF6B6ECBFF0000000C0000000300000000000000000000
-                0002000000077A7FDAFFBCCFF5FFA2B5F0FFA2B4F0FFA2B4F0FFA2B4F0FFA1B3
-                EFFFA0B2EFFFA0B1EFFF9FB0EFFF9EAEEFFF9CADEEFF9BABEDFF99AAEDFF98A8
-                EDFF96A7EDFF93A5ECFF91A3ECFF8FA1EBFF8D9FEAFF8B9DEAFF889BE9FF8598
-                E8FF8396E8FF798CE4FF7074CFFF0000000B0000000300000000000000000000
-                0001000000057277C8E8BECAF1FFD4E1F9FFD3E0F9FFD2DFF9FFD0DEF9FFCFDD
-                F9FFCDDBF7FFCBDAF7FFC9D7F7FFC6D5F6FFC4D4F6FFC2D1F6FFC0CFF5FFBDCE
-                F5FFBACBF4FFB7C9F4FFB5C6F3FFB2C3F3FFAEC1F1FFABBFF1FFA8BCF1FFA5B9
-                F1FFA2B7F0FF90A0E6FF6A6EBEE9000000080000000200000000000000000000
-                00010000000320223744656BAFCB8087DEFF7F87DEFF7F87DDFF7F86DDFF7F86
-                DCFF7F85DCFF7E84DCFF7D84DCFF7D84DBFF7D84DBFF7C83DBFF7C82D9FF7C82
-                D9FF7B82D9FF7A81D9FF7A81D8FF7A80D8FF7A80D7FF797FD7FF787FD6FF7A7F
-                D6FF787ED6FF5F63A8CD1E1F3447000000050000000100000000000000000000
-                0000000000010000000200000004000000050000000600000006000000060000
-                0006000000070000000700000007000000070000000700000007000000080000
-                0008000000080000000800000008000000080000000800000009000000090000
-                0009000000080000000700000004000000020000000000000000000000000000
-                0000000000000000000100000001000000010000000100000001000000010000
-                0001000000010000000200000002000000020000000200000002000000020000
-                0002000000020000000200000002000000020000000200000002000000020000
-                0002000000020000000200000001000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000}
-              Layout = blGlyphTop
-              ParentFont = False
-              OnClick = SpeedButton8Click
-            end
-          end
-        end
-        object ListaManutencao: TTabSheet
-          Caption = 'Lista'
-          TabVisible = False
-          object DBGrid2: TDBGrid
-            Left = 0
-            Top = 0
-            Width = 795
-            Height = 488
-            Align = alClient
-            DataSource = dsManutencao
-            GradientEndColor = 15529196
-            GradientStartColor = clBtnFace
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clNavy
-            Font.Height = -12
-            Font.Name = 'Segoe UI'
-            Font.Style = []
-            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-            ParentFont = False
-            TabOrder = 0
-            TitleFont.Charset = ANSI_CHARSET
-            TitleFont.Color = clWindowText
-            TitleFont.Height = -12
-            TitleFont.Name = 'Segoe UI'
-            TitleFont.Style = []
-            OnDblClick = DBGrid2DblClick
-            OnKeyDown = FormKeyDown
-            OnTitleClick = DBGrid1TitleClick
-            Columns = <
-              item
-                Expanded = False
-                FieldName = 'TIPO_SERVICO'
-                Title.Caption = 'SERVI'#199'O'
-                Width = 250
-                Visible = True
-              end
-              item
-                Expanded = False
-                FieldName = 'DATA_ENTRADA'
-                Title.Caption = 'DATA ENTRADA'
-                Width = 100
-                Visible = True
-              end
-              item
-                Expanded = False
-                FieldName = 'HORA_ENTRADA'
-                Title.Caption = 'HORA ENTRADA'
-                Width = 100
-                Visible = True
-              end
-              item
-                Expanded = False
-                FieldName = 'DATA_SAIDA'
-                Title.Caption = 'DATA SA'#205'DA'
-                Width = 100
-                Visible = True
-              end
-              item
-                Expanded = False
-                FieldName = 'HORA_SAIDA'
-                Title.Caption = 'HORA SA'#237'DA'
-                Width = 100
-                Visible = True
-              end
-              item
-                Expanded = False
-                FieldName = 'KM_PROXIMA_REVISAO'
-                Title.Caption = 'KM PR'#211'X REV'
-                Width = 100
-                Visible = True
-              end>
-          end
-          object Panel5: TPanel
-            Left = 0
-            Top = 488
-            Width = 795
-            Height = 86
-            Align = alBottom
-            Color = 15724527
-            ParentBackground = False
-            TabOrder = 1
-            object Panel6: TPanel
-              Left = 1
-              Top = 1
-              Width = 304
-              Height = 84
-              Align = alLeft
-              BevelOuter = bvNone
-              TabOrder = 0
-              object SpeedButton2: TSpeedButton
-                Left = 0
-                Top = 0
-                Width = 70
-                Height = 84
-                Align = alLeft
-                Caption = 'F2 | Novo'
-                Flat = True
-                Font.Charset = ANSI_CHARSET
-                Font.Color = clWindowText
-                Font.Height = -12
-                Font.Name = 'Segoe UI'
-                Font.Style = []
-                Glyph.Data = {
-                  36100000424D3610000000000000360000002800000020000000200000000100
-                  2000000000000010000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0001000000010000000200000004000000050000000600000007000000070000
-                  0006000000050000000400000002000000010000000100000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000001000000010000
-                  0003000000060000000B0000001000000015000000180000001A0000001A0000
-                  001800000016000000110000000C000000070000000400000001000000010000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000010000000100000003000000070000
-                  000E000000171E11094D4C2B1795744223D17A4425D996542DFF96542DFF7A44
-                  25D9744223D14C2A17961E11094F000000190000001000000008000000040000
-                  0001000000010000000000000000000000000000000000000000000000000000
-                  000000000000000000000000000100000001000000040000000B00000015321C
-                  0F6B824928E19F6137FFB47B4BFFC4915CFFC99560FFD3A36BFFD3A46BFFC895
-                  60FFC5905CFFB47B4CFFA06238FF814929E2321C0F6D000000180000000D0000
-                  0005000000010000000100000000000000000000000000000000000000000000
-                  0000000000000000000100000001000000050000000D120A0636754325CFA76A
-                  3EFFC7935EFFD5A56CFFD4A46DFFD4A56CFFD4A56CFFD4A56CFFD4A56CFFD5A5
-                  6CFFD4A56CFFD5A56DFFD4A66DFFC7945FFFA76A3FFF764426D1120A063A0000
-                  0010000000060000000100000001000000000000000000000000000000000000
-                  00000000000000000001000000050000000E26160C5590552FF0BE8956FFD6A6
-                  6EFFD5A56DFFD5A56DFFD5A66DFFD6A76EFFD5A76EFFD5A76EFFD5A76FFFD6A7
-                  6FFFD6A76EFFD5A76EFFD5A66EFFD5A66DFFD6A66FFFBE8957FF91542FF12616
-                  0C5A000000120000000600000001000000000000000000000000000000000000
-                  000000000000000000040000000C26160C539B5F38FAC79560FFD5A76EFFD6A6
-                  6EFFD5A76FFFD6A770FFD6A870FFD6A871FFD6A871FFD6A871FFD7A871FFD7A9
-                  71FFD6A870FFD6A870FFD6A871FFD6A86FFFD6A76FFFD5A86FFFC79562FF9A5F
-                  38FA26160D590000001000000005000000010000000000000000000000000000
-                  00000000000200000009160D0738925934EECA9A64FFD6A870FFD6A76FFFD6A8
-                  70FFD7A972FFD7A972FFD7AA73FFDAB17BFFE0BC8DFFE1BE91FFE1BF91FFE0BD
-                  8EFFDAB07BFFD8AB73FFD7AA73FFD7A972FFD7A971FFD7A870FFD6A970FFCA9A
-                  65FF925934EF160D073E0000000C000000030000000100000000000000000000
-                  00010000000500000010774829CBC08C5CFFD8A972FFD6A872FFD8A972FFD8AA
-                  74FFD8AB74FFD8AB75FFD8AC75FFCEA478FFA46E45FF9E653DFF9E653DFFA46E
-                  45FFD0A97EFFDAAE79FFD8AC76FFD8AC75FFD8AA74FFD8AB73FFD7AA72FFD7AA
-                  73FFC08D5DFF7A492AD000000016000000070000000100000000000000000000
-                  00020000000A34201365AB734AFFD8AD76FFD7AA73FFD8AB74FFD8AB75FFD9AC
-                  76FFDAAD77FFDAAD78FFDAAF79FFA46D44FFD9C3B4FFF8F2EDFFF9F3EFFFE1CF
-                  C1FFA67047FFDDB683FFDAAF78FFDAAD78FFDAAD77FFD9AC76FFD8AB75FFD8AA
-                  74FFD9AD78FFAC744BFF341F126B0000000E0000000300000001000000010000
-                  00040000000F875332DDCC9B6AFFD8AB76FFD8AB75FFD9AC77FFD9AF78FFDAB0
-                  79FFDAB07AFFDBB17BFFDBB17CFF9C633AFFECDFD8FFF1E6DDFFF2E6DDFFF9F4
-                  F0FF9E673EFFE0BA88FFDCB27CFFDBB17BFFDAB07AFFDAB079FFDAAF78FFD9AD
-                  77FFD9AC77FFCC9C6BFF885432DF000000160000000700000001000000020000
-                  000727190F4EAF7852FFDAB17BFFD8AC76FFDAAD78FFDBB079FFDBB17BFFDBB2
-                  7CFFDCB27FFFDCB37FFFDCB480FF9C633AFFEADDD4FFF2E7E0FFF2E8DFFFF8F3
-                  EEFF9F6840FFE1BC8CFFDEB480FFDCB380FFDCB37EFFDCB27CFFDBB17BFFDAB0
-                  79FFD9AD77FFDBB17DFFAF7952FF2A1A10570000000B00000002000000020000
-                  000956362192C5976EFFDBAF7BFFDAB079FFDBB07BFFDBB27CFFDEB886FFE5C4
-                  98FFE6C69CFFE7C79CFFE7C79CFF9C633AFFEBDED6FFF3EAE2FFF3E9E2FFF9F4
-                  F0FFA06A42FFE9CEA5FFE7C89DFFE6C79CFFE5C599FFE0B988FFDCB37FFFDCB1
-                  7EFFDBB17AFFDBB27EFFC5986FFF563722980000000E00000003000000020000
-                  000B7B4F32C6D1A77AFFDBB17CFFDBB27BFFDCB27FFFDEB480FFD0AA7EFFA46E
-                  44FF9E673EFFA06A42FFA26D45FFA57049FFF4ECE5FFF5ECE5FFF5ECE5FFF9F5
-                  F1FFA26C44FFA26E46FFA36F48FFA47049FFAC7B54FFD6B28BFFDFB785FFDCB4
-                  80FFDCB27FFFDCB37EFFD2A97BFF7C5032CA0000001100000004000000030000
-                  000C99633EECD8B281FFDBB27DFFDCB37FFFDEB482FFDFB683FFA46E45FFD4BC
-                  AEFFF9F5F1FFF9F5F2FFFAF6F3FFFAF6F3FFF6EEE8FFF6EEE8FFF5EEE8FFF5ED
-                  E7FFFAF6F2FFFAF5F2FFF9F5F1FFFAF5F2FFE1CFC3FFA57047FFE3BE8EFFDFB6
-                  83FFDEB481FFDCB580FFDAB483FF99643FED0000001300000005000000030000
-                  000CA46D46FADEBA8AFFDEB480FFDEB581FFDFB784FFE0B887FF9C633AFFE6D9
-                  D3FFF5EDE7FFF5EEE8FFF7EFE9FFF7EFEBFFF7F1EBFFF7F1EBFFF6F1ECFFF7F0
-                  EBFFF6EFE9FFF6EEE8FFF5EDE7FFF5EBE5FFFAF6F3FF9E653DFFE4C192FFE0B8
-                  86FFDFB784FFDEB582FFDFBD8CFFA56E47FA0000001300000005000000030000
-                  000BA67049FAE4C297FFDEB582FFE0B785FFE0B987FFE3C08FFF9C633AFFDFCF
-                  C7FFF2EAE4FFF6F0EBFFF7F1EDFFF8F2EEFFF9F3EEFFF9F3EEFFF8F2EEFFF8F2
-                  EDFFF7F1EDFFF7F0EBFFF6EFE9FFF5EDE7FFF5EFEBFF9E653DFFE6C698FFE2BB
-                  89FFE0B987FFDFB784FFE4C398FFA7714AFA0000001200000005000000020000
-                  000A9E6B45ECE3C69DFFDFB986FFE2BD8CFFE6CB9EFFE8D1A6FFA36E45FFBE9E
-                  8CFFCCB6AEFFCFBAB1FFD1BDB5FFD4C1BAFFEDE3DEFFF9F5F2FFFAF5F1FFF9F4
-                  F0FFE5D7D1FFDDCDC5FFDDCCC4FFDDCEC6FFCFB5A7FFA57047FFE9D0A5FFE6C6
-                  97FFE2BD8BFFE0BA8AFFE4C69FFF9E6D47ED0000001100000004000000020000
-                  0008835A3BC5DEC19FFFE6C79AFFE9D1A5FFE9D2A8FFEAD5AAFFD7B990FFAD7C
-                  53FF9C633AFF9C633AFF9C633AFF9C633AFFECE4E0FFFAF8F4FFFAF7F4FFFCFB
-                  F9FF9C633AFF9C633AFF9C633AFF9C633AFFAD7B52FFD8B78EFFEACFA3FFE8CC
-                  9EFFE6C89BFFE4C394FFDFC2A1FF835A3CC80000000E00000003000000010000
-                  00065D422C8FD8BB9DFFEBD7AFFFEAD3AAFFEBD6ACFFEBD7AEFFECD9AFFFEDDA
-                  B0FFEDDAB2FFEEDBB4FFEEDCB4FF9C633AFFECE4E1FFFBFAF8FFFCF9F7FFFDFB
-                  FAFFA7754EFFF0DDB7FFEDD8B0FFEDD7AEFFECD5ABFFEBD2A7FFEAD1A5FFE9CE
-                  A2FFE8CC9FFFE9CCA2FFD7B898FF5D422D940000000B00000003000000010000
-                  00042D221848C6A07DFFF2E3C5FFEBD6AEFFECD9AFFFECDAB2FFEDDBB3FFEEDC
-                  B4FFEFDDB6FFEFDDB7FFF0DFB8FF9C633AFFECE5E1FFFCFCFAFFFCFBF9FFFDFC
-                  FBFFA57049FFF1DFBBFFEFDBB4FFEED9B1FFEDD7AFFFECD6ABFFEBD3A9FFEAD1
-                  A5FFE9CEA3FFF0DDBBFFC49B77FF2D20174E0000000700000002000000000000
-                  000200000007A07A5ADAE9D9BFFFEDDCB5FFEDDCB4FFEDDDB5FFEEDEB8FFEFDF
-                  B9FFF0E0BAFFF0E1BBFFF1E2BBFF9C633AFFE5D9D5FFF9F6F6FFFDFCFBFFF5F2
-                  F0FFA26C45FFF2E2BEFFF1DEB7FFEFDCB5FFEEDBB3FFEDD8B0FFECD5ADFFEBD4
-                  A9FFEBD3A9FFE8D4BAFF9C7453DC0000000E0000000400000001000000000000
-                  0001000000043E31245BCBA885FFF5ECD1FFEEDDB7FFEEDFB8FFEFE0BBFFF0E2
-                  BCFFF1E3BDFFF1E4BFFFF2E4BFFFA46F47FFC0A392FFCFBAB4FFCFBBB5FFC3A6
-                  97FFA7744DFFF3E5C1FFF2E1BBFFF1DFB8FFEFDCB6FFEFDBB3FFEDD9B0FFECD6
-                  ACFFF4E6CAFFC9A27EFF3E2E2161000000080000000200000000000000000000
-                  00000000000200000006947457C6E4D1B6FFF2E7C9FFEFE2BCFFF1E3BEFFF1E4
-                  BFFFF2E5C1FFF2E6C2FFF3E6C3FFDEC6A1FFAF7F57FF9C633AFF9C633AFFAF7F
-                  58FFDEC7A2FFF3E5C1FFF2E3BDFFF2E1BBFFF0DFB8FFEFDDB6FFEEDAB3FFF2E2
-                  C2FFE3CDB1FF926F51C80000000C000000040000000100000000000000000000
-                  0000000000010000000319140F28B6936FECEFE3CCFFF5EACDFFF1E5C1FFF2E7
-                  C2FFF2E8C3FFF3E8C4FFF3E9C5FFF4E9C5FFF4EAC7FFF4EAC7FFF4E9C6FFF5E9
-                  C6FFF4E8C5FFF3E6C2FFF3E6C1FFF3E4BEFFF1E1BCFFF0DFB9FFF4E5C6FFEFE1
-                  CAFFB28D6AED19130E2D00000006000000020000000000000000000000000000
-                  000000000000000000010000000431271E46C6A27EF9EFE3CBFFF8F1D8FFF3E8
-                  C4FFF3E9C5FFF4EAC7FFF4EAC8FFF4EBC8FFF5EBC9FFF5ECC9FFF5EBC9FFF5EB
-                  C8FFF4EAC7FFF4E8C5FFF3E7C4FFF3E5C0FFF2E3BEFFF7EDD3FFEEE0C8FFC39D
-                  78FA30251B4A0000000700000002000000000000000000000000000000000000
-                  00000000000000000000000000010000000432281F45BB9876EEE6D5BAFFFBF7
-                  E3FFF7F0D3FFF4EBC8FFF5ECCBFFF5EDCBFFF6EDCBFFF5EDCCFFF5EDCBFFF5EC
-                  CBFFF5EBC9FFF5EAC7FFF4E8C5FFF6EDCFFFFBF5E1FFE6D2B7FFB99471EE3127
-                  1D4A000000070000000200000001000000000000000000000000000000000000
-                  0000000000000000000000000000000000010000000318130F239E8163C8D8BA
-                  98FFF1E5CFFFFCF9E7FFFBF6E0FFF8F2D8FFF8F3D6FFF6EFCDFFF6EFCDFFF8F2
-                  D6FFF8F1D6FFFBF5DEFFFCF8E6FFF1E5CEFFD7B896FF9C7E5FCA17130E280000
-                  0006000000020000000100000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000100000002000000054136
-                  2956AE916EDAD4B591FFE5D1B4FFF1E6CFFFF4EAD5FFFCF9E8FFFDF9E8FFF5EA
-                  D5FFF1E5CEFFE4CFB1FFD3B38EFFAD8E6CDA4336295B00000007000000040000
-                  0002000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000001000000010000
-                  000300000004251E1832665642829F8465C5A78C6BCECFAC85FCCFAC85FCA68A
-                  6ACF9F8366C666544184251E1734000000060000000400000002000000010000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0001000000010000000200000003000000040000000500000005000000050000
-                  0005000000040000000400000003000000020000000100000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000001000000010000000100000001000000010000
-                  0001000000010000000100000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000}
-                Layout = blGlyphTop
-                ParentFont = False
-                OnClick = SpeedButton2Click
-              end
-              object SpeedButtonAlterarManutencao: TSpeedButton
-                Left = 70
-                Top = 0
-                Width = 70
-                Height = 84
-                Align = alLeft
-                Caption = 'F3 | Alterar'
-                Flat = True
-                Font.Charset = ANSI_CHARSET
-                Font.Color = clWindowText
-                Font.Height = -12
-                Font.Name = 'Segoe UI'
-                Font.Style = []
-                Glyph.Data = {
-                  36100000424D3610000000000000360000002800000020000000200000000100
-                  2000000000000010000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000001000000010000
-                  0002000000040000000500000005000000040000000300000002000000010000
-                  0001000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000020000
-                  00070000000D0000001100000012000000110000000E00000009000000040000
-                  0002000000010000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000001000000052B18
-                  0D526C3A1EC67D4020EA84411FFF6A3117D92A1E28B1010713460000000E0000
-                  0006000000020000000100000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  000000000000000000000000000000000000000000000000000100000005331E
-                  105B9C663CF0E2C296FFCE9D5DFF48606FFF073688FF072B6FFF0315348C0000
-                  000F000000060000000100000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000030000
-                  000922140B47A77148FB95CEDCFF3590DBFF1E69BFFF093E9AFF08307DFF0416
-                  33840000000C0000000400000001000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000010000
-                  00040000000C2B272E8B2E79BAFF80D5F2FF44A5E2FF2C7FCBFF073C98FF0B34
-                  7AFB01060E300000000800000003000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000010000000100000001000000010000000100000001000000010000
-                  00020000000600020315103E7CDD57BDE4FF8DDFF4FF44A5E3FF1860BAFF0B3C
-                  91FF1C1C369D0000001200000008000000030000000200000001000000010000
-                  0001000000010000000000000000000000000000000000000000000000010000
-                  0002000000030000000500000006000000060000000600000006000000060000
-                  0006000000080000000D040E1D432465A4F961CEF1FF94E2F4FF328BD9FF2648
-                  9BFF4B3C36FE352926C0060504290000000E0000000900000007000000060000
-                  0006000000040000000200000001000000000000000000000000000000020000
-                  00060000000D0000001300000016000000160000001600000016000000170000
-                  0017000000180000001A0000001E081B356D256FB6FF3D9CDCFF93DAEBFFA67A
-                  6AFFCAAA90FF99795EFF4B3A32DD060505380000001F0000001B000000190000
-                  00160000000F0000000700000002000000000000000000000000000000030000
-                  000D7A594DBFA97C6CFFA97C6BFFA97C6BFFA97C6CFFA97B6CFFA97C6CFFA97C
-                  6BFFA87B6BFFA87B6BFFB58F81FFCDB7AFFF9798A9FF645E7EFF644D45FFF9F9
-                  F8FFB08777FFD6BAA1FFA68466FF6E5850FFBBA6A3FFC7ADA4FFAB7F70FFA77B
-                  6AFF78574DC00000000F00000004000000010000000000000000000000050000
-                  0012AA7D6EFFF8F2EEFFF8F2EEFFF9F2EEFFF8F2EEFFF9F2EEFFF9F2EEFFF9F1
-                  EEFFCFB2A8FFF8F0EDFFF7F0ECFFF7F1EEFFF5F0EEFFEFECEAFF8B776EFFD5C6
-                  BDFFFFFFFFFFB08777FFDBC3ACFF514D8DFF292881FFDBD7DDFFF5EFEDFFF6F0
-                  EBFFA87B6CFF0000001500000005000000010000000000000000000000050000
-                  0013AC7F6FFFF9F2EEFFF7EDE8FFF6EDE8FFF6EDE9FFF7EDE8FFF7EDE8FFF7ED
-                  E8FFC19E92FFF6EDE8FFF6EDE9FFF7EDE8FFF4EBE6FFF4EEECFFE4DCD9FF957D
-                  73FFE2D3C9FFFFFFFFFF514A8EFF4A5DDDFF1D29B9FF2B2983FFDBD6DEFFF6F1
-                  EFFFA97C6CFF0000001700000006000000010000000000000000000000050000
-                  0013AD8071FFF9F2EFFFF6EDE9FFF6EEE8FFF7EDE9FFF7EEE9FFF7EDE9FFF7ED
-                  E9FFC29E94FFF7EDE8FFF7EDE9FFF7EDE9FFF7EDE8FFF4ECE8FFF5F0EDFFE5DD
-                  DAFF9A7E72FF9B9CD3FFA3B7F0FF4042B9FF5165DFFF202CBDFF2D2B87FFDDD9
-                  E0FFA77B6CFF0000001800000007000000010000000000000000000000050000
-                  0012AE8273FFF9F3F0FFF7EDE9FFF7EEE9FFF7EDE9FFF7EDE9FFF7EDEAFFF7EE
-                  E9FFC3A094FFF7EEE9FFF7EEE9FFF7EEE9FFF7EDE9FFF7EDE9FFF5EEE9FFF6F1
-                  EFFFCBBABAFF4C45ACFF5B6BDBFFA8BAF1FF4346B9FF5568DFFF2330BEFF302F
-                  8CFF98706DFF0000001A00000007000000020000000000000000000000040000
-                  0011B57543FFC99872FFBE855BFFBE855AFFBE855AFFBE845AFFBE845AFFBE84
-                  5AFFBE8459FFBE8459FFBD8459FFBE8459FFBD8359FFBD8359FFBD8359FFC089
-                  61FFD7B69EFFC8B7BFFF4C44ABFF6272DDFFADBFF2FF474ABAFF5669DFFF2836
-                  C0FF2A227DFF02010B330000000A000000030000000000000000000000040000
-                  0011B67744FFEBCFAAFFE1BB89FFE1BB8AFFE1BB8AFFE0BB89FFE1BB89FFE1BB
-                  89FFBE855BFFE0BB8AFFE1BA89FFE1BA89FFE1BA89FFE0BA8AFFE1BA89FFE0BA
-                  89FFC18A62FFF6F1EFFFDFDAE4FF514BB2FF697ADFFFB0C2F3FF4B4EBBFF576A
-                  DFFF2D3CC4FF151470DE02020B26000000050000000200000000000000040000
-                  0010B77946FFEBD1ACFFE2BC8BFFE1BC8BFFE2BC8BFFE2BC8BFFE2BC8BFFE1BB
-                  8AFFBF875BFFE1BC8AFFE1BB8AFFE1BB8AFFE1BB8AFFE1BB8AFFE1BB8AFFE1BB
-                  8AFFBF865BFFF6EEEAFFF7F2F0FFE0DCE6FF534EB4FF6F7EE0FFB5C7F3FF4E51
-                  BCFF5467DEFF3343C7FF191876DE02020C1F0000000400000001000000040000
-                  000FB87A48FFECD3AEFFE2BC8CFFE2BD8CFFE2BC8CFFE2BC8CFFE1BD8CFFE2BC
-                  8BFFC1885DFFE2BC8CFFE2BB8BFFE2BB8BFFE1BC8BFFE1BC8BFFE2BC8AFFE1BB
-                  8BFFC0875CFFF7EEEBFFF6EFEAFFF7F2F1FFE0DBE7FF5551B7FF7484E2FFB9CA
-                  F4FF5053BBFF5164DDFF3849CBFF1D1B7ADD03020D1F00000003000000040000
-                  000FBA7B48FFEDD4B0FFE2BE8DFFE2BD8DFFE2BE8DFFE2BD8CFFE2BD8CFFE2BD
-                  8DFFC28B60FFE2BD8CFFE2BD8CFFE2BC8CFFE2BC8CFFE2BC8BFFE2BC8CFFE2BD
-                  8CFFC1895EFFF8EFEBFFF7EFEBFFF6EFEBFFF8F4F2FFE1DCE8FF5653B9FF7889
-                  E3FFBECEF5FF5154BBFF4C62DCFF3D4FCEFF211F7FDD03030D1D000000030000
-                  000EBA7D4AFFD9B28FFFC48E62FFC48E62FFC48D62FFC48E62FFC38D61FFC38D
-                  61FFC38D61FFC38D61FFC38D61FFC38C61FFC38C60FFC38C60FFC38C60FFC28B
-                  60FFC38B5FFFC6A59AFFC6A599FFC6A499FFC7A99EFFDCCAC3FFCBBCC5FF5552
-                  B8FF7A8BE4FFC1D1F6FF4C4EB5FF475CDAFF404FCAFF1E1B6BBF000000030000
-                  000DBC7E4CFFEED6B4FFE3BF8FFFE3BF8FFFE3BF8FFFE3BF8FFFE3BF8FFFE3BF
-                  8FFFC48E63FFE3BF8EFFE3BF8EFFE3BF8EFFE2BF8EFFE3BF8EFFE2BF8EFFE3BF
-                  8EFFC38D61FFF8EFECFFF8F0EDFFF8EFECFFF8EFECFFF7EFECFFF9F5F2FFE3E0
-                  EDFF4F49B1FF7788E2FFC5D4F7FF3E3FA7FF4A5DD9FF403AABF6000000030000
-                  000DBD804DFFEED8B6FFE3C091FFE4C091FFE4C190FFE4C090FFE3C18FFFE3C0
-                  90FFC59165FFE3C08FFFE3C08FFFE3C08FFFE3C08FFFE3C08FFFE3C08FFFE2C0
-                  8EFFC58F63FFF8F0EDFFF9F0EDFFF8F0EDFFF8F0ECFFF8F0ECFFF8F0ECFFFAF4
-                  F1FFA98586FF3E3DA7E76675DBFFC7D7F7FF3434A3FF2A266E9E000000030000
-                  000CBE814FFFEFD9B8FFE4C291FFE4C291FFE4C191FFE4C291FFE4C190FFE4C1
-                  90FFC79367FFE4C191FFE4C191FFE3C190FFE4C190FFE4C090FFE3C090FFE3C0
-                  90FFC69165FFF9F0EDFFF8F1EDFFF9F0EDFFF8F0EDFFF9F0EDFFF9F0ECFFFAF5
-                  F3FFB99183FF0808152D36348FCB4542B7FF2B28709E02020408000000030000
-                  000BBF8351FFEFDABAFFE5C392FFE4C292FFE5C392FFE4C392FFE4C292FFE5C3
-                  93FFC79569FFE4C292FFE4C292FFE4C292FFE4C291FFE4C291FFE4C291FFE4C2
-                  91FFC79367FFF8F1EDFFF9F1EDFFF9F0EDFFF9F0EEFFF8F0EEFFF8F0EDFFFAF5
-                  F4FFBC9486FF0000000F00000005000000010000000100000001000000030000
-                  000BC08352FFDFBF9DFFCA986BFFCA986BFFCA986BFFCA976BFFC9976BFFCA97
-                  6BFFC9976BFFC9976AFFC8976AFFC9976AFFC89669FFC89669FFC89569FFC896
-                  69FFC89568FFCAACA1FFCAABA0FFCAABA0FFCAABA0FFCAABA0FFC9ABA0FFDEC9
-                  C0FFBD9589FF0000000E00000003000000000000000000000000000000020000
-                  000AC08553FFF0DCBDFFE5C495FFE6C494FFE5C594FFE5C494FFE5C494FFE5C4
-                  94FFCA996CFFE5C494FFE5C494FFE5C494FFE5C494FFE5C494FFE5C494FFE4C3
-                  94FFC9976AFFF9F1EEFFF9F1EFFFF9F1EEFFF9F1EEFFF9F1EEFFF9F1EEFFFBF7
-                  F4FFBE988AFF0000000D00000003000000000000000000000000000000020000
-                  0009C18654FFF1DEBEFFE5C595FFE5C695FFE6C596FFE6C595FFE6C595FFE5C5
-                  95FFCC9A6EFFE5C595FFE6C595FFE5C595FFE5C595FFE5C594FFE6C594FFE5C4
-                  94FFCB996DFFF9F1EFFFFAF2EFFFF9F2EFFFFAF1EFFFF9F2EFFFF9F1EFFFFBF7
-                  F6FFC0998CFF0000000C00000003000000000000000000000000000000020000
-                  0008C18654FFF1DEC0FFE6C696FFE6C696FFE6C696FFE6C696FFE6C696FFE6C6
-                  96FFCD9C70FFE5C696FFE6C596FFE6C596FFE5C695FFE5C695FFE6C695FFE5C6
-                  95FFCC9B6EFFFAF2EFFFF9F2EFFFF9F2EFFFF9F2EFFFF9F2EFFFFAF1EFFFFCF7
-                  F6FFC19B8EFF0000000B00000003000000000000000000000000000000020000
-                  0007C18654FFF1DFC0FFF1DFC0FFF1DFC0FFF1DFC0FFF1DFC0FFF1DFC0FFF1DF
-                  C0FFE3C5A4FFF1DEBFFFF1DEBFFFF1DEBFFFF1DEBFFFF1DEBFFFF1DEBFFFF1DE
-                  BFFFD6AD85FFFCF7F6FFFCF7F6FFFCF7F6FFFCF7F6FFFCF7F6FFFCF7F6FFFCF7
-                  F6FFC29C8FFF0000000A00000003000000000000000000000000000000010000
-                  00058F633EC0C18654FFC18654FFC18654FFC18654FFC18654FFC18654FFC186
-                  54FFC18654FFC18654FFC18654FFC18654FFC18654FFC18654FFC18654FFC186
-                  54FFC18654FFC39E90FFC39E91FFC39E90FFC39D90FFC39E91FFC39E91FFC39D
-                  90FF91756BC10000000600000002000000000000000000000000000000010000
-                  0002000000040000000600000007000000070000000700000008000000080000
-                  0008000000080000000800000008000000080000000800000008000000080000
-                  0009000000090000000900000009000000090000000900000009000000090000
-                  0008000000060000000300000001000000000000000000000000000000000000
-                  0000000000010000000100000002000000020000000200000002000000020000
-                  0002000000020000000200000002000000020000000200000002000000020000
-                  0002000000020000000200000002000000020000000200000002000000020000
-                  0002000000010000000100000000000000000000000000000000}
-                Layout = blGlyphTop
-                ParentFont = False
-                OnClick = SpeedButtonAlterarManutencaoClick
-                ExplicitLeft = 65
-              end
-              object SpeedButtonCancelarManutencao: TSpeedButton
-                Left = 140
-                Top = 0
-                Width = 70
-                Height = 84
-                Align = alLeft
-                Caption = 'Voltar'
-                Flat = True
-                Font.Charset = ANSI_CHARSET
-                Font.Color = clWindowText
-                Font.Height = -12
-                Font.Name = 'Segoe UI'
-                Font.Style = []
-                Glyph.Data = {
-                  36100000424D3610000000000000360000002800000020000000200000000100
-                  2000000000000010000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  00000000000000000000000000000000000000000000040302067D5834ADB882
-                  4DFFB8824DFFB8824DFFA67545E61E150C290000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000040302067E59
-                  35AEB8824DFFB8824DFFB8824DFFA87746E923180E3000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000403
-                  02067E5935AFB8824DFFB8824DFFB8824DFFAC7948EE271C1036000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  000004030206805A35B1B8824DFFB8824DFFB8824DFFAE7B49F12B1F123C0000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  00000000000004030206815B36B3B8824DFFB8824DFFB8824DFFB17D4AF53123
-                  1544000000000000000000000000000000000000000000000000000000000000
-                  00000000000000000000000000000000000000000000000000000F0B06154530
-                  1D5F71502F9D90663CC8A47445E3AC7948EEB7814DFEB8824DFFB8824DFFB882
-                  4DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB27E
-                  4BF73626174B0000000000000000000000000000000000000000000000000000
-                  000000000000000000000000000000000000120D08196E4E2E99B47F4BF9B882
-                  4DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB882
-                  4DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB882
-                  4DFFB47F4BF93C2A195300000000000000000000000000000000000000000000
-                  0000000000000000000000000000281C1137A77646E7B8824DFFB8824DFFB882
-                  4DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB882
-                  4DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB882
-                  4DFFB6804CFC412E1B5A00000000000000000000000000000000000000000000
-                  0000000000000000000017100A20AD7A48F0B8824DFFB8824DFFB8824DFFB882
-                  4DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB882
-                  4DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB47F
-                  4BFA3D2B19540000000000000000000000000000000000000000000000000000
-                  00000000000000000000795633A8B8824DFFB8824DFFB8824DFFB8824DFF7E59
-                  35AF3A29185119110A220C090511020201030000000000000000000000000000
-                  000000000000030201047B5733AAB8824DFFB8824DFFB8824DFFB47F4BF93A29
-                  1850000000000000000000000000000000000000000000000000000000000000
-                  0000000000000D090512B5804CFBB8824DFFB8824DFFB8824DFF4F38216D0000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000030201047B5733AAB8824DFFB8824DFFB8824DFFB37E4BF83727174C0000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  00000000000034251648B8824DFFB8824DFFB8824DFFA07143DE010100010000
-                  0000000000000000000000000000000000000000000000000000000000000302
-                  01047B5733AAB8824DFFB8824DFFB8824DFFB27D4AF634251648000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  00000000000047321E62B8824DFFB8824DFFB8824DFF7B5733AA000000000000
-                  0000000000000000000000000000000000000000000000000000030201047B57
-                  33AAB8824DFFB8824DFFB8824DFFB17D4AF53123154400000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  00000000000047321E63B8824DFFB8824DFFB8824DFF7A5633A9000000000000
-                  00000000000000000000000000000000000000000000030201047B5733AAB882
-                  4DFFB8824DFFB8824DFFB07C4AF42D20133F0000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000003626174BB8824DFFB8824DFFB8824DFFA07143DE010101020000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000F0B0615B6804CFCB8824DFFB8824DFFB8824DFF4D37206B0000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  000000000000000000007E5935AFB8824DFFB8824DFFB8824DFFB7814DFE7452
-                  31A1302214420B08050F00000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  000000000000000000001B130B26B17D4AF5B8824DFFB8824DFFB8824DFFB882
-                  4DFFB8824DFFB8824DFFB17D4AF5AC7948EEAC7948EEAC7948EE000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  000000000000000000000000000032231545AE7B49F1B8824DFFB8824DFFB882
-                  4DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFF000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  00000000000000000000000000000000000019110A227C5834ACB7814CFDB882
-                  4DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFFB8824DFF000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  000000000000000000000000000000000000000000000000000017100A205139
-                  22707A5633A9966A3FD0AB7948EDB5804CFBB8824DFFB8824DFF000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000000000000000
-                  0000000000000000000000000000000000000000000000000000}
-                Layout = blGlyphTop
-                ParentFont = False
-                OnClick = SpeedButtonCancelarManutencaoClick
-                ExplicitLeft = 200
-              end
-            end
-            object GroupBox2: TGroupBox
-              Left = 305
-              Top = 1
-              Width = 489
-              Height = 84
-              Align = alClient
-              Caption = 'F6 | Localizar '
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -12
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentFont = False
-              TabOrder = 1
-              object EditLocManutencao: TEdit
-                Left = 11
-                Top = 32
-                Width = 254
-                Height = 21
-                CharCase = ecUpperCase
-                Color = clInfoBk
-                Ctl3D = False
-                Font.Charset = ANSI_CHARSET
-                Font.Color = clNavy
-                Font.Height = -12
-                Font.Name = 'Segoe UI Semibold'
-                Font.Style = [fsBold]
-                MaxLength = 35
-                ParentCtl3D = False
-                ParentFont = False
-                TabOrder = 0
-                OnChange = edtLocChange
-                OnKeyDown = edtLocKeyDown
-                OnKeyPress = edtLocKeyPress
-              end
-            end
-          end
-        end
-      end
     end
   end
   object dsVeiculo_Cavalo: TDataSource
     DataSet = Dados.qryVeiculos_cavalo
     OnStateChange = dsVeiculo_CavaloStateChange
-    Left = 319
-    Top = 427
+    Left = 240
+    Top = 168
   end
   object frxReport: TfrxReport
-    Version = '2022.3'
+    Version = '2022.1.3'
     DataSetName = 'frxDBCo'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
@@ -4002,8 +1535,8 @@ object frmVeiculos: TfrmVeiculos
       ''
       'begin'
       'end.')
-    Left = 746
-    Top = 339
+    Left = 66
+    Top = 3
     Datasets = <
       item
         DataSet = frxDBEmpresa
@@ -4431,8 +1964,8 @@ object frmVeiculos: TfrmVeiculos
     PdfA = False
     PDFStandard = psNone
     PDFVersion = pv17
-    Left = 674
-    Top = 339
+    Left = 154
+    Top = 65531
   end
   object frxDBEmpresa: TfrxDBDataset
     UserName = 'frxDBEmpresa'
@@ -4466,8 +1999,8 @@ object frmVeiculos: TfrmVeiculos
     DataSet = Dados.qryEmpresa
     BCDToCurrency = False
     DataSetOptions = []
-    Left = 525
-    Top = 427
+    Left = 80
+    Top = 96
   end
   object frxDBGrupo: TfrxDBDataset
     UserName = 'frxDBGrupo'
@@ -4480,61 +2013,22 @@ object frmVeiculos: TfrmVeiculos
     DataSource = dsVeiculo_Cavalo
     BCDToCurrency = False
     DataSetOptions = []
-    Left = 602
-    Top = 427
+    Left = 506
+    Top = 11
   end
   object ACBrEnterTab1: TACBrEnterTab
     EnterAsTab = True
-    Left = 704
-    Top = 424
+    Left = 344
+    Top = 128
   end
   object dsVeiculo_Reboque: TDataSource
     DataSet = Dados.qryVeiculos_Reboque
-    Left = 427
-    Top = 427
+    Left = 328
+    Top = 168
   end
   object dsCidade: TDataSource
     DataSet = Dados.qryCidade
-    Left = 239
-    Top = 427
-  end
-  object dsUsuarios: TDataSource
-    DataSet = Dados.qryUsuarios
-    Left = 176
-    Top = 427
-  end
-  object dsManutencao: TDataSource
-    DataSet = Dados.qryManutencao
-    OnStateChange = dsManutencaoStateChange
-    Left = 44
-    Top = 400
-  end
-  object dsManutencaoItem: TDataSource
-    DataSet = Dados.qryManutencaoItem
-    Left = 45
-    Top = 451
-  end
-  object dsMotorista: TDataSource
-    DataSet = Dados.qryMotorista
-    OnStateChange = dsManutencaoStateChange
-    Left = 382
-    Top = 512
-  end
-  object dsFornecedor: TDataSource
-    DataSet = Dados.qryFornecedor
-    OnStateChange = dsManutencaoStateChange
-    Left = 303
-    Top = 512
-  end
-  object qryAux: TFDQuery
-    Connection = Dados.Conexao
-    Left = 536
-    Top = 526
-  end
-  object dsTipoServico: TDataSource
-    DataSet = Dados.qryManutencaoTipo
-    OnStateChange = dsManutencaoStateChange
-    Left = 219
-    Top = 512
+    Left = 168
+    Top = 168
   end
 end

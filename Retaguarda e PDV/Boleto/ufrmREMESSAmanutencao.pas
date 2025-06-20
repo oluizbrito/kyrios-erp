@@ -218,7 +218,7 @@ begin
     qryDefault.Edit;
     qryDefaultARQUIVO.LoadFromFile(AArquivo.Trim);
     qryDefault.Post;
-    // qryDefault.Connection.CommitRetaining;
+    // qryDefault.Connection.Commit;
   except
     on e: Exception do
     begin
@@ -248,7 +248,7 @@ begin
         (Format('UPDATE CBR_REMESSA SET CANCELADA = ''S'' WHERE ID_EMPRESA = %d AND ID_CBR_REMESSA = %d;',
         [dados.qryempresaCodigo.Value, qryDefault.FieldByName('ID_CBR_REMESSA')
         .AsInteger]));
-      qryDefault.Connection.CommitRetaining;
+      qryDefault.Connection.Commit;
       qryDefault.Close;
       qryDefault.Open;
     except
@@ -349,7 +349,7 @@ begin
         raise Exception.Create
           ('Não foram encontrados Títulos para Geração da Remessa, favor verificar!');
       GerarRemessa;
-      qryDefault.Connection.CommitRetaining;
+      qryDefault.Connection.Commit;
       qryDefault.Close;
       qryDefault.Open;
     finally

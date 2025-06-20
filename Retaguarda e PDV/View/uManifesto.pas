@@ -154,7 +154,7 @@ begin
     qryManifesto.Edit;
     qryManifestoSITUACAO.AsString := vsituacao;
     qryManifesto.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
     manifeto;
     Result := true;
 
@@ -234,7 +234,7 @@ begin
               dmNFe.ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.
               Items[i].resDFe.dhRecbto;
             qryManifesto.Post;
-            dados.Conexao.CommitRetaining;
+            dados.Conexao.Commit;
             Result := true;
           end
           else
@@ -267,7 +267,7 @@ begin
     qryManifesto.Edit;
     qryManifestoXML.Clear;
     qryManifesto.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
 
     cnpj := TiraPontos(dados.qryEmpresaCNPJ.Value);
 
@@ -291,7 +291,7 @@ begin
         qryManifestoXML.Value := dmNFe.ACBrNFe.WebServices.DistribuicaoDFe.
           retDistDFeInt.docZip.Items[i].XML;
         qryManifesto.Post;
-        dados.Conexao.CommitRetaining;
+        dados.Conexao.Commit;
 
       end;
 
@@ -584,7 +584,7 @@ begin
     qryManifesto.Edit;
     qryManifestoSITUACAO.Value := 'C';
     qryManifesto.Post;
-    dados.Conexao.CommitRetaining;
+    dados.Conexao.Commit;
     Result := true;
   end
 end;
@@ -719,7 +719,7 @@ begin
                 dmNFe.ACBrNFe.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.
                 Items[i].resDFe.dhRecbto;
               qryManifesto.Post;
-              dados.Conexao.CommitRetaining;
+              dados.Conexao.Commit;
               Result := true;
             end;
           end;

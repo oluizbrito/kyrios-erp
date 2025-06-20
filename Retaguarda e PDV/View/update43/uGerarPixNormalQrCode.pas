@@ -1,4 +1,4 @@
-unit uGerarPixNormalQrCode;
+﻿unit uGerarPixNormalQrCode;
 
 interface //Suporte e Vendas direto no Whatsapp (48)998463846
 
@@ -13,11 +13,9 @@ type TGerar = (TQRCode, TNormal);
 type
   TfrmGerarPixNormalQrCode = class(TForm)
     Label1: TLabel;
-    btnGerarNormal: TcxButton;
     btnGerarQrCode: TcxButton;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure cxFinalizarClick(Sender: TObject);
-    procedure btnGerarNormalClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,12 +36,6 @@ begin
   Close;
 end;
 
-procedure TfrmGerarPixNormalQrCode.btnGerarNormalClick(Sender: TObject);
-begin
-  vGerar  :=  TNormal;
-  Close;
-end;
-
 procedure TfrmGerarPixNormalQrCode.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
@@ -53,11 +45,11 @@ begin
         vGerar  :=  TQRCode;
         Close;
       end;
-    VK_F5:
+    {VK_F5:
       begin
         vGerar  :=  TNormal;
         Close;
-      end;
+      end;}
   end;
 end;
 
