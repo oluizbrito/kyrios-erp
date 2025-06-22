@@ -12,12 +12,10 @@ object frmCadTransp: TfrmCadTransp
   Font.Name = 'Tahoma'
   Font.Style = []
   KeyPreview = True
-  OldCreateOrder = False
   Position = poDesktopCenter
   OnActivate = FormActivate
   OnKeyDown = FormKeyDown
   OnShow = FormShow
-  PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     AlignWithMargins = True
@@ -39,7 +37,6 @@ object frmCadTransp: TfrmCadTransp
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 730
     object Label1: TLabel
       Left = 48
       Top = 18
@@ -618,8 +615,6 @@ object frmCadTransp: TfrmCadTransp
     ParentColor = False
     ParentFont = False
     TabOrder = 1
-    ExplicitWidth = 713
-    ExplicitHeight = 201
     object JvDBGrid1: TJvDBGrid
       AlignWithMargins = True
       Left = 5
@@ -652,13 +647,77 @@ object frmCadTransp: TfrmCadTransp
           Expanded = False
           FieldName = 'NOME'
           Title.Caption = 'Nome'
-          Width = 368
+          Width = 250
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'CPF'
           Width = 106
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'CNH'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'CNH_CATEGORIA'
+          Width = 100
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'CNH_DATA_EMISSAO'
+          Width = 124
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'VALIDADE'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'DATA_NASCIMENTO'
+          Width = 120
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'TELEFONE'
+          Width = 120
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'WHATSAPP'
+          Width = 120
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'EMAIL'
+          Width = 200
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'EXAMES_DATA_VENCIMENTO'
+          Width = 120
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'EXAMES_OBSERVACOES'
+          Width = 200
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'OBSERVACOES'
+          Width = 300
           Visible = True
         end>
     end
@@ -678,8 +737,6 @@ object frmCadTransp: TfrmCadTransp
     Color = clWhite
     ParentBackground = False
     TabOrder = 2
-    ExplicitTop = 338
-    ExplicitWidth = 639
     object cxSair: TcxButton
       AlignWithMargins = True
       Left = 164
@@ -774,6 +831,8 @@ object frmCadTransp: TfrmCadTransp
   end
   object ACBrCEP1: TACBrCEP
     ProxyPort = '8080'
+    ContentsEncodingCompress = []
+    NivelLog = 0
     WebService = wsRepublicaVirtual
     ChaveAcesso = '1STa9eKhhfKvc7Ljh6W6CO5Kr/bFOl.'
     PesquisarIBGE = True
