@@ -8073,90 +8073,6 @@ object Dados: TDados
       Size = 2
     end
   end
-  object qryVeiculos_cavalo: TFDQuery
-    Connection = Conexao
-    SQL.Strings = (
-      'select * from veiculos_cavalo'
-      '/*where*/')
-    Left = 544
-    Top = 484
-    object qryVeiculos_cavaloPLACA: TStringField
-      FieldName = 'PLACA'
-      Origin = 'PLACA'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-      Size = 7
-    end
-    object qryVeiculos_cavaloDESCRICAO: TStringField
-      FieldName = 'DESCRICAO'
-      Origin = 'DESCRICAO'
-      Size = 30
-    end
-    object qryVeiculos_cavaloMUNICIPIO: TStringField
-      FieldName = 'MUNICIPIO'
-      Origin = 'MUNICIPIO'
-      Size = 40
-    end
-    object qryVeiculos_cavaloUF: TStringField
-      FieldName = 'UF'
-      Origin = 'UF'
-      Size = 2
-    end
-    object qryVeiculos_cavaloRENAVAM: TStringField
-      FieldName = 'RENAVAM'
-      Origin = 'RENAVAM'
-    end
-    object qryVeiculos_cavaloRNTC: TStringField
-      FieldName = 'RNTC'
-      Origin = 'RNTC'
-      Size = 8
-    end
-    object qryVeiculos_cavaloTIPO: TIntegerField
-      FieldName = 'TIPO'
-      Origin = 'TIPO'
-    end
-    object qryVeiculos_cavaloCARROCERIA: TIntegerField
-      FieldName = 'CARROCERIA'
-      Origin = 'CARROCERIA'
-    end
-    object qryVeiculos_cavaloATIVO: TStringField
-      FieldName = 'ATIVO'
-      Origin = 'ATIVO'
-      Size = 1
-    end
-    object qryVeiculos_cavaloVIRTUAL_CARROCERICA: TStringField
-      FieldKind = fkLookup
-      FieldName = 'VIRTUAL_CARROCERICA'
-      LookupDataSet = qryVeiculo_Carroceria
-      LookupKeyFields = 'CODIGO'
-      LookupResultField = 'DESCRICAO'
-      KeyFields = 'CARROCERIA'
-      Size = 30
-      Lookup = True
-    end
-    object qryVeiculos_cavaloVIRTUAL_TIPO: TStringField
-      FieldKind = fkLookup
-      FieldName = 'VIRTUAL_TIPO'
-      LookupDataSet = qryVeiculo_tipo
-      LookupKeyFields = 'CODIGO'
-      LookupResultField = 'DESCRICAO'
-      KeyFields = 'TIPO'
-      Size = 30
-      Lookup = True
-    end
-    object qryVeiculos_cavaloTARA: TFMTBCDField
-      FieldName = 'TARA'
-      Origin = 'TARA'
-      Precision = 18
-      Size = 3
-    end
-    object qryVeiculos_cavaloPESO: TFMTBCDField
-      FieldName = 'PESO'
-      Origin = 'PESO'
-      Precision = 18
-      Size = 3
-    end
-  end
   object qryVeiculos_Reboque: TFDQuery
     OnNewRecord = qryVeiculos_ReboqueNewRecord
     Connection = Conexao
@@ -13909,58 +13825,6 @@ object Dados: TDados
       Origin = 'STATUS'
     end
   end
-  object qryRotaParadas: TFDQuery
-    Connection = Conexao
-    SQL.Strings = (
-      'SELECT * FROM VEICULOS_ROTA_PARADA'
-      'WHERE'
-      'ROTA_CODIGO = :ROTA_CODIGO')
-    Left = 858
-    Top = 759
-    ParamData = <
-      item
-        Name = 'ROTA_CODIGO'
-        DataType = ftInteger
-        ParamType = ptInput
-      end>
-    object qryRotaParadasCODIGO: TIntegerField
-      FieldName = 'CODIGO'
-      Origin = 'CODIGO'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
-    object qryRotaParadasROTA_CODIGO: TIntegerField
-      FieldName = 'ROTA_CODIGO'
-      Origin = 'ROTA_CODIGO'
-      Required = True
-    end
-    object qryRotaParadasORDEM: TIntegerField
-      FieldName = 'ORDEM'
-      Origin = 'ORDEM'
-      Required = True
-    end
-    object qryRotaParadasCLIENTE_CODIGO: TIntegerField
-      FieldName = 'CLIENTE_CODIGO'
-      Origin = 'CLIENTE_CODIGO'
-      Required = True
-    end
-    object qryRotaParadasENDERECO_CLIENTE: TStringField
-      FieldName = 'ENDERECO_CLIENTE'
-      Origin = 'ENDERECO_CLIENTE'
-      Size = 255
-    end
-    object qryRotaParadasKM_DESTINO: TFMTBCDField
-      FieldName = 'KM_DESTINO'
-      Origin = 'KM_DESTINO'
-      Required = True
-      Precision = 18
-      Size = 2
-    end
-    object qryRotaParadasOBSERVACAO: TStringField
-      FieldName = 'OBSERVACAO'
-      Origin = 'OBSERVACAO'
-      Size = 255
-    end
-  end
   object qryRotaDespesas: TFDQuery
     Connection = Conexao
     SQL.Strings = (
@@ -14045,6 +13909,241 @@ object Dados: TDados
       Origin = 'DESCRICAO'
       Required = True
       Size = 100
+    end
+  end
+  object qryVeiculos_cavalo: TFDQuery
+    Connection = Conexao
+    SQL.Strings = (
+      'select * from veiculos_cavalo'
+      '/*where*/')
+    Left = 544
+    Top = 484
+    object qryVeiculos_cavaloPLACA: TStringField
+      FieldName = 'PLACA'
+      Origin = 'PLACA'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 7
+    end
+    object qryVeiculos_cavaloDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Origin = 'DESCRICAO'
+      Size = 30
+    end
+    object qryVeiculos_cavaloMUNICIPIO: TStringField
+      FieldName = 'MUNICIPIO'
+      Origin = 'MUNICIPIO'
+      Size = 40
+    end
+    object qryVeiculos_cavaloUF: TStringField
+      FieldName = 'UF'
+      Origin = 'UF'
+      Size = 2
+    end
+    object qryVeiculos_cavaloRENAVAM: TStringField
+      FieldName = 'RENAVAM'
+      Origin = 'RENAVAM'
+    end
+    object qryVeiculos_cavaloRNTC: TStringField
+      FieldName = 'RNTC'
+      Origin = 'RNTC'
+      Size = 8
+    end
+    object qryVeiculos_cavaloTIPO: TIntegerField
+      FieldName = 'TIPO'
+      Origin = 'TIPO'
+    end
+    object qryVeiculos_cavaloCARROCERIA: TIntegerField
+      FieldName = 'CARROCERIA'
+      Origin = 'CARROCERIA'
+    end
+    object qryVeiculos_cavaloATIVO: TStringField
+      FieldName = 'ATIVO'
+      Origin = 'ATIVO'
+      Size = 1
+    end
+    object qryVeiculos_cavaloVIRTUAL_CARROCERICA: TStringField
+      FieldKind = fkLookup
+      FieldName = 'VIRTUAL_CARROCERICA'
+      LookupDataSet = qryVeiculo_Carroceria
+      LookupKeyFields = 'CODIGO'
+      LookupResultField = 'DESCRICAO'
+      KeyFields = 'CARROCERIA'
+      Size = 30
+      Lookup = True
+    end
+    object qryVeiculos_cavaloVIRTUAL_TIPO: TStringField
+      FieldKind = fkLookup
+      FieldName = 'VIRTUAL_TIPO'
+      LookupDataSet = qryVeiculo_tipo
+      LookupKeyFields = 'CODIGO'
+      LookupResultField = 'DESCRICAO'
+      KeyFields = 'TIPO'
+      Size = 30
+      Lookup = True
+    end
+    object qryVeiculos_cavaloTARA: TFMTBCDField
+      FieldName = 'TARA'
+      Origin = 'TARA'
+      Precision = 18
+      Size = 3
+    end
+    object qryVeiculos_cavaloPESO: TFMTBCDField
+      FieldName = 'PESO'
+      Origin = 'PESO'
+      Precision = 18
+      Size = 3
+    end
+    object qryVeiculos_cavaloSITUACAO: TStringField
+      FieldName = 'SITUACAO'
+      Origin = 'SITUACAO'
+    end
+    object qryVeiculos_cavaloDATA_CADASTRO: TDateField
+      FieldName = 'DATA_CADASTRO'
+      Origin = 'DATA_CADASTRO'
+      EditMask = '!99/99/0000;1;_'
+    end
+    object qryVeiculos_cavaloDATA_MODIFICACAO: TDateField
+      FieldName = 'DATA_MODIFICACAO'
+      Origin = 'DATA_MODIFICACAO'
+      EditMask = '!99/99/0000;1;_'
+    end
+    object qryVeiculos_cavaloUSUARIO_MODIFICACAO_ID: TIntegerField
+      FieldName = 'USUARIO_MODIFICACAO_ID'
+      Origin = 'USUARIO_MODIFICACAO_ID'
+    end
+    object qryVeiculos_cavaloDATA_AQUISICAO: TDateField
+      FieldName = 'DATA_AQUISICAO'
+      Origin = 'DATA_AQUISICAO'
+      EditMask = '!99/99/0000;1;_'
+    end
+    object qryVeiculos_cavaloVALOR_AQUISICAO: TFMTBCDField
+      FieldName = 'VALOR_AQUISICAO'
+      Origin = 'VALOR_AQUISICAO'
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object qryVeiculos_cavaloVALOR_ALUGUEL_MENSAL: TFMTBCDField
+      FieldName = 'VALOR_ALUGUEL_MENSAL'
+      Origin = 'VALOR_ALUGUEL_MENSAL'
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object qryVeiculos_cavaloVENCIMENTO_ALUGUEL: TDateField
+      FieldName = 'VENCIMENTO_ALUGUEL'
+      Origin = 'VENCIMENTO_ALUGUEL'
+      EditMask = '!99/99/0000;1;_'
+    end
+    object qryVeiculos_cavaloMARCA: TStringField
+      FieldName = 'MARCA'
+      Origin = 'MARCA'
+      Size = 50
+    end
+    object qryVeiculos_cavaloMODELO: TStringField
+      FieldName = 'MODELO'
+      Origin = 'MODELO'
+      Size = 100
+    end
+    object qryVeiculos_cavaloCOR: TStringField
+      FieldName = 'COR'
+      Origin = 'COR'
+      Size = 30
+    end
+    object qryVeiculos_cavaloANO_FABRICACAO: TSmallintField
+      FieldName = 'ANO_FABRICACAO'
+      Origin = 'ANO_FABRICACAO'
+    end
+    object qryVeiculos_cavaloANO_MODELO: TSmallintField
+      FieldName = 'ANO_MODELO'
+      Origin = 'ANO_MODELO'
+    end
+    object qryVeiculos_cavaloALTURA_METROS: TCurrencyField
+      FieldName = 'ALTURA_METROS'
+      Origin = 'ALTURA_METROS'
+    end
+    object qryVeiculos_cavaloCOMPRIMENTO_METROS: TCurrencyField
+      FieldName = 'COMPRIMENTO_METROS'
+      Origin = 'COMPRIMENTO_METROS'
+    end
+    object qryVeiculos_cavaloLARGURA_METROS: TCurrencyField
+      FieldName = 'LARGURA_METROS'
+      Origin = 'LARGURA_METROS'
+    end
+    object qryVeiculos_cavaloCAPACIDADE_CARGA_KG: TFMTBCDField
+      FieldName = 'CAPACIDADE_CARGA_KG'
+      Origin = 'CAPACIDADE_CARGA_KG'
+      Precision = 18
+      Size = 2
+    end
+    object qryVeiculos_cavaloCAPACIDADE_CARGA_M3: TFMTBCDField
+      FieldName = 'CAPACIDADE_CARGA_M3'
+      Origin = 'CAPACIDADE_CARGA_M3'
+      Precision = 18
+      Size = 2
+    end
+    object qryVeiculos_cavaloODOMETRO_ATUAL: TIntegerField
+      FieldName = 'ODOMETRO_ATUAL'
+      Origin = 'ODOMETRO_ATUAL'
+    end
+    object qryVeiculos_cavaloVALOR_IPVA: TFMTBCDField
+      FieldName = 'VALOR_IPVA'
+      Origin = 'VALOR_IPVA'
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object qryVeiculos_cavaloVALOR_LICENCIAMENTO: TFMTBCDField
+      FieldName = 'VALOR_LICENCIAMENTO'
+      Origin = 'VALOR_LICENCIAMENTO'
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object qryVeiculos_cavaloVALOR_SEGURO_OBRIGATORIO: TFMTBCDField
+      FieldName = 'VALOR_SEGURO_OBRIGATORIO'
+      Origin = 'VALOR_SEGURO_OBRIGATORIO'
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object qryVeiculos_cavaloSEGURADORA_NOME: TStringField
+      FieldName = 'SEGURADORA_NOME'
+      Origin = 'SEGURADORA_NOME'
+      Size = 100
+    end
+    object qryVeiculos_cavaloSEGURADORA_APOLICE: TStringField
+      FieldName = 'SEGURADORA_APOLICE'
+      Origin = 'SEGURADORA_APOLICE'
+      Size = 50
+    end
+    object qryVeiculos_cavaloSEGURADORA_VALOR: TFMTBCDField
+      FieldName = 'SEGURADORA_VALOR'
+      Origin = 'SEGURADORA_VALOR'
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object qryVeiculos_cavaloSEGURADORA_DATA_INICIO: TDateField
+      FieldName = 'SEGURADORA_DATA_INICIO'
+      Origin = 'SEGURADORA_DATA_INICIO'
+      EditMask = '!99/99/0000;1;_'
+    end
+    object qryVeiculos_cavaloSEGURADORA_DATA_VENCIMENTO: TDateField
+      FieldName = 'SEGURADORA_DATA_VENCIMENTO'
+      Origin = 'SEGURADORA_DATA_VENCIMENTO'
+      EditMask = '!99/99/0000;1;_'
+    end
+    object qryVeiculos_cavaloSEGURADORA_TIPO_COBERTURA: TStringField
+      FieldName = 'SEGURADORA_TIPO_COBERTURA'
+      Origin = 'SEGURADORA_TIPO_COBERTURA'
+      Size = 50
+    end
+    object qryVeiculos_cavaloOBSERVACOES: TMemoField
+      FieldName = 'OBSERVACOES'
+      Origin = 'OBSERVACOES'
+      BlobType = ftMemo
     end
   end
 end

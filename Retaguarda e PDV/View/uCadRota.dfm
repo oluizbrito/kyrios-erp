@@ -28,8 +28,6 @@ object frmCadRota: TfrmCadRota
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = 557
-    ExplicitWidth = 936
     object cxSair: TcxButton
       AlignWithMargins = True
       Left = 164
@@ -110,7 +108,6 @@ object frmCadRota: TfrmCadRota
       Font.Style = []
       ParentFont = False
       OnClick = cxGravarClick
-      ExplicitTop = 2
     end
   end
   object Panel1: TPanel
@@ -127,8 +124,6 @@ object frmCadRota: TfrmCadRota
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 936
-    ExplicitHeight = 543
     object Label1: TLabel
       Left = 51
       Top = 17
@@ -536,7 +531,6 @@ object frmCadRota: TfrmCadRota
               Height = 43
               Align = alTop
               TabOrder = 0
-              ExplicitTop = 8
               object SpeedButtonAddItem: TSpeedButton
                 AlignWithMargins = True
                 Left = 6
@@ -757,9 +751,6 @@ object frmCadRota: TfrmCadRota
               Height = 43
               Align = alBottom
               TabOrder = 0
-              ExplicitLeft = 1
-              ExplicitTop = 123
-              ExplicitWidth = 781
               object SpeedButtonSalvarItem: TSpeedButton
                 AlignWithMargins = True
                 Left = 6
@@ -1255,11 +1246,6 @@ object frmCadRota: TfrmCadRota
   object dsVeiculosCavalo: TDataSource
     DataSet = Dados.qryVeiculos_cavalo
     Left = 564
-    Top = 471
-  end
-  object dsRotaParadas: TDataSource
-    DataSet = Dados.qryRotaParadas
-    Left = 418
     Top = 471
   end
   object qryOrigem: TFDQuery

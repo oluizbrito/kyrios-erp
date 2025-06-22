@@ -42,7 +42,6 @@ type
     kmInicial: TDBEdit;
     observacao: TDBMemoEh;
     status: TDBComboBox;
-    dsRotaParadas: TDataSource;
     qryOrigem: TFDQuery;
     qryOrigemENDERECO_COMPLETO: TStringField;
     origem: TDBLookupComboboxEh;
@@ -171,10 +170,6 @@ end;
 
 procedure TfrmCadRota.dsRotaStateChange(Sender: TObject);
 begin
-  Dados.qryRotaParadas.Close;
-  Dados.qryRotaParadas.Params[0].Value := Dados.qryRotaCODIGO.Value;
-  Dados.qryRotaParadas.Open;
-
   Dados.qryRotaDespesas.Close;
   Dados.qryRotaDespesas.Params[0].Value := Dados.qryRotaCODIGO.Value;
   Dados.qryRotaDespesas.Open;
@@ -191,9 +186,6 @@ begin
 
   Dados.qryVeiculos_cavalo.Close;
   Dados.qryVeiculos_cavalo.Open;
-
-  Dados.qryRotaParadas.Close;
-  Dados.qryRotaParadas.Open;
 
   qryOrigem.Close;
   qryOrigem.Open;
