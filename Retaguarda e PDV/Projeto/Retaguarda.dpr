@@ -258,7 +258,9 @@ uses
   uCadvenda in '..\View\uCadvenda.pas' {frmCadvenda},
   funcoes_diversas in '..\View\funcoes_diversas.pas',
   UXmlComprasRecord in '..\View\UXmlComprasRecord.pas',
-  UEmpresaRecord in '..\View\UEmpresaRecord.pas';
+  UEmpresaRecord in '..\View\UEmpresaRecord.pas',
+  uConsRotaViagem in '..\View\uConsRotaViagem.pas' {frmConsRotaViagem},
+  uCadRota in '..\View\uCadRota.pas' {frmCadRota};
 
 {$R *.res}
 
@@ -302,6 +304,8 @@ begin
   Application.CreateForm(TfrmEtiquetasFast, frmEtiquetasFast);
   Application.CreateForm(TFrmAniversariante, FrmAniversariante);
   Application.CreateForm(TfrmCadvenda, frmCadvenda);
+  Application.CreateForm(TfrmConsRotaViagem, frmConsRotaViagem);
+  Application.CreateForm(TfrmCadRota, frmCadRota);
   Application.Run;
   CloseHandle(MutexHandle);
 

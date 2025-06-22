@@ -137,14 +137,14 @@
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <DCC_ExeOutput>C:\Sistema</DCC_ExeOutput>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Keys>CompanyName=Loja do Desenvoldedor;FileDescription=$(MSBuildProjectName);FileVersion=6.2.0.8;InternalName=;LegalCopyright=Loja do Desenvolvedor;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=6.0;Comments=Versão Final</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=Loja do Desenvoldedor;FileDescription=$(MSBuildProjectName);FileVersion=6.2.0.9;InternalName=;LegalCopyright=Loja do Desenvolvedor;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=6.0;Comments=Versão Final</VerInfo_Keys>
         <AppDPIAwarenessMode>PerMonitor</AppDPIAwarenessMode>
         <VerInfo_MajorVer>6</VerInfo_MajorVer>
         <UsePackages>false</UsePackages>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
         <Icon_MainIcon>$(ProjectName).Artwork\Windows\AppIcon.ico</Icon_MainIcon>
-        <VerInfo_Build>8</VerInfo_Build>
+        <VerInfo_Build>9</VerInfo_Build>
         <VerInfo_MinorVer>2</VerInfo_MinorVer>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
@@ -877,6 +877,14 @@
         <DCCReference Include="..\View\funcoes_diversas.pas"/>
         <DCCReference Include="..\View\UXmlComprasRecord.pas"/>
         <DCCReference Include="..\View\UEmpresaRecord.pas"/>
+        <DCCReference Include="..\View\uConsRotaViagem.pas">
+            <Form>frmConsRotaViagem</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\View\uCadRota.pas">
+            <Form>frmCadRota</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
