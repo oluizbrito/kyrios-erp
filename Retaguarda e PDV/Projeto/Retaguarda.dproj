@@ -137,15 +137,17 @@
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <DCC_ExeOutput>C:\Sistema</DCC_ExeOutput>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Keys>CompanyName=Loja do Desenvoldedor;FileDescription=$(MSBuildProjectName);FileVersion=6.2.0.11;InternalName=;LegalCopyright=Loja do Desenvolvedor;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=6.0;Comments=Versão Final</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=Loja do Desenvoldedor;FileDescription=$(MSBuildProjectName);FileVersion=6.2.0.14;InternalName=;LegalCopyright=Loja do Desenvolvedor;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=6.0;Comments=Versão Final</VerInfo_Keys>
         <AppDPIAwarenessMode>PerMonitor</AppDPIAwarenessMode>
         <VerInfo_MajorVer>6</VerInfo_MajorVer>
         <UsePackages>false</UsePackages>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
-        <Icon_MainIcon>$(ProjectName).Artwork\Windows\AppIcon.ico</Icon_MainIcon>
-        <VerInfo_Build>11</VerInfo_Build>
+        <Icon_MainIcon>Retaguarda_Icon.ico</Icon_MainIcon>
+        <VerInfo_Build>14</VerInfo_Build>
         <VerInfo_MinorVer>2</VerInfo_MinorVer>
+        <UWP_DelphiLogo44>Visual\KYRIOS.png</UWP_DelphiLogo44>
+        <UWP_DelphiLogo150>Visual\KYRIOS ico.png</UWP_DelphiLogo150>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
@@ -933,6 +935,20 @@
                 </DeployFile>
                 <DeployFile LocalName="C:\Users\LojadoDesenvolvedor\Downloads\Graph-Magnifier-icon (1).png" Configuration="Debug" Class="UWP_DelphiLogo44"/>
                 <DeployFile LocalName="C:\Users\LojadoDesenvolvedor\Downloads\Graph-Magnifier-icon.png" Configuration="Debug" Class="UWP_DelphiLogo150"/>
+                <DeployFile LocalName="Visual\KYRIOS ico.png" Configuration="Release" Class="UWP_DelphiLogo150">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets\</RemoteDir>
+                        <RemoteName>Logo150x150.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Visual\KYRIOS.png" Configuration="Release" Class="UWP_DelphiLogo44">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets\</RemoteDir>
+                        <RemoteName>Logo44x44.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="c:\Gestor\Retaguarda.exe" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="iOSSimulator">

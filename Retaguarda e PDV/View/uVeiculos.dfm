@@ -23,7 +23,7 @@ object frmVeiculos: TfrmVeiculos
     Top = 0
     Width = 811
     Height = 594
-    ActivePage = Lista
+    ActivePage = Manutencao
     Align = alClient
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText

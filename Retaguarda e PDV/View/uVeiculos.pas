@@ -469,22 +469,6 @@ begin
   PageControl1.ActivePage := Lista;
   PageControl2.ActivePage := Reboque;
 
-  // FORNECEDOR DO COMBO DA TELA DE MANUTENÇÃO
-  with qryAux do
-  begin
-    Close;
-    SQL.Clear;
-    SQL.Add('SELECT CODIGO FROM PESSOA WHERE FORN = ' + QuotedStr('S'));
-    Open;
-  end;
-
-  if qryAux.RecordCount > 0 then
-  begin
-    Dados.qryFornecedor.close;
-    Dados.qryFornecedor.Params[0].Value := 1;
-    Dados.qryFornecedor.Open;
-  end;
-
   Dados.qryManutencaoTipo.close;
   Dados.qryManutencaoTipo.Open;
 
@@ -619,6 +603,9 @@ begin
   end;
 
   PageControlManutencao.ActivePage := ListaManutencao;
+
+  Dados.qryManutencao.Close;
+  Dados.qryManutencao.Open;
 end;
 
 procedure TfrmVeiculos.SpeedButtonRemoverItemClick(Sender: TObject);
