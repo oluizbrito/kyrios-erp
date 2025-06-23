@@ -2469,6 +2469,15 @@ type
     qryVeiculos_cavaloSEGURADORA_DATA_VENCIMENTO: TDateField;
     qryVeiculos_cavaloSEGURADORA_TIPO_COBERTURA: TStringField;
     qryVeiculos_cavaloOBSERVACOES: TMemoField;
+    qryMotoristaDATA_NASCIMENTO: TDateField;
+    qryMotoristaTELEFONE: TStringField;
+    qryMotoristaWHATSAPP: TStringField;
+    qryMotoristaEMAIL: TStringField;
+    qryMotoristaCNH_CATEGORIA: TStringField;
+    qryMotoristaCNH_DATA_EMISSAO: TDateField;
+    qryMotoristaEXAMES_OBSERVACOES: TMemoField;
+    qryMotoristaEXAMES_DATA_VENCIMENTO: TDateField;
+    qryMotoristaOBSERVACOES: TMemoField;
     procedure DataModuleCreate(Sender: TObject);
     procedure serial;
     procedure ConsultaCliente(var Codigo: Integer; var Razao: string;

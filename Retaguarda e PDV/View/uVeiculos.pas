@@ -565,10 +565,15 @@ end;
 
 procedure TfrmVeiculos.SpeedButton2Click(Sender: TObject);
 begin
+  Dados.qryManutencao.Close;
+  Dados.qryManutencao.Open;
+
+  EditLocManutencao.SetFocus;
   Dados.qryManutencao.Insert;
+
   PageControlManutencao.ActivePage       := DadosManutencao;
-  Dados.qryManutencaoVEICULO_PLACA.Value := Dados.qryVeiculos_cavaloPLACA.Value;
   EditDescricaoTipoServico.Text          := '';
+  DBlucbServico.SetFocus;
 end;
 
 procedure TfrmVeiculos.SpeedButtonAlterarManutencaoClick(Sender: TObject);
@@ -576,8 +581,9 @@ begin
   if Dados.qryManutencao.IsEmpty then
     exit;
 
-  PageControlManutencao.ActivePage := DadosManutencao;
   Dados.qryManutencao.edit;
+
+  PageControlManutencao.ActivePage := DadosManutencao;
   DBLookupComboboxEh4.SetFocus;
 end;
 
@@ -633,6 +639,12 @@ begin
 
   PageControlManutencao.ActivePage := ListaManutencao;
   SpeedButtonCancelarItemClick(Self);
+
+  Dados.qryManutencao.Close;
+  Dados.qryManutencao.Open;
+
+  Dados.qryManutencaoItem.Close;
+  Dados.qryManutencaoItem.Open;
 end;
 
 procedure TfrmVeiculos.SpeedButtonAddItemClick(Sender: TObject);

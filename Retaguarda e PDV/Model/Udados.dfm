@@ -6,6 +6,7 @@ object Dados: TDados
     Params.Strings = (
       'User_Name=sysdba'
       'Password=masterkey'
+      'Database=C:\Sistema\Dados\DADOS.FDB'
       'DriverID=FB')
     FetchOptions.AssignedValues = [evMode, evAutoClose]
     FormatOptions.AssignedValues = [fvFmtDisplayDate, fvFmtDisplayNumeric]
@@ -13,6 +14,7 @@ object Dados: TDados
     ResourceOptions.AutoReconnect = True
     UpdateOptions.AssignedValues = [uvAutoCommitUpdates]
     UpdateOptions.AutoCommitUpdates = True
+    Connected = True
     LoginPrompt = False
     Transaction = Transacao
     UpdateTransaction = Transacao
@@ -10477,12 +10479,64 @@ object Dados: TDados
     object qryMotoristaVALIDADE: TDateField
       FieldName = 'VALIDADE'
       Origin = 'VALIDADE'
+      EditMask = '!99/99/0000;1;_'
     end
     object qryMotoristaCPF: TStringField
       FieldName = 'CPF'
       Origin = 'CPF'
       EditMask = '###.###.###-##;0;'
       Size = 11
+    end
+    object qryMotoristaDATA_NASCIMENTO: TDateField
+      DisplayLabel = 'NASCIMENTO'
+      FieldName = 'DATA_NASCIMENTO'
+      Origin = 'DATA_NASCIMENTO'
+      EditMask = '!99/99/0000;1;_'
+    end
+    object qryMotoristaTELEFONE: TStringField
+      FieldName = 'TELEFONE'
+      Origin = 'TELEFONE'
+      EditMask = '!\(99\)\90000-0000;1;_'
+    end
+    object qryMotoristaWHATSAPP: TStringField
+      FieldName = 'WHATSAPP'
+      Origin = 'WHATSAPP'
+      EditMask = '!\(99\)\90000-0000;1;_'
+    end
+    object qryMotoristaEMAIL: TStringField
+      FieldName = 'EMAIL'
+      Origin = 'EMAIL'
+      Size = 100
+    end
+    object qryMotoristaCNH_CATEGORIA: TStringField
+      DisplayLabel = 'CNH CATEGORIA'
+      FieldName = 'CNH_CATEGORIA'
+      Origin = 'CNH_CATEGORIA'
+      Size = 5
+    end
+    object qryMotoristaCNH_DATA_EMISSAO: TDateField
+      DisplayLabel = 'CNH EMISS'#195'O'
+      FieldName = 'CNH_DATA_EMISSAO'
+      Origin = 'CNH_DATA_EMISSAO'
+      EditMask = '!99/99/0000;1;_'
+    end
+    object qryMotoristaEXAMES_OBSERVACOES: TMemoField
+      DisplayLabel = 'EXAMES OBSERVACOES'
+      FieldName = 'EXAMES_OBSERVACOES'
+      Origin = 'EXAMES_OBSERVACOES'
+      BlobType = ftMemo
+    end
+    object qryMotoristaEXAMES_DATA_VENCIMENTO: TDateField
+      DisplayLabel = 'EXAMES VENCIMENTO'
+      FieldName = 'EXAMES_DATA_VENCIMENTO'
+      Origin = 'EXAMES_DATA_VENCIMENTO'
+      EditMask = '!99/99/0000;1;_'
+    end
+    object qryMotoristaOBSERVACOES: TMemoField
+      DisplayLabel = 'OBSERVAC'#213'ES'
+      FieldName = 'OBSERVACOES'
+      Origin = 'OBSERVACOES'
+      BlobType = ftMemo
     end
   end
   object qryAtualiza: TFDQuery
