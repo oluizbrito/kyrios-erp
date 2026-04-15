@@ -1,6 +1,6 @@
 unit uPrincipal;
 
-interface //Suporte e Vendas direto no Whatsapp (48)998463846
+interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
@@ -453,6 +453,13 @@ type
     MnEtiquetaFast: TMenuItem;
     SpeedButton12: TSpeedButton;
     MmRotasViagens: TMenuItem;
+    ransportadora1: TMenuItem;
+    MdiadeCombustvel1: TMenuItem;
+    Manuteno1: TMenuItem;
+    Odometroporveculo1: TMenuItem;
+    CustosporVeculo1: TMenuItem;
+    ResumodeViagens1: TMenuItem;
+    CustoporRota1: TMenuItem;
     procedure MnContatosClick(Sender: TObject);
     procedure MnGrupoClick(Sender: TObject);
     procedure Departamentos1Click(Sender: TObject);

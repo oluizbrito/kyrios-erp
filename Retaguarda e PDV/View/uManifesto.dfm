@@ -29,8 +29,6 @@ object FrmManifesto: TFrmManifesto
       'Memo1')
     ReadOnly = True
     TabOrder = 2
-    ExplicitWidth = 1014
-    ExplicitHeight = 282
   end
   object Panel2: TPanel
     Left = 0
@@ -964,8 +962,6 @@ object FrmManifesto: TFrmManifesto
     Color = 16514043
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = 351
-    ExplicitWidth = 1014
     object Label11: TLabel
       Left = 17
       Top = 7
@@ -990,7 +986,7 @@ object FrmManifesto: TFrmManifesto
     object Label2: TLabel
       Left = 625
       Top = 6
-      Width = 87
+      Width = 89
       Height = 15
       Caption = 'TOTAL DE NF-E  |'
       Font.Charset = ANSI_CHARSET
@@ -1035,8 +1031,6 @@ object FrmManifesto: TFrmManifesto
     ParentFont = False
     TabOrder = 3
     Visible = False
-    ExplicitTop = 477
-    ExplicitWidth = 1014
     object Label3: TLabel
       Left = 17
       Top = 6
@@ -1081,7 +1075,6 @@ object FrmManifesto: TFrmManifesto
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 4
-    ExplicitWidth = 1014
     object GroupBox2: TGroupBox
       Left = 0
       Top = 0
@@ -1096,7 +1089,6 @@ object FrmManifesto: TFrmManifesto
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 1014
       object LblPeriodo: TLabel
         Left = 10
         Top = 18
@@ -1212,8 +1204,6 @@ object FrmManifesto: TFrmManifesto
       'Todas')
     TabIndex = 0
     OnChange = TabSet1Change
-    ExplicitWidth = 1014
-    ExplicitHeight = 282
     object DBGrid1: TDBGridEh
       Left = 4
       Top = 29

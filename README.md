@@ -1,45 +1,43 @@
-**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
+﻿# Kyrios ERP (Open Source)
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
+ERP completo com modulos de retaguarda, PDV e rotinas fiscais, disponibilizado para estudo, uso e comercializacao.
 
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
+Licenca: MIT (uso comercial permitido).
 
----
+## Estrutura principal
+- `Retaguarda e PDV/Projeto/Retaguarda.dproj`: aplicacao de retaguarda.
+- `Retaguarda e PDV/Projeto/PDV.dproj`: frente de caixa (PDV).
+- `Retaguarda e PDV/Pre-Venda/PreVenda.dproj`: modulo de pre-venda.
+- `Retaguarda e PDV/WhatsAppServer/WhatsAppServer.dproj`: servico auxiliar.
+- `ControleWeb Licencas/ControleWeb.dproj`: modulo web/licencas.
 
-## Edit a file
+## Como clonar
+```bash
+git clone https://github.com/oluizbrito/kyrios-erp.git
+cd kyrios-erp
+```
 
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
+## Requisitos para rodar localmente
+1. Windows 10/11.
+2. Delphi (versao usada no projeto).
+3. Firebird instalado localmente.
+4. Dependencias de componentes Delphi usadas no projeto (se houver na sua IDE).
 
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
+## Como rodar localmente (passo a passo)
+1. Abra o Delphi.
+2. Abra um dos arquivos `.dproj` listados acima (comece por `Retaguarda.dproj`).
+3. Revise as units de conexao com banco (normalmente em `UnitDM`/`uDados`) e ajuste:
+   - servidor/porta do Firebird;
+   - caminho do banco `.FDB`;
+   - usuario e senha.
+4. Confirme que as bibliotecas externas usadas pelo projeto estao instaladas na IDE.
+5. Compile em `Win32` ou `Win64`.
+6. Execute pela IDE.
 
----
+## Banco de dados
+- O projeto usa Firebird.
+- Se necessario, restaure/crie o banco localmente e atualize os parametros de conexao antes da compilacao.
 
-## Create a file
-
-Next, you’ll add a new file to this repository.
-
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
-
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
-
----
-
-## Clone a repository
-
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
-
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
-
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+## Observacoes
+- Este repositorio foi aberto para a comunidade.
+- Voce pode estudar, modificar, redistribuir e comercializar sob os termos da licenca MIT.

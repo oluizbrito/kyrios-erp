@@ -1,4 +1,4 @@
-unit uCadMDFe;
+ï»¿unit uCadMDFe;
 
 interface //Suporte e Vendas direto no Whatsapp (48)998463846
 
@@ -324,7 +324,7 @@ type
 var
   frmCadMDFe: TfrmCadMDFe;
 
-implementation //Acesse lojadodesenvolvedor.com.br e saiba mais sobre esse código fonte.
+implementation //Acesse lojadodesenvolvedor.com.br e saiba mais sobre esse cï¿½digo fonte.
 
 {$R *.dfm}
 
@@ -381,7 +381,7 @@ end;
 
 procedure TfrmCadMDFe.cxGravarClick(Sender: TObject);
 begin
- try
+  try
     if (qryMDFE_M.State IN dsEditmodes) then
       qryMDFE_M.Post;
 
@@ -485,7 +485,7 @@ end;
 procedure TfrmCadMDFe.cxSairClick(Sender: TObject);
 begin
   if Application.messageBox('Tem Certeza de que deseja sair da tela?',
-    'Confirmação', mb_YesNo) = mrYes then
+    'Confirmaï¿½ï¿½o', mb_YesNo) = mrYes then
     Close;
 end;
 
@@ -505,7 +505,7 @@ begin
 
       if DmMDFe.ACBrMDFe.WebServices.Consulta.cStat = 100 then
       begin
-        showMessage('MDFe já transmitido!');
+        showMessage('MDFe jï¿½ transmitido!');
         qryMDFE_M.Edit;
         qryMDFE_MSITUACAO.Value := 'D';
         qryMDFE_M.Post;
@@ -555,11 +555,11 @@ begin
         cxTransmitir.Enabled := true;
         if DmMDFe.ACBrMDFe.WebServices.Retorno.cStat = 686 then
         begin
-          showMessage('ERRO:' + E.Message + sLineBreak + 'Motivo:' +
+          showMessage('RF-ERRO:' + E.Message + sLineBreak + 'Motivo:' +
             DmMDFe.ACBrMDFe.WebServices.Retorno.xMotivo);
         end
         else
-          showMessage('ERRO:' + E.Message);
+          showMessage('SYS-ERRO:' + E.Message);
         exit;
       end;
     end;
@@ -647,7 +647,7 @@ var
 begin
   with DmMDFe.ACBrMDFe.Manifestos.Add.MDFe do
   begin
-    // Dados de Identificação do MDF-e
+    // Dados de Identificaï¿½ï¿½o do MDF-e
     Ide.cUF := dados.qryEmpresaID_UF.Value;
     if dados.qryConfigAMBIENTE.Value = 0 then
       Ide.tpAmb := taProducao;
@@ -730,7 +730,7 @@ begin
     end
     else
     begin
-      raise Exception.Create('Veículo não foi encontrado!');
+      raise Exception.Create('Veï¿½culo nï¿½o foi encontrado!');
       exit;
     end;
 
@@ -744,7 +744,7 @@ begin
     end
     else
     begin
-      raise Exception.Create('Motorista não foi encontrado!');
+      raise Exception.Create('Motorista nï¿½o foi encontrado!');
       exit;
     end;
 
@@ -836,18 +836,27 @@ begin
 
     if qryMDFE_MTIPO_MDFE.Value = 'CTE' then
     begin
-
       qryMDFe_Seguradora.First;
       while not qryMDFe_Seguradora.Eof do
       begin
+        // Inicializa a variÃ¡vel FResponsavel
+        FResponsavel := 0;
+        
         if qryMDFe_SeguradoraRESPONSAVEL.Value = 'Emitente' then
+          FResponsavel := 4
+        else if qryMDFe_SeguradoraRESPONSAVEL.Value = 'Tomador' then
+          FResponsavel := 5
+        else
+        begin
+          // Se o valor nÃ£o for vÃ¡lido, usa Emitente como padrÃ£o
           FResponsavel := 4;
-        if qryMDFe_SeguradoraRESPONSAVEL.Value = 'Tomador' then
-          FResponsavel := 5;
+          ShowMessage('Valor invÃ¡lido para ResponsÃ¡vel do Seguro. Usando "Emitente" como padrÃ£o.');
+        end;
 
+        DmMDFe.ACBrMDFe.Manifestos.Add.MDFe.seg.Add.respSeg := TRspSegMDFe(FResponsavel);
         with seg.Add do
         begin
-          respSeg := TRspSegMDFe(FResponsavel);
+          //respSeg := TRspSegMDFe(FResponsavel);
           xSeg := qryMDFe_SeguradoraNOME.Value;
           CNPJCPF := TiraPontos(qryMDFe_SeguradoraCNPJ.Value);
           CNPJ := TiraPontos(qryMDFe_SeguradoraCNPJ.Value);
@@ -1006,9 +1015,9 @@ begin
   cxTransmitir.Caption := 'F3' + sLineBreak + 'Transmitir';
   cxImprimir.Caption := 'F4' + sLineBreak + 'Imprimir';
   cxImportar.Caption := 'F5' + sLineBreak + 'Importar';
-  cxPessoas.Caption := 'F6' + sLineBreak + 'Destinatário';
+  cxPessoas.Caption := 'F6' + sLineBreak + 'Destinatï¿½rio';
   cxTransp.Caption := 'F7' + sLineBreak + 'Transportador';
-  cxVeiculo.Caption := 'F8' + sLineBreak + 'Veículos';
+  cxVeiculo.Caption := 'F8' + sLineBreak + 'Veï¿½culos';
   cxSair.Caption := 'F12' + sLineBreak + 'Sair';
 end;
 
@@ -1169,7 +1178,7 @@ begin
 
     if qryPesquisaMDFe.RecordCount > 0 then
     begin
-      showMessage('Já existe MDFe com esta numeração!');
+      showMessage('Jï¿½ existe MDFe com esta numeraï¿½ï¿½o!');
       Abort;
     end;
 

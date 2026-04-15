@@ -613,7 +613,7 @@ object frmCadMDFe: TfrmCadMDFe
     ParentBackground = False
     TabOrder = 1
     ExplicitWidth = 1002
-    ExplicitHeight = 456
+    ExplicitHeight = 452
     object PageControl2: TPageControl
       AlignWithMargins = True
       Left = 3
@@ -631,7 +631,7 @@ object frmCadMDFe: TfrmCadMDFe
       TabOrder = 0
       TabStop = False
       ExplicitWidth = 914
-      ExplicitHeight = 355
+      ExplicitHeight = 351
       object TabSheet5: TTabSheet
         Caption = 'Itens'
         object Label37: TLabel
@@ -922,7 +922,7 @@ object frmCadMDFe: TfrmCadMDFe
       ParentFont = False
       TabOrder = 1
       ExplicitLeft = 923
-      ExplicitHeight = 355
+      ExplicitHeight = 351
       object TabSheet1: TTabSheet
         Caption = 'Percurso'
         object DBGridEh2: TDBGridEh
@@ -983,7 +983,7 @@ object frmCadMDFe: TfrmCadMDFe
       Font.Style = []
       ParentFont = False
       TabOrder = 2
-      ExplicitTop = 364
+      ExplicitTop = 360
       ExplicitWidth = 996
       object TabSheet2: TTabSheet
         Caption = 'Totais'
@@ -1293,7 +1293,7 @@ object frmCadMDFe: TfrmCadMDFe
     Color = clWhite
     ParentBackground = False
     TabOrder = 2
-    ExplicitTop = 639
+    ExplicitTop = 635
     ExplicitWidth = 1002
     object cxTransmitir: TcxButton
       AlignWithMargins = True

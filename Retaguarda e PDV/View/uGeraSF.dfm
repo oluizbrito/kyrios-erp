@@ -314,7 +314,7 @@ object FrmSpedSf: TFrmSpedSf
         object Label5: TLabel
           Left = 62
           Top = 152
-          Width = 23
+          Width = 24
           Height = 15
           Caption = 'Tipo'
           Font.Charset = ANSI_CHARSET
@@ -564,10 +564,6 @@ object FrmSpedSf: TFrmSpedSf
     object cxTabSheet2: TcxTabSheet
       Caption = 'Dados 1601'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel1: TPanel
         AlignWithMargins = True
         Left = 5

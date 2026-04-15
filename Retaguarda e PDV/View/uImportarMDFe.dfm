@@ -13,12 +13,10 @@ object frmImportarMDFe: TfrmImportarMDFe
   Font.Name = 'Tahoma'
   Font.Style = []
   KeyPreview = True
-  OldCreateOrder = False
   Position = poDesktopCenter
   OnActivate = FormActivate
   OnKeyDown = FormKeyDown
   OnShow = FormShow
-  PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
@@ -33,6 +31,8 @@ object frmImportarMDFe: TfrmImportarMDFe
     Font.Style = []
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 672
+    ExplicitHeight = 133
     object btnImportar: TSpeedButton
       Left = 22
       Top = 86
@@ -167,7 +167,7 @@ object frmImportarMDFe: TfrmImportarMDFe
     object Label1: TLabel
       Left = 26
       Top = 36
-      Width = 23
+      Width = 24
       Height = 15
       Caption = 'Tipo'
       Font.Charset = ANSI_CHARSET
@@ -1674,7 +1674,7 @@ object frmImportarMDFe: TfrmImportarMDFe
         ParamType = ptInput
         Value = Null
       end>
-    object qrySomaITEM: TIntegerField
+    object qrySomaITEM: TLargeintField
       AutoGenerateValue = arDefault
       FieldName = 'ITEM'
       Origin = 'ITEM'

@@ -2415,7 +2415,7 @@ object frmEmpresa: TfrmEmpresa
                   Left = 90
                   Top = 31
                   Width = 82
-                  Height = 21
+                  Height = 23
                   CharCase = ecUpperCase
                   Ctl3D = False
                   DataField = 'ALIQUOTA_SIMPLES'
@@ -2984,7 +2984,7 @@ object frmEmpresa: TfrmEmpresa
                   Left = 214
                   Top = 64
                   Width = 147
-                  Height = 21
+                  Height = 23
                   Ctl3D = False
                   DataField = 'APPKEY_BB'
                   DataSource = dsEmpresa
@@ -3001,7 +3001,7 @@ object frmEmpresa: TfrmEmpresa
                   Left = 214
                   Top = 104
                   Width = 147
-                  Height = 21
+                  Height = 23
                   Ctl3D = False
                   DataField = 'CLIENTID_BB'
                   DataSource = dsEmpresa
@@ -3018,7 +3018,7 @@ object frmEmpresa: TfrmEmpresa
                   Left = 214
                   Top = 144
                   Width = 147
-                  Height = 21
+                  Height = 23
                   Ctl3D = False
                   DataField = 'CLIENTSECRET_BB'
                   DataSource = dsEmpresa
@@ -3035,7 +3035,7 @@ object frmEmpresa: TfrmEmpresa
                   Left = 18
                   Top = 165
                   Width = 174
-                  Height = 21
+                  Height = 23
                   Ctl3D = False
                   DataField = 'CHAVE_PIX_BB'
                   DataSource = dsEmpresa
@@ -3137,7 +3137,7 @@ object frmEmpresa: TfrmEmpresa
                   Left = 14
                   Top = 77
                   Width = 491
-                  Height = 21
+                  Height = 23
                   Ctl3D = False
                   DataField = 'ACCESSTOKEN_MERCADOPAGO'
                   DataSource = dsEmpresa

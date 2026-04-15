@@ -23,7 +23,7 @@ object frmImportaXMLNFe: TfrmImportaXMLNFe
     Height = 69
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 690
+    ExplicitWidth = 692
     object GroupBox1: TGroupBox
       Left = 1
       Top = 1
@@ -32,7 +32,7 @@ object frmImportaXMLNFe: TfrmImportaXMLNFe
       Align = alClient
       Caption = 'Caminho'
       TabOrder = 0
-      ExplicitWidth = 688
+      ExplicitWidth = 690
       object edtNumero: TEdit
         Left = 24
         Top = 20
@@ -44,7 +44,6 @@ object frmImportaXMLNFe: TfrmImportaXMLNFe
         Font.Height = -19
         Font.Name = 'Courier New'
         Font.Style = [fsBold]
-        NumbersOnly = True
         ParentCtl3D = False
         ParentFont = False
         TabOrder = 0
@@ -58,6 +57,8 @@ object frmImportaXMLNFe: TfrmImportaXMLNFe
     Height = 73
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 304
+    ExplicitWidth = 692
     object btnImportar: TSpeedButton
       AlignWithMargins = True
       Left = 230
@@ -384,8 +385,8 @@ object frmImportaXMLNFe: TfrmImportaXMLNFe
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 2
-    ExplicitWidth = 690
-    ExplicitHeight = 191
+    ExplicitWidth = 692
+    ExplicitHeight = 235
     object TabSheet1: TTabSheet
       Caption = 'Notas'
       object memLista: TListBox
@@ -398,8 +399,8 @@ object frmImportaXMLNFe: TfrmImportaXMLNFe
         ParentColor = True
         TabOrder = 0
         OnKeyDown = memListaKeyDown
-        ExplicitWidth = 682
-        ExplicitHeight = 163
+        ExplicitWidth = 684
+        ExplicitHeight = 207
       end
     end
     object TabSheet2: TTabSheet
@@ -413,7 +414,6 @@ object frmImportaXMLNFe: TfrmImportaXMLNFe
         Align = alClient
         ItemHeight = 13
         TabOrder = 0
-        ExplicitHeight = 175
       end
     end
   end

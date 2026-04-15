@@ -28,6 +28,8 @@ object frmCadRota: TfrmCadRota
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitTop = 557
+    ExplicitWidth = 936
     object cxSair: TcxButton
       AlignWithMargins = True
       Left = 164
@@ -124,6 +126,8 @@ object frmCadRota: TfrmCadRota
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
+    ExplicitWidth = 936
+    ExplicitHeight = 543
     object Label1: TLabel
       Left = 51
       Top = 17
@@ -511,6 +515,8 @@ object frmCadRota: TfrmCadRota
       ActivePage = TabSheetFin
       Align = alBottom
       TabOrder = 12
+      ExplicitTop = 288
+      ExplicitWidth = 934
       object TabSheetFin: TTabSheet
         Caption = 'Financeiro'
         object PageControlFin: TPageControl
@@ -521,6 +527,7 @@ object frmCadRota: TfrmCadRota
           ActivePage = TabSheetFinDados
           Align = alClient
           TabOrder = 0
+          ExplicitWidth = 926
           object TabSheetFinLista: TTabSheet
             Caption = 'FinLista'
             TabVisible = False
@@ -751,6 +758,7 @@ object frmCadRota: TfrmCadRota
               Height = 43
               Align = alBottom
               TabOrder = 0
+              ExplicitWidth = 918
               object SpeedButtonSalvarItem: TSpeedButton
                 AlignWithMargins = True
                 Left = 6
@@ -1274,7 +1282,32 @@ object frmCadRota: TfrmCadRota
       
         '    AS VARCHAR(512) CHARACTER SET ISO8859_1) AS ENDERECO_COMPLET' +
         'O'
-      'FROM TRANSPORTADORA;')
+      'FROM TRANSPORTADORA'
+      'UNION'
+      'SELECT '
+      '    CAST('
+      
+        '    '#9'CAST(CAST(FANTASIA AS VARCHAR(255) CHARACTER SET ISO8859_1)' +
+        ' AS VARCHAR(255) CHARACTER SET ISO8859_1) || '#39' - '#39' ||'
+      
+        '        CAST(CAST(ENDERECO AS VARCHAR(255) CHARACTER SET ISO8859' +
+        '_1) AS VARCHAR(255) CHARACTER SET ISO8859_1) || '#39', '#39' ||'
+      
+        '        CAST(CAST(BAIRRO AS VARCHAR(255) CHARACTER SET ISO8859_1' +
+        ') AS VARCHAR(255) CHARACTER SET ISO8859_1) || '#39', '#39' ||'
+      
+        '        CAST(CAST(MUNICIPIO AS VARCHAR(255) CHARACTER SET ISO885' +
+        '9_1) AS VARCHAR(255) CHARACTER SET ISO8859_1) || '#39'/'#39' ||'
+      
+        '        CAST(CAST(UF AS VARCHAR(10) CHARACTER SET ISO8859_1) AS ' +
+        'VARCHAR(10) CHARACTER SET ISO8859_1) || '#39'-'#39' ||'
+      
+        '        CAST(CAST(CEP AS VARCHAR(20) CHARACTER SET ISO8859_1) AS' +
+        ' VARCHAR(20) CHARACTER SET ISO8859_1)'
+      
+        '    AS VARCHAR(512) CHARACTER SET ISO8859_1) AS ENDERECO_COMPLET' +
+        'O'
+      'FROM PESSOA;')
     Left = 735
     Top = 559
     object qryOrigemENDERECO_COMPLETO: TStringField
@@ -1294,6 +1327,31 @@ object frmCadRota: TfrmCadRota
   object qryDestinoFinal: TFDQuery
     Connection = Dados.Conexao
     SQL.Strings = (
+      'SELECT '
+      '    CAST('
+      
+        '    '#9'CAST(CAST(NOME AS VARCHAR(255) CHARACTER SET ISO8859_1) AS ' +
+        'VARCHAR(255) CHARACTER SET ISO8859_1) || '#39' - '#39' ||'
+      
+        '        CAST(CAST(ENDERECO AS VARCHAR(255) CHARACTER SET ISO8859' +
+        '_1) AS VARCHAR(255) CHARACTER SET ISO8859_1) || '#39', '#39' ||'
+      
+        '        CAST(CAST(BAIRRO AS VARCHAR(255) CHARACTER SET ISO8859_1' +
+        ') AS VARCHAR(255) CHARACTER SET ISO8859_1) || '#39', '#39' ||'
+      
+        '        CAST(CAST(CIDADE AS VARCHAR(255) CHARACTER SET ISO8859_1' +
+        ') AS VARCHAR(255) CHARACTER SET ISO8859_1) || '#39'/'#39' ||'
+      
+        '        CAST(CAST(UF AS VARCHAR(10) CHARACTER SET ISO8859_1) AS ' +
+        'VARCHAR(10) CHARACTER SET ISO8859_1) || '#39'-'#39' ||'
+      
+        '        CAST(CAST(CEP AS VARCHAR(20) CHARACTER SET ISO8859_1) AS' +
+        ' VARCHAR(20) CHARACTER SET ISO8859_1)'
+      
+        '    AS VARCHAR(512) CHARACTER SET ISO8859_1) AS ENDERECO_COMPLET' +
+        'O'
+      'FROM TRANSPORTADORA'
+      'UNION'
       'SELECT '
       '    CAST('
       

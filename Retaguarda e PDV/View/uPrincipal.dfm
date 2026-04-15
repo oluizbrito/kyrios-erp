@@ -8693,6 +8693,27 @@
           OnClick = MnRelatorioporPlanodeContasClick
         end
       end
+      object ransportadora1: TMenuItem
+        Caption = 'Transportadora'
+        object MdiadeCombustvel1: TMenuItem
+          Caption = 'M'#233'dia de Combust'#237'vel'
+        end
+        object Manuteno1: TMenuItem
+          Caption = 'Manuten'#231#227'o'
+        end
+        object Odometroporveculo1: TMenuItem
+          Caption = 'Odometro por ve'#237'culo'
+        end
+        object CustosporVeculo1: TMenuItem
+          Caption = 'Custos por Ve'#237'culo'
+        end
+        object ResumodeViagens1: TMenuItem
+          Caption = 'Resumo de Viagens'
+        end
+        object CustoporRota1: TMenuItem
+          Caption = 'Custo por Rota'
+        end
+      end
     end
     object MnConfigurações: TMenuItem
       Caption = 'Configura'#231#245'es'

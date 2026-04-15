@@ -446,11 +446,11 @@ begin
     Ide.UFEnv := dados.qryEmpresaUF.Value;
     Ide.modal := mdRodoviario;
     Ide.tpServ := tsNormal;
-    // Origem da Prestação
+    // Origem da Prestaï¿½ï¿½o
     Ide.cMunIni := qryCTE_MCODMUNINI.Value;
     Ide.xMunIni := qryCTE_MVIRTUAL_ORIGEM.Value;
     Ide.UFIni := qryCTE_MUFINI.Value;
-    // Destino da Prestação
+    // Destino da Prestaï¿½ï¿½o
     Ide.cMunFim := qryCTE_MCODMUNFIM.Value;
     Ide.xMunFim := qryCTE_MVIRTUAL_DESTINO.Value;
     Ide.UFFim := qryCTE_MUFFIM.Value;
@@ -546,14 +546,14 @@ begin
       dest.enderDest.cPais := 1058;
       dest.enderDest.xPais := 'Brasil';
     end;
-    // prestação de serviço
+    // prestaï¿½ï¿½o de serviï¿½o
     vPrest.vTPrest := qryCTE_MVALOR_SERVICO.AsFloat;
 //    if qryCTE_MVALOR_SERVICO.AsFloat <= 0 then
 //    vPrest.vRec := qryCTE_MVALOR_SERVICO.AsFloat;
     vPrest.vRec := qryCTE_MRECEBIDO.AsFloat;
     with vPrest.Comp.Add do
     begin
-      xNome := 'VALOR LIQUIDO PRESTAÇÃO DE SERVIÇO';
+      xNome := 'VALOR LIQUIDO PRESTAï¿½ï¿½O DE SERVIï¿½O';
       vPrest.Comp.Add.vComp := qryCTE_MVALOR_SERVICO.AsFloat;
     end;
     // impostos
@@ -667,10 +667,20 @@ begin
     qryCte_Seguradora.First;
     while not qryCte_Seguradora.Eof do
     begin
+      // Inicializa a variÃ¡vel FResponsavel
+      FResponsavel := 0;
+      
       if qryCte_SeguradoraRESPONSAVEL.Value = 'Emitente do CT-e' then
+        FResponsavel := 4
+      else if qryCte_SeguradoraRESPONSAVEL.Value = 'Tomador de Servio' then
+        FResponsavel := 5
+      else
+      begin
+        // Se o valor nÃ£o for vÃ¡lido, usa Emitente como padrÃ£o
         FResponsavel := 4;
-      if qryCte_SeguradoraRESPONSAVEL.Value = 'Tomador de Serviço' then
-        FResponsavel := 5;
+        ShowMessage('Valor invÃ¡lido para ResponsÃ¡vel do Seguro. Usando "Emitente do CT-e" como padrÃ£o.');
+      end;
+      
       with infCTeNorm.seg.Add do
       begin
         respSeg := TpcteRspSeg(FResponsavel);
@@ -763,418 +773,6 @@ begin
   end;
 end;
 
-{
-procedure TfrmCadCTe.GerarCTE;
-var
-  Produto: string;
-  FResponsavel, i: integer;
-begin
-
-  with dmCTe.ACBrCTe.Conhecimentos.Add.CTe do
-  begin
-    Ide.cUF := dados.qryEmpresaID_UF.Value;
-    Ide.CFOP := qryCTE_MCFOP.AsInteger;
-    Ide.natOp := copy(qryCTE_MVIRTUAL_CFOP.AsString, 1, 50);
-    if qryCTE_MRECEBIDO.Value > 0 then
-      Ide.forPag := fpPago
-    else
-    begin
-      Ide.forPag := fpAPagar;
-    end;
-
-    Ide.indGlobalizado := tiNao;
-
-    Ide.modelo := 57;
-    Ide.serie := qryCTE_MSERIE.AsInteger;
-    Ide.nCT := qryCTE_MNUMERO.Value;
-    Ide.cCT := GerarCodigoDFe(Ide.nCT);
-    Ide.dhEmi := Now;
-    Ide.tpImp := tiRetrato;
-    Ide.tpEmis := teNormal;
-    // TpcnTipoAmbiente = (taProducao, taHomologacao);
-    if dados.qryConfigAMBIENTE.Value = 0 then
-      Ide.tpAmb := taProducao;
-    if dados.qryConfigAMBIENTE.Value = 1 then
-      Ide.tpAmb := taHomologacao;
-
-    case qryCTE_MFINALIDADE.Value of
-      0:
-        Ide.tpCTe := tcNormal;
-      1:
-        Ide.tpCTe := tcComplemento;
-    end;
-
-    Ide.procEmi := peAplicativoContribuinte;
-    Ide.indIEToma := TpcnindIEDest(dados.qryConfigTIPO_CONTRIBUINTE_CTE.Value);
-    Ide.verProc := '4.0';
-    Ide.cMunEnv := dados.qryEmpresaID_CIDADE.Value;
-    Ide.xMunEnv := dados.qryEmpresaCIDADE.Value;
-    Ide.UFEnv := dados.qryEmpresaUF.Value;
-
-    Ide.modal := mdRodoviario;
-    Ide.tpServ := tsNormal;
-
-    // Origem da Prestação
-
-    Ide.cMunIni := qryCTE_MCODMUNINI.Value;
-    Ide.xMunIni := qryCTE_MVIRTUAL_ORIGEM.Value;
-    Ide.UFIni := qryCTE_MUFINI.Value;
-
-    // Destino da Prestação
-
-    Ide.cMunFim := qryCTE_MCODMUNFIM.Value;
-    Ide.xMunFim := qryCTE_MVIRTUAL_DESTINO.Value;
-    Ide.UFFim := qryCTE_MUFFIM.Value;
-
-    Ide.retira := rtSim;
-    Ide.xdetretira := '';
-
-    if qryCTE_MTOMADOR.Value = '0' then
-      Ide.Toma03.Toma := tmRemetente;
-
-    if qryCTE_MTOMADOR.Value = '1' then
-      Ide.Toma03.Toma := tmDestinatario;
-
-    if trim(qryCTE_MOBS_FISCO.Value) <> '' then
-    begin
-      with compl.ObsFisco.Add do
-      begin
-        xCampo := 'Fisco';
-        xTexto := trim(qryCTE_MOBS_FISCO.Value);
-      end;
-    end;
-    if trim(qryCTE_MOBS_CONTRIBUINTE.Value) <> '' then
-    begin
-      compl.xObs := trim(qryCTE_MOBS_CONTRIBUINTE.Value);
-    end;
-    compl.fluxo.xOrig := copy(Ide.xMunIni, 1, 15);
-
-    compl.fluxo.xDest := copy(Ide.xMunFim, 1, 15);
-
-    // Dados do Emitente
-
-    emit.CNPJ := tirapontos(dados.qryEmpresaCNPJ.Value);
-    emit.IE := tirapontos(dados.qryEmpresaIE.Value);
-    emit.xNome := dados.qryEmpresaRAZAO.Value;
-    emit.xFant := dados.qryEmpresaFANTASIA.Value;
-    emit.EnderEmit.xLgr := dados.qryEmpresaENDERECO.Value;
-    emit.EnderEmit.nro := dados.qryEmpresaNUMERO.Value;
-    emit.EnderEmit.xCpl := dados.qryEmpresaCOMPLEMENTO.Value;
-    emit.EnderEmit.xBairro := dados.qryEmpresaBAIRRO.Value;;
-    emit.EnderEmit.cMun := dados.qryEmpresaID_CIDADE.Value;
-    emit.EnderEmit.xMun := dados.qryEmpresaCIDADE.Value;
-    emit.EnderEmit.CEP := StrToIntDef(dados.qryEmpresaCEP.Value, 0);
-    emit.EnderEmit.UF := dados.qryEmpresaUF.Value;
-    emit.EnderEmit.fone := dados.qryEmpresaFONE.Value;
-
-    // Dados do Remetente
-
-    if qryRemetente.Locate('codigo', qryCTE_MFK_REMETENTE.Value, []) then
-    begin
-      rem.CNPJCPF := tirapontos(qryRemetenteCNPJ.Value);
-
-      if qryRemetenteCONTRIBUINTE.Value = 'S' then
-      begin
-        rem.IE := tirapontos(qryRemetenteIE.Value);
-        if qryCTE_MTOMADOR.Value = '0' then
-          Ide.indIEToma := inContribuinte;
-      end
-      else
-      begin
-        if qryCTE_MTOMADOR.Value = '0' then
-          Ide.indIEToma := inNaoContribuinte;
-      end;
-
-      rem.xNome := qryRemetenteNOME.Value;
-      rem.xFant := qryRemetenteNOME.Value;
-      rem.enderReme.xLgr := qryRemetenteENDERECO.Value;
-      rem.enderReme.nro := qryRemetenteNUMERO.Value;
-      rem.enderReme.xBairro := qryRemetenteBAIRRO.Value;
-      rem.enderReme.cMun := qryRemetenteID_CIDADE.Value;
-      rem.enderReme.xMun := qryRemetenteCIDADE.Value;
-      rem.enderReme.CEP := StrToIntDef(qryRemetenteCEP.Value, 0);
-      rem.enderReme.UF := qryRemetenteUF.Value;
-      rem.enderReme.cPais := 1058;
-      rem.enderReme.xPais := 'Brasil';
-    end;
-
-
-    // Dados do Destinatario
-
-    if qryDestinatario.Locate('codigo', qryCTE_MFK_DESTINATARIO.Value, []) then
-    begin
-
-      if (uppercase(qryDestinatarioIE.Value) = 'ISENTO') or
-        (trim(qryDestinatarioIE.Value) = '') then
-        Ide.indIEToma := inNaoContribuinte
-      else
-      begin
-        Ide.indIEToma := inContribuinte;
-        dest.IE := tirapontos(qryDestinatarioIE.Value);
-      end;
-
-      dest.CNPJCPF := tirapontos(qryDestinatarioCNPJ.Value);
-      dest.xNome := qryDestinatarioNOME.Value;
-      dest.enderDest.xLgr := qryDestinatarioENDERECO.Value;
-      dest.enderDest.nro := qryDestinatarioNUMERO.Value;
-      dest.enderDest.xBairro := qryDestinatarioBAIRRO.Value;
-      dest.enderDest.cMun := qryDestinatarioID_CIDADE.AsInteger;
-      dest.enderDest.xMun := qryDestinatarioCIDADE.Value;
-      dest.enderDest.CEP := StrToIntDef(qryDestinatarioCEP.Value, 0);
-      dest.enderDest.UF := qryDestinatarioUF.Value;
-      dest.enderDest.cPais := 1058;
-      dest.enderDest.xPais := 'Brasil';
-    end;
-
-    // prestação de serviço
-
-    vPrest.vTPrest := qryCTE_MVALOR_SERVICO.AsFloat;
-    if qryCTE_MVALOR_SERVICO.AsFloat <= 0 then
-      vPrest.vRec := qryCTE_MVALOR_SERVICO.AsFloat;
-    with vPrest.Comp.Add do
-    begin
-      xNome := 'VALOR LIQUIDO PRESTAÇÃO DE SERVIÇO';
-      vPrest.Comp.Add.vComp := qryCTE_MVALOR_SERVICO.AsFloat;
-    end;
-
-    // impostos
-
-    if qryCTE_MCST_ICMS.Value = '00' then
-    begin
-      Imp.ICMS.SituTrib := cst00;
-      Imp.ICMS.ICMS00.CST := cst00;
-      Imp.ICMS.ICMS00.vBC := RoundABNT(qryCTE_MBASE_ICMS.AsFloat, -2);
-      Imp.ICMS.ICMS00.pICMS := RoundABNT(qryCTE_MALIQUOTA_ICMS.AsFloat, -2);
-      Imp.ICMS.ICMS00.vICMS := RoundABNT(qryCTE_MVALOR_ICMS.AsFloat, -2);
-    end;
-    if qryCTE_MCST_ICMS.Value = '20' then
-    begin
-      Imp.ICMS.SituTrib := cst20;
-      Imp.ICMS.ICMS20.CST := cst20;
-      Imp.ICMS.ICMS20.vBC := RoundABNT(qryCTE_MBASE_ICMS.AsFloat, -2);
-      Imp.ICMS.ICMS20.pICMS := RoundABNT(qryCTE_MALIQUOTA_ICMS.AsFloat, -2);
-      Imp.ICMS.ICMS20.vICMS := RoundABNT(qryCTE_MVALOR_ICMS.AsFloat, -2);
-    end;
-    if qryCTE_MCST_ICMS.Value = '40' then
-    begin
-      Imp.ICMS.SituTrib := cst40;
-      Imp.ICMS.ICMS45.CST := cst40;
-    end;
-    if qryCTE_MCST_ICMS.Value = '41' then
-    begin
-      Imp.ICMS.SituTrib := cst41;
-      Imp.ICMS.ICMS45.CST := cst41;
-    end;
-    if qryCTE_MCST_ICMS.Value = '51' then
-    begin
-      Imp.ICMS.SituTrib := cst51;
-      Imp.ICMS.ICMS45.CST := cst51;
-    end;
-
-    if qryCTE_MCST_ICMS.Value = '60' then
-    begin
-      Imp.ICMS.SituTrib := cst60;
-      Imp.ICMS.ICMS60.CST := cst60;
-    end;
-    if qryCTE_MCST_ICMS.Value = '90' then
-    begin
-      Imp.ICMS.SituTrib := cst90;
-      Imp.ICMS.ICMS90.CST := cst90;
-      Imp.ICMS.ICMS90.pRedBC := 0;
-      Imp.ICMS.ICMS90.vBC := RoundABNT(qryCTE_MBASE_ICMS.AsFloat, -2);
-      Imp.ICMS.ICMS90.pICMS := RoundABNT(qryCTE_MALIQUOTA_ICMS.AsFloat, -2);
-      Imp.ICMS.ICMS90.vICMS := RoundABNT(qryCTE_MVALOR_ICMS.AsFloat, -2);
-      Imp.ICMS.ICMS90.vCred := 0;
-    end;
-    Imp.vTotTrib := qryCTE_MOUTROS_TRIBUTOS.AsFloat;
-
-    Imp.infTribFed.vPIS :=
-      (qryCTE_MVALOR_SERVICO.AsFloat * dados.qryConfigCTE_PIS.AsFloat) / 100;
-    Imp.infTribFed.vCOFINS :=
-      (qryCTE_MVALOR_SERVICO.AsFloat * dados.qryConfigCTE_COFINS.AsFloat) / 100;
-
-    // CTE Documento normal inicio
-
-    infCTeNorm.infCarga.vCarga := qryCTE_MVALOR_CARGA.AsFloat;
-    infCTeNorm.infCarga.proPred := qryCTE_DDESCRICAO.Value;
-
-    with infCTeNorm.infCarga.infQ.Add do
-    begin
-      if qryCTE_MMETRAGEM.Value = '0' then
-      begin
-        cUnid := uM3;
-        tpMed := 'PESO CUBADO';
-      end;
-      if qryCTE_MMETRAGEM.Value = '1' then
-      begin
-        cUnid := uKG;
-        tpMed := 'PESO BRUTO';
-      end;
-      if qryCTE_MMETRAGEM.Value = '2' then
-      begin
-        cUnid := uTON;
-        tpMed := 'PESO BRUTO';
-      end;
-      if qryCTE_MMETRAGEM.Value = '3' then
-      begin
-        cUnid := uUNIDADE;
-        tpMed := 'UNIDADES'
-      end;
-      if qryCTE_MMETRAGEM.Value = '4' then
-      begin
-        cUnid := uLITROS;
-        tpMed := 'LITRAGEM'
-      end;
-
-      qCarga := qryCTE_MQTD.AsFloat;
-    end;
-
-    qryCTE_D.First;
-
-    if qryCTE_MDOCUMENTO.Value <> 'S' then
-    begin
-      while not qryCTE_D.Eof do
-      begin
-        with infCTeNorm.infDoc.infNFe.Add do // nota fiscal
-        begin
-          chave := qryCTE_DCHAVE.Value;
-        end;
-        qryCTE_D.Next;
-      end;
-    end
-    else
-    begin
-      with infCTeNorm.infDoc.infOutros.Add do // outros documentos
-      begin
-        while not qryCTE_D.Eof do
-        begin
-          tpDoc := tdDeclaracao;
-          descOutros := qryCTE_DDESCRICAO.Value;
-          nDoc := qryCTE_DNUMERO.AsString;
-          vDocFisc := RoundTo(qryCTE_DTOTAL.AsFloat, -2);
-          qryCTE_D.Next;
-        end;
-      end;
-    end;
-
-    qryCte_Seguradora.First;
-    while not qryCte_Seguradora.Eof do
-    begin
-      if qryCte_SeguradoraRESPONSAVEL.Value = 'Emitente do CT-e' then
-        FResponsavel := 4;
-      if qryCte_SeguradoraRESPONSAVEL.Value = 'Tomador de Serviço' then
-        FResponsavel := 5;
-
-      with infCTeNorm.seg.Add do
-      begin
-        respSeg := TpcteRspSeg(FResponsavel);
-        xSeg := qryCte_SeguradoraNOME.Value;
-        nApol := qryCte_SeguradoraAPOLICE.Value;
-        vCarga := qryCte_SeguradoraVALOR_SEGURADO.AsFloat;
-        nAver := qryCte_SeguradoraAVERBACAO.AsString;
-      end;
-      qryCte_Seguradora.Next;
-    end;
-
-    qryVeiculo.Close;
-    qryVeiculo.Open;
-    if qryVeiculo.Locate('PLACA', qryCTE_MVIRTUAL_PLACA.Value, []) then
-    begin
-      with infCTeNorm.rodo.veic.Add do
-      begin
-        cInt := '001';
-        placa := qryVeiculoPLACA.Value;
-        UF := qryVeiculoUF.Value;
-        RENAVAM := qryVeiculoRENAVAM.Value;
-        tara := qryVeiculoTARA.AsInteger;
-        capKG := qryVeiculoPESO.AsInteger;
-        capM3 := 0;
-        case qryVeiculoTIPO.Value of
-          0:
-            tpRod := trNaoAplicavel;
-          1:
-            tpRod := trTruck;
-          2:
-            tpRod := trToco;
-          3:
-            tpRod := trCavaloMecanico;
-          4:
-            tpRod := trVAN;
-          5:
-            tpRod := trUtilitario;
-          6:
-            tpRod := trOutros;
-        end;
-        tpCar := TpcteTipoCarroceria(qryVeiculoCARROCERIA.Value);
-      end;
-    end;
-
-    qryVeiculo_Reboque.Close;
-    qryVeiculo_Reboque.Params[0].Value := qryCTE_MFK_VEICULO.Value;
-    qryVeiculo_Reboque.Open;
-
-    if not qryVeiculo_Reboque.IsEmpty then
-    begin
-      qryVeiculo_Reboque.First;
-      while not qryVeiculo_Reboque.Eof do
-      begin
-        if (Length(qryVeiculo_ReboquePLACA.Value) = 7) then
-        begin
-          infCTeNorm.rodo.RNTRC := qryVeiculoRNTC.Value;
-          with infCTeNorm.rodo.veic.Add do
-          begin
-
-            cInt := '00' + IntToStr(i + 1);
-            placa := qryVeiculo_ReboquePLACA.Value;
-            RENAVAM := qryVeiculo_ReboqueRENAVAM.Value;
-            tara := qryVeiculo_ReboqueTARA.AsInteger;
-            capKG := qryVeiculo_ReboquePESO.AsInteger;
-            capM3 := 0;
-            tpCar := TpcteTipoCarroceria(qryVeiculo_ReboqueCARROCERIA.Value);
-            UF := qryVeiculo_ReboqueUF.Value;
-          end;
-        end;
-        qryVeiculo_Reboque.Next;
-      end;
-    end;
-
-    if qryTransp.Locate('CODIGO', qryCTE_MFKTRANSPORTADOR.Value, []) then
-    begin
-      with infCTeNorm.rodo.moto.Add do
-      begin
-        xNome := qryTranspNOME.Value;
-        CPF := qryTranspCNPJ.Value;
-      end;
-      infCTeNorm.rodo.RNTRC := '00000000';
-    end;
-
-    // responsavel tecnico 22-03-2019
-    if dados.qryEmpresaRESPONSAVEL_TECNICO.Value = 'S' then
-    begin
-
-      dados.qryParametro.Close;
-      dados.qryParametro.Open;
-
-      infRespTec.CNPJ := tirapontos(dados.qryParametroCNPJ.Value);
-      infRespTec.xContato := dados.qryParametroCONTATO.Value;
-      infRespTec.email := dados.qryParametroEMAIL_SUPORTE.Value;
-      infRespTec.fone := tirapontos(dados.qryParametroFONE1.Value);
-      infRespTec.hashCSRT := '';
-    end;
-
-    infCTeNorm.rodo.dPrev := qryCTE_MDATA_ENTREGA.Value;
-    infCTeNorm.rodo.lota := ltNao;
-    // fim documento normal
-
-    if qryCTE_MFINALIDADE.Value = 0 then
-    begin // complementar
-      infCteComp.chave := qryCTE_MCHAVE_REFERENCIADA.Value;
-    end;
-  end;
-
-end;
-}
-
 procedure TfrmCadCTe.EnviarEmal(email: string);
 var
   mensagem: Tstrings;
@@ -1185,7 +783,7 @@ begin
 
   try
     mensagem := TstringList.Create;
-    mensagem.Add('SEGUE EM ANEXO XML e DANFE NFE nº ' +
+    mensagem.Add('SEGUE EM ANEXO XML e DANFE NFE nï¿½ ' +
       qryCTE_MNUMERO.AsString);
     dmCTe.ACBrCTe.Conhecimentos.Clear;
     dmCTe.ACBrCTe.Conhecimentos.LoadFromString(qryCTE_MXML.Value);
@@ -1301,7 +899,7 @@ procedure TfrmCadCTe.cxImportarClick(Sender: TObject);
 begin
 if (trim(DBLookupComboboxEh4.Text) = '') then
   begin
-    showMessage('Informe a Natureza de operação, antes de importar');
+    showMessage('Informe a Natureza de operaï¿½ï¿½o, antes de importar');
     DBLookupComboboxEh4.SetFocus;
     exit;
   end;
@@ -1364,7 +962,7 @@ end;
 procedure TfrmCadCTe.cxSairClick(Sender: TObject);
 begin
  if Application.messageBox('Tem Certeza de que deseja sair da tela?',
-    'Confirmação', mb_YesNo) = mrYes then
+    'Confirmaï¿½ï¿½o', mb_YesNo) = mrYes then
     Close;
 end;
 
@@ -1398,10 +996,10 @@ begin
   end;
 
   if dmCTe.ACBrCTe.WebServices.Consulta.cStat = 100 then
-  begin // verifica se já foi transmitido
+  begin // verifica se jï¿½ foi transmitido
     if not(qryCTE_MCHAVE.IsNull) then
     begin
-      showMessage('Conhecimento de frete já transmitido!');
+      showMessage('Conhecimento de frete jï¿½ transmitido!');
       qryCTE_M.Edit;
       qryCTE_MSITUACAO.Value := 'D';
       qryCTE_M.Post;
@@ -1553,7 +1151,7 @@ procedure TfrmCadCTe.DBGridEh1KeyDown(Sender: TObject; var Key: Word;
 begin
   if Key = vk_delete then
   begin
-    If Application.messageBox('Tem certeza que Excluir Item?', 'Confirmação',
+    If Application.messageBox('Tem certeza que Excluir Item?', 'Confirmaï¿½ï¿½o',
       mb_YesNo + mb_iconquestion) = idyes then
     begin
       qryCTE_D.Delete;
@@ -1747,7 +1345,7 @@ end;
 procedure TfrmCadCTe.qryCTE_DBeforeInsert(DataSet: TDataSet);
 begin
   if not qryCFOP.Locate('CODIGO', qryCTE_MCFOP.Value, []) then
-    raise Exception.Create('CFOP não encontrado!');
+    raise Exception.Create('CFOP nï¿½o encontrado!');
 
   if qryCTE_M.State in dsEditmodes then
     qryCTE_M.Post;
@@ -1802,7 +1400,7 @@ begin
     qryPesquisaCTE.Open;
     if qryPesquisaCTE.RecordCount > 0 then
     begin
-      showMessage('Já existe CTe com esta numeração!');
+      showMessage('Jï¿½ existe CTe com esta numeraï¿½ï¿½o!');
       Abort;
     end;
 

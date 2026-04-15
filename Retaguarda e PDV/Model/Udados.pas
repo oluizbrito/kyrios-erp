@@ -3043,12 +3043,10 @@ begin
       if not(Dados.qryParametro.State in [dsEdit, dsInsert]) then
         Dados.qryParametro.Edit;
       { TODO : Trocar informações do Controle Licenças }
-      qryParametroSERVIDOR_APP.AsString := ''; // IP do seu servidor
-      Dados.qryParametroDATABASE_LI.AsString := Dados.Crypt('C', '');
-      // Nome do banco de dados
-      Dados.qryParametroUSUARIO_LI.AsString := Dados.Crypt('C', '');
-      // Usuario do banco de dados
-      Dados.qryParametroSENHA_LI.AsString := Dados.Crypt('C', '');
+      qryParametroSERVIDOR_APP.AsString      := '50.6.138.85';                         // IP do seu servidor
+      Dados.qryParametroDATABASE_LI.AsString := Dados.Crypt('C', 'atonap25_licencas'); // Nome do banco de dados
+      Dados.qryParametroUSUARIO_LI.AsString  := Dados.Crypt('C', 'atonap25_admin');    // Usuario do banco de dados
+      Dados.qryParametroSENHA_LI.AsString    := Dados.Crypt('C', '852456Ky*');         // Senha do Banco
 
       Dados.qryParametro.Post;
       Conexao.Commit;

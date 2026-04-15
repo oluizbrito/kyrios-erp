@@ -4,7 +4,7 @@ object DadosWeb: TDadosWeb
   Width = 652
   object ConexaoAPP: TFDConnection
     Params.Strings = (
-      'Server='
+      'Server=50.6.138.85'
       'DriverID=MySQL')
     LoginPrompt = False
     Transaction = TransacaoAPP
@@ -440,7 +440,10 @@ object DadosWeb: TDadosWeb
   end
   object ConexaoChave: TFDConnection
     Params.Strings = (
-      'Server='
+      'Server=50.6.138.85'
+      'Password=852456Ky*'
+      'Database=atonap25_licencas'
+      'User_Name=atonap25_admin'
       'DriverID=MySQL')
     LoginPrompt = False
     Transaction = TransacaoChave

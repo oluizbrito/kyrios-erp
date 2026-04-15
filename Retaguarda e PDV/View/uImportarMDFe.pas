@@ -252,13 +252,13 @@ type
     qryNotaCONSUMIDOR_FINAL: TStringField;
     qryNotaNPEDIDO: TStringField;
     qryNotaOUTROS: TFMTBCDField;
-    qrySomaITEM: TIntegerField;
     qrySomaVALOR: TFMTBCDField;
     qrySomaPESO: TFMTBCDField;
     ACBrCTe: TACBrCTe;
     ACBrNFe: TACBrNFe;
     qryCTE_MPESOL: TBCDField;
     qryCTE_MPESOB: TBCDField;
+    qrySomaITEM: TLargeintField;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure btnSairClick(Sender: TObject);
     procedure btnPesqClick(Sender: TObject);

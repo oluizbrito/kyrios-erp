@@ -503,17 +503,22 @@ begin
   while not DadosSped.qrParticipantes.Eof do
   begin
     Dados.qrySped_Participante.Insert;
+
     Dados.qrySped_ParticipanteCODIGO.AsInteger :=
       Dados.Numerador('SPED_PARTICIPANTES', 'CODIGO', 'N', '', '');
+
     Dados.qrySped_Participantefk_sped.Value := CodSped;
     Dados.qrySped_Participantecod_part.AsFloat :=
       DadosSped.qrParticipantesCOD_PART.AsFloat;
+
     Dados.qrySped_Participantenome.Value :=
       DadosSped.qrParticipantesRAZAO.Value;
+
     if (length(tirapontos(DadosSped.qrParticipantesCNPJ.Value))) = 14 then
     begin
       Dados.qrySped_Participantecnpj.Value :=
         tirapontos(DadosSped.qrParticipantesCNPJ.Value);
+
       Dados.qrySped_Participanteie.Value :=
         tirapontos(DadosSped.qrParticipantesIE.Value);
     end
@@ -522,21 +527,28 @@ begin
       Dados.qrySped_Participantecpf.Value :=
         tirapontos(DadosSped.qrParticipantesCNPJ.Value);
     end;
+
     Dados.qrySped_Participantecod_pais.Value := '1058';
+
     if (DadosSped.qrParticipantesCODMUN.AsInteger > 0) then
       Dados.qrySped_Participantecod_mun.Value := DadosSped.qrParticipantesCODMUN.Value
     else
       Dados.qrySped_Participantecod_mun.Value := Dados.qryEmpresaID_CIDADE.Value;
+
     Dados.qrySped_Participanteendereco.Value := DadosSped.qrParticipantesENDERECO.Value;
+
     if Dados.qrySped_Participanteendereco.AsString = '' then
       Dados.qrySped_Participanteendereco.Value := 'SEM ENDEREÇO';
+
     Dados.qrySped_Participantenumero.Value := DadosSped.qrParticipantesNUMERO.Value;
     Dados.qrySped_Participantecomplemento.Value := '';
     Dados.qrySped_Participantebairro.Value := DadosSped.qrParticipantesBAIRRO.Value;
     Dados.qrySped_ParticipanteFK_EMPRESA.Value := Empresa;
     Dados.qrySped_ParticipanteFK_USUARIO.Value := Dados.idUsuario;
+
     Dados.qrySped_Participante.Post;
     Dados.Conexao.Commit;
+
     DadosSped.qrParticipantes.Next;
   end;
 end;

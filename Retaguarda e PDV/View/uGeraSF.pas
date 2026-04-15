@@ -353,6 +353,7 @@ procedure
     procedure
     begin
        Importa;
+       ShowMessage('Dados importados.');
     end,
     'Gerando dados...');
   end;
