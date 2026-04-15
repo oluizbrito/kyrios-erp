@@ -441,7 +441,7 @@ type
     bPixJaFeito: Boolean;
     FOperacaoEmProgresso: Boolean;
     const
-      DSistema: string = 'Loja do Desenvolvedor';
+      DSistema: string = 'KyriosERP';
       DSite: string = 'www.lojadodesenvolvedor.com.br';
     procedure GerarNFCe(NumNFe: String);
     procedure GeraFinanceiro;
@@ -5414,4 +5414,6 @@ end;
 
 
 end.
+
+
 

@@ -1,4 +1,4 @@
-inherited FrmLogin_Windows: TFrmLogin_Windows
+﻿inherited FrmLogin_Windows: TFrmLogin_Windows
   DesignerMasterStyle = 3
   inherited Rectangle1: TRectangle
     inherited Layout1: TLayout
@@ -6974,8 +6974,10 @@ inherited FrmLogin_Windows: TFrmLogin_Windows
           D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0787702F8BF00D0296A194B
           C8D5750000000049454E44AE426082}
         FileName = 
-          'C:\Users\LojaDev\Downloads\d8240c49041ccae1062317e286bb68b6-remo' +
+          'C:\Users\KyriosERP\Downloads\d8240c49041ccae1062317e286bb68b6-remo' +
           'vebg-preview.png'
       end>
   end
 end
+
+

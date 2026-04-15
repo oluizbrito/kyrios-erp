@@ -532,7 +532,7 @@ type
     function JaDeuDesconto: double;
 
   const
-    DSistema: string = 'LojaDev';
+    DSistema: string = 'KyriosERP';
     DSite: string = 'www.lojadodesenvolvedor.com.br';
    // tTelaPEDIDO: string = 'N';
     procedure GerarNFCe(NumNFe: String);
@@ -5830,3 +5830,5 @@ end;
 // Fim Implementação PÌx
 
 end.
+
+

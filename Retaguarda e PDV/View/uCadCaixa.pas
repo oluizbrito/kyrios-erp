@@ -1,4 +1,4 @@
-unit uCadCaixa;
+ï»¿unit uCadCaixa;
 
 interface //Suporte e Vendas direto no Whatsapp (48)998463846
 
@@ -115,13 +115,13 @@ type
 var
   frmCadCaixa: TfrmCadCaixa;
 
-implementation //Acesse lojadodesenvolvedor.com.br e saiba mais sobre esse código fonte.
+implementation //Acesse lojadodesenvolvedor.com.br e saiba mais sobre esse cÃ³digo fonte.
 
 {$R *.dfm}
 
 uses uCaixa, Udados;
 
-//** Modificado por Loja do Desenvolvedor **//
+//** Modificado por KyriosERP **//
 
 function TfrmCadCaixa.Operacao: string;
 begin
@@ -252,7 +252,7 @@ begin
     cxGravarClick(Self);
   if Key = VK_ESCAPE then
     if Application.messageBox
-      ('Tem Certeza de que deseja sair do cadastro de caixa?', 'Confirmação',
+      ('Tem Certeza de que deseja sair do cadastro de caixa?', 'ConfirmaÃ§Ã£o',
       mb_YesNo) = mrYes then
     begin
       cxSair.Click;
@@ -277,4 +277,6 @@ end;
 
 end.
 
-//** Modificado por Loja do Desenvolvedor **//
+//** Modificado por KyriosERP **//
+
+

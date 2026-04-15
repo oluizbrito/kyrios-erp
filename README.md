@@ -1,4 +1,4 @@
-﻿# Kyrios ERP (Open Source)
+﻿# KyriosERP (Open Source)
 
 ERP completo com modulos de retaguarda, PDV e fiscal (NFe, NFCe, CTe, MDF-e, SAT, SPED e boletos), disponibilizado para estudo, uso e comercializacao.
 
@@ -60,3 +60,4 @@ O sistema le os parametros do banco de um arquivo INI e usa:
 ## Observacoes
 - Este repositório foi aberto para a comunidade.
 - E permitido estudar, modificar, redistribuir e comercializar conforme a licenca MIT.
+

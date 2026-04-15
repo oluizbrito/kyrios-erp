@@ -1,4 +1,4 @@
-object FrmLogin: TFrmLogin
+﻿object FrmLogin: TFrmLogin
   Left = 0
   Top = 0
   ClientHeight = 539
@@ -7088,7 +7088,7 @@ object FrmLogin: TFrmLogin
           A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1F1F604F07F
           00DFCF79FBA623191E0000000049454E44AE426082}
         FileName = 
-          'C:\Users\LojaDev\Downloads\d8240c49041ccae1062317e286bb68b6-remo' +
+          'C:\Users\KyriosERP\Downloads\d8240c49041ccae1062317e286bb68b6-remo' +
           'vebg-preview.png'
       end>
     Align = Top
@@ -7100,3 +7100,5 @@ object FrmLogin: TFrmLogin
     Size.PlatformDefault = False
   end
 end
+
+

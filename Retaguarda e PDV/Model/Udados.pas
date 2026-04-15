@@ -1,4 +1,4 @@
-unit Udados;
+ï»¿unit Udados;
 
 interface
 
@@ -2728,13 +2728,13 @@ begin
   qryPermissoes.ParamByName('FKUSUARIO').AsFloat :=
     Dados.qryUsuariosCODIGO.Value;
   qryPermissoes.ParamByName('FKTELA').AsFloat := Dados.qryTelasCODIGO.Value;
-  // Permissão Full para todos user deposi de ter modificado a tabela permissões.
+  // PermissÃ£o Full para todos user deposi de ter modificado a tabela permissÃµes.
   qryPermissoes.ParamByName('VISUALIZAR').Value := 'S';
   qryPermissoes.ParamByName('EXCLUIR').Value := 'S';
   qryPermissoes.ParamByName('EDITAR').Value := 'S';
   qryPermissoes.ParamByName('INCLUIR').Value := 'S';
   qryPermissoes.ParamByName('VISIVEL').Value := 'S';
-  // Permissão Full somente para o Admin
+  // PermissÃ£o Full somente para o Admin
   { if Dados.qryUsuarios.RecordCount = 1 then
     begin
     qryPermissoes.ParamByName('VISUALIZAR').Value := 'S';
@@ -3042,7 +3042,7 @@ begin
     begin
       if not(Dados.qryParametro.State in [dsEdit, dsInsert]) then
         Dados.qryParametro.Edit;
-      { TODO : Trocar informações do Controle Licenças }
+      { TODO : Trocar informaÃ§Ãµes do Controle LicenÃ§as }
       qryParametroSERVIDOR_APP.AsString      := '50.6.138.85';                         // IP do seu servidor
       Dados.qryParametroDATABASE_LI.AsString := Dados.Crypt('C', 'atonap25_licencas'); // Nome do banco de dados
       Dados.qryParametroUSUARIO_LI.AsString  := Dados.Crypt('C', 'atonap25_admin');    // Usuario do banco de dados
@@ -3182,7 +3182,7 @@ begin
   Result := '';
   BufLen := 0;
 
-  // Chama a função para obter o tamanho necessário do buffer
+  // Chama a funÃ§Ã£o para obter o tamanho necessÃ¡rio do buffer
   GetAdaptersAddresses(AF_UNSPEC, GAA_FLAG_INCLUDE_PREFIX, nil, nil, BufLen);
   GetMem(Addresses, BufLen);
 
@@ -3195,7 +3195,7 @@ begin
 
       while Assigned(Adapter) do
       begin
-        // Verifica se o adaptador está ativo e tem um endereço físico válido
+        // Verifica se o adaptador estÃ¡ ativo e tem um endereÃ§o fÃ­sico vÃ¡lido
         if (Adapter^.OperStatus = 1) and (Adapter^.PhysicalAddressLength > 0)
         then
         begin
@@ -3212,7 +3212,7 @@ begin
           Exit;
         end;
 
-        // Próximo adaptador
+        // PrÃ³ximo adaptador
         Adapter := Adapter^.Next;
       end;
     end;
@@ -3221,7 +3221,7 @@ begin
   end;
 
   if Result = '' then
-    raise Exception.Create('Nenhuma conexão ativa encontrada!');
+    raise Exception.Create('Nenhuma conexÃ£o ativa encontrada!');
 end;
 
 procedure TDados.estornaserial(idSerial: Integer);
@@ -3648,7 +3648,7 @@ begin
       while ExitCode = STILL_ACTIVE do
       begin
         Application.ProcessMessages;
-        // Check here if the ´wait´ is cancelled and call exit;
+        // Check here if the Â´waitÂ´ is cancelled and call exit;
         GetExitCodeProcess(tPI.hProcess, ExitCode);
       end;
     finally
@@ -4228,7 +4228,7 @@ var
 begin
   try
     nTentativas := 1;
-    { TODO : Informações da conexão com banco de dados. }
+    { TODO : InformaÃ§Ãµes da conexÃ£o com banco de dados. }
     iArq := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Banco.ini');
     Conexao.Params.Values['User_Name'] := iArq.ReadString('BD', 'USER',
       'SYSDBA');
@@ -4237,9 +4237,9 @@ begin
     Conexao.Params.Values['Port'] := iArq.ReadString('BD', 'PORT', '3050');
     Conexao.Params.Values['DriverID'] := 'FB';
     Conexao.Params.Values['Server'] := iArq.ReadString('BD', 'IP', '');
-    // pega essa informação na linha do Banco.ini
+    // pega essa informaÃ§Ã£o na linha do Banco.ini
     Conexao.Params.Values['Database'] := iArq.ReadString('BD', 'Path', '');
-    // pega essa informação na linha do Banco.ini
+    // pega essa informaÃ§Ã£o na linha do Banco.ini
     FBDriver.VendorLib := ExtractFilePath(Application.ExeName) + 'fbclient.dll';
     {
       while nTentativas <= 12 do
@@ -4266,9 +4266,9 @@ begin
     try
       Conexao.Connected := true;
     Except
-      ShowMessage('Não foi possivel conectar na base de dados!' + sLineBreak +
+      ShowMessage('NÃ£o foi possivel conectar na base de dados!' + sLineBreak +
         'Verifique e pasta C:\Sistema\Dados\DADOS.FDB' + sLineBreak +
-        ' Se não encontrar esse arquivo restaure um backup. ' + sLineBreak +
+        ' Se nÃ£o encontrar esse arquivo restaure um backup. ' + sLineBreak +
         'Ou contate o suporte do sistema !');
       Dados.vFechaPrograma := true;
       Application.Terminate;
@@ -4389,7 +4389,7 @@ begin
     Dados.qryTransfDOC.Value := 'TRF.' + Dados.qryCaixaCODIGO.AsString;
     Dados.qryTransfFKPLANO.Value := 0;
     Dados.qryTransfFKCONTA.Value := Dados.qryCaixaFK_CONTA1.Value;
-    Dados.qryTransfHISTORICO.Value := 'TRANSFERENCIA P/ CAIXA Nº' +
+    Dados.qryTransfHISTORICO.Value := 'TRANSFERENCIA P/ CAIXA NÂº' +
       Dados.qryCaixaFKCONTA.AsString;
     Dados.qryTransfENTRADA.Value := qryCaixaSAIDA.AsFloat;;
     Dados.qryTransfSAIDA.Value := qryCaixaENTRADA.AsFloat;
@@ -4452,7 +4452,7 @@ procedure TDados.qryConfigCODIGO_ATIVACAOValidate(Sender: TField);
 begin
   if Length(trim(qryConfigCODIGO_ATIVACAO.AsString)) < 8 then
     raise Exception.Create
-      ('Tamanho do código de ativação não pode ter menos de oito caracteres!');
+      ('Tamanho do cÃ³digo de ativaÃ§Ã£o nÃ£o pode ter menos de oito caracteres!');
 end;
 
 procedure TDados.qryConfigNewRecord(DataSet: TDataSet);
@@ -4518,7 +4518,7 @@ begin
   Dados.qryConfigPATHENVIADA_NFE.Value := ExtractFilePath(Application.ExeName) +
     'NFE\enviadas';
   Dados.qryConfigSERIE.Value := '1';
-  Dados.qryConfigPESQUISA.Value := 'DESCRIÇÃO';
+  Dados.qryConfigPESQUISA.Value := 'DESCRIÃ‡ÃƒO';
   Dados.qryConfigCLIENTE_PADRAO.Value := 1;
   Dados.qryConfigVENDEDOR_PADRAO.Value := 1;
   Dados.qryConfigCRYPTLIB.Value := '3';
@@ -4585,7 +4585,7 @@ begin
   qryEmpresaNSERIE.Value := '';
   qryEmpresaCSENHA.Value := '';
   qryEmpresaDATA_CADASTRO.AsString := Dados.Crypt('C', datetostr(Date));
-  { TODO : Altera a quantidade de dias do Demo, padrão 7. }
+  { TODO : Altera a quantidade de dias do Demo, padrÃ£o 7. }
   qryEmpresaDATA_VALIDADE.AsString := Dados.Crypt('C', datetostr(Date + 7));
 
   qryEmpresaCHECA.AsString := Dados.Crypt('C', 'DEMONSTRACAO');
@@ -4600,7 +4600,7 @@ begin
   qryEmpresaCRT.Value := 1;
   qryEmpresaID_PLANO_VENDA.Value := 2;
   qryEmpresaOBSFISCO.Value :=
-    'I - "DOCUMENTO EMITIDO POR ME OU EPP OPTANTE PELO SIMPLES NACIONAL"; e II - "NÃO GERA DIREITO A CRÉDITO FISCAL DE ISS E DE IPI".';
+    'I - "DOCUMENTO EMITIDO POR ME OU EPP OPTANTE PELO SIMPLES NACIONAL"; e II - "NÃƒO GERA DIREITO A CRÃ‰DITO FISCAL DE ISS E DE IPI".';
   qryEmpresaCFOP.Value := '5102';
   qryEmpresaCSOSN.Value := '102';
   qryEmpresaCST_ICMS.Value := '041';
@@ -4622,7 +4622,7 @@ begin
   qryEmpresaEXIBE_RESUMO_CAIXA.Value := 'S';
   qryEmpresaRECOLHE_FCP.Value := 'N';
   qryEmpresaRECIBO_VIAS.Value := '1';
-  qryEmpresaOBS_CARNE.Value := 'OBRIGADO PELA PREFERÊNCIA!';
+  qryEmpresaOBS_CARNE.Value := 'OBRIGADO PELA PREFERÃŠNCIA!';
   qryEmpresaCAIXA_UNICO.Value := 'N';
   qryEmpresaCHECA_ESTOQUE_FISCAL.Value := 'S';
   qryEmpresaBLOQUEAR_PRECO.Value := 'N';
@@ -4671,23 +4671,23 @@ end;
 
 procedure TDados.qryEtq_CamposBeforePost(DataSet: TDataSet);
 begin
-  if qryEtq_CamposDESCRICAO.Value = 'CÓDIGO' then
+  if qryEtq_CamposDESCRICAO.Value = 'CÃ“DIGO' then
     qryEtq_CamposCAMPO.Value := 'FK_PRODUTO';
-  if qryEtq_CamposDESCRICAO.Value = 'DESCRIÇÃO' then
+  if qryEtq_CamposDESCRICAO.Value = 'DESCRIÃ‡ÃƒO' then
     qryEtq_CamposCAMPO.Value := 'DESCRICAO';
-  if qryEtq_CamposDESCRICAO.Value = 'CÓDIGO DE BARRA' then
+  if qryEtq_CamposDESCRICAO.Value = 'CÃ“DIGO DE BARRA' then
     qryEtq_CamposCAMPO.Value := 'CODBARRA';
-  if qryEtq_CamposDESCRICAO.Value = 'REFERÊNCIA' then
+  if qryEtq_CamposDESCRICAO.Value = 'REFERÃŠNCIA' then
     qryEtq_CamposCAMPO.Value := 'REFERENCIA';
-  if qryEtq_CamposDESCRICAO.Value = 'PREÇO' then
+  if qryEtq_CamposDESCRICAO.Value = 'PREÃ‡O' then
     qryEtq_CamposCAMPO.Value := 'PR_VENDA';
-  if qryEtq_CamposDESCRICAO.Value = 'PREÇO ATACADO' then
+  if qryEtq_CamposDESCRICAO.Value = 'PREÃ‡O ATACADO' then
     qryEtq_CamposCAMPO.Value := 'PRECO_ATACADO';
   if qryEtq_CamposDESCRICAO.Value = 'UNIDADE' then
     qryEtq_CamposCAMPO.Value := 'UNIDADE';
   if qryEtq_CamposDESCRICAO.Value = 'GRUPO' then
     qryEtq_CamposCAMPO.Value := 'GRUPO';
-  if qryEtq_CamposDESCRICAO.Value = 'LOCALIZAÇÃO' then
+  if qryEtq_CamposDESCRICAO.Value = 'LOCALIZAÃ‡ÃƒO' then
     qryEtq_CamposCAMPO.Value := 'LOCALIZACAO';
 end;
 
@@ -4755,7 +4755,7 @@ begin
     end
     else
     begin
-      // Verificar se a Margem está preenchida
+      // Verificar se a Margem estÃ¡ preenchida
       if qryAjustaPrecoMARGEM.AsFloat > 0 then
       begin
         vMargem := 0;
@@ -5302,7 +5302,7 @@ begin
   if not qryConsulta.IsEmpty then
     Result := qryConsulta.Fields[0].AsInteger
   else
-    raise Exception.Create('Produto não encontrado!');
+    raise Exception.Create('Produto nÃ£o encontrado!');
 end;
 
 procedure TDados.InsereCaixa(Empresa, IDCR, FKPLANO, FKCONTA,
@@ -5441,7 +5441,7 @@ begin
   end;
 end;
 
-// Inicio modificações update 4.3
+// Inicio modificaÃ§Ãµes update 4.3
 function TDados.BuscaValor(Codigo: Integer; tp: string): Extended;
 begin
   Result := 0;
@@ -5687,7 +5687,7 @@ begin
 
     Boleto := dm.ACBrBoleto;
     Boleto.ACBrBoletoFC.LayOut := TACBrBolLayOut(icbxLayOut);
-    Boleto.ACBrBoletoFC.SoftwareHouse := 'LojaDev';
+    Boleto.ACBrBoletoFC.SoftwareHouse := 'KyriosERP';
 
     Boleto.Cedente.Bairro := qryEmpresaBAIRRO.AsString;
     Boleto.Cedente.CEP := qryEmpresaCEP.AsString;
@@ -5701,7 +5701,7 @@ begin
 
     // Boleto.Configuracoes.Arquivos.LogRegistro :=  True;
     Boleto.Configuracoes.Arquivos.LogNivel := TNivelLog(LogNormal);
-    // nova função de Log dos Boletos
+    // nova funÃ§Ã£o de Log dos Boletos
     Boleto.Configuracoes.Arquivos.PathGravarRegistro :=
       ExtractFilePath(Application.ExeName) + '\Boleto\Logs';
 
@@ -5915,13 +5915,13 @@ begin
           begin
             VLinha := '.';
 
-            VQtdeCarcA := Length('Descrição Produto/Serviço ' + IntToStr(i));
+            VQtdeCarcA := Length('DescriÃ§Ã£o Produto/ServiÃ§o ' + IntToStr(i));
             VQtdeCarcB := Length('Valor:');
             VQtdeCarcC := 85 - (VQtdeCarcA + VQtdeCarcB);
 
             VLinha := PadLeft(VLinha, VQtdeCarcC, '.');
 
-            Titulo.Detalhamento.Add('Descrição Produto/Serviço ' + IntToStr(i) +
+            Titulo.Detalhamento.Add('DescriÃ§Ã£o Produto/ServiÃ§o ' + IntToStr(i) +
               ' ' + VLinha + ' Valor:   ' + PadRight(FormatCurr('R$ ###,##0.00',
               StrToCurr(FloatToStr(rValor)) * 0.25), 18, ' '));
           end;
@@ -5968,7 +5968,7 @@ begin
     Result := False;
     Boleto := dm.ACBrBoleto;
 
-    // Função de Envio
+    // FunÃ§Ã£o de Envio
     Boleto.Configuracoes.WebService.Operacao := tpInclui;
     Boleto.EnviarBoleto;
     // <<< retorna como false se o httpresult code for diferente de 200,201,202
@@ -6100,14 +6100,14 @@ function TDados.ValidaGTIN(AGTIN: string): boolean;
 var
   i, soma, resultado, base10: Integer;
 begin
-  // Verifica se todos os caracteres de AGTIN são números
+  // Verifica se todos os caracteres de AGTIN sÃ£o nÃºmeros
   for i := 1 to Length(AGTIN) do
     if not(AGTIN[i] in ['0' .. '9']) then
     begin
       Result := False;
       Exit;
     end;
-  // Verifica se AGTIN tem o tamanho necessário
+  // Verifica se AGTIN tem o tamanho necessÃ¡rio
   if Length(AGTIN) in [8, 12, 13, 14] then
   begin
     soma := 0;
@@ -6129,7 +6129,7 @@ begin
       end;
     end;
     base10 := soma;
-    // Verifica se base10 é múltiplo de 10
+    // Verifica se base10 Ã© mÃºltiplo de 10
     if not(base10 mod 10 = 0) then
     begin
       while not(base10 mod 10 = 0) do
@@ -6138,7 +6138,7 @@ begin
       end;
     end;
     resultado := base10 - soma;
-    // Verifica se o resultado encontrado é igual ao caractere de controle
+    // Verifica se o resultado encontrado Ã© igual ao caractere de controle
     if resultado = strToint(AGTIN[Length(AGTIN)]) then
       Result := true
     else
@@ -6189,3 +6189,5 @@ end;
 
 
 end.
+
+

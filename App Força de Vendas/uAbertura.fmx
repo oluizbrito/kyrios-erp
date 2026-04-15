@@ -1,4 +1,4 @@
-object frmAcesso: TfrmAcesso
+﻿object frmAcesso: TfrmAcesso
   Left = 0
   Top = 0
   Caption = 'Form1'
@@ -2374,7 +2374,7 @@ object frmAcesso: TfrmAcesso
               711CC7711CC7711CC7711CC7711CC7711CC7711CC7711CC7711CC7711CC7711C
               C7711CC7711CC7711CC7711CC771DC2F02E0FF01456CCA6F70C55FD200000000
               49454E44AE426082}
-            FileName = 'C:\Users\LojaDev\Downloads\Design sem nome (23).png'
+            FileName = 'C:\Users\KyriosERP\Downloads\Design sem nome (23).png'
           end>
         Align = Center
         Size.Width = 320.000000000000000000
@@ -2615,3 +2615,5 @@ object frmAcesso: TfrmAcesso
     end
   end
 end
+
+

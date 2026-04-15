@@ -1,4 +1,4 @@
-inherited frmMenu_SmXhdpiPh: TfrmMenu_SmXhdpiPh
+﻿inherited frmMenu_SmXhdpiPh: TfrmMenu_SmXhdpiPh
   ClientHeight = 375
   ClientWidth = 250
   DesignerMasterStyle = 3
@@ -875,7 +875,7 @@ inherited frmMenu_SmXhdpiPh: TfrmMenu_SmXhdpiPh
                   9E11DB5AA8BF08B51B4F4EED0642AF14B6850193F552BD6B31EACAFEFDFB318B
                   5FAFF5B45FD357F250A6ABA58263E04210044110044110044110044110044110
                   04FDEB20C8FF018E3B9BD049378DB60000000049454E44AE426082}
-                FileName = 'C:\Users\LojaDev\Downloads\Design sem nome (23).png'
+                FileName = 'C:\Users\KyriosERP\Downloads\Design sem nome (23).png'
               end>
           end
         end
@@ -929,3 +929,5 @@ inherited frmMenu_SmXhdpiPh: TfrmMenu_SmXhdpiPh
     end
   end
 end
+
+

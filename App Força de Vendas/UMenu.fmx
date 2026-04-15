@@ -1,4 +1,4 @@
-object frmMenu: TfrmMenu
+﻿object frmMenu: TfrmMenu
   Left = 0
   Top = 0
   ClientHeight = 480
@@ -2009,7 +2009,7 @@ object frmMenu: TfrmMenu
                   D35A142FAFEF309D8CEBC6865E294C0BC32ED64975AEC5A82D070E1C40AC013D
                   BFA1029ABE928732DD2D159803170000000000000000000000000000000000E0
                   3F0782FE0F25BD9F56DD604D800000000049454E44AE426082}
-                FileName = 'C:\Users\LojaDev\Downloads\Design sem nome (23).png'
+                FileName = 'C:\Users\KyriosERP\Downloads\Design sem nome (23).png'
               end>
             Align = Center
             Size.Width = 198.000000000000000000
@@ -3429,3 +3429,5 @@ object frmMenu: TfrmMenu
     Top = 240
   end
 end
+
+

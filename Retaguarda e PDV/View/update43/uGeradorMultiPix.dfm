@@ -1,4 +1,4 @@
-object frmGeradorMultiPix: TfrmGeradorMultiPix
+﻿object frmGeradorMultiPix: TfrmGeradorMultiPix
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu]
@@ -1591,7 +1591,7 @@ object frmGeradorMultiPix: TfrmGeradorMultiPix
   object Pix1: TPix
     TipoQrCode = tqDinamico
     Token = Pix1.Token
-    Devedor = Pix1.LojaDev
+    Devedor = Pix1.KyriosERP
     ForcarParametroDeveloperURL = False
     TipoAmbiente = taProducao
     VersaoAPI = Pix_API_v2
@@ -1603,3 +1603,5 @@ object frmGeradorMultiPix: TfrmGeradorMultiPix
     Top = 70
   end
 end
+
+
