@@ -24,13 +24,13 @@ uses
   { TIRA ACENTO DE STRING }
   function  TiraAcento(aText: string): string;
 
-implementation //Acesse lojadodesenvolvedor.com.br e saiba mais sobre esse código fonte.
+implementation //Acesse lojadodesenvolvedor.com.br e saiba mais sobre esse cï¿½digo fonte.
 
 uses Udados;
 
 function TiraAcento(aText: string): string;
 const
-  ComAcento = 'àâêôûãõáéíóúçüñýÀÂÊÔÛÃÕÁÉÍÓÚÇÜÑÝ';
+  ComAcento = 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
   SemAcento = 'aaeouaoaeioucunyAAEOUAOAEIOUCUNY';
 var
   x: Cardinal;
@@ -59,25 +59,25 @@ var
   sTerminal: string;
   bSucesso: Boolean;
 begin
-  (* INFORMAÇÕES DA IP TELEGRAM *)
+  (* INFORMAï¿½ï¿½ES DA IP TELEGRAM *)
   {
   Token: 1868573913:AAFx43hjJYgLNgxgxuVk-2iKkErm3bsmXzc
   ID Canal: -1001546905116
-  Padrão Mensagem: https://api.telegram.org/bot<token>/SendMessage?chat_id=<id sala/canal>&text=<mensagem>
+  Padrï¿½o Mensagem: https://api.telegram.org/bot<token>/SendMessage?chat_id=<id sala/canal>&text=<mensagem>
   }
   TThread.CreateAnonymousThread(procedure
     begin
       try
         PathExe := ExtractFilePath(Application.ExeName);
         Dominio :=  'https://api.telegram.org/bot';
-        Token   :=  '5326875222:AAEGNgNvir_Ed0oIC9moxQnGqHTIXFXg1To';
-        IDCanal :=  '-1001568519787';
+        Token   :=  '';
+        IDCanal :=  '';
         if Trim(Dados.vUsuario) = '' then
-          Usuario :=  'Não Logado'
+          Usuario :=  'Nï¿½o Logado'
         else
           Usuario :=  Dados.vUsuario;
         if Trim(Dados.nometerminal) = '' then
-          sTerminal := 'Terminal não encontrado'
+          sTerminal := 'Terminal nï¿½o encontrado'
         else
           sTerminal :=  Dados.nometerminal;
         sMensagem :=  FormatDateTime('dd/mm/yyyy hh:mm:ss', Now)+' - '+'SystemDigital '+Sistema+
@@ -99,7 +99,7 @@ begin
             DeleteFile(pchar(PathExe+'logtelegram.json'));
         end;
       except
-        //não faz nada
+        //nï¿½o faz nada
       end;
     end).start();
 end;
