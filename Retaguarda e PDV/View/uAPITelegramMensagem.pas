@@ -59,19 +59,38 @@ var
   sTerminal: string;
   bSucesso: Boolean;
 begin
-  (* INFORMAÇÕES DA IP TELEGRAM *)
-  {
-  Token: 1868573913:AAFx43hjJYgLNgxgxuVk-2iKkErm3bsmXzc
-  ID Canal: -1001546905116
-  Padrão Mensagem: https://api.telegram.org/bot<token>/SendMessage?chat_id=<id sala/canal>&text=<mensagem>
-  }
-  TThread.CreateAnonymousThread(procedure
+
+    TThread.CreateAnonymousThread(procedure
+    var
+      IniTelegram: TIniFile;
+      ConfigPath: string;
     begin
       try
         PathExe := ExtractFilePath(Application.ExeName);
         Dominio :=  'https://api.telegram.org/bot';
-        Token   :=  '5326875222:AAEGNgNvir_Ed0oIC9moxQnGqHTIXFXg1To';
-        IDCanal :=  '-1001568519787';
+        Token := Trim(GetEnvironmentVariable('KYRIOS_TELEGRAM_BOT_TOKEN'));
+        IDCanal := Trim(GetEnvironmentVariable('KYRIOS_TELEGRAM_CHAT_ID'));
+
+        if (Token = '') or (IDCanal = '') then
+        begin
+          ConfigPath := PathExe + 'telegram.ini';
+          if FileExists(ConfigPath) then
+          begin
+            IniTelegram := TIniFile.Create(ConfigPath);
+            try
+              if Token = '' then
+                Token := Trim(IniTelegram.ReadString('TELEGRAM', 'BOT_TOKEN', ''));
+              if IDCanal = '' then
+                IDCanal := Trim(IniTelegram.ReadString('TELEGRAM', 'CHAT_ID', ''));
+            finally
+              IniTelegram.Free;
+            end;
+          end;
+        end;
+
+        if (Token = '') or (IDCanal = '') then
+          Exit;
+
         if Trim(Dados.vUsuario) = '' then
           Usuario :=  'Não Logado'
         else
